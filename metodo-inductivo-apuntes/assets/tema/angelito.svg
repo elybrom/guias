@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Sonny-angel style: baby with fawn hood -->
+  <!-- ears -->
+  <path d="M22 40 L10 8 Q30 14 40 32 Z" fill="#F29E5C"/>
+  <path d="M24 34 L17 16 Q29 20 34 30 Z" fill="#FBD0DA"/>
+  <path d="M98 40 L110 8 Q90 14 80 32 Z" fill="#F29E5C"/>
+  <path d="M96 34 L103 16 Q91 20 86 30 Z" fill="#FBD0DA"/>
+  <!-- body -->
+  <ellipse cx="60" cy="106" rx="26" ry="18" fill="#FCE3D3"/>
+  <path d="M38 98 Q30 92 26 100 Q30 108 40 106 Z M82 98 Q90 92 94 100 Q90 108 80 106 Z" fill="#FFFFFF" stroke="#F6C9D5" stroke-width="1.5"/>
+  <!-- hood -->
+  <circle cx="60" cy="58" r="38" fill="#F4A465"/>
+  <circle cx="44" cy="30" r="3" fill="#FFF3E6"/><circle cx="76" cy="30" r="3" fill="#FFF3E6"/><circle cx="60" cy="24" r="2.6" fill="#FFF3E6"/><circle cx="34" cy="44" r="2.4" fill="#FFF3E6"/><circle cx="86" cy="44" r="2.4" fill="#FFF3E6"/>
+  <!-- face -->
+  <ellipse cx="60" cy="66" rx="29" ry="27" fill="#FDE8DA"/>
+  <ellipse cx="49" cy="66" rx="4.2" ry="5" fill="#3C2A26"/><ellipse cx="71" cy="66" rx="4.2" ry="5" fill="#3C2A26"/>
+  <circle cx="50.5" cy="64" r="1.5" fill="#fff"/><circle cx="72.5" cy="64" r="1.5" fill="#fff"/>
+  <ellipse cx="41" cy="76" rx="6" ry="3.6" fill="#F7A6B8" opacity=".85"/><ellipse cx="79" cy="76" rx="6" ry="3.6" fill="#F7A6B8" opacity=".85"/>
+  <path d="M56 78 Q60 82 64 78" fill="none" stroke="#C0626F" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="description" content="Método Inductivo · Eli — App de estudio: Tareas, Guía y Apuntes." />
-  <meta name="theme-color" content="#977272" />
+  <meta name="theme-color" content="#FBE3EA" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Inductivo" />
   <title>Método Inductivo · Eli</title>
   <link rel="manifest" href="manifest.webmanifest" />
@@ -15,277 +15,335 @@
   <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet" />
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Nunito:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style id="tema-matcha-orquidea">
+    /* Tema: matcha + orquídea + ladrillo (tema-matcha-v1) */
     :root {
-      --blush: #DEC4C9;
-      --rose: #977272;
-      --stone: #594E4C;
-      --ink: #181717;
-      --cream: #F9F4F5;
-      --white: #FFFFFF;
-      --bar: #6B5B73;
-      --bar-deep: #594E4C;
+      --cream: #FFFAF4;
+      --cream-2: #FBF1E6;
+      --stone: #F2E4CF;
+      --blush: #FBE3EA;
+      --pink: #F4A9BF;
+      --rose: #C2577A;
+      --rose-deep: #A8436A;
+      --matcha: #8DB463;
+      --matcha-soft: #E4F0D3;
+      --matcha-deep: #4F6E31;
+      --brick: #C2664A;
+      --brick-soft: #F8DDD0;
+      --lilac-soft: #EEE5FA;
+      --ink: #4A2F2A;
+      --ink-soft: #7A5A52;
       --safe-t: env(safe-area-inset-top, 0px);
       --safe-b: env(safe-area-inset-bottom, 0px);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
-      font-family: "Montserrat", system-ui, sans-serif;
-      background: var(--cream);
+      font-family: "Nunito", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(120% 60% at 100% 0%, rgba(244,169,191,.28), transparent 60%),
+        radial-gradient(90% 50% at 0% 30%, rgba(141,180,99,.14), transparent 60%),
+        var(--cream);
       color: var(--ink);
       min-height: 100dvh;
-      line-height: 1.4;
+      line-height: 1.45;
       -webkit-font-smoothing: antialiased;
       padding-bottom: calc(1.25rem + var(--safe-b));
     }
 
-    /* App bar */
     .app-bar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      min-height: calc(52px + var(--safe-t));
-      padding: var(--safe-t) 0.85rem 0;
-      background: linear-gradient(180deg, #7A6B82 0%, var(--bar) 45%, var(--bar-deep) 100%);
-      color: var(--white);
-      box-shadow: 0 2px 12px rgba(24, 23, 23, 0.22);
+      position: sticky; top: 0; z-index: 100;
+      padding: var(--safe-t) 0.9rem 0;
+      background: rgba(255, 246, 248, 0.82);
+      backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2);
+      border-bottom: 1px solid rgba(244,169,191,.45);
+      box-shadow: 0 6px 20px -14px rgba(194,87,122,.45);
     }
-    .app-bar-inner {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      width: 100%;
-      min-height: 52px;
-      padding: 0.35rem 0;
-    }
-    .app-bar-icon {
-      width: 36px; height: 36px;
-      border-radius: 9px;
-      object-fit: cover;
-      box-shadow: 0 1px 4px rgba(0,0,0,.2);
-      flex-shrink: 0;
-    }
+    .app-bar-inner { display: flex; align-items: center; gap: 0.7rem; max-width: 720px; margin: 0 auto; min-height: 58px; }
+    .app-bar-icon { width: 38px; height: 38px; border-radius: 11px; box-shadow: 0 3px 10px rgba(194,87,122,.25); flex-shrink: 0; }
     .app-bar-titles { min-width: 0; flex: 1; }
-    .app-bar-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .app-bar-sub {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      opacity: 0.78;
-      margin-top: 1px;
-    }
+    .app-bar-title { font-family: "Fraunces", Georgia, serif; font-size: 1.05rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .app-bar-sub { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-top: 1px; }
+    .app-bar-angel { width: 34px; height: 34px; flex-shrink: 0; filter: drop-shadow(0 2px 3px rgba(194,102,74,.25)); }
 
-    .page {
-      max-width: 720px;
+    .page { max-width: 720px; margin: 0 auto; padding: 1.1rem 1rem 2rem; }
+
+    /* Arch hero */
+    .hero { text-align: center; margin-bottom: 1.2rem; }
+    .hero-arch {
+      position: relative;
       margin: 0 auto;
-      padding: 1rem 0.85rem 2rem;
+      max-width: 360px;
+      border-radius: 999px 999px 26px 26px;
+      padding: 9px;
+      background: linear-gradient(180deg, #FFF6EA, var(--stone));
+      box-shadow: 0 18px 40px -22px rgba(194,102,74,.55), 0 2px 0 rgba(255,255,255,.8) inset;
     }
+    .hero-arch .scene { display: block; width: 100%; height: auto; border-radius: 999px 999px 18px 18px; }
+    .hero-hola {
+      font-family: "Great Vibes", cursive; font-size: 2.6rem; line-height: 1; color: var(--rose);
+      margin-top: 0.9rem;
+    }
+    .hero-q { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 1.12rem; color: var(--ink-soft); margin-top: 0.25rem; }
+    .hero-dots { display: flex; justify-content: center; gap: 6px; margin-top: 0.7rem; }
+    .hero-dots i { width: 10px; height: 10px; border-radius: 50%; display: block; box-shadow: 0 0 0 2px #fff; }
+    .d-pink { background: var(--pink); } .d-matcha { background: var(--matcha); } .d-brick { background: var(--brick); } .d-cream { background: var(--stone); }
 
     /* Install tip */
     .install-tip {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.65rem;
-      margin-bottom: 1.1rem;
-      padding: 0.75rem 0.85rem;
-      background: #FFF8F9;
-      border: 1px solid rgba(151, 114, 114, 0.28);
-      border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(89, 78, 76, 0.06);
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      margin-bottom: 1.4rem; padding: 0.85rem 0.9rem;
+      background: linear-gradient(135deg, #FFF0F4, #FFFFFF 70%);
+      border: 1px solid rgba(244,169,191,.6);
+      border-radius: 20px;
+      box-shadow: 0 10px 24px -18px rgba(194,87,122,.6);
     }
     .install-tip[hidden] { display: none !important; }
-    .install-tip-icon {
-      flex-shrink: 0;
-      width: 28px; height: 28px;
-      border-radius: 8px;
-      background: linear-gradient(145deg, var(--blush), #E8B8C0);
-      display: grid; place-items: center;
-      font-size: 0.85rem;
-    }
-    .install-tip-body { flex: 1; min-width: 0; font-size: 0.78rem; color: var(--stone); }
-    .install-tip-body strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 0.2rem; font-size: 0.82rem; }
+    .install-tip-icon { flex-shrink: 0; width: 34px; height: 34px; border-radius: 12px; background: #fff; display: grid; place-items: center; box-shadow: 0 0 0 1px rgba(244,169,191,.5); }
+    .install-tip-body { flex: 1; min-width: 0; font-size: 0.8rem; color: var(--ink-soft); }
+    .install-tip-body strong { color: var(--ink); font-family: "Fraunces", Georgia, serif; font-weight: 600; display: block; margin-bottom: 0.2rem; font-size: 0.95rem; }
     .install-tip-body span { display: block; line-height: 1.45; }
-    .install-tip-x {
-      flex-shrink: 0;
-      border: none;
-      background: transparent;
-      color: var(--rose);
-      font-size: 1.15rem;
-      line-height: 1;
-      padding: 0.15rem 0.35rem;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-    .install-tip-x:hover { background: rgba(151,114,114,.12); }
+    .install-tip-body b { color: var(--rose); }
+    .install-tip-x { flex-shrink: 0; border: none; background: transparent; color: var(--rose); font-size: 1.3rem; line-height: 1; padding: 0.15rem 0.4rem; cursor: pointer; border-radius: 10px; }
+    .install-tip-x:hover { background: var(--blush); }
 
-    .group { margin-bottom: 1.35rem; }
-    .group-head {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.65rem;
-      padding: 0 0.15rem;
+    /* Groups */
+    .group {
+      margin-bottom: 1.25rem; padding: 1rem 0.85rem 0.95rem;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(242,228,207,.9);
+      border-radius: 26px;
+      box-shadow: 0 14px 34px -26px rgba(74,47,42,.45);
     }
-    .group-pin {
-      width: 28px; height: 28px;
-      border-radius: 8px;
-      object-fit: cover;
-      box-shadow: 0 1px 3px rgba(89,78,76,.12);
-    }
-    .group-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--stone);
-      letter-spacing: 0.02em;
-    }
+    .group-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; padding: 0 0.15rem; }
+    .group-pin { width: 38px; height: 38px; border-radius: 14px; display: grid; place-items: center; background: var(--blush); flex-shrink: 0; }
+    section[aria-labelledby="g-apuntes"] .group-pin { background: var(--matcha-soft); }
+    section[aria-labelledby="g-guia"] .group-pin { background: var(--lilac-soft); }
+    .group-title { font-family: "Fraunces", Georgia, serif; font-size: 1.35rem; font-weight: 600; color: var(--ink); line-height: 1.1; }
+    .group-sub { font-size: 0.72rem; color: var(--ink-soft); font-weight: 600; }
     .group-count {
-      margin-left: auto;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--rose);
-      opacity: 0.85;
+      margin-left: auto; min-width: 28px; height: 28px; padding: 0 0.5rem;
+      display: grid; place-items: center; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 800; color: #fff; background: var(--rose);
+      box-shadow: 0 4px 10px -4px rgba(194,87,122,.7);
     }
+    section[aria-labelledby="g-apuntes"] .group-count { background: var(--matcha-deep); box-shadow: 0 4px 10px -4px rgba(79,110,49,.7); }
+    section[aria-labelledby="g-guia"] .group-count { background: var(--brick); box-shadow: 0 4px 10px -4px rgba(194,102,74,.7); }
 
-    .tile-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.65rem;
-    }
-    @media (min-width: 420px) {
-      .tile-grid { grid-template-columns: repeat(4, 1fr); gap: 0.7rem; }
-    }
-    @media (min-width: 560px) {
-      .tile-grid { grid-template-columns: repeat(5, 1fr); }
-    }
-    @media (min-width: 680px) {
-      .tile-grid { grid-template-columns: repeat(6, 1fr); gap: 0.75rem; }
-    }
+    .tile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+    @media (min-width: 480px) { .tile-grid { grid-template-columns: repeat(4, 1fr); gap: 0.7rem; } }
+    @media (min-width: 640px) { .tile-grid { grid-template-columns: repeat(5, 1fr); } }
 
     a.tile {
-      aspect-ratio: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      text-decoration: none;
-      color: var(--ink);
-      border-radius: 18px;
-      padding: 0.45rem 0.3rem 0.5rem;
-      box-shadow:
-        0 1px 2px rgba(24,23,23,.06),
-        0 6px 16px rgba(89,78,76,.08);
-      border: 1px solid rgba(255,255,255,.55);
+      aspect-ratio: 1; min-height: 92px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; text-decoration: none; color: var(--ink);
+      border-radius: 22px; padding: 0.45rem 0.3rem 0.5rem;
+      position: relative; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.9);
+      box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 8px 18px -12px rgba(74,47,42,.45);
       transition: transform .18s ease, box-shadow .18s ease;
       -webkit-tap-highlight-color: transparent;
-      min-height: 88px;
-      position: relative;
-      overflow: hidden;
     }
     a.tile::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(160deg, rgba(255,255,255,.35) 0%, transparent 55%);
-      pointer-events: none;
+      content: ""; position: absolute; right: -14px; top: -14px; width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,.45); pointer-events: none;
     }
-    a.tile:hover, a.tile:focus-visible {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow:
-        0 4px 8px rgba(24,23,23,.1),
-        0 14px 28px rgba(89,78,76,.14);
-      outline: none;
-    }
-    a.tile:active { transform: translateY(-1px) scale(0.99); }
+    a.tile:hover, a.tile:focus-visible { transform: translateY(-3px); box-shadow: 0 14px 26px -14px rgba(74,47,42,.5); outline: none; }
+    a.tile:active { transform: scale(0.97); }
+    .tile-ico { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.85); box-shadow: 0 3px 8px -4px rgba(74,47,42,.35); margin-bottom: 0.3rem; position: relative; z-index: 1; }
+    .tile-code { font-family: "Fraunces", Georgia, serif; font-size: clamp(0.98rem, 4vw, 1.12rem); font-weight: 700; line-height: 1.1; position: relative; z-index: 1; }
+    .tile-name { margin-top: 0.12rem; font-size: clamp(0.6rem, 2.5vw, 0.7rem); font-weight: 700; color: var(--ink-soft); line-height: 1.2; padding: 0 0.15rem; position: relative; z-index: 1; }
 
-    .tile-code {
-      font-size: clamp(0.95rem, 3.8vw, 1.15rem);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      line-height: 1.15;
-      position: relative;
-      z-index: 1;
-    }
-    .tile-name {
-      margin-top: 0.28rem;
-      font-size: clamp(0.58rem, 2.4vw, 0.68rem);
-      font-weight: 500;
-      color: rgba(24,23,23,.72);
-      line-height: 1.2;
-      max-width: 100%;
-      padding: 0 0.15rem;
-      position: relative;
-      z-index: 1;
-    }
+    .t-pink   { background: linear-gradient(160deg, #FFE9EF, #F9C9D6); }
+    .t-matcha { background: linear-gradient(160deg, #EEF6E2, #CFE3B0); }
+    .t-brick  { background: linear-gradient(160deg, #FDEBE2, #F2C1AC); }
+    .t-cream  { background: linear-gradient(160deg, #FFFBF3, #F2E4CF); }
+    .t-lilac  { background: linear-gradient(160deg, #F6F0FD, #E3D6F6); }
+    .t-pink .tile-code { color: #9E3B62; }
+    .t-matcha .tile-code { color: #4F6E31; }
+    .t-brick .tile-code { color: #9A4A30; }
+    .t-cream .tile-code { color: #7A5332; }
+    .t-lilac .tile-code { color: #6A4A9A; }
 
-    /* Pastel palette mixed with Thunderbird rose */
-    .c-rose   { background: #F0D6DB; }
-    .c-peach  { background: #F8DCC8; }
-    .c-sand   { background: #F0E0C8; }
-    .c-gold   { background: #F5E4A8; }
-    .c-mint   { background: #D4EDE0; }
-    .c-sage   { background: #D8E6D0; }
-    .c-sky    { background: #D0E4F2; }
-    .c-blue   { background: #C8D8F0; }
-    .c-lilac  { background: #E0D4F0; }
-    .c-lavender { background: #E8D8E8; }
-    .c-coral  { background: #F5C8C0; }
-    .c-blush  { background: #DEC4C9; }
-    .c-cream  { background: #F5EDE6; }
-    .c-aqua   { background: #C8E8E4; }
-    .c-butter { background: #F5ECC0; }
-    .c-mauve  { background: #E4C8D4; }
+    footer { text-align: center; margin-top: 0.8rem; padding-top: 0.6rem; }
+    .foot-orq { display: block; margin: 0 auto 0.3rem; }
+    footer p { font-size: 0.78rem; color: var(--ink-soft); }
+    footer .seal { margin-top: 0.4rem; font-family: "Great Vibes", cursive; font-size: 1.4rem; color: var(--rose); letter-spacing: 0; }
 
-    footer {
-      text-align: center;
-      margin-top: 0.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(151,114,114,.2);
-    }
-    footer p {
-      font-size: 0.72rem;
-      color: var(--stone);
-      opacity: 0.85;
-    }
-    footer .seal {
-      margin-top: 0.45rem;
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--rose);
-    }
   </style>
 </head>
 <body>
   <header class="app-bar" role="banner">
     <div class="app-bar-inner">
-      <img class="app-bar-icon" src="icons/apple-touch-icon.png" width="36" height="36" alt="" />
+      <img class="app-bar-icon" src="icons/apple-touch-icon.png" width="38" height="38" alt="" />
       <div class="app-bar-titles">
         <div class="app-bar-title">Método Inductivo · Eli</div>
         <div class="app-bar-sub">Elisa Nogueron Vázquez</div>
       </div>
+      <img class="app-bar-angel" src="assets/tema/angelito.svg" width="34" height="34" alt="" />
     </div>
   </header>
 
   <main class="page">
+    <div class="hero">
+      <div class="hero-arch"><svg class="scene" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" role="img" aria-label="Tarde de estudio: laptop con orquídea, matcha y arco de ladrillo">
+<defs>
+    <radialGradient id="pt" cx="50%" cy="85%" r="85%">
+      <stop offset="0" stop-color="#E86A93"/>
+      <stop offset=".35" stop-color="#F49BB5"/>
+      <stop offset=".75" stop-color="#FBD0DC"/>
+      <stop offset="1" stop-color="#FFF1F5"/>
+    </radialGradient>
+    <radialGradient id="sp" cx="50%" cy="90%" r="90%">
+      <stop offset="0" stop-color="#EE86A6"/>
+      <stop offset=".6" stop-color="#F8C3D2"/>
+      <stop offset="1" stop-color="#FFEFF4"/>
+    </radialGradient>
+    <radialGradient id="lip" cx="50%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#F7D46A"/>
+      <stop offset=".35" stop-color="#E0528A"/>
+      <stop offset="1" stop-color="#A3235F"/>
+    </radialGradient>
+  
+  <pattern id="brick" width="28" height="14" patternUnits="userSpaceOnUse">
+    <rect width="28" height="14" fill="#C2664A"/>
+    <rect x="1" y="1" width="12" height="5.5" rx="1" fill="#B65A40"/><rect x="15" y="1" width="12" height="5.5" rx="1" fill="#CB7253"/>
+    <rect x="-6" y="8" width="12" height="5" rx="1" fill="#CF7A5B"/><rect x="8" y="8" width="12" height="5" rx="1" fill="#B95E44"/><rect x="22" y="8" width="12" height="5" rx="1" fill="#C46A4D"/>
+  </pattern>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E4F1F4"/><stop offset="1" stop-color="#FBF6EA"/></linearGradient>
+  <linearGradient id="table" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBE3EA"/><stop offset="1" stop-color="#F5CBD7"/></linearGradient>
+  <linearGradient id="matcha" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9D38F"/><stop offset="1" stop-color="#86A95A"/></linearGradient>
+  <linearGradient id="bottle" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F3BFCB"/><stop offset=".45" stop-color="#FAD9E1"/><stop offset="1" stop-color="#EDB0BF"/></linearGradient>
+  <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF8FA"/><stop offset="1" stop-color="#F7E6EC"/></linearGradient>
+  <clipPath id="archclip"><path d="M78 300 V140 A102 102 0 0 1 282 140 V300 Z"/></clipPath>
+</defs>
+<rect width="360" height="300" fill="url(#brick)"/>
+<path d="M78 300 V140 A102 102 0 0 1 282 140 V300 Z" fill="url(#sky)"/>
+<g clip-path="url(#archclip)">
+  <rect x="200" y="150" width="70" height="80" fill="#E9B9A4"/>
+  <g fill="#E3A58C"><rect x="210" y="165" width="10" height="16"/><rect x="232" y="165" width="10" height="16"/><rect x="254" y="165" width="10" height="16"/></g>
+  <circle cx="120" cy="96" r="40" fill="#A7C77E"/><circle cx="160" cy="70" r="38" fill="#8DB463"/><circle cx="210" cy="84" r="42" fill="#B5D48D"/>
+  <circle cx="250" cy="120" r="34" fill="#94BA6A"/><circle cx="96" cy="140" r="30" fill="#9CC173"/><circle cx="185" cy="118" r="30" fill="#C4DE9E"/>
+  <g fill="#E9F4D6" opacity=".7"><circle cx="150" cy="60" r="6"/><circle cx="205" cy="70" r="5"/><circle cx="118" cy="88" r="4"/><circle cx="245" cy="108" r="4"/></g>
+  <rect x="150" y="150" width="6" height="90" fill="#9B7B5E"/>
+</g>
+<path d="M78 300 V140 A102 102 0 0 1 282 140 V300" fill="none" stroke="#F4E6D0" stroke-width="16"/>
+<path d="M70 300 V140 A110 110 0 0 1 290 140 V300" fill="none" stroke="#E7D3B6" stroke-width="2"/>
+<!-- table -->
+<rect x="0" y="236" width="360" height="64" fill="url(#table)"/>
+<rect x="0" y="234" width="360" height="5" fill="#FFF3F6"/>
+<!-- laptop -->
+<rect x="58" y="150" width="128" height="86" rx="7" fill="#4A3E42"/>
+<rect x="62" y="154" width="120" height="78" rx="4" fill="url(#screen)"/>
+<svg x="104" y="154" width="76" height="76" viewBox="0 0 200 200" >
+  
+  <g transform="translate(100 100)">
+    <!-- sepals -->
+    <ellipse cx="0" cy="-48" rx="21" ry="44" fill="url(#sp)" stroke="#F3A9BE" stroke-width="1"/>
+    <ellipse cx="0" cy="-48" rx="21" ry="44" fill="url(#sp)" transform="rotate(128)" stroke="#F3A9BE" stroke-width="1"/>
+    <ellipse cx="0" cy="-48" rx="21" ry="44" fill="url(#sp)" transform="rotate(-128)" stroke="#F3A9BE" stroke-width="1"/>
+    <!-- petals -->
+    <g stroke="#F09AB4" stroke-width="1">
+      <ellipse cx="0" cy="-44" rx="40" ry="44" fill="url(#pt)" transform="rotate(-62)"/>
+      <ellipse cx="0" cy="-44" rx="40" ry="44" fill="url(#pt)" transform="rotate(62)"/>
+    </g>
+    <!-- veins -->
+    <g stroke="#E0759A" stroke-width="1.2" fill="none" opacity=".55" stroke-linecap="round">
+      <path d="M-8 -6 Q-40 -30 -70 -28"/><path d="M-8 -2 Q-45 -10 -78 2"/><path d="M-6 -10 Q-30 -45 -55 -58"/>
+      <path d="M8 -6 Q40 -30 70 -28"/><path d="M8 -2 Q45 -10 78 2"/><path d="M6 -10 Q30 -45 55 -58"/>
+    </g>
+    <!-- speckles -->
+    <g fill="#B8246A">
+      <circle cx="-20" cy="-14" r="2.6"/><circle cx="-30" cy="-6" r="2"/><circle cx="-26" cy="-24" r="2.2"/><circle cx="-38" cy="-16" r="1.6"/><circle cx="-16" cy="-30" r="1.8"/><circle cx="-44" cy="-4" r="1.4"/><circle cx="-34" cy="-32" r="1.4"/>
+      <circle cx="20" cy="-14" r="2.6"/><circle cx="30" cy="-6" r="2"/><circle cx="26" cy="-24" r="2.2"/><circle cx="38" cy="-16" r="1.6"/><circle cx="16" cy="-30" r="1.8"/><circle cx="44" cy="-4" r="1.4"/><circle cx="34" cy="-32" r="1.4"/>
+      <circle cx="-6" cy="-34" r="1.5"/><circle cx="6" cy="-38" r="1.3"/>
+    </g>
+    <!-- lip -->
+    <path d="M0 2 C-22 6 -24 26 -12 36 C-6 42 6 42 12 36 C24 26 22 6 0 2 Z" fill="url(#lip)"/>
+    <path d="M-10 4 C-20 -6 -14 -14 -6 -6 Z M10 4 C20 -6 14 -14 6 -6 Z" fill="#E7558C"/>
+    <ellipse cx="0" cy="-4" rx="7" ry="10" fill="#FFF7E6" stroke="#F2C55C" stroke-width="1.5"/>
+    <circle cx="0" cy="-8" r="2.5" fill="#F2C55C"/>
+  </g>
+</svg>
+<svg x="4" y="232" width="58" height="58" viewBox="0 0 200 200" >
+  
+  <g transform="translate(100 100)">
+    <!-- sepals -->
+    <ellipse cx="0" cy="-48" rx="21" ry="44" fill="url(#sp)" stroke="#F3A9BE" stroke-width="1"/>
+    <ellipse cx="0" cy="-48" rx="21" ry="44" fill="url(#sp)" transform="rotate(128)" stroke="#F3A9BE" stroke-width="1"/>
+    <ellipse cx="0" cy="-48" rx="21" ry="44" fill="url(#sp)" transform="rotate(-128)" stroke="#F3A9BE" stroke-width="1"/>
+    <!-- petals -->
+    <g stroke="#F09AB4" stroke-width="1">
+      <ellipse cx="0" cy="-44" rx="40" ry="44" fill="url(#pt)" transform="rotate(-62)"/>
+      <ellipse cx="0" cy="-44" rx="40" ry="44" fill="url(#pt)" transform="rotate(62)"/>
+    </g>
+    <!-- veins -->
+    <g stroke="#E0759A" stroke-width="1.2" fill="none" opacity=".55" stroke-linecap="round">
+      <path d="M-8 -6 Q-40 -30 -70 -28"/><path d="M-8 -2 Q-45 -10 -78 2"/><path d="M-6 -10 Q-30 -45 -55 -58"/>
+      <path d="M8 -6 Q40 -30 70 -28"/><path d="M8 -2 Q45 -10 78 2"/><path d="M6 -10 Q30 -45 55 -58"/>
+    </g>
+    <!-- speckles -->
+    <g fill="#B8246A">
+      <circle cx="-20" cy="-14" r="2.6"/><circle cx="-30" cy="-6" r="2"/><circle cx="-26" cy="-24" r="2.2"/><circle cx="-38" cy="-16" r="1.6"/><circle cx="-16" cy="-30" r="1.8"/><circle cx="-44" cy="-4" r="1.4"/><circle cx="-34" cy="-32" r="1.4"/>
+      <circle cx="20" cy="-14" r="2.6"/><circle cx="30" cy="-6" r="2"/><circle cx="26" cy="-24" r="2.2"/><circle cx="38" cy="-16" r="1.6"/><circle cx="16" cy="-30" r="1.8"/><circle cx="44" cy="-4" r="1.4"/><circle cx="34" cy="-32" r="1.4"/>
+      <circle cx="-6" cy="-34" r="1.5"/><circle cx="6" cy="-38" r="1.3"/>
+    </g>
+    <!-- lip -->
+    <path d="M0 2 C-22 6 -24 26 -12 36 C-6 42 6 42 12 36 C24 26 22 6 0 2 Z" fill="url(#lip)"/>
+    <path d="M-10 4 C-20 -6 -14 -14 -6 -6 Z M10 4 C20 -6 14 -14 6 -6 Z" fill="#E7558C"/>
+    <ellipse cx="0" cy="-4" rx="7" ry="10" fill="#FFF7E6" stroke="#F2C55C" stroke-width="1.5"/>
+    <circle cx="0" cy="-8" r="2.5" fill="#F2C55C"/>
+  </g>
+</svg>
+<text x="84" y="182" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#C9839B">3:59</text>
+<path d="M44 236 L200 236 L208 246 L36 246 Z" fill="#E7E1E4"/><rect x="104" y="236" width="36" height="3" rx="1.5" fill="#CFC6CB"/>
+<!-- angel peeking -->
+<svg x="140" y="112" width="46" height="46" viewBox="0 0 120 120" >
+  <!-- Sonny-angel style: baby with fawn hood -->
+  <!-- ears -->
+  <path d="M22 40 L10 8 Q30 14 40 32 Z" fill="#F29E5C"/>
+  <path d="M24 34 L17 16 Q29 20 34 30 Z" fill="#FBD0DA"/>
+  <path d="M98 40 L110 8 Q90 14 80 32 Z" fill="#F29E5C"/>
+  <path d="M96 34 L103 16 Q91 20 86 30 Z" fill="#FBD0DA"/>
+  <!-- body -->
+  <ellipse cx="60" cy="106" rx="26" ry="18" fill="#FCE3D3"/>
+  <path d="M38 98 Q30 92 26 100 Q30 108 40 106 Z M82 98 Q90 92 94 100 Q90 108 80 106 Z" fill="#FFFFFF" stroke="#F6C9D5" stroke-width="1.5"/>
+  <!-- hood -->
+  <circle cx="60" cy="58" r="38" fill="#F4A465"/>
+  <circle cx="44" cy="30" r="3" fill="#FFF3E6"/><circle cx="76" cy="30" r="3" fill="#FFF3E6"/><circle cx="60" cy="24" r="2.6" fill="#FFF3E6"/><circle cx="34" cy="44" r="2.4" fill="#FFF3E6"/><circle cx="86" cy="44" r="2.4" fill="#FFF3E6"/>
+  <!-- face -->
+  <ellipse cx="60" cy="66" rx="29" ry="27" fill="#FDE8DA"/>
+  <ellipse cx="49" cy="66" rx="4.2" ry="5" fill="#3C2A26"/><ellipse cx="71" cy="66" rx="4.2" ry="5" fill="#3C2A26"/>
+  <circle cx="50.5" cy="64" r="1.5" fill="#fff"/><circle cx="72.5" cy="64" r="1.5" fill="#fff"/>
+  <ellipse cx="41" cy="76" rx="6" ry="3.6" fill="#F7A6B8" opacity=".85"/><ellipse cx="79" cy="76" rx="6" ry="3.6" fill="#F7A6B8" opacity=".85"/>
+  <path d="M56 78 Q60 82 64 78" fill="none" stroke="#C0626F" stroke-width="2" stroke-linecap="round"/>
+</svg>
+<!-- bottle -->
+<rect x="212" y="150" width="40" height="88" rx="12" fill="url(#bottle)"/>
+<rect x="216" y="138" width="32" height="18" rx="5" fill="#EFAFC0"/><rect x="226" y="130" width="12" height="10" rx="3" fill="#E9A3B6"/>
+<path d="M248 142 q14 2 12 18 q-1 8 -8 10" fill="none" stroke="#E9A3B6" stroke-width="4" stroke-linecap="round"/>
+<rect x="220" y="160" width="4" height="66" rx="2" fill="#fff" opacity=".55"/>
+<!-- matcha -->
+<path d="M262 170 L310 170 L304 240 L268 240 Z" fill="url(#matcha)"/>
+<path d="M262 170 L310 170 L309 182 L263 182 Z" fill="#DCEBC6" opacity=".7"/>
+<ellipse cx="286" cy="170" rx="27" ry="6" fill="#F2F7E9" stroke="#D3E3BC" stroke-width="1.5"/>
+<path d="M266 168 Q286 154 306 168" fill="#F7FAF1" stroke="#D3E3BC" stroke-width="1.5"/>
+<rect x="288" y="118" width="6" height="52" rx="3" fill="#FFF7FA" stroke="#F3D3DD" stroke-width="1"/>
+<path d="M286 214 c-6 -7 -15 -1 -9 6 l9 8 l9 -8 c6 -7 -3 -13 -9 -6 z" fill="#B9533E"/>
+<!-- petals on table -->
+<ellipse cx="336" cy="276" rx="12" ry="7" fill="#F9C6D4" transform="rotate(25 336 276)"/>
+<ellipse cx="196" cy="276" rx="10" ry="6" fill="#F4A9BF" transform="rotate(10 196 276)"/>
+<circle cx="196" cy="276" r="1.6" fill="#B8246A"/>
+</svg></div>
+      <p class="hero-hola">Hola, Eli</p>
+      <p class="hero-q">¿Qué estudiamos hoy?</p>
+      <div class="hero-dots" aria-hidden="true"><i class="d-pink"></i><i class="d-matcha"></i><i class="d-brick"></i><i class="d-cream"></i></div>
+    </div>
+
     <div class="install-tip" id="install-tip" role="note">
-      <div class="install-tip-icon" aria-hidden="true">＋</div>
+      <div class="install-tip-icon" aria-hidden="true"><svg class="ico" viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><g transform="translate(16 16)"><ellipse cx="0" cy="-8" rx="4.5" ry="8" fill="#F7C1D0"/><ellipse cx="0" cy="-8" rx="4.5" ry="8" fill="#F7C1D0" transform="rotate(125)"/><ellipse cx="0" cy="-8" rx="4.5" ry="8" fill="#F7C1D0" transform="rotate(-125)"/><ellipse cx="0" cy="-7" rx="7" ry="7.5" fill="#F49BB5" transform="rotate(-62)"/><ellipse cx="0" cy="-7" rx="7" ry="7.5" fill="#F49BB5" transform="rotate(62)"/><path d="M0 1c-4 1-4 5-2 7h4c2-2 2-6-2-7Z" fill="#B8246A"/><circle cx="0" cy="-1" r="2" fill="#F2C55C"/><circle cx="-5" cy="-3" r=".9" fill="#B8246A"/><circle cx="5" cy="-3" r=".9" fill="#B8246A"/></g></svg></div>
       <div class="install-tip-body">
         <strong>Agrégala a tu pantalla de inicio</strong>
         <span><b>iPhone:</b> Safari → Compartir → «Agregar a pantalla de inicio»</span>
@@ -294,109 +352,125 @@
       <button type="button" class="install-tip-x" id="install-tip-x" aria-label="Cerrar tip">×</button>
     </div>
 
-    <!-- TAREAS -->
     <section class="group" aria-labelledby="g-tareas">
       <div class="group-head">
-        <img class="group-pin" src="assets/pinterest/house-foundation-colorful.jpg" alt="" width="28" height="28" />
-        <h2 class="group-title" id="g-tareas">Tareas</h2>
+        <span class="group-pin"><svg class="ico" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><rect x="3" y="9" width="26" height="18" rx="2" fill="#C2664A"/><path d="M3 15h26M3 21h26M10 9v6M20 9v6M15 15v6M25 15v6M8 21v6M19 21v6" stroke="#F2C1AC" stroke-width="1.3"/><path d="M5 9V5h4v4M14 9V5h4v4M23 9V5h4v4" fill="#C2664A" stroke="#C2664A" stroke-width="1"/></svg></span>
+        <div><h2 class="group-title" id="g-tareas">Tareas</h2><p class="group-sub">Nehemías y clase</p></div>
         <span class="group-count">7</span>
       </div>
       <div class="tile-grid">
-        <a class="tile c-sand" href="https://elybrom.github.io/guias/nehemias-tareas/#cap1">
+        <a class="tile t-pink" href="https://elybrom.github.io/guias/nehemias-tareas/#cap1">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M16 27 C6 20 3 15 5 10 C7 5 13 5 16 10 C19 5 25 5 27 10 C29 15 26 20 16 27Z" fill="#E77FA0"/><ellipse cx="10.5" cy="11" rx="2.5" ry="1.6" fill="#fff" opacity=".6"/></svg></span>
           <span class="tile-code">Neh 1</span>
           <span class="tile-name">Capítulo 1</span>
         </a>
-        <a class="tile c-peach" href="https://elybrom.github.io/guias/nehemias-tareas/#cap2">
+        <a class="tile t-matcha" href="https://elybrom.github.io/guias/nehemias-tareas/#cap2">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect x="7" y="6" width="18" height="20" rx="2" fill="#FFF8EF" stroke="#C2664A" stroke-width="1.6"/><rect x="5" y="4" width="22" height="5" rx="2.5" fill="#F2C1AC" stroke="#C2664A" stroke-width="1.4"/><rect x="5" y="23" width="22" height="5" rx="2.5" fill="#F2C1AC" stroke="#C2664A" stroke-width="1.4"/><path d="M11 13h10M11 17h10" stroke="#E77FA0" stroke-width="1.8" stroke-linecap="round"/></svg></span>
           <span class="tile-code">Neh 2</span>
           <span class="tile-name">Capítulo 2</span>
         </a>
-        <a class="tile c-gold" href="https://elybrom.github.io/guias/nehemias-tareas/#cap3">
+        <a class="tile t-brick" href="https://elybrom.github.io/guias/nehemias-tareas/#cap3">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M4 28V14A12 12 0 0 1 28 14V28Z" fill="#C2664A"/><path d="M10 28V16A6 6 0 0 1 22 16V28Z" fill="#CFE3B0"/><path d="M4 18h6M22 18h6M4 23h6M22 23h6M7 14v4M25 14v4" stroke="#F2C1AC" stroke-width="1"/><circle cx="16" cy="21" r="3" fill="#8DB463"/></svg></span>
           <span class="tile-code">Neh 3</span>
           <span class="tile-name">Capítulo 3</span>
         </a>
-        <a class="tile c-coral" href="https://elybrom.github.io/guias/nehemias-tareas/#nehemias-4">
+        <a class="tile t-cream" href="https://elybrom.github.io/guias/nehemias-tareas/#nehemias-4">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect x="3" y="9" width="26" height="18" rx="2" fill="#C2664A"/><path d="M3 15h26M3 21h26M10 9v6M20 9v6M15 15v6M25 15v6M8 21v6M19 21v6" stroke="#F2C1AC" stroke-width="1.3"/><path d="M5 9V5h4v4M14 9V5h4v4M23 9V5h4v4" fill="#C2664A" stroke="#C2664A" stroke-width="1"/></svg></span>
           <span class="tile-code">Neh 4</span>
           <span class="tile-name">Capítulo 4</span>
         </a>
-        <a class="tile c-mint" href="https://elybrom.github.io/guias/nehemias-tareas/#trabajo-clase">
+        <a class="tile t-lilac" href="https://elybrom.github.io/guias/nehemias-tareas/#trabajo-clase">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M6 26l2-7L21 6l5 5L13 24Z" fill="#F2C55C"/><path d="M21 6l5 5 2-2a2 2 0 0 0 0-3l-2-2a2 2 0 0 0-3 0Z" fill="#E77FA0"/><path d="M6 26l2-7 5 5Z" fill="#F2C1AC"/><path d="M6 26l1-3 2 2Z" fill="#5E4038"/></svg></span>
           <span class="tile-code">Clase</span>
           <span class="tile-name">Trabajo en clase</span>
         </a>
-        <a class="tile c-lilac" href="https://elybrom.github.io/guias/nehemias-tareas/#n4-palabras">
+        <a class="tile t-matcha" href="https://elybrom.github.io/guias/nehemias-tareas/#n4-palabras">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="13" cy="13" r="8.5" fill="#CFE3B0" stroke="#8DB463" stroke-width="3"/><path d="M19.5 19.5L27 27" stroke="#C2664A" stroke-width="4" stroke-linecap="round"/><path d="M9 11a5 5 0 0 1 4-3" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/></svg></span>
           <span class="tile-code">Str</span>
           <span class="tile-name">Palabras Strong</span>
         </a>
-        <a class="tile c-sky" href="https://elybrom.github.io/guias/nehemias-tareas/#clase-2026-10-05-fil2">
+        <a class="tile t-pink" href="https://elybrom.github.io/guias/nehemias-tareas/#clase-2026-10-05-fil2">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><g transform="translate(16 16)"><ellipse cx="0" cy="-8" rx="4.5" ry="8" fill="#F7C1D0"/><ellipse cx="0" cy="-8" rx="4.5" ry="8" fill="#F7C1D0" transform="rotate(125)"/><ellipse cx="0" cy="-8" rx="4.5" ry="8" fill="#F7C1D0" transform="rotate(-125)"/><ellipse cx="0" cy="-7" rx="7" ry="7.5" fill="#F49BB5" transform="rotate(-62)"/><ellipse cx="0" cy="-7" rx="7" ry="7.5" fill="#F49BB5" transform="rotate(62)"/><path d="M0 1c-4 1-4 5-2 7h4c2-2 2-6-2-7Z" fill="#B8246A"/><circle cx="0" cy="-1" r="2" fill="#F2C55C"/><circle cx="-5" cy="-3" r=".9" fill="#B8246A"/><circle cx="5" cy="-3" r=".9" fill="#B8246A"/></g></svg></span>
           <span class="tile-code">Fil 2</span>
           <span class="tile-name">Filipenses 2</span>
         </a>
       </div>
     </section>
 
-    <!-- APUNTES -->
     <section class="group" aria-labelledby="g-apuntes">
       <div class="group-head">
-        <img class="group-pin" src="assets/pinterest/notebook-pen-cute.jpg" alt="" width="28" height="28" />
-        <h2 class="group-title" id="g-apuntes">Apuntes</h2>
+        <span class="group-pin"><svg class="ico" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path d="M6 26l2-7L21 6l5 5L13 24Z" fill="#F2C55C"/><path d="M21 6l5 5 2-2a2 2 0 0 0 0-3l-2-2a2 2 0 0 0-3 0Z" fill="#E77FA0"/><path d="M6 26l2-7 5 5Z" fill="#F2C1AC"/><path d="M6 26l1-3 2 2Z" fill="#5E4038"/></svg></span>
+        <div><h2 class="group-title" id="g-apuntes">Apuntes</h2><p class="group-sub">Notas de clase</p></div>
         <span class="group-count">9</span>
       </div>
       <div class="tile-grid">
-        <a class="tile c-blush" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#claves">
+        <a class="tile t-cream" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#claves">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="10" cy="12" r="6.5" fill="none" stroke="#F2C55C" stroke-width="3.5"/><path d="M15 16l11 11M21 22l3-3M24 25l2-2" stroke="#F2C55C" stroke-width="3.5" stroke-linecap="round"/><path d="M8 11c0-2 1.5-3 3-3" stroke="#fff" stroke-width="1.5" fill="none" opacity=".7"/><path d="M10 12c-1.5-1.5-4 0-2.5 2l2.5 2 2.5-2c1.5-2-1-3.5-2.5-2Z" fill="#E77FA0"/></svg></span>
           <span class="tile-code">5 Cl</span>
           <span class="tile-name">5 Claves</span>
         </a>
-        <a class="tile c-mauve" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#contexto">
+        <a class="tile t-matcha" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#contexto">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="#BFE0EE"/><path d="M9 9c3 1 4 4 2 6s1 5 3 6c-1 3-3 4-5 3A12 12 0 0 1 9 9ZM18 5c2 2 6 2 7 6-2 1-4 0-5 2s2 4 0 6-4-1-4-4 1-6 2-10Z" fill="#8DB463"/><circle cx="16" cy="16" r="12" fill="none" stroke="#8FBFD4" stroke-width="1.5"/></svg></span>
           <span class="tile-code">Ctx</span>
           <span class="tile-name">Contexto</span>
         </a>
-        <a class="tile c-coral" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#barreras">
+        <a class="tile t-brick" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#barreras">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect x="3" y="9" width="26" height="18" rx="2" fill="#C2664A"/><path d="M3 15h26M3 21h26M10 9v6M20 9v6M15 15v6M25 15v6M8 21v6M19 21v6" stroke="#F2C1AC" stroke-width="1.3"/><path d="M5 9V5h4v4M14 9V5h4v4M23 9V5h4v4" fill="#C2664A" stroke="#C2664A" stroke-width="1"/></svg></span>
           <span class="tile-code">Barr</span>
           <span class="tile-name">Barreras</span>
         </a>
-        <a class="tile c-sage" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#dificultades">
+        <a class="tile t-pink" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#dificultades">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M2 27L12 10l6 9 3-4 9 12Z" fill="#8DB463"/><path d="M12 10l-3 5 3-1 2 2 1-2Z" fill="#fff"/><circle cx="24" cy="8" r="3.5" fill="#F2C55C"/><path d="M2 27h28" stroke="#C2664A" stroke-width="2"/></svg></span>
           <span class="tile-code">6 Dif</span>
           <span class="tile-name">6 Dificultades</span>
         </a>
-        <a class="tile c-blue" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#strong">
+        <a class="tile t-lilac" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#strong">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M4 8q6-3 12 0q6-3 12 0v18q-6-3-12 0q-6-3-12 0Z" fill="#B79AE0"/><path d="M6 8q5-2.5 9.5 0v16q-4.5-2.5-9.5 0Z M26 8q-5-2.5-9.5 0v16q4.5-2.5 9.5 0Z" fill="#FFF8EF"/><path d="M8 12q3-1 6 0M8 15q3-1 6 0M18 12q3-1 6 0M18 15q3-1 6 0" stroke="#F7C1D0" stroke-width="1.3" fill="none"/></svg></span>
           <span class="tile-code">S·V</span>
           <span class="tile-name">Strong·Vine</span>
         </a>
-        <a class="tile c-butter" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#cuadro">
+        <a class="tile t-cream" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#cuadro">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect x="4" y="5" width="24" height="22" rx="3" fill="#fff" stroke="#E77FA0" stroke-width="1.6"/><rect x="4" y="5" width="24" height="6" rx="3" fill="#E77FA0"/><path d="M4 18h24M4 23h24M12 11v16M20 11v16" stroke="#F7C1D0" stroke-width="1.3"/><rect x="13" y="13" width="6" height="4" fill="#CFE3B0"/></svg></span>
           <span class="tile-code">Mc</span>
           <span class="tile-name">Cuadro Mc</span>
         </a>
-        <a class="tile c-aqua" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#felipe">
+        <a class="tile t-matcha" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#felipe">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M4 18c4-1 7-6 12-6 3 0 5 2 6 4l6-1-4 4c0 5-5 8-11 8-4 0-7-2-9-5 3 0 5-1 6-3-2 1-4 0-6-1Z" fill="#fff" stroke="#BFD6E6" stroke-width="1.4"/><path d="M13 13c-2-4-1-7 2-9 1 3 2 6 1 9Z" fill="#E8F2F8" stroke="#BFD6E6" stroke-width="1.2"/><circle cx="21" cy="15" r="1" fill="#5E4038"/><path d="M8 22c2 2 6 2 9 0" stroke="#8DB463" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>
           <span class="tile-code">Fel</span>
           <span class="tile-name">Felipe</span>
         </a>
-        <a class="tile c-sky" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#hechos18">
+        <a class="tile t-pink" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#hechos18">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="#BFE0EE"/><path d="M9 9c3 1 4 4 2 6s1 5 3 6c-1 3-3 4-5 3A12 12 0 0 1 9 9ZM18 5c2 2 6 2 7 6-2 1-4 0-5 2s2 4 0 6-4-1-4-4 1-6 2-10Z" fill="#8DB463"/><circle cx="16" cy="16" r="12" fill="none" stroke="#8FBFD4" stroke-width="1.5"/></svg></span>
           <span class="tile-code">1:8</span>
           <span class="tile-name">Hch 1:8…</span>
         </a>
-        <a class="tile c-cream" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#herramientas-palabra">
+        <a class="tile t-brick" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#herramientas-palabra">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="13" cy="13" r="8.5" fill="#CFE3B0" stroke="#8DB463" stroke-width="3"/><path d="M19.5 19.5L27 27" stroke="#C2664A" stroke-width="4" stroke-linecap="round"/><path d="M9 11a5 5 0 0 1 4-3" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/></svg></span>
           <span class="tile-code">Hrz</span>
           <span class="tile-name">Herramientas</span>
         </a>
       </div>
     </section>
 
-    <!-- GUÍA -->
     <section class="group" aria-labelledby="g-guia">
       <div class="group-head">
-        <img class="group-pin" src="assets/pinterest/open-bible-cute.jpg" alt="" width="28" height="28" />
-        <h2 class="group-title" id="g-guia">Guía</h2>
+        <span class="group-pin"><svg class="ico" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path d="M4 8q6-3 12 0q6-3 12 0v18q-6-3-12 0q-6-3-12 0Z" fill="#B79AE0"/><path d="M6 8q5-2.5 9.5 0v16q-4.5-2.5-9.5 0Z M26 8q-5-2.5-9.5 0v16q4.5-2.5 9.5 0Z" fill="#FFF8EF"/><path d="M8 12q3-1 6 0M8 15q3-1 6 0M18 12q3-1 6 0M18 15q3-1 6 0" stroke="#F7C1D0" stroke-width="1.3" fill="none"/></svg></span>
+        <div><h2 class="group-title" id="g-guia">Guía</h2><p class="group-sub">Para el examen</p></div>
         <span class="group-count">3</span>
       </div>
       <div class="tile-grid">
-        <a class="tile c-gold" href="https://elybrom.github.io/guias/metodo-inductivo/#diez">
+        <a class="tile t-pink" href="https://elybrom.github.io/guias/metodo-inductivo/#diez">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect x="5" y="20" width="22" height="6" rx="2" fill="#8DB463"/><rect x="7" y="13" width="19" height="6" rx="2" fill="#E77FA0"/><rect x="5" y="6" width="20" height="6" rx="2" fill="#B79AE0"/><path d="M8 23h16M10 16h13M8 9h14" stroke="#fff" stroke-width="1" opacity=".7"/></svg></span>
           <span class="tile-code">10</span>
           <span class="tile-name">10 lecturas</span>
         </a>
-        <a class="tile c-mint" href="https://elybrom.github.io/guias/metodo-inductivo/#seis">
+        <a class="tile t-matcha" href="https://elybrom.github.io/guias/metodo-inductivo/#seis">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M16 3l3.8 8 8.7 1-6.4 6 1.7 8.6L16 22.4 8.2 26.6 9.9 18 3.5 12l8.7-1Z" fill="#F2C55C" stroke="#E2A93B" stroke-width="1.2" stroke-linejoin="round"/><circle cx="12.5" cy="15" r="1" fill="#5E4038"/><circle cx="19.5" cy="15" r="1" fill="#5E4038"/><path d="M14 18q2 1.6 4 0" stroke="#5E4038" stroke-width="1" fill="none"/><ellipse cx="10.5" cy="17.5" rx="1.6" ry="1" fill="#E77FA0" opacity=".7"/><ellipse cx="21.5" cy="17.5" rx="1.6" ry="1" fill="#E77FA0" opacity=".7"/></svg></span>
           <span class="tile-code">Las 6</span>
           <span class="tile-name">Las 6</span>
         </a>
-        <a class="tile c-lavender" href="https://elybrom.github.io/guias/metodo-inductivo/#cuadro">
+        <a class="tile t-lilac" href="https://elybrom.github.io/guias/metodo-inductivo/#cuadro">
+          <span class="tile-ico"><svg class="ico" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect x="4" y="5" width="24" height="22" rx="3" fill="#fff" stroke="#E77FA0" stroke-width="1.6"/><rect x="4" y="5" width="24" height="6" rx="3" fill="#E77FA0"/><path d="M4 18h24M4 23h24M12 11v16M20 11v16" stroke="#F7C1D0" stroke-width="1.3"/><rect x="13" y="13" width="6" height="4" fill="#CFE3B0"/></svg></span>
           <span class="tile-code">Cdr</span>
           <span class="tile-name">Cuadro final</span>
         </a>
@@ -404,6 +478,7 @@
     </section>
 
     <footer>
+      <img class="foot-orq" src="assets/tema/orquidea.svg" width="54" height="54" alt="" />
       <p>Toca un cuadro para abrir esa sección. Las tres puertas son una sola app.</p>
       <p class="seal">Método Inductivo · Eli</p>
     </footer>

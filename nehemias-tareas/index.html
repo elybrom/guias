@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#977272">
+<meta name="theme-color" content="#FBE3EA">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -13,7 +13,7 @@
 <meta name="description" content="Estudio inductivo marcado de Nehemías 1–4. Tareas: gramática, observación, conexiones con Ester y práctica interactiva.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,500;0,600;1,6..72,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Great+Vibes&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#F5F5F2; --surface:#FCFCFA; --surface-2:#EFEFE9;
@@ -70,9 +70,9 @@ body{
 }
 .wrap{max-width:1160px; margin:0 auto; padding:0 24px 96px}
 
-h1,h2,h3,h4{font-family:"Newsreader",Georgia,serif; font-weight:600; text-wrap:balance; margin:0}
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif; font-weight:600; text-wrap:balance; margin:0}
 .eyebrow{
-  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; font-weight:500;
+  font-family:"Nunito",ui-monospace,monospace; font-size:11px; font-weight:500;
   letter-spacing:.16em; text-transform:uppercase; color:var(--ink-mute);
 }
 p{margin:0}
@@ -83,14 +83,14 @@ header.hero{padding:64px 0 40px; border-bottom:1px solid var(--rule)}
 .hero h1 em{font-style:italic; font-weight:400; color:var(--ink-soft)}
 .hero .lede{margin-top:20px; max-width:58ch; font-size:19px; color:var(--ink-soft)}
 .hero-meta{display:flex; flex-wrap:wrap; gap:14px 34px; margin-top:34px;
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:13px}
+  font-family:"Nunito",system-ui,sans-serif; font-size:13px}
 .hero-meta div{display:flex; flex-direction:column; gap:3px}
 .hero-meta dt{color:var(--ink-mute); font-size:11px; letter-spacing:.08em; text-transform:uppercase}
 .hero-meta dd{margin:0; color:var(--ink)}
 
 section{padding-top:64px}
 .sec-head{display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:8px}
-.sec-num{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--accent);
+.sec-num{font-family:"Nunito",monospace; font-size:12px; color:var(--accent);
   letter-spacing:.1em; padding-top:6px}
 .sec-head h2{font-size:clamp(26px,3.4vw,36px); letter-spacing:-.015em}
 .sec-intro{max-width:var(--measure); color:var(--ink-soft); margin-top:10px; font-size:16.5px}
@@ -106,13 +106,13 @@ section{padding-top:64px}
 .legend-inner{display:flex; flex-wrap:wrap; align-items:center; gap:8px}
 .layer-switch{display:flex; gap:2px; padding:2px; background:var(--surface-2); border-radius:2px; margin-right:6px}
 .layer-switch button{
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:12px; font-weight:500;
+  font-family:"Nunito",system-ui,sans-serif; font-size:12px; font-weight:500;
   border:0; background:transparent; color:var(--ink-soft); padding:6px 11px; cursor:pointer; border-radius:1px;
 }
 .layer-switch button[aria-pressed="true"]{background:var(--surface); color:var(--ink); box-shadow:var(--shadow)}
 .chips{display:flex; flex-wrap:wrap; gap:6px}
 .chip{
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:12px; font-weight:500;
+  font-family:"Nunito",system-ui,sans-serif; font-size:12px; font-weight:500;
   display:inline-flex; align-items:center; gap:7px; cursor:pointer;
   border:1px solid var(--rule); background:var(--surface); color:var(--ink-soft);
   padding:5px 11px 5px 8px; border-radius:2px;
@@ -122,7 +122,7 @@ section{padding-top:64px}
 .chip .swatch{width:13px; height:13px; border-radius:1px; flex:none}
 .chip[data-fam="obs"] .swatch{height:0; border-bottom-width:3px; border-bottom-style:solid; border-radius:0}
 .chip:focus-visible,.layer-switch button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
-.legend-note{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:11.5px; color:var(--ink-mute); margin-left:auto}
+.legend-note{font-family:"Nunito",system-ui,sans-serif; font-size:11.5px; color:var(--ink-mute); margin-left:auto}
 
 .mk{border-radius:1px; padding:.5px 1px; transition:background-color .15s, border-color .15s, color .15s}
 .mk[data-g="s"]{background:var(--s-fill)}
@@ -140,7 +140,7 @@ section{padding-top:64px}
 
 .scripture{margin-top:26px; display:flex; flex-direction:column; gap:2px}
 .subhead{
-  font-family:"Newsreader",Georgia,serif; font-style:italic; font-size:19px; color:var(--ink-soft);
+  font-family:"Fraunces",Georgia,serif; font-style:italic; font-size:19px; color:var(--ink-soft);
   padding:24px 0 6px; grid-column:1/-1;
 }
 .v{
@@ -148,12 +148,12 @@ section{padding-top:64px}
   gap:0 22px; padding:9px 0; border-bottom:1px solid var(--rule-soft); align-items:start;
 }
 .v:last-child{border-bottom:0}
-.vn{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-mute);
+.vn{font-family:"Nunito",monospace; font-size:12px; color:var(--ink-mute);
   text-align:right; padding-top:6px; font-variant-numeric:tabular-nums}
 .vt{font-size:17.5px; line-height:1.85}
 .notes{display:flex; flex-direction:column; gap:9px; padding-top:3px}
 .note{
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:12.5px; line-height:1.5;
+  font-family:"Nunito",system-ui,sans-serif; font-size:12.5px; line-height:1.5;
   color:var(--ink-soft); padding-left:11px; border-left:2px solid var(--rule);
 }
 .note b{color:var(--ink); font-weight:600}
@@ -168,12 +168,12 @@ section{padding-top:64px}
 .note[data-cat="cro"]{border-left-color:var(--cro-ink)}
 .note[data-cat="ctx"]{border-left-color:var(--ink-mute)}
 .note.dim{opacity:.32}
-.q{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.05em; color:var(--accent); text-transform:uppercase}
+.q{font-family:"Nunito",monospace; font-size:11px; letter-spacing:.05em; color:var(--accent); text-transform:uppercase}
 
 .chapter-open{display:flex; align-items:baseline; gap:14px; margin:56px 0 0; padding-bottom:10px;
   border-bottom:2px solid var(--ink)}
 .chapter-open h3{font-size:30px; letter-spacing:-.015em}
-.chapter-open .kicker{font-family:"IBM Plex Sans",sans-serif; font-size:13px; color:var(--ink-soft); margin-left:auto; text-align:right}
+.chapter-open .kicker{font-family:"Nunito",sans-serif; font-size:13px; color:var(--ink-soft); margin-left:auto; text-align:right}
 
 .rails{display:grid; gap:2px; margin-top:26px}
 .rail{display:grid; grid-template-columns:minmax(0,15rem) minmax(0,1fr); gap:8px 26px;
@@ -187,20 +187,20 @@ section{padding-top:64px}
 .rail[data-cat="ctr"]{border-left-color:var(--ctr-ink)}
 .rail[data-cat="cond"]{border-left-color:var(--cond-ink)}
 .rail[data-cat="cro"]{border-left-color:var(--cro-ink)}
-.rail h4{font-family:"IBM Plex Sans",sans-serif; font-size:14px; font-weight:600}
-.rail .sub{font-family:"IBM Plex Sans",sans-serif; font-size:11.5px; color:var(--ink-mute); margin-top:3px}
+.rail h4{font-family:"Nunito",sans-serif; font-size:14px; font-weight:600}
+.rail .sub{font-family:"Nunito",sans-serif; font-size:11.5px; color:var(--ink-mute); margin-top:3px}
 .rail .body{font-size:16px; line-height:1.7}
 .rail .body ul{margin:0; padding-left:18px}
 .rail .body li + li{margin-top:6px}
-.ref{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-mute); white-space:nowrap}
+.ref{font-family:"Nunito",monospace; font-size:12px; color:var(--ink-mute); white-space:nowrap}
 
 .tablewrap{overflow-x:auto; margin-top:24px; border:1px solid var(--rule); background:var(--surface); -webkit-overflow-scrolling:touch}
-table{border-collapse:collapse; width:100%; min-width:660px; font-family:"IBM Plex Sans",sans-serif; font-size:13.5px}
+table{border-collapse:collapse; width:100%; min-width:660px; font-family:"Nunito",sans-serif; font-size:13.5px}
 th,td{text-align:left; padding:11px 14px; border-bottom:1px solid var(--rule-soft); vertical-align:top}
 thead th{font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-mute);
   font-weight:500; border-bottom:1px solid var(--rule); background:var(--surface-2)}
 tbody tr:last-child td{border-bottom:0}
-td.cite{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-mute); white-space:nowrap}
+td.cite{font-family:"Nunito",monospace; font-size:12px; color:var(--ink-mute); white-space:nowrap}
 td .tag,td.tag{font-weight:600}
 td.c-s{color:var(--s-ink)} td.c-v{color:var(--v-ink)} td.c-p{color:var(--p-ink)}
 
@@ -211,16 +211,16 @@ td.c-s{color:var(--s-ink)} td.c-v{color:var(--v-ink)} td.c-p{color:var(--p-ink)}
   gap:12px 20px; margin-bottom:12px;
 }
 .cuadro-puertas .cuadro-head h3{
-  font-family:"Newsreader",Georgia,serif; font-size:clamp(20px,2.6vw,26px);
+  font-family:"Fraunces",Georgia,serif; font-size:clamp(20px,2.6vw,26px);
   letter-spacing:-.01em; font-weight:600;
 }
 .cuadro-puertas .cuadro-lead{
-  max-width:62ch; font-family:"IBM Plex Sans",sans-serif; font-size:13.5px;
+  max-width:62ch; font-family:"Nunito",sans-serif; font-size:13.5px;
   line-height:1.55; color:var(--ink-soft); margin:0 0 14px;
 }
 .cuadro-filters{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
 .cuadro-filters .filt{
-  font-family:"IBM Plex Sans",sans-serif; font-size:12.5px; font-weight:500;
+  font-family:"Nunito",sans-serif; font-size:12.5px; font-weight:500;
   padding:6px 12px; border-radius:999px; cursor:pointer;
   border:1px solid var(--rule); background:var(--surface); color:var(--ink-soft);
 }
@@ -246,7 +246,7 @@ table.puertas-cuadro th:nth-child(5),
 table.puertas-cuadro td:nth-child(5){white-space:nowrap}
 table.puertas-cuadro tr[hidden]{display:none}
 .badge-si,.badge-parcial,.badge-menc{
-  display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:11px;
+  display:inline-block; font-family:"Nunito",monospace; font-size:11px;
   letter-spacing:.02em; padding:3px 8px; border-radius:4px; font-weight:500;
 }
 .badge-si{background:var(--p-fill); color:var(--p-ink)}
@@ -257,51 +257,51 @@ td.dato b{color:var(--ink); font-weight:600}
 
 .prose{max-width:var(--measure); margin-top:22px; display:flex; flex-direction:column; gap:16px}
 .prose p{font-size:17px}
-.prose h4{font-family:"IBM Plex Sans",sans-serif; font-size:13px; font-weight:600; letter-spacing:.02em; margin-top:12px}
-.pullquote{font-family:"Newsreader",Georgia,serif; font-size:23px; line-height:1.4; font-style:italic;
+.prose h4{font-family:"Nunito",sans-serif; font-size:13px; font-weight:600; letter-spacing:.02em; margin-top:12px}
+.pullquote{font-family:"Fraunces",Georgia,serif; font-size:23px; line-height:1.4; font-style:italic;
   color:var(--ink); border-left:3px solid var(--accent); padding-left:20px; margin:8px 0}
-.pullquote cite{display:block; font-family:"IBM Plex Mono",monospace; font-size:11.5px; font-style:normal;
+.pullquote cite{display:block; font-family:"Nunito",monospace; font-size:11.5px; font-style:normal;
   letter-spacing:.08em; color:var(--ink-mute); margin-top:10px; text-transform:uppercase}
 
 /* ---- conexiones: pares de textos ---- */
 .pairs{display:flex; flex-direction:column; gap:1px; background:var(--rule); margin-top:26px}
 .pair{background:var(--surface); padding:20px 22px}
 .pair .plabel{
-  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  font-family:"Nunito",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
   color:var(--accent); margin-bottom:14px;
 }
 .pair .cols{display:grid; grid-template-columns:1fr auto 1fr; gap:0 20px; align-items:start}
 .pair .side{display:flex; flex-direction:column; gap:7px}
-.pair .src{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-mute)}
+.pair .src{font-family:"Nunito",monospace; font-size:11.5px; color:var(--ink-mute)}
 .pair .txt{font-size:16px; line-height:1.6; font-style:italic}
 .pair .link{
-  align-self:center; font-family:"IBM Plex Sans",sans-serif; font-size:18px; color:var(--ink-mute);
+  align-self:center; font-family:"Nunito",sans-serif; font-size:18px; color:var(--ink-mute);
   border-left:1px solid var(--rule); border-right:1px solid var(--rule); padding:0 18px; height:100%;
   display:flex; align-items:center;
 }
 .pair .gloss{
-  font-family:"IBM Plex Sans",sans-serif; font-size:13px; line-height:1.6; color:var(--ink-soft);
+  font-family:"Nunito",sans-serif; font-size:13px; line-height:1.6; color:var(--ink-soft);
   margin-top:14px; padding-top:12px; border-top:1px solid var(--rule-soft);
 }
 .pair .gloss b{color:var(--ink)}
 
 .grid-10{display:grid; grid-template-columns:repeat(auto-fill,minmax(272px,1fr)); gap:1px; margin-top:26px; background:var(--rule)}
 .strat{background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:8px}
-.strat .n{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--accent)}
-.strat h4{font-family:"Newsreader",serif; font-size:19px; font-weight:600}
-.strat p{font-family:"IBM Plex Sans",sans-serif; font-size:13.5px; line-height:1.6; color:var(--ink-soft)}
-.strat .did{font-family:"IBM Plex Sans",sans-serif; font-size:12.5px; line-height:1.55; color:var(--ink);
+.strat .n{font-family:"Nunito",monospace; font-size:12px; color:var(--accent)}
+.strat h4{font-family:"Fraunces",serif; font-size:19px; font-weight:600}
+.strat p{font-family:"Nunito",sans-serif; font-size:13.5px; line-height:1.6; color:var(--ink-soft)}
+.strat .did{font-family:"Nunito",sans-serif; font-size:12.5px; line-height:1.55; color:var(--ink);
   border-top:1px solid var(--rule-soft); padding-top:10px; margin-top:auto}
 .strat .did b{color:var(--accent); font-weight:600}
 
 .prayer{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1px; background:var(--rule); margin-top:26px}
 .prayer > div{background:var(--surface); padding:22px}
-.prayer h4{font-family:"IBM Plex Sans",sans-serif; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-mute); font-weight:500}
+.prayer h4{font-family:"Nunito",sans-serif; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-mute); font-weight:500}
 .prayer p{margin-top:12px; font-size:16.5px; line-height:1.7; font-style:italic}
-.prayer .from{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-mute); margin-top:12px; font-style:normal}
+.prayer .from{font-family:"Nunito",monospace; font-size:11px; color:var(--ink-mute); margin-top:12px; font-style:normal}
 
 footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
-  font-family:"IBM Plex Sans",sans-serif; font-size:12.5px; color:var(--ink-mute);
+  font-family:"Nunito",sans-serif; font-size:12.5px; color:var(--ink-mute);
   display:flex; flex-direction:column; gap:8px}
 
 @media (max-width:900px){
@@ -325,7 +325,7 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
 
 /* Hub + chapter nav (Thunderbird chrome) */
 :root{
-  --tb-rose:#DEC4C9; --tb-clay:#977272; --tb-stone:#594E4C; --tb-ink:#181717;
+  --tb-rose:#F6CFDA; --tb-clay:#C2577A; --tb-stone:#6B4A40; --tb-ink:#4A2F2A;
 }
 .hub-bar{
   position:sticky; top:0; z-index:50;
@@ -335,41 +335,41 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
 .hub-inner{
   max-width:1160px; margin:0 auto; padding:0 16px;
   display:flex; align-items:center; gap:4px; min-height:40px; flex-wrap:wrap;
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:12.5px;
+  font-family:"Nunito",system-ui,sans-serif; font-size:12.5px;
 }
 .hub-inner .hub-home{
-  font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em;
+  font-family:"Nunito",monospace; font-size:10px; letter-spacing:.12em;
   text-transform:uppercase; color:var(--tb-rose) !important; font-weight:600;
   padding:8px 10px; border-radius:4px; margin-right:2px;
-  border:1px solid rgba(222,196,201,.35);
+  border:1px solid rgba(246,207,218,.35);
 }
-.hub-inner .hub-home:hover{color:#fff !important; background:rgba(222,196,201,.22); border-color:rgba(222,196,201,.55)}
+.hub-inner .hub-home:hover{color:#fff !important; background:rgba(246,207,218,.22); border-color:rgba(246,207,218,.55)}
 /* app-bar pwa */
 .hub-bar{
-  background: linear-gradient(180deg, #7A6B82 0%, #6B5B73 50%, #594E4C 100%) !important;
-  box-shadow: 0 2px 10px rgba(24,23,23,.18);
+  background: linear-gradient(180deg, #7A6B82 0%, #6B5B73 50%, #6B4A40 100%) !important;
+  box-shadow: 0 2px 10px rgba(74,47,42,.18);
 }
 .hub-inner .hub-home{
   display: inline-flex !important;
   align-items: center;
   gap: 0.3rem;
   color: #fff !important;
-  border-color: rgba(222,196,201,.5) !important;
+  border-color: rgba(246,207,218,.5) !important;
 }
 .hub-inner .hub-home .back-arrow{ font-size: 1.05rem; line-height: 1; }
 .hub-inner .hub-label{ color: rgba(255,255,255,.9) !important; }
 
 .hub-inner .hub-label{
-  font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.14em;
+  font-family:"Nunito",monospace; font-size:10px; letter-spacing:.14em;
   text-transform:uppercase; color:var(--tb-rose); margin-right:8px; opacity:.9;
 }
 .hub-inner a{
   color:rgba(245,237,238,.72); text-decoration:none; padding:8px 12px; border-radius:4px;
   font-weight:500;
 }
-.hub-inner a:hover{color:#fff; background:rgba(222,196,201,.12)}
+.hub-inner a:hover{color:#fff; background:rgba(246,207,218,.12)}
 .hub-inner a[aria-current="page"]{
-  color:#fff; background:rgba(222,196,201,.22); box-shadow:inset 0 0 0 1px rgba(222,196,201,.35);
+  color:#fff; background:rgba(246,207,218,.22); box-shadow:inset 0 0 0 1px rgba(246,207,218,.35);
 }
 .chap-nav{
   position:sticky; top:40px; z-index:40;
@@ -383,29 +383,29 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
   display:flex; align-items:center; gap:4px; min-height:46px; flex-wrap:wrap;
 }
 .chap-nav a{
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:12.5px; font-weight:500;
+  font-family:"Nunito",system-ui,sans-serif; font-size:12.5px; font-weight:500;
   color:rgba(245,237,238,.78); text-decoration:none; padding:10px 10px;
   border-bottom:2px solid transparent; white-space:nowrap;
 }
 .chap-nav a:hover,.chap-nav a[aria-current="true"]{color:#fff; border-bottom-color:var(--tb-rose)}
 .chap-nav .nav-tools{margin-left:auto; display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding:6px 0}
 .progress-pill{
-  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.04em;
-  background:rgba(222,196,201,.18); color:var(--tb-rose); padding:5px 10px; border-radius:999px;
+  font-family:"Nunito",monospace; font-size:11px; letter-spacing:.04em;
+  background:rgba(246,207,218,.18); color:var(--tb-rose); padding:5px 10px; border-radius:999px;
   white-space:nowrap;
 }
 .search-box{
   display:flex; align-items:center; gap:6px;
-  background:rgba(255,255,255,.08); border:1px solid rgba(222,196,201,.35);
+  background:rgba(255,255,255,.08); border:1px solid rgba(246,207,218,.35);
   border-radius:6px; padding:4px 8px; min-width:0;
 }
 .search-box input{
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:13px;
+  font-family:"Nunito",system-ui,sans-serif; font-size:13px;
   background:transparent; border:0; color:#fff; outline:none; width:min(160px,28vw);
 }
 .search-box input::placeholder{color:rgba(245,237,238,.45)}
 .search-box button{
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:11px; border:0; cursor:pointer;
+  font-family:"Nunito",system-ui,sans-serif; font-size:11px; border:0; cursor:pointer;
   background:transparent; color:var(--tb-rose); padding:2px 4px;
 }
 .legend{top:86px}
@@ -427,7 +427,7 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
 #mark-toast{
   position:fixed; z-index:60; max-width:min(320px,92vw); box-sizing:border-box;
   background:var(--surface); color:var(--ink); border:1px solid var(--rule);
-  box-shadow:var(--shadow), 0 18px 40px -20px rgba(24,23,23,.45);
+  box-shadow:var(--shadow), 0 18px 40px -20px rgba(74,47,42,.45);
   border-radius:10px; padding:12px 14px; pointer-events:none;
   opacity:0; transform:translateY(6px); transition:opacity .18s, transform .18s;
 }
@@ -435,19 +435,19 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
 #mark-toast .t-block + .t-sep{ margin:10px 0; border:0; border-top:1px solid var(--rule); }
 #mark-toast .t-sep{ margin:10px 0; border:0; border-top:1px solid var(--rule); }
 #mark-toast .t-layer{
-  font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em;
+  font-family:"Nunito",monospace; font-size:10px; letter-spacing:.12em;
   text-transform:uppercase; color:var(--tb-clay); margin:0 0 4px;
 }
-#mark-toast .t-title{font-family:"Newsreader",Georgia,serif; font-size:17px; font-weight:600; margin:0 0 4px; line-height:1.25}
-#mark-toast .t-desc{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:13px; line-height:1.45; color:var(--ink-soft); margin:0}
+#mark-toast .t-title{font-family:"Fraunces",Georgia,serif; font-size:17px; font-weight:600; margin:0 0 4px; line-height:1.25}
+#mark-toast .t-desc{font-family:"Nunito",system-ui,sans-serif; font-size:13px; line-height:1.45; color:var(--ink-soft); margin:0}
 #mark-toast .t-swatch{display:inline-block; width:12px; height:12px; border-radius:2px; margin-right:6px; vertical-align:-1px}
 #mark-toast .t-quote{
-  font-family:"Newsreader",Georgia,serif; font-size:14px; font-style:italic;
+  font-family:"Fraunces",Georgia,serif; font-size:14px; font-style:italic;
   color:var(--ink); margin:10px 0 0; padding-top:8px; border-top:1px dashed var(--rule);
   line-height:1.4;
 }
 .ml-tap-hint{
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:12px; color:var(--ink-mute);
+  font-family:"Nunito",system-ui,sans-serif; font-size:12px; color:var(--ink-mute);
   margin:12px 0 0; padding-top:10px; border-top:1px dashed var(--rule);
 }
 
@@ -457,13 +457,13 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
   background:var(--surface); border:1px solid var(--rule); border-radius:8px; padding:18px 18px 16px;
 }
 .qcard .qn{
-  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  font-family:"Nunito",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
   color:var(--tb-clay); margin-bottom:8px;
 }
-.qcard .qq{font-family:"Newsreader",Georgia,serif; font-size:18px; line-height:1.4; margin:0 0 12px; font-weight:600}
+.qcard .qq{font-family:"Fraunces",Georgia,serif; font-size:18px; line-height:1.4; margin:0 0 12px; font-weight:600}
 .qopts{display:flex; flex-direction:column; gap:8px}
 .qopt{
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:14px; text-align:left;
+  font-family:"Nunito",system-ui,sans-serif; font-size:14px; text-align:left;
   border:1px solid var(--rule); background:var(--paper); color:var(--ink);
   padding:10px 12px; border-radius:6px; cursor:pointer; line-height:1.45;
 }
@@ -472,30 +472,30 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
 .qopt.correct{border-color:var(--p-ink); background:var(--p-fill)}
 .qopt.wrong{border-color:var(--ctr-ink); background:rgba(192,57,43,.08)}
 .qfb{
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:13px; line-height:1.55;
+  font-family:"Nunito",system-ui,sans-serif; font-size:13px; line-height:1.55;
   color:var(--ink-soft); margin-top:10px; display:none; padding-left:10px; border-left:2px solid var(--rule);
 }
 .qfb.show{display:block}
 .qfb b{color:var(--ink)}
 .quiz-bar{
   display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:8px;
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:14px;
+  font-family:"Nunito",system-ui,sans-serif; font-size:14px;
 }
 .quiz-bar button{
-  font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:13px; font-weight:500;
+  font-family:"Nunito",system-ui,sans-serif; font-size:13px; font-weight:500;
   background:var(--tb-stone); color:#F5EDEE; border:0; padding:10px 16px; border-radius:6px; cursor:pointer;
 }
 .quiz-bar button:hover{background:var(--tb-ink)}
 .quiz-score{color:var(--ink-soft)}
 .despues-grid{display:grid; gap:1px; background:var(--rule); margin-top:26px}
 .despues-grid > article{background:var(--surface); padding:22px 22px 24px}
-.despues-grid h4{font-family:"Newsreader",Georgia,serif; font-size:20px; margin:0 0 10px}
+.despues-grid h4{font-family:"Fraunces",Georgia,serif; font-size:20px; margin:0 0 10px}
 .despues-grid p{font-size:16px; line-height:1.7; color:var(--ink-soft); margin:0}
 .despues-grid p + p{margin-top:12px}
-.despues-grid cite{display:block; font-family:"IBM Plex Mono",monospace; font-size:11.5px;
+.despues-grid cite{display:block; font-family:"Nunito",monospace; font-size:11.5px;
   letter-spacing:.06em; color:var(--ink-mute); margin-top:12px; font-style:normal; text-transform:uppercase}
 .despues-grid .verse{
-  font-family:"Newsreader",Georgia,serif; font-style:italic; font-size:18px; line-height:1.55;
+  font-family:"Fraunces",Georgia,serif; font-style:italic; font-size:18px; line-height:1.55;
   color:var(--ink); border-left:3px solid var(--tb-clay); padding-left:14px; margin:10px 0 0;
 }
 .despues-grid .thesis{
@@ -564,7 +564,7 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
   width: 48px; height: 48px; padding: 5px; margin-right: 0.5rem; vertical-align: middle;
   background: linear-gradient(145deg, #FFF8F4 0%, #F5EDE8 55%, #EDE4DF 100%);
   border-radius: 14px;
-  box-shadow: inset 0 0 0 1px rgba(151,114,114,.12), 0 2px 6px rgba(89,78,76,.08);
+  box-shadow: inset 0 0 0 1px rgba(194,87,122,.12), 0 2px 6px rgba(107,74,64,.08);
   overflow: hidden;
 }
 .sec-illo.img-wrap img { width:100%; height:100%; object-fit:contain; display:block; border-radius:8px; }
@@ -573,12 +573,12 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
   object-fit:contain;
   background: linear-gradient(145deg, #FFF8F4 0%, #F5EDE8 55%, #EDE4DF 100%);
   border-radius:18px;
-  box-shadow: inset 0 0 0 1px rgba(151,114,114,.12), 0 4px 12px rgba(89,78,76,.1);
+  box-shadow: inset 0 0 0 1px rgba(194,87,122,.12), 0 4px 12px rgba(107,74,64,.1);
 }
-.num-ico .illo, .letra-ico .illo { filter: drop-shadow(0 1px 1px rgba(89,78,76,.15)); }
+.num-ico .illo, .letra-ico .illo { filter: drop-shadow(0 1px 1px rgba(107,74,64,.15)); }
 .step-illo { width:36px; height:36px; margin-bottom:0.35rem; border-radius:10px; object-fit:contain;
   background: linear-gradient(145deg,#FFF8F4,#F0E8E4); padding:4px;
-  box-shadow: inset 0 0 0 1px rgba(151,114,114,.1); }
+  box-shadow: inset 0 0 0 1px rgba(194,87,122,.1); }
 
 
 .meaning-legend{
@@ -594,7 +594,7 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
   cursor: pointer;
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
   padding: 12px 16px;
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-family: "Nunito", system-ui, sans-serif;
   font-size: 14px; font-weight: 600; color: var(--ink);
   background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
   user-select: none;
@@ -605,7 +605,7 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
 }
 .meaning-legend[open] > summary::after{ transform: rotate(90deg); }
 .meaning-legend .ml-badge{
-  font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .08em;
+  font-family: "Nunito", monospace; font-size: 10px; letter-spacing: .08em;
   text-transform: uppercase; color: var(--accent);
   border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
   padding: 2px 7px; border-radius: 999px;
@@ -616,7 +616,7 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
   gap: 10px;
 }
 .meaning-col h4{
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-family: "Nunito", system-ui, sans-serif;
   font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
   color: var(--ink-mute); margin: 12px 0 8px;
 }
@@ -631,8 +631,8 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
 }
 .m-item.obs .sw{ height: 0; border-radius: 0; border-bottom-width: 3px; border-bottom-style: solid; background: transparent !important; box-shadow: none; margin-top: 8px; }
 .m-item.obs.ctr .sw{ height: 14px; border: 1.5px solid var(--ctr-ink); border-bottom-style: solid; background: transparent !important; }
-.m-item .lab{ font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 13px; font-weight: 600; color: var(--ink); }
-.m-item .def{ font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 12px; color: var(--ink-soft); line-height: 1.4; }
+.m-item .lab{ font-family: "Nunito", system-ui, sans-serif; font-size: 13px; font-weight: 600; color: var(--ink); }
+.m-item .def{ font-family: "Nunito", system-ui, sans-serif; font-size: 12px; color: var(--ink-soft); line-height: 1.4; }
 .m-item .ex{
   grid-column: 2; font-family: "Spectral", Georgia, serif; font-size: 12.5px; font-style: italic;
   color: var(--ink-soft); margin-top: 2px;
@@ -648,46 +648,46 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
 
 /* ---- Nehemías 4 ---- */
 #nehemias-4{scroll-margin-top:90px}
-#mark-toast .t-tip{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:13px; line-height:1.45; color:var(--ink); margin:10px 0 0; padding:8px 10px; border-radius:8px; background:color-mix(in srgb, var(--tb-rose) 32%, var(--surface)); border-left:3px solid var(--tb-clay)}
-#mark-toast .t-tip b{display:block; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--tb-clay); margin-bottom:3px; font-weight:500}
+#mark-toast .t-tip{font-family:"Nunito",system-ui,sans-serif; font-size:13px; line-height:1.45; color:var(--ink); margin:10px 0 0; padding:8px 10px; border-radius:8px; background:color-mix(in srgb, var(--tb-rose) 32%, var(--surface)); border-left:3px solid var(--tb-clay)}
+#mark-toast .t-tip b{display:block; font-family:"Nunito",monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--tb-clay); margin-bottom:3px; font-weight:500}
 .mk[data-tip]{text-decoration:underline dotted color-mix(in srgb, var(--tb-clay) 55%, transparent); text-underline-offset:4px; text-decoration-thickness:1px}
-.n4-tarea{margin-top:18px; padding:14px 16px; border-radius:10px; background:color-mix(in srgb, var(--tb-rose) 30%, var(--surface)); border:1px solid color-mix(in srgb, var(--tb-clay) 35%, transparent); font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:14px; line-height:1.55; color:var(--ink)}
-.n4-tarea-tag{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--tb-clay); margin-bottom:4px}
-.n4-h{font-family:"Newsreader",Georgia,serif; font-size:clamp(20px,2.6vw,26px); letter-spacing:-.01em; display:flex; align-items:center; gap:6px; flex-wrap:wrap}
+.n4-tarea{margin-top:18px; padding:14px 16px; border-radius:10px; background:color-mix(in srgb, var(--tb-rose) 30%, var(--surface)); border:1px solid color-mix(in srgb, var(--tb-clay) 35%, transparent); font-family:"Nunito",system-ui,sans-serif; font-size:14px; line-height:1.55; color:var(--ink)}
+.n4-tarea-tag{font-family:"Nunito",monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--tb-clay); margin-bottom:4px}
+.n4-h{font-family:"Fraunces",Georgia,serif; font-size:clamp(20px,2.6vw,26px); letter-spacing:-.01em; display:flex; align-items:center; gap:6px; flex-wrap:wrap}
 .n4-pattern{margin-top:30px}
 .n4-steps{display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:10px; align-items:stretch; margin-top:14px}
-.n4-step{background:var(--surface); border:1px solid var(--rule); border-radius:12px; padding:14px; box-shadow:var(--shadow); font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:13.5px; line-height:1.5; color:var(--ink-soft); border-top:4px solid var(--tb-clay)}
+.n4-step{background:var(--surface); border:1px solid var(--rule); border-radius:12px; padding:14px; box-shadow:var(--shadow); font-family:"Nunito",system-ui,sans-serif; font-size:13.5px; line-height:1.5; color:var(--ink-soft); border-top:4px solid var(--tb-clay)}
 .n4-step.opo{border-top-color:#E76F51} .n4-step.ora{border-top-color:#457B9D} .n4-step.acc{border-top-color:#2A9D8F}
-.n4-step-art{display:block; width:56px; height:56px; border-radius:14px; padding:2px; margin-bottom:6px; background:linear-gradient(145deg,#FFF8F4 0%,#F5EDE8 55%,#EDE4DF 100%); box-shadow:inset 0 0 0 1px rgba(151,114,114,.12)}
+.n4-step-art{display:block; width:56px; height:56px; border-radius:14px; padding:2px; margin-bottom:6px; background:linear-gradient(145deg,#FFF8F4 0%,#F5EDE8 55%,#EDE4DF 100%); box-shadow:inset 0 0 0 1px rgba(194,87,122,.12)}
 .n4-step-art svg{width:52px; height:52px}
-.n4-step-k{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--tb-stone); font-weight:600; margin-bottom:4px}
+.n4-step-k{font-family:"Nunito",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--tb-stone); font-weight:600; margin-bottom:4px}
 .n4-arrow{align-self:center; font-size:22px; color:var(--tb-clay)}
 .n4-obs{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:14px; margin-top:24px}
-.n4-obs-card{background:var(--surface); border:1px solid var(--rule); border-radius:12px; padding:16px; box-shadow:var(--shadow); font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:13.5px; line-height:1.55; color:var(--ink-soft); scroll-margin-top:100px}
-.n4-obs-card h4{font-family:"Newsreader",Georgia,serif; font-size:19px; color:var(--ink); margin-bottom:10px; display:flex; gap:8px; align-items:baseline; flex-wrap:wrap}
+.n4-obs-card{background:var(--surface); border:1px solid var(--rule); border-radius:12px; padding:16px; box-shadow:var(--shadow); font-family:"Nunito",system-ui,sans-serif; font-size:13.5px; line-height:1.55; color:var(--ink-soft); scroll-margin-top:100px}
+.n4-obs-card h4{font-family:"Fraunces",Georgia,serif; font-size:19px; color:var(--ink); margin-bottom:10px; display:flex; gap:8px; align-items:baseline; flex-wrap:wrap}
 .n4-map{display:block; width:100%; max-width:300px; height:auto; margin:0 auto 10px}
 .n4-qs{margin:0; display:flex; flex-direction:column; gap:8px}
 .n4-qs div{display:grid; grid-template-columns:5.5rem 1fr; gap:10px; padding-bottom:8px; border-bottom:1px dashed var(--rule)}
 .n4-qs div:last-child{border-bottom:0}
-.n4-qs dt{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); padding-top:2px}
+.n4-qs dt{font-family:"Nunito",monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); padding-top:2px}
 .n4-qs dd{margin:0; color:var(--ink)}
 .rail h4 .illo{vertical-align:-4px}
 .n4-words-wrap{margin-top:30px; padding:18px; border-radius:14px; background:color-mix(in srgb, var(--tb-rose) 22%, var(--surface)); border:1px solid color-mix(in srgb, var(--tb-clay) 30%, transparent); scroll-margin-top:100px}
 .n4-words-wrap .sec-illo.img-wrap, .n4-words-wrap .sec-illo{margin-right:2px}
-.n4-words-lead,.n4-words-note{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:13.5px; line-height:1.55; color:var(--ink-soft); margin-top:8px; max-width:80ch}
+.n4-words-lead,.n4-words-note{font-family:"Nunito",system-ui,sans-serif; font-size:13.5px; line-height:1.55; color:var(--ink-soft); margin-top:8px; max-width:80ch}
 .n4-words-note{font-size:12.5px}
 .n4-words-lead b,.n4-words-note b{color:var(--ink)}
 .n4-words{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:12px; margin-top:14px}
-.n4-word{background:var(--surface); border:1px solid var(--rule); border-radius:12px; padding:13px 14px; display:flex; flex-direction:column; gap:6px; font-family:"IBM Plex Sans",system-ui,sans-serif; box-shadow:var(--shadow); border-left:4px solid var(--tb-clay)}
+.n4-word{background:var(--surface); border:1px solid var(--rule); border-radius:12px; padding:13px 14px; display:flex; flex-direction:column; gap:6px; font-family:"Nunito",system-ui,sans-serif; box-shadow:var(--shadow); border-left:4px solid var(--tb-clay)}
 .n4-word header{display:flex; justify-content:space-between; gap:8px; align-items:baseline; flex-wrap:wrap}
-.n4-word-es{font-family:"Newsreader",Georgia,serif; font-size:18px; font-weight:600; color:var(--ink)}
-.n4-word-cite{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-mute)}
+.n4-word-es{font-family:"Fraunces",Georgia,serif; font-size:18px; font-weight:600; color:var(--ink)}
+.n4-word-cite{font-family:"Nunito",monospace; font-size:11px; color:var(--ink-mute)}
 .n4-word-heb{font-size:13px; color:var(--ink-soft)}
 .n4-word-heb .heb{font-size:18px; color:var(--tb-stone); font-family:"SBL Hebrew","Ezra SIL","Times New Roman",serif}
-.n4-strong{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:11.5px; font-weight:600; color:#fff; background:var(--tb-stone); padding:2px 8px; border-radius:999px}
+.n4-strong{display:inline-block; font-family:"Nunito",monospace; font-size:11.5px; font-weight:600; color:#fff; background:var(--tb-stone); padding:2px 8px; border-radius:999px}
 .n4-word-gloss{font-size:13px; color:var(--ink)}
-.n4-field{display:flex; flex-direction:column; gap:3px; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--tb-clay); font-family:"IBM Plex Mono",monospace}
-.n4-field input{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:14px; text-transform:none; letter-spacing:0; color:var(--ink); background:var(--paper); border:0; border-bottom:1.5px dashed var(--tb-clay); padding:5px 2px; border-radius:0; outline:none}
+.n4-field{display:flex; flex-direction:column; gap:3px; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--tb-clay); font-family:"Nunito",monospace}
+.n4-field input{font-family:"Nunito",system-ui,sans-serif; font-size:14px; text-transform:none; letter-spacing:0; color:var(--ink); background:var(--paper); border:0; border-bottom:1.5px dashed var(--tb-clay); padding:5px 2px; border-radius:0; outline:none}
 .n4-field input:focus{border-bottom-style:solid; border-bottom-color:var(--accent)}
 .n4-word-tip{font-size:12.5px; line-height:1.5; color:var(--ink-soft); border-top:1px dashed var(--rule); padding-top:6px; margin-top:auto}
 @media (max-width:900px){
@@ -697,14 +697,14 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
 }
 
 .n4-ans{border-top:1px dashed var(--rule); padding-top:2px}
-.n4-ans > summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:6px; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:12.5px; font-weight:600; color:#fff; background:var(--tb-clay); padding:6px 12px; border-radius:999px; user-select:none}
+.n4-ans > summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:6px; font-family:"Nunito",system-ui,sans-serif; font-size:12.5px; font-weight:600; color:#fff; background:var(--tb-clay); padding:6px 12px; border-radius:999px; user-select:none}
 .n4-ans > summary::-webkit-details-marker{display:none}
 .n4-ans > summary::before{content:"▸"; transition:transform .15s}
 .n4-ans[open] > summary{background:var(--tb-stone)}
 .n4-ans[open] > summary::before{transform:rotate(90deg)}
 .n4-ans-body{display:flex; flex-direction:column; gap:7px; margin-top:9px}
 .n4-dict{font-size:12.8px; line-height:1.5; color:var(--ink)}
-.n4-tag{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.06em; text-transform:uppercase; padding:1px 6px; border-radius:4px; margin-right:4px; color:#fff; font-weight:500}
+.n4-tag{display:inline-block; font-family:"Nunito",monospace; font-size:10px; letter-spacing:.06em; text-transform:uppercase; padding:1px 6px; border-radius:4px; margin-right:4px; color:#fff; font-weight:500}
 .n4-h-sub{font-size:clamp(18px,2.2vw,22px); margin-top:20px; padding-top:12px; border-top:1px dashed color-mix(in srgb, var(--tb-clay) 40%, transparent)}
 .n4-clase .n4-word{border-left-color:#2F6BB0}
 .n4-clase .n4-word.n4-refcard{border-left-style:dashed}
@@ -720,36 +720,176 @@ footer{margin-top:80px; padding-top:26px; border-top:1px solid var(--rule);
 .n4-fil{scroll-margin-top:100px; margin-top:6px}
 .n4-verse{margin:0; padding:8px 11px; border-left:3px solid var(--tb-clay); background:var(--paper); border-radius:0 8px 8px 0; font-family:"Spectral",Georgia,serif; font-size:13.5px; line-height:1.5; color:var(--ink)}
 .n4-verse + .n4-verse{margin-top:-2px}
-.n4-verse-ref{display:block; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--tb-clay); margin-bottom:2px}
+.n4-verse-ref{display:block; font-family:"Nunito",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--tb-clay); margin-bottom:2px}
 .n4-verse-ref a, .n4-res a, .n4-res-apl a{color:var(--accent)}
 mark.n4-hl{background:color-mix(in srgb, #E9C46A 55%, transparent); color:inherit; padding:0 2px; border-radius:3px; font-weight:600}
 .n4-resumen{margin-top:20px; background:var(--surface); border:1px solid var(--rule); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow); scroll-margin-top:100px}
 .n4-res-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; margin-top:12px}
-.n4-res{border-radius:10px; padding:11px 13px; background:var(--paper); border-left:4px solid var(--tb-clay); font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:13.5px; line-height:1.55; color:var(--ink)}
-.n4-res.g1{border-left-color:#E76F51} .n4-res.g2{border-left-color:#977272} .n4-res.g3{border-left-color:#457B9D} .n4-res.g4{border-left-color:#2A9D8F} .n4-res.g5{border-left-color:#B5651D}
-.n4-res-k{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--tb-stone); font-weight:600}
+.n4-res{border-radius:10px; padding:11px 13px; background:var(--paper); border-left:4px solid var(--tb-clay); font-family:"Nunito",system-ui,sans-serif; font-size:13.5px; line-height:1.55; color:var(--ink)}
+.n4-res.g1{border-left-color:#E76F51} .n4-res.g2{border-left-color:#C2577A} .n4-res.g3{border-left-color:#457B9D} .n4-res.g4{border-left-color:#2A9D8F} .n4-res.g5{border-left-color:#B5651D}
+.n4-res-k{font-family:"Nunito",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--tb-stone); font-weight:600}
 .n4-res-w{font-weight:600; margin:3px 0 5px}
-.n4-res-apl{margin-top:14px; font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:14px; line-height:1.55; color:var(--ink); padding:10px 13px; border-radius:10px; background:color-mix(in srgb, var(--tb-rose) 30%, var(--surface))}
+.n4-res-apl{margin-top:14px; font-family:"Nunito",system-ui,sans-serif; font-size:14px; line-height:1.55; color:var(--ink); padding:10px 13px; border-radius:10px; background:color-mix(in srgb, var(--tb-rose) 30%, var(--surface))}
 #nehemias-4 .v[id]{scroll-margin-top:110px}
-.clase-index{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:13px; margin-top:14px; display:flex; gap:8px; flex-wrap:wrap; align-items:center}
-.clase-index span{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute)}
+.clase-index{font-family:"Nunito",system-ui,sans-serif; font-size:13px; margin-top:14px; display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+.clase-index span{font-family:"Nunito",monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute)}
 .clase-index a{color:var(--accent); background:var(--surface); border:1px solid var(--rule); border-radius:999px; padding:4px 11px; text-decoration:none}
 .clase-sesion{margin-top:18px}
-.clase-fecha{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--tb-clay); margin-bottom:2px}
+.clase-fecha{font-family:"Nunito",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--tb-clay); margin-bottom:2px}
 #trabajo-clase{scroll-margin-top:60px}
-.n4-clase-sub{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#2F6BB0; margin-top:2px}
-.n4-tag.strong{background:#2F6BB0} .n4-tag.vine{background:#2C7A52} .n4-tag.ctx{background:#977272} .n4-tag.cnt{background:#594E4C}
+.n4-clase-sub{font-family:"Nunito",monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#2F6BB0; margin-top:2px}
+.n4-tag.strong{background:#2F6BB0} .n4-tag.vine{background:#2C7A52} .n4-tag.ctx{background:#C2577A} .n4-tag.cnt{background:#6B4A40}
 .n4-src{font-size:11.5px; color:var(--ink-mute); line-height:1.5}
 .n4-src a{color:var(--accent)}
 
 .n4-key{background:color-mix(in srgb, var(--tb-rose) 30%, var(--surface)); border-radius:10px; padding:10px 12px; display:flex; flex-direction:column; gap:4px}
 .n4-key-heb{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
 .n4-key-heb .heb{font-size:30px; line-height:1.1; color:var(--tb-ink); font-family:"SBL Hebrew","Ezra SIL","Times New Roman",serif}
-.n4-key-tr{font-family:"Newsreader",Georgia,serif; font-style:italic; font-size:20px; color:var(--tb-stone); font-weight:600}
-.n4-key-def{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:15px; font-weight:600; color:var(--ink); line-height:1.35}
-.n4-key-def span{display:block; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--tb-clay); font-weight:500}
+.n4-key-tr{font-family:"Fraunces",Georgia,serif; font-style:italic; font-size:20px; color:var(--tb-stone); font-weight:600}
+.n4-key-def{font-family:"Nunito",system-ui,sans-serif; font-size:15px; font-weight:600; color:var(--ink); line-height:1.35}
+.n4-key-def span{display:block; font-family:"Nunito",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--tb-clay); font-weight:500}
 .n4-key-num .n4-strong + .n4-strong{margin-left:6px}
 .n4-key-num .n4-strong{font-size:13.5px; padding:4px 11px}
+
+</style>
+<style id="tema-matcha-orquidea">
+/* ===== Tema matcha + orquídea + ladrillo (tema-matcha-v1) ===== */
+:root, :root:not([data-theme="zz"]), :root[data-theme="dark"]{
+  color-scheme: light;
+  --paper:#FFFAF4; --surface:#FFFFFF; --surface-2:#FFF1F5;
+  --ink:#4A2F2A; --ink-soft:#73554D; --ink-mute:#9C7F77;
+  --rule:#F1DCD3; --rule-soft:#F7EAE3;
+  --accent:#C2577A;
+  /* marcado: armonizado pero distinguible */
+  --s-ink:#3F78C2; --s-fill:rgba(92,148,214,.20);
+  --v-ink:#C2553A; --v-fill:rgba(214,104,74,.20);
+  --p-ink:#4F8A33; --p-fill:rgba(141,180,99,.30);
+  --adv-ink:#9A4FB5; --adv-fill:rgba(170,110,205,.20);
+  --prep-ink:#AD7A12; --prep-fill:rgba(236,190,80,.30);
+  --rep-ink:#D49A12; --ctr-ink:#D1335F; --cond-ink:#1E8A85; --cro-ink:#5560C9;
+  --shadow:0 1px 2px rgba(74,47,42,.04), 0 14px 30px -22px rgba(74,47,42,.45);
+  --tb-rose:#F6CFDA; --tb-clay:#C2577A; --tb-stone:#6B4A40; --tb-ink:#4A2F2A;
+  --t-pink:#F4A9BF; --t-matcha:#8DB463; --t-matcha-soft:#E9F3DC; --t-matcha-deep:#4F6E31; --t-brick:#C2664A;
+}
+body{
+  font-family:"Spectral",Georgia,serif; color:var(--ink);
+  background:
+    radial-gradient(120% 30% at 100% 0%, rgba(244,169,191,.25), transparent 60%),
+    radial-gradient(80% 25% at 0% 12%, rgba(141,180,99,.14), transparent 60%),
+    var(--paper);
+}
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif}
+.eyebrow{font-family:"Nunito",system-ui,sans-serif; font-weight:800; color:var(--t-matcha-deep)}
+
+/* barras */
+.hub-bar{
+  background:rgba(255,244,247,.9) !important; color:var(--ink);
+  backdrop-filter:blur(16px) saturate(1.2); -webkit-backdrop-filter:blur(16px) saturate(1.2);
+  border-bottom:1px solid rgba(244,169,191,.5); box-shadow:0 6px 20px -14px rgba(194,87,122,.5) !important;
+}
+.hub-inner{font-family:"Nunito",system-ui,sans-serif; min-height:52px; gap:6px}
+.hub-inner a{color:var(--ink-soft); font-weight:800; border-radius:999px; padding:7px 12px}
+.hub-inner a:hover{color:var(--ink); background:rgba(244,169,191,.25)}
+.hub-inner a[aria-current="page"]{color:#fff; background:var(--accent); box-shadow:0 4px 12px -4px rgba(194,87,122,.6)}
+.hub-inner .hub-home{background:#fff !important; color:var(--accent) !important; border:1px solid rgba(244,169,191,.85) !important; border-radius:999px; font-family:"Nunito",sans-serif; font-size:11px; font-weight:800}
+.hub-inner .hub-home:hover{background:var(--surface-2) !important; color:var(--accent) !important}
+.hub-inner .hub-label{color:var(--ink-soft) !important; font-family:"Fraunces",serif; font-style:italic; text-transform:none; letter-spacing:0; font-size:13px}
+.chap-nav{background:rgba(255,250,244,.94); color:var(--ink); border-bottom:1px solid #F2E4CF; top:52px}
+.chap-nav a{color:var(--ink-soft); font-family:"Nunito",sans-serif; font-weight:800; border-bottom:3px solid transparent}
+.chap-nav a:hover,.chap-nav a[aria-current="true"]{color:var(--accent); border-bottom-color:var(--t-pink)}
+.progress-pill{background:var(--t-matcha-soft); color:var(--t-matcha-deep); font-family:"Nunito",sans-serif; font-weight:800}
+.search-box{background:#fff; border:1px solid rgba(244,169,191,.7); border-radius:999px; padding:5px 12px}
+.search-box input{color:var(--ink); font-family:"Nunito",sans-serif}
+.search-box input::placeholder{color:#B79A92}
+.search-box button{color:var(--accent); font-weight:800}
+.legend{top:104px}
+
+/* hero en arco */
+header.hero{
+  position:relative; isolation:isolate; text-align:left;
+  margin:22px 6px 8px; padding:56px 22px 30px; border-bottom:0;
+}
+header.hero::before{
+  content:""; position:absolute; inset:0; z-index:-1;
+  border-radius:999px 999px 30px 30px;
+  background:
+    radial-gradient(70% 35% at 50% 12%, rgba(255,255,255,.95), transparent 70%),
+    linear-gradient(180deg,#FFF3F6 0%,#FBE3EA 50%,#EEF6E2 100%);
+  border:10px solid #F7EBDA;
+  box-shadow:0 0 0 2px #E7D3B6, 0 0 0 9px #C2664A, 0 0 0 11px #A9563C, 0 22px 40px -20px rgba(194,102,74,.6);
+}
+header.hero::after{
+  content:""; position:absolute; z-index:1; width:84px; height:84px; right:-12px; top:70px;
+  background:url("assets/tema/orquidea.svg") no-repeat center/contain; transform:rotate(14deg);
+  filter:drop-shadow(0 6px 8px rgba(194,87,122,.25)); pointer-events:none;
+}
+.hero .eyebrow{text-align:center}
+.hero h1{text-align:center; color:var(--ink)}
+.hero h1 em{color:var(--accent); font-family:"Great Vibes",cursive; font-size:1.1em; font-weight:400; letter-spacing:0}
+.hero .lede{color:var(--ink-soft)}
+.hero-meta{background:rgba(255,255,255,.75); border:1px solid rgba(244,169,191,.45); border-radius:18px; padding:14px 16px; font-family:"Nunito",sans-serif}
+.hero-meta dt{color:var(--accent); font-weight:800}
+.hero-pin{
+  width:84px !important; height:84px !important; padding:6px; margin:0 auto 14px !important;
+  background:#fff url("assets/tema/angelito.svg") no-repeat center/70% !important;
+  object-position:-999px -999px; border-radius:50% !important;
+  box-shadow:0 0 0 4px #FBE3EA, 0 10px 22px -10px rgba(194,87,122,.55) !important;
+}
+.sec-illo.img-wrap,.step-illo,.n4-step-art{
+  background:linear-gradient(145deg,#FFFFFF 0%,#FFF1F5 60%,#FBE3EA 100%) !important;
+  box-shadow:inset 0 0 0 1px rgba(244,169,191,.45), 0 4px 10px -6px rgba(194,87,122,.45) !important;
+}
+
+/* leyenda y chips */
+.legend{background:rgba(255,250,244,.94); border-color:#F2E4CF}
+.layer-switch{background:#FBE3EA; border-radius:999px; padding:3px}
+.layer-switch button{font-family:"Nunito",sans-serif; font-weight:800; border-radius:999px; color:var(--ink-soft)}
+.layer-switch button[aria-pressed="true"]{background:#fff; color:var(--accent)}
+.chip{font-family:"Nunito",sans-serif; font-weight:700; border-radius:999px; background:#fff; border-color:#F1DCD3}
+.chip .swatch{border-radius:4px}
+.meaning-legend{border-radius:20px; border-color:rgba(244,169,191,.5)}
+.meaning-legend > summary{font-family:"Fraunces",serif; background:linear-gradient(180deg,#FFFFFF,#FFF1F5)}
+.m-item{border-radius:14px; background:#fff}
+.m-item .lab,.m-item .def{font-family:"Nunito",sans-serif}
+
+/* capítulos y versos */
+.sec-head h2{color:var(--ink)}
+.sec-num{color:var(--accent); font-family:"Nunito",sans-serif; font-weight:800}
+.chapter-open{border-bottom:2px solid var(--t-pink)}
+.chapter-open h3{color:var(--ink)}
+.subhead{color:var(--accent); font-family:"Fraunces",serif}
+.vn{color:var(--t-matcha-deep); font-family:"Nunito",sans-serif; font-weight:800}
+.v{border-bottom-color:#F7EAE3}
+.note{font-family:"Nunito",sans-serif}
+.mk{border-radius:5px}
+
+/* tarjetas */
+.rail,.pair,.strat,.prayer > div,.despues-grid > article{background:#fff}
+.rail{border-radius:0 18px 18px 0; margin-bottom:8px; box-shadow:var(--shadow)}
+.rails{gap:8px}
+.grid-10,.prayer,.despues-grid,.pairs{background:transparent; gap:10px}
+.strat,.prayer > div,.despues-grid > article,.pair{border:1px solid rgba(244,169,191,.4); border-radius:20px; box-shadow:var(--shadow)}
+.tablewrap{border-radius:18px; border-color:rgba(244,169,191,.45); box-shadow:var(--shadow)}
+thead th{background:#FFF1F5; color:var(--accent); font-weight:800}
+.qcard,.n4-step,.n4-obs-card,.n4-word,.n4-resumen{border-radius:20px; border-color:rgba(244,169,191,.4)}
+.qopt{border-radius:14px; background:#FFFAF4}
+.quiz-bar button{background:var(--accent); border-radius:999px; color:#fff}
+.quiz-bar button:hover{background:var(--t-matcha-deep)}
+.n4-ans > summary{background:var(--accent)}
+.n4-ans[open] > summary{background:var(--t-matcha-deep)}
+.n4-strong{background:var(--t-matcha-deep)}
+.n4-step{border-top-color:var(--accent)}
+.n4-step.opo{border-top-color:#D6684A} .n4-step.ora{border-top-color:#5C94D6} .n4-step.acc{border-top-color:#8DB463}
+.n4-words-wrap,.n4-key,.n4-tarea,.n4-res-apl,.despues-grid .thesis{background:linear-gradient(135deg,#FFF5F8,#FBE3EA)}
+.n4-words-wrap{border-radius:24px}
+.clase-index a{border-radius:999px; background:#fff; font-family:"Nunito",sans-serif; font-weight:700}
+#mark-toast{border-radius:18px; border-color:rgba(244,169,191,.6)}
+#mark-toast .t-title{font-family:"Fraunces",serif}
+#mark-toast .t-desc,#mark-toast .t-tip{font-family:"Nunito",sans-serif}
+.cuadro-filters .filt{font-family:"Nunito",sans-serif; font-weight:700}
+footer{border-top:1px solid #F2E4CF; font-family:"Nunito",sans-serif; color:var(--ink-soft)}
+footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto 4px; background:url("assets/tema/orquidea.svg") no-repeat center/contain}
+@media (max-width:520px){ .legend{top:auto} }
 
 </style>
 
@@ -1875,9 +2015,9 @@ mark.n4-hl{background:color-mix(in srgb, #E9C46A 55%, transparent); color:inheri
   <div class="n4-pattern" aria-label="Patrón del capítulo">
     <h3 class="n4-h">El patrón que se repite tres veces</h3>
     <div class="n4-steps">
-      <div class="n4-step opo"><span class="n4-step-art"><svg class="illo" viewBox="0 0 56 56" width="52" height="52" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="38" width="48" height="14" rx="1.5" fill="#E9C46A" stroke="#8D6E63" stroke-width="1.2"/><path stroke="#8D6E63" stroke-width=".9" d="M4 45h48M16 38v7M32 38v7M24 45v7M40 45v7"/><path fill="#E76F51" d="M20 38c0-7 4-12 10-12s9 4 9 8v4z"/><path fill="#E76F51" d="M39 34c5-1 9 1 11 4-4 1-8 1-11-1z"/><path fill="#FFF8E7" d="M46 37.6c1.6.2 3 .4 4-.6-.5 1.4-2.2 2-4 1.6z"/><path fill="#E76F51" d="M24 27l-3-8 6 5zM32 26l2-8 2.5 7z"/><path fill="#FFF8E7" d="M22 30c2 3 5 4 8 3-1 3-5 4-8 1z"/><circle cx="26" cy="29" r="1.1" fill="#181717"/><circle cx="21" cy="31.4" r="1" fill="#181717"/><path stroke="#594E4C" stroke-width=".9" stroke-linecap="round" d="M27 31.5c.8.6 1.6.6 2.2 0"/></svg></span><p class="n4-step-k">1 · Oposición</p><p>Burla (1-3) · conspiración (7-8) · desánimo, amenaza y rumores (10-12).</p></div>
+      <div class="n4-step opo"><span class="n4-step-art"><svg class="illo" viewBox="0 0 56 56" width="52" height="52" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="38" width="48" height="14" rx="1.5" fill="#E9C46A" stroke="#8D6E63" stroke-width="1.2"/><path stroke="#8D6E63" stroke-width=".9" d="M4 45h48M16 38v7M32 38v7M24 45v7M40 45v7"/><path fill="#E76F51" d="M20 38c0-7 4-12 10-12s9 4 9 8v4z"/><path fill="#E76F51" d="M39 34c5-1 9 1 11 4-4 1-8 1-11-1z"/><path fill="#FFF8E7" d="M46 37.6c1.6.2 3 .4 4-.6-.5 1.4-2.2 2-4 1.6z"/><path fill="#E76F51" d="M24 27l-3-8 6 5zM32 26l2-8 2.5 7z"/><path fill="#FFF8E7" d="M22 30c2 3 5 4 8 3-1 3-5 4-8 1z"/><circle cx="26" cy="29" r="1.1" fill="#4A2F2A"/><circle cx="21" cy="31.4" r="1" fill="#4A2F2A"/><path stroke="#6B4A40" stroke-width=".9" stroke-linecap="round" d="M27 31.5c.8.6 1.6.6 2.2 0"/></svg></span><p class="n4-step-k">1 · Oposición</p><p>Burla (1-3) · conspiración (7-8) · desánimo, amenaza y rumores (10-12).</p></div>
       <div class="n4-arrow" aria-hidden="true">→</div>
-      <div class="n4-step ora"><span class="n4-step-art"><svg class="illo" viewBox="0 0 56 56" width="52" height="52" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="26" r="20" fill="#457B9D" opacity=".18"/><g stroke="#E9C46A" stroke-width="2.2" stroke-linecap="round"><path d="M28 3v6M12 9l4 4.5M44 9l-4 4.5M5 24h6M45 24h6"/></g><path fill="#F4C7A1" stroke="#8D6E63" stroke-width="1.2" d="M27 14c-3 4-6 12-6 19v9h7z"/><path fill="#EBB58C" stroke="#8D6E63" stroke-width="1.2" d="M29 14c3 4 6 12 6 19v9h-7z"/><path fill="#977272" d="M19 42h18v8H19z"/><path stroke="#DEC4C9" stroke-width="1.4" d="M19 45h18"/></svg></span><p class="n4-step-k">2 · Oración</p><p>«Oye, oh Dios nuestro» (4-5) · «oramos a nuestro Dios» (9) · «acordaos del Señor» (14).</p></div>
+      <div class="n4-step ora"><span class="n4-step-art"><svg class="illo" viewBox="0 0 56 56" width="52" height="52" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="26" r="20" fill="#457B9D" opacity=".18"/><g stroke="#E9C46A" stroke-width="2.2" stroke-linecap="round"><path d="M28 3v6M12 9l4 4.5M44 9l-4 4.5M5 24h6M45 24h6"/></g><path fill="#F4C7A1" stroke="#8D6E63" stroke-width="1.2" d="M27 14c-3 4-6 12-6 19v9h7z"/><path fill="#EBB58C" stroke="#8D6E63" stroke-width="1.2" d="M29 14c3 4 6 12 6 19v9h-7z"/><path fill="#C2577A" d="M19 42h18v8H19z"/><path stroke="#F6CFDA" stroke-width="1.4" d="M19 45h18"/></svg></span><p class="n4-step-k">2 · Oración</p><p>«Oye, oh Dios nuestro» (4-5) · «oramos a nuestro Dios» (9) · «acordaos del Señor» (14).</p></div>
       <div class="n4-arrow" aria-hidden="true">→</div>
       <div class="n4-step acc"><span class="n4-step-art"><svg class="illo" viewBox="0 0 56 56" width="52" height="52" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="40" width="44" height="11" rx="1.5" fill="#E9C46A" stroke="#8D6E63" stroke-width="1.2"/><path stroke="#8D6E63" stroke-width=".9" d="M6 45.5h44M18 40v5.5M34 40v5.5M26 45.5V51M42 45.5V51"/><path stroke="#CED4DA" stroke-width="3" stroke-linecap="round" d="M14 34L38 8"/><path stroke="#6C757D" stroke-width="1" d="M15 33L38 8.5"/><path stroke="#E76F51" stroke-width="3.2" stroke-linecap="round" d="M11 28l8 8"/><path stroke="#E9C46A" stroke-width="3" stroke-linecap="round" d="M11.5 36.5l3-3"/><path fill="#ADB5BD" stroke="#6C757D" stroke-width="1" d="M30 30l14-6 2 6z"/><path stroke="#8D6E63" stroke-width="3" stroke-linecap="round" d="M45 27l5-6"/><path stroke="#2A9D8F" stroke-width="2.4" stroke-linecap="round" d="M37 33c1.5 1 3.5 1 5 0"/></svg></span><p class="n4-step-k">3 · Acción</p><p>«Edificamos» (6) · «pusimos guarda» (9) · espada en una mano, obra en la otra (13-23).</p></div>
     </div>
@@ -1886,7 +2026,7 @@ mark.n4-hl{background:color-mix(in srgb, #E9C46A 55%, transparent); color:inheri
   <div class="n4-obs">
     <div class="n4-obs-card" id="n4-rodeados">
       <h4>¿Dónde? Jerusalén rodeada <span class="ref">4:7</span></h4>
-      <svg class="n4-map" viewBox="0 0 240 200" role="img" aria-label="Jerusalén rodeada: Samaria al norte, amonitas al este, árabes al sur, Asdod al oeste" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="240" height="200" rx="14" fill="#F8F1F2"/><circle cx="110" cy="100" r="62" fill="none" stroke="#DEC4C9" stroke-width="2" stroke-dasharray="5 5"/><g stroke="#977272" stroke-width="2.4" stroke-linecap="round"><path d="M110 64V44M146 100h20M110 136v20M74 100H54"/></g><path fill="#977272" d="M104 46l6-10 6 10zM164 94l10 6-10 6zM104 154l6 10 6-10zM56 94l-10 6 10 6z"/><path fill="#E9C46A" stroke="#8D6E63" stroke-width="1.4" d="M90 116V92h6v-6h6v6h6v-8h6v8h6v-6h6v6h6v24z"/><path fill="#457B9D" d="M104 116v-10h12v10"/><text x="110" y="128" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="10" font-weight="600" fill="#181717">Jerusalén</text><g font-family="IBM Plex Sans,sans-serif" font-size="10.5" font-weight="600" text-anchor="middle"><rect x="62" y="6" width="96" height="26" rx="8" fill="#457B9D"/><text x="110" y="17" fill="#fff">NORTE · Samaria</text><text x="110" y="28" fill="#E8F1F8" font-weight="400" font-size="9">Sanbalat</text><rect x="150" y="86" width="86" height="30" rx="8" fill="#2A9D8F"/><text x="193" y="99" fill="#fff">ESTE</text><text x="193" y="110" fill="#E9F5F3" font-weight="400" font-size="9">amonitas · Tobías</text><rect x="62" y="168" width="96" height="26" rx="8" fill="#E76F51"/><text x="110" y="179" fill="#fff">SUR · árabes</text><text x="110" y="190" fill="#FFF3EE" font-weight="400" font-size="9">(Gesem, 2:19)</text><rect x="4" y="86" width="56" height="30" rx="8" fill="#594E4C"/><text x="32" y="99" fill="#fff">OESTE</text><text x="32" y="110" fill="#DEC4C9" font-weight="400" font-size="9">Asdod</text></g></svg>
+      <svg class="n4-map" viewBox="0 0 240 200" role="img" aria-label="Jerusalén rodeada: Samaria al norte, amonitas al este, árabes al sur, Asdod al oeste" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="240" height="200" rx="14" fill="#F8F1F2"/><circle cx="110" cy="100" r="62" fill="none" stroke="#F6CFDA" stroke-width="2" stroke-dasharray="5 5"/><g stroke="#C2577A" stroke-width="2.4" stroke-linecap="round"><path d="M110 64V44M146 100h20M110 136v20M74 100H54"/></g><path fill="#C2577A" d="M104 46l6-10 6 10zM164 94l10 6-10 6zM104 154l6 10 6-10zM56 94l-10 6 10 6z"/><path fill="#E9C46A" stroke="#8D6E63" stroke-width="1.4" d="M90 116V92h6v-6h6v6h6v-8h6v8h6v-6h6v6h6v24z"/><path fill="#457B9D" d="M104 116v-10h12v10"/><text x="110" y="128" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="10" font-weight="600" fill="#4A2F2A">Jerusalén</text><g font-family="IBM Plex Sans,sans-serif" font-size="10.5" font-weight="600" text-anchor="middle"><rect x="62" y="6" width="96" height="26" rx="8" fill="#457B9D"/><text x="110" y="17" fill="#fff">NORTE · Samaria</text><text x="110" y="28" fill="#E8F1F8" font-weight="400" font-size="9">Sanbalat</text><rect x="150" y="86" width="86" height="30" rx="8" fill="#2A9D8F"/><text x="193" y="99" fill="#fff">ESTE</text><text x="193" y="110" fill="#E9F5F3" font-weight="400" font-size="9">amonitas · Tobías</text><rect x="62" y="168" width="96" height="26" rx="8" fill="#E76F51"/><text x="110" y="179" fill="#fff">SUR · árabes</text><text x="110" y="190" fill="#FFF3EE" font-weight="400" font-size="9">(Gesem, 2:19)</text><rect x="4" y="86" width="56" height="30" rx="8" fill="#6B4A40"/><text x="32" y="99" fill="#fff">OESTE</text><text x="32" y="110" fill="#F6CFDA" font-weight="400" font-size="9">Asdod</text></g></svg>
       <p>Los enemigos del v.7 rodean la ciudad por los cuatro lados. Por eso el miedo es real… y por eso «acordaos del Señor» (v.14) pesa tanto.</p>
     </div>
     <div class="n4-obs-card">
@@ -1941,7 +2081,7 @@ mark.n4-hl{background:color-mix(in srgb, #E9C46A 55%, transparent); color:inheri
   </div>
 
   <div class="n4-words-wrap" id="n4-palabras">
-    <h3 class="n4-h"><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path fill="#FFF8E7" stroke="#8D6E63" stroke-width="1" d="M3 4h11v16H3z"/><path stroke="#977272" stroke-width="1.1" d="M5 8h7M5 11h7M5 14h5"/><circle cx="15" cy="13" r="4.6" fill="#457B9D" fill-opacity=".25" stroke="#2F6BB0" stroke-width="1.8"/><path stroke="#E76F51" stroke-width="2.6" stroke-linecap="round" d="M18.4 16.4l3.4 3.4"/><circle cx="13.6" cy="11.6" r="1.1" fill="#FFF"/></svg></span>Más palabras para investigar (Strong / concordancia)</h3>
+    <h3 class="n4-h"><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path fill="#FFF8E7" stroke="#8D6E63" stroke-width="1" d="M3 4h11v16H3z"/><path stroke="#C2577A" stroke-width="1.1" d="M5 8h7M5 11h7M5 14h5"/><circle cx="15" cy="13" r="4.6" fill="#457B9D" fill-opacity=".25" stroke="#2F6BB0" stroke-width="1.8"/><path stroke="#E76F51" stroke-width="2.6" stroke-linecap="round" d="M18.4 16.4l3.4 3.4"/><circle cx="13.6" cy="11.6" r="1.1" fill="#FFF"/></svg></span>Más palabras para investigar (Strong / concordancia)</h3>
     <p class="n4-words-note">Las palabras que escogió la clase (pizarrón, 5 Oct 2026) están en la pestaña <a href="#trabajo-clase" style="color:var(--accent)"><b>Trabajo en clase</b> ↓</a>.</p>
     <p class="n4-words-lead">Números Strong verificados en el interlineal hebreo de Nehemías 4 (BibleHub). En cada tarjeta: definición de <b>Strong</b>, definición de <b>Vine</b>, el sentido en Neh 4, cuántas veces aparece en el AT y los enlaces a las fuentes. Definiciones traducidas del inglés al español (traducción propia, resumida).</p>
     <p class="n4-words-note"><b>Ojo con la numeración:</b> en la Biblia hebrea, Neh 4:1-6 (RVR) es <b>3:33-38</b> y Neh 4:7-23 es <b>4:1-17</b>. BibleHub y Blue Letter Bible usan la numeración de la RVR/KJV.</p>
