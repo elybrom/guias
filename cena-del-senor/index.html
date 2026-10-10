@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Guía · La Cena del Señor</title>
+<style>
+  :root {
+    --vino: #6b1e2a;
+    --vino-suave: #8b3a45;
+    --crema: #f7f1e8;
+    --papel: #fffdf8;
+    --oro: #c4a35a;
+    --texto: #2c2420;
+    --suave: #5c5148;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Georgia", "Times New Roman", serif;
+    background:
+      radial-gradient(ellipse at top, #3d1520 0%, #1a0c10 55%, #0d0709 100%);
+    color: var(--texto);
+    min-height: 100vh;
+    line-height: 1.65;
+  }
+  .wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  header {
+    text-align: center;
+    color: var(--crema);
+    margin-bottom: 2rem;
+    padding: 1.5rem 1rem 2rem;
+  }
+  .ornament {
+    color: var(--oro);
+    letter-spacing: 0.4em;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+  h1 {
+    font-weight: 400;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    margin: 0 0 0.5rem;
+    color: #fff8ee;
+  }
+  .subtitle {
+    color: #e8d5b5;
+    font-style: italic;
+    font-size: 1.05rem;
+    margin: 0;
+  }
+  .card {
+    background: var(--papel);
+    border-radius: 18px;
+    padding: 1.75rem 1.5rem;
+    margin-bottom: 1.35rem;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    border: 1px solid rgba(196,163,90,0.35);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--vino), var(--oro), var(--vino));
+  }
+  .tag {
+    display: inline-block;
+    background: var(--vino);
+    color: #fff8ee;
+    font-family: system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    margin-bottom: 0.85rem;
+  }
+  h2 {
+    margin: 0 0 1rem;
+    font-size: 1.35rem;
+    color: var(--vino);
+    font-weight: 600;
+  }
+  .verse {
+    font-size: 1.08rem;
+    color: var(--texto);
+  }
+  .verse strong {
+    color: var(--vino-suave);
+    font-weight: 700;
+  }
+  .note {
+    margin-top: 1.1rem;
+    padding: 0.9rem 1rem;
+    background: var(--crema);
+    border-left: 3px solid var(--oro);
+    border-radius: 0 10px 10px 0;
+    color: var(--suave);
+    font-size: 0.98rem;
+  }
+  .grid {
+    display: grid;
+    gap: 0.85rem;
+  }
+  @media (min-width: 640px) {
+    .grid.two { grid-template-columns: 1fr 1fr; }
+  }
+  .chip {
+    background: #fff;
+    border: 1px solid rgba(107,30,42,0.15);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+  }
+  .chip h3 {
+    margin: 0 0 0.35rem;
+    font-size: 0.95rem;
+    color: var(--vino);
+    font-family: system-ui, sans-serif;
+  }
+  .chip p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--suave);
+  }
+  footer {
+    text-align: center;
+    color: #cbb8a0;
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+    font-family: system-ui, sans-serif;
+  }
+  .cross {
+    display: block;
+    text-align: center;
+    color: var(--oro);
+    font-size: 1.4rem;
+    margin: 0.4rem 0 1rem;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="ornament">✦ · ✦ · ✦</div>
+      <h1>La Cena del Señor</h1>
+      <p class="subtitle">Guía de estudio · Apuntes del Nuevo Testamento</p>
+      <span class="cross">✝</span>
+    </header>
+
+    <section class="card">
+      <span class="tag">Mateo 26:26</span>
+      <h2>El pan · «Esto es mi cuerpo»</h2>
+      <p class="verse">Y mientras comían, tomó Jesús el pan, y bendijo, y lo partió, y dio a sus discípulos, y dijo: <strong>Tomad, comed; esto es mi cuerpo.</strong></p>
+      <div class="note">Mateo destaca la invitación directa: <em>tomad, comed</em>. El pan partido apunta al cuerpo entregado por nosotros.</div>
+    </section>
+
+    <section class="card">
+      <span class="tag">Marcos 14:21-25</span>
+      <h2>Traición y nuevo pacto</h2>
+      <p class="verse">
+        <strong>21</strong> A la verdad el Hijo del Hombre va, según está escrito de él, mas ¡ay de aquel hombre por quien el Hijo del Hombre es entregado! Bueno le fuera a ese hombre no haber nacido.
+        <strong>22</strong> Y mientras comían, Jesús tomó pan y bendijo, y lo partió y les dio, diciendo: Tomad, esto es mi cuerpo.
+        <strong>23</strong> Y tomando la copa, y habiendo dado gracias, les dio; y bebieron de ella todos.
+        <strong>24</strong> Y les dijo: Esto es mi sangre del nuevo pacto, que por muchos es derramada.
+        <strong>25</strong> De cierto os digo que no beberé más del fruto de la vid, hasta aquel día en que lo beba nuevo en el reino de Dios.
+      </p>
+      <div class="note">Marcos une el anuncio de la traición con la institución. Todos beben de la misma copa: sangre del <em>nuevo pacto</em>, derramada por muchos, con mirada al reino.</div>
+    </section>
+
+    <section class="card">
+      <span class="tag">Lucas 22:17-23</span>
+      <h2>Copa, pan y memoria</h2>
+      <p class="verse">
+        <strong>17</strong> Y habiendo tomado la copa, dio gracias, y dijo: Tomad esto, y repartidlo entre vosotros;
+        <strong>18</strong> porque os digo que no beberé más del fruto de la vid, hasta que el reino de Dios venga.
+        <strong>19</strong> Y tomó el pan y dio gracias, y lo partió y les dio, diciendo: Esto es mi cuerpo, que por vosotros es dado; <strong>haced esto en memoria de mí.</strong>
+        <strong>20</strong> De igual manera, después que hubo cenado, tomó la copa, diciendo: Esta copa es el nuevo pacto en mi sangre, que por vosotros se derrama.
+        <strong>21</strong> Mas he aquí, la mano del que me entrega está conmigo en la mesa.
+        <strong>22</strong> A la verdad el Hijo del Hombre va, según lo que está determinado; pero ¡ay de aquel hombre por quien es entregado!
+        <strong>23</strong> Entonces ellos comenzaron a discutir entre sí, quién de ellos sería el que había de hacer esto.
+      </p>
+      <div class="note">Solo Lucas registra el mandato de memoria. Hay una primera copa (v.17-18) y, después de cenar, la copa del nuevo pacto (v.20). El traidor está a la misma mesa.</div>
+    </section>
+
+    <section class="card">
+      <span class="tag">Comparación</span>
+      <h2>Lo que une a los tres relatos</h2>
+      <div class="grid two">
+        <div class="chip">
+          <h3>Pan</h3>
+          <p>Tomado, bendecido/gracias, partido y dado: «esto es mi cuerpo».</p>
+        </div>
+        <div class="chip">
+          <h3>Copa</h3>
+          <p>Sangre del nuevo pacto, derramada por muchos / por vosotros.</p>
+        </div>
+        <div class="chip">
+          <h3>Reino</h3>
+          <p>Promesa de no beber del fruto de la vid hasta el reino de Dios.</p>
+        </div>
+        <div class="chip">
+          <h3>Traición</h3>
+          <p>El Hijo del Hombre va según lo escrito; ¡ay del que lo entrega!</p>
+        </div>
+      </div>
+      <div class="note" style="margin-top:1.2rem">
+        <strong>Para adoración:</strong> el memorial nos lleva a la cruz y nos apunta al banquete del reino. Participamos con gratitud, unidad y examen de corazón.
+      </div>
+    </section>
+
+    <footer>
+      Textos RVR1960 · Guía armada a partir de tus apuntes · Adoración NT
+    </footer>
+  </div>
+</body>
+</html>
