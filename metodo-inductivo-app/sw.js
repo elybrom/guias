@@ -1,5 +1,5 @@
 /* Método Inductivo · Eli — shell cache */
-const CACHE = 'inductivo-eli-matcha1';
+const CACHE = 'inductivo-eli-fotos2';
 const SHELL = [
   './',
   './index.html',
@@ -8,8 +8,8 @@ const SHELL = [
   './icons/icon-512.png',
   './icons/apple-touch-icon.png',
   './icons/favicon-32.png',
-  './assets/tema/orquidea.svg',
-  './assets/tema/angelito.svg'
+  './assets/photos/eli-tarde-de-estudio.jpg',
+  './assets/photos/orquidea-mini.jpg'
 ];
 
 self.addEventListener('install', (event) => {

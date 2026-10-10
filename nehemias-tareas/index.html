@@ -752,8 +752,9 @@ mark.n4-hl{background:color-mix(in srgb, #E9C46A 55%, transparent); color:inheri
 .n4-key-num .n4-strong{font-size:13.5px; padding:4px 11px}
 
 </style>
+<!-- Fotos: Unsplash (licencia libre) — ver assets/photos/CREDITOS.txt -->
 <style id="tema-matcha-orquidea">
-/* ===== Tema matcha + orquídea + ladrillo (tema-matcha-v1) ===== */
+/* ===== Tema matcha + orquídea + ladrillo (tema-matcha-fotos-v2) ===== */
 :root, :root:not([data-theme="zz"]), :root[data-theme="dark"]{
   color-scheme: light;
   --paper:#FFFAF4; --surface:#FFFFFF; --surface-2:#FFF1F5;
@@ -807,21 +808,15 @@ h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif}
 /* hero en arco */
 header.hero{
   position:relative; isolation:isolate; text-align:left;
-  margin:22px 6px 8px; padding:56px 22px 30px; border-bottom:0;
+  margin:22px 6px 8px; padding:min(62vw,250px) 22px 30px; border-bottom:0;
 }
 header.hero::before{
   content:""; position:absolute; inset:0; z-index:-1;
   border-radius:999px 999px 30px 30px;
   background:
-    radial-gradient(70% 35% at 50% 12%, rgba(255,255,255,.95), transparent 70%),
-    linear-gradient(180deg,#FFF3F6 0%,#FBE3EA 50%,#EEF6E2 100%);
+    linear-gradient(180deg,#FFF3F6 0%,#FFF6F0 60%,#F1F7E8 100%);
   border:10px solid #F7EBDA;
   box-shadow:0 0 0 2px #E7D3B6, 0 0 0 9px #C2664A, 0 0 0 11px #A9563C, 0 22px 40px -20px rgba(194,102,74,.6);
-}
-header.hero::after{
-  content:""; position:absolute; z-index:1; width:84px; height:84px; right:-12px; top:70px;
-  background:url("assets/tema/orquidea.svg") no-repeat center/contain; transform:rotate(14deg);
-  filter:drop-shadow(0 6px 8px rgba(194,87,122,.25)); pointer-events:none;
 }
 .hero .eyebrow{text-align:center}
 .hero h1{text-align:center; color:var(--ink)}
@@ -829,12 +824,7 @@ header.hero::after{
 .hero .lede{color:var(--ink-soft)}
 .hero-meta{background:rgba(255,255,255,.75); border:1px solid rgba(244,169,191,.45); border-radius:18px; padding:14px 16px; font-family:"Nunito",sans-serif}
 .hero-meta dt{color:var(--accent); font-weight:800}
-.hero-pin{
-  width:84px !important; height:84px !important; padding:6px; margin:0 auto 14px !important;
-  background:#fff url("assets/tema/angelito.svg") no-repeat center/70% !important;
-  object-position:-999px -999px; border-radius:50% !important;
-  box-shadow:0 0 0 4px #FBE3EA, 0 10px 22px -10px rgba(194,87,122,.55) !important;
-}
+.hero-pin{display:none !important}
 .sec-illo.img-wrap,.step-illo,.n4-step-art{
   background:linear-gradient(145deg,#FFFFFF 0%,#FFF1F5 60%,#FBE3EA 100%) !important;
   box-shadow:inset 0 0 0 1px rgba(244,169,191,.45), 0 4px 10px -6px rgba(194,87,122,.45) !important;
@@ -888,8 +878,23 @@ thead th{background:#FFF1F5; color:var(--accent); font-weight:800}
 #mark-toast .t-desc,#mark-toast .t-tip{font-family:"Nunito",sans-serif}
 .cuadro-filters .filt{font-family:"Nunito",sans-serif; font-weight:700}
 footer{border-top:1px solid #F2E4CF; font-family:"Nunito",sans-serif; color:var(--ink-soft)}
-footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto 4px; background:url("assets/tema/orquidea.svg") no-repeat center/contain}
+footer::before{content:""; display:block; width:56px; height:56px; margin:0 auto 6px; border-radius:50%; background:url("assets/photos/t-orq4.jpg") center/cover; box-shadow:0 0 0 3px #fff, 0 0 0 4px rgba(244,169,191,.7)}
 @media (max-width:520px){ .legend{top:auto} }
+
+header.hero::after{content:""; position:absolute; z-index:0; pointer-events:none;
+  top:12px; left:12px; right:12px; aspect-ratio:4/5;
+  border-radius:999px 999px 0 0;
+  background:
+    linear-gradient(180deg, rgba(255,250,244,0) 30%, rgba(255,246,248,.55) 52%, rgba(255,246,248,.9) 68%),
+    url("assets/photos/hero.jpg") center top / cover no-repeat;
+  -webkit-mask-image:linear-gradient(180deg,#000 50%,transparent 82%); mask-image:linear-gradient(180deg,#000 50%,transparent 82%); z-index:-1;}
+/* fotos en vez de dibujos */
+.legend-chip-ico,.puerta-ico .illo,.art-illo,.n4-step-art,.rail h4 .illo{display:none !important}
+.sec-illo.img-wrap{padding:0 !important; border-radius:50% !important; overflow:hidden; box-shadow:0 0 0 2px #fff, 0 0 0 3px rgba(244,169,191,.7), 0 6px 14px -8px rgba(194,87,122,.6) !important}
+.sec-illo.img-wrap img{object-fit:cover !important; border-radius:50% !important}
+.chap-photo{width:46px; height:46px; flex-shrink:0; border-radius:50%; overflow:hidden; box-shadow:0 0 0 2px #fff, 0 0 0 3px rgba(244,169,191,.7)}
+.chap-photo img{width:100%; height:100%; object-fit:cover; display:block}
+.hero h1{text-shadow:0 1px 0 rgba(255,255,255,.6)}
 
 </style>
 
@@ -924,7 +929,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 </nav>
 
 <header class="hero">
-  <img class="hero-pin" src="assets/pinterest/house-foundation-colorful.jpg" alt="" width="72" height="72" loading="eager">
+  <img class="hero-pin" src="assets/photos/t-ladrillo3.jpg" alt="" width="72" height="72" loading="eager">
   <p class="eyebrow">Escuela de Alabanza · Método Inductivo · Mtro. Fermín IV</p>
   <h1>Nehemías 1, 2, 3 y 4<br><em>marcado con colores</em></h1>
   <p class="lede">Observación del texto aplicando las diez estrategias de lectura: verbos, sujeto, predicado y adverbios en la capa gramatical; repeticiones, contrastes, condiciones y cronología en la capa de observación. Con las conexiones bíblicas del pasaje — Ester, Daniel, Esdras, José y Moisés.</p>
@@ -961,7 +966,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <!-- ══════════════════ CAPÍTULO 1 ══════════════════ -->
 <section id="cap1">
   <div class="chapter-open">
-    <span class="chap-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 48 48" aria-hidden="true" focusable="false" width="44" height="44" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="14" rx="10" ry="3.5" fill="#E9C46A" stroke="#8D6E63" stroke-width="1.4"/><path fill="#457B9D" stroke="#2F6B8A" stroke-width="1.3" d="M14 14c0 8 4 14 10 16 6-2 10-8 10-16"/><path fill="none" stroke="#8D6E63" stroke-width="1.5" d="M24 30v6M18 38h12"/><path fill="none" stroke="#E76F51" stroke-width="1.5" d="M34 16c3 1 4.5 3 4.5 5.5S36 26 33 26"/><circle cx="24" cy="20" r="2" fill="#E9F5F3"/></svg></span>
+    <span class="chap-illo chap-photo" aria-hidden="true"><img src="assets/photos/t-jerusalen1.jpg" alt="" width="44" height="44" loading="lazy"></span>
     
     <h3>Nehemías 1</h3>
     <p class="kicker">La noticia y la oración<br>11 versículos · 7 de ellos son oración</p>
@@ -1108,7 +1113,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <!-- ══════════════════ CAPÍTULO 2 ══════════════════ -->
 <section id="cap2">
   <div class="chapter-open">
-    <span class="chap-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 64 40" aria-hidden="true" focusable="false" width="56" height="34" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="28" width="64" height="12" fill="#2A9D8F" opacity=".35"/><path fill="#8D6E63" d="M4 28V12l8-4 8 4v16"/><path fill="#A1887F" d="M28 28V10l10-5 10 5v18"/><path fill="#8D6E63" d="M52 28V14l6-3 6 3v14"/><circle cx="50" cy="8" r="5" fill="#E9C46A"/><path stroke="#E76F51" stroke-width="2" stroke-linecap="round" d="M18 30h8M22 30v-4"/><circle cx="22" cy="24" r="2.2" fill="#457B9D"/></svg></span>
+    <span class="chap-illo chap-photo" aria-hidden="true"><img src="assets/photos/t-jerusalen2.jpg" alt="" width="44" height="44" loading="lazy"></span>
     
     <h3>Nehemías 2</h3>
     <p class="kicker">La petición, el viaje y la convocatoria<br>20 versículos · 4 preguntas · 3 opositores</p>
@@ -1340,7 +1345,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <!-- ══════════════════ CAPÍTULO 3 ══════════════════ -->
 <section id="cap3">
   <div class="chapter-open">
-    <span class="chap-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 64 40" aria-hidden="true" focusable="false" width="56" height="34" xmlns="http://www.w3.org/2000/svg"><path fill="#E9C46A" stroke="#8D6E63" stroke-width="1.3" d="M4 34V16h8v-6h6v6h8v-8h6v8h8v-6h6v6h10v18z"/><path fill="#457B9D" d="M14 34V22h8v12"/><path fill="#2A9D8F" d="M30 34V20h8v14"/><path fill="#E76F51" d="M46 34V22h8v12"/><circle cx="18" cy="26" r="1.5" fill="#E9F5F3"/><circle cx="34" cy="26" r="1.5" fill="#E9F5F3"/><circle cx="50" cy="26" r="1.5" fill="#FFF8E7"/></svg></span>
+    <span class="chap-illo chap-photo" aria-hidden="true"><img src="assets/photos/t-jerusalen3.jpg" alt="" width="44" height="44" loading="lazy"></span>
     
     <h3>Nehemías 3</h3>
     <p class="kicker">El reparto del trabajo<br>32 versículos · 10 puertas · ~40 grupos de trabajo</p>
@@ -1616,7 +1621,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <div class="cuadro-puertas" id="cuadro-puertas">
     <div class="cuadro-head">
-      <h3><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path fill="#E9C46A" stroke="#8D6E63" stroke-width="1.3" d="M5 20V7.5L12 4l7 3.5V20"/><path fill="#8D6E63" d="M12 20V9"/><circle cx="10.2" cy="14" r="1.1" fill="#E76F51"/><rect x="14" y="11" width="3.5" height="5" rx="0.4" fill="#457B9D"/><path stroke="#2A9D8F" stroke-width="1.3" d="M12 8v8"/></svg></span>Cuadro de las puertas — Nehemías 3</h3>
+      <h3><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-biblia3.jpg" alt="" width="40" height="40" loading="lazy"></span>Cuadro de las puertas — Nehemías 3</h3>
       <div class="cuadro-filters" role="group" aria-label="Filtrar puertas">
         <button type="button" class="filt" data-filter="all" aria-pressed="true">Todas</button>
         <button type="button" class="filt" data-filter="terminadas" aria-pressed="false">Solo terminadas</button>
@@ -1776,7 +1781,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <!-- ══════════════════ CAPÍTULO 4 ══════════════════ -->
 <section id="nehemias-4">
   <div class="chapter-open">
-    <span class="chap-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 64 40" aria-hidden="true" focusable="false" width="56" height="34" xmlns="http://www.w3.org/2000/svg"><path fill="#E9C46A" stroke="#8D6E63" stroke-width="1.2" d="M2 38V22h6v-4h6v4h6v-4h6v4h6v16z"/><path stroke="#8D6E63" stroke-width=".8" d="M2 28h30M2 33h30M10 22v6M20 28v5M14 33v5M26 33v5"/><circle cx="45" cy="12" r="4.2" fill="#F4C7A1" stroke="#8D6E63" stroke-width=".8"/><path fill="#8D6E63" d="M40.8 11c.4-3 2.2-4.4 4.2-4.4s3.8 1.4 4.2 4.4c-1.4-1-2.8-1.4-4.2-1.4s-2.8.4-4.2 1.4z"/><path fill="#457B9D" d="M38.5 38l1-14c.3-3 2.6-5 5.5-5s5.2 2 5.5 5l1 14z"/><path stroke="#F4C7A1" stroke-width="2.2" stroke-linecap="round" d="M40 25l-5 2M50 25l4-6"/><path fill="#ADB5BD" stroke="#6C757D" stroke-width=".6" d="M28 25l7 2-1.5 2.5z"/><path stroke="#E9C46A" stroke-width="1.8" stroke-linecap="round" d="M53 21l1.6-2.6"/><path stroke="#CED4DA" stroke-width="1.6" stroke-linecap="round" d="M54.6 18.4l5-9"/><path stroke="#E76F51" stroke-width="2" stroke-linecap="round" d="M51.8 19.6l3.8 2.2"/><path fill="#2A9D8F" d="M41 30h8v2h-8z"/></svg></span>
+    <span class="chap-illo chap-photo" aria-hidden="true"><img src="assets/photos/t-ladrillo1.jpg" alt="" width="44" height="44" loading="lazy"></span>
     <h3>Nehemías 4</h3>
     <p class="kicker">Oposición, oración y trabajo<br>23 versículos · 2 oraciones · 3 rondas de oposición</p>
   </div>
@@ -2081,7 +2086,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
   </div>
 
   <div class="n4-words-wrap" id="n4-palabras">
-    <h3 class="n4-h"><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path fill="#FFF8E7" stroke="#8D6E63" stroke-width="1" d="M3 4h11v16H3z"/><path stroke="#C2577A" stroke-width="1.1" d="M5 8h7M5 11h7M5 14h5"/><circle cx="15" cy="13" r="4.6" fill="#457B9D" fill-opacity=".25" stroke="#2F6BB0" stroke-width="1.8"/><path stroke="#E76F51" stroke-width="2.6" stroke-linecap="round" d="M18.4 16.4l3.4 3.4"/><circle cx="13.6" cy="11.6" r="1.1" fill="#FFF"/></svg></span>Más palabras para investigar (Strong / concordancia)</h3>
+    <h3 class="n4-h"><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-matcha4.jpg" alt="" width="40" height="40" loading="lazy"></span>Más palabras para investigar (Strong / concordancia)</h3>
     <p class="n4-words-note">Las palabras que escogió la clase (pizarrón, 5 Oct 2026) están en la pestaña <a href="#trabajo-clase" style="color:var(--accent)"><b>Trabajo en clase</b> ↓</a>.</p>
     <p class="n4-words-lead">Números Strong verificados en el interlineal hebreo de Nehemías 4 (BibleHub). En cada tarjeta: definición de <b>Strong</b>, definición de <b>Vine</b>, el sentido en Neh 4, cuántas veces aparece en el AT y los enlaces a las fuentes. Definiciones traducidas del inglés al español (traducción propia, resumida).</p>
     <p class="n4-words-note"><b>Ojo con la numeración:</b> en la Biblia hebrea, Neh 4:1-6 (RVR) es <b>3:33-38</b> y Neh 4:7-23 es <b>4:1-17</b>. BibleHub y Blue Letter Bible usan la numeración de la RVR/KJV.</p>
@@ -2222,7 +2227,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <section id="trabajo-clase">
   <div class="sec-head">
     <span class="sec-num">EN CLASE</span>
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="30" height="30" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="13" rx="1.5" fill="#FFF8E7" stroke="#8D6E63" stroke-width="1.2"/><path stroke="#2F6BB0" stroke-width="1.3" stroke-linecap="round" d="M5 7h7M5 10h10M5 13h5"/><path stroke="#E76F51" stroke-width="1.6" stroke-linecap="round" d="M15.5 12.5l3-3"/><path stroke="#8D6E63" stroke-width="1.3" stroke-linecap="round" d="M8 16l-2 5M16 16l2 5"/></svg></span>Trabajo en clase</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-orq3.jpg" alt="" width="40" height="40" loading="lazy"></span>Trabajo en clase</h2>
   </div>
   <p class="sec-intro">Lo que vamos trabajando juntos en clase, sesión por sesión (la más reciente arriba).</p>
   <nav class="clase-index" aria-label="Sesiones de clase"><span>Sesiones:</span> <a href="#clase-2026-10-05">5 Oct 2026 · Nehemías 4 · palabras del pizarrón</a> <a href="#clase-2026-10-05-fil2">5 Oct 2026 · Filipenses 2 · gozo (2:2, 2:17 y 2:18)</a></nav>
@@ -2511,7 +2516,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <section id="conexiones">
   <div class="sec-head">
     <span class="sec-num">ESTRATEGIA 10</span>
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/golden-key-heart.jpg" alt="" width="40" height="40" loading="lazy"></span>Conexiones: Nehemías y Ester</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-mapa1.jpg" alt="" width="40" height="40" loading="lazy"></span>Conexiones: Nehemías y Ester</h2>
   </div>
   <p class="sec-intro">Nehemías 1—2 ocurre en el mismo palacio del libro de Ester, una generación después. Cuando en 2:6 aparece «la reina sentada junto a él», el lector que viene de Ester sabe perfectamente lo que puede significar una reina sentada junto a un rey persa.</p>
 
@@ -2623,7 +2628,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <section id="preguntas">
   <div class="sec-head">
     <span class="sec-num">ESTRATEGIA 04</span>
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><circle cx="10.5" cy="10.5" r="5.8" fill="#457B9D"/><circle cx="10.5" cy="10.5" r="3" fill="#E8F1F8"/><path stroke="#E76F51" stroke-width="2.2" stroke-linecap="round" d="M15 15l5 5"/><circle cx="10.5" cy="10.5" r="1.2" fill="#E9C46A"/></svg></span>Lectura selectiva: las preguntas</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-peonia4.jpg" alt="" width="40" height="40" loading="lazy"></span>Lectura selectiva: las preguntas</h2>
   </div>
   <p class="sec-intro">Las preguntas que hacen que el objetivo se logre. No se le pregunta al texto lo que uno quiere oír, sino lo que el texto está diciendo.</p>
 
@@ -2647,7 +2652,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <section id="intencional">
   <div class="sec-head">
     <span class="sec-num">ESTRATEGIA 08</span>
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#457B9D"/><circle cx="12" cy="12" r="6" fill="#E9F5F3"/><circle cx="12" cy="12" r="3.2" fill="#E76F51"/><circle cx="12" cy="12" r="1.4" fill="#E9C46A"/></svg></span>Lectura intencional</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-cafe1.jpg" alt="" width="40" height="40" loading="lazy"></span>Lectura intencional</h2>
   </div>
   <p class="sec-intro">Sujeto, verbo y predicado de los versículos que sostienen la estructura. Éste es el esqueleto que quedó marcado arriba.</p>
 
@@ -2755,7 +2760,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <section id="contexto">
   <div class="sec-head">
     <span class="sec-num">REGLA</span>
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M6 4.5h10a2 2 0 012 2v11a2 2 0 01-2 2H8a2 2 0 00-2 2V4.5z" fill="#E9C46A"/><path stroke="#8D6E63" stroke-width="1.2" d="M9 9h6M9 12h5"/><circle cx="16" cy="16" r="2" fill="#E76F51"/></svg></span>¿Qué quiso comunicar el autor a sus primeros lectores?</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-libreta1.jpg" alt="" width="40" height="40" loading="lazy"></span>¿Qué quiso comunicar el autor a sus primeros lectores?</h2>
   </div>
   <p class="sec-intro">Antes de preguntar qué significa para mí. Sin contexto, la mitad de las decisiones de Nehemías parecen arbitrarias.</p>
 
@@ -2784,7 +2789,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <section id="oracion">
   <div class="sec-head">
     <span class="sec-num">ESTRATEGIA 05</span>
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M9 4v7.5c0 1.2-.8 2-2 2H5.5V9.5C5.5 7 7 5.5 9 4z" fill="#2A9D8F"/><path d="M15 4v7.5c0 1.2.8 2 2 2H18.5V9.5C18.5 7 17 5.5 15 4z" fill="#457B9D"/><path stroke="#E9C46A" stroke-width="1.5" stroke-linecap="round" d="M9 14.5v5.5M15 14.5v5.5"/></svg></span>Leer orando</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-biblia2.jpg" alt="" width="40" height="40" loading="lazy"></span>Leer orando</h2>
   </div>
   <p class="sec-intro">Todo pasaje se puede convertir en oración. Nehemías 1:5-11 ya trae la estructura: adoración, confesión, apelación a la promesa, petición concreta.</p>
 
@@ -2811,7 +2816,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <section id="estrategias">
   <div class="sec-head">
     <span class="sec-num">TAREA</span>
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 15.5l11-7 3 5.2-11 7z" fill="#457B9D"/><circle cx="17.5" cy="7.5" r="3.2" fill="#E9C46A"/><path d="M7.5 18.5v3M11.5 16.5v4" stroke="#8D6E63" stroke-width="1.4" stroke-linecap="round"/></svg></span>Las diez estrategias aplicadas</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-marcador2.jpg" alt="" width="40" height="40" loading="lazy"></span>Las diez estrategias aplicadas</h2>
   </div>
   <p class="sec-intro">Registro de cómo se trabajó este pasaje, estrategia por estrategia.</p>
 
@@ -2833,7 +2838,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <section id="aplicacion">
   <div class="sec-head">
     <span class="sec-num">ESTRATEGIA 09</span>
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/lightbulb-heart.jpg" alt="" width="40" height="40" loading="lazy"></span>Ciertas para mi vida</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-cafe2.jpg" alt="" width="40" height="40" loading="lazy"></span>Ciertas para mi vida</h2>
   </div>
   <p class="sec-intro">Lo que se relaciona conmigo, con mis circunstancias y con mis dificultades. La pregunta no es qué me gustó, sino qué cambia el lunes.</p>
 
@@ -2878,7 +2883,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <section id="practica">
   <div class="sec-head">
     <span class="sec-num">PRÁCTICA</span>
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#E76F51"/><path d="M9.2 9.2a3 3 0 015.1 2.2c0 1.6-1.6 2.2-2.3 3.1" stroke="#FFF" stroke-width="1.7" fill="none" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.15" fill="#E9C46A"/></svg></span>Observación Nehemías 1–3</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-orq1.jpg" alt="" width="40" height="40" loading="lazy"></span>Observación Nehemías 1–3</h2>
   </div>
   <p class="sec-intro">Diez preguntas sobre repeticiones, contrastes, puertas del cap. 3 y la cadena de respuesta de Nehemías. Responde con lo que viste en el texto marcado.</p>
   <div class="quiz" id="quiz-root"></div>
@@ -2893,7 +2898,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <section id="despues">
   <div class="sec-head">
     <span class="sec-num">CIERRE</span>
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path fill="#E9C46A" d="M5 19V8l7-4 7 4v11"/><path fill="#8D6E63" d="M9 19v-6h6v6"/><circle cx="12" cy="10" r="1.4" fill="#E76F51"/></svg></span>Después del examen</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-matcha1.jpg" alt="" width="40" height="40" loading="lazy"></span>Después del examen</h2>
   </div>
   <p class="sec-intro">La observación no es el final: es el umbral para entender y responder.</p>
   <div class="despues-grid">
@@ -2951,7 +2956,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 <section id="apuntes">
   <div class="sec-head">
     <span class="sec-num">ENLACES</span>
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/notebook-pen-cute.jpg" alt="" width="40" height="40" loading="lazy"></span>Apuntes del curso</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-cafe1.jpg" alt="" width="40" height="40" loading="lazy"></span>Apuntes del curso</h2>
   </div>
   <p class="sec-intro">Apuntes de clase: <a href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/" style="color:var(--accent)">abrir Apuntes</a>. También la <a href="https://elybrom.github.io/guias/metodo-inductivo/" style="color:var(--accent)">Guía de examen</a> y esta página de <b>Tareas</b> (Nehemías marcado).</p>
 </section>

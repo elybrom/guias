@@ -693,8 +693,9 @@ table.cuadro td.col-hl { box-shadow: inset 0 0 0 2px rgba(194,87,122,.45); }
   box-shadow: inset 0 0 0 1px rgba(194,87,122,.1); }
 
 </style>
+<!-- Fotos: Unsplash (licencia libre) — ver assets/photos/CREDITOS.txt -->
 <style id="tema-matcha-orquidea">
-/* ===== Tema matcha + orquídea + ladrillo (tema-matcha-v1) ===== */
+/* ===== Tema matcha + orquídea + ladrillo (tema-matcha-fotos-v2) ===== */
 :root{
   --birch:#F6CFDA; --hearth:#C2577A; --woodsmoke:#6B4A40; --midnight:#4A2F2A; --white:#FFFFFF;
   --t-cream:#FFFAF4; --t-stone:#F2E4CF; --t-blush:#FBE3EA; --t-pink:#F4A9BF; --t-rose:#C2577A;
@@ -738,20 +739,23 @@ a{color:var(--t-rose)}
 /* arch hero */
 .hero{
   min-height:auto !important; background:transparent; color:var(--t-ink);
-  padding:2.6rem 1.6rem 2.4rem; margin:1.2rem 1.45rem .6rem; isolation:isolate;
+  padding:min(58vw,240px) 1.6rem 2.4rem; margin:1.2rem 1.45rem .6rem; isolation:isolate;
 }
 .hero{overflow:visible !important}
 .hero > .hero-bg{position:absolute !important; inset:0; z-index:0 !important;
-  border-radius:999px 999px 30px 30px;
+  border-radius:999px 999px 30px 30px; overflow:hidden;
   background:
-    radial-gradient(70% 45% at 50% 18%, rgba(255,255,255,.95), transparent 70%),
-    linear-gradient(180deg,#FFF3F6 0%,#FBE3EA 45%,#EEF6E2 100%) !important;
+    linear-gradient(180deg,#FFF3F6 0%,#FFF6F0 60%,#F1F7E8 100%) !important;
   border:10px solid #F7EBDA;
   box-shadow:0 0 0 2px #E7D3B6, 0 0 0 9px #C2664A, 0 0 0 11px #A9563C, 0 22px 40px -20px rgba(194,102,74,.6);
 }
-.hero::before,.hero::after{content:""; position:absolute; z-index:1; pointer-events:none; background-repeat:no-repeat; background-size:contain}
-.hero::before{width:78px; height:78px; right:-14px; top:16%; background-image:url("assets/tema/orquidea.svg"); transform:rotate(14deg); filter:drop-shadow(0 6px 8px rgba(194,87,122,.25))}
-.hero::after{width:70px; height:70px; left:-6px; bottom:-14px; background-image:url("assets/tema/orquidea.svg"); transform:rotate(-24deg); filter:drop-shadow(0 6px 8px rgba(194,87,122,.25))}
+.hero::before{content:""; position:absolute; z-index:1 !important; display:block !important; pointer-events:none;
+  top:12px; left:12px; right:12px; aspect-ratio:4/5;
+  border-radius:999px 999px 0 0;
+  background:
+    linear-gradient(180deg, rgba(255,250,244,0) 30%, rgba(255,246,248,.55) 52%, rgba(255,246,248,.9) 68%),
+    url("assets/photos/hero.jpg") center top / cover no-repeat;
+  -webkit-mask-image:linear-gradient(180deg,#000 50%,transparent 82%); mask-image:linear-gradient(180deg,#000 50%,transparent 82%);}
 .hero > *{z-index:2}
 .hero > .badge,.hero > .paleta-chip,.hero > .scroll-hint{align-self:center; width:fit-content; margin-left:auto; margin-right:auto}
 .hero h1{color:var(--t-ink); text-shadow:none}
@@ -760,12 +764,7 @@ a{color:var(--t-rose)}
 .badge{background:var(--t-matcha-soft); color:var(--t-matcha-deep); border:1px solid #CFE3B0; font-weight:800; letter-spacing:.16em}
 .paleta-chip{background:#fff; color:var(--t-ink-soft); border:1px solid rgba(242,228,207,.95); font-weight:700}
 .sw{border:1px solid rgba(74,47,42,.12)}
-.hero-pin{
-  width:84px !important; height:84px !important; padding:6px;
-  background:#fff url("assets/tema/angelito.svg") no-repeat center/70% !important;
-  object-position:-999px -999px; border-radius:50% !important;
-  box-shadow:0 0 0 4px #FBE3EA, 0 10px 22px -10px rgba(194,87,122,.55) !important;
-}
+.hero-pin{display:none !important}
 .scroll-hint{color:var(--t-rose)}
 
 /* sections */
@@ -828,10 +827,18 @@ table.cuadro tr:nth-child(even) td{background:#FFF5F8}
 .verified-box{background:linear-gradient(160deg,#FFFFFF,#F1F7E8); border-color:#D9E9C4}
 .verified-box .label{color:var(--t-matcha-deep)}
 footer{color:var(--t-ink-soft); opacity:1}
-footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto .4rem; background:url("assets/tema/orquidea.svg") no-repeat center/contain}
+footer::before{content:""; display:block; width:56px; height:56px; margin:0 auto .5rem; border-radius:50%; background:url("assets/photos/t-orq4.jpg") center/cover; box-shadow:0 0 0 3px #fff, 0 0 0 4px rgba(244,169,191,.7)}
 .card-body{padding:0 1.1rem 1.15rem; font-size:.92rem; line-height:1.65; color:var(--t-ink)}
 .card-body p + p,.card-body p + ul,.card-body ul + p{margin-top:.55rem}
 .card-body ul{margin-left:1.1rem}
+
+/* fotos en vez de dibujos */
+.card-icon.svg-wrap,.b-icon:has(svg),.letra-ico,.milagro-ico,.ornament.illo-orn .illo{display:none !important}
+.sec-illo.img-wrap,.card-icon.img-wrap{padding:0 !important; border-radius:50% !important; overflow:hidden; box-shadow:0 0 0 2px #fff, 0 0 0 3px rgba(244,169,191,.7), 0 6px 14px -8px rgba(194,87,122,.6) !important}
+.sec-illo.img-wrap img,.card-icon.img-wrap img{object-fit:cover !important; border-radius:50% !important}
+.step-illo{padding:0 !important; border-radius:50% !important; object-fit:cover !important; box-shadow:0 0 0 2px #fff, 0 0 0 3px rgba(244,169,191,.6) !important}
+.acc-btn .num-ico{font-family:"Fraunces",Georgia,serif; font-weight:700; color:#fff; background:var(--t-rose); border-radius:50%; width:2rem !important; height:2rem; flex-shrink:0; font-size:.9rem}
+.hero h1{text-shadow:0 1px 0 rgba(255,255,255,.6)}
 
 </style>
 </head>
@@ -858,7 +865,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <header class="hero" id="inicio">
     <div class="hero-bg" aria-hidden="true"></div>
-    <img class="hero-pin" src="assets/pinterest/open-bible-cute.jpg" alt="" width="72" height="72" loading="eager">
+    <img class="hero-pin" src="assets/photos/t-biblia1.jpg" alt="" width="72" height="72" loading="eager">
     <span class="badge">Solo teoría</span>
     <h1>Método Inductivo</h1>
     <p class="sub">Guía teórica para el examen</p>
@@ -879,13 +886,13 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
   </header>
 
   <section id="intro" class="section-soft reveal">
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/notebook-pen-cute.jpg" alt="" width="40" height="40" loading="lazy"></span>El método bíblico</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-cafe1.jpg" alt="" width="40" height="40" loading="lazy"></span>El método bíblico</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Tres pasos. Propósito: cambiar nuestra vida.</p>
     <div class="steps">
       <div class="step">
         <span class="n">1</span>
-        <img class="step-illo" src="assets/pinterest/shovel-digging-sticker.jpg" alt="" width="36" height="36" loading="lazy">
+        <img class="step-illo" src="assets/photos/t-marcador2.jpg" alt="" width="36" height="36" loading="lazy">
         <span>
           <span class="label">Observación</span>
           <span class="q">¿Qué es lo que veo?</span>
@@ -894,7 +901,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
       </div>
       <div class="step">
         <span class="n">2</span>
-        <img class="step-illo" src="assets/pinterest/golden-key-heart.jpg" alt="" width="36" height="36" loading="lazy">
+        <img class="step-illo" src="assets/photos/t-mapa1.jpg" alt="" width="36" height="36" loading="lazy">
         <span>
           <span class="label">Interpretación</span>
           <span class="q">¿Qué significa esto?</span>
@@ -903,7 +910,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
       </div>
       <div class="step">
         <span class="n">3</span>
-        <img class="step-illo" src="assets/pinterest/tree-with-roots.jpg" alt="" width="36" height="36" loading="lazy">
+        <img class="step-illo" src="assets/photos/t-orq5.jpg" alt="" width="36" height="36" loading="lazy">
         <span>
           <span class="label">Aplicación</span>
           <span class="q">¿Cómo funciona esto?</span>
@@ -915,7 +922,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
   </section>
 
   <section id="preguntas" class="reveal">
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#457B9D"/><path d="M9.2 9.2a3 3 0 015.1 2.2c0 1.6-1.6 2.2-2.3 3.1" stroke="#FFF" stroke-width="1.7" fill="none" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.15" fill="#E9C46A"/></svg></span>Preguntas de teoría</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-orq3.jpg" alt="" width="40" height="40" loading="lazy"></span>Preguntas de teoría</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Las marcadas con ★ importan para el examen. Toca para revelar.</p>
     <div class="progress-bar-wrap">
@@ -1063,7 +1070,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
   </section>
 
   <section id="diez" class="reveal">
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/shovel-digging-sticker.jpg" alt="" width="40" height="40" loading="lazy"></span>Las 10</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-marcador2.jpg" alt="" width="40" height="40" loading="lazy"></span>Las 10</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Nombres exactos de la guía. Lista o flashcards.</p>
     <div class="mode-toggle">
@@ -1078,7 +1085,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
       <ol class="estrategias" id="estrategias-list">
         <li class="acc-item" data-id="1">
           <button type="button" class="acc-btn" aria-expanded="false">
-            <span class="num num-ico" title="1"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 5.5h7.2a1.5 1.5 0 011.5 1.5V20H5a1.5 1.5 0 01-1.5-1.5V5.5z" fill="#457B9D"/><path d="M12.2 5.5H19.5V18.5a1.5 1.5 0 01-1.5 1.5H12.2V5.5z" fill="#2A9D8F"/><path d="M12 5.2v15.5" stroke="#FFF8F4" stroke-width="1.2"/><circle cx="18.5" cy="16.5" r="2.2" fill="#E9C46A"/></svg></span>
+            <span class="num num-ico" title="1">1</span>
             <strong>Leer con la mente <span class="sub-label">Leer para entender</span></strong>
             <span class="acc-chevron" aria-hidden="true">▾</span>
           </button>
@@ -1086,7 +1093,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
         </li>
         <li class="acc-item" data-id="2">
           <button type="button" class="acc-btn" aria-expanded="false">
-            <span class="num num-ico" title="2"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#2A9D8F" stroke-width="1.8" stroke-linecap="round" d="M7 7h9a3 3 0 013 3v2"/><path fill="#2A9D8F" d="M16 4l4 3-4 3z"/><path fill="none" stroke="#E76F51" stroke-width="1.8" stroke-linecap="round" d="M17 17H8a3 3 0 01-3-3v-2"/><path fill="#E76F51" d="M8 20l-4-3 4-3z"/><circle cx="12" cy="12" r="1.4" fill="#E9C46A"/></svg></span>
+            <span class="num num-ico" title="2">2</span>
             <strong>Leer repetidamente</strong>
             <span class="acc-chevron" aria-hidden="true">▾</span>
           </button>
@@ -1094,7 +1101,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
         </li>
         <li class="acc-item" data-id="3">
           <button type="button" class="acc-btn" aria-expanded="false">
-            <span class="num num-ico" title="3"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 4h9v2.8L13.5 10l3 3.2V19h-9v-5.8L10.5 10 7.5 6.8V4z" fill="#E9C46A"/><path d="M6.5 4h11M6.5 20h11" stroke="#8D6E63" stroke-width="1.4" stroke-linecap="round"/><circle cx="12" cy="12" r="1.2" fill="#E76F51"/></svg></span>
+            <span class="num num-ico" title="3">3</span>
             <strong>Leer con paciencia</strong>
             <span class="acc-chevron" aria-hidden="true">▾</span>
           </button>
@@ -1102,7 +1109,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
         </li>
         <li class="acc-item" data-id="4">
           <button type="button" class="acc-btn" aria-expanded="false">
-            <span class="num num-ico" title="4"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><circle cx="10.5" cy="10.5" r="5.8" fill="#457B9D"/><circle cx="10.5" cy="10.5" r="3.2" fill="#E8F1F8"/><path stroke="#E76F51" stroke-width="2.2" stroke-linecap="round" d="M15 15l5 5"/><circle cx="10.5" cy="10.5" r="1.2" fill="#E9C46A"/></svg></span>
+            <span class="num num-ico" title="4">4</span>
             <strong>Leer selectivamente</strong>
             <span class="acc-chevron" aria-hidden="true">▾</span>
           </button>
@@ -1110,7 +1117,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
         </li>
         <li class="acc-item" data-id="5">
           <button type="button" class="acc-btn" aria-expanded="false">
-            <span class="num num-ico" title="5"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M9 4v7.5c0 1.2-.8 2-2 2H5.5V9.5C5.5 7 7 5.5 9 4z" fill="#2A9D8F"/><path d="M15 4v7.5c0 1.2.8 2 2 2H18.5V9.5C18.5 7 17 5.5 15 4z" fill="#457B9D"/><path stroke="#E9C46A" stroke-width="1.5" stroke-linecap="round" d="M9 14.5v5.5M15 14.5v5.5"/><circle cx="12" cy="8" r="1.3" fill="#E76F51"/></svg></span>
+            <span class="num num-ico" title="5">5</span>
             <strong>Lee orando</strong>
             <span class="acc-chevron" aria-hidden="true">▾</span>
           </button>
@@ -1118,7 +1125,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
         </li>
         <li class="acc-item" data-id="6">
           <button type="button" class="acc-btn" aria-expanded="false">
-            <span class="num num-ico" title="6"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="10" r="6" fill="#E9C46A"/><path fill="none" stroke="#8D6E63" stroke-width="1.4" d="M8 17c1.2 1.6 2.8 2.6 4 2.6s2.8-1 4-2.6"/><circle cx="10" cy="9.5" r="1" fill="#457B9D"/><circle cx="14" cy="9.5" r="1" fill="#457B9D"/><path d="M10.5 12.2c.8.8 2.2.8 3 0" stroke="#E76F51" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
+            <span class="num num-ico" title="6">6</span>
             <strong>Lee imaginando</strong>
             <span class="acc-chevron" aria-hidden="true">▾</span>
           </button>
@@ -1126,7 +1133,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
         </li>
         <li class="acc-item" data-id="7">
           <button type="button" class="acc-btn" aria-expanded="false">
-            <span class="num num-ico" title="7"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.5c2.8 0 5 2.4 5 5.5S14.2 15 12 18C9.8 15 7 12 7 9s2.2-5.5 5-5.5z" fill="#2A9D8F"/><circle cx="12" cy="9" r="2.2" fill="#E9F5F3"/><path d="M9 20h6" stroke="#E9C46A" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="9" r="0.9" fill="#E76F51"/></svg></span>
+            <span class="num num-ico" title="7">7</span>
             <strong>Leer meditando</strong>
             <span class="acc-chevron" aria-hidden="true">▾</span>
           </button>
@@ -1134,7 +1141,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
         </li>
         <li class="acc-item" data-id="8">
           <button type="button" class="acc-btn" aria-expanded="false">
-            <span class="num num-ico" title="8"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#457B9D"/><circle cx="12" cy="12" r="6.2" fill="#E9F5F3"/><circle cx="12" cy="12" r="3.6" fill="#E76F51"/><circle cx="12" cy="12" r="1.5" fill="#E9C46A"/></svg></span>
+            <span class="num num-ico" title="8">8</span>
             <strong>Lee intencionalmente</strong>
             <span class="acc-chevron" aria-hidden="true">▾</span>
           </button>
@@ -1142,7 +1149,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
         </li>
         <li class="acc-item" data-id="9">
           <button type="button" class="acc-btn" aria-expanded="false">
-            <span class="num num-ico" title="9"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M12 19c0-6 4-9 7-10-1 5-4 8-7 10z" fill="#52B788"/><path d="M12 19c0-6-4-9-7-10 1 5 4 8 7 10z" fill="#2A9D8F"/><path stroke="#8D6E63" stroke-width="1.5" d="M12 19V8"/><circle cx="12" cy="6.5" r="1.5" fill="#E9C46A"/></svg></span>
+            <span class="num num-ico" title="9">9</span>
             <strong>Lee adquisitivamente</strong>
             <span class="acc-chevron" aria-hidden="true">▾</span>
           </button>
@@ -1150,7 +1157,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
         </li>
         <li class="acc-item" data-id="10">
           <button type="button" class="acc-btn" aria-expanded="false">
-            <span class="num num-ico" title="10"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 15.5l11-7 3 5.2-11 7z" fill="#457B9D"/><circle cx="17.5" cy="7.5" r="3.2" fill="#E9C46A"/><circle cx="17.5" cy="7.5" r="1.4" fill="#FFF8E7"/><path d="M7.5 18.5v3M11.5 16.5v4" stroke="#8D6E63" stroke-width="1.4" stroke-linecap="round"/><circle cx="8.5" cy="12" r="1.1" fill="#E76F51"/></svg></span>
+            <span class="num num-ico" title="10">10</span>
             <strong>Lee telescópicamente</strong>
             <span class="acc-chevron" aria-hidden="true">▾</span>
           </button>
@@ -1174,7 +1181,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
   </section>
 
   <section id="seis" class="section-alt reveal">
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/tree-cute-roots.jpg" alt="" width="40" height="40" loading="lazy"></span>Las 6</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-peonia4.jpg" alt="" width="40" height="40" loading="lazy"></span>Las 6</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Observación: «juntando toda la información». Toca para revelar.</p>
     <div class="progress-bar-wrap">
@@ -1255,7 +1262,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
     </div>
   </section>
   <section id="cuadro" class="reveal">
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/house-foundation-colorful.jpg" alt="" width="40" height="40" loading="lazy"></span>El cuadro</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-ladrillo3.jpg" alt="" width="40" height="40" loading="lazy"></span>El cuadro</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Tabla de observación del ejemplo de clase. Toca un encabezado o una celda.</p>
     <p class="cuadro-title">MARCOS 4:35 – 5:42</p>
@@ -1352,7 +1359,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
   </section>
 
   <section id="practica" class="section-alt reveal">
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/lightbulb-heart.jpg" alt="" width="40" height="40" loading="lazy"></span>Quiz</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-cafe2.jpg" alt="" width="40" height="40" loading="lazy"></span>Quiz</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Importancia, método, pasos, las 10, las 6 y el cuadro. Respuestas al instante.</p>
     <div class="quiz-card" id="quiz-root">

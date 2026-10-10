@@ -1,0 +1,27 @@
+Créditos de fotos — licencia Unsplash (uso libre, https://unsplash.com/license)
+
+barreras.jpg: https://unsplash.com/photos/4ilGgMamA7A — Mohammed Shonar
+clase.jpg: https://unsplash.com/photos/k5BvNg8-SRA — Jess Bailey
+claves.jpg: https://unsplash.com/photos/46zROr6dvj0
+contexto.jpg: https://unsplash.com/photos/OKJHAjc7wz0
+cuadro.jpg: https://unsplash.com/photos/BJ6w75UwMf8
+cuadrofinal.jpg: https://unsplash.com/photos/CWB1WoDKdTU — Jason Leung
+diez.jpg: https://unsplash.com/photos/KfWykSQPOX8
+dificultades.jpg: https://unsplash.com/photos/TyEOBdpqZhA
+eli-tarde-de-estudio.jpg: foto de Eli (Elisa Nogueron Vázquez)
+felipe.jpg: https://unsplash.com/photos/6XcziMmkNgQ
+fil2.jpg: https://unsplash.com/photos/8SmAWH27F2s
+g-apuntes.jpg: https://unsplash.com/photos/RLKJceTCK0s
+g-guia.jpg: https://unsplash.com/photos/rCNr00hsuxY — Ksenia Obukhova
+g-tareas.jpg: https://unsplash.com/photos/5TTA0ghtF0k
+hechos18.jpg: https://unsplash.com/photos/qKIakzQMD0w
+herramientas.jpg: https://unsplash.com/photos/oy_l7T2nUlU
+neh1.jpg: https://unsplash.com/photos/gv5-TVTR7GQ — Jessica Fadel
+neh2.jpg: https://unsplash.com/photos/U-Yit6tBuPQ
+neh3.jpg: https://unsplash.com/photos/NhqqqmijvAU
+neh4.jpg: https://unsplash.com/photos/ZYlk3hYrCCo
+orquidea-mini.jpg: https://unsplash.com/photos/7QsvdYPTSks
+seis.jpg: https://unsplash.com/photos/O2Kj1gMgjRw
+strong.jpg: https://unsplash.com/photos/x9s9phl9yFM
+strongvine.jpg: https://unsplash.com/photos/L-84XbfHtOk
+icons/*.png: recorte de https://unsplash.com/photos/7QsvdYPTSks

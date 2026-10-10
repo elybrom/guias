@@ -1056,8 +1056,9 @@ footer .meta { margin-top: 0.25rem; letter-spacing: 0.06em; text-transform: uppe
 }
 
 </style>
+<!-- Fotos: Unsplash (licencia libre) — ver assets/photos/CREDITOS.txt -->
 <style id="tema-matcha-orquidea">
-/* ===== Tema matcha + orquídea + ladrillo (tema-matcha-v1) ===== */
+/* ===== Tema matcha + orquídea + ladrillo (tema-matcha-fotos-v2) ===== */
 :root{
   --birch:#F6CFDA; --hearth:#C2577A; --woodsmoke:#6B4A40; --midnight:#4A2F2A; --white:#FFFFFF;
   --t-cream:#FFFAF4; --t-stone:#F2E4CF; --t-blush:#FBE3EA; --t-pink:#F4A9BF; --t-rose:#C2577A;
@@ -1101,20 +1102,23 @@ a{color:var(--t-rose)}
 /* arch hero */
 .hero{
   min-height:auto !important; background:transparent; color:var(--t-ink);
-  padding:2.6rem 1.6rem 2.4rem; margin:1.2rem 1.45rem .6rem; isolation:isolate;
+  padding:min(58vw,240px) 1.6rem 2.4rem; margin:1.2rem 1.45rem .6rem; isolation:isolate;
 }
 .hero{overflow:visible !important}
 .hero > .hero-bg{position:absolute !important; inset:0; z-index:0 !important;
-  border-radius:999px 999px 30px 30px;
+  border-radius:999px 999px 30px 30px; overflow:hidden;
   background:
-    radial-gradient(70% 45% at 50% 18%, rgba(255,255,255,.95), transparent 70%),
-    linear-gradient(180deg,#FFF3F6 0%,#FBE3EA 45%,#EEF6E2 100%) !important;
+    linear-gradient(180deg,#FFF3F6 0%,#FFF6F0 60%,#F1F7E8 100%) !important;
   border:10px solid #F7EBDA;
   box-shadow:0 0 0 2px #E7D3B6, 0 0 0 9px #C2664A, 0 0 0 11px #A9563C, 0 22px 40px -20px rgba(194,102,74,.6);
 }
-.hero::before,.hero::after{content:""; position:absolute; z-index:1; pointer-events:none; background-repeat:no-repeat; background-size:contain}
-.hero::before{width:78px; height:78px; right:-14px; top:16%; background-image:url("assets/tema/orquidea.svg"); transform:rotate(14deg); filter:drop-shadow(0 6px 8px rgba(194,87,122,.25))}
-.hero::after{width:70px; height:70px; left:-6px; bottom:-14px; background-image:url("assets/tema/orquidea.svg"); transform:rotate(-24deg); filter:drop-shadow(0 6px 8px rgba(194,87,122,.25))}
+.hero::before{content:""; position:absolute; z-index:1 !important; display:block !important; pointer-events:none;
+  top:12px; left:12px; right:12px; aspect-ratio:4/5;
+  border-radius:999px 999px 0 0;
+  background:
+    linear-gradient(180deg, rgba(255,250,244,0) 30%, rgba(255,246,248,.55) 52%, rgba(255,246,248,.9) 68%),
+    url("assets/photos/hero.jpg") center top / cover no-repeat;
+  -webkit-mask-image:linear-gradient(180deg,#000 50%,transparent 82%); mask-image:linear-gradient(180deg,#000 50%,transparent 82%);}
 .hero > *{z-index:2}
 .hero > .badge,.hero > .paleta-chip,.hero > .scroll-hint{align-self:center; width:fit-content; margin-left:auto; margin-right:auto}
 .hero h1{color:var(--t-ink); text-shadow:none}
@@ -1123,12 +1127,7 @@ a{color:var(--t-rose)}
 .badge{background:var(--t-matcha-soft); color:var(--t-matcha-deep); border:1px solid #CFE3B0; font-weight:800; letter-spacing:.16em}
 .paleta-chip{background:#fff; color:var(--t-ink-soft); border:1px solid rgba(242,228,207,.95); font-weight:700}
 .sw{border:1px solid rgba(74,47,42,.12)}
-.hero-pin{
-  width:84px !important; height:84px !important; padding:6px;
-  background:#fff url("assets/tema/angelito.svg") no-repeat center/70% !important;
-  object-position:-999px -999px; border-radius:50% !important;
-  box-shadow:0 0 0 4px #FBE3EA, 0 10px 22px -10px rgba(194,87,122,.55) !important;
-}
+.hero-pin{display:none !important}
 .scroll-hint{color:var(--t-rose)}
 
 /* sections */
@@ -1191,10 +1190,18 @@ table.cuadro tr:nth-child(even) td{background:#FFF5F8}
 .verified-box{background:linear-gradient(160deg,#FFFFFF,#F1F7E8); border-color:#D9E9C4}
 .verified-box .label{color:var(--t-matcha-deep)}
 footer{color:var(--t-ink-soft); opacity:1}
-footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto .4rem; background:url("assets/tema/orquidea.svg") no-repeat center/contain}
+footer::before{content:""; display:block; width:56px; height:56px; margin:0 auto .5rem; border-radius:50%; background:url("assets/photos/t-orq4.jpg") center/cover; box-shadow:0 0 0 3px #fff, 0 0 0 4px rgba(244,169,191,.7)}
 .card-body{padding:0 1.1rem 1.15rem; font-size:.92rem; line-height:1.65; color:var(--t-ink)}
 .card-body p + p,.card-body p + ul,.card-body ul + p{margin-top:.55rem}
 .card-body ul{margin-left:1.1rem}
+
+/* fotos en vez de dibujos */
+.card-icon.svg-wrap,.b-icon:has(svg),.letra-ico,.milagro-ico,.ornament.illo-orn .illo{display:none !important}
+.sec-illo.img-wrap,.card-icon.img-wrap{padding:0 !important; border-radius:50% !important; overflow:hidden; box-shadow:0 0 0 2px #fff, 0 0 0 3px rgba(244,169,191,.7), 0 6px 14px -8px rgba(194,87,122,.6) !important}
+.sec-illo.img-wrap img,.card-icon.img-wrap img{object-fit:cover !important; border-radius:50% !important}
+.step-illo{padding:0 !important; border-radius:50% !important; object-fit:cover !important; box-shadow:0 0 0 2px #fff, 0 0 0 3px rgba(244,169,191,.6) !important}
+.acc-btn .num-ico{font-family:"Fraunces",Georgia,serif; font-weight:700; color:#fff; background:var(--t-rose); border-radius:50%; width:2rem !important; height:2rem; flex-shrink:0; font-size:.9rem}
+.hero h1{text-shadow:0 1px 0 rgba(255,255,255,.6)}
 
 </style>
 </head>
@@ -1231,7 +1238,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
   <header class="hero" id="inicio">
     <div class="hero-bg" aria-hidden="true"></div>
     <span class="badge">Apuntes de clase</span>
-    <img class="hero-pin" src="assets/pinterest/notebook-pen-cute.jpg" alt="" width="72" height="72" loading="eager">
+    <img class="hero-pin" src="assets/photos/t-cafe1.jpg" alt="" width="72" height="72" loading="eager">
     <h1>Método Inductivo</h1>
     <p class="sub">Notas para recordar</p>
     <p class="hero-quote">La verdad objetiva de Dios que sale del texto — no lo que yo infiero.</p>
@@ -1248,7 +1255,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <!-- MÉTODO -->
   <section id="metodo" class="section-soft reveal">
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/notebook-pen-cute.jpg" alt="Método" width="40" height="40" loading="lazy"></span>Método</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-cafe1.jpg" alt="Método" width="40" height="40" loading="lazy"></span>Método</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Toca cada tarjeta de la línea de tiempo.</p>
 
@@ -1339,7 +1346,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <!-- OBSERVACIÓN → INTERPRETACIÓN (EDIFICIO) -->
   <section id="edificio" class="section-alt reveal">
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/house-foundation-colorful.jpg" alt="Cimientos" width="40" height="40" loading="lazy"></span>Observación → Interpretación</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-ladrillo3.jpg" alt="Cimientos" width="40" height="40" loading="lazy"></span>Observación → Interpretación</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">La metáfora del edificio. Toca cada tarjeta.</p>
 
@@ -1363,7 +1370,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
     <div class="timeline">
       <article class="tl-item card" data-card>
         <button type="button" class="card-btn" aria-expanded="false">
-          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/pinterest/shovel-digging-sticker.jpg" alt="Excavar" width="48" height="48" loading="lazy"></span>
+          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/photos/t-marcador2.jpg" alt="Excavar" width="48" height="48" loading="lazy"></span>
           <span class="card-title">Excavar → Edificar</span>
           <span class="card-hint">tocar</span>
           <span class="chevron" aria-hidden="true">▾</span>
@@ -1381,7 +1388,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
       <article class="tl-item card" data-card>
         <button type="button" class="card-btn" aria-expanded="false">
-          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/pinterest/tree-cute-roots.jpg" alt="Árbol con raíces" width="48" height="48" loading="lazy"></span>
+          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/photos/t-peonia4.jpg" alt="Árbol con raíces" width="48" height="48" loading="lazy"></span>
           <span class="card-title">Edificar y arraigar</span>
           <span class="card-hint">tocar</span>
           <span class="chevron" aria-hidden="true">▾</span>
@@ -1406,7 +1413,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
       <article class="tl-item card" data-card>
         <button type="button" class="card-btn" aria-expanded="false">
-          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/pinterest/cracked-house-warning.jpg" alt="Cimiento superficial" width="48" height="48" loading="lazy"></span>
+          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/photos/t-ladrillo1.jpg" alt="Cimiento superficial" width="48" height="48" loading="lazy"></span>
           <span class="card-title">Cimiento superficial</span>
           <span class="card-hint">tocar</span>
           <span class="chevron" aria-hidden="true">▾</span>
@@ -1421,7 +1428,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
       <article class="tl-item card open" data-card>
         <button type="button" class="card-btn" aria-expanded="true">
-          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/pinterest/golden-key-heart.jpg" alt="Principio clave" width="48" height="48" loading="lazy"></span>
+          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/photos/t-mapa1.jpg" alt="Principio clave" width="48" height="48" loading="lazy"></span>
           <span class="card-title">Principio clave</span>
           <span class="card-hint">tocar</span>
           <span class="chevron" aria-hidden="true">▾</span>
@@ -1436,7 +1443,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
       <article class="tl-item card" data-card>
         <button type="button" class="card-btn" aria-expanded="false">
-          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/pinterest/lightbulb-heart.jpg" alt="Medio, no fin" width="48" height="48" loading="lazy"></span>
+          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/photos/t-cafe2.jpg" alt="Medio, no fin" width="48" height="48" loading="lazy"></span>
           <span class="card-title">Medio, no fin</span>
           <span class="card-hint">tocar</span>
           <span class="chevron" aria-hidden="true">▾</span>
@@ -1464,7 +1471,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <!-- INTERPRETACIÓN -->
   <section id="interpretacion" class="reveal">
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="9" ry="5.5" fill="#2A9D8F"/><circle cx="12" cy="12" r="3.2" fill="#E9F5F3"/><circle cx="12" cy="12" r="1.4" fill="#457B9D"/><circle cx="12.7" cy="11.3" r="0.55" fill="#FFF"/><path d="M4.5 12c1.5-1.2 3-1.8 4.5-1.8" stroke="#E9C46A" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>Interpretación</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-orq3.jpg" alt="" width="40" height="40" loading="lazy"></span>Interpretación</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Cita clave de clase. Toca cada tarjeta.</p>
 
@@ -1549,7 +1556,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <!-- GEOGRAFÍA / ATLAS -->
   <section id="atlas" class="section-soft reveal">
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 5.5l5.2-1.8 6.2 2 5.6-1.8v14.2l-5.6 1.8-6.2-2-5.2 1.8z" fill="#2A9D8F"/><path d="M8.7 3.7v14.2M15 5.7v14.2" stroke="#E9F5F3" stroke-width="1.1" opacity=".7"/><path d="M5.5 10.5c1.5-1 3-.8 4.2.4 1.5 1.5 3.2.8 4.5-.2" stroke="#E9C46A" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="7.5" cy="14" r="1.1" fill="#E76F51"/></svg></span>Geografía · Atlas</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-matcha1.jpg" alt="" width="40" height="40" loading="lazy"></span>Geografía · Atlas</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Conocemos geografía con un atlas. Toca cada tarjeta.</p>
 
@@ -1598,7 +1605,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <!-- RECURSOS ANTE BARRERAS -->
   <section id="recursos" class="reveal">
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 4.5h6v15.5H4.5z" fill="#457B9D"/><path d="M10.5 5.2h7.2l1.8 1.5v13.3H10.5z" fill="#E9C46A"/><path d="M12.5 9h4.5M12.5 11.5h4" stroke="#8D6E63" stroke-width="1.1" stroke-linecap="round"/><path d="M6 8.5h2.5M6 11h2.5" stroke="#E8F1F8" stroke-width="1.1" stroke-linecap="round"/></svg></span>Recursos ante barreras</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-biblia3.jpg" alt="" width="40" height="40" loading="lazy"></span>Recursos ante barreras</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Herramientas cuando el texto se resiste. Toca cada tarjeta.</p>
 
@@ -1661,7 +1668,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <!-- SEIS DIFICULTADES DE LA INTERPRETACIÓN -->
   <section id="dificultades" class="section-alt reveal">
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.2L22 20.5H2z" fill="#E9C46A"/><rect x="11.1" y="9" width="1.8" height="5.5" rx="0.6" fill="#6B4A40"/><circle cx="12" cy="17.2" r="1.15" fill="#E76F51"/></svg></span>Seis dificultades</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-peonia1.jpg" alt="" width="40" height="40" loading="lazy"></span>Seis dificultades</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">De la interpretación. Toca cada tarjeta.</p>
 
@@ -1790,7 +1797,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <!-- 5 CLAVES DE INTERPRETACIÓN (Clase 7 · 21 Sept 2026) -->
   <section id="claves" class="reveal">
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/golden-key-heart.jpg" alt="" width="40" height="40" loading="lazy"></span>5 claves de interpretación</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-mapa1.jpg" alt="" width="40" height="40" loading="lazy"></span>5 claves de interpretación</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="clase-meta">Clase 7 · 21 Sept 2026</p>
     <p class="sutil">Antes de aplicar: observar bien. Toca cada clave.</p>
@@ -1892,7 +1899,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <!-- STRONG · CONCORDANCIAS · VINE (Clase · 5 Oct 2026) -->
   <section id="strong" class="section-soft reveal">
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/open-bible-cute.jpg" alt="" width="40" height="40" loading="lazy"></span>Strong, concordancias y Vine</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-biblia1.jpg" alt="" width="40" height="40" loading="lazy"></span>Strong, concordancias y Vine</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="clase-meta">Clase · 5 Oct 2026 · Comparación / Consulta</p>
     <p class="sutil">Herramientas para comparar palabras. Toca cada tarjeta.</p>
@@ -1973,7 +1980,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <!-- CUADRO MARCOS 4:35–5:42 (Clase 5 · 7 Sept 2026) -->
   <section id="cuadro" class="section-alt reveal">
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/house-foundation-colorful.jpg" alt="" width="40" height="40" loading="lazy"></span>Cuadro · Marcos</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-ladrillo3.jpg" alt="" width="40" height="40" loading="lazy"></span>Cuadro · Marcos</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="clase-meta">Clase 5 · 7 Sept 2026</p>
     <p class="cuadro-title">MARCOS 4:35 – 5:42</p>
@@ -2148,7 +2155,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <!-- FELIPE / HECHOS 8 -->
   <section id="felipe" class="section-alt reveal">
-    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/open-bible-cute.jpg" alt="Felipe" width="40" height="40" loading="lazy"></span>Felipe · Hechos 8</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-biblia1.jpg" alt="Felipe" width="40" height="40" loading="lazy"></span>Felipe · Hechos 8</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Observar → entender → responder.</p>
 
@@ -2246,7 +2253,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
 
   <!-- HECHOS 1:8 -->
   <section id="hechos18" class="section-alt reveal">
-    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#457B9D"/><ellipse cx="12" cy="12" rx="4" ry="9" fill="none" stroke="#E8F1F8" stroke-width="1.2"/><path d="M3.5 12h17M5 8.2h14M5 15.8h14" stroke="#E9C46A" stroke-width="1.1"/><path d="M12 4.5c2.5 2.2 4 4.8 4 7.5s-1.5 5.3-4 7.5c-2.5-2.2-4-4.8-4-7.5s1.5-5.3 4-7.5z" fill="#2A9D8F" opacity=".85"/><circle cx="12" cy="12" r="1.6" fill="#E76F51"/></svg></span>Hechos 1:8</h2>
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/photos/t-ladrillo4.jpg" alt="" width="40" height="40" loading="lazy"></span>Hechos 1:8</h2>
     <div class="ornament" aria-hidden="true">✦</div>
     <p class="sutil">Ejemplo anotado en clase. Toca un chip.</p>
 
@@ -2275,7 +2282,7 @@ footer::before{content:""; display:block; width:52px; height:52px; margin:0 auto
   <section id="herramientas-palabra" class="section-soft reveal">
     <h2>
       <span class="sec-illo img-wrap" aria-hidden="true">
-        <img src="assets/pinterest/golden-key-heart.jpg" alt="" width="40" height="40" loading="lazy">
+        <img src="assets/photos/t-mapa1.jpg" alt="" width="40" height="40" loading="lazy">
       </span>
       Herramientas para estudiar una palabra (clase 5 Oct 2026)
     </h2>
