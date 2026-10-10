@@ -1,0 +1,2342 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apuntes de clase — Método Inductivo</title>
+<meta name="theme-color" content="#977272">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Inductivo">
+
+<meta name="description" content="Apuntes de clase interactivos del Método Inductivo: 5 claves de interpretación, barreras, recursos, seis dificultades, cuadro de Marcos, Strong y Vine, Palabra, Felipe, las 10 y las 6.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --birch: #DEC4C9;
+  --hearth: #977272;
+  --woodsmoke: #594E4C;
+  --midnight: #181717;
+  --white: #FFFFFF;
+  --shadow: 0 12px 36px rgba(24, 23, 23, 0.14);
+  --radius: 18px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-t: env(safe-area-inset-top, 0px);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 300;
+  color: var(--woodsmoke);
+  background: var(--white);
+  line-height: 1.55;
+  overflow-x: hidden;
+  padding-bottom: calc(4.5rem + var(--safe-b));
+}
+a { color: var(--hearth); text-decoration: none; }
+.wrap { width: min(100%, 480px); margin: 0 auto; }
+.script { font-family: "Great Vibes", cursive; font-weight: 400; }
+h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; letter-spacing: 0.04em; }
+h2 {
+  font-size: clamp(1.55rem, 5.5vw, 1.95rem);
+  color: var(--hearth);
+  text-align: center;
+  margin-bottom: 0.85rem;
+  font-weight: 600;
+}
+.ornament {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin: 0 auto 1.25rem; color: var(--hearth); opacity: 0.75;
+  font-size: 0.85rem;
+}
+.ornament::before, .ornament::after {
+  content: ""; width: 42px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hearth), transparent);
+}
+.sutil {
+  text-align: center;
+  color: var(--woodsmoke);
+  font-size: 0.9rem;
+  max-width: 36ch;
+  margin: 0 auto 1.1rem;
+  line-height: 1.65;
+  opacity: 0.92;
+}
+.ref {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--hearth);
+  text-transform: uppercase;
+}
+
+/* Cross-site sticky hub */
+
+/* App-bar feel: back + brand */
+.site-hub {
+  position: sticky; top: 0; z-index: 60;
+  display: flex; align-items: center; justify-content: flex-start; gap: 0.35rem; flex-wrap: wrap;
+  padding: calc(0.45rem + var(--safe-t, env(safe-area-inset-top, 0px))) 0.65rem 0.45rem;
+  min-height: calc(48px + var(--safe-t, env(safe-area-inset-top, 0px)));
+  background: linear-gradient(180deg, #7A6B82 0%, #6B5B73 50%, #594E4C 100%);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(222,196,201,.28);
+  box-shadow: 0 2px 10px rgba(24,23,23,.18);
+}
+.site-hub a {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 36px; padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #F5EDEE;
+  border: 1px solid transparent;
+  transition: background .2s, border-color .2s, color .2s;
+  text-decoration: none;
+}
+.site-hub a:hover, .site-hub a:focus-visible {
+  background: rgba(222,196,201,.18);
+  border-color: rgba(222,196,201,.35);
+  outline: none;
+}
+.site-hub a.current {
+  background: #977272;
+  color: #fff;
+  border-color: #977272;
+}
+.site-hub a.hub-home {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border: 1px solid rgba(222,196,201,.45);
+  color: #FFF;
+  gap: 0.35rem;
+  padding-left: 0.55rem;
+}
+.site-hub a.hub-home .back-arrow {
+  font-size: 1.05rem;
+  line-height: 1;
+  opacity: 0.95;
+}
+.site-hub .app-bar-title {
+  margin-left: auto;
+  margin-right: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,.88);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 42vw;
+}
+.site-hub a.pending {
+  opacity: 0.55;
+  pointer-events: none;
+  cursor: default;
+}
+
+.mini-nav {
+  display: flex; justify-content: center; gap: 0.2rem; flex-wrap: wrap;
+  padding: 0.55rem 0.5rem;
+  background: rgba(255,255,255,.92);
+  border-bottom: 1px solid rgba(222,196,201,.7);
+}
+.mini-nav a {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 34px; padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--hearth);
+  border: 1px solid transparent;
+  transition: background .2s, border-color .2s;
+}
+.mini-nav a:hover, .mini-nav a:focus-visible {
+  background: rgba(222,196,201,.55);
+  border-color: rgba(151,114,114,.35);
+  outline: none;
+}
+
+section { padding: 2.75rem 1.35rem; position: relative; }
+.section-soft { background: linear-gradient(180deg, rgba(222,196,201,.42), rgba(222,196,201,0)); }
+.section-alt { background: linear-gradient(180deg, rgba(222,196,201,0), rgba(222,196,201,.35)); }
+
+.hero {
+  position: relative;
+  min-height: 72svh; min-height: 72dvh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3.5rem 1.5rem 3rem;
+  text-align: center;
+  color: var(--white);
+  overflow: hidden;
+  background: var(--midnight);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(151,114,114,.35), transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(222,196,201,.12), transparent 50%),
+    linear-gradient(180deg, rgba(24,23,23,.88) 0%, rgba(24,23,23,.95) 100%);
+  z-index: 0;
+}
+.hero > * { position: relative; z-index: 1; }
+.badge {
+  display: inline-block;
+  margin-bottom: 1.15rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--birch);
+  border: 1px solid rgba(222,196,201,.35);
+}
+.hero h1 {
+  font-size: clamp(2.4rem, 10vw, 3.2rem);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 0.35rem;
+}
+.hero .sub {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(1.6rem, 6vw, 2.1rem);
+  color: var(--birch);
+  margin-bottom: 1rem;
+}
+.hero-quote {
+  max-width: 28ch;
+  margin: 0 auto 1.5rem;
+  font-size: 0.92rem;
+  opacity: 0.88;
+  line-height: 1.6;
+}
+.paleta-chip {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--birch);
+  border: 1px solid rgba(222,196,201,.28);
+}
+.swatches { display: inline-flex; gap: 4px; }
+.sw { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); }
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 1.35rem;
+  margin-top: 0.5rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px; top: 0.4rem; bottom: 0.4rem;
+  width: 2px;
+  background: linear-gradient(180deg, var(--hearth), var(--birch));
+  border-radius: 2px;
+  opacity: 0.55;
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35rem; top: 1.15rem;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--hearth);
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 2px rgba(151,114,114,.35);
+  z-index: 1;
+}
+.tl-item.open::before { background: var(--midnight); }
+
+/* Expandable cards */
+.card {
+  background: var(--white);
+  border: 1px solid rgba(222,196,201,.75);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+.card.open {
+  border-color: rgba(151,114,114,.45);
+  box-shadow: 0 14px 40px rgba(24, 23, 23, 0.16);
+}
+.card-btn {
+  width: 100%;
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.card-btn:focus-visible { outline: 2px solid var(--hearth); outline-offset: -2px; }
+.card-icon {
+  flex-shrink: 0;
+  width: 38px; height: 38px;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  background: rgba(222,196,201,.55);
+  color: var(--hearth);
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.card-title {
+  flex: 1;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--woodsmoke);
+  letter-spacing: 0.02em;
+}
+.card-hint {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hearth);
+  opacity: 0.7;
+}
+.chevron {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+  color: var(--hearth);
+  transition: transform .25s ease;
+  font-size: 0.85rem;
+}
+.card.open .chevron { transform: rotate(180deg); }
+.card-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .3s ease;
+}
+.card.open .card-panel { grid-template-rows: 1fr; }
+.card-panel-inner {
+  overflow: hidden;
+  padding: 0 1.1rem;
+}
+.card.open .card-panel-inner { padding-bottom: 1.15rem; }
+.card-panel-inner p,
+.card-panel-inner li {
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+.card-panel-inner ul, .card-panel-inner ol {
+  margin: 0.4rem 0 0 1.1rem;
+}
+.card-panel-inner li { margin-bottom: 0.35rem; }
+.card-panel-inner strong { font-weight: 500; color: var(--midnight); }
+.highlight {
+  margin-top: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(222,196,201,.4);
+  border-left: 3px solid var(--hearth);
+  font-size: 0.88rem;
+}
+.steps {
+  display: flex; flex-direction: column; gap: 0.45rem;
+  margin-top: 0.65rem;
+}
+.step {
+  display: flex; align-items: flex-start; gap: 0.65rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 12px;
+  background: rgba(222,196,201,.28);
+}
+.step .n {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--hearth);
+  color: var(--white);
+  display: grid; place-items: center;
+  font-size: 0.72rem; font-weight: 600;
+}
+.step .label { font-weight: 500; color: var(--midnight); font-size: 0.88rem; }
+.step .q { display: block; font-size: 0.8rem; opacity: 0.85; margin-top: 0.1rem; }
+
+.verse-box {
+  margin-top: 0.65rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: var(--midnight);
+  color: var(--birch);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+.verse-box .cite {
+  display: block;
+  margin-top: 0.45rem;
+  font-style: normal;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.flow {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 0.35rem;
+  margin: 0.85rem 0;
+}
+.flow span {
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(222,196,201,.5);
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--midnight);
+}
+.flow .arr { background: transparent; color: var(--hearth); padding: 0 0.15rem; }
+
+/* Short lists */
+.short-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  display: grid; gap: 0.4rem;
+}
+.short-list li {
+  display: flex; gap: 0.65rem; align-items: flex-start;
+  padding: 0.55rem 0.7rem;
+  border-radius: 12px;
+  background: rgba(222,196,201,.28);
+  font-size: 0.86rem;
+}
+.short-list .num {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--hearth);
+  color: var(--white);
+  display: grid; place-items: center;
+  font-size: 0.65rem; font-weight: 600;
+}
+.short-list .letra {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border-radius: 8px;
+  background: var(--midnight);
+  color: var(--birch);
+  display: grid; place-items: center;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.link-out {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0.7rem 1.15rem;
+  border-radius: 999px;
+  background: var(--hearth);
+  color: var(--white) !important;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 22px rgba(151,114,114,.35);
+  transition: background .2s, transform .2s;
+}
+.link-out:hover { background: var(--midnight); }
+.link-out:active { transform: scale(0.98); }
+
+/* Chips */
+.chips {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-top: 0.65rem;
+}
+.chip {
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(151,114,114,.35);
+  background: transparent;
+  color: var(--hearth);
+  font-family: inherit;
+  font-size: 0.75rem; font-weight: 500;
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.chip:hover, .chip.active {
+  background: var(--hearth);
+  color: var(--white);
+  border-color: var(--hearth);
+}
+.chip-note {
+  margin-top: 0.65rem;
+  min-height: 2.8rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(222,196,201,.35);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  opacity: 0;
+  transition: opacity .25s;
+}
+.chip-note.show { opacity: 1; }
+.geo-flow {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 0.3rem;
+  margin-top: 0.85rem;
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--midnight);
+}
+.geo-flow .arrow { color: var(--hearth); opacity: 0.7; }
+
+.genre-bars { margin-top: 0.5rem; display: grid; gap: 0.4rem; }
+.genre-row {
+  display: grid; grid-template-columns: 5.5rem 1fr 2.2rem;
+  align-items: center; gap: 0.45rem;
+  font-size: 0.78rem;
+}
+.bar-track {
+  height: 8px; border-radius: 999px;
+  background: rgba(222,196,201,.5);
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%; border-radius: 999px;
+  background: var(--hearth);
+}
+
+
+/* Edificio metaphor */
+.edificio-visual {
+  margin: 1rem auto 1.35rem;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+.edificio-capas {
+  display: grid;
+  gap: 0.35rem;
+}
+.capa {
+  border-radius: 12px;
+  padding: 0.7rem 0.85rem;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  transition: transform .2s, box-shadow .2s;
+}
+.capa .capa-label {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.15rem;
+}
+.capa.arriba {
+  background: linear-gradient(180deg, rgba(151,114,114,.22), rgba(222,196,201,.45));
+  border: 1px solid rgba(151,114,114,.35);
+  color: var(--midnight);
+  margin: 0 1.1rem;
+}
+.capa.medio {
+  background: rgba(222,196,201,.55);
+  border: 1px solid rgba(151,114,114,.3);
+  color: var(--woodsmoke);
+  margin: 0 0.55rem;
+}
+.capa.cimientos {
+  background: var(--midnight);
+  color: var(--birch);
+  border: 1px solid rgba(222,196,201,.25);
+  box-shadow: var(--shadow);
+}
+.capa.cimientos .capa-label { color: var(--white); }
+.edificio-arrow {
+  text-align: center;
+  color: var(--hearth);
+  font-size: 0.85rem;
+  opacity: 0.8;
+  letter-spacing: 0.08em;
+}
+.arbol-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+}
+.arbol-box {
+  padding: 0.75rem 0.7rem;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+.arbol-box.arriba {
+  background: rgba(222,196,201,.4);
+  border: 1px solid rgba(151,114,114,.25);
+}
+.arbol-box.abajo {
+  background: var(--midnight);
+  color: var(--birch);
+}
+.arbol-box strong {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  color: inherit;
+}
+.principio {
+  margin-top: 0.85rem;
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(151,114,114,.18), rgba(222,196,201,.45));
+  border: 1.5px solid rgba(151,114,114,.4);
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--midnight);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+.principio .subp {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  opacity: 0.85;
+  letter-spacing: 0;
+}
+.flujo-oie {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.65rem;
+}
+.flujo-oie .fi {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 12px;
+  background: rgba(222,196,201,.28);
+  font-size: 0.86rem;
+}
+.flujo-oie .fi .tag {
+  flex-shrink: 0;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: var(--hearth);
+  color: var(--white);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 0.1rem;
+}
+.flujo-oie .fi.medio-tag .tag { background: var(--woodsmoke); }
+.flujo-oie .fi.fin-tag .tag { background: var(--midnight); }
+
+
+/* Barreras al interpretar */
+.barreras-list {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+.barrera-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(222,196,201,.32);
+  border: 1px solid rgba(151,114,114,.18);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--midnight);
+}
+.barrera-item .b-icon {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: var(--hearth);
+  color: var(--white);
+  display: grid; place-items: center;
+  font-size: 0.85rem;
+}
+.barrera-item.placeholder {
+  border-style: dashed;
+  background: rgba(222,196,201,.12);
+  color: var(--woodsmoke);
+  opacity: 0.55;
+  font-weight: 400;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  min-height: 2.6rem;
+}
+.barrera-item.placeholder .b-icon {
+  background: transparent;
+  border: 1.5px dashed rgba(151,114,114,.4);
+  color: var(--hearth);
+  font-size: 0.95rem;
+}
+
+
+/* EXAMEN badge */
+.examen-badge {
+  display: inline-block;
+  margin-left: 0.45rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  background: #E76F51;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  box-shadow: 0 2px 8px rgba(231,111,81,.35);
+}
+.card-title .examen-badge { margin-left: 0.4rem; }
+
+/* Callout boxed note */
+.callout-box {
+  margin-top: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: var(--midnight);
+  color: var(--birch);
+  border: 2px solid var(--hearth);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+.callout-box .subp {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+/* Contexto kinds */
+.ctx-kinds {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 0.65rem;
+}
+.ctx-kind {
+  display: grid;
+  grid-template-columns: 6.2rem 1fr;
+  gap: 0.5rem;
+  align-items: start;
+  padding: 0.55rem 0.7rem;
+  border-radius: 12px;
+  background: rgba(222,196,201,.28);
+  font-size: 0.84rem;
+}
+.ctx-kind strong {
+  color: var(--hearth);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+/* Barrera detail line */
+.barrera-item span.b-detail {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--woodsmoke);
+  opacity: 0.9;
+  margin-top: 0.15rem;
+  line-height: 1.4;
+}
+.barrera-item .b-text { flex: 1; min-width: 0; }
+
+/* Cuadro Marcos table */
+.cuadro-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--midnight);
+  text-align: center;
+  margin: 0.25rem 0 0.35rem;
+  letter-spacing: 0.06em;
+}
+.demo-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hearth);
+  text-align: center;
+  margin-bottom: 0.45rem;
+  font-weight: 500;
+}
+.scroll-hint-h {
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--hearth);
+  letter-spacing: 0.08em;
+  margin: 0.25rem 0 0.35rem;
+  opacity: 0.85;
+}
+.tabla-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 0.5rem;
+  border-radius: 14px;
+  border: 1px solid rgba(222,196,201,.8);
+  box-shadow: var(--shadow);
+  background: var(--white);
+  max-width: 100%;
+}
+table.cuadro {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+}
+table.cuadro th {
+  background: var(--hearth);
+  color: var(--white);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.7rem 0.55rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  white-space: nowrap;
+}
+table.cuadro td {
+  border: 1px solid rgba(222,196,201,.55);
+  padding: 0.65rem 0.5rem;
+  text-align: left;
+  color: var(--woodsmoke);
+  background: rgba(222,196,201,.12);
+  vertical-align: top;
+  max-width: 9.5rem;
+  line-height: 1.4;
+}
+table.cuadro tr:nth-child(even) td { background: rgba(222,196,201,.28); }
+table.cuadro .milagro-cell {
+  font-weight: 500;
+  color: var(--midnight);
+  min-width: 8.2rem;
+}
+.tabla-nota {
+  margin-top: 0.85rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--woodsmoke);
+  font-style: italic;
+}
+
+/* Stacked miracle cards (phone-friendly alternative) */
+.milagro-cards {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+.milagro-card {
+  background: var(--white);
+  border-radius: 14px;
+  border: 1px solid rgba(222,196,201,.8);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.05rem;
+}
+.milagro-card h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--hearth);
+  margin-bottom: 0.55rem;
+  line-height: 1.3;
+}
+.milagro-card dl {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+}
+.milagro-card dt {
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hearth);
+  font-weight: 600;
+}
+.milagro-card dd {
+  margin: 0 0 0.35rem;
+  font-size: 0.84rem;
+  color: var(--woodsmoke);
+  line-height: 1.45;
+}
+@media (max-width: 520px) {
+  .tabla-wrap.desktop-only { display: none; }
+  .milagro-cards { display: flex; }
+  .scroll-hint-h.desktop-only { display: none; }
+}
+@media (min-width: 521px) {
+  .milagro-cards { display: none; }
+}
+
+/* Class date chip */
+.clase-meta {
+  text-align: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hearth);
+  font-weight: 500;
+  margin: -0.35rem auto 0.85rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1.35rem 1.5rem;
+  font-size: 0.75rem;
+  color: var(--woodsmoke);
+  opacity: 0.7;
+}
+footer .meta { margin-top: 0.25rem; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.65rem; }
+
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* Inline SVG illustrations — Thunderbird palette */
+.illo { display:inline-block; vertical-align:middle; flex-shrink:0; }
+.hero-illo { display:block; margin:0 auto 1.1rem; max-width:100%; height:auto; }
+.sec-illo { display:inline-block; vertical-align:middle; margin-right:0.45rem; }
+.h2-with-illo { display:flex; align-items:center; gap:0.55rem; flex-wrap:wrap; }
+.h2-with-illo .illo { flex-shrink:0; }
+.chapter-open .chap-illo { margin-right:4px; flex-shrink:0; align-self:center; }
+.chapter-open { align-items:center; }
+.puerta-ico { display:inline-flex; align-items:center; gap:0.4rem; }
+.puerta-ico .illo { flex-shrink:0; }
+.chip .chip-ico { width:14px; height:14px; margin-right:4px; vertical-align:-2px; }
+.chip .chip-ico svg, .chip-ico { width:14px; height:14px; display:inline-block; vertical-align:-2px; }
+.legend-chip-ico { width:14px; height:14px; margin-right:5px; vertical-align:-2px; }
+.despues-grid article .art-illo { display:block; margin-bottom:0.55rem; }
+.milagro-ico { display:inline-block; margin-right:0.35rem; vertical-align:-4px; }
+.acc-btn .num-ico { display:grid; place-items:center; }
+.acc-btn .num-ico .illo { width:22px; height:22px; }
+.seis-head .letra-ico { display:inline-flex; align-items:center; justify-content:center; width:2rem; }
+.seis-head .letra-ico .illo { width:22px; height:22px; }
+.card-icon .illo, .card-icon.svg-wrap {
+  width:22px; height:22px; display:grid; place-items:center;
+}
+.card-icon.svg-wrap { background:transparent; padding:0; width:42px; height:42px; }
+.card-icon.svg-wrap .illo { width:28px; height:28px; }
+.b-icon .illo { width:22px; height:22px; }
+.edificio-visual .edificio-svg { display:block; margin:0 auto 0.5rem; }
+.ornament.illo-orn { line-height:0; }
+.ornament.illo-orn .illo { width:18px; height:18px; opacity:0.85; }
+@media (max-width:640px) {
+  .hero-illo { max-width:min(100%,280px); }
+  .chapter-open .chap-illo { width:36px; height:auto; }
+}
+
+.card-icon.svg-wrap {
+  background: linear-gradient(145deg, #FFF8F4 0%, #F5EDE8 55%, #EDE4DF 100%);
+  border-radius: 13px;
+  box-shadow: inset 0 0 0 1px rgba(151,114,114,.12), 0 2px 6px rgba(89,78,76,.08);
+}
+.b-icon {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:30px; height:30px; border-radius:10px;
+  background: linear-gradient(145deg, #FFF8F4, #F0E8E4);
+  box-shadow: inset 0 0 0 1px rgba(151,114,114,.1);
+}
+.sec-illo .illo { width:28px; height:28px; }
+.edificio-visual .edificio-svg { margin-bottom: 0.65rem; }
+
+.card-icon.img-wrap {
+  width: 52px; height: 52px;
+  padding: 6px;
+  background: linear-gradient(145deg, #FFF8F4 0%, #F5EDE8 55%, #EDE4DF 100%);
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1px rgba(151,114,114,.12), 0 2px 6px rgba(89,78,76,.08);
+  overflow: hidden;
+}
+.card-icon.img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+.sec-illo.img-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; height: 48px;
+  padding: 5px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  background: linear-gradient(145deg, #FFF8F4 0%, #F5EDE8 55%, #EDE4DF 100%);
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1px rgba(151,114,114,.12), 0 2px 6px rgba(89,78,76,.08);
+  overflow: hidden;
+}
+.sec-illo.img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+.hero-pin {
+  display: block;
+  margin: 0.85rem auto 1rem;
+  width: 72px; height: 72px;
+  padding: 8px;
+  object-fit: contain;
+  background: linear-gradient(145deg, #FFF8F4 0%, #F5EDE8 55%, #EDE4DF 100%);
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 1px rgba(151,114,114,.12), 0 4px 12px rgba(89,78,76,.1);
+}
+
+
+/* herramientas-palabra */
+.morph-wrap { overflow-x: auto; margin: 1rem 0 1.25rem; border-radius: 14px; border: 1px solid rgba(151,114,114,.28); background: #fff; box-shadow: 0 4px 16px rgba(89,78,76,.06); }
+.morph-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.morph-table th, .morph-table td { padding: 0.55rem 0.7rem; text-align: left; border-bottom: 1px solid rgba(222,196,201,.55); vertical-align: top; }
+.morph-table th { background: linear-gradient(180deg, #F5E8EB, #DEC4C9); color: #181717; font-weight: 600; letter-spacing: .02em; }
+.morph-table tr:last-child td { border-bottom: none; }
+.morph-table code, .code-pill {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.78rem; font-weight: 600;
+  background: rgba(151,114,114,.12); color: #594E4C;
+  padding: 0.12rem 0.4rem; border-radius: 6px;
+}
+.ext-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.85rem 0 0.25rem; }
+.ext-links a {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0.45rem 0.85rem; border-radius: 999px;
+  background: #594E4C; color: #F9F4F5; text-decoration: none;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: .04em;
+}
+.ext-links a:hover { background: #977272; }
+.ext-links a.alt { background: transparent; color: #977272; border: 1px solid rgba(151,114,114,.45); }
+.verified-box {
+  margin: 1rem 0; padding: 0.9rem 1rem; border-radius: 14px;
+  background: linear-gradient(160deg, #FFF8F4, #F5EDE8);
+  border: 1px solid rgba(151,114,114,.28);
+}
+.verified-box .label {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: #977272; margin-bottom: 0.35rem;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="site-hub" aria-label="Sitios del Método Inductivo">
+  <a href="https://elybrom.github.io/guias/metodo-inductivo-app/" class="hub-home" id="hub-inicio" title="Inicio — Método Inductivo"><span class="back-arrow" aria-hidden="true">←</span> Inicio</a>
+  <a href="https://elybrom.github.io/guias/nehemias-tareas/" id="hub-tareas">Tareas</a>
+  <a href="https://elybrom.github.io/guias/metodo-inductivo/" id="hub-guia">Guía</a>
+  <a href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/" class="current" id="hub-apuntes" aria-current="page">Apuntes</a>
+  <span class="app-bar-title">Apuntes de clase</span>
+</nav>
+
+<nav class="mini-nav wrap" aria-label="Secciones de apuntes">
+  <a href="#inicio">Inicio</a>
+  <a href="#metodo">Método</a>
+  <a href="#edificio">Edificio</a>
+  <a href="#interpretacion">Interpretación</a>
+  <a href="#barreras">Barreras</a>
+  <a href="#atlas">Atlas</a>
+  <a href="#recursos">Recursos</a>
+  <a href="#dificultades">6 dificultades</a>
+  <a href="#claves">5 claves</a>
+  <a href="#strong">Strong · Vine</a>
+  <a href="#cuadro">Cuadro Mc</a>
+  <a href="#palabra">Palabra</a>
+  <a href="#felipe">Felipe</a>
+  <a href="#leer">Las 10</a>
+  <a href="#seis">Las 6</a>
+  <a href="#hechos18">1:8</a> <a href="#herramientas-palabra">Herramientas</a> </nav>
+
+<main class="wrap">
+
+  <header class="hero" id="inicio">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <span class="badge">Apuntes de clase</span>
+    <img class="hero-pin" src="assets/pinterest/notebook-pen-cute.jpg" alt="" width="72" height="72" loading="eager">
+    <h1>Método Inductivo</h1>
+    <p class="sub">Notas para recordar</p>
+    <p class="hero-quote">La verdad objetiva de Dios que sale del texto — no lo que yo infiero.</p>
+    <div class="paleta-chip" title="Paleta Birch · Hearth · Woodsmoke · Midnight">
+      <span class="swatches" aria-hidden="true">
+        <span class="sw" style="background:#DEC4C9"></span>
+        <span class="sw" style="background:#977272"></span>
+        <span class="sw" style="background:#594E4C"></span>
+        <span class="sw" style="background:#181717"></span>
+      </span>
+      Thunderbird
+    </div>
+  </header>
+
+  <!-- MÉTODO -->
+  <section id="metodo" class="section-soft reveal">
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/notebook-pen-cute.jpg" alt="Método" width="40" height="40" loading="lazy"></span>Método</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="sutil">Toca cada tarjeta de la línea de tiempo.</p>
+
+    <div class="timeline" id="metodo-tl">
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 5.5h7.2a1.5 1.5 0 011.5 1.5V20H5a1.5 1.5 0 01-1.5-1.5V5.5z" fill="#457B9D"/><path d="M12.2 5.5H19.5V18.5a1.5 1.5 0 01-1.5 1.5H12.2V5.5z" fill="#2A9D8F"/><path d="M12 5.2v15.5" stroke="#FFF8F4" stroke-width="1.2"/><path d="M5.5 9h4M5.5 12h3.5M5.5 15h3" stroke="#E8F1F8" stroke-width="1.1" stroke-linecap="round"/><path d="M14 9h4M14 12h3.2" stroke="#E9F5F3" stroke-width="1.1" stroke-linecap="round"/><circle cx="18.5" cy="16.5" r="2.2" fill="#E9C46A"/><path d="M18.5 15.3v2.4M17.3 16.5h2.4" stroke="#8D6E63" stroke-width="1.1" stroke-linecap="round"/></svg></span>
+          <span class="card-title">Estudiamos el método inductivo</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>El método inductivo es la forma en que dejamos que el texto hable primero.</p>
+          <div class="highlight">
+            <strong>Significado:</strong> NO es pensamiento subjetivo inferido al texto.
+            <strong>ES</strong> la verdad objetiva de Dios que sale del texto.
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="12" r="6.2" fill="#2A9D8F" opacity=".92"/><circle cx="15.2" cy="12" r="6.2" fill="#E9C46A" opacity=".88"/><path d="M12 8.2v7.6" stroke="#FFF8F4" stroke-width="1.4" stroke-linecap="round"/><circle cx="9" cy="12" r="2.2" fill="#E9F5F3"/><circle cx="15.2" cy="12" r="2.2" fill="#FFF8E7"/></svg></span>
+          <span class="card-title">Método ≠ Metodología</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <ul>
+            <li><strong>Método</strong> = pasos para llegar.</li>
+            <li><strong>Metodología</strong> = procesos para llegar a un resultado.</li>
+          </ul>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4.5" width="18" height="4.2" rx="1.2" fill="#2A9D8F"/><rect x="3" y="10" width="18" height="4.2" rx="1.2" fill="#E9C46A"/><rect x="3" y="15.5" width="13" height="4.2" rx="1.2" fill="#E76F51"/><circle cx="6" cy="6.6" r="1.1" fill="#FFF"/><circle cx="6" cy="12.1" r="1.1" fill="#FFF"/><circle cx="6" cy="17.6" r="1.1" fill="#FFF"/><circle cx="9.5" cy="6.6" r="0.7" fill="#E9F5F3"/><circle cx="11.5" cy="6.6" r="0.7" fill="#E9F5F3"/><circle cx="9.5" cy="12.1" r="0.7" fill="#FFF8E7"/><circle cx="11.5" cy="12.1" r="0.7" fill="#FFF8E7"/><circle cx="9.5" cy="17.6" r="0.7" fill="#FFE8E0"/></svg></span>
+          <span class="card-title">Los 3 pasos</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <div class="steps">
+            <div class="step">
+              <span class="n">1</span>
+              <span>
+                <span class="label">Observación</span>
+                <span class="q">¿Qué veo?</span>
+              </span>
+            </div>
+            <div class="step">
+              <span class="n">2</span>
+              <span>
+                <span class="label">Interpretación</span>
+                <span class="q">¿Qué significa?</span>
+              </span>
+            </div>
+            <div class="step">
+              <span class="n">3</span>
+              <span>
+                <span class="label">Aplicación</span>
+                <span class="q">¿Cómo funciona?</span>
+              </span>
+            </div>
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#457B9D"/><circle cx="12" cy="12" r="6.2" fill="#E9F5F3"/><circle cx="12" cy="12" r="3.6" fill="#E76F51"/><circle cx="12" cy="12" r="1.5" fill="#E9C46A"/><circle cx="12" cy="12" r="0.55" fill="#594E4C"/></svg></span>
+          <span class="card-title">Propósito y fin</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <ul>
+            <li><strong>Propósito del estudio:</strong> cambiar nuestra vida.</li>
+            <li><strong>Fin de la observación:</strong> entender lo que estoy observando.</li>
+          </ul>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+
+
+  <!-- OBSERVACIÓN → INTERPRETACIÓN (EDIFICIO) -->
+  <section id="edificio" class="section-alt reveal">
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/house-foundation-colorful.jpg" alt="Cimientos" width="40" height="40" loading="lazy"></span>Observación → Interpretación</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="sutil">La metáfora del edificio. Toca cada tarjeta.</p>
+
+    <div class="edificio-visual" aria-hidden="true">
+      <div class="edificio-capas">
+        <div class="capa arriba">
+          <span class="capa-label">Edificio</span>
+          Interpretación — erigimos / levantamos
+        </div>
+        <div class="capa medio">
+          <span class="capa-label">Estructura</span>
+          Siempre determinada por los cimientos
+        </div>
+        <div class="capa cimientos">
+          <span class="capa-label">Cimientos</span>
+          Observación — excavamos, removemos, encontramos
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/pinterest/shovel-digging-sticker.jpg" alt="Excavar" width="48" height="48" loading="lazy"></span>
+          <span class="card-title">Excavar → Edificar</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <ul>
+            <li><strong>Observación</strong> = excavamos: removemos, encontramos elementos — como <strong>cimientos</strong>.</li>
+            <li><strong>Interpretación</strong> = erigimos / levantamos el <strong>edificio</strong>.</li>
+          </ul>
+          <div class="highlight">
+            El edificio <strong>siempre</strong> está determinado por sus cimientos.
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/pinterest/tree-cute-roots.jpg" alt="Árbol con raíces" width="48" height="48" loading="lazy"></span>
+          <span class="card-title">Edificar y arraigar</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Dios usa imágenes de <strong>edificar</strong> y <strong>arraigar</strong> para el crecimiento espiritual.</p>
+          <div class="arbol-pair">
+            <div class="arbol-box arriba">
+              <strong>Arriba</strong>
+              Lo que ves del árbol
+            </div>
+            <div class="arbol-box abajo">
+              <strong>Abajo</strong>
+              ≈ raíces debajo
+            </div>
+          </div>
+          <div class="highlight" style="margin-top:0.75rem">
+            Lo visible arriba refleja lo profundo abajo — igual observación e interpretación.
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/pinterest/cracked-house-warning.jpg" alt="Cimiento superficial" width="48" height="48" loading="lazy"></span>
+          <span class="card-title">Cimiento superficial</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>No construir sobre un cimiento <strong>superficial</strong>.</p>
+          <div class="highlight">
+            Hay que <strong>profundizar en la observación</strong> antes de levantar la interpretación.
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card open" data-card>
+        <button type="button" class="card-btn" aria-expanded="true">
+          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/pinterest/golden-key-heart.jpg" alt="Principio clave" width="48" height="48" loading="lazy"></span>
+          <span class="card-title">Principio clave</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <div class="principio">
+            La calidad de la interpretación siempre depende de la calidad de la observación
+            <span class="subp">Observar bien es interpretar bien</span>
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon img-wrap" aria-hidden="true"><img src="assets/pinterest/lightbulb-heart.jpg" alt="Medio, no fin" width="48" height="48" loading="lazy"></span>
+          <span class="card-title">Medio, no fin</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Observamos <strong>poniendo la vista en la interpretación</strong> — hacia allá vamos.</p>
+          <div class="flujo-oie">
+            <div class="fi medio-tag">
+              <span class="tag">Medio</span>
+              <span>La observación <strong>no es el fin</strong>; es el medio para el fin.</span>
+            </div>
+            <div class="fi">
+              <span class="tag">Interp.</span>
+              <span>¿Qué significa <strong>para él</strong>?</span>
+            </div>
+            <div class="fi fin-tag">
+              <span class="tag">Aplic.</span>
+              <span>¿Qué significa <strong>para mí</strong>?</span>
+            </div>
+          </div>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- INTERPRETACIÓN -->
+  <section id="interpretacion" class="reveal">
+    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="9" ry="5.5" fill="#2A9D8F"/><circle cx="12" cy="12" r="3.2" fill="#E9F5F3"/><circle cx="12" cy="12" r="1.4" fill="#457B9D"/><circle cx="12.7" cy="11.3" r="0.55" fill="#FFF"/><path d="M4.5 12c1.5-1.2 3-1.8 4.5-1.8" stroke="#E9C46A" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>Interpretación</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="sutil">Cita clave de clase. Toca cada tarjeta.</p>
+
+    <div class="timeline">
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M4 18.5l1.8-5.5L16.5 3.8l3.8 3.8L9.5 18.5z" fill="#E9C46A"/><path d="M15.2 5.2l3.6 3.6" stroke="#D4A017" stroke-width="1.2"/><path d="M4 18.5l2.2-.4-.4 2.2z" fill="#E76F51"/><path d="M17.5 3.2c1.6-.8 3.3.4 2.8 2.1-.8 2.6-3.5 3.2-3.5 3.2s.2-2.8.7-5.3z" fill="#2A9D8F"/><circle cx="19.2" cy="4.2" r="0.7" fill="#E9F5F3"/></svg></span>
+          <span class="card-title">Autores humanos · Espíritu Santo</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Dios usó <strong>autores humanos</strong> (personalidades, circunstancias, intereses) para traer Su palabra delante de nosotros.</p>
+          <div class="highlight">
+            Pero el <strong>Espíritu Santo</strong> dirigió la elaboración: <strong>Él dictó / es el autor</strong>.
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 14.5c2.2-1.4 4.5-1.5 6.5 0l1.8 2.8H3.5v-2.8z" fill="#2A9D8F"/><path d="M12 14.5c2.2-1.4 4.5-1.5 6.5 0L20.5 17.3H12v-2.8z" fill="#457B9D"/><path d="M5 10.5c1.5-2 3.5-3 5.5-3s4 1 5.5 3" stroke="#E9C46A" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="10.5" cy="7" r="1.3" fill="#E76F51"/><circle cx="14.5" cy="7.2" r="1.1" fill="#52B788"/></svg></span>
+          <span class="card-title">Interpretación = recreación</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Interpretación es <strong>recreación</strong>: ponerse los zapatos del autor; pensar como empezó, sentir lo que sintió, tomar sus decisiones.</p>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#457B9D"/><path d="M9.2 9.2a3 3 0 015.1 2.2c0 1.6-1.6 2.2-2.3 3.1" stroke="#FFF" stroke-width="1.7" fill="none" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.15" fill="#E9C46A"/></svg></span>
+          <span class="card-title">Pregunta clave</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <div class="verse-box">
+            ¿Qué significó esto para él / para las personas a las que se les escribió?
+            <span class="cite">Pregunta de interpretación</span>
+          </div>
+          <div class="highlight" style="margin-top:0.75rem">
+            «¿Qué significa para mí?» viene <strong>después</strong>, en la <strong>aplicación</strong>.
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card id="barreras">
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="1.2" fill="#8D6E63"/><rect x="3.8" y="5.8" width="7.2" height="3.2" rx="0.4" fill="#E76F51"/><rect x="12.5" y="5.8" width="7" height="3.2" rx="0.4" fill="#F4A261"/><rect x="3.8" y="10.2" width="4.5" height="3.2" rx="0.4" fill="#E9C46A"/><rect x="9.5" y="10.2" width="7" height="3.2" rx="0.4" fill="#E76F51"/><rect x="17.5" y="10.2" width="2.5" height="3.2" rx="0.4" fill="#F4A261"/><rect x="3.8" y="14.6" width="7.2" height="3.2" rx="0.4" fill="#F4A261"/><rect x="12.5" y="14.6" width="7" height="3.2" rx="0.4" fill="#E9C46A"/></svg></span>
+          <span class="card-title">Barreras</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Barreras al <strong>interpretar / entender</strong> el texto:</p>
+          <div class="barreras-list" aria-label="Barreras al interpretar">
+            <div class="barrera-item">
+              <span class="b-icon" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#2A9D8F"/><ellipse cx="12" cy="12" rx="4" ry="9" fill="none" stroke="#E9F5F3" stroke-width="1.3"/><path d="M3.5 12h17M5.2 8h13.6M5.2 16h13.6" stroke="#E9C46A" stroke-width="1.15" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="#E76F51"/></svg></span>
+              <span class="b-text">Cultural<span class="b-detail">Lenguaje, costumbres y formas de la época</span></span>
+            </div>
+            <div class="barrera-item">
+              <span class="b-icon" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 5.2l5.2-1.6 6.2 1.8 5.6-1.6v14.5l-5.6 1.6-6.2-1.8-5.2 1.6z" fill="#457B9D"/><path d="M8.7 3.6v14.5M15 5.4v14.5" stroke="#E8F1F8" stroke-width="1" opacity=".65"/><path d="M5.8 11c1.4-.9 2.8-.6 4 .5 1.4 1.3 3 .7 4.2-.3" stroke="#E9C46A" stroke-width="1.4" fill="none" stroke-linecap="round"/><circle cx="16.5" cy="13.5" r="1.2" fill="#E76F51"/></svg></span>
+              <span class="b-text">Geográfica<span class="b-detail">Ubicación que marca el texto</span></span>
+            </div>
+            <div class="barrera-item">
+              <span class="b-icon" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><rect x="5.5" y="3.5" width="13" height="17" rx="1.4" fill="#E9C46A"/><path d="M8 8h8M8 11h8M8 14h5.5" stroke="#8D6E63" stroke-width="1.2" stroke-linecap="round"/><rect x="5.5" y="3.5" width="2.2" height="17" fill="#D4A017"/><circle cx="15.5" cy="16.5" r="2" fill="#E76F51"/></svg></span>
+              <span class="b-text">Literaria<span class="b-detail">Géneros literarios distintos; cada uno pide herramientas distintas</span></span>
+            </div>
+            <div class="barrera-item">
+              <span class="b-icon" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M4 5.5h14.5v9H9.2L5 18.2V5.5z" fill="#2A9D8F"/><path d="M7.5 9h8M7.5 12h5.5" stroke="#E9F5F3" stroke-width="1.2" stroke-linecap="round"/><circle cx="18.2" cy="16.5" r="2.5" fill="#E9C46A"/></svg></span>
+              <span class="b-text">Comunicación<span class="b-detail">Lo que se dijo y cómo llega hasta nosotros</span></span>
+            </div>
+          </div>
+        </div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- GEOGRAFÍA / ATLAS -->
+  <section id="atlas" class="section-soft reveal">
+    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 5.5l5.2-1.8 6.2 2 5.6-1.8v14.2l-5.6 1.8-6.2-2-5.2 1.8z" fill="#2A9D8F"/><path d="M8.7 3.7v14.2M15 5.7v14.2" stroke="#E9F5F3" stroke-width="1.1" opacity=".7"/><path d="M5.5 10.5c1.5-1 3-.8 4.2.4 1.5 1.5 3.2.8 4.5-.2" stroke="#E9C46A" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="7.5" cy="14" r="1.1" fill="#E76F51"/></svg></span>Geografía · Atlas</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="sutil">Conocemos geografía con un atlas. Toca cada tarjeta.</p>
+
+    <div class="timeline">
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 5.5l5.2-1.8 6.2 2 5.6-1.8v14.2l-5.6 1.8-6.2-2-5.2 1.8z" fill="#2A9D8F"/><path d="M8.7 3.7v14.2M15 5.7v14.2" stroke="#E9F5F3" stroke-width="1.1" opacity=".7"/><path d="M5.5 10.5c1.5-1 3-.8 4.2.4 1.5 1.5 3.2.8 4.5-.2 1.2-.9 2.8-1 4 .2" stroke="#E9C46A" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="7.5" cy="14" r="1.1" fill="#E76F51"/><circle cx="16.5" cy="11.5" r="1" fill="#457B9D"/></svg></span>
+          <span class="card-title">El atlas</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Conocemos la geografía bíblica con un <strong>atlas</strong>: una colección de mapas.</p>
+          <div class="highlight">
+            Las <strong>escalas</strong> y los <strong>colores de relieve</strong> importan — a menudo no los tomamos en cuenta.
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 1113 0c0 5.2-6.5 11-6.5 11z" fill="#E76F51"/><circle cx="12" cy="10" r="2.6" fill="#FFF8F4"/><circle cx="12" cy="10" r="1.2" fill="#457B9D"/><ellipse cx="12" cy="21.2" rx="3.2" ry="0.7" fill="#C8B6A6" opacity=".5"/></svg></span>
+          <span class="card-title">Visitar el lugar</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Visitar el lugar ayuda a <strong>entender más</strong> el texto: el terreno, las distancias y el contexto se vuelven concretos.</p>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 20.5V7.2L12 3.5l7.5 3.7v13.3" fill="#8D6E63"/><path d="M12 20.5V8.2" stroke="#E9C46A" stroke-width="1.4"/><rect x="6.2" y="10" width="3.2" height="4" rx="0.4" fill="#2A9D8F"/><rect x="14.6" y="10" width="3.2" height="4" rx="0.4" fill="#457B9D"/><circle cx="10.5" cy="15.5" r="0.7" fill="#E9C46A"/><path d="M4.5 7.2h15" stroke="#594E4C" stroke-width="1.2"/><path d="M7 20.5h10v1.2H7z" fill="#6D4C41"/></svg></span>
+          <span class="card-title">Puertas de Nehemías</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Los esquemas o mapas ayudan a ubicar el relato en el espacio. El <strong>cuadro de puertas de Neh 3</strong> (quién, qué puerta, ¿terminada?, dato importante) está en <a href="https://elybrom.github.io/guias/nehemias-tareas/">Tareas</a>.</p>
+          <span class="ref">Nehemías · puertas de Jerusalén · cuadro en Tareas</span>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- RECURSOS ANTE BARRERAS -->
+  <section id="recursos" class="reveal">
+    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 4.5h6v15.5H4.5z" fill="#457B9D"/><path d="M10.5 5.2h7.2l1.8 1.5v13.3H10.5z" fill="#E9C46A"/><path d="M12.5 9h4.5M12.5 11.5h4" stroke="#8D6E63" stroke-width="1.1" stroke-linecap="round"/><path d="M6 8.5h2.5M6 11h2.5" stroke="#E8F1F8" stroke-width="1.1" stroke-linecap="round"/></svg></span>Recursos ante barreras</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="sutil">Herramientas cuando el texto se resiste. Toca cada tarjeta.</p>
+
+    <div class="timeline">
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 5.5l5.2-1.8 6.2 2 5.6-1.8v14.2l-5.6 1.8-6.2-2-5.2 1.8z" fill="#2A9D8F"/><path d="M8.7 3.7v14.2M15 5.7v14.2" stroke="#E9F5F3" stroke-width="1.1" opacity=".7"/><circle cx="7.5" cy="14" r="1.1" fill="#E76F51"/></svg></span>
+          <span class="card-title">Atlas · mapas</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Con <strong>atlas</strong> (mapas) se vencen las <strong>barreras geográficas</strong>.</p>
+          <div class="highlight">La ubicación que marca el texto deja de ser abstracta cuando la vemos en el mapa.</div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 4.5h6v15.5H4.5z" fill="#457B9D"/><path d="M10.5 5.2h7.2l1.8 1.5v13.3H10.5z" fill="#E9C46A"/><path d="M12.5 9h4.5M12.5 11.5h4" stroke="#8D6E63" stroke-width="1.1" stroke-linecap="round"/><path d="M6 8.5h2.5M6 11h2.5" stroke="#E8F1F8" stroke-width="1.1" stroke-linecap="round"/></svg></span>
+          <span class="card-title">Diccionarios · manuales</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Con <strong>diccionarios</strong> se vencen las <strong>barreras culturales</strong>; también con <strong>manuales de usos y costumbres</strong>.</p>
+          <div class="highlight">Ayudan con lenguaje, tradiciones y el mundo del autor.</div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 4.5h6v15.5H4.5z" fill="#457B9D"/><path d="M10.5 5.2h7.2l1.8 1.5v13.3H10.5z" fill="#E9C46A"/><path d="M12.5 9h4.5M12.5 11.5h4M12.5 14h3.2" stroke="#8D6E63" stroke-width="1.1" stroke-linecap="round"/><path d="M6 8.5h2.5M6 11h2.5M6 13.5h2" stroke="#E8F1F8" stroke-width="1.1" stroke-linecap="round"/><circle cx="17.5" cy="17.5" r="2" fill="#E76F51"/></svg></span>
+          <span class="card-title">Comentarios · referencias</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Con <strong>comentarios</strong>, <strong>referencias</strong> y <strong>textos interlineales</strong> se vencen las <strong>barreras literarias</strong>.</p>
+          <div class="highlight">No sustituyen la observación propia; la enriquecen después de haber mirado el texto.</div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><rect x="4.5" y="3.5" width="15" height="17" rx="1.6" fill="#FFF8F4" stroke="#2A9D8F" stroke-width="1.4"/><path d="M7.5 7.5h9M7.5 10.5h9M7.5 13.5h6.5" stroke="#457B9D" stroke-width="1.25" stroke-linecap="round"/><path d="M7.5 16.5h4" stroke="#E9C46A" stroke-width="1.4" stroke-linecap="round"/><rect x="14.2" y="15.2" width="4" height="3.2" rx="0.5" fill="#E76F51"/></svg></span>
+          <span class="card-title">Textos interlineales</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Barrera de <strong>lenguaje</strong>: el español <strong>no siempre</strong> equivale al hebreo (ni al griego).</p>
+          <div class="highlight">
+            Muestran la palabra original junto a la traducción para no quedarnos solo con la versión en español.
+          </div>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SEIS DIFICULTADES DE LA INTERPRETACIÓN -->
+  <section id="dificultades" class="section-alt reveal">
+    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.2L22 20.5H2z" fill="#E9C46A"/><rect x="11.1" y="9" width="1.8" height="5.5" rx="0.6" fill="#594E4C"/><circle cx="12" cy="17.2" r="1.15" fill="#E76F51"/></svg></span>Seis dificultades</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="sutil">De la interpretación. Toca cada tarjeta.</p>
+
+    <div class="timeline" id="seis-dificultades">
+      <article class="tl-item card open" data-card>
+        <button type="button" class="card-btn" aria-expanded="true">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.2L22 20.5H2z" fill="#E9C46A"/><rect x="11.1" y="9" width="1.8" height="5.5" rx="0.6" fill="#594E4C"/><circle cx="12" cy="17.2" r="1.15" fill="#E76F51"/></svg></span>
+          <span class="card-title">Malinterpretar el texto</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>No comprendemos si no leemos apropiadamente. Se evita <strong>observando bien</strong>.</p>
+          <ul>
+            <li><strong>Jn 14:6:</strong> «Yo soy <strong>el</strong> camino» — no «un» camino.</li>
+            <li><strong>1 Tim 6:10:</strong> la raíz = <strong>amor al</strong> dinero, no solo el dinero.</li>
+            <li><strong>Sal 37:4:</strong> deleitarte en el Señor → Él concede los deseos (causa-efecto; no solo la 2ª parte).</li>
+          </ul>
+          <div class="principio" style="margin-top:0.85rem">
+            Ignorar lo que dice el texto es el pecado imperdonable de la interpretación
+            <span class="subp">Frase clave de clase</span>
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="16" rx="2" fill="#457B9D"/><path d="M6 9c2.5-3.5 9.5-3.5 12 0" stroke="#E9C46A" stroke-width="1.7" fill="none" stroke-linecap="round"/><path d="M6 15c2.5 3.5 9.5 3.5 12 0" stroke="#E76F51" stroke-width="1.7" fill="none" stroke-linecap="round"/><path d="M12 6.5v11" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" opacity=".85"/></svg></span>
+          <span class="card-title">Distorsionar el texto</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Meter en el texto lo que <strong>no dice</strong>. Hacer que diga algo que nunca dice.</p>
+          <div class="highlight">
+            <strong>Gn 3:</strong> se añade «<strong>ni le tocaréis</strong>». Dios solo dijo <strong>no comeréis</strong> — no prohibió tocar.
+          </div>
+          <p style="margin-top:0.65rem">Distorsionar = añadir o torcer para que el texto diga lo que nosotros queremos.</p>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#E76F51"/><path d="M8.2 8.2l7.6 7.6M15.8 8.2l-7.6 7.6" stroke="#FFF" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+          <span class="card-title">Contradecir el texto</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Oponerse a lo que Dios dice <strong>expresamente</strong>.</p>
+          <ul>
+            <li>Satanás: «Dios te mintió» — niega lo que Dios dijo.</li>
+            <li><strong>Jn 8:44:</strong> mentiroso / padre de mentiras.</li>
+          </ul>
+          <div class="highlight">
+            Cuidado con afirmaciones falsas de «<strong>la Biblia dice</strong>» — no contradigas lo que el texto afirma.
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8.2" r="4.2" fill="#E9C46A"/><path d="M5.5 20.5c1.2-4.2 3.8-6.2 6.5-6.2s5.3 2 6.5 6.2" fill="#2A9D8F"/><circle cx="12" cy="8.2" r="1.6" fill="#FFF8E7"/><path d="M9.5 7.5c.4-.8 1.2-1.3 2.5-1.3" stroke="#D4A017" stroke-width="1" fill="none" stroke-linecap="round"/></svg></span>
+          <span class="card-title">Subjetivismo</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>El significado está <strong>en el texto mismo</strong>, no en nuestra respuesta subjetiva.</p>
+          <ul>
+            <li>No dejar el cerebro en la puerta.</li>
+            <li>Amar a Dios <strong>con la mente</strong>.</li>
+          </ul>
+          <div class="highlight">
+            Sentir algo no es lo mismo que entender lo que el texto dice.
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#457B9D"/><circle cx="12" cy="12" r="7" fill="#E8F1F8"/><circle cx="12" cy="12" r="1.2" fill="#E76F51"/><path d="M12 6.5v5.2l3.5 2.2" stroke="#594E4C" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="5.2" r="0.7" fill="#E9C46A"/><circle cx="18.8" cy="12" r="0.7" fill="#E9C46A"/><circle cx="5.2" cy="12" r="0.7" fill="#E9C46A"/></svg></span>
+          <span class="card-title">Relativismo</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Todo el conocimiento dependería del contexto, de la cultura, de la época, del sujeto que observa. Asumir que la Biblia <strong>cambia de sentido con el tiempo</strong> es peligroso para la doctrina.</p>
+          <ul>
+            <li>Mito de la <strong>superioridad moderna</strong> vs. Adán inteligente.</li>
+            <li>El humano sigue igual: <strong>pecador</strong>, necesita Salvador.</li>
+          </ul>
+          <div class="callout-box">
+            No cometer suicidio intelectual
+            <span class="subp">Nota de clase · recuadro</span>
+          </div>
+          <div class="highlight">
+            <strong>1 Cor 15:</strong> resurrección <strong>física</strong> de Jesús — no la lectura relativista «solo espiritual / vive en mi corazón».
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M7 16.5V9.2L12 5l5 4.2v7.3" fill="#E9C46A"/><path d="M8.5 16.5h7v3.2h-7z" fill="#8D6E63"/><rect x="10.5" y="10.5" width="3" height="3.5" rx="0.3" fill="#FFF8E7"/><path d="M12 7.5v2.5" stroke="#E76F51" stroke-width="1.4" stroke-linecap="round"/><circle cx="12" cy="6.2" r="1.3" fill="#E76F51"/><path d="M5.5 19.5h13" stroke="#6D4C41" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+          <span class="card-title">Confianza excesiva</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Orgullo antes de la caída. El conocimiento sin humildad <strong>envanece</strong>.</p>
+          <div class="verse-box">
+            El conocimiento envanece, pero el amor edifica.
+            <span class="cite">1 Corintios 8:1</span>
+          </div>
+          <ul style="margin-top:0.65rem">
+            <li>Abusos cuando alguien se pone <strong>autoridad sobre el texto</strong>.</li>
+          </ul>
+          <div class="highlight">
+            Priorizar lo que dice la <strong>Palabra</strong> sobre el set doctrinal (ej. Pastor Alex / Centro de Fe).
+          </div>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 5 CLAVES DE INTERPRETACIÓN (Clase 7 · 21 Sept 2026) -->
+  <section id="claves" class="reveal">
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/golden-key-heart.jpg" alt="" width="40" height="40" loading="lazy"></span>5 claves de interpretación</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="clase-meta">Clase 7 · 21 Sept 2026</p>
+    <p class="sutil">Antes de aplicar: observar bien. Toca cada clave.</p>
+
+    <div class="timeline" id="cinco-claves">
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><rect x="4.5" y="3.5" width="15" height="17" rx="1.6" fill="#E9C46A"/><path d="M7.5 8h9M7.5 11h9M7.5 14h6" stroke="#8D6E63" stroke-width="1.2" stroke-linecap="round"/><circle cx="17" cy="17.5" r="2.2" fill="#E76F51"/><path d="M17 16.3v2.4M15.8 17.5h2.4" stroke="#FFF8F4" stroke-width="1.1" stroke-linecap="round"/></svg></span>
+          <span class="card-title">1. Contenido</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <ul>
+            <li>No hay manera de interpretar algo si no hay <strong>contenido</strong>.</li>
+            <li>Antes de interpretar, hay que <strong>observar</strong>.</li>
+          </ul>
+          <div class="highlight">
+            Cuanto más tiempo se pasa en la observación, menos tiempo se pasa en la interpretación y <strong>mejores serán los resultados</strong>.
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><rect x="3.5" y="5" width="7" height="14" rx="1" fill="#457B9D"/><rect x="13.5" y="5" width="7" height="14" rx="1" fill="#2A9D8F"/><path d="M5.5 8h3M5.5 11h3M15.5 8h3M15.5 11h3" stroke="#E8F1F8" stroke-width="1.1" stroke-linecap="round"/><path d="M11.5 12h1" stroke="#E9C46A" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="18.5" r="1.3" fill="#E76F51"/></svg></span>
+          <span class="card-title" id="contexto">2. Contexto</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <div class="verse-box">
+            Un texto fuera de contexto se convierte en pretexto.
+            <span class="cite">Frase de clase</span>
+          </div>
+          <div class="ctx-kinds" aria-label="Tipos de contexto">
+            <div class="ctx-kind"><strong>Literario</strong><span>Palabras y párrafos antes y después</span></div>
+            <div class="ctx-kind"><strong>Histórico</strong><span>¿Qué sucedió antes?</span></div>
+            <div class="ctx-kind"><strong>Cultural</strong><span>Costumbres de la época</span></div>
+            <div class="ctx-kind"><strong>Geográfico</strong><span>Lugar donde ocurre</span></div>
+            <div class="ctx-kind"><strong>Teológico</strong><span>Lo que el resto de la Escritura enseña sobre el tema</span></div>
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card open" data-card>
+        <button type="button" class="card-btn" aria-expanded="true">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M4 6.5h7.5v11H4z" fill="#457B9D"/><path d="M12.5 6.5H20v11h-7.5z" fill="#2A9D8F"/><path d="M6 10h3.5M6 13h3" stroke="#E8F1F8" stroke-width="1.1" stroke-linecap="round"/><path d="M14.5 10h3.5M14.5 13h3" stroke="#E9F5F3" stroke-width="1.1" stroke-linecap="round"/><path d="M9.5 12h5" stroke="#E9C46A" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17.5" r="1.4" fill="#E76F51"/></svg></span>
+          <span class="card-title">3. Comparación <span class="examen-badge">Examen</span></span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Comparamos las <strong>Escrituras con las Escrituras</strong>.</p>
+          <div class="highlight">
+            Nos da una red de seguridad porque el mismo intérprete de las Escrituras <strong>son las Escrituras</strong>.
+          </div>
+          <ul style="margin-top:0.65rem">
+            <li><strong>Concordancia:</strong> lista de palabras que aparecen en la Biblia → ayuda a comparar.</li>
+            <li><strong>Strong</strong> / diccionario.</li>
+            <li>Relacionar la palabra de la Biblia (los pasajes).</li>
+          </ul>
+          <p style="margin-top:0.65rem;font-size:0.86rem">Ver también <a href="#strong">Strong, concordancias y Vine</a>.</p>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#2A9D8F"/><path d="M7 14c1.5-2.5 3.5-4 5-4s3.5 1.5 5 4" fill="#457B9D"/><circle cx="9" cy="10" r="1.2" fill="#E9C46A"/><circle cx="15" cy="10" r="1.2" fill="#E9C46A"/><path d="M8 17.5c1.2 1 2.6 1.5 4 1.5s2.8-.5 4-1.5" stroke="#E76F51" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg></span>
+          <span class="card-title">4. Cultura</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p><strong>Tradiciones y costumbres</strong> de la zona.</p>
+          <div class="highlight">Conocer el mundo del autor ayuda a no leer el texto con gafas modernas.</div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M5 5.5h6v13H5z" fill="#457B9D"/><path d="M13 6.2h6.5l1.5 1.3v11H13z" fill="#E9C46A"/><path d="M7 9h2.5M7 12h2.5" stroke="#E8F1F8" stroke-width="1.1" stroke-linecap="round"/><path d="M15 10h3M15 12.5h2.5" stroke="#8D6E63" stroke-width="1.1" stroke-linecap="round"/><circle cx="18.5" cy="16.5" r="2" fill="#E76F51"/></svg></span>
+          <span class="card-title">5. Consulta</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <ul class="short-list">
+            <li><span class="num">1</span><span>Concordancia</span></li>
+            <li><span class="num">2</span><span>Diccionarios bíblicos / léxicos / usos y costumbres</span></li>
+            <li><span class="num">3</span><span>Manuales bíblicos</span></li>
+            <li><span class="num">4</span><span>Atlas / mapas</span></li>
+          </ul>
+          <p style="margin-top:0.65rem;font-size:0.86rem">Detalle de Strong y Vine → <a href="#strong">sección siguiente</a>.</p>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- STRONG · CONCORDANCIAS · VINE (Clase · 5 Oct 2026) -->
+  <section id="strong" class="section-soft reveal">
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/open-bible-cute.jpg" alt="" width="40" height="40" loading="lazy"></span>Strong, concordancias y Vine</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="clase-meta">Clase · 5 Oct 2026 · Comparación / Consulta</p>
+    <p class="sutil">Herramientas para comparar palabras. Toca cada tarjeta.</p>
+
+    <div class="timeline">
+      <article class="tl-item card open" data-card>
+        <button type="button" class="card-btn" aria-expanded="true">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="16" rx="2" fill="#457B9D"/><text x="12" y="15.5" text-anchor="middle" fill="#E9C46A" font-size="9" font-family="Georgia,serif" font-weight="700">S#</text></svg></span>
+          <span class="card-title">Strong</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Strong <strong>numeró cada palabra</strong> hebrea y griega tal como aparece en los códices (manuscritos).</p>
+          <div class="highlight">
+            Una palabra griega o hebrea, según el <strong>contexto del versículo</strong>, puede traducirse con una palabra en español o con otra distinta (a veces similar, pero no la misma).
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M5 4.5h6v15H5z" fill="#2A9D8F"/><path d="M13 5.2h6.5l1.5 1.4v13H13z" fill="#E9C46A"/><path d="M7 8.5h2.5M7 11h2.5M7 13.5h2" stroke="#E9F5F3" stroke-width="1.1" stroke-linecap="round"/><path d="M15 9.5h3M15 12h2.5" stroke="#8D6E63" stroke-width="1.1" stroke-linecap="round"/></svg></span>
+          <span class="card-title">Concordancia</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p><strong>En español:</strong> dice cuántas veces aparece la palabra en español, pero <strong>no necesariamente</strong> es la misma palabra en griego o hebreo.</p>
+          <div class="highlight">
+            <strong>Al revés:</strong> si busco la palabra en griego/hebreo (número Strong), aparece toda su lista de apariciones, aunque en español se lea con palabras distintas.
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 4.5h11a1.5 1.5 0 011.5 1.5v12a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 015 18V6a1.5 1.5 0 011.5-1.5z" fill="#E9C46A"/><path d="M8.5 9h7M8.5 12h7M8.5 15h5" stroke="#8D6E63" stroke-width="1.15" stroke-linecap="round"/><circle cx="17" cy="17" r="2.3" fill="#E76F51"/></svg></span>
+          <span class="card-title">Vine</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Vine tomó la información de Strong y dio la <strong>definición de cada palabra</strong> usada en el contexto bíblico: <em>Diccionario expositivo de palabras del Nuevo Testamento</em>.</p>
+          <ul>
+            <li>No define la palabra en general, sino lo que significa <strong>en la Biblia</strong>.</li>
+            <li>No se mete con historia ni opiniones: solo con la Biblia misma.</li>
+          </ul>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><rect x="4.5" y="3.5" width="15" height="17" rx="1.5" fill="#FFF8F4" stroke="#457B9D" stroke-width="1.3"/><path d="M7.5 8h9M7.5 11h9M7.5 14h6" stroke="#2A9D8F" stroke-width="1.2" stroke-linecap="round"/><rect x="14" y="15" width="4" height="3" rx="0.4" fill="#E76F51"/></svg></span>
+          <span class="card-title">Diccionarios bíblicos</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Diccionarios bíblicos (p. ej. <strong>conciso</strong>): como diccionarios normales; definen <strong>palabras, lugares y personas</strong>.</p>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 7.5h15v11.5H4.5z" fill="#8D6E63"/><path d="M4.5 7.5l7.5-3.5 7.5 3.5" fill="#E9C46A"/><path d="M8 11h8M8 14h6" stroke="#FFF8F4" stroke-width="1.2" stroke-linecap="round"/><circle cx="17" cy="16.5" r="1.8" fill="#E76F51"/></svg></span>
+          <span class="card-title">Tarea · Nehemías 4</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Leer <strong>Nehemías 4</strong> y escoger palabras que llamen la atención para investigar.</p>
+          <a class="link-out" href="https://elybrom.github.io/guias/nehemias-tareas/#nehemias-4">Ir a Tareas · Neh 4 →</a>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CUADRO MARCOS 4:35–5:42 (Clase 5 · 7 Sept 2026) -->
+  <section id="cuadro" class="section-alt reveal">
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/house-foundation-colorful.jpg" alt="" width="40" height="40" loading="lazy"></span>Cuadro · Marcos</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="clase-meta">Clase 5 · 7 Sept 2026</p>
+    <p class="cuadro-title">MARCOS 4:35 – 5:42</p>
+    <p class="demo-label">Cuatro milagros · observación</p>
+    <p class="scroll-hint-h desktop-only">↔ Desliza horizontalmente en pantallas anchas</p>
+
+    <div class="tabla-wrap desktop-only" role="region" aria-label="Cuadro Marcos 4:35 a 5:42">
+      <table class="cuadro">
+        <thead>
+          <tr>
+            <th scope="col">Milagro</th>
+            <th scope="col">Área</th>
+            <th scope="col">Personas</th>
+            <th scope="col">Medios</th>
+            <th scope="col">Resultados</th>
+            <th scope="col">Fe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="milagro-cell">Calma la tormenta (4:35–41)</td>
+            <td>Reino natural</td>
+            <td>Jesús dormido, discípulos</td>
+            <td>Su palabra</td>
+            <td>Cesó el viento y se hizo grande bonanza; gran temor</td>
+            <td>Sin fe</td>
+          </tr>
+          <tr>
+            <td class="milagro-cell">Libera al endemoniado (5:1–20)</td>
+            <td>Reino espiritual</td>
+            <td>Jesús, gadareno, demonios, aldeanos, cerdos</td>
+            <td>Su palabra</td>
+            <td>Sentado, vestido y en su juicio cabal; tuvieron miedo</td>
+            <td>Deseo de seguirle</td>
+          </tr>
+          <tr>
+            <td class="milagro-cell">La mujer del flujo de sangre (5:21–34)</td>
+            <td>Reino físico, emocional</td>
+            <td>Jesús, discípulos, multitud, Jairo, mujer</td>
+            <td>Toque del manto</td>
+            <td>Sanidad inmediata; salvación</td>
+            <td>Súper fe</td>
+          </tr>
+          <tr>
+            <td class="milagro-cell">Resucita a la hija de Jairo (5:21–43)</td>
+            <td>Reino físico, emocional y espiritual</td>
+            <td>Pedro, Jacobo, Juan, Jairo, mamá, niña muerta, endechadores</td>
+            <td>Su palabra y su toque</td>
+            <td>La niña se levantó, andaba y comió</td>
+            <td>Jairo tenía fe</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="milagro-cards" aria-label="Cuadro Marcos en tarjetas">
+      <article class="milagro-card">
+        <h3>1. Calma la tormenta (4:35–41)</h3>
+        <dl>
+          <dt>Área</dt><dd>Reino natural</dd>
+          <dt>Personas</dt><dd>Jesús dormido, discípulos</dd>
+          <dt>Medios</dt><dd>Su palabra</dd>
+          <dt>Resultados</dt><dd>Cesó el viento y se hizo grande bonanza; gran temor</dd>
+          <dt>Fe</dt><dd>Sin fe</dd>
+        </dl>
+      </article>
+      <article class="milagro-card">
+        <h3>2. Libera al endemoniado (5:1–20)</h3>
+        <dl>
+          <dt>Área</dt><dd>Reino espiritual</dd>
+          <dt>Personas</dt><dd>Jesús, gadareno, demonios, aldeanos, cerdos</dd>
+          <dt>Medios</dt><dd>Su palabra</dd>
+          <dt>Resultados</dt><dd>Sentado, vestido y en su juicio cabal; tuvieron miedo</dd>
+          <dt>Fe</dt><dd>Deseo de seguirle</dd>
+        </dl>
+      </article>
+      <article class="milagro-card">
+        <h3>3. La mujer del flujo de sangre (5:21–34)</h3>
+        <dl>
+          <dt>Área</dt><dd>Reino físico, emocional</dd>
+          <dt>Personas</dt><dd>Jesús, discípulos, multitud, Jairo, mujer</dd>
+          <dt>Medios</dt><dd>Toque del manto</dd>
+          <dt>Resultados</dt><dd>Sanidad inmediata; salvación</dd>
+          <dt>Fe</dt><dd>Súper fe</dd>
+        </dl>
+      </article>
+      <article class="milagro-card">
+        <h3>4. Resucita a la hija de Jairo (5:21–43)</h3>
+        <dl>
+          <dt>Área</dt><dd>Reino físico, emocional y espiritual</dd>
+          <dt>Personas</dt><dd>Pedro, Jacobo, Juan, Jairo, mamá, niña muerta, endechadores</dd>
+          <dt>Medios</dt><dd>Su palabra y su toque</dd>
+          <dt>Resultados</dt><dd>La niña se levantó, andaba y comió</dd>
+          <dt>Fe</dt><dd>Jairo tenía fe</dd>
+        </dl>
+      </article>
+    </div>
+    <p class="tabla-nota">Ejemplo de clase (Marcos). En otros pasajes se diseñan columnas que encajen con el texto.</p>
+  </section>
+
+  <!-- PALABRA -->
+  <section id="palabra" class="reveal">
+    <h2>Palabra</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="sutil">La Escritura como fuente del mensaje.</p>
+
+    <div class="timeline">
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 4.5h10a1.8 1.8 0 011.8 1.8v11.2a1.8 1.8 0 01-1.8 1.8H8.2A1.8 1.8 0 006.5 20.5V4.5z" fill="#E9C46A"/><path d="M8.5 8h7M8.5 11h6M8.5 14h5" stroke="#8D6E63" stroke-width="1.15" stroke-linecap="round"/><path d="M4.5 7.5c1.5-2 3.5-2.5 4.5-1" fill="#2A9D8F"/><path d="M4.5 7.5c0 3.5 2 5.5 4.5 6.5-1.5-2-2-4-1.2-6.2z" fill="#52B788"/><circle cx="16.5" cy="17.5" r="2.2" fill="#E76F51"/></svg></span>
+          <span class="card-title">Inspirada por Dios</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <div class="verse-box">
+            Toda la Escritura es inspirada por Dios…
+            <span class="cite">2 Timoteo 3:16</span>
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M4 6.5h14.5v8.5H9.5L5.5 18.5V6.5z" fill="#2A9D8F"/><path d="M7.5 10h8M7.5 12.8h5.5" stroke="#E9F5F3" stroke-width="1.2" stroke-linecap="round"/><circle cx="18.5" cy="7" r="3" fill="#E9C46A"/><path d="M17.3 7h2.4M18.5 5.8v2.4" stroke="#8D6E63" stroke-width="1.1" stroke-linecap="round"/></svg></span>
+          <span class="card-title">El mensaje proviene de la Palabra</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>No inventamos el mensaje: sale del texto. Ejemplo vivo: Felipe y el eunuco.</p>
+          <span class="ref">Hechos 8:26ss</span>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.8l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.2 7.2 17.7l.9-5.4-3.9-3.8 5.4-.8z" fill="#E9C46A"/><path d="M12 6.5l1.2 2.5 2.7.4-2 1.9.5 2.7L12 12.8l-2.4 1.2.5-2.7-2-1.9 2.7-.4z" fill="#FFF8E7"/><circle cx="12" cy="11.5" r="1.1" fill="#E76F51"/></svg></span>
+          <span class="card-title">Guardar los mandamientos</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <div class="verse-box">
+            Tú encargaste que sean muy guardados tus mandamientos.
+            <span class="cite">Salmos 119:4</span>
+          </div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 4.5h6.2v15.5H4.5z" fill="#457B9D"/><path d="M10.7 5.5h7.3l1.5 1.2v13.3h-8.8z" fill="#2A9D8F"/><rect x="13" y="9" width="5.5" height="7.5" rx="0.6" fill="#E9C46A"/><path d="M14.2 11h3M14.2 13h3M14.2 15h2" stroke="#8D6E63" stroke-width="0.95" stroke-linecap="round"/><path d="M6.2 8.5h2.5M6.2 11h2.5" stroke="#E8F1F8" stroke-width="1.1" stroke-linecap="round"/></svg></span>
+          <span class="card-title">La Biblia en una tarjeta</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <ul>
+            <li><strong>66 libros</strong>, una sola historia → <strong>Jesús</strong>.</li>
+            <li>Idiomas: <strong>hebreo / griego / arameo</strong>.</li>
+          </ul>
+          <div class="genre-bars" aria-label="Géneros literarios">
+            <div class="genre-row"><span>Narrativa</span><div class="bar-track"><div class="bar-fill" style="width:43%"></div></div><span>43%</span></div>
+            <div class="genre-row"><span>Poesía</span><div class="bar-track"><div class="bar-fill" style="width:33%"></div></div><span>33%</span></div>
+            <div class="genre-row"><span>Discurso</span><div class="bar-track"><div class="bar-fill" style="width:24%"></div></div><span>24%</span></div>
+          </div>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FELIPE / HECHOS 8 -->
+  <section id="felipe" class="section-alt reveal">
+    <h2><span class="sec-illo img-wrap" aria-hidden="true"><img src="assets/pinterest/open-bible-cute.jpg" alt="Felipe" width="40" height="40" loading="lazy"></span>Felipe · Hechos 8</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="sutil">Observar → entender → responder.</p>
+
+    <div class="flow" aria-hidden="true">
+      <span>Observar</span><span class="arr">→</span>
+      <span>Entender</span><span class="arr">→</span>
+      <span>Responder</span>
+    </div>
+
+    <div class="timeline">
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M3.8 5h7.5a1.6 1.6 0 011.6 1.6V20H5.2A1.4 1.4 0 013.8 18.6V5z" fill="#457B9D"/><path d="M12.9 5H20v13.5a1.5 1.5 0 01-1.5 1.5h-5.6V5z" fill="#E9C46A"/><path d="M12.3 5v15" stroke="#FFF8F4" stroke-width="1.1"/><path d="M5.8 9h4M5.8 12h3.5" stroke="#E8F1F8" stroke-width="1.1" stroke-linecap="round"/><path d="M14.5 9h3.5M14.5 12h3" stroke="#8D6E63" stroke-width="1.1" stroke-linecap="round"/><circle cx="17.5" cy="16.5" r="2" fill="#E76F51"/></svg></span>
+          <span class="card-title">Lo que leía el eunuco</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <div class="verse-box">
+            Como cordero fue llevado al matadero… en su humillación no se le hizo justicia.
+            <span class="cite">Isaías 53:7-8</span>
+          </div>
+          <p style="margin-top:0.65rem">El eunuco leía, pero no entendía. Necesitaba a alguien que le ayudara a observar e interpretar.</p>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#2A9D8F"/><path d="M12 5.5v13M8 9.5h8" stroke="#E9C46A" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" fill="#E9F5F3"/><path d="M12 10.2v2.2l1.5 1.2" stroke="#457B9D" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></span>
+          <span class="card-title">Felipe comprendió y respondió</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p>Felipe <strong>comprendió</strong> el texto y <strong>anunció a Jesús</strong> a partir de esa Escritura.</p>
+          <div class="highlight">Observar el pasaje → entender lo que dice → responder con el evangelio.</div>
+        </div></div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 13.5l3.5-2.8 2.8 1.8 2.6-2 3.2 1.6 4.4-2.6" stroke="#2A9D8F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="10.5" r="2" fill="#E9C46A"/><circle cx="12" cy="10" r="2" fill="#457B9D"/><circle cx="17.5" cy="9" r="2.2" fill="#E76F51"/><path d="M5.5 17.5c1-2 2.2-2.8 3.5-2.8s2.2.6 3 2" stroke="#8D6E63" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M13 17.2c.6-1.6 1.8-2.4 3.2-2.4s2.4.7 3.2 2.2" stroke="#8D6E63" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M15.5 6.2l1.2 1.2 2-2.2" stroke="#52B788" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="card-title">Discipulado en la iglesia</span>
+          <span class="card-hint">tocar</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="card-panel"><div class="card-panel-inner">
+          <p><strong>El discipulado en la iglesia es importante</strong>: no solo dar el mensaje, sino acompañar para que otros también observen, entiendan y respondan.</p>
+        </div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CÓMO LEER (10) -->
+  <section id="leer" class="reveal">
+    <h2>Cómo leer · Las 10</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="sutil">Lista corta con el wording del maestro. Detalle completo en la Guía.</p>
+
+    <ol class="short-list">
+      <li><span class="num">1</span><span>Leer con la mente — para entender</span></li>
+      <li><span class="num">2</span><span>Leer repetidamente</span></li>
+      <li><span class="num">3</span><span>Leer con paciencia</span></li>
+      <li><span class="num">4</span><span>Leer selectivamente (¿quién? ¿qué? ¿dónde?…)</span></li>
+      <li><span class="num">5</span><span>Lee orando</span></li>
+      <li><span class="num">6</span><span>Lee imaginando</span></li>
+      <li><span class="num">7</span><span>Leer meditando (rumear)</span></li>
+      <li><span class="num">8</span><span>Lee intencionalmente (sujeto, verbo, preposición)</span></li>
+      <li><span class="num">9</span><span>Lee adquisitivamente (hacer mío el pasaje)</span></li>
+      <li><span class="num">10</span><span>Lee telescópicamente (contexto)</span></li>
+    </ol>
+    <p style="text-align:center">
+      <a class="link-out" href="https://elybrom.github.io/guias/metodo-inductivo/#diez">Ver las 10 interactivas en Guía →</a>
+    </p>
+  </section>
+
+  <!-- LAS 6 -->
+  <section id="seis" class="section-soft reveal">
+    <h2>Las 6 · observación</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="sutil">«Juntando toda la información» — E R R S D R</p>
+
+    <ul class="short-list">
+      <li><span class="letra">E</span><span><strong>Enfatizadas</strong> — espacio, propósito, orden, clímax</span></li>
+      <li><span class="letra">R</span><span><strong>Repetidas</strong> — palabras, personajes, circunstancias</span></li>
+      <li><span class="letra">R</span><span><strong>Relacionadas</strong> — causa → efecto; preguntas y respuestas</span></li>
+      <li><span class="letra">S</span><span><strong>Similares</strong> — similitudes y metáforas</span></li>
+      <li><span class="letra">D</span><span><strong>Diferentes</strong> — contraste («y» / «pero»)</span></li>
+      <li><span class="letra">R</span><span><strong>Relativas a la vida</strong> — que se relacione conmigo</span></li>
+    </ul>
+    <p style="text-align:center">
+      <a class="link-out" href="https://elybrom.github.io/guias/metodo-inductivo/#seis">Ver las 6 interactivas en Guía →</a>
+    </p>
+  </section>
+
+  <!-- HECHOS 1:8 -->
+  <section id="hechos18" class="section-alt reveal">
+    <h2><span class="sec-illo" aria-hidden="true"><svg class="illo" viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" fill="#457B9D"/><ellipse cx="12" cy="12" rx="4" ry="9" fill="none" stroke="#E8F1F8" stroke-width="1.2"/><path d="M3.5 12h17M5 8.2h14M5 15.8h14" stroke="#E9C46A" stroke-width="1.1"/><path d="M12 4.5c2.5 2.2 4 4.8 4 7.5s-1.5 5.3-4 7.5c-2.5-2.2-4-4.8-4-7.5s1.5-5.3 4-7.5z" fill="#2A9D8F" opacity=".85"/><circle cx="12" cy="12" r="1.6" fill="#E76F51"/></svg></span>Hechos 1:8</h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="sutil">Ejemplo anotado en clase. Toca un chip.</p>
+
+    <div class="verse-box">
+      …pero recibiréis poder, cuando haya venido sobre vosotros el Espíritu Santo, y me seréis testigos…
+      <span class="cite">Hechos 1:8</span>
+    </div>
+
+    <div class="chips" role="group" aria-label="Anotaciones de Hechos 1:8">
+      <button type="button" class="chip" data-note="«pero» = clave de contraste (Diferentes). Marca el giro del texto.">«pero»</button>
+      <button type="button" class="chip" data-note="«recibiréis» / «seréis» = verbos en futuro: promesa y misión por venir.">futuro</button>
+      <button type="button" class="chip" data-note="Espíritu Santo: la fuente del poder para ser testigos.">Espíritu Santo</button>
+      <button type="button" class="chip" data-note="Geografía = bosquejo de Hechos: de lo cercano a lo último de la tierra.">geografía</button>
+    </div>
+    <div class="chip-note" id="chip-note" role="status" aria-live="polite"></div>
+
+    <div class="geo-flow" aria-label="Progresión geográfica">
+      <span>Jerusalén</span><span class="arrow">→</span>
+      <span>Judea</span><span class="arrow">→</span>
+      <span>Samaria</span><span class="arrow">→</span>
+      <span>lo último de la tierra</span>
+    </div>
+  </section>
+
+
+  <section id="herramientas-palabra" class="section-soft reveal">
+    <h2>
+      <span class="sec-illo img-wrap" aria-hidden="true">
+        <img src="assets/pinterest/golden-key-heart.jpg" alt="" width="40" height="40" loading="lazy">
+      </span>
+      Herramientas para estudiar una palabra (clase 5 Oct 2026)
+    </h2>
+    <div class="ornament" aria-hidden="true">✦</div>
+    <p class="clase-meta">Clase · 5 Oct 2026 · Concordancia / morfología / comentarios</p>
+    <p class="sutil">Notas de clase (limpias). Cómo investigar una palabra — por ejemplo «gozo» en Filipenses — con la app del pastor (probablemente Blue Letter Bible).</p>
+
+    <div class="timeline">
+      <article class="tl-item card open" data-card>
+        <button type="button" class="card-btn" aria-expanded="true">
+          <span class="card-icon svg-wrap" aria-hidden="true">
+            <svg class="illo" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9" fill="#DEC4C9"/>
+              <path d="M8 12.5l2.2 2.2L16.5 8.5" stroke="#977272" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="card-title">1. Propósito de estudiar una palabra</span>
+          <span class="chev" aria-hidden="true"></span>
+        </button>
+        <div class="card-body">
+          <p>El objetivo es estudiar una palabra — por ejemplo «gozo» en Filipenses — <strong>yendo a cada versículo donde aparece</strong> para entender qué significa en su contexto.</p>
+          <p>Eso sirve para <strong>mi vida</strong>, para mi <strong>estudio personal</strong> y, si Dios me llama a enseñar, para <strong>explicar a otros</strong> qué significa esa palabra.</p>
+          <p>Las herramientas van avanzando: una app ya me ahorra buscar palabra por palabra en la concordancia impresa.</p>
+        </div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true">
+            <svg class="illo" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="5" width="16" height="14" rx="2" fill="#E8D5C4"/>
+              <path d="M7 9h10M7 12h8M7 15h6" stroke="#594E4C" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="card-title">2. Qué tipo de palabra es</span>
+          <span class="chev" aria-hidden="true"></span>
+        </button>
+        <div class="card-body">
+          <p>Además del significado, investigo <strong>qué tipo de palabra</strong> es:</p>
+          <ul>
+            <li><strong>Sustantivo</strong> (nombre)</li>
+            <li><strong>Adjetivo</strong></li>
+            <li><strong>Adverbio</strong></li>
+            <li><strong>Verbo</strong></li>
+          </ul>
+          <p>Eso cambia cómo la leo y cómo la aplico.</p>
+        </div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true">
+            <svg class="illo" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3.5" y="4" width="17" height="16" rx="2.5" fill="#457B9D"/>
+              <text x="12" y="14.5" text-anchor="middle" fill="#FFF" font-size="7" font-family="Montserrat,sans-serif" font-weight="700">N-GSF</text>
+            </svg>
+          </span>
+          <span class="card-title">3. Códigos gramaticales (morfología)</span>
+          <span class="chev" aria-hidden="true"></span>
+        </button>
+        <div class="card-body">
+          <p>Junto al número Strong aparecen <strong>abreviaturas</strong> (códigos de morfología Robinson, los que usa Blue Letter Bible). Dicen qué tipo de palabra es y, en los verbos, <strong>tiempo</strong>, <strong>voz</strong> (activa / media / pasiva) y <strong>modo</strong> (indicativo, imperativo, etc.).</p>
+          <p><strong>Idea del pastor:</strong> si un verbo está en <em>imperativo</em>, es un mandato. Eso se descubre estudiando hasta llegar a la palabra: qué verbo es, en qué tiempo y modo está, y su definición.</p>
+          <p class="sutil">Tabla breve de referencia (códigos Robinson / BLB). La letra significa según su <em>posición</em> en el código:</p>
+          <div class="morph-wrap">
+            <table class="morph-table">
+              <thead>
+                <tr><th>Categoría</th><th>Código</th><th>Significado (ES)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Tipo de palabra</td><td><code>N</code> <code>V</code> <code>A</code> <code>ADV</code></td><td>Sustantivo · Verbo · Adjetivo · Adverbio</td></tr>
+                <tr><td>Caso (nombres)</td><td><code>N</code> <code>G</code> <code>D</code> <code>A</code> <code>V</code></td><td>Nominativo · Genitivo · Dativo · Acusativo · Vocativo</td></tr>
+                <tr><td>Número</td><td><code>S</code> <code>P</code></td><td>Singular · Plural</td></tr>
+                <tr><td>Género</td><td><code>M</code> <code>F</code> <code>N</code></td><td>Masculino · Femenino · Neutro</td></tr>
+                <tr><td>Tiempo (verbos)</td><td><code>P</code> <code>I</code> <code>F</code> <code>A</code> <code>R</code> <code>L</code></td><td>Presente · Imperfecto · Futuro · Aoristo · Perfecto · Pluscuamperfecto</td></tr>
+                <tr><td>Voz</td><td><code>A</code> <code>M</code> <code>P</code></td><td>Activa · Media · Pasiva</td></tr>
+                <tr><td>Modo</td><td><code>I</code> <code>S</code> <code>O</code> <code>M</code> <code>N</code> <code>P</code></td><td>Indicativo · Subjuntivo · Optativo · Imperativo · Infinitivo · Participio</td></tr>
+                <tr><td>Ejemplo</td><td><code>V-PAM</code></td><td>Verbo · Presente · Activa · Imperativo (= mandato)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="verified-box">
+            <div class="label">Ejemplo verificado · Filipenses 1:4 «gozo»</div>
+            <p>En Fil 1:4 la palabra «joy / gozo» es el griego <strong>χαρᾶς</strong> (<em>charás</em>), Strong <strong>G5479</strong> (χαρά <em>chará</em>, sustantivo femenino, de χαίρω G5463).</p>
+            <p>Según la página de Blue Letter Bible (KJV Tools / morfología del versículo), el análisis es:</p>
+            <p><code>N-GSF</code> — <strong>sustantivo · genitivo · singular · femenino</strong> (Noun / Genitive / Singular / Feminine).</p>
+            <p class="sutil">No es un verbo: por eso no lleva tiempo, voz ni modo. El código <code>V-PAM</code> sería para un verbo en imperativo (presente activo), no para «gozo» aquí.</p>
+            <div class="ext-links">
+              <a href="https://www.blueletterbible.org/kjv/phl/1/4/t_conc_1104004" target="_blank" rel="noopener noreferrer">BLB · Fil 1:4 (Tools)</a>
+              <a class="alt" href="https://www.blueletterbible.org/lexicon/g5479/kjv/tr/0-1/" target="_blank" rel="noopener noreferrer">Léxico G5479</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true">
+            <svg class="illo" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="3" width="14" height="18" rx="2.5" fill="#2A9D8F"/>
+              <rect x="7.5" y="6" width="9" height="12" rx="1" fill="#E9F5F3"/>
+              <circle cx="12" cy="17.5" r="1.1" fill="#E76F51"/>
+            </svg>
+          </span>
+          <span class="card-title">4. La app del pastor (probablemente BLB)</span>
+          <span class="chev" aria-hidden="true"></span>
+        </button>
+        <div class="card-body">
+          <p>La app que mostró el pastor es <strong>probablemente Blue Letter Bible</strong>. Se abre en el <strong>capítulo y versículo</strong> (ej. Filipenses 1:4, donde aparece «gozo»).</p>
+          <p>Ahí se pueden ver varias versiones, entre ellas:</p>
+          <ul>
+            <li><strong>KJV</strong></li>
+            <li><strong>KJV con números Strong</strong></li>
+            <li><strong>LBLA</strong></li>
+            <li><strong>Reina-Valera 1960</strong> (la que usa la clase)</li>
+          </ul>
+          <p>Cada palabra está subrayada / enlazada: al tocarla aparece el <strong>número Strong</strong> (gozo = <strong>G5479</strong>), el <strong>tipo de palabra</strong> con su código, de qué palabra proviene y una <strong>definición sencilla</strong> (en inglés en BLB).</p>
+          <div class="ext-links">
+            <a href="https://www.blueletterbible.org/kjv/phl/1/4/t_conc_1104004" target="_blank" rel="noopener noreferrer">Abrir Fil 1:4 en BLB</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="tl-item card" data-card>
+        <button type="button" class="card-btn" aria-expanded="false">
+          <span class="card-icon svg-wrap" aria-hidden="true">
+            <svg class="illo" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4.5h9.5a2 2 0 012 2V19l-4.2-2.2L9.1 19V6.5a2 2 0 012-2z" fill="#E9C46A"/>
+              <path d="M9.1 6.5h8.4" stroke="#8D6E63" stroke-width="1.1"/>
+              <path d="M10.2 9.2h6.2M10.2 11.6h5.2" stroke="#977272" stroke-width="1.15" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="card-title">5. Comentarios debajo del versículo</span>
+          <span class="chev" aria-hidden="true"></span>
+        </button>
+        <div class="card-body">
+          <p>Abajo del versículo, BLB muestra <strong>comentarios de varios autores</strong>. Los que aparecen en azul tienen comentario para ese versículo.</p>
+          <p><strong>Ejemplo:</strong> <em>David Guzik</em> (Enduring Word), a quien el pastor cita con frecuencia. Su estudio de Filipenses 1 en BLB / Enduring Word trata el bloque de acción de gracias a partir de los <strong>vv. 3–6</strong> (sección «Paul gives thanks…»), así que al tocar el comentario se abre lo que escribió sobre esas palabras (incluye el «gozo» del v. 4 dentro de ese pasaje).</p>
+          <p><strong>Otros comentarios</strong> que Blue Letter Bible ofrece (confirmados en su sitio):</p>
+          <ul>
+            <li>Matthew Henry</li>
+            <li>Adam Clarke</li>
+            <li>John Gill</li>
+            <li>Jamieson, Fausset &amp; Brown (JFB)</li>
+          </ul>
+          <div class="ext-links">
+            <a href="https://www.blueletterbible.org/comm/guzik_david/study-guide/philippians/philippians-1.cfm" target="_blank" rel="noopener noreferrer">Guzik · Fil 1 (BLB)</a>
+            <a class="alt" href="https://enduringword.com/bible-commentary/philippians-1/" target="_blank" rel="noopener noreferrer">Guzik · Enduring Word</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+  <footer>
+    <p>Elisa Danahé Nogueron Vázquez</p>
+    <p class="meta">Método Inductivo · Apuntes de clase</p>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  // Expandable cards
+  document.querySelectorAll("[data-card]").forEach(function (card) {
+    var btn = card.querySelector(".card-btn");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var open = card.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+
+  // Hechos 1:8 chips
+  var noteEl = document.getElementById("chip-note");
+  document.querySelectorAll(".chip").forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      document.querySelectorAll(".chip.active").forEach(function (c) { c.classList.remove("active"); });
+      chip.classList.add("active");
+      noteEl.textContent = chip.getAttribute("data-note") || "";
+      noteEl.classList.add("show");
+    });
+  });
+
+  // Reveal on scroll
+  var obs = ("IntersectionObserver" in window)
+    ? new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" })
+    : null;
+  document.querySelectorAll(".reveal").forEach(function (el) {
+    if (obs) obs.observe(el);
+    else el.classList.add("in");
+  });
+})();
+</script>
+</body>
+</html>

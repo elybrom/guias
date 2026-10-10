@@ -1,0 +1,32 @@
+{
+  "name": "Método Inductivo · Eli",
+  "short_name": "Inductivo",
+  "description": "Hub de estudio inductivo de Elisa Nogueron Vázquez: Tareas, Guía y Apuntes.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F9F4F5",
+  "theme_color": "#977272",
+  "lang": "es-MX",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

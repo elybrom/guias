@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Método Inductivo · Eli — App de estudio: Tareas, Guía y Apuntes." />
+  <meta name="theme-color" content="#977272" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Inductivo" />
+  <title>Método Inductivo · Eli</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blush: #DEC4C9;
+      --rose: #977272;
+      --stone: #594E4C;
+      --ink: #181717;
+      --cream: #F9F4F5;
+      --white: #FFFFFF;
+      --bar: #6B5B73;
+      --bar-deep: #594E4C;
+      --safe-t: env(safe-area-inset-top, 0px);
+      --safe-b: env(safe-area-inset-bottom, 0px);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: "Montserrat", system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100dvh;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: calc(1.25rem + var(--safe-b));
+    }
+
+    /* App bar */
+    .app-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-height: calc(52px + var(--safe-t));
+      padding: var(--safe-t) 0.85rem 0;
+      background: linear-gradient(180deg, #7A6B82 0%, var(--bar) 45%, var(--bar-deep) 100%);
+      color: var(--white);
+      box-shadow: 0 2px 12px rgba(24, 23, 23, 0.22);
+    }
+    .app-bar-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      width: 100%;
+      min-height: 52px;
+      padding: 0.35rem 0;
+    }
+    .app-bar-icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      object-fit: cover;
+      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+      flex-shrink: 0;
+    }
+    .app-bar-titles { min-width: 0; flex: 1; }
+    .app-bar-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .app-bar-sub {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.78;
+      margin-top: 1px;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1rem 0.85rem 2rem;
+    }
+
+    /* Install tip */
+    .install-tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      margin-bottom: 1.1rem;
+      padding: 0.75rem 0.85rem;
+      background: #FFF8F9;
+      border: 1px solid rgba(151, 114, 114, 0.28);
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(89, 78, 76, 0.06);
+    }
+    .install-tip[hidden] { display: none !important; }
+    .install-tip-icon {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(145deg, var(--blush), #E8B8C0);
+      display: grid; place-items: center;
+      font-size: 0.85rem;
+    }
+    .install-tip-body { flex: 1; min-width: 0; font-size: 0.78rem; color: var(--stone); }
+    .install-tip-body strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 0.2rem; font-size: 0.82rem; }
+    .install-tip-body span { display: block; line-height: 1.45; }
+    .install-tip-x {
+      flex-shrink: 0;
+      border: none;
+      background: transparent;
+      color: var(--rose);
+      font-size: 1.15rem;
+      line-height: 1;
+      padding: 0.15rem 0.35rem;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .install-tip-x:hover { background: rgba(151,114,114,.12); }
+
+    .group { margin-bottom: 1.35rem; }
+    .group-head {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.65rem;
+      padding: 0 0.15rem;
+    }
+    .group-pin {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 1px 3px rgba(89,78,76,.12);
+    }
+    .group-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--stone);
+      letter-spacing: 0.02em;
+    }
+    .group-count {
+      margin-left: auto;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rose);
+      opacity: 0.85;
+    }
+
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+    }
+    @media (min-width: 420px) {
+      .tile-grid { grid-template-columns: repeat(4, 1fr); gap: 0.7rem; }
+    }
+    @media (min-width: 560px) {
+      .tile-grid { grid-template-columns: repeat(5, 1fr); }
+    }
+    @media (min-width: 680px) {
+      .tile-grid { grid-template-columns: repeat(6, 1fr); gap: 0.75rem; }
+    }
+
+    a.tile {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      text-decoration: none;
+      color: var(--ink);
+      border-radius: 18px;
+      padding: 0.45rem 0.3rem 0.5rem;
+      box-shadow:
+        0 1px 2px rgba(24,23,23,.06),
+        0 6px 16px rgba(89,78,76,.08);
+      border: 1px solid rgba(255,255,255,.55);
+      transition: transform .18s ease, box-shadow .18s ease;
+      -webkit-tap-highlight-color: transparent;
+      min-height: 88px;
+      position: relative;
+      overflow: hidden;
+    }
+    a.tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(255,255,255,.35) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    a.tile:hover, a.tile:focus-visible {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow:
+        0 4px 8px rgba(24,23,23,.1),
+        0 14px 28px rgba(89,78,76,.14);
+      outline: none;
+    }
+    a.tile:active { transform: translateY(-1px) scale(0.99); }
+
+    .tile-code {
+      font-size: clamp(0.95rem, 3.8vw, 1.15rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      position: relative;
+      z-index: 1;
+    }
+    .tile-name {
+      margin-top: 0.28rem;
+      font-size: clamp(0.58rem, 2.4vw, 0.68rem);
+      font-weight: 500;
+      color: rgba(24,23,23,.72);
+      line-height: 1.2;
+      max-width: 100%;
+      padding: 0 0.15rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Pastel palette mixed with Thunderbird rose */
+    .c-rose   { background: #F0D6DB; }
+    .c-peach  { background: #F8DCC8; }
+    .c-sand   { background: #F0E0C8; }
+    .c-gold   { background: #F5E4A8; }
+    .c-mint   { background: #D4EDE0; }
+    .c-sage   { background: #D8E6D0; }
+    .c-sky    { background: #D0E4F2; }
+    .c-blue   { background: #C8D8F0; }
+    .c-lilac  { background: #E0D4F0; }
+    .c-lavender { background: #E8D8E8; }
+    .c-coral  { background: #F5C8C0; }
+    .c-blush  { background: #DEC4C9; }
+    .c-cream  { background: #F5EDE6; }
+    .c-aqua   { background: #C8E8E4; }
+    .c-butter { background: #F5ECC0; }
+    .c-mauve  { background: #E4C8D4; }
+
+    footer {
+      text-align: center;
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(151,114,114,.2);
+    }
+    footer p {
+      font-size: 0.72rem;
+      color: var(--stone);
+      opacity: 0.85;
+    }
+    footer .seal {
+      margin-top: 0.45rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+  </style>
+</head>
+<body>
+  <header class="app-bar" role="banner">
+    <div class="app-bar-inner">
+      <img class="app-bar-icon" src="icons/apple-touch-icon.png" width="36" height="36" alt="" />
+      <div class="app-bar-titles">
+        <div class="app-bar-title">Método Inductivo · Eli</div>
+        <div class="app-bar-sub">Elisa Nogueron Vázquez</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="install-tip" id="install-tip" role="note">
+      <div class="install-tip-icon" aria-hidden="true">＋</div>
+      <div class="install-tip-body">
+        <strong>Agrégala a tu pantalla de inicio</strong>
+        <span><b>iPhone:</b> Safari → Compartir → «Agregar a pantalla de inicio»</span>
+        <span><b>Android:</b> Chrome → menú ⋮ → «Instalar app»</span>
+      </div>
+      <button type="button" class="install-tip-x" id="install-tip-x" aria-label="Cerrar tip">×</button>
+    </div>
+
+    <!-- TAREAS -->
+    <section class="group" aria-labelledby="g-tareas">
+      <div class="group-head">
+        <img class="group-pin" src="assets/pinterest/house-foundation-colorful.jpg" alt="" width="28" height="28" />
+        <h2 class="group-title" id="g-tareas">Tareas</h2>
+        <span class="group-count">7</span>
+      </div>
+      <div class="tile-grid">
+        <a class="tile c-sand" href="https://elybrom.github.io/guias/nehemias-tareas/#cap1">
+          <span class="tile-code">Neh 1</span>
+          <span class="tile-name">Capítulo 1</span>
+        </a>
+        <a class="tile c-peach" href="https://elybrom.github.io/guias/nehemias-tareas/#cap2">
+          <span class="tile-code">Neh 2</span>
+          <span class="tile-name">Capítulo 2</span>
+        </a>
+        <a class="tile c-gold" href="https://elybrom.github.io/guias/nehemias-tareas/#cap3">
+          <span class="tile-code">Neh 3</span>
+          <span class="tile-name">Capítulo 3</span>
+        </a>
+        <a class="tile c-coral" href="https://elybrom.github.io/guias/nehemias-tareas/#nehemias-4">
+          <span class="tile-code">Neh 4</span>
+          <span class="tile-name">Capítulo 4</span>
+        </a>
+        <a class="tile c-mint" href="https://elybrom.github.io/guias/nehemias-tareas/#trabajo-clase">
+          <span class="tile-code">Clase</span>
+          <span class="tile-name">Trabajo en clase</span>
+        </a>
+        <a class="tile c-lilac" href="https://elybrom.github.io/guias/nehemias-tareas/#n4-palabras">
+          <span class="tile-code">Str</span>
+          <span class="tile-name">Palabras Strong</span>
+        </a>
+        <a class="tile c-sky" href="https://elybrom.github.io/guias/nehemias-tareas/#clase-2026-10-05-fil2">
+          <span class="tile-code">Fil 2</span>
+          <span class="tile-name">Filipenses 2</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- APUNTES -->
+    <section class="group" aria-labelledby="g-apuntes">
+      <div class="group-head">
+        <img class="group-pin" src="assets/pinterest/notebook-pen-cute.jpg" alt="" width="28" height="28" />
+        <h2 class="group-title" id="g-apuntes">Apuntes</h2>
+        <span class="group-count">9</span>
+      </div>
+      <div class="tile-grid">
+        <a class="tile c-blush" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#claves">
+          <span class="tile-code">5 Cl</span>
+          <span class="tile-name">5 Claves</span>
+        </a>
+        <a class="tile c-mauve" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#contexto">
+          <span class="tile-code">Ctx</span>
+          <span class="tile-name">Contexto</span>
+        </a>
+        <a class="tile c-coral" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#barreras">
+          <span class="tile-code">Barr</span>
+          <span class="tile-name">Barreras</span>
+        </a>
+        <a class="tile c-sage" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#dificultades">
+          <span class="tile-code">6 Dif</span>
+          <span class="tile-name">6 Dificultades</span>
+        </a>
+        <a class="tile c-blue" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#strong">
+          <span class="tile-code">S·V</span>
+          <span class="tile-name">Strong·Vine</span>
+        </a>
+        <a class="tile c-butter" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#cuadro">
+          <span class="tile-code">Mc</span>
+          <span class="tile-name">Cuadro Mc</span>
+        </a>
+        <a class="tile c-aqua" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#felipe">
+          <span class="tile-code">Fel</span>
+          <span class="tile-name">Felipe</span>
+        </a>
+        <a class="tile c-sky" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#hechos18">
+          <span class="tile-code">1:8</span>
+          <span class="tile-name">Hch 1:8…</span>
+        </a>
+        <a class="tile c-cream" href="https://elybrom.github.io/guias/metodo-inductivo-apuntes/#herramientas-palabra">
+          <span class="tile-code">Hrz</span>
+          <span class="tile-name">Herramientas</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- GUÍA -->
+    <section class="group" aria-labelledby="g-guia">
+      <div class="group-head">
+        <img class="group-pin" src="assets/pinterest/open-bible-cute.jpg" alt="" width="28" height="28" />
+        <h2 class="group-title" id="g-guia">Guía</h2>
+        <span class="group-count">3</span>
+      </div>
+      <div class="tile-grid">
+        <a class="tile c-gold" href="https://elybrom.github.io/guias/metodo-inductivo/#diez">
+          <span class="tile-code">10</span>
+          <span class="tile-name">10 lecturas</span>
+        </a>
+        <a class="tile c-mint" href="https://elybrom.github.io/guias/metodo-inductivo/#seis">
+          <span class="tile-code">Las 6</span>
+          <span class="tile-name">Las 6</span>
+        </a>
+        <a class="tile c-lavender" href="https://elybrom.github.io/guias/metodo-inductivo/#cuadro">
+          <span class="tile-code">Cdr</span>
+          <span class="tile-name">Cuadro final</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Toca un cuadro para abrir esa sección. Las tres puertas son una sola app.</p>
+      <p class="seal">Método Inductivo · Eli</p>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      var tip = document.getElementById('install-tip');
+      var btn = document.getElementById('install-tip-x');
+      try {
+        if (localStorage.getItem('inductivo-tip-dismissed') === '1' && tip) {
+          tip.hidden = true;
+        }
+      } catch (e) {}
+      if (btn && tip) {
+        btn.addEventListener('click', function () {
+          tip.hidden = true;
+          try { localStorage.setItem('inductivo-tip-dismissed', '1'); } catch (e) {}
+        });
+      }
+      // Hide tip when already running as installed PWA
+      var standalone = window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone === true;
+      if (standalone && tip) tip.hidden = true;
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('sw.js').catch(function () {});
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
