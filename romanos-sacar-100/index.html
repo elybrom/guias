@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Estudio interactivo de Romanos para Eli Nogueron — objetivo sacar 100" />
+  <title>Romanos y Gálatas · Sacar 100</title>
+  <style>
+:root {
+  --bg: #f7f4fb;
+  --bg-card: #ffffff;
+  --ink: #2a2420;
+  --ink-soft: #5c534c;
+  --muted: #8a7f76;
+  --line: #e0d4ef;
+  --indigo: #4c3d8a;
+  --indigo-soft: #6b5ba8;
+  --wine: #9a4d6e;
+  --wine-soft: #c46b8f;
+  --pink: #e8a0bf;
+  --pink-soft: #f8e4ee;
+  --cream: #f3ebe0;
+  --grid: rgba(76, 61, 138, 0.09);
+  --success: #2d6a4f;
+  --success-bg: #e8f5ee;
+  --danger: #9b2c2c;
+  --danger-bg: #fde8e8;
+  --warn: #9a6700;
+  --warn-bg: #fff6e0;
+  --shadow: 0 8px 28px rgba(76, 61, 138, 0.12);
+  --radius: 16px;
+  --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  /* Libreta de cuadritos + paleta violeta/rosa */
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    radial-gradient(ellipse at top left, rgba(232, 160, 191, 0.25) 0%, transparent 42%),
+    radial-gradient(ellipse at bottom right, rgba(107, 91, 168, 0.18) 0%, transparent 40%);
+  background-size: 22px 22px, 22px 22px, auto, auto;
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.55;
+}
+
+a { color: var(--indigo); }
+button, input, select, textarea { font: inherit; }
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(12px);
+  background: rgba(247, 244, 251, 0.92);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.85rem 1.1rem 0.55rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  justify-content: space-between;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--indigo), var(--wine));
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow);
+}
+.brand h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+.brand p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.header-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.nav-tabs {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 0.7rem 0.55rem;
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.nav-tabs button {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-soft);
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: 0.15s ease;
+}
+.nav-tabs button:hover { background: var(--cream); color: var(--ink); }
+.nav-tabs button.active {
+  background: var(--indigo);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(76, 61, 138, 0.28);
+}
+.nav-tabs button:focus-visible { outline: 2px solid var(--indigo-soft); outline-offset: 2px; }
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1.1rem 3.5rem;
+}
+.panel { display: none; animation: fadeIn 0.25s ease; }
+.panel.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hero {
+  background: linear-gradient(145deg, #fff 0%, #f3effc 55%, #f8ecef 100%);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  padding: 1.6rem 1.4rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.25rem;
+}
+.hero h2 {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 3vw, 1.95rem);
+  color: var(--indigo);
+}
+.hero .verse {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--wine);
+  margin: 0.8rem 0 0.35rem;
+  font-size: 1.02rem;
+}
+.hero .verse-ref { color: var(--muted); font-size: 0.85rem; margin: 0; }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.9rem;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.05rem 1.1rem;
+  box-shadow: 0 2px 10px rgba(42, 36, 32, 0.04);
+}
+.card h3, .card h4 { margin: 0 0 0.45rem; font-family: var(--font-display); }
+.card p { margin: 0.35rem 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+.map-block {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border-left: 4px solid var(--indigo);
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  background: var(--bg-card);
+}
+.map-block:hover, .map-block:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  outline: none;
+}
+.map-block[data-block="1"] { border-left-color: #9b2c2c; }
+.map-block[data-block="2"] { border-left-color: #4c3d8a; }
+.map-block[data-block="3"] { border-left-color: #2d6a4f; }
+.map-block[data-block="4"] { border-left-color: #9a6700; }
+.map-block .tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+.map-block strong { display: block; font-size: 1.05rem; margin-bottom: 0.2rem; }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 0 0 0.85rem;
+  color: var(--indigo);
+}
+.subhead {
+  color: var(--ink-soft);
+  margin: -0.4rem 0 1rem;
+  font-size: 0.95rem;
+}
+
+.btn {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.15s ease;
+}
+.btn:hover { border-color: var(--indigo-soft); color: var(--indigo); }
+.btn:focus-visible { outline: 2px solid var(--indigo-soft); outline-offset: 2px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--indigo), var(--indigo-soft));
+  color: #fff;
+  border-color: transparent;
+}
+.btn-primary:hover { color: #fff; filter: brightness(1.05); }
+.btn-wine {
+  background: linear-gradient(135deg, var(--wine), var(--wine-soft));
+  color: #fff;
+  border-color: transparent;
+}
+.btn-ghost { background: transparent; }
+.btn-sm { padding: 0.35rem 0.75rem; font-size: 0.82rem; }
+.btn-danger { color: var(--danger); border-color: #f0c4c4; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--cream);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.accordion details {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 0.65rem;
+  overflow: hidden;
+}
+.accordion summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.95rem 1.1rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion summary::after {
+  content: "+";
+  color: var(--indigo);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.accordion details[open] summary::after { content: "−"; }
+.accordion .body { padding: 0 1.1rem 1.1rem; border-top: 1px dashed var(--line); }
+.accordion ul { margin: 0.4rem 0 0.7rem; padding-left: 1.15rem; color: var(--ink-soft); }
+.accordion li { margin: 0.25rem 0; }
+.star-verse {
+  background: var(--cream);
+  border-left: 3px solid var(--wine);
+  padding: 0.7rem 0.85rem;
+  border-radius: 0 10px 10px 0;
+  margin: 0.7rem 0;
+  font-family: var(--font-display);
+  font-style: italic;
+}
+.practice-q {
+  background: #f4f0fb;
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  margin-top: 0.6rem;
+  font-size: 0.93rem;
+}
+.practice-q strong { color: var(--indigo); }
+
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+}
+.flip-card {
+  perspective: 1000px;
+  min-height: 150px;
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  transition: transform 0.45s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(42, 36, 32, 0.04);
+}
+.flip-face.back {
+  transform: rotateY(180deg);
+  background: linear-gradient(160deg, #fff, #f4f0fb);
+}
+.flip-face h4 { margin: 0 0 0.35rem; color: var(--indigo); font-family: var(--font-display); }
+.flip-face p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
+.flip-hint { font-size: 0.72rem; color: var(--muted); margin-top: 0.55rem; }
+
+.contrast-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.contrast-card th, .contrast-card td {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.65rem;
+  vertical-align: top;
+}
+.contrast-card th {
+  background: var(--cream);
+  color: var(--indigo);
+  text-align: left;
+}
+.contrast-card td:first-child { background: #fdf8f5; }
+.contrast-note {
+  margin-top: 0.55rem;
+  font-size: 0.88rem;
+  color: var(--wine);
+  font-style: italic;
+}
+
+.flash-wrap {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.flash-card-ui {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  min-height: 260px;
+  padding: 1.5rem 1.25rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+.flash-card-ui .ref {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--indigo);
+  font-family: var(--font-display);
+}
+.flash-card-ui .text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.flash-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.85rem 0;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.progress-bar {
+  height: 8px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  flex: 1;
+  min-width: 120px;
+}
+.progress-bar > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--indigo), var(--wine));
+  width: 0%;
+  transition: width 0.25s ease;
+}
+.flash-actions {
+  display: flex;
+  gap: 0.55rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.9rem;
+}
+
+.quiz-setup, .quiz-result { max-width: 640px; }
+.quiz-setup label, .quiz-setup .field {
+  display: block;
+  margin: 0.7rem 0;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.quiz-setup select, .quiz-setup input[type="checkbox"] {
+  margin-left: 0.35rem;
+}
+.quiz-question {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+}
+.quiz-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+  align-items: center;
+}
+.options { display: grid; gap: 0.55rem; margin: 1rem 0; }
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  background: #fff;
+  transition: 0.12s ease;
+}
+.option:hover, .option:focus-within { border-color: var(--indigo-soft); background: #f8f5ff; }
+.option.correct { border-color: var(--success); background: var(--success-bg); }
+.option.incorrect { border-color: var(--danger); background: var(--danger-bg); }
+.option input { margin-top: 0.2rem; }
+.short-answer {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem;
+  resize: vertical;
+  margin: 0.75rem 0;
+  background: #fff;
+}
+.feedback {
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  margin: 0.75rem 0;
+  font-size: 0.92rem;
+}
+.feedback.ok { background: var(--success-bg); color: var(--success); }
+.feedback.bad { background: var(--danger-bg); color: var(--danger); }
+.feedback.info { background: var(--warn-bg); color: var(--warn); }
+.score-big {
+  font-size: clamp(2.4rem, 8vw, 3.5rem);
+  font-weight: 800;
+  color: var(--indigo);
+  margin: 0.3rem 0;
+  font-family: var(--font-display);
+}
+.missed-list { margin-top: 1rem; }
+.missed-item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem;
+  margin-bottom: 0.55rem;
+  background: #fff;
+  font-size: 0.9rem;
+}
+
+.cheat-list {
+  counter-reset: cheat;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.cheat-list li {
+  counter-increment: cheat;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem 0.85rem 3rem;
+  margin-bottom: 0.55rem;
+  position: relative;
+  box-shadow: 0 1px 6px rgba(42,36,32,0.03);
+}
+.cheat-list li::before {
+  content: counter(cheat);
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--indigo);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.toolbar-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+.stat-pill {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+.footer-note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 640px) {
+  .brand h1 { font-size: 0.95rem; }
+  .hero { padding: 1.2rem 1rem; }
+  .nav-tabs button { font-size: 0.8rem; padding: 0.4rem 0.65rem; }
+}
+
+</style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">RyG</div>
+        <div>
+          <h1>Romanos y Gálatas</h1>
+          <p>Sacar 100 · Estudio interactivo</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="stat-pill" id="lastScorePill">Último score: —</span>
+        <button type="button" class="btn btn-sm btn-danger" id="btnResetProgress" title="Borrar progreso guardado">Reiniciar progreso</button>
+      </div>
+    </div>
+    <nav class="nav-tabs" role="tablist" aria-label="Secciones de estudio">
+      <button type="button" role="tab" aria-selected="true" data-tab="inicio" class="active">Inicio</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="estudiar">Estudiar</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="glosario">Glosario</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="contrastes">Contrastes</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="flashcards">Flashcards</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="simulacro">Simulacro</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="cheat">Cheat sheet</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- INICIO -->
+    <section id="panel-inicio" class="panel active" role="tabpanel">
+      <div class="hero">
+        <h2>¡Bienvenido, Eli!</h2>
+        <p>Esta app usa tu guía canónica de Romanos. Estudia por bloques, memoriza los ★, domina el glosario y haz el simulacro hasta sacar 100.</p>
+        <p class="verse">«Porque no me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree…»</p>
+        <p class="verse-ref">Romanos 1:16-17 · cf. Habacuc 2:4</p>
+      </div>
+
+      <h3 class="section-title">Cómo sacar 100</h3>
+      <div class="grid-2" style="margin-bottom:1.2rem">
+        <div class="card">
+          <h4>Orden de estudio</h4>
+          <ol style="margin:0.4rem 0 0;padding-left:1.2rem;color:var(--ink-soft);font-size:0.93rem">
+            <li><strong>Mapa</strong> — ira → gracia → plan → voluntad</li>
+            <li><strong>Glosario</strong> — propiciación, imputación, Bemá…</li>
+            <li><strong>Contrastes</strong> — Adán/Cristo, carne/Espíritu…</li>
+            <li><strong>Versículos ★</strong> — flashcards «Sé / No sé»</li>
+            <li><strong>Simulacro</strong> — 20 o 50 preguntas</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h4>Secuencia que cae en examen</h4>
+          <p style="font-size:1.15rem;font-weight:700;color:var(--indigo);margin:0.5rem 0">Justificado → Santificado → Glorificado</p>
+          <p><strong>Autoría:</strong> Pablo, dictada a Tercio (16:22), probablemente desde Corinto.</p>
+          <p><strong>Palabras-eje:</strong> Justificación · Santificación · Glorificación · Restauración · Aplicación</p>
+        </div>
+      </div>
+
+      <h3 class="section-title">Mapa del curso (4 bloques)</h3>
+      <p class="subhead">Haz clic en un bloque para ir a Estudiar filtrado por esa sección.</p>
+      <div class="grid-4" id="mapaBlocks"></div>
+
+      <div class="card" style="margin-top:1.2rem">
+        <h4>Tip de examen</h4>
+        <p>Si te preguntan «¿qué es…?», responde con la definición del curso primero; luego añade un versículo.</p>
+      </div>
+    </section>
+
+    <!-- ESTUDIAR -->
+    <section id="panel-estudiar" class="panel" role="tabpanel" hidden>
+      <h2 class="section-title">Estudiar capítulos 1–16</h2>
+      <p class="subhead">Acordeón con idea central, puntos, versículo ★ y pregunta de práctica.</p>
+      <div class="toolbar-row">
+        <label for="filtroBloque" class="chip">Filtrar bloque</label>
+        <select id="filtroBloque" class="btn" aria-label="Filtrar por bloque del curso">
+          <option value="all">Todos</option>
+          <option value="1">1 · Ira (1–3:20)</option>
+          <option value="2">2 · Gracia (3:21–8)</option>
+          <option value="3">3 · Plan (9–11)</option>
+          <option value="4">4 · Voluntad (12–16)</option>
+        </select>
+        <button type="button" class="btn btn-sm" id="btnExpandAll">Expandir todo</button>
+        <button type="button" class="btn btn-sm" id="btnCollapseAll">Colapsar</button>
+      </div>
+      <div class="accordion" id="capitulosAccordion"></div>
+    </section>
+
+    <!-- GLOSARIO -->
+    <section id="panel-glosario" class="panel" role="tabpanel" hidden>
+      <h2 class="section-title">Glosario del curso</h2>
+      <p class="subhead">Toca una tarjeta para voltearla. Usa las definiciones del curso en el examen.</p>
+      <div class="card" style="margin-bottom:1rem;background:linear-gradient(145deg,#fff,#f4f0fb)">
+        <h4>Jesús en tres verbos</h4>
+        <p><strong>Justifica</strong> → nos define · <strong>Redime</strong> → nos salva · <strong>Propicia</strong> → sacrificio sustituto</p>
+        <p style="font-size:0.85rem;color:var(--muted)">Refs: Ro 3:21 · Isaías 53:10</p>
+      </div>
+      <div class="glossary-grid" id="glossaryGrid"></div>
+    </section>
+
+    <!-- CONTRASTES -->
+    <section id="panel-contrastes" class="panel" role="tabpanel" hidden>
+      <h2 class="section-title">Contrastes que siempre preguntan</h2>
+      <p class="subhead">Memoriza las tablas; casi siempre caen.</p>
+      <div id="contrastesWrap" class="grid-2"></div>
+      <div class="card" style="margin-top:1rem">
+        <h4>Cadena de oro (Ro 8:29-30)</h4>
+        <p id="cadenaOro" style="font-weight:700;color:var(--indigo);font-size:1.05rem"></p>
+        <p style="font-size:0.9rem;color:var(--ink-soft)">«La vida en el Espíritu significa que Dios va a terminar su obra.» Glorificó está en pasado: Él ya ve la obra consumada.</p>
+      </div>
+    </section>
+
+    <!-- FLASHCARDS -->
+    <section id="panel-flashcards" class="panel" role="tabpanel" hidden>
+      <h2 class="section-title">Flashcards · Versículos ★</h2>
+      <p class="subhead">Anverso: referencia. Reverso: texto. Marca «Sé» o «No sé».</p>
+      <div class="flash-wrap">
+        <div class="flash-meta">
+          <span class="chip" id="flashCounter">1 / 1</span>
+          <div class="progress-bar" aria-hidden="true"><span id="flashProgress"></span></div>
+          <span class="chip" id="flashKnown">Sé: 0</span>
+        </div>
+        <div class="flash-card-ui" id="flashCard" tabindex="0" role="button" aria-label="Voltear flashcard">
+          <div id="flashFront" class="ref"></div>
+          <div id="flashBack" class="text" hidden></div>
+          <p style="margin-top:1rem;font-size:0.8rem;color:var(--muted)" id="flashHint">Toca o Enter para voltear</p>
+        </div>
+        <div class="flash-actions">
+          <button type="button" class="btn" id="flashPrev">← Anterior</button>
+          <button type="button" class="btn btn-wine" id="flashNo">No sé</button>
+          <button type="button" class="btn btn-primary" id="flashYes">Sé</button>
+          <button type="button" class="btn" id="flashNext">Siguiente →</button>
+        </div>
+        <div class="flash-actions">
+          <button type="button" class="btn btn-sm btn-ghost" id="flashShuffle">Barajar</button>
+          <button type="button" class="btn btn-sm btn-ghost" id="flashOnlyUnknown">Solo «no sé»</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIMULACRO -->
+    <section id="panel-simulacro" class="panel" role="tabpanel" hidden>
+      <h2 class="section-title">Simulacro de examen</h2>
+      <div id="quizSetup" class="quiz-setup card">
+        <p class="subhead" style="margin-top:0">Mezcla V/F, opción múltiple y escribe breve. Feedback inmediato; al final score sobre 100.</p>
+        <label class="field">Modo
+          <select id="quizMode" aria-label="Modo de examen">
+            <option value="20">20 preguntas aleatorias</option>
+            <option value="50">Examen completo (50)</option>
+          </select>
+        </label>
+        <label class="field">
+          <input type="checkbox" id="quizTimer" /> Temporizador 25 min (solo modo 20)
+        </label>
+        <button type="button" class="btn btn-primary" id="quizStart">Comenzar simulacro</button>
+      </div>
+
+      <div id="quizPlay" hidden>
+        <div class="quiz-top">
+          <span class="chip" id="quizProgressLabel">Pregunta 1</span>
+          <div class="progress-bar" style="max-width:280px"><span id="quizProgressBar"></span></div>
+          <span class="chip" id="quizTimerLabel" hidden>25:00</span>
+        </div>
+        <div class="quiz-question" id="quizQuestion"></div>
+        <div class="flash-actions" style="justify-content:flex-start">
+          <button type="button" class="btn btn-primary" id="quizCheck">Calificar</button>
+          <button type="button" class="btn" id="quizNextBtn" hidden>Siguiente</button>
+        </div>
+      </div>
+
+      <div id="quizResult" class="quiz-result card" hidden>
+        <h3 style="margin-top:0;font-family:var(--font-display);color:var(--indigo)">Resultado</h3>
+        <div class="score-big" id="quizScore">0</div>
+        <p id="quizMotivator" style="font-size:1.05rem;font-weight:600"></p>
+        <p id="quizDetail" style="color:var(--ink-soft)"></p>
+        <div class="flash-actions" style="justify-content:flex-start;margin-top:1rem">
+          <button type="button" class="btn btn-primary" id="quizRetry">Reintentar</button>
+          <button type="button" class="btn" id="quizReviewBtn">Ver falladas</button>
+          <button type="button" class="btn btn-ghost" id="quizBackSetup">Cambiar modo</button>
+        </div>
+        <div id="quizMissed" class="missed-list" hidden></div>
+      </div>
+    </section>
+
+    <!-- CHEAT SHEET -->
+    <section id="panel-cheat" class="panel" role="tabpanel" hidden>
+      <h2 class="section-title">Cheat sheet · 15 puntos imprescindibles</h2>
+      <p class="subhead">La noche previa: solo esto + versículos ★ + cadena de oro + Adán/Cristo. Luego a dormir.</p>
+      <ol class="cheat-list" id="cheatList"></ol>
+      <div class="card" style="margin-top:1rem;border-left:4px solid var(--wine)">
+        <p style="margin:0;font-family:var(--font-display);font-style:italic;color:var(--wine)">«Si Dios es por nosotros, ¿quién contra nosotros?» — Romanos 8:31</p>
+        <p style="margin:0.5rem 0 0;font-size:0.9rem;color:var(--ink-soft)">La victoria no está en ti; está en Cristo. Contesta desde lo que ya eres en Él.</p>
+      </div>
+    </section>
+
+    <p class="footer-note">Contenido canónico: guía-romanos-para-100 · Progreso en localStorage · Vanilla JS</p>
+  </main>
+
+  <script>
+/* Romanos Interactivo — Eli Nogueron · es-MX */
+(function () {
+  "use strict";
+
+  const STORAGE_KEY = "romanos-eli-v1";
+
+  const DATA = {
+    mapa: [
+      { id: 1, pasaje: "Ro 1–3:20", tema: "Ira de Dios", detalle: "Judíos y gentiles bajo pecado y condenación." },
+      { id: 2, pasaje: "Ro 3:21–8", tema: "Gracia de Dios", detalle: "Justificación, santificación, Espíritu y seguridad." },
+      { id: 3, pasaje: "Ro 9–11", tema: "Plan de Dios", detalle: "Israel, gentiles, remanente y misericordia." },
+      { id: 4, pasaje: "Ro 12–16", tema: "Voluntad de Dios", detalle: "Cuerpo, amor, misión y relaciones." }
+    ],
+    secuencia: "Justificado → Santificado → Glorificado",
+    glosario: [
+      { term: "Justicia", def: "Darte lo que mereces." },
+      { term: "Misericordia", def: "No darte lo que mereces." },
+      { term: "Gracia", def: "Favor / regalo inmerecido de Dios. Vivimos en la gracia." },
+      { term: "Justificación", def: "Dios te declara justo por fe en Cristo. Nos define. (Ro 3:21-26; 5:1)" },
+      { term: "Santificación", def: "Proceso de parecernos más a Jesús; Dios nos concede vida santa. (Ro 6–8)" },
+      { term: "Glorificación", def: "Consumación final: cuerpos redimidos, imagen de Cristo completa. (Ro 8:17, 30)" },
+      { term: "Propiciación", def: "Sacrificio sustituto: Jesús toma nuestro lugar y aparta la ira. (Ro 3:25)" },
+      { term: "Redención", def: "Jesús nos salva / nos rescata; compra nuestra libertad." },
+      { term: "Imputación", def: "Contar / acreditar: el pecado de Adán a nosotros; la justicia de Cristo al creyente. (Ro 4; 5:12-19)" },
+      { term: "Fe", def: "Confianza activa en lo que Dios hizo en Cristo (no en obras propias)." },
+      { term: "Ley", def: "Norma santa de Dios; revela el pecado, no da poder para vencerlo. (Ro 7)" },
+      { term: "Carne", def: "Naturaleza humana caída orientada a sí misma; enemistad con Dios. (Ro 8:5-8)" },
+      { term: "Espíritu", def: "Espíritu Santo que mora, guía, da vida y asegura adopción. (Ro 8)" },
+      { term: "Reconciliación", def: "De enemigos a amigos de Dios por la muerte de Cristo. (Ro 5:10-11)" },
+      { term: "Adopción", def: "Somos hijos; el Espíritu clama «¡Abba, Padre!»; herederos. (Ro 8:14-17)" },
+      { term: "Predestinación", def: "Dios nos destinó de antemano a ser conformes a la imagen de su Hijo; eslabón de la cadena de oro. (Ro 8:29-30)" },
+      { term: "Evangelio", def: "Buenas noticias: se enfoca en lo que Dios hizo por nosotros; poder de Dios para salvación. (Ro 1:16)" },
+      { term: "Metanoia / arrepentimiento", def: "Cambiar de mente; eso cambia mi conducta." },
+      { term: "Labranza", def: "Cimientos / fundamento (cf. 1 Cor 3:9-13)." },
+      { term: "Edificio", def: "Crecer en la imagen de Cristo para gloria del Padre." },
+      { term: "Bemá", def: "Juicio de recompensas del creyente (2 Cor 5:10), distinto del gran trono blanco (Ap 20:11-15)." }
+    ],
+    capitulos: [
+      {
+        n: 1, bloque: 1, titulo: "El evangelio y la ira revelada",
+        idea: "El evangelio es poder de Dios para salvación; la justicia de Dios se revela por fe, y también se revela su ira contra el pecado.",
+        puntos: [
+          "Tema del libro: cómo Dios justifica al hombre por fe.",
+          "★ Clave absoluta: 1:16-17 (Hab 2:4).",
+          "Pablo: convertido en Hechos 9; fariseo, perseguidor; preguntas: ¿Quién eres, Señor? y ¿Qué quieres que yo haga?",
+          "Pablo = «pequeño»; doulos = esclavo; llamado (3×); apóstol = enviado.",
+          "Llamados a ser de Jesucristo; apartados = para uso específico.",
+          "Evangelio: obra de Dios; invitados por gracia; santos = apartados.",
+          "1:18-32: ira revelada; el pagano idólatra suprime la verdad.",
+          "Tres tipos bajo la ira: pagano idólatra · intelectual moralista · judío."
+        ],
+        verso: { ref: "Ro 1:16-17", text: "Porque no me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree… Porque en el evangelio la justicia de Dios se revela por fe y para fe… Mas el justo por la fe vivirá." },
+        pregunta: "¿Por qué Pablo no se avergüenza del evangelio según 1:16-17?"
+      },
+      {
+        n: 2, bloque: 1, titulo: "El moralista y el judío también bajo juicio",
+        idea: "Quien juzga a otros y confía en la ley o en su moral también está bajo la ira si no se arrepiente.",
+        puntos: [
+          "El intelectual moralista vive de su propio estándar.",
+          "No hay favoritismo en Dios (2:11).",
+          "La bondad de Dios invita al arrepentimiento (metanoia).",
+          "Judío: se gloría en la ley, pero quebrantarla anula la ventaja externa.",
+          "La circuncisión verdadera es del corazón, por el Espíritu (2:28-29).",
+          "Oír la ley no justifica; hacer importa — prepara 3:20: nadie por obras."
+        ],
+        verso: { ref: "Ro 2:4", text: "¿O menosprecias las riquezas de su benignidad, paciencia y longanimidad, ignorando que su benignidad te guía al arrepentimiento?" },
+        pregunta: "¿En qué se parece el moralista religioso al pagano según Ro 2?"
+      },
+      {
+        n: 3, bloque: 1, titulo: "Todos pecaron; justicia de Dios por fe",
+        idea: "Judíos y gentiles están bajo pecado; ahora, aparte de la ley, se revela la justicia de Dios por fe en Cristo.",
+        puntos: [
+          "Cierre de Ira de Dios (hasta 3:20).",
+          "★ 3:20: por las obras de la ley nadie será justificado; la ley da conocimiento del pecado.",
+          "★ 3:21-26: centro — justificación, redención, propiciación.",
+          "3:23: todos pecaron y están destituidos de la gloria de Dios.",
+          "3:24: justificados gratuitamente por su gracia.",
+          "Fe, no jactancia (3:27-28). Dios de judíos y gentiles.",
+          "Inicia Gracia de Dios (3:21–cap. 8)."
+        ],
+        verso: { ref: "Ro 3:23-24", text: "Por cuanto todos pecaron, y están destituidos de la gloria de Dios, siendo justificados gratuitamente por su gracia, mediante la redención que es en Cristo Jesús." },
+        pregunta: "Explica justificación, redención y propiciación con Ro 3:21-26."
+      },
+      {
+        n: 4, bloque: 2, titulo: "Abraham: justificado por fe, no por obras",
+        idea: "Abraham y David prueban que la justificación siempre fue por fe, contada como justicia.",
+        puntos: [
+          "Abraham creyó a Dios y le fue contado por justicia (Gn 15:6; Ro 4:3).",
+          "Obras → salario; fe → gracia.",
+          "David: bienaventurado el que recibe perdón sin obras (Sal 32).",
+          "Justificado antes de la circuncisión → padre de todos los que creen.",
+          "La promesa es por fe para que sea por gracia.",
+          "Fe en el Dios que da vida a los muertos (4:17-21).",
+          "Jesús: entregado por nuestras faltas y resucitado para nuestra justificación."
+        ],
+        verso: { ref: "Ro 4:25", text: "El cual fue entregado por nuestras transgresiones, y resucitado para nuestra justificación." },
+        pregunta: "¿Por qué Abraham es el modelo de justificación por fe?"
+      },
+      {
+        n: 5, bloque: 2, titulo: "Paz, esperanza y Adán vs Cristo",
+        idea: "Justificados por fe, tenemos paz y esperanza; la gracia de Cristo supera con creces la caída de Adán.",
+        puntos: [
+          "Estructura 5:1-11: A Paz y acceso · B Esperanza en sufrimiento · C Amor de Dios · D El «mucho más».",
+          "Justificados por fe → paz con Dios y acceso a la gracia (5:1-2).",
+          "La esperanza no avergüenza: amor derramado por el Espíritu (5:5).",
+          "Cristo murió por nosotros siendo aún pecadores (5:8).",
+          "Adán = representante: todos pecamos en Adán; resultado = muerte.",
+          "Gracia de Cristo supera con creces; por la obediencia de uno somos justificados.",
+          "Justificados en Cristo: te apropias de quien eres."
+        ],
+        verso: { ref: "Ro 5:1 · 5:8", text: "Justificados, pues, por la fe, tenemos paz para con Dios por medio de nuestro Señor Jesucristo… Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros." },
+        pregunta: "Explica el contraste Adán vs Cristo con la tabla del curso."
+      },
+      {
+        n: 6, bloque: 2, titulo: "Muertos al pecado, vivos para Dios",
+        idea: "La gracia no es licencia para pecar; fuimos unidos a Cristo en su muerte y resurrección para vivir en novedad de vida.",
+        puntos: [
+          "Si pecas, va en contra de tu nueva identidad.",
+          "Bautizados en su muerte → muertos al pecado, vivos para Dios (6:1-11).",
+          "Hoy ya participamos: el pecado ya no se enseñorea.",
+          "En Cristo: creer y rendirme por completo.",
+          "El cuerpo: armas para la justicia (6:12-14).",
+          "Nuevo régimen que nos hace más libres que nunca.",
+          "★ Cuando somos esclavos de Dios, somos libres.",
+          "Santificación = parecernos más a Jesús. ★ 6:23."
+        ],
+        verso: { ref: "Ro 6:23", text: "Porque la paga del pecado es muerte, mas la dádiva de Dios es vida eterna en Cristo Jesús Señor nuestro." },
+        pregunta: "¿Por qué «seguir en pecado» contradice la gracia según Ro 6?"
+      },
+      {
+        n: 7, bloque: 2, titulo: "Muertos a la ley para ser de Cristo",
+        idea: "Dios nos concede la santificación; estamos muertos a la ley por el cuerpo de Cristo para pertenecerle y servir en el régimen nuevo del Espíritu.",
+        puntos: [
+          "Pregunta: ¿Qué hacemos con la ley?",
+          "La ley solo domina mientras uno vive; Cristo murió → libres de esa deuda.",
+          "★ Muertos a la ley por el cuerpo de Cristo → morí para ser de Cristo.",
+          "Ya no por obligación forzada; por amor a Cristo.",
+          "La ley existe para que yo conozca mi pecado.",
+          "Régimen viejo de la letra vs nuevo régimen del Espíritu.",
+          "«¡Miserable de mí!» → liberación en Cristo (7:24-25)."
+        ],
+        verso: { ref: "Ro 7:24-25", text: "¡Miserable de mí! ¿quién me librará de este cuerpo de muerte? Gracias doy a Dios, por Jesucristo Señor nuestro." },
+        pregunta: "¿Para qué sirve la ley según Romanos 7?"
+      },
+      {
+        n: 8, bloque: 2, titulo: "Vida en el Espíritu, adopción y seguridad",
+        idea: "No hay condenación en Cristo; la ley del Espíritu de vida vence; somos hijos, herederos, y nada nos separa del amor de Dios.",
+        puntos: [
+          "★ No hay ninguna condenación para los que están en Cristo Jesús (8:1).",
+          "Ley del Espíritu de vida vs ley del pecado y de la muerte.",
+          "La ley no da recursos para vencer; Dios envió a su Hijo.",
+          "★ La justicia de la ley se cumple en mí porque estoy en Cristo.",
+          "Ocuparse de la carne → muerte; de lo espiritual → vida y paz.",
+          "Hijos: «¡Abba!»; herederos y coherederos con Cristo.",
+          "★ 8:28: Dios usa todo para bien si fuimos llamados.",
+          "Cadena de oro (8:29-30) y nadie nos separa (8:31-39)."
+        ],
+        verso: { ref: "Ro 8:1 · 8:28 · 8:38-39", text: "Ahora, pues, ninguna condenación hay para los que están en Cristo Jesús… Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien… ni lo alto, ni lo profundo, ni ninguna otra cosa creada nos podrá separar del amor de Dios, que es en Cristo Jesús Señor nuestro." },
+        pregunta: "Explica «no hay condenación» + cadena de oro + «quién nos separará»."
+      },
+      {
+        n: 9, bloque: 3, titulo: "Soberanía de Dios e Israel",
+        idea: "La palabra de Dios no ha fallado; la elección muestra la misericordia soberana de Dios.",
+        puntos: [
+          "Inicia Plan de Dios (9–11).",
+          "Dolor de Pablo por Israel (9:1-5).",
+          "No todos los descendientes de Israel son «Israel» (9:6).",
+          "Isaac/Ismael, Jacob/Esaú — propósito según elección.",
+          "Misericordia y endurecimiento; alfarero y barro.",
+          "Justicia por fe vs justicia por obras.",
+          "Cristo = piedra; el que cree no será avergonzado."
+        ],
+        verso: { ref: "Ro 9:16", text: "Así que no depende del que quiere, ni del que corre, sino de Dios que tiene misericordia." },
+        pregunta: "¿Cómo responde Pablo a la objeción «la palabra de Dios ha fallado»?"
+      },
+      {
+        n: 10, bloque: 3, titulo: "Fe, predicación y salvación",
+        idea: "Cristo es el fin de la ley para justicia a todo creyente; se confiesa con la boca y se cree con el corazón.",
+        puntos: [
+          "Israel tiene celo, pero no conforme a ciencia (10:1-3).",
+          "★ Cristo = fin de la ley para justicia (10:4).",
+          "★ 10:9-10: confesar a Jesús como Señor y creer que Dios le levantó.",
+          "10:13: todo aquel que invocare el nombre del Señor será salvo.",
+          "¿Cómo oirán sin predicador? (10:14-15).",
+          "Fe viene por el oír, y el oír por la palabra de Cristo (10:17)."
+        ],
+        verso: { ref: "Ro 10:9-10", text: "Que si confesares con tu boca que Jesús es el Señor, y creyeres en tu corazón que Dios le levantó de los muertos, serás salvo. Porque con el corazón se cree para justicia, pero con la boca se confiesa para salvación." },
+        pregunta: "Resume el «camino de salvación» de Ro 10:9-17."
+      },
+      {
+        n: 11, bloque: 3, titulo: "Remanente, injerto y fidelidad de Dios",
+        idea: "Dios no desechó a su pueblo; hay remanente; gentiles injertados; al final, misterio de misericordia.",
+        puntos: [
+          "Dios no desechó a Israel; remanente según gracia.",
+          "Endurecimiento parcial → salvación a gentiles → celos santos.",
+          "Olivo: no te ensoberbezcas contra las ramas.",
+          "Bondad y severidad de Dios (11:22).",
+          "Misterio: endurecimiento hasta la plenitud de los gentiles.",
+          "Dones y llamamiento irrevocables (11:29).",
+          "Doxología: ¡Oh profundidad! (11:33-36)."
+        ],
+        verso: { ref: "Ro 11:33", text: "¡Oh profundidad de las riquezas de la sabiduría y de la ciencia de Dios! ¡Cuán insondables son sus juicios, e inescrutables sus caminos!" },
+        pregunta: "¿Qué advertencia da Pablo a los gentiles injertados?"
+      },
+      {
+        n: 12, bloque: 4, titulo: "Vida como culto racional",
+        idea: "Empieza la Voluntad de Dios: presentar el cuerpo, renovar la mente, vivir el amor en el cuerpo de Cristo.",
+        puntos: [
+          "★ 12:1-2: cuerpos en sacrificio vivo; no os conforméis; renovar el entendimiento.",
+          "Un cuerpo, muchos miembros; dones distintos.",
+          "Amor sincero; aborrecer el mal; apegarse al bien.",
+          "Bendecir a los que persiguen; gozar/llorar con otros.",
+          "No os venguéis; dad lugar a la ira de Dios (12:19).",
+          "Vencer el mal con el bien (12:21)."
+        ],
+        verso: { ref: "Ro 12:1-2", text: "Así que, hermanos, os ruego por las misericordias de Dios, que presentéis vuestros cuerpos en sacrificio vivo, santo, agradable a Dios, que es vuestro culto racional. No os conforméis a este siglo, sino transformaos por medio de la renovación de vuestro entendimiento…" },
+        pregunta: "¿Qué significa «culto racional» según 12:1-2?"
+      },
+      {
+        n: 13, bloque: 4, titulo: "Autoridades, amor y urgencia",
+        idea: "Sujeción a autoridades, amor como cumplimiento de la ley, y vivir despiertos porque la noche está avanzada.",
+        puntos: [
+          "Toda autoridad de parte de Dios (con discernimiento cristiano serio).",
+          "Pagar impuestos, respeto, honor.",
+          "No debáis a nadie nada, sino amaros (13:8).",
+          "Amor = cumplimiento de la ley (13:10).",
+          "Es hora de despertar; la salvación está más cerca.",
+          "★ Vestíos del Señor Jesucristo (13:14)."
+        ],
+        verso: { ref: "Ro 13:14", text: "Sino vestíos del Señor Jesucristo, y no proveáis para los deseos de la carne." },
+        pregunta: "¿Cómo se relaciona el amor al prójimo con la ley en Ro 13?"
+      },
+      {
+        n: 14, bloque: 4, titulo: "Débiles y fuertes: no juzgar",
+        idea: "En asuntos de conciencia (comidas, días), recibir al hermano; no destruir por quien Cristo murió.",
+        puntos: [
+          "Recibir al débil en la fe, no para contiendas.",
+          "No juzgar al siervo ajeno (14:4).",
+          "Cada uno esté plenamente convencido (14:5).",
+          "Vivimos y morimos para el Señor.",
+          "Todos compareceremos ante el tribunal de Cristo — eco del Bemá.",
+          "El Reino es justicia, paz y gozo en el Espíritu (14:17).",
+          "Lo que no procede de fe es pecado (14:23)."
+        ],
+        verso: { ref: "Ro 14:17", text: "Porque el reino de Dios no es comida ni bebida, sino justicia, paz y gozo en el Espíritu Santo." },
+        pregunta: "¿Qué principio guía la libertad cristiana en Ro 14?"
+      },
+      {
+        n: 15, bloque: 4, titulo: "Unidad, misión y planes de Pablo",
+        idea: "Los fuertes sobrellevan a los débiles; Cristo es siervo; Pablo anuncia su misión a los gentiles y su viaje a Roma/España.",
+        puntos: [
+          "Sobrellevar las flaquezas; agradar al prójimo para edificación.",
+          "Lo escrito para enseñanza → esperanza (15:4).",
+          "Unánimes a una voz glorificar a Dios.",
+          "Recibíos unos a otros como Cristo os recibió.",
+          "Pablo: ministro a los gentiles; predicar donde no se ha nombrado a Cristo.",
+          "Colecta para Jerusalén; deseo de ir a Roma y España."
+        ],
+        verso: { ref: "Ro 15:13", text: "Y el Dios de esperanza os llene de todo gozo y paz en el creer, para que abundéis en esperanza por el poder del Espíritu Santo." },
+        pregunta: "¿Cuál es el modelo de Cristo para la unidad en Ro 15?"
+      },
+      {
+        n: 16, bloque: 4, titulo: "Saludos, advertencias y doxología",
+        idea: "La doctrina se vive en relaciones concretas; cuidar la unidad; gloria a Dios que fortalece según el evangelio.",
+        puntos: [
+          "Febe, Prisca y Aquila, y muchos colaboradores.",
+          "★ Apartarse de los que causan disensiones y tropiezos (16:17-18).",
+          "Sabios para el bien e ingenuos para el mal.",
+          "El Dios de paz aplastará a Satanás (16:20).",
+          "Tercio, que escribió la carta (16:22).",
+          "Doxología: misterio revelado a todas las naciones (16:25-27)."
+        ],
+        verso: { ref: "Ro 16:17", text: "Mas os ruego, hermanos, que os fijéis en los que causan divisiones y tropiezos en contra de la doctrina que vosotros habéis aprendido, y que os apartéis de ellos." },
+        pregunta: "¿Por qué importa que Tercio aparezca en 16:22?"
+      }
+    ],
+    contrastes: [
+      {
+        titulo: "Adán vs Cristo (Ro 5)",
+        headers: ["Adán", "Cristo"],
+        rows: [
+          ["Transgresión de uno → murieron muchos", "Abundó para los muchos la gracia y el don por Jesucristo"],
+          ["Juicio → condenación", "Don → justificación"],
+          ["Reinado del pecado y la muerte", "Reinado de la gracia y la vida"],
+          ["Desobediencia → pecadores muchos", "Obediencia → justificados muchos"],
+          ["Representante de humanidad caída", "Representante de nueva humanidad"]
+        ],
+        nota: "Justificados en Cristo = te apropias de quien eres / del humano que siempre debiste ser."
+      },
+      {
+        titulo: "Obras vs fe (Ro 3–4)",
+        headers: ["Obras", "Fe"],
+        rows: [
+          ["Jactancia", "Exclusión de jactancia"],
+          ["Salario debido", "Gracia inmerecida"],
+          ["Nadie justificado (3:20)", "Justificados por fe (3:28; 5:1)"],
+          ["Abraham «si por obras…»", "Abraham creyó y le fue contado"]
+        ]
+      },
+      {
+        titulo: "Esclavitud pecado vs justicia (Ro 6)",
+        headers: ["Esclavo del pecado", "Esclavo de Dios / justicia"],
+        rows: [
+          ["Lleva a muerte", "Lleva a santificación y vida eterna"],
+          ["Antiguo régimen", "Nuevo régimen (más libres que nunca)"],
+          ["Identidad vieja", "Nueva criatura en Cristo"],
+          ["Cuando pecas, traicionas quién eres", "Cuando eres esclavo de Dios, eres libre"]
+        ]
+      },
+      {
+        titulo: "Letra / ley vs Espíritu / gracia (Ro 7–8)",
+        headers: ["Letra / ley (solo)", "Espíritu / gracia"],
+        rows: [
+          ["Da conocimiento del pecado", "Da vida y poder"],
+          ["No da fuerza para vencer", "Ley del Espíritu de vida vence"],
+          ["Régimen viejo → orgullo o desesperación", "Régimen nuevo → servir por amor"],
+          ["Domina al vivo", "Muertos a la ley para ser de Cristo"],
+          ["«¡Miserable de mí!»", "«No hay condenación»"]
+        ]
+      },
+      {
+        titulo: "Carne vs Espíritu (Ro 8)",
+        headers: ["Carne", "Espíritu"],
+        rows: [
+          ["Ocuparse → muerte", "Ocuparse → vida y paz"],
+          ["Enemistad con Dios", "Agrada a Dios"],
+          ["No puede sujetarse a la ley de Dios", "Cumple en nosotros lo que la ley pedía"],
+          ["Deuda / dominio", "Hijos, Abba, herederos"],
+          ["Mente en sí misma", "Mente en cosas del Espíritu"]
+        ]
+      }
+    ],
+    cadenaOro: "Conoció de antemano → Predestinó → Llamó → Justificó → Glorificó",
+    flashcards: [
+      { ref: "Ro 1:16-17", text: "Porque no me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree… Porque en el evangelio la justicia de Dios se revela por fe y para fe… Mas el justo por la fe vivirá." },
+      { ref: "Ro 2:4", text: "¿O menosprecias las riquezas de su benignidad… ignorando que su benignidad te guía al arrepentimiento?" },
+      { ref: "Ro 3:23-24", text: "Por cuanto todos pecaron, y están destituidos de la gloria de Dios, siendo justificados gratuitamente por su gracia, mediante la redención que es en Cristo Jesús." },
+      { ref: "Ro 3:28", text: "Concluimos, pues, que el hombre es justificado por fe sin las obras de la ley." },
+      { ref: "Ro 4:25", text: "El cual fue entregado por nuestras transgresiones, y resucitado para nuestra justificación." },
+      { ref: "Ro 5:1", text: "Justificados, pues, por la fe, tenemos paz para con Dios por medio de nuestro Señor Jesucristo." },
+      { ref: "Ro 5:8", text: "Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros." },
+      { ref: "Ro 6:11", text: "Así también vosotros consideraos muertos al pecado, pero vivos para Dios en Cristo Jesús." },
+      { ref: "Ro 6:23", text: "Porque la paga del pecado es muerte, mas la dádiva de Dios es vida eterna en Cristo Jesús Señor nuestro." },
+      { ref: "Ro 7:6", text: "Pero ahora estamos libres de la ley, por haber muerto para aquella en que estábamos sujetos, de modo que sirvamos bajo el régimen nuevo del Espíritu y no bajo el régimen viejo de la letra." },
+      { ref: "Ro 7:24-25", text: "¡Miserable de mí! ¿quién me librará de este cuerpo de muerte? Gracias doy a Dios, por Jesucristo Señor nuestro." },
+      { ref: "Ro 8:1", text: "Ahora, pues, ninguna condenación hay para los que están en Cristo Jesús." },
+      { ref: "Ro 8:28", text: "Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien, esto es, a los que conforme a su propósito son llamados." },
+      { ref: "Ro 8:38-39", text: "Por lo cual estoy seguro de que ni la muerte, ni la vida, ni ángeles, ni principados, ni potestades, ni lo presente, ni lo por venir, ni lo alto, ni lo profundo, ni ninguna otra cosa creada nos podrá separar del amor de Dios, que es en Cristo Jesús Señor nuestro." },
+      { ref: "Ro 9:16", text: "Así que no depende del que quiere, ni del que corre, sino de Dios que tiene misericordia." },
+      { ref: "Ro 10:9-10", text: "Que si confesares con tu boca que Jesús es el Señor, y creyeres en tu corazón que Dios le levantó de los muertos, serás salvo…" },
+      { ref: "Ro 10:17", text: "Así que la fe es por el oír, y el oír, por la palabra de Dios." },
+      { ref: "Ro 11:33", text: "¡Oh profundidad de las riquezas de la sabiduría y de la ciencia de Dios! ¡Cuán insondables son sus juicios, e inescrutables sus caminos!" },
+      { ref: "Ro 12:1-2", text: "…presentéis vuestros cuerpos en sacrificio vivo, santo, agradable a Dios, que es vuestro culto racional. No os conforméis a este siglo, sino transformaos por medio de la renovación de vuestro entendimiento…" },
+      { ref: "Ro 13:14", text: "Sino vestíos del Señor Jesucristo, y no proveáis para los deseos de la carne." },
+      { ref: "Ro 14:17", text: "Porque el reino de Dios no es comida ni bebida, sino justicia, paz y gozo en el Espíritu Santo." },
+      { ref: "Ro 15:13", text: "Y el Dios de esperanza os llene de todo gozo y paz en el creer, para que abundéis en esperanza por el poder del Espíritu Santo." },
+      { ref: "Ro 16:17", text: "Mas os ruego, hermanos, que os fijéis en los que causan divisiones y tropiezos… y que os apartéis de ellos." },
+      { ref: "Ro 8:31", text: "¿Qué, pues, diremos a esto? Si Dios es por nosotros, ¿quién contra nosotros?" }
+    ],
+    cheat: [
+      "Mapa: Ira (1–3:20) · Gracia (3:21–8) · Plan (9–11) · Voluntad (12–16).",
+      "Centro: Ro 1:16-17 — evangelio = poder de Dios; el justo por la fe vivirá.",
+      "Secuencia: Justificado → Santificado → Glorificado.",
+      "Trío: Justicia (lo merecido) · Misericordia (no lo merecido) · Gracia (regalo inmerecido).",
+      "Jesús: Justifica (define) · Redime (salva) · Propicia (sustituto).",
+      "Todos pecaron (3:23); justificados por gracia mediante la fe (3:24, 28).",
+      "Adán vs Cristo: uno trajo condenación/muerte; Uno trajo gracia/justificación/vida.",
+      "Ro 6: Nueva identidad; muertos al pecado; esclavos de Dios = libres; 6:23.",
+      "Ro 7: Muertos a la ley para ser de Cristo; la ley hace conocer el pecado.",
+      "Ro 8:1: No hay condenación en Cristo Jesús.",
+      "Carne vs Espíritu: muerte vs vida y paz; Abba; herederos.",
+      "8:28: Todas las cosas para bien a los llamados.",
+      "Cadena de oro: conoció → predestinó → llamó → justificó → glorificó.",
+      "8:31-39: Si Dios es por nosotros… nada nos separa del amor de Cristo.",
+      "12:1-2: Cuerpo en culto · mente renovada · voluntad de Dios — así se vive la doctrina."
+    ],
+    preguntas: null // filled below
+  };
+
+  // —— 50 preguntas tipadas ——
+  DATA.preguntas = [
+    { id: 1, tipo: "vf", q: "El versículo central de Romanos es 1:16-17.", answer: true, explain: "Correcto: es el versículo central del libro." },
+    { id: 2, tipo: "vf", q: "Según el curso, Ro 1–3:20 trata de la gracia de Dios.", answer: false, explain: "Falso: trata de la ira de Dios. La gracia inicia en 3:21." },
+    { id: 3, tipo: "vf", q: "Justicia, en la definición del curso, es «no darte lo que mereces».", answer: false, explain: "Falso: eso es misericordia. Justicia = darte lo que mereces." },
+    { id: 4, tipo: "vf", q: "Propiciación significa que Jesús toma nuestro lugar en sacrificio sustituto.", answer: true, explain: "Correcto (Ro 3:25)." },
+    { id: 5, tipo: "vf", q: "Pablo dictó Romanos a Tercio.", answer: true, explain: "Correcto: Ro 16:22." },
+    { id: 6, tipo: "vf", q: "La ley da fuerza suficiente para vencer el pecado.", answer: false, explain: "Falso: la ley revela el pecado pero no da poder para vencerlo." },
+    { id: 7, tipo: "vf", q: "«Morí para ser de Cristo» resume una idea clave de Ro 7.", answer: true, explain: "Correcto: muertos a la ley por el cuerpo de Cristo." },
+    { id: 8, tipo: "vf", q: "Ro 8:1 dice que no hay condenación para los que están en Cristo Jesús.", answer: true, explain: "Correcto." },
+    { id: 9, tipo: "vf", q: "En la cadena de oro, «glorificó» aparece en tiempo pasado.", answer: true, explain: "Correcto: Él ya ve la obra consumada." },
+    { id: 10, tipo: "vf", q: "Cuando somos esclavos de Dios, según Ro 6 (apuntes), somos libres.", answer: true, explain: "Correcto: paradoja del nuevo régimen." },
+    { id: 11, tipo: "vf", q: "Metanoia es solo sentir culpa, sin cambio de mente.", answer: false, explain: "Falso: metanoia = cambiar de mente; eso cambia la conducta." },
+    { id: 12, tipo: "vf", q: "El Bemá (2 Cor 5:10) es el mismo juicio que Apocalipsis 20:11-15.", answer: false, explain: "Falso: Bemá = recompensas del creyente; Ap 20 = juicio final de condenación." },
+    { id: 13, tipo: "vf", q: "Adán es representante: todos pecamos en Adán.", answer: true, explain: "Correcto (Ro 5)." },
+    { id: 14, tipo: "vf", q: "Ro 12–16 corresponde a la «voluntad de Dios» en el mapa del curso.", answer: true, explain: "Correcto." },
+    { id: 15, tipo: "vf", q: "La esperanza avergüenza al creyente cuando hay sufrimiento (Ro 5).", answer: false, explain: "Falso: la esperanza no avergüenza (Ro 5:5)." },
+
+    { id: 16, tipo: "mc", q: "La secuencia correcta es:", options: ["Santificado → Justificado → Glorificado", "Justificado → Santificado → Glorificado", "Glorificado → Justificado → Santificado"], answer: 1, explain: "Justificado → Santificado → Glorificado." },
+    { id: 17, tipo: "mc", q: "«Gracia» según el curso es:", options: ["Darte lo que mereces", "Favor/regalo inmerecido", "Solo perdón de pecados pasados"], answer: 1, explain: "Favor / regalo inmerecido de Dios." },
+    { id: 18, tipo: "mc", q: "Los tres bajo la ira son:", options: ["Ángel, demonio, humano", "Pagano idólatra, intelectual moralista, judío", "Niño, joven, anciano"], answer: 1, explain: "Pagano idólatra · intelectual moralista · judío." },
+    { id: 19, tipo: "mc", q: "«Doulos» significa:", options: ["Rey", "Esclavo", "Maestro"], answer: 1, explain: "Esclavo (la voluntad del amo)." },
+    { id: 20, tipo: "mc", q: "Ro 5:1 afirma que justificados por fe tenemos:", options: ["Paz con Dios", "Exención de sufrimiento", "Impunidad para pecar"], answer: 0, explain: "Paz con Dios." },
+    { id: 21, tipo: "mc", q: "En Adán vs Cristo, por la desobediencia de uno:", options: ["Muchos fueron hechos justos", "Muchos fueron hechos pecadores", "La ley fue abolida"], answer: 1, explain: "Muchos fueron hechos pecadores." },
+    { id: 22, tipo: "mc", q: "Según Ro 7 (apuntes), la ley existe para:", options: ["Salvarme por obras", "Que yo conozca mi pecado", "Reemplazar al Espíritu"], answer: 1, explain: "Para que yo conozca mi pecado." },
+    { id: 23, tipo: "mc", q: "La justicia de la ley se cumple:", options: ["Por mí, con esfuerzo", "En mí, porque estoy en Cristo", "Solo en el milenio"], answer: 1, explain: "Se cumple en mí porque estoy en Cristo." },
+    { id: 24, tipo: "mc", q: "«Abba» en Ro 8 señala:", options: ["Temor servil", "Relación de hijos", "Título de rabino"], answer: 1, explain: "Relación de hijos / adopción." },
+    { id: 25, tipo: "mc", q: "Ro 8:28 aplica especialmente a:", options: ["Todos los seres humanos sin excepción", "Los que aman a Dios / llamados", "Solo a los apóstoles"], answer: 1, explain: "A los que aman a Dios / son llamados." },
+    { id: 26, tipo: "mc", q: "Cristo es el fin de la ley para justicia (Ro 10) significa principalmente:", options: ["La ley era mala", "Él es la meta/cumplimiento para justicia por fe", "Ya no hay mandamientos éticos"], answer: 1, explain: "Meta/cumplimiento para justicia por fe." },
+    { id: 27, tipo: "mc", q: "En Ro 11, a los gentiles se les advierte:", options: ["Ensoberbecerse contra las ramas", "Dejar de orar", "Ignorar a Israel"], answer: 0, explain: "No ensoberbecerse contra las ramas naturales." },
+    { id: 28, tipo: "mc", q: "Ro 12:1-2 pide:", options: ["Aislarse del mundo sin transformar la mente", "Presentar el cuerpo y renovar el entendimiento", "Ganar la justificación por culto"], answer: 1, explain: "Presentar el cuerpo y renovar el entendimiento." },
+    { id: 29, tipo: "mc", q: "En Ro 14, el Reino de Dios es:", options: ["Comida y bebida", "Justicia, paz y gozo en el Espíritu Santo", "Solo milagros"], answer: 1, explain: "Justicia, paz y gozo en el Espíritu Santo." },
+    { id: 30, tipo: "mc", q: "El mapa del curso «Plan de Dios» cubre:", options: ["Ro 1–3", "Ro 9–11", "Ro 12–16"], answer: 1, explain: "Ro 9–11." },
+
+    { id: 31, tipo: "short", q: "Define justificación, redención y propiciación en una frase cada una (versión del curso).", answer: "Justificación: nos define (declarados justos). Redención: nos salva. Propiciación: sacrificio sustituto.", keywords: ["justif", "define", "redim", "salva", "propic", "sustit"] },
+    { id: 32, tipo: "short", q: "¿Qué es el evangelio según Ro 1:16 y tus apuntes?", answer: "Poder de Dios para salvación; se enfoca en lo que Dios hizo; obra de Dios; invitados por gracia.", keywords: ["poder", "salvaci", "dios hizo", "gracia"] },
+    { id: 33, tipo: "short", q: "Explica «labranza» y «edificio» (1 Cor 3) en relación con crecer en Cristo.", answer: "Labranza = cimientos/fundamento; edificio = crecer en la imagen de Cristo para gloria del Padre.", keywords: ["cimient", "fund", "labran", "edific", "imagen", "crecer"] },
+    { id: 34, tipo: "short", q: "¿Por qué las dificultades no contradicen la esperanza (Ro 5)?", answer: "Porque el amor de Dios está derramado por el Espíritu; la esperanza no avergüenza.", keywords: ["amor", "espíritu", "no averg", "esperanza"] },
+    { id: 35, tipo: "short", q: "¿Qué significa «mucho más» en Ro 5:9-11?", answer: "Si siendo enemigos fuimos reconciliados, mucho más seremos salvos por su vida.", keywords: ["enemig", "reconcili", "mucho más", "salv"] },
+    { id: 36, tipo: "short", q: "Explica: «muertos a la ley por el cuerpo de Cristo».", answer: "Por la muerte de Cristo (unión con Él) la ley ya no nos domina; morimos para ser de Cristo.", keywords: ["muert", "ley", "cristo", "domina"] },
+    { id: 37, tipo: "short", q: "¿Qué cambia en ti al saber que no hay condenación (Ro 8:1)?", answer: "Cambia mente, corazón, seguridad (presente/futura) y estilo de vida: caminar en Cristo.", keywords: ["seguridad", "conden", "mente", "crist"] },
+    { id: 38, tipo: "short", q: "Resume la cadena de oro (8:29-30).", answer: "Conoció → predestinó → llamó → justificó → glorificó.", keywords: ["conoc", "predestin", "llam", "justific", "glorific"] },
+    { id: 39, tipo: "short", q: "Diferencia Bemá (2 Cor 5:10) y el gran trono blanco (Ap 20).", answer: "Bemá: recompensas del creyente. Ap 20: juicio de condenación ante el gran trono blanco.", keywords: ["bemá", "recompens", "trono", "conden"] },
+    { id: 40, tipo: "short", q: "¿Qué es metanoia y cómo afecta la conducta?", answer: "Cambiar de mente; eso transforma la conducta.", keywords: ["cambiar", "mente", "conduct"] },
+
+    { id: 41, tipo: "short", q: "Explica Adán vs Cristo (al menos 3 pares).", answer: "Transgresión/gracia; condenación/justificación; muerte/vida; desobediencia→pecadores / obediencia→justificados.", keywords: ["adán", "cristo", "conden", "gracia", "muerte", "vida", "desobed", "obed"] },
+    { id: 42, tipo: "short", q: "Contraste obras vs fe (Ro 3–4).", answer: "Obras: jactancia, salario, nadie justificado. Fe: excluye jactancia, gracia, justificados por fe (Abraham creyó).", keywords: ["obras", "fe", "jactan", "gracia", "justific"] },
+    { id: 43, tipo: "short", q: "Esclavitud al pecado vs esclavitud a la justicia (Ro 6).", answer: "Pecado → muerte / identidad vieja. Justicia/Dios → santificación y vida eterna; esclavos de Dios = libres.", keywords: ["esclav", "pecado", "justicia", "libres", "santif"] },
+    { id: 44, tipo: "short", q: "Letra vs Espíritu (Ro 7–8).", answer: "Letra: conocimiento del pecado, sin fuerza, «miserable». Espíritu: vida y poder, servir por amor, no hay condenación.", keywords: ["letra", "espíritu", "pecado", "poder", "conden"] },
+    { id: 45, tipo: "short", q: "Carne vs Espíritu (Ro 8:5-8).", answer: "Carne → muerte, enemistad. Espíritu → vida y paz, agrada a Dios, hijos/Abba/herederos.", keywords: ["carne", "espíritu", "muerte", "paz", "vida"] },
+    { id: 46, tipo: "short", q: "Ira de Dios vs gracia de Dios (mapa 1–3:20 vs 3:21–8).", answer: "Ira: condenación de judíos y gentiles (1–3:20). Gracia: justificación, santificación, Espíritu y seguridad (3:21–8).", keywords: ["ira", "gracia", "3:20", "justific"] },
+    { id: 47, tipo: "short", q: "Justicia vs misericordia vs gracia (definiciones del curso).", answer: "Justicia: darte lo merecido. Misericordia: no darte lo merecido. Gracia: regalo inmerecido.", keywords: ["justicia", "misericordia", "gracia", "merec", "regalo"] },
+    { id: 48, tipo: "short", q: "Régimen viejo vs nuevo régimen (Ro 6–7).", answer: "Viejo: letra, orgullo/desesperación, dominio de la ley. Nuevo: Espíritu, servir por amor, más libres que nunca.", keywords: ["régimen", "viejo", "nuevo", "espíritu", "letra"] },
+    { id: 49, tipo: "short", q: "Condenación en Adán vs «no hay condenación» en Cristo.", answer: "En Adán: juicio y muerte. En Cristo (8:1): ninguna condenación presente ni futura; justificados.", keywords: ["adán", "conden", "cristo", "8:1"] },
+    { id: 50, tipo: "short", q: "Seguridad del creyente: ¿quién/qué puede separarnos del amor de Cristo? (8:31-39)", answer: "Nadie/nada. Si Dios es por nosotros… Cristo intercede; somos más que vencedores; nada nos separa.", keywords: ["nadie", "nada", "separ", "dios es por", "vencedor"] }
+  ];
+
+  // —— State ——
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return { knownFlash: {}, lastScore: null, lastScoreDate: null };
+  }
+  function saveState(s) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch (e) {}
+  }
+  let state = loadState();
+
+  // —— Tabs ——
+  const panels = {
+    inicio: document.getElementById("panel-inicio"),
+    estudiar: document.getElementById("panel-estudiar"),
+    glosario: document.getElementById("panel-glosario"),
+    contrastes: document.getElementById("panel-contrastes"),
+    flashcards: document.getElementById("panel-flashcards"),
+    simulacro: document.getElementById("panel-simulacro"),
+    cheat: document.getElementById("panel-cheat")
+  };
+
+  function showTab(name) {
+    document.querySelectorAll(".nav-tabs button").forEach((b) => {
+      const on = b.dataset.tab === name;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    Object.keys(panels).forEach((k) => {
+      const el = panels[k];
+      const on = k === name;
+      el.classList.toggle("active", on);
+      el.hidden = !on;
+    });
+    if (name === "flashcards") renderFlash();
+  }
+
+  document.querySelectorAll(".nav-tabs button").forEach((btn) => {
+    btn.addEventListener("click", () => showTab(btn.dataset.tab));
+  });
+
+  // —— Progress UI ——
+  function updateScorePill() {
+    const el = document.getElementById("lastScorePill");
+    if (state.lastScore == null) el.textContent = "Último score: —";
+    else el.textContent = "Último score: " + state.lastScore + "/100";
+  }
+  updateScorePill();
+
+  document.getElementById("btnResetProgress").addEventListener("click", () => {
+    if (!confirm("¿Reiniciar progreso (flashcards conocidas y último score)?")) return;
+    state = { knownFlash: {}, lastScore: null, lastScoreDate: null };
+    saveState(state);
+    updateScorePill();
+    flashIdx = 0;
+    renderFlash();
+  });
+
+  // —— Inicio mapa ——
+  const mapaEl = document.getElementById("mapaBlocks");
+  DATA.mapa.forEach((m) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "card map-block";
+    btn.dataset.block = String(m.id);
+    btn.innerHTML = `<span class="tag">Bloque ${m.id}</span><strong>${m.tema}</strong><span style="font-size:0.85rem;color:var(--muted)">${m.pasaje}</span><p style="margin:0.4rem 0 0;font-size:0.88rem">${m.detalle}</p>`;
+    btn.addEventListener("click", () => {
+      document.getElementById("filtroBloque").value = String(m.id);
+      renderCapitulos();
+      showTab("estudiar");
+    });
+    mapaEl.appendChild(btn);
+  });
+
+  // —— Capítulos ——
+  function renderCapitulos() {
+    const filtro = document.getElementById("filtroBloque").value;
+    const wrap = document.getElementById("capitulosAccordion");
+    wrap.innerHTML = "";
+    DATA.capitulos.filter((c) => filtro === "all" || String(c.bloque) === filtro).forEach((c) => {
+      const blockName = DATA.mapa.find((m) => m.id === c.bloque).tema;
+      const det = document.createElement("details");
+      det.innerHTML = `
+        <summary>
+          <span>Romanos ${c.n} — ${c.titulo}</span>
+          <span class="chip">${blockName}</span>
+        </summary>
+        <div class="body">
+          <p><strong>Idea central:</strong> ${c.idea}</p>
+          <p><strong>Puntos clave:</strong></p>
+          <ul>${c.puntos.map((p) => `<li>${p}</li>`).join("")}</ul>
+          <div class="star-verse"><strong>★ ${c.verso.ref}</strong><br>${c.verso.text}</div>
+          <div class="practice-q"><strong>Pregunta de práctica:</strong> ${c.pregunta}</div>
+        </div>`;
+      wrap.appendChild(det);
+    });
+  }
+  document.getElementById("filtroBloque").addEventListener("change", renderCapitulos);
+  document.getElementById("btnExpandAll").addEventListener("click", () => {
+    document.querySelectorAll("#capitulosAccordion details").forEach((d) => (d.open = true));
+  });
+  document.getElementById("btnCollapseAll").addEventListener("click", () => {
+    document.querySelectorAll("#capitulosAccordion details").forEach((d) => (d.open = false));
+  });
+  renderCapitulos();
+
+  // —— Glosario ——
+  const gGrid = document.getElementById("glossaryGrid");
+  DATA.glosario.forEach((g) => {
+    const card = document.createElement("div");
+    card.className = "flip-card";
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-label", "Voltear definición de " + g.term);
+    card.innerHTML = `<div class="flip-inner">
+      <div class="flip-face front"><h4>${g.term}</h4><span class="flip-hint">Toca para ver definición</span></div>
+      <div class="flip-face back"><h4>${g.term}</h4><p>${g.def}</p></div>
+    </div>`;
+    const flip = () => card.classList.toggle("flipped");
+    card.addEventListener("click", flip);
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); }
+    });
+    gGrid.appendChild(card);
+  });
+
+  // —— Contrastes ——
+  const cWrap = document.getElementById("contrastesWrap");
+  DATA.contrastes.forEach((c) => {
+    const card = document.createElement("div");
+    card.className = "card contrast-card";
+    let html = `<h4>${c.titulo}</h4><table><thead><tr><th>${c.headers[0]}</th><th>${c.headers[1]}</th></tr></thead><tbody>`;
+    c.rows.forEach((r) => { html += `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`; });
+    html += `</tbody></table>`;
+    if (c.nota) html += `<p class="contrast-note">${c.nota}</p>`;
+    card.innerHTML = html;
+    cWrap.appendChild(card);
+  });
+  document.getElementById("cadenaOro").textContent = DATA.cadenaOro;
+
+  // —— Flashcards ——
+  let flashOrder = DATA.flashcards.map((_, i) => i);
+  let flashIdx = 0;
+  let flashShowingBack = false;
+  let flashOnlyUnknown = false;
+
+  function knownCount() {
+    return Object.keys(state.knownFlash).filter((k) => state.knownFlash[k]).length;
+  }
+  function activeFlashList() {
+    if (!flashOnlyUnknown) return flashOrder;
+    return flashOrder.filter((i) => !state.knownFlash[DATA.flashcards[i].ref]);
+  }
+  function renderFlash() {
+    const list = activeFlashList();
+    if (!list.length) {
+      document.getElementById("flashFront").textContent = "¡Todas marcadas como «Sé»!";
+      document.getElementById("flashBack").hidden = true;
+      document.getElementById("flashHint").textContent = "Pulsa «Solo no sé» de nuevo o reinicia progreso.";
+      document.getElementById("flashCounter").textContent = "0 / 0";
+      document.getElementById("flashKnown").textContent = "Sé: " + knownCount();
+      document.getElementById("flashProgress").style.width = "100%";
+      return;
+    }
+    if (flashIdx >= list.length) flashIdx = 0;
+    const card = DATA.flashcards[list[flashIdx]];
+    flashShowingBack = false;
+    document.getElementById("flashFront").hidden = false;
+    document.getElementById("flashFront").textContent = card.ref;
+    document.getElementById("flashFront").className = "ref";
+    const back = document.getElementById("flashBack");
+    back.hidden = true;
+    back.textContent = card.text;
+    document.getElementById("flashHint").textContent = "Toca o Enter para voltear";
+    document.getElementById("flashCounter").textContent = (flashIdx + 1) + " / " + list.length;
+    document.getElementById("flashKnown").textContent = "Sé: " + knownCount() + " / " + DATA.flashcards.length;
+    const pct = Math.round((knownCount() / DATA.flashcards.length) * 100);
+    document.getElementById("flashProgress").style.width = pct + "%";
+  }
+  function flipFlash() {
+    const list = activeFlashList();
+    if (!list.length) return;
+    flashShowingBack = !flashShowingBack;
+    document.getElementById("flashFront").hidden = flashShowingBack;
+    document.getElementById("flashBack").hidden = !flashShowingBack;
+    document.getElementById("flashHint").textContent = flashShowingBack ? "Texto del versículo ★" : "Toca o Enter para voltear";
+  }
+  document.getElementById("flashCard").addEventListener("click", flipFlash);
+  document.getElementById("flashCard").addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flipFlash(); }
+  });
+  document.getElementById("flashPrev").addEventListener("click", () => {
+    const list = activeFlashList();
+    if (!list.length) return;
+    flashIdx = (flashIdx - 1 + list.length) % list.length;
+    renderFlash();
+  });
+  document.getElementById("flashNext").addEventListener("click", () => {
+    const list = activeFlashList();
+    if (!list.length) return;
+    flashIdx = (flashIdx + 1) % list.length;
+    renderFlash();
+  });
+  document.getElementById("flashYes").addEventListener("click", () => {
+    const list = activeFlashList();
+    if (!list.length) return;
+    const ref = DATA.flashcards[list[flashIdx]].ref;
+    state.knownFlash[ref] = true;
+    saveState(state);
+    flashIdx = Math.min(flashIdx, Math.max(0, activeFlashList().length - 1));
+    renderFlash();
+  });
+  document.getElementById("flashNo").addEventListener("click", () => {
+    const list = activeFlashList();
+    if (!list.length) return;
+    const ref = DATA.flashcards[list[flashIdx]].ref;
+    state.knownFlash[ref] = false;
+    saveState(state);
+    flashIdx = (flashIdx + 1) % Math.max(1, activeFlashList().length);
+    renderFlash();
+  });
+  document.getElementById("flashShuffle").addEventListener("click", () => {
+    for (let i = flashOrder.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [flashOrder[i], flashOrder[j]] = [flashOrder[j], flashOrder[i]];
+    }
+    flashIdx = 0;
+    renderFlash();
+  });
+  document.getElementById("flashOnlyUnknown").addEventListener("click", () => {
+    flashOnlyUnknown = !flashOnlyUnknown;
+    document.getElementById("flashOnlyUnknown").textContent = flashOnlyUnknown ? "Ver todas" : "Solo «no sé»";
+    flashIdx = 0;
+    renderFlash();
+  });
+
+  // —— Cheat ——
+  const cheatList = document.getElementById("cheatList");
+  DATA.cheat.forEach((t) => {
+    const li = document.createElement("li");
+    li.textContent = t;
+    cheatList.appendChild(li);
+  });
+
+  // —— Quiz ——
+  let quiz = {
+    items: [],
+    idx: 0,
+    answers: [],
+    graded: false,
+    timerId: null,
+    secondsLeft: 0,
+    useTimer: false
+  };
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function stopTimer() {
+    if (quiz.timerId) { clearInterval(quiz.timerId); quiz.timerId = null; }
+  }
+
+  function startQuiz() {
+    const mode = document.getElementById("quizMode").value;
+    const useTimer = document.getElementById("quizTimer").checked && mode === "20";
+    let items = DATA.preguntas.slice();
+    if (mode === "20") items = shuffle(items).slice(0, 20);
+    else items = shuffle(items);
+    quiz = { items, idx: 0, answers: new Array(items.length).fill(null), graded: false, timerId: null, secondsLeft: 25 * 60, useTimer };
+    document.getElementById("quizSetup").hidden = true;
+    document.getElementById("quizResult").hidden = true;
+    document.getElementById("quizPlay").hidden = false;
+    const timerLabel = document.getElementById("quizTimerLabel");
+    timerLabel.hidden = !useTimer;
+    if (useTimer) {
+      timerLabel.textContent = "25:00";
+      quiz.timerId = setInterval(() => {
+        quiz.secondsLeft--;
+        const m = Math.floor(quiz.secondsLeft / 60);
+        const s = quiz.secondsLeft % 60;
+        timerLabel.textContent = m + ":" + String(s).padStart(2, "0");
+        if (quiz.secondsLeft <= 0) {
+          stopTimer();
+          finishQuiz(true);
+        }
+      }, 1000);
+    }
+    renderQuizQ();
+  }
+
+  function renderQuizQ() {
+    const item = quiz.items[quiz.idx];
+    const n = quiz.idx + 1;
+    const total = quiz.items.length;
+    document.getElementById("quizProgressLabel").textContent = "Pregunta " + n + " / " + total;
+    document.getElementById("quizProgressBar").style.width = Math.round(((n - 1) / total) * 100) + "%";
+    document.getElementById("quizCheck").hidden = false;
+    document.getElementById("quizNextBtn").hidden = true;
+    quiz.graded = false;
+
+    const box = document.getElementById("quizQuestion");
+    let html = `<p style="margin:0 0 0.5rem;font-size:0.78rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.04em">${tipoLabel(item.tipo)} · #${item.id}</p>`;
+    html += `<p style="margin:0;font-size:1.08rem;font-weight:600">${item.q}</p>`;
+
+    if (item.tipo === "vf") {
+      html += `<div class="options" role="radiogroup" aria-label="Verdadero o falso">
+        <label class="option"><input type="radio" name="ans" value="true" /> Verdadero</label>
+        <label class="option"><input type="radio" name="ans" value="false" /> Falso</label>
+      </div><div id="qFeedback"></div>`;
+    } else if (item.tipo === "mc") {
+      html += `<div class="options" role="radiogroup" aria-label="Opciones">`;
+      item.options.forEach((opt, i) => {
+        html += `<label class="option"><input type="radio" name="ans" value="${i}" /> <span>${String.fromCharCode(97 + i)}) ${opt}</span></label>`;
+      });
+      html += `</div><div id="qFeedback"></div>`;
+    } else {
+      html += `<label for="shortAns" class="sr-only" style="position:absolute;left:-9999px">Tu respuesta</label>
+        <textarea id="shortAns" class="short-answer" placeholder="Escribe tu respuesta breve…" aria-label="Respuesta breve"></textarea>
+        <div id="qFeedback"></div>`;
+    }
+    box.innerHTML = html;
+  }
+
+  function tipoLabel(t) {
+    if (t === "vf") return "Verdadero / Falso";
+    if (t === "mc") return "Opción múltiple";
+    return "Escribe breve";
+  }
+
+  function gradeCurrent() {
+    if (quiz.graded) return;
+    const item = quiz.items[quiz.idx];
+    let user = null;
+    let correct = false;
+    const feedback = document.getElementById("qFeedback");
+    const opts = document.querySelectorAll(".option");
+
+    if (item.tipo === "vf") {
+      const sel = document.querySelector('input[name="ans"]:checked');
+      if (!sel) { feedback.innerHTML = `<div class="feedback info">Elige Verdadero o Falso.</div>`; return; }
+      user = sel.value === "true";
+      correct = user === item.answer;
+      opts.forEach((lab) => {
+        const v = lab.querySelector("input").value === "true";
+        if (v === item.answer) lab.classList.add("correct");
+        else if (lab.querySelector("input").checked) lab.classList.add("incorrect");
+        lab.querySelector("input").disabled = true;
+      });
+    } else if (item.tipo === "mc") {
+      const sel = document.querySelector('input[name="ans"]:checked');
+      if (!sel) { feedback.innerHTML = `<div class="feedback info">Elige una opción.</div>`; return; }
+      user = Number(sel.value);
+      correct = user === item.answer;
+      opts.forEach((lab) => {
+        const v = Number(lab.querySelector("input").value);
+        if (v === item.answer) lab.classList.add("correct");
+        else if (lab.querySelector("input").checked) lab.classList.add("incorrect");
+        lab.querySelector("input").disabled = true;
+      });
+    } else {
+      const ta = document.getElementById("shortAns");
+      user = (ta.value || "").trim();
+      if (!user) { feedback.innerHTML = `<div class="feedback info">Escribe algo antes de calificar.</div>`; return; }
+      const low = user.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      const hits = (item.keywords || []).filter((k) => {
+        const kk = k.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        return low.includes(kk);
+      }).length;
+      const need = Math.max(1, Math.ceil((item.keywords || []).length * 0.35));
+      correct = hits >= need;
+      ta.disabled = true;
+    }
+
+    quiz.answers[quiz.idx] = { user, correct, item };
+    quiz.graded = true;
+    const cls = correct ? "ok" : "bad";
+    const title = correct ? "¡Correcto!" : "Incorrecto / incompleto";
+    let extra = item.explain ? `<br>${item.explain}` : "";
+    if (item.tipo === "short") {
+      extra += `<br><strong>Clave:</strong> ${item.answer}`;
+    } else if (item.tipo === "vf") {
+      extra += correct ? "" : `<br>Respuesta correcta: <strong>${item.answer ? "Verdadero" : "Falso"}</strong>`;
+    } else if (item.tipo === "mc" && !correct) {
+      extra += `<br>Respuesta correcta: <strong>${String.fromCharCode(97 + item.answer)}) ${item.options[item.answer]}</strong>`;
+    }
+    feedback.innerHTML = `<div class="feedback ${cls}"><strong>${title}</strong>${extra}</div>`;
+    document.getElementById("quizCheck").hidden = true;
+    document.getElementById("quizNextBtn").hidden = false;
+    document.getElementById("quizNextBtn").textContent = quiz.idx === quiz.items.length - 1 ? "Ver resultado" : "Siguiente";
+    document.getElementById("quizNextBtn").focus();
+  }
+
+  function nextOrFinish() {
+    if (!quiz.graded) { gradeCurrent(); return; }
+    if (quiz.idx >= quiz.items.length - 1) finishQuiz(false);
+    else { quiz.idx++; renderQuizQ(); }
+  }
+
+  function finishQuiz(timeout) {
+    stopTimer();
+    // Auto-grade unanswered as wrong
+    for (let i = 0; i < quiz.items.length; i++) {
+      if (!quiz.answers[i]) {
+        quiz.answers[i] = { user: null, correct: false, item: quiz.items[i], skipped: true };
+      }
+    }
+    const right = quiz.answers.filter((a) => a && a.correct).length;
+    const total = quiz.items.length;
+    const score = Math.round((right / total) * 100);
+    state.lastScore = score;
+    state.lastScoreDate = new Date().toISOString();
+    saveState(state);
+    updateScorePill();
+
+    document.getElementById("quizPlay").hidden = true;
+    document.getElementById("quizResult").hidden = false;
+    document.getElementById("quizScore").textContent = score;
+    let msg;
+    if (score >= 90) msg = "¡Vas por el 100! 🔥 Sigue así.";
+    else if (score >= 70) msg = "Casi. Repasa las falladas y vuelve a intentarlo.";
+    else msg = "Vuelve a Estudiar + Flashcards, luego reintenta.";
+    if (timeout) msg = "Se acabó el tiempo. " + msg;
+    document.getElementById("quizMotivator").textContent = msg;
+    document.getElementById("quizDetail").textContent = `Acertaste ${right} de ${total} (${score}/100).`;
+    document.getElementById("quizMissed").hidden = true;
+
+    const missed = quiz.answers.filter((a) => a && !a.correct);
+    const missEl = document.getElementById("quizMissed");
+    missEl.innerHTML = missed.length ? "<h4>Falladas / incompletas</h4>" : "<p>¡Sin fallos!</p>";
+    missed.forEach((a) => {
+      const div = document.createElement("div");
+      div.className = "missed-item";
+      let ansText = "";
+      if (a.item.tipo === "vf") ansText = a.item.answer ? "Verdadero" : "Falso";
+      else if (a.item.tipo === "mc") ansText = a.item.options[a.item.answer];
+      else ansText = a.item.answer;
+      div.innerHTML = `<strong>#${a.item.id}</strong> ${a.item.q}<br><span style="color:var(--success)">Clave: ${ansText}</span>${a.item.explain ? "<br>" + a.item.explain : ""}`;
+      missEl.appendChild(div);
+    });
+  }
+
+  document.getElementById("quizStart").addEventListener("click", startQuiz);
+  document.getElementById("quizCheck").addEventListener("click", gradeCurrent);
+  document.getElementById("quizNextBtn").addEventListener("click", nextOrFinish);
+  document.getElementById("quizRetry").addEventListener("click", startQuiz);
+  document.getElementById("quizReviewBtn").addEventListener("click", () => {
+    const el = document.getElementById("quizMissed");
+    el.hidden = !el.hidden;
+  });
+  document.getElementById("quizBackSetup").addEventListener("click", () => {
+    stopTimer();
+    document.getElementById("quizResult").hidden = true;
+    document.getElementById("quizPlay").hidden = true;
+    document.getElementById("quizSetup").hidden = false;
+  });
+
+  // Keyboard: Enter grades / next in quiz when focused appropriately
+  document.addEventListener("keydown", (e) => {
+    if (panels.simulacro.hidden) return;
+    if (e.key === "Enter" && e.target && e.target.id === "shortAns" && e.ctrlKey) {
+      e.preventDefault();
+      if (!quiz.graded) gradeCurrent();
+      else nextOrFinish();
+    }
+  });
+
+  // Expose for debugging
+  window.ROMANOS_DATA = DATA;
+})();
+
+</script>
+</body>
+</html>
