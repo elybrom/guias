@@ -1,5 +1,5 @@
 /* Método Inductivo · Eli — shell cache */
-const CACHE = 'inductivo-eli-fotos2';
+const CACHE = 'inductivo-eli-neh13';
 const SHELL = [
   './',
   './index.html',
