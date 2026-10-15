@@ -832,5 +832,74 @@ footer .serif{font-family:var(--serif);font-size:1.4rem;color:var(--azul);font-s
   if(!storageOK) mostrarAviso('Este navegador no permite guardado automático');
 })();
 </script>
+<!--APUB-START--><section style="max-width:760px;margin:2rem auto;padding:1.2rem;background:#f4efe4ee;border-radius:16px;color:#28374A;font-family:Montserrat,sans-serif"><h2 style="font-family:'Cormorant Garamond',serif;margin:0 0 .5rem">Apuntes publicados</h2><div id="apPublicados">Cargando…</div><p style="margin-top:.8rem"><button type="button" onclick="apuntesAbrir('mios')" style="background:#754437;color:#f4efe4;border:0;border-radius:10px;padding:.6rem 1rem;font:600 .9rem Montserrat,sans-serif">✎ Escribir mis apuntes</button></p></section><!--APUB-END--><!--APUNTES-WIDGET-START-->
+<style>
+#apW-btn{position:fixed;right:14px;bottom:14px;z-index:9998;background:#754437;color:#f4efe4;border:0;border-radius:999px;padding:.8rem 1.1rem;font:600 .9rem Montserrat,sans-serif;box-shadow:0 4px 14px #0005;cursor:pointer}
+#apW{position:fixed;inset:0;z-index:9999;background:#28374Acc;display:none;align-items:flex-end;justify-content:center}
+#apW.on{display:flex}
+#apW .bx{background:#f4efe4;color:#28374A;width:100%;max-width:640px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:1rem 1.1rem 1.4rem;font:15px/1.5 Montserrat,sans-serif;box-sizing:border-box}
+#apW h3{font:700 1.5rem 'Cormorant Garamond',serif;margin:.2rem 0 .6rem}
+#apW .tb{display:flex;gap:.4rem;margin-bottom:.8rem}#apW .tb button{flex:1}
+#apW button{font:600 .85rem Montserrat,sans-serif;border:0;border-radius:10px;padding:.6rem .7rem;background:#D3C7AD;color:#28374A;cursor:pointer}
+#apW button.p{background:#28374A;color:#f4efe4}#apW button.t{background:#754437;color:#f4efe4}
+#apW .tb button.act{background:#6B6751;color:#f4efe4}
+#apW input,#apW select,#apW textarea{width:100%;box-sizing:border-box;font:15px Montserrat,sans-serif;padding:.6rem;border:1px solid #6B6751;border-radius:10px;background:#fff;color:#28374A;margin:.25rem 0 .6rem}
+#apW textarea{min-height:140px}
+#apW .it{background:#fff;border-left:5px solid #6B6751;border-radius:10px;padding:.6rem .8rem;margin:.5rem 0}
+#apW .it b{font-family:'Cormorant Garamond',serif;font-size:1.15rem}#apW .it small{color:#754437;display:block}
+#apW .it p{white-space:pre-wrap;margin:.3rem 0}#apW .row{display:flex;gap:.4rem;flex-wrap:wrap}
+#apW .msg{color:#6B6751;font-size:.85rem;min-height:1.2em}
+</style>
+<button id="apW-btn" type="button" aria-label="Mis apuntes">✎ Mis apuntes</button>
+<div id="apW" role="dialog" aria-label="Mis apuntes"><div class="bx">
+<div class="row" style="justify-content:space-between;align-items:center"><h3>Mis apuntes</h3><button type="button" data-x>Cerrar ✕</button></div>
+<div class="tb"><button type="button" data-tab="mios" class="act">Mis apuntes</button><button type="button" data-tab="pub">Apuntes publicados</button></div>
+<div data-pane="mios">
+<label>Título<input data-f="t" placeholder="Ej. Lo que me llevo de la clase"></label>
+<label>Libreta<select data-f="l"></select></label>
+<label>Texto<textarea data-f="x" placeholder="Escribe aquí…"></textarea></label>
+<div class="row"><button type="button" class="p" data-a="save">Guardar</button><button type="button" class="t" data-a="send">Enviar para publicar</button><button type="button" data-a="copy">Copiar texto</button><button type="button" data-a="new">Nuevo</button></div>
+<div class="msg" data-msg></div><div data-list></div></div>
+<div data-pane="pub" hidden><div data-publist>Cargando…</div></div>
+</div></div>
+<script>
+(function(){
+var LIB={"unidad-iglesia":"Unidad de la iglesia","labor-pastoral":"Labor pastoral","josue-1-8-meditar":"La Palabra que nos guarda (Josué 1:8–9 · Hechos 20)","yo-soy-juan":"Los 7 «Yo soy» de Juan","general":"General del curso"};
+var BASE=(function(){var p=location.pathname,m=p.match(/^(.*?\/)(unidad-iglesia|labor-pastoral|josue-1-8-meditar|yo-soy-juan|dinamica-de-la-iglesia)\//);return m?m[1]:'../';})();
+var slug=(location.pathname.match(/(unidad-iglesia|labor-pastoral|josue-1-8-meditar|yo-soy-juan)\//)||[])[1]||'general';
+var K='dinamica-apuntes-v1',KP='dinamica-progreso-v1',W=document.getElementById('apW'),$=function(s){return W.querySelector(s)};
+function ld(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
+function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+// progreso + continuar
+if(slug!=='general'){var pr=ld(KP,{});var r=pr[slug]||{max:0,y:0};
+ function track(){var h=document.documentElement.scrollHeight-innerHeight;var pc=h>0?Math.round(scrollY/h*100):100;r.max=Math.max(r.max||0,pc);r.y=scrollY;r.t=Date.now();pr=ld(KP,{});pr[slug]=r;pr._last=slug;sv(KP,pr);}
+ var tm;addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(track,400)},{passive:true});
+ addEventListener('load',function(){if(location.hash==='#continuar'&&r.y){scrollTo(0,r.y)}setTimeout(track,800)});}
+var sel=$('[data-f=l]');Object.keys(LIB).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=LIB[k];sel.appendChild(o)});
+var cur=null,buzon='';
+function reset(){cur=null;$('[data-f=t]').value='';$('[data-f=x]').value='';sel.value=slug;}
+function list(){var a=ld(K,[]);$('[data-list]').innerHTML=a.length?a.slice().reverse().map(function(n){return '<div class="it"><small>'+esc(LIB[n.l]||n.l)+' · '+new Date(n.d).toLocaleDateString('es-MX')+'</small><b>'+esc(n.t||'(sin título)')+'</b><p>'+esc(n.x).slice(0,240)+'</p><div class="row"><button type="button" data-ed="'+n.id+'">Editar</button><button type="button" data-del="'+n.id+'">Borrar</button></div></div>'}).join(''):'<p class="msg">Aún no tienes apuntes guardados.</p>';}
+function save(){var t=$('[data-f=t]').value.trim(),x=$('[data-f=x]').value.trim();if(!t&&!x){msg('Escribe algo primero.');return null}var a=ld(K,[]);var n=cur&&a.filter(function(z){return z.id===cur})[0];if(!n){n={id:'a'+Date.now()};a.push(n);cur=n.id}n.t=t;n.x=x;n.l=sel.value;n.d=Date.now();sv(K,a);list();msg('Guardado ✓');return n}
+function msg(s){$('[data-msg]').textContent=s}
+function body(n){return n.x+'\n\n— Libreta: '+(LIB[n.l]||n.l)+'\n— Fecha: '+new Date(n.d).toLocaleString('es-MX')+'\n— id: '+n.id+' · slug: '+n.l}
+function subj(n){return '[APUNTES] '+(LIB[n.l]||n.l)+': '+(n.t||'(sin título)')}
+W.addEventListener('click',function(e){var b=e.target.closest('button');if(e.target===W||(b&&b.hasAttribute('data-x'))){W.classList.remove('on');return}if(!b)return;
+ if(b.dataset.tab){W.querySelectorAll('[data-tab]').forEach(function(z){z.classList.toggle('act',z===b)});W.querySelectorAll('[data-pane]').forEach(function(p){p.hidden=p.dataset.pane!==b.dataset.tab})}
+ var a=b.dataset.a;if(a==='save')save();if(a==='new'){reset();msg('')}
+ if(a==='send'){var n=save();if(n){location.href='mailto:'+encodeURIComponent(buzon).replace('%40','@')+'?subject='+encodeURIComponent(subj(n))+'&body='+encodeURIComponent(body(n));msg(buzon?'Se abrió tu correo. Si no se abrió, usa «Copiar texto».':'Aún no hay buzón configurado: usa «Copiar texto» y mándalo por chat.')}}
+ if(a==='copy'){var n2=save();if(n2){var s=subj(n2)+'\n\n'+body(n2);(navigator.clipboard?navigator.clipboard.writeText(s):Promise.reject()).then(function(){msg('Copiado ✓')},function(){var ta=document.createElement('textarea');ta.value=s;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');msg('Copiado ✓')}catch(_){msg('No se pudo copiar')}ta.remove()})}}
+ if(b.dataset.ed){var n3=ld(K,[]).filter(function(z){return z.id===b.dataset.ed})[0];if(n3){cur=n3.id;$('[data-f=t]').value=n3.t;$('[data-f=x]').value=n3.x;sel.value=n3.l;W.querySelector('.bx').scrollTop=0}}
+ if(b.dataset.del&&confirm('¿Borrar este apunte?')){sv(K,ld(K,[]).filter(function(z){return z.id!==b.dataset.del}));if(cur===b.dataset.del)reset();list()}
+});
+document.getElementById('apW-btn').onclick=function(){W.classList.add('on')};
+window.apuntesAbrir=function(tab){W.classList.add('on');if(tab)W.querySelector('[data-tab='+tab+']').click()};
+fetch(BASE+'apuntes.json?t='+Date.now()).then(function(r){return r.json()}).then(function(j){buzon=j.buzon||'';var e=(j.apuntes||[]).filter(function(z){return slug==='general'||z.libreta===slug});
+ var h=e.length?e.map(function(n){return '<div class="it"><small>'+esc(LIB[n.libreta]||n.libreta||'')+(n.fecha?' · '+esc(n.fecha):'')+'</small><b>'+esc(n.titulo||'')+'</b><p>'+esc(n.texto||'')+'</p></div>'}).join(''):'<p class="msg">Todavía no hay apuntes publicados aquí.</p>';
+ $('[data-publist]').innerHTML=h;var ext=document.getElementById('apPublicados');if(ext)ext.innerHTML=h;}).catch(function(){$('[data-publist]').innerHTML='<p class="msg">No se pudieron cargar los apuntes publicados.</p>'});
+reset();list();
+})();
+</script>
+<!--APUNTES-WIDGET-END-->
 </body>
 </html>
