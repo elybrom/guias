@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mi libreta · Dinámica de la iglesia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0}
+body{overflow-x:hidden;font-family:Montserrat,sans-serif;color:#28374A;min-height:100vh;background:#28374A}
+body::before{content:"";position:fixed;inset:0;height:100lvh;z-index:-2;background:url(../img/fondo-arcos.webp) center/cover no-repeat;filter:saturate(.6)}
+body::after{content:"";position:fixed;inset:0;height:100lvh;z-index:-1;background:linear-gradient(180deg,rgba(28,39,53,.82),rgba(28,39,53,.9))}
+.top{max-width:1180px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#D3C7AD}
+.top a{color:#D3C7AD;text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.top h1{font:500 1.9rem 'Cormorant Garamond',serif;margin:0;color:#f4efe4}
+.mesa{max-width:1180px;margin:0 auto;padding:10px 24px 60px;display:grid;grid-template-columns:250px 1fr;gap:34px;align-items:start}
+.indice{color:#E9E2D2}.indice h2{font:500 1.5rem 'Cormorant Garamond',serif;margin:0 0 8px;color:#f4efe4}
+.indice button.pg{display:block;width:100%;text-align:left;background:none;border:0;border-left:2px solid rgba(211,199,173,.25);color:#D3C7AD;padding:8px 12px;cursor:pointer;font:1.25rem/1.15 Caveat,cursive}
+.indice button.pg small{display:block;font:500 .64rem Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.indice button.pg.on{border-color:#754437;color:#fff;background:rgba(117,68,55,.25)}
+.indice .nueva{margin-top:14px;background:#754437;color:#f4efe4;border:0;border-radius:999px;padding:10px 18px;font:600 .82rem Montserrat,sans-serif;cursor:pointer}
+.libro{perspective:2200px}.mesa>*{min-width:0}
+.hoja{position:relative;min-height:78vh;border-radius:6px 14px 14px 6px;padding:32px 40px 70px 96px;
+ background:
+  linear-gradient(90deg,transparent 78px,rgba(192,57,43,.55) 78px,rgba(192,57,43,.55) 80px,transparent 80px),
+  radial-gradient(circle at 20% 10%,rgba(255,255,255,.6),transparent 60%),
+  linear-gradient(135deg,#fbf6ea,#f1e8d4 60%,#ebe0c8);
+  box-shadow:0 1px 0 #e3d8c0,0 2px 0 #f6f0e2,0 3px 0 #ddd1b6,0 4px 0 #f3ecdc,0 30px 60px -20px rgba(0,0,0,.6),inset 18px 0 30px -18px rgba(0,0,0,.25);
+ transform-origin:left center;transition:transform .55s cubic-bezier(.6,.05,.3,1),opacity .55s}
+.hoja::before{content:"";position:absolute;left:22px;top:30px;bottom:30px;width:22px;background:radial-gradient(circle at 11px 11px,#28374A 0 6px,transparent 7px) 0 0/22px 44px repeat-y;opacity:.75}
+.hoja::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:.35;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .25 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hoja.va{transform:rotateY(-100deg);opacity:0}.hoja.viene{transform:rotateY(25deg);opacity:0;transition:none}
+.fecha{position:absolute;right:40px;top:34px;font:500 1.35rem Caveat,cursive;color:#754437}
+.meta{display:flex;gap:10px;align-items:flex-end;height:36px;padding-bottom:6px;margin:0;padding-right:230px;border-bottom:1px solid rgba(40,90,140,.25)}
+.meta select{font:500 .72rem Montserrat,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#6B6751;background:transparent;border:0;border-bottom:1px dashed #6B6751;padding:2px 0;max-width:100%}
+.titulo{display:block;width:100%;border:0;border-bottom:1px solid rgba(40,90,140,.25);background:transparent;font:700 2.1rem/36px Caveat,cursive;color:#28374A;height:36px;padding:0;margin:0;outline:none}
+textarea.txt{background-color:transparent;background-image:linear-gradient(180deg,transparent 35px,rgba(40,90,140,.3) 35px);background-size:100% 36px;background-attachment:local;display:block;width:100%;min-height:calc(78vh - 220px);border:0;resize:none;outline:none;font:500 1.55rem/36px Caveat,cursive;color:#1f3a5f;padding:0;margin:0}
+.pie{position:absolute;left:96px;right:40px;bottom:18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:.7rem;color:#6B6751}
+.pie button,.pie a{background:none;border:0;color:#6B6751;font:500 .7rem Montserrat,sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:4px 6px;text-decoration:none}
+.pie button:hover,.pie a:hover{color:#754437}
+.pie .num{font:1.2rem Caveat,cursive}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.nav button{background:rgba(211,199,173,.15);color:#f4efe4;border:1px solid rgba(211,199,173,.35);border-radius:999px;padding:10px 20px;font:600 .8rem Montserrat,sans-serif;cursor:pointer}
+.nav button:disabled{opacity:.3}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#754437;color:#f4efe4;padding:10px 18px;border-radius:999px;font-size:.82rem;opacity:0;transition:opacity .3s;pointer-events:none}.toast.on{opacity:1}
+.guardado{font:1.1rem Caveat,cursive;color:#6B6751}
+@media (max-width:860px){.mesa{grid-template-columns:1fr;padding:6px 10px 40px;gap:14px}.indice{order:2}
+ .top{padding:14px}.top h1{font-size:1.5rem}
+ .hoja{padding:68px 16px 84px 58px;min-height:80vh;background-image:linear-gradient(90deg,transparent 48px,rgba(192,57,43,.55) 48px,rgba(192,57,43,.55) 50px,transparent 50px),linear-gradient(135deg,#fbf6ea,#efe5d0)}
+ .hoja::before{left:12px;width:20px}.fecha{right:16px;top:36px;font-size:1.15rem}.meta{padding-right:0}.pie{left:58px;right:12px}.titulo{font-size:1.8rem}textarea.txt{font-size:1.4rem}}
+</style></head><body>
+<div class="top"><a href="../dinamica-de-la-iglesia/">← Curso</a><h1>Mi libreta</h1><a id="volver" href="../dinamica-de-la-iglesia/">Clases</a></div>
+<div class="mesa">
+<aside class="indice"><h2>Hojas</h2><div id="lista"></div><button class="nueva" id="nueva" type="button">+ Nueva hoja</button></aside>
+<div><div class="libro"><article class="hoja" id="hoja">
+<div class="fecha" id="fecha"></div>
+<div class="meta"><select id="lib" aria-label="Libreta"></select></div>
+<input class="titulo" id="titulo" placeholder="Título…" aria-label="Título">
+<textarea class="txt" id="txt" placeholder="Escribe libremente…" aria-label="Texto"></textarea>
+<div class="pie"><span class="num" id="num"></span><span class="guardado" id="guardado"></span><span><button type="button" id="enviar">Enviar para publicar</button>·<button type="button" id="copiar">Copiar</button>·<button type="button" id="borrar">Arrancar hoja</button></span></div>
+</article></div>
+<div class="nav"><button type="button" id="ant">← Hoja anterior</button><button type="button" id="sig">Hoja siguiente →</button></div></div>
+</div><div class="toast" id="toast"></div>
+<script>
+(function(){
+var LIB={"general":"General del curso","unidad-iglesia":"Bloque 1 · Unidad de la iglesia","labor-pastoral":"Bloque 2 · Labor pastoral","josue-1-8-meditar":"Bloque 2 · La Palabra que nos guarda","yo-soy-juan":"Devocional · Los 7 «Yo soy»"};
+var CORTO={"general":"General del curso","unidad-iglesia":"Unidad de la iglesia","labor-pastoral":"Labor pastoral","josue-1-8-meditar":"La Palabra que nos guarda","yo-soy-juan":"Los 7 «Yo soy» de Juan"};
+var K='dinamica-libreta-v2',BUZON='dinamica-iglesia@mail.grokbot.com';
+var q=new URLSearchParams(location.search).get('l');if(!LIB[q])q=null;
+if(q)document.getElementById('volver').href='../'+q+'/';
+function ld(){try{return JSON.parse(localStorage.getItem(K))||null}catch(e){return null}}
+function sv(){try{localStorage.setItem(K,JSON.stringify(P))}catch(e){}}
+function hoy(){return new Date().toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+function nueva(l){return{id:'h'+Date.now()+Math.random().toString(36).slice(2,5),creada:Date.now(),fecha:hoy(),libreta:l||q||'general',titulo:'',texto:''}}
+var P=ld();
+if(!P){P=[];try{(JSON.parse(localStorage.getItem('dinamica-apuntes-v1'))||[]).forEach(function(a){P.push({id:a.id,creada:a.d,fecha:new Date(a.d).toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'}),libreta:a.l,titulo:a.t,texto:a.x})})}catch(e){}if(!P.length)P.push(nueva());sv()}
+var i=P.length-1;if(q){var j=-1;P.forEach(function(p,k){if(p.libreta===q)j=k});if(j>=0)i=j}
+var $=function(x){return document.getElementById(x)},sel=$('lib');
+Object.keys(LIB).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=LIB[k];sel.appendChild(o)});
+function pinta(){var p=P[i];$('fecha').textContent=p.fecha;sel.value=p.libreta;$('titulo').value=p.titulo;$('txt').value=p.texto;$('num').textContent='hoja '+(i+1)+' de '+P.length;$('ant').disabled=i===0;$('sig').textContent=i===P.length-1?'+ Hoja nueva →':'Hoja siguiente →';lista();crece()}
+function lista(){$('lista').innerHTML=P.map(function(p,k){return '<button type="button" class="pg'+(k===i?' on':'')+'" data-k="'+k+'"><small>'+esc(CORTO[p.libreta]||'')+'</small>'+esc(p.titulo||'Hoja sin título')+'</button>'}).join('')}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function crece(){var t=$('txt');t.style.height='auto';var m=Math.max(200,innerHeight*.78-200);t.style.height=Math.ceil(Math.max(t.scrollHeight,m)/36)*36+'px'}
+var tm;function cambia(){var p=P[i];p.titulo=$('titulo').value;p.texto=$('txt').value;p.libreta=sel.value;sv();crece();$('guardado').textContent='guardado ✓';clearTimeout(tm);tm=setTimeout(function(){$('guardado').textContent=''},1400);lista()}
+['titulo','txt'].forEach(function(x){$(x).addEventListener('input',cambia)});sel.addEventListener('change',cambia);
+function voltea(n){if(n===i)return;var h=$('hoja');h.classList.add('va');setTimeout(function(){i=n;pinta();h.classList.remove('va');h.classList.add('viene');requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.remove('viene')})})},480)}
+$('ant').onclick=function(){if(i>0)voltea(i-1)};
+$('sig').onclick=function(){if(i===P.length-1){P.push(nueva(P[i].libreta));sv()}voltea(i+1)};
+$('nueva').onclick=function(){P.push(nueva());sv();voltea(P.length-1)};
+$('lista').onclick=function(e){var b=e.target.closest('[data-k]');if(b)voltea(+b.dataset.k)};
+$('borrar').onclick=function(){if(!confirm('¿Arrancar esta hoja? No se puede deshacer.'))return;P.splice(i,1);if(!P.length)P.push(nueva());i=Math.min(i,P.length-1);sv();pinta()};
+function asunto(p){return '[APUNTES] '+(CORTO[p.libreta]||p.libreta)+': '+(p.titulo||'(sin título)')}
+function cuerpo(p){return p.texto+'\n\n— Libreta: '+(CORTO[p.libreta]||p.libreta)+' ('+p.libreta+')\n— Fecha: '+p.fecha+'\n— id: '+p.id}
+function toast(s){var t=$('toast');t.textContent=s;t.classList.add('on');setTimeout(function(){t.classList.remove('on')},2600)}
+$('enviar').onclick=function(){cambia();var p=P[i];if(!p.texto.trim()){toast('Escribe algo en la hoja primero');return}location.href='mailto:'+BUZON+'?subject='+encodeURIComponent(asunto(p))+'&body='+encodeURIComponent(cuerpo(p));toast('Se abrió tu correo. Si no, usa «Copiar».')};
+$('copiar').onclick=function(){cambia();var p=P[i],s=asunto(p)+'\n\n'+cuerpo(p);function fb(){var a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast('Copiado ✓')}catch(e){toast('No se pudo copiar')}a.remove()}if(navigator.clipboard)navigator.clipboard.writeText(s).then(function(){toast('Copiado ✓')},fb);else fb()};
+addEventListener('resize',crece);pinta();
+})();
+</script></body></html>

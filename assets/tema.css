@@ -1,0 +1,56 @@
+/* Tema editorial · Dinámica de la iglesia */
+:root{--bg-img:url("../img/fondo-arcos.webp");--card:rgba(244,239,228,.94);--card-borde:rgba(40,55,74,.10);--sombra:0 24px 50px -28px rgba(40,55,74,.55);--radio:22px}
+html{scroll-padding-top:76px}
+body{font-size:17px;line-height:1.75;background:#28374A}
+body::before{background:var(--bg-img) center/cover no-repeat;filter:saturate(.7);transform:none;position:fixed;inset:0;height:100lvh}
+body::after{background:var(--ruido),linear-gradient(180deg,rgba(211,199,173,.90),rgba(222,212,190,.94))}
+.topbar{background:rgba(28,39,53,.92)}
+.topbar-in{max-width:1400px}
+.tabs a.curso{color:#D3C7AD;opacity:.8}.tabs a.milib{background:#754437;color:#f4efe4}
+/* HERO a pantalla completa con foto */
+.hero{min-height:calc(100svh - 58px);display:flex;align-items:center;color:#f4efe4;background:#28374A}
+.hero::before{background:var(--hero) center/cover no-repeat;-webkit-mask-image:none;mask-image:none;filter:saturate(.85)}
+.hero::after{background:linear-gradient(90deg,rgba(28,39,53,.92) 0%,rgba(28,39,53,.72) 48%,rgba(28,39,53,.25) 100%),linear-gradient(0deg,rgba(28,39,53,.7),transparent 40%);-webkit-mask-image:none;mask-image:none}
+.hero-in{max-width:1400px;width:100%;padding:90px 48px}
+.hero h1{color:#f4efe4;font-size:clamp(3rem,7vw,6.4rem);font-weight:500}
+.hero h1 em{color:#D3C7AD}
+.hero .pre{color:#D3C7AD!important;opacity:1!important;-webkit-text-fill-color:#D3C7AD}
+.hero .eyebrow{color:#D3C7AD}
+.hero .sub{font-size:1.12rem;color:#E9E2D2;max-width:36em}
+.hero .verso-hero{color:#f4efe4;border-color:#D3C7AD}.hero .verso-hero cite{color:#D3C7AD}
+.hero .chip.claro{background:rgba(244,239,228,.14);color:#f4efe4;border-color:rgba(244,239,228,.35)}
+.hero .arco{background:var(--hero) center/cover;border:6px solid rgba(244,239,228,.85)}
+.hero .gr{color:#D3C7AD}
+.hero-credito{position:absolute;right:14px;bottom:10px;font-size:.62rem;color:rgba(244,239,228,.7);letter-spacing:.04em}
+/* Ancho generoso */
+main{max-width:1320px;padding:0 32px 60px}
+/* Apertura de capítulo con foto */
+.bloque{padding:72px 0 24px}
+.bloque>.cab{position:relative;isolation:isolate;min-height:min(56vh,520px);margin:0 0 34px;padding:44px 44px 40px;border-radius:28px;overflow:hidden;align-items:flex-end;background:#28374A var(--foto,none) center/cover no-repeat;box-shadow:0 40px 70px -40px rgba(28,39,53,.8)}
+.bloque>.cab::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(28,39,53,.94) 0%,rgba(28,39,53,.55) 45%,rgba(28,39,53,.08) 100%)}
+.bloque>.cab h2{color:#f4efe4;font-size:clamp(2rem,4.2vw,3.6rem);font-weight:500;max-width:18em}
+.bloque>.cab .eyebrow{color:#D3C7AD}
+.bloque>.cab .num{color:#D3C7AD;font-size:clamp(3.6rem,7vw,6.4rem);font-weight:500}
+.bloque>.cab .cred{position:absolute;right:16px;bottom:10px;font-size:.6rem;color:rgba(244,239,228,.65);max-width:60%;text-align:right;line-height:1.3}
+.card{background:var(--card);backdrop-filter:none;-webkit-backdrop-filter:none}
+.intro-txt{font-size:1.1rem;max-width:820px}
+footer{background:#28374A;color:#D3C7AD;padding:56px 24px 40px}footer .serif{color:#f4efe4}
+.creditos{max-width:1100px;margin:22px auto 0;font-size:.66rem;line-height:1.5;opacity:.75;text-align:left}
+.creditos a{color:#D3C7AD}
+/* Apuntes publicados */
+.apub{max-width:1320px;margin:0 auto;padding:40px 32px 70px}
+.apub-in{background:#28374A;color:#f4efe4;border-radius:28px;padding:40px;display:grid;grid-template-columns:1fr 1.4fr;gap:36px;align-items:start}
+.apub h2{font-family:var(--serif);font-weight:500;font-size:2.6rem;margin:0;line-height:1.05}
+.apub p{color:#D3C7AD}.apub .btn-lib{display:inline-block;margin-top:14px;background:#754437;color:#f4efe4;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:600;font-size:.9rem}
+.apub .it{background:#f4efe4;color:#28374A;border-radius:16px;padding:16px 20px;margin-bottom:12px;font-family:'Caveat',cursive;font-size:1.35rem;line-height:1.35}
+.apub .it small{display:block;font-family:var(--sans);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#754437}
+.apub .it b{font-family:var(--serif);font-size:1.4rem}
+.apub .vacio{border:1px dashed rgba(211,199,173,.5);border-radius:16px;padding:22px;color:#D3C7AD;font-style:italic}
+@media (max-width:900px){
+ .hero{min-height:auto}.hero-in{padding:56px 22px 64px}
+ .hero::after{background:linear-gradient(180deg,rgba(28,39,53,.55),rgba(28,39,53,.92))}
+ main{padding:0 14px 40px}.bloque{padding:44px 0 12px}
+ .bloque>.cab{min-height:300px;padding:26px 22px 30px;border-radius:22px;margin-bottom:22px}
+ .apub{padding:24px 14px 50px}.apub-in{grid-template-columns:1fr;padding:26px 22px}
+}
+@media print{.bloque>.cab{min-height:0;background:none!important}.bloque>.cab::before{display:none}.bloque>.cab h2,.bloque>.cab .num{color:#28374A}.apub{display:none}}
