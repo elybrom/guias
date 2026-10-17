@@ -52,6 +52,7 @@ section{display:none;animation:f .35s ease}section.on{display:block}@keyframes f
 .seg button{flex:1;border:0;border-radius:9px;padding:9px 4px;font-weight:800;font-size:.82rem;color:var(--rust);background:transparent;font-family:inherit}
 .seg button.on{background:var(--rust);color:var(--cream)}
 .note{font-size:.78rem;color:var(--mut);margin-top:8px;font-style:italic}
+.sw{display:flex;align-items:center;gap:10px;margin:10px 0 4px;font-weight:800;color:var(--ink);font-size:.92rem;cursor:pointer}.sw input{position:absolute;opacity:0;width:0;height:0}.sw .tg{flex:none;width:44px;height:26px;border-radius:13px;background:#cdb9a0;position:relative;transition:background .2s}.sw .tg:after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--cream);box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}.sw input:checked+.tg{background:var(--forest)}.sw input:checked+.tg:after{transform:translateX(18px)}.sw input:focus-visible+.tg{outline:2px solid var(--rust);outline-offset:2px}
 </style></head><body><div class="bg"></div><div class="leaves" id="lv"></div><main>
 <div class="head"><h1>Ruta del laudo · 2522/21</h1>
 <div class="sub">Dulce A. Noguerón Vázquez vs. Alcaldía Tláhuac · Tercera Sala TFCA</div></div>
@@ -118,9 +119,12 @@ section{display:none;animation:f .35s ease}section.on{display:block}@keyframes f
 <div class="li"><span>Aguinaldo desde 2024</span><b data-v="ag"></b></div>
 <div class="li"><span>Prima vacacional desde 1 jul 2024</span><b data-v="pv"></b></div>
 <div class="li"><span>Incrementos (salarios, aguinaldo y prima)</span><b data-v="inc"></b></div>
-<div class="li tot"><span>Total a favor de Dulce</span><b data-v="tot"></b></div>
-<div class="li" style="margin-top:6px"><span>🏥 ISSSTE/SAR/FOVISSSTE (estimado, aparte)</span><b data-v="is"></b></div>
-<div class="li sub"><span>Aportación Alcaldía · cuota trabajadora</span><b data-v="isd"></b></div>
+<div class="li tot"><span id="totlab">Total a favor de Dulce</span><b data-v="tt"></b></div>
+<label class="sw"><input type="checkbox" id="ss"><span class="tg"></span><span>Sumar ISSSTE/SAR/FOVISSSTE</span></label>
+<div class="li sub"><span>🏥 ISSSTE y SAR (aportación Alcaldía)</span><b data-v="iss"></b></div>
+<div class="li sub"><span>🏠 FOVISSSTE · 5 % del sueldo básico</span><b data-v="fov"></b></div>
+<div class="li sub"><span>Cuota de Dulce (ya va dentro del bruto)</span><b data-v="ic"></b></div>
+<div class="note">ISSSTE, SAR y FOVISSSTE se pagan a los institutos, no a Dulce · el Infonavit no aplica (apartado B: le toca FOVISSSTE).</div>
 <div class="note">Bruto · con incrementos del tabulador oficial (+3.4976 % desde 2025) · por liquidar en el incidente de liquidación.</div></div>
 </section>
 <div class="foot">Toca cada evento para ver el detalle · Toca “Marcar” al completar un paso<br>Actualizado al 16 oct 2026</div>
@@ -132,8 +136,8 @@ const K='ruta2522';let s=JSON.parse(localStorage.getItem(K)||'[]');
 document.querySelectorAll('.st').forEach((e,n)=>{const c=e.querySelector('.ck');const u=()=>{e.classList.toggle('done',!!s[n]);c.textContent=s[n]?'✓ Hecho':'Marcar'};u();c.onclick=ev=>{ev.stopPropagation();s[n]=!s[n];localStorage.setItem(K,JSON.stringify(s));u()}});
 const cols=['#a4462a','#d49a2a','#c0612b','#b8862b','#8c3a22'];const lv=document.getElementById('lv');
 for(let i=0;i<9;i++){const c=cols[i%5];lv.insertAdjacentHTML('beforeend',`<svg viewBox="0 0 24 24" style="left:${Math.random()*95}%;animation-duration:${12+Math.random()*10}s;animation-delay:-${Math.random()*20}s;width:${18+Math.random()*16}px"><path fill="${c}" d="M12 2c3 3 6 5 8 9-2 0-3 1-4 2 2 1 3 3 3 5-3-1-5-1-6 0v4h-2v-4c-1-1-3-1-6 0 0-2 1-4 3-5-1-1-2-2-4-2 2-4 5-6 8-9z"/><path stroke="#5a2a14" stroke-width=".8" d="M12 6v16" fill="none"/></svg>`)}
-const D={sv:[551096,570778,669188],ag:[78112,80323.39,91023.66],pv:[9841,9841,11809.2],inc:[18486.53,19246.88,23104.42],tot:[1578627.12,1601280.86,1716216.88],is:[150493.30,153273.37,167173.72],ia:[98527.38,100347.48,109447.99],ic:[51965.92,52925.89,57725.73]};
+const D={sv:[551096,570778,669188],ag:[78112,80323.39,91023.66],pv:[9841,9841,11809.2],inc:[18486.53,19246.88,23104.42],tot:[1578627.12,1601280.86,1716216.88],tss:[1677154.51,1701628.34,1825664.86],iss:[74072.83,75441.18,82282.94],fov:[24454.55,24906.30,27165.05],ic:[51965.92,52925.89,57725.73]};
 const m=n=>'$'+n.toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2});
-const setK=k=>{document.querySelectorAll('[data-v]').forEach(e=>{const v=e.dataset.v;e.textContent=v==='isd'?m(D.ia[k])+' · '+m(D.ic[k]):m(D[v][k])});document.querySelectorAll('#seg button').forEach(b=>b.classList.toggle('on',+b.dataset.k===k))};
+let CK=0;const ss=document.getElementById('ss');const setK=k=>{CK=k;const on=ss.checked;document.querySelectorAll('[data-v]').forEach(e=>{const v=e.dataset.v;e.textContent=v==='tt'?m((on?D.tss:D.tot)[k]):m(D[v][k])});document.getElementById('totlab').textContent=on?'Total con ISSSTE/SAR/FOVISSSTE':'Total a favor de Dulce';document.querySelectorAll('#seg button').forEach(b=>b.classList.toggle('on',+b.dataset.k===k))};ss.onchange=()=>setK(CK);
 document.querySelectorAll('#seg button').forEach(b=>b.onclick=()=>setK(+b.dataset.k));setK(0);
 </script></body></html>
