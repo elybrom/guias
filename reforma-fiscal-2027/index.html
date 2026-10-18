@@ -332,6 +332,37 @@ table.m12 tr.tot td{font-weight:600;background:var(--soft)}
 .rel-k small{display:block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut2);margin-bottom:2px}
 table.rmap{table-layout:fixed}table.rmap th:nth-child(1){width:30%}table.rmap th:nth-child(2){width:28%}table.rmap td{overflow-wrap:break-word;hyphens:auto}
 @media(max-width:640px){table.dif tbody th{width:28%}table.dif td{font-size:12.5px}table.rmap td:nth-child(2){white-space:normal}table.rmap td,table.rmap th{padding:8px 6px!important;font-size:12.5px!important;letter-spacing:0!important}table.rmap td:first-child{min-width:0!important}table.rmap th:nth-child(1){width:33%}table.rmap th:nth-child(2){width:29%}.rel-k{grid-template-columns:1fr}}
+
+/* v4 íconos (i) y popover */
+.ib{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin:-7px -6px -7px 0;padding:0;border:0;background:none;cursor:pointer;vertical-align:middle;flex:none;-webkit-tap-highlight-color:transparent}
+.ib i{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;border:1px solid var(--acc);color:var(--acc);font:italic 600 11px/1 "Cormorant Garamond",Georgia,serif;font-size:13px;background:var(--card);transition:background .15s,color .15s}
+.ib:hover i,.ib[aria-expanded="true"] i{background:var(--acc);color:#fff}
+.ib:focus-visible{outline:none}.ib:focus-visible i{box-shadow:0 0 0 3px rgba(201,143,138,.35)}
+.kpi span .ib{margin-left:-2px}
+th .ib{margin:-9px -6px -9px 0}
+.pop{position:fixed;z-index:80;width:min(380px,calc(100vw - 24px));max-height:min(70vh,560px);display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:8px;box-shadow:0 12px 32px rgba(46,33,29,.14);color:var(--ink);font-size:14.5px}
+.pop[hidden],.pop-bg[hidden]{display:none}
+.ph{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 14px 10px 18px;border-bottom:1px solid var(--soft)}
+.ph small{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);font-weight:600}
+.ph h3{margin:2px 0 0;font:600 21px/1.15 "Cormorant Garamond",Georgia,serif;color:var(--ink)}
+.px{width:32px;height:32px;flex:none;border:1px solid var(--line);border-radius:8px;background:var(--card);font-size:20px;line-height:1;color:var(--nogal);cursor:pointer}
+.pbody{padding:6px 18px 6px;overflow:auto;-webkit-overflow-scrolling:touch}
+.pbody p{margin:0 0 8px;line-height:1.5}
+.pk{margin:12px 0 4px;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--nogal)}
+.pv{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:9px 12px;margin:12px 0 4px!important;background:var(--soft);border-radius:6px}
+.pv span{font-size:13px;color:var(--mut2)}.pv b{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:15px}
+.po{font-size:13.5px;color:var(--ink)}
+.pr{list-style:none;margin:0 0 8px;padding:0;border:1px solid var(--line);border-radius:6px}
+.pr li{display:flex;gap:8px;align-items:baseline;padding:7px 10px;font-size:13px;border-top:1px solid var(--soft)}.pr li:first-child{border-top:0}
+.pr li b{margin-left:auto;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pa{font-size:13.5px;color:var(--nogal)}
+.pf{display:block;margin:4px 0 0;padding:13px 18px;border-top:1px solid var(--soft);font-weight:600;font-size:14px;color:var(--nogal);text-decoration:none}
+.pf:hover{color:var(--acc)}
+.pop-bg{position:fixed;inset:0;z-index:79;background:rgba(46,33,29,.28)}
+@media(max-width:640px){
+.pop{left:0!important;right:0;bottom:0;top:auto!important;width:auto;max-height:80vh;border-radius:14px 14px 0 0;border-bottom:0;box-shadow:0 -10px 30px rgba(46,33,29,.18);padding-bottom:env(safe-area-inset-bottom)}
+.pop:before{content:"";display:block;width:38px;height:4px;border-radius:2px;background:var(--line2);margin:8px auto 0}
+html.pop-lock,html.pop-lock body{overflow:hidden}}
 </style>
 </head>
 <body>
@@ -844,7 +875,7 @@ var MES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Sept
 var DD=[18,19,20,21,22,20,19,20,21,20,20,20],CC=[11,12,13,12,12,11,12,13,12,12,12,12];
 C.aai12={t:'Papel de trabajo · Ajuste anual por inflación con saldos de 12 meses (2025)',chip:'Arts. 44–46',
  in:MES.map(function(m,i){return['d'+(i+1),'Deudas al cierre de '+m.toLowerCase(),(DD[i]*1e6).toLocaleString('es-MX'),i?'':'Balanza al último día del mes: proveedores, préstamos, acreedores, impuestos por pagar. Sin intereses del mes.'];}).concat(MES.map(function(m,i){return['c'+(i+1),'Créditos al cierre de '+m.toLowerCase(),(CC[i]*1e6).toLocaleString('es-MX'),i?'':'Balanza al último día del mes: clientes, préstamos otorgados, inversiones en deuda. Sin efectivo en caja.'];})).concat([['i1','INPC dic-2025','143.042','INEGI, DOF 9-ene-2026.'],['i0','INPC dic-2024','137.949','INEGI.']]),
- run:function(v,r){var sd=0,sc=0,tb='<div class="tw"><table class="m12"><thead><tr><th>Mes</th><th>Deudas</th><th>Créditos</th><th>Deudas − créditos</th></tr></thead><tbody>';
+ run:function(v,r){var sd=0,sc=0,tb='<div class="tw"><table class="m12"><thead><tr><th>Mes</th><th>Deudas'+ib('@CTX@','c','deuda','Deudas')+'</th><th>Créditos'+ib('@CTX@','c','credito','Créditos')+'</th><th>Deudas − créditos</th></tr></thead><tbody>';
   for(var i=1;i<=12;i++){sd+=v['d'+i];sc+=v['c'+i];tb+='<tr><td>'+MES[i-1]+'</td><td>'+M(v['d'+i])+'</td><td>'+M(v['c'+i])+'</td><td>'+M(v['d'+i]-v['c'+i])+'</td></tr>';}
   tb+='<tr class="tot"><td>Suma</td><td>'+M(sd)+'</td><td>'+M(sc)+'</td><td>'+M(sd-sc)+'</td></tr></tbody></table></div>';
   r.add('sd','Suma de saldos de deudas (12 meses)',sd,'Suma de la columna Deudas de la tabla.','in');
@@ -909,22 +940,172 @@ C.vai={t:'Papel de trabajo · Diciembre y enero: ingreso ISR vs valor de actos I
 function fmt(x,f){if(f==='n')return String(x);if(f==='f')return N4(x);if(f==='p')return PC(x);return M(x);}
 function srcText(o,r){return o.replace(/\{(\w+)(\*)?\}/g,function(m,k,st){if(st)return '';var n=r.k[k];return n?'<span class="rr">['+n+']</span>':m;});}
 function compute(id,vals){var c=C[id],r=new R(),v={};c.in.forEach(function(x){v[x[0]]=P(vals[x[0]]!=null?vals[x[0]]:x[2]);});var o=c.run(v,r);return{r:r,o:o,v:v};}
-function table(res){var h='<div class="wp" role="table">';res.r.rows.forEach(function(x,i){h+='<div class="wr r-'+x.c+'" role="row"><span class="wn">'+(i+1)+'</span><span class="wc">'+x.l+'</span><span class="wv">'+fmt(x.v,x.f)+'</span><div class="ws">'+srcText(x.o,res.r)+'</div></div>';});return h+'</div>';}
-function kpis(res){return '<div class="kpis">'+res.o.k.map(function(k){return '<div class="kpi '+(k[2]||'')+'"><b>'+fmt(k[1],k[3])+'</b><span>'+k[0]+'</span></div>';}).join('')+'</div>';}
+function ib(ctx,kind,i,l){return '<button type="button" class="ib" data-ctx="'+ctx+'" data-kind="'+kind+'" data-i="'+i+'" aria-haspopup="dialog" aria-expanded="false" aria-controls="fxpop" aria-label="Explicar: '+String(l).replace(/<[^>]+>/g,'').replace(/"/g,'')+'"><i aria-hidden="true">i</i></button>';}
+function table(res,ctx){var h='<div class="wp" role="table">';res.r.rows.forEach(function(x,i){h+='<div class="wr r-'+x.c+'" role="row"><span class="wn">'+(i+1)+'</span><span class="wc">'+x.l+ib(ctx,'r',i,x.l)+'</span><span class="wv">'+fmt(x.v,x.f)+'</span><div class="ws">'+srcText(x.o,res.r)+'</div></div>';});return h+'</div>';}
+function kpis(res,ctx){return '<div class="kpis">'+res.o.k.map(function(k,i){return '<div class="kpi '+(k[2]||'')+'"><b>'+fmt(k[1],k[3])+'</b><span>'+k[0]+ib(ctx,'k',i,k[0])+'</span></div>';}).join('')+'</div>';}
 function mount(el){var id=el.getAttribute('data-calc'),c=C[id];if(!c)return;
- var f='<div class="grid">'+c.in.map(function(x){return '<label class="f"><span>'+x[1]+'</span><input id="'+id+'_'+x[0]+'" inputmode="decimal" value="'+x[2]+'">'+(x[3]?'<small class="fh">De dónde sale: '+x[3]+'</small>':'')+'</label>';}).join('')+'</div>';
+ var f='<div class="grid">'+c.in.map(function(x){return '<label class="f"><span>'+x[1]+ib(id,'in',x[0],x[1])+'</span><input id="'+id+'_'+x[0]+'" inputmode="decimal" value="'+x[2]+'">'+(x[3]?'<small class="fh">De dónde sale: '+x[3]+'</small>':'')+'</label>';}).join('')+'</div>';
  el.innerHTML='<div class="calc"><div class="ch"><span class="t">'+c.t+'</span><span class="lbl">'+c.chip+'</span></div><div class="cb">'+f+'<div class="btns"><button type="button" class="b" data-reset="'+id+'">Restaurar ejemplo</button></div><div class="out"></div></div></div>';
  upd(id);}
 function vals(id){var o={};C[id].in.forEach(function(x){var e=d.getElementById(id+'_'+x[0]);o[x[0]]=e?e.value:x[2];});return o;}
-var LAST={};
-function upd(id){var res=compute(id,vals(id));LAST[id]=res;var el=d.querySelector('[data-calc="'+id+'"] .out');if(el)el.innerHTML=kpis(res)+(res.o.tbl||'')+'<div class="wph"><span>#</span><span>Concepto</span><span>Importe</span></div>'+table(res);}
-function caseTables(){d.querySelectorAll('[data-case]').forEach(function(el){var id=el.getAttribute('data-case'),ov={};try{ov=JSON.parse(el.getAttribute('data-in')||'{}');}catch(e){}var res=compute(id,ov);el.innerHTML=(res.o.tbl||'')+'<div class="wph"><span>#</span><span>Concepto</span><span>Importe</span></div>'+table(res);});}
+var LAST={},CASES=[];
+function upd(id){var res=compute(id,vals(id));res.id=id;LAST[id]=res;var el=d.querySelector('[data-calc="'+id+'"] .out');if(el)el.innerHTML=kpis(res,id)+(res.o.tbl||'').replace(/@CTX@/g,id)+'<div class="wph"><span>#</span><span>Concepto</span><span>Importe</span></div>'+table(res,id);if(window.FXpop)window.FXpop.refresh(id);}
+function caseTables(){d.querySelectorAll('[data-case]').forEach(function(el){var id=el.getAttribute('data-case'),ov={};try{ov=JSON.parse(el.getAttribute('data-in')||'{}');}catch(e){}var res=compute(id,ov),cx='case'+CASES.length;res.id=id;CASES.push(res);el.innerHTML=(res.o.tbl||'').replace(/@CTX@/g,cx)+'<div class="wph"><span>#</span><span>Concepto</span><span>Importe</span></div>'+table(res,cx);});}
 function init(){d.querySelectorAll('[data-calc]').forEach(mount);caseTables();
  d.addEventListener('input',function(e){var m=e.target.id&&e.target.id.match(/^([a-z0-9]+)_/);if(m&&C[m[1]])upd(m[1]);});
  d.addEventListener('focusout',function(e){var t=e.target,m=t.id&&t.id.match(/^([a-z0-9]+)_/);if(m&&C[m[1]]&&t.value&&!/^i[a-c01]$|^i1$|^i0$/.test(t.id.split('_')[1])){var n=P(t.value);if(Math.abs(n)>=1000)t.value=n.toLocaleString('es-MX',{maximumFractionDigits:2});}});
  d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-reset]');if(!b)return;var id=b.getAttribute('data-reset');C[id].in.forEach(function(x){d.getElementById(id+'_'+x[0]).value=x[2];});upd(id);});}
-window.FX={C:C,compute:compute,last:LAST,tar:tar,TN:TN,TM:TM,TA:TA,F4:F4};
+window.FX={cases:CASES,fmt:fmt,srcText:srcText,vals:vals,C:C,compute:compute,last:LAST,tar:tar,TN:TN,TM:TM,TA:TA,F4:F4};
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',init);else init();
+})();
+
+/* Diccionario central de conceptos para los íconos (i) de todos los cálculos */
+(function(){
+var D={
+ingacum:['Ingresos acumulables','Todo lo que la LISR obliga a sumar a la base del ISR: efectivo, bienes, servicios o crédito, en el momento del art. 17 (CFDI, entrega o cobro, lo primero).','LISR 16, 17 y 18','k-ingreso'],
+ingnom:['Ingresos nominales','Ingresos acumulables sin el ajuste anual por inflación acumulable. Son la base del coeficiente de utilidad y de los pagos provisionales.','LISR 14','cu'],
+ingcont:['Ingreso contable','Lo que las NIF reconocen como ingreso al transferir el control del bien o servicio. Es el punto de partida de la conciliación.','NIF D-1 · LISR 16','k-ingreso'],
+anticipo:['Anticipos de clientes','Cobros antes de entregar el bien o servicio. Fiscalmente se acumulan al cobrarse; contablemente son pasivo hasta entregar (diferencia temporal).','LISR 17-I-c','k-ingreso'],
+otrosing:['Otros ingresos acumulables','Ingresos distintos de la actividad principal que también se acumulan: ganancia en venta de activos, recuperaciones, condonaciones, etc.','LISR 18','k-ingreso'],
+noacum:['Ingresos no acumulables','Entran a la empresa pero la ley los excluye de la base: dividendos de PM residentes en México, aportaciones de capital, revaluaciones.','LISR 16','k-ingreso'],
+intfav:['Intereses a favor','Rendimientos de créditos e inversiones. La PM los acumula devengados y sin ajuste: la inflación se reconoce aparte con el AAI.','LISR 8 y 18-IX','k-int'],
+cambiaria:['Ganancia o pérdida cambiaria','Efecto de la variación del tipo de cambio sobre saldos en moneda extranjera, devengado. Se trata como interés, pero no cuenta en el límite del 28-XXXII.','LISR 8 · 28-XXXII','k-int'],
+aai:['Ajuste anual por inflación (AAI)','Reconoce el efecto de la inflación sobre lo que debes y lo que te deben. Deudas promedio > créditos promedio: acumulable. Al revés: deducible.','LISR 44, 18-XI y 25-VIII','k-aai'],
+deuda:['Deudas (para el AAI)','Cualquier obligación en dinero pendiente: proveedores, préstamos, arrendamiento financiero, contribuciones por pagar. No cuentan las que vienen de no deducibles del 28-I, VIII y IX.','LISR 46','k-aai'],
+credito:['Créditos (para el AAI)','Derecho a recibir dinero: clientes, préstamos otorgados, inversiones en deuda. No cuentan el efectivo en caja, préstamos a socios PF o empleados, pagos provisionales ni acciones.','LISR 45','k-aai'],
+saldoprom:['Saldo promedio anual','Suma de los saldos al último día de cada mes ÷ meses del ejercicio, sin incluir los intereses del mes.','LISR 44-I','k-aai'],
+difaai:['Diferencia de saldos promedio','Resta entre el promedio de deudas y el de créditos. El signo dice si el AAI es acumulable (deudas mayores) o deducible (créditos mayores).','LISR 44-II y III','k-aai'],
+factaai:['Factor de ajuste anual','(INPC del último mes del ejercicio ÷ INPC del último mes del ejercicio anterior) − 1. Mide la inflación del año.','LISR 44-III','k-aai'],
+meses:['Meses del ejercicio','Número de meses que divide la suma de saldos. 12 si operaste todo el año.','LISR 44-I','k-aai'],
+inpc:['INPC','Índice Nacional de Precios al Consumidor que publica el INEGI en el DOF. Todos los factores se calculan dividiendo un INPC entre otro.','CFF 20','inpc'],
+factact:['Factor de actualización','INPC más reciente ÷ INPC más antiguo del periodo, a cuatro decimales. Lleva una cifra histórica a pesos de hoy.','CFF 17-A · LISR 31','act'],
+gastocont:['Gasto contable','Todo lo que la contabilidad reconoce como costo o gasto del periodo. Antes de restarlo fiscalmente hay que depurar lo no deducible.','NIF · LISR 25','k-gasto'],
+dedaut:['Deducciones autorizadas','Gastos que la LISR permite restar: están en el art. 25, cumplen los requisitos del 27 y no los prohíbe el 28.','LISR 25, 27 y 28','k-ded'],
+nodeduc:['Partidas no deducibles','Gastos reales que la ley prohíbe deducir o que fallaron un requisito. Se suman en la conciliación y reducen la UFIN.','LISR 28 y 27','k-ded'],
+multas:['Multas','Las multas no son deducibles; los recargos efectivamente pagados sí.','LISR 28-I','k-ded'],
+sincfdi:['Gastos sin CFDI','Sin comprobante fiscal digital no hay deducción ni costo fiscal.','LISR 27-III','k-ded'],
+efectivo:['Pagos en efectivo de más de $2,000','Deben pagarse con transferencia, cheque nominativo, tarjeta o monedero; si no, no se deducen (salvo combustibles, cualquier monto en efectivo).','LISR 27-III','k-ded'],
+restaurante:['Consumos en restaurantes','Solo es deducible el 8.5% y pagado con tarjeta; el 91.5% es no deducible.','LISR 28-XX','k-ded'],
+exentos:['Pagos exentos al trabajador','De las prestaciones exentas para el trabajador solo se deduce el 47% (o 53% si no disminuyeron respecto al año anterior).','LISR 28-XXX','k-ded'],
+deprcont:['Depreciación contable','Reparto contable del costo del activo durante su vida útil estimada. No es deducción fiscal: se revierte y se sustituye por la deducción de inversiones.','NIF C-6','k-dep'],
+dedinv:['Deducción de inversiones','Porcentaje máximo anual de ley aplicado al MOI y actualizado por inflación. Es deducción autorizada y se suma de vuelta en la UFA.','LISR 31–35','k-dep'],
+moi:['Monto original de la inversión (MOI)','Precio del activo más gastos para dejarlo en uso (fletes, instalación, impuestos no acreditables). Sin el IVA acreditable.','LISR 31','inv'],
+tope:['Tope deducible','Límite del MOI que se puede deducir: automóviles 175,000; eléctricos o híbridos 250,000. El exceso nunca se deduce.','LISR 36-II','inv'],
+porc:['Por ciento máximo de deducción','Porcentaje anual que fija la ley por tipo de bien (computadoras 30%, autos 25%, mobiliario 10%). Se aplica por meses completos de uso.','LISR 33–35','inv'],
+diftemp:['Diferencia temporal','Partida que se reconoce en distinto ejercicio en contabilidad y en fiscal y se revierte después.','NIF D-4 · conciliación','k-gasto'],
+utcont:['Utilidad contable','Resultado del estado de resultados antes de ISR y PTU. Es el punto de partida de la conciliación contable-fiscal.','NIF · LISR 9','k-gasto'],
+rgcon:['Ingresos acumulables − deducciones','Resultado de la conciliación antes de PTU y pérdidas. También es la renta gravable para la PTU.','LISR 9','k-gasto'],
+perdida:['Pérdida fiscal','Resultado cuando las deducciones y la PTU superan a los ingresos acumulables. Se puede restar de las utilidades de los 10 años siguientes.','LISR 57','perd'],
+perdact:['Pérdida actualizada','La pérdida se actualiza en dos pasos: dentro de su año (jul→dic) y hasta el año en que se aplica (dic→jun).','LISR 57','perd'],
+perdap:['Pérdidas aplicadas','Parte de las pérdidas pendientes que restas de la utilidad fiscal del año, solo hasta llevarla a cero. Lo que sobra queda para años siguientes.','LISR 57 y 9-II','perd'],
+uf:['Utilidad fiscal','Ingresos acumulables − deducciones autorizadas − PTU pagada en el ejercicio. Si es negativa es pérdida fiscal.','LISR 9-I','k-util'],
+rf:['Resultado fiscal','Utilidad fiscal − pérdidas de años anteriores. Sobre él se aplica la tasa del 30%.','LISR 9-II','k-util'],
+isr30:['ISR al 30%','Tasa de personas morales sobre el resultado fiscal (o sobre la base del pago provisional).','LISR 9','anual'],
+isrcargo:['ISR a cargo','ISR del ejercicio menos pagos provisionales y retenciones. Se paga a más tardar el 31 de marzo.','LISR 9 y 76-V','anual'],
+pagprov:['Pagos provisionales','Anticipos mensuales del ISR del ejercicio, acumulados desde enero. Se acreditan contra el pago del mes y contra la anual.','LISR 14','cu'],
+retban:['Retenciones bancarias','ISR que los bancos retienen sobre intereses. Se acredita contra los pagos provisionales y el ISR del ejercicio.','LISR 54','anual'],
+cu:['Coeficiente de utilidad','Utilidad fiscal ÷ ingresos nominales del último ejercicio de 12 meses, hasta el diezmilésimo. Estima qué parte de cada peso de ingreso es utilidad.','LISR 14-I','cu'],
+dedinm:['Deducción inmediata (estímulo)','Si la usaste en el ejercicio base, se suma a la utilidad fiscal para calcular el coeficiente.','LISR 14 · decreto de estímulos','cu'],
+ufest:['Utilidad fiscal estimada','Ingresos nominales acumulados del periodo × coeficiente de utilidad.','LISR 14-II','cu'],
+ptudism:['PTU disminuida en pagos provisionales','La PTU pagada en el año se resta en partes iguales de mayo a diciembre (1/8 por mes, acumulado).','LISR 14-II-a','cu'],
+basepp:['Base del pago provisional','Utilidad fiscal estimada − PTU disminuida − pérdidas pendientes. × 30% = ISR acumulado.','LISR 14-II','cu'],
+ptu:['PTU','Participación de los trabajadores en las utilidades: 10% de la renta gravable. La pagada en el año se resta para llegar a la utilidad fiscal.','LISR 9 · LFT 117–127','ptu'],
+rgptu:['Renta gravable para PTU','Ingresos acumulables − deducciones autorizadas (sin restar PTU ni pérdidas). × 10% = PTU a repartir.','LISR 9, último párrafo','ptu'],
+diasal:['Reparto por días y salarios','La PTU se divide en dos mitades: una por días trabajados y otra por salarios devengados.','LFT 123','ptu'],
+ptutope:['Tope individual de PTU','Lo mayor entre 3 meses de salario y el promedio de la PTU recibida en los últimos 3 años.','LFT 127-VIII','ptu'],
+ufin:['UFIN','Utilidad fiscal neta: resultado fiscal − ISR pagado − partidas no deducibles (sin las del 28-VIII y IX ni la PTU). Es utilidad que ya pagó ISR.','LISR 77','k-util'],
+cufin:['CUFIN','Cuenta de utilidad fiscal neta: suma actualizada de las UFIN de cada año, menos dividendos pagados de ella. Los dividendos hasta su saldo no pagan ISR corporativo.','LISR 77','cufin'],
+cuca:['CUCA','Cuenta de capital de aportación: aportaciones y primas actualizadas. Lo que se reembolsa hasta su saldo no es dividendo.','LISR 78','cufin'],
+dividendo:['Dividendo','Utilidad distribuida a los socios. Lo que exceda la CUFIN se piramida y paga 30% a cargo de la PM; a PF se retiene además 10%.','LISR 10 y 140','div'],
+piram:['Piramidación (× 1.4286)','Lleva el dividendo neto a su equivalente antes de impuesto: 1 ÷ (1 − 0.30) = 1.4286.','LISR 10-I','div'],
+ret10:['Retención adicional del 10%','ISR definitivo que la PM retiene a socios personas físicas sobre dividendos de utilidades generadas desde 2014.','LISR 140','div'],
+ufa:['Utilidad fiscal ajustada (UFA)','Utilidad fiscal + intereses devengados a cargo + deducción de inversiones. Sirve solo para el límite de intereses: 30% de la UFA.','LISR 28-XXXII','k-util'],
+limufa:['Límite del 30% de la UFA','Máximo de intereses netos deducibles en el año. Lo que lo exceda es no deducible y puede deducirse en los 10 años siguientes.','LISR 28-XXXII','int'],
+intcargo:['Intereses devengados a cargo','Intereses que corresponden al año aunque no se hayan pagado. La PM los deduce sin ajuste; los moratorios desde el 4º mes solo pagados.','LISR 25-VII','k-int'],
+intnetos:['Intereses netos','Intereses devengados a cargo − intereses acumulables a favor − exención de 20 M + pendientes de años anteriores. Es lo que se compara con el 30% de la UFA.','LISR 28-XXXII','int'],
+exento20:['Monto exento de 20 millones','Los primeros 20 M de intereses netos no se sujetan al límite (se comparten entre el grupo).','LISR 28-XXXII','int'],
+intnd:['Intereses no deducibles por el límite','Exceso de intereses netos sobre el 30% de la UFA: aumenta la utilidad fiscal y el ISR del año; se arrastra 10 años.','LISR 28-XXXII','int'],
+intpag:['Devengado vs pagado','La PM deduce lo devengado; lo devengado no pagado sigue siendo deuda y entra al AAI.','LISR 25-VII y 46','k-int'],
+intreal:['Interés real (PF)','Interés nominal − ajuste por inflación (saldo promedio diario × factor del periodo). Es lo que acumulan las personas físicas.','LISR 134','k-int'],
+tarifa:['Tarifa de ISR (PF)','Base − límite inferior = excedente; × tasa marginal; + cuota fija = ISR. En pagos provisionales se usa la tarifa acumulada al mes.','LISR 96, 106 y 152 · Anexo 8 RMF 2026','pfae'],
+pfing:['Ingresos cobrados (PF)','Las personas físicas con actividad empresarial acumulan lo efectivamente cobrado, acumulado desde enero.','LISR 102','pfae'],
+pfded:['Deducciones pagadas (PF)','Las PF deducen lo efectivamente pagado en el periodo, con requisitos del art. 105.','LISR 103 y 105','pfae'],
+ret10pf:['Retención del 10% de PM','ISR que te retiene una persona moral por servicios profesionales o arrendamiento; se acredita en el pago provisional.','LISR 106 y 116','pfae'],
+resico:['Tasa RESICO','Tasa de 1% a 2.5% según el ingreso mensual, sobre el total cobrado del mes, sin deducciones.','LISR 113-E','resico'],
+ret125:['Retención 1.25% RESICO','Las personas morales retienen 1.25% del pago a un contribuyente RESICO; se acredita contra el ISR del mes.','LISR 113-J','resico'],
+tope35:['Tope de 3.5 millones','Si los ingresos del año superan 3.5 M, sales del RESICO y tributas en el régimen general desde el mes siguiente.','LISR 113-E','resico'],
+sueldo:['Percepciones gravadas','Sueldo y prestaciones del mes después de restar la parte exenta.','LISR 94 y 93','sue'],
+aguinaldo:['Aguinaldo exento','Exento hasta 30 días de UMA (3,519.30 en 2026); el excedente se suma a la base del mes.','LISR 93-XIV','sue'],
+basesue:['Base del mes','Percepciones gravadas del mes a la que se aplica la tarifa mensual del art. 96.','LISR 96','sue'],
+subsidio:['Subsidio para el empleo','15.02% de la UMA mensual (535.65) si la base es ≤ 11,492.66. Solo reduce el ISR; no se entrega en efectivo.','Decreto DOF 31-dic-2025','sue'],
+isrret:['ISR retenido / a retener','ISR que el patrón retiene y entera; en la anual se acredita contra el ISR del ejercicio.','LISR 96 y 97','sue'],
+pfgrav:['Ingresos gravados y exentos (PF)','Los gravados forman la base; los exentos cuentan para el tope de deducciones personales.','LISR 151 y 152','anualpf'],
+dedpers:['Deducciones personales','Médicos, colegiaturas, intereses hipotecarios, etc., con tope: lo menor entre 5 UMA anuales (213,973.20) y 15% de los ingresos.','LISR 151','anualpf'],
+basegrav:['Base gravable anual','Ingresos gravados − deducciones personales aplicables. Se le aplica la tarifa anual.','LISR 152','anualpf'],
+saldofavor:['Saldo a favor','Retenciones mayores que el ISR del ejercicio. Se puede pedir en devolución o compensar.','LISR 152 · CFF 22','anualpf'],
+actos16:['Actos gravados al 16%','Contraprestaciones efectivamente cobradas en el mes por actos gravados, sin IVA.','LIVA 1 y 1-B','k-iva'],
+actos0:['Actos a tasa 0%','Gravados a tasa cero (alimentos, medicinas, exportaciones): no causan IVA pero permiten acreditar.','LIVA 2-A','ivam'],
+ivacaus:['IVA causado (trasladado)','Valor de actos cobrados × tasa. Es el IVA a tu cargo del mes.','LIVA 1 y 1-B','ivam'],
+ivaacr:['IVA acreditable','IVA que te trasladaron y pagaste, en gastos deducibles para ISR y destinados a actos gravados.','LIVA 4 y 5','ivaacr'],
+ivaret:['Retenciones de IVA','IVA que retiene el cliente (2/3 en servicios de PF, 4% en fletes). Quien retiene lo entera; a quien retienen lo acredita.','LIVA 1-A · RLIVA 3','ivaret'],
+saldofavoriva:['Saldo a favor de IVA anterior','Saldo de meses anteriores que acreditas contra el IVA del mes mientras no lo pidas en devolución.','LIVA 6','ivam'],
+ivapagar:['IVA a pagar del mes','IVA causado − acreditable − retenido − saldo a favor. Se paga a más tardar el día 17.','LIVA 5-D','ivam'],
+propded:['Proporción deducible para ISR','Si el gasto es parcialmente deducible para ISR, el IVA solo se acredita en esa misma proporción.','LIVA 5-I','ivaacr'],
+ivanoacr:['IVA no acreditable','IVA que no se puede acreditar; para ISR se vuelve parte del gasto si este es deducible.','LIVA 5 · LISR 28-XIV','ivaacr'],
+proporcion:['Proporción de acreditamiento','Valor de actos gravados (16% y 0%) ÷ valor total de actos del mes. Aplica al IVA de gastos mixtos.','LIVA 5-V-d y 5-C','ivaprop'],
+ivaident:['IVA identificado','IVA de gastos usados solo en gravados (100% acreditable) o solo en exentos (0%).','LIVA 5-V','ivaprop'],
+isrhon:['Retención de ISR','10% de ISR que la PM retiene a PF por honorarios o arrendamiento.','LISR 106 y 116','ivaret'],
+netoprov:['Neto a pagar al proveedor','Importe + IVA − retenciones. Las retenciones se enteran al SAT el día 17.','LIVA 1-A · LISR 106','ivaret'],
+contrib:['Contribución actualizada','Contribución omitida × factor de actualización. La actualización no es deducible.','CFF 17-A','act'],
+recargos:['Recargos','Indemnización por pago tardío: contribución actualizada × suma de tasas mensuales de mora (2026: 2.07%).','CFF 21 · LIF 2026 art. 11','rec'],
+inventario:['Inventarios y compras','Inventario inicial + compras netas + gastos para traer la mercancía − inventario final = costo de lo vendido.','LISR 39 y 41','k-costo'],
+cvc:['Costo de lo vendido','Costo de la mercancía vendida, por costeo absorbente. Se deduce en el ejercicio en que se acumula el ingreso de esa venta.','LISR 25-II y 39','k-costo'],
+obsol:['Estimación de obsolescencia','Reserva contable de inventario lento. Fiscalmente no es deducible hasta destruir o enajenar con requisitos.','LISR 28-VIII','k-costo'],
+valact:['Valor de actos (IVA) vs ingreso (ISR)','El IVA se causa al cobrar; el ISR al facturar, entregar o cobrar. Una venta a crédito es ingreso ISR hoy e IVA cuando se cobre.','LIVA 1-B y 17 · LISR 17','k-iva'],
+mapa:['Concepto del papel de trabajo','Renglón del cálculo. Revisa la operación y los renglones de origen.','Ver tema','mapa']
+};
+/* reglas [regex, concepto, calcs opcionales]; primera coincidencia gana */
+var M=[
+['^aportaciones de capital','cuca',['cufin']],['iva trasladado','ivaacr',['ivaacr']],['utilidad contable','utcont'],['ingresos acumulables − deducciones','rgcon'],['deducciones autorizadas','dedaut'],['ingresos nominales','ingnom'],['partidas no deducibles|gastos no deducibles','nodeduc'],['tope deducible|no deducible por tope','tope'],['^retenciones$|isr retenido en el ano','isrret',['anualpf']],['^retenciones$','retban',['cu','anual']],
+['isr del ejercicio|isr pagado del ejercicio','isr30',['cufin','chain']],['^isr del ejercicio$|isr segun tarifa|^isr acumulado$','tarifa',['anualpf','pfae','sue']],
+['^diferencia$','difaai',['aai','aai12']],['dividendo|saldo de cufin|isr a cargo de la pm|pf: ingreso acumulable|pf: isr que puede','dividendo',['div']],
+['piramidado','piram'],['retencion adicional 10','ret10'],
+['limite.*ufa','limufa'],['ufa\\b|utilidad fiscal ajustada','ufa'],['intereses netos','intnetos'],['pendientes de anos anteriores','intnetos',['int']],
+['no deducibles del ejercicio|intereses deducibles en el ano|utilidad fiscal corregida|isr adicional por el limite','intnd'],['monto exento|20 millones','exento20'],
+['interes real|ajuste por inflacion$|factor de inflacion|saldo promedio diario|intereses nominales','intreal'],['devengados no pagados|intereses pagados|efectivamente pagados','intpag'],
+['intereses (devengados )?a cargo|^pm: intereses devengados','intcargo'],['cambiaria|tipo de cambio|dolares','cambiaria'],['intereses acumulables a favor|intereses a favor|intereses y ganancia','intfav'],
+['factor de ajuste anual','factaai'],['ajuste anual por inflacion|^aai','aai'],['saldo promedio anual|suma de saldos','saldoprom'],['^deudas','deuda'],['^creditos','credito'],['meses del ejercicio','meses'],
+['inpc','inpc'],['^utilidad fiscal (?!estimada|neta|ajustada|corregida)|^utilidad fiscal$','uf'],['factor [12]|perdida actualizada|perdida historica|perdida fiscal del ejercicio en que','perdact'],['perdida','perdap'],
+['factor de actualizacion','factact'],['coeficiente','cu'],['deduccion inmediata','dedinm'],['utilidad fiscal estimada','ufest'],['ptu disminuida','ptudism'],['base del pago provisional','basepp'],
+['renta gravable','rgptu'],['tope individual|promedio de ptu','ptutope'],['parte por dias|parte por salarios|dias trabajados|salarios de todos|salario anual','diasal'],
+['\\bufin|utilidad fiscal neta','ufin'],['cufin','cufin'],['cuca','cuca'],['→ utilidad fiscal','uf'],['ingresos acumulables − deducciones','rgcon'],
+['ptu','ptu'],['pago provisional del mes|pagos provisionales|mes del pago','pagprov'],['retenciones bancarias|retenido por bancos','retban'],
+['isr a cargo','isrcargo'],['\\(30%\\)','isr30'],
+['utilidad fiscal','uf'],['resultado fiscal','rf'],['utilidad contable','utcont'],
+['valor de actos (gravados|exentos) del mes|^proporcion$|iva mixto|gastos mixtos','proporcion'],['identificado con|gastos solo para','ivaident'],
+['proporcion deducible|monto deducible para isr|iva en proporcion deducible|monto del gasto','propded'],['no acreditable','ivanoacr'],
+['valor de actos|venta (facturada|de contado)|diferencia temporal isr vs iva|iva causado en (diciembre|enero)','valact'],
+['ingresos nominales','ingnom'],['no acumulas|no acumulable|^dividendos|aportaciones de capital','noacum'],['anticipo','anticipo'],['otros ingresos','otrosing'],['ingresos contables|ventas contables','ingcont'],
+['ingresos cobrados (acumulados|de enero)','pfing'],['deducciones pagadas','pfded'],['retenciones del 10|retenido por personas morales','ret10pf'],
+['tasa de la tabla|isr del mes|ingresos cobrados del mes|isr a pagar el dia 17','resico'],['retencion 1\\.25|cobrados a personas morales','ret125'],['tope de 3\\.5|ingresos acumulados del ano','tope35'],
+['ingresos gravados|ingresos exentos del ano','pfgrav'],['deducciones personales','dedpers'],['base gravable','basegrav'],['saldo a favor$','saldofavor'],
+['ingresos acumulables|ingreso acumulable|ventas y servicios','ingacum'],
+['multas','multas'],['sin cfdi','sincfdi'],['efectivo de mas','efectivo'],['restaurante','restaurante'],['exentos|prestaciones exentas','exentos'],
+['partidas no deducibles|gastos no deducibles','nodeduc'],['depreciacion|vida util','deprcont'],['diferencia del ano','diftemp'],
+['moi|costo del activo','moi'],['tope deducible|no deducible por tope','tope'],['por ciento','porc'],['deduccion|meses completos|anos para deducir','dedinv'],
+['costos y gastos contables|gastos antes de depuracion','gastocont'],['deducciones autorizadas','dedaut'],
+['inventario|compras netas|fletes','inventario'],['costo de lo vendido','cvc'],['obsolescencia','obsol'],
+['aguinaldo','aguinaldo'],['percepciones gravadas|sueldo y percepciones','sueldo'],['base del mes','basesue'],['subsidio','subsidio'],['isr a retener','isrret'],
+['limite inferior|excedente|cuota fija|^\\d+(\\.\\d+)?%','tarifa'],
+['actos (al|a tasa) 16','actos16'],['actos (al|a tasa) 0','actos0'],['iva causado|iva trasladado','ivacaus'],
+['retenido por clientes|te retuvieron|retencion de iva|retuviste|retenciones de iva|total a enterar','ivaret'],['saldo a favor (anterior|de meses)','saldofavoriva'],['iva a pagar','ivapagar'],
+['iva acreditable|pagado en el mes','ivaacr'],['retencion de isr','isrhon'],['neto a pagar|importe del servicio|tipo de operacion','netoprov'],
+['contribucion|monto de la actualizacion','contrib'],['recargos|tasa (acumulada|total|mensual)|meses de mora|total a pagar \\(sin multa','recargos']
+].map(function(x){return[new RegExp(x[0]),x[1],x[2]];});
+var CALCDEF={ing:'ingacum',ded:'dedaut',inv:'dedinv',aai:'aai',perd:'perdida',anual:'rf',cu:'cu',ptu:'ptu',cufin:'cufin',div:'dividendo',int:'ufa',pfae:'tarifa',resico:'resico',sue:'tarifa',anualpf:'tarifa',ivam:'ivapagar',ivaacr:'ivaacr',ivaprop:'proporcion',ivaret:'ivaret',act:'factact',rec:'recargos',conc:'rgcon',ingc:'ingcont',depc:'dedinv',aai12:'aai',intc:'intcargo',chain:'uf',cvc:'cvc',vai:'valact'};
+function norm(s){return String(s).replace(/<[^>]+>/g,'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/^[\s(+\-−=×)→]+/,'').replace(/^\)\s*/,'').trim();}
+function find(calc,label){var n=norm(label);for(var i=0;i<M.length;i++){var m=M[i];if(m[2]&&m[2].indexOf(calc)<0)continue;if(m[0].test(n))return{id:m[1],fb:false};}return{id:CALCDEF[calc]||'mapa',fb:true};}
+window.FXDIC={D:D,find:find,norm:norm};
 })();
 
 /* ===== Libro: árbol, buscador, hoja y rutas ===== */
@@ -974,5 +1155,55 @@ function init(){build();var q=$('q');var kb=$('kbd');if(kb&&!/Mac|iPhone|iPad/.t
  window.addEventListener('popstate',route);route();
  window.FXsearch=function(s){return search(s).map(function(r){return r.x.k+' | '+r.x.t;});};window.FXindex=function(){return IDX.length;};}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',function(){setTimeout(init,0);});else setTimeout(init,0);
+})();
+
+/* Popover / hoja inferior de explicación para cada ícono (i) */
+(function(){var d=document,FX=window.FX,DIC=window.FXDIC;if(!FX||!DIC)return;
+var pop=d.createElement('div');pop.id='fxpop';pop.className='pop';pop.setAttribute('role','dialog');pop.setAttribute('aria-modal','false');pop.setAttribute('aria-labelledby','fxpop-t');pop.hidden=true;
+var bg=d.createElement('div');bg.className='pop-bg';bg.hidden=true;d.body.appendChild(bg);d.body.appendChild(pop);
+var cur=null,trig=null;
+function res(ctx){return /^case\d+$/.test(ctx)?FX.cases[+ctx.slice(4)]:FX.last[ctx];}
+function calcOf(ctx){var r=res(ctx);return r?r.id:ctx;}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function plain(s){return String(s).replace(/<[^>]+>/g,'');}
+function fichaLabel(f){var e=d.getElementById(f);if(!e)return '';var t=e.querySelector(':scope>summary .nt');return t?t.textContent:'';}
+function refsOf(row,r){var out=[],seen={};String(row.o).replace(/\{(\w+)\}/g,function(m,k){var n=r.k[k];if(n&&!seen[n]){seen[n]=1;out.push(n);}return m;});return out;}
+function rowBody(R,i,title){var r=R.r,x=r.rows[i],c=DIC.find(R.id,x.l),D=DIC.D[c.id];var refs=refsOf(x,r);
+ var h='<p class="pv"><span>'+esc(plain(title||x.l))+'</span><b>'+FX.fmt(x.v,x.f)+'</b></p>';
+ h+='<div class="pk">En este cálculo</div><p class="po">Renglón ['+(i+1)+']. '+(x.o?FX.srcText(x.o,r):'Dato capturado.')+'</p>';
+ if(refs.length)h+='<ul class="pr">'+refs.map(function(n){var y=r.rows[n-1];return '<li><span class="rr">['+n+']</span> '+esc(plain(y.l))+' <b>'+FX.fmt(y.v,y.f)+'</b></li>';}).join('')+'</ul>';
+ return [D,c.id,h];}
+function build(b){var ctx=b.getAttribute('data-ctx'),k=b.getAttribute('data-kind'),i=b.getAttribute('data-i'),R=res(ctx),calc=calcOf(ctx),D,cid,body='';
+ if(k==='r'&&R){var o=rowBody(R,+i);D=o[0];cid=o[1];body=o[2];}
+ else if(k==='k'&&R){var kk=R.o.k[+i],idx=-1;for(var j=R.r.rows.length-1;j>=0;j--){if(Math.abs(R.r.rows[j].v-kk[1])<0.005){idx=j;break;}}
+  if(idx>=0){var o2=rowBody(R,idx,kk[0]);D=o2[0];cid=o2[1];body=o2[2];}else{cid=DIC.find(calc,kk[0]).id;D=DIC.D[cid];body='<p class="pv"><span>'+esc(kk[0])+'</span><b>'+FX.fmt(kk[1],kk[3])+'</b></p>';}}
+ else if(k==='in'){var inp=FX.C[calc].in.filter(function(x){return x[0]===i;})[0],el=d.getElementById(calc+'_'+i);cid=DIC.find(calc,inp[1]).id;D=DIC.D[cid];
+  body='<p class="pv"><span>'+esc(inp[1])+'</span><b>'+esc(el?el.value:inp[2])+'</b></p><div class="pk">De dónde sale este dato</div><p class="po">'+(inp[3]||'Dato que capturas para el ejemplo.')+' Es un dato de entrada: cámbialo y todo el papel de trabajo se recalcula.</p>';}
+ else{cid=i;D=DIC.D[cid];var tb=b.closest('table'),col=b.closest('th')?[].indexOf.call(b.closest('tr').children,b.closest('th')):-1,sum='';
+  if(tb&&col>0){var tr=tb.querySelector('tr.tot');if(tr)sum='<p class="pv"><span>Suma de los 12 meses</span><b>'+tr.children[col].textContent+'</b></p>';}
+  body=sum+'<div class="pk">En este cálculo</div><p class="po">Cada mes se toma el saldo al último día según la balanza, sin los intereses del mes. La suma ÷ 12 es el saldo promedio anual.</p>';}
+ if(!D){D=DIC.D.mapa;cid='mapa';}
+ var f=D[3],fl=fichaLabel(f);
+ return '<div class="ph"><div><small>'+(k==='in'?'Dato de entrada':'Concepto')+'</small><h3 id="fxpop-t">'+D[0]+'</h3></div><button type="button" class="px" aria-label="Cerrar">×</button></div>'+
+  '<div class="pbody"><div class="pk">Qué es</div><p>'+D[1]+'</p>'+body+'<div class="pk">Regla</div><p class="pa">'+D[2]+'</p></div>'+
+  '<a class="pf" href="#'+f+'" data-cid="'+cid+'">Ver ficha completa'+(fl?': '+esc(fl):'')+' →</a>';}
+function mobile(){return window.matchMedia&&window.matchMedia('(max-width:640px)').matches;}
+function place(){if(!trig||pop.hidden)return;if(mobile()){pop.style.left=pop.style.top='';return;}
+ var r=trig.getBoundingClientRect(),w=pop.offsetWidth,h=pop.offsetHeight,vw=window.innerWidth,vh=window.innerHeight;
+ var l=Math.min(Math.max(12,r.left+r.width/2-w/2),vw-w-12),t=r.bottom+8,top=(d.querySelector('header.top')||{offsetHeight:0}).offsetHeight+8;if(t+h>vh-12)t=(r.top-h-8>=top)?r.top-h-8:Math.max(top,vh-h-12);pop.style.left=l+'px';pop.style.top=t+'px';}
+function open(b){if(trig)trig.setAttribute('aria-expanded','false');trig=b;cur={ctx:b.getAttribute('data-ctx'),kind:b.getAttribute('data-kind'),i:b.getAttribute('data-i')};
+ pop.innerHTML=build(b);pop.hidden=false;bg.hidden=!mobile();b.setAttribute('aria-expanded','true');d.documentElement.classList.toggle('pop-lock',mobile());place();
+ var x=pop.querySelector('.px');if(x)x.focus({preventScroll:true});}
+function close(ret){if(pop.hidden)return;pop.hidden=true;bg.hidden=true;d.documentElement.classList.remove('pop-lock');if(trig){trig.setAttribute('aria-expanded','false');if(ret)trig.focus({preventScroll:true});}trig=null;cur=null;}
+function refresh(ctx){if(!cur||cur.ctx!==ctx)return;var b=d.querySelector('.ib[data-ctx="'+ctx+'"][data-kind="'+cur.kind+'"][data-i="'+cur.i+'"]');if(!b){close();return;}
+ trig=b;b.setAttribute('aria-expanded','true');var a=d.activeElement;pop.innerHTML=build(b);place();if(a&&!pop.contains(a)&&a.focus)a.focus({preventScroll:true});}
+d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.ib');
+ if(b){e.preventDefault();e.stopPropagation();if(trig===b&&!pop.hidden)close(true);else open(b);return;}
+ if(pop.hidden)return;if(e.target.closest('.px')){close(true);return;}
+ if(e.target.closest('.pf')){close(false);return;}
+ if(!pop.contains(e.target))close(false);},true);
+d.addEventListener('keydown',function(e){if(e.key==='Escape'&&!pop.hidden){e.stopPropagation();close(true);}},true);
+window.addEventListener('resize',place);window.addEventListener('scroll',function(){if(!mobile())place();},{passive:true});
+window.FXpop={open:open,close:close,refresh:refresh,el:pop};
 })();
 </script></body></html>
