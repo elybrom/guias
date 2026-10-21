@@ -284,3 +284,4 @@ body.on-light .brand .logo-dark{display:none} body.on-light .brand .logo-light{d
 .track .g-item.wide-doc.loaded{padding-bottom:44px}
 .track .g-item.wide-doc.loaded img{position:static;display:block;width:100%;height:auto;object-fit:contain}
 .track-note{margin:14px 0 6px;padding:10px 14px;border-left:4px solid #e8892b;background:rgba(232,137,43,.14);border-radius:8px;font-weight:600;font-size:14px;line-height:1.4}
+.track .g-item.fit-doc.loaded img{object-fit:contain;background:#efe9df}
