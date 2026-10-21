@@ -59,7 +59,7 @@
 
   /* Card tilt + spotlight */
   if (fine && !reduce){
-    $$(".tilt").forEach(function(c){
+    if (fine) $$(".tilt").forEach(function(c){
       c.addEventListener("pointermove", function(e){
         var r = c.getBoundingClientRect(), x = (e.clientX - r.left)/r.width, y = (e.clientY - r.top)/r.height;
         c.style.transform = "perspective(900px) rotateY("+((x-.5)*7)+"deg) rotateX("+((.5-y)*7)+"deg) translateY(-3px)";
@@ -104,7 +104,7 @@
 
   /* Gold dust canvas (low particle count, pauses when tab hidden) */
   var cv = document.getElementById("dust");
-  if (cv && !reduce){
+  if (cv && !reduce && innerWidth > 800){
     var ctx = cv.getContext("2d"), W, H, dpr = Math.min(window.devicePixelRatio||1, 2), P = [];
     var COUNT = innerWidth < 720 ? 28 : 60;
     function size(){ W = cv.width = innerWidth*dpr; H = cv.height = innerHeight*dpr; cv.style.width = innerWidth+"px"; cv.style.height = innerHeight+"px"; }

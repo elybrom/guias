@@ -165,12 +165,17 @@
   }
 
   /* ---------- Real images: load if file exists, else keep placeholder ---------- */
-  $$(".ph-box[data-src]").forEach(function(box){
-    var img = new Image();
+  function loadBox(box){
+    if (box.dataset.req) return; box.dataset.req = "1";
+    var img = new Image(); img.decoding = "async";
     img.onload = function(){ img.alt = box.dataset.es || ""; box.insertBefore(img, box.firstChild); box.classList.add("loaded"); box.dataset.loaded = "1";
       var gi = box.closest(".g-item"); if (gi) gi.dataset.loaded = "1"; };
     img.src = box.dataset.src;
-  });
+  }
+  function loadNear(i){ for (var k=i-1;k<=i+1;k++){ if (slides[k]) $$(".ph-box[data-src]", slides[k]).forEach(loadBox); } }
+  document.addEventListener("slidechange", function(e){ loadNear(e.detail.index); });
+  loadNear(Math.max(0, slides.indexOf(document.querySelector(".slide.active"))));
+  setTimeout(function(){ $$(".ph-box[data-src]").forEach(loadBox); }, 6000);
 
   /* ---------- Map (lazy, only when slide opens) ---------- */
   function loadMap(slide){
