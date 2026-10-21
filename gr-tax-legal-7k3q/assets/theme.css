@@ -280,3 +280,7 @@ body.on-light .brand .logo-dark{display:none} body.on-light .brand .logo-light{d
 /* track: caption bar below image */
 .track .g-item.real.loaded img{bottom:44px;height:auto}
 .track .g-item.real .cap{top:auto;height:44px;padding:0 12px;display:flex;align-items:center;background:#0b1a3a;color:#fff;font-size:13px;line-height:1.2;border-top:1px solid rgba(255,255,255,.12)}
+.track .g-item.wide-doc{grid-column:span 2;aspect-ratio:auto;min-height:0}
+.track .g-item.wide-doc.loaded{padding-bottom:44px}
+.track .g-item.wide-doc.loaded img{position:static;display:block;width:100%;height:auto;object-fit:contain}
+.track-note{margin:14px 0 6px;padding:10px 14px;border-left:4px solid #e8892b;background:rgba(232,137,43,.14);border-radius:8px;font-weight:600;font-size:14px;line-height:1.4}
