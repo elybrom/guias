@@ -1,46 +1,5 @@
 <!DOCTYPE html>
-<!--
-=====================================================================================
- G&R TAX-LEGAL CONSULTING — Presentación interactiva / 互动演示
- Self-contained: index.html + assets/ (no build step). Open index.html directly or host the folder.
- Language can be preset by URL: index.html?lang=es | ?lang=zh | ?lang=both   ·  Jump to slide: #5
- Keys: ← → / PageUp PageDown / Space · Home / End · M = slide index · Swipe on phones.
 
- TODO — PLACEHOLDERS STILL NEEDING REAL CONTENT (search the file for data-ph="PH-xx" or "PH-xx"):
-  PH-01  (resolved) Official logo → assets/logo.png (light slides), logo-white.png (dark), logo-mark*.png, favicon.png
-  PH-02  (resolved) 25+ years legal experience · 5+ years with Chinese companies
-  PH-03  (dropped) no verified RFC count
-  PH-04  (resolved) "2020" = inicio de operaciones per G&R's CSF (24/02/2020)
-  PH-05  (resolved) family firm description (slide 2)
-  PH-06..PH-09  Team members 1–4: real photo (assets/team/miembro-1..4.jpg), name, role, professional licence (cédula) (slide 4)
-  PH-10  Office opening hours / visit policy (slide 5)
-  PH-11  (filled) Office photos assets/photos/oficina-01..05.jpg supplied by user. CHECK: they look AI-generated/edited and the facade
-         sign reads "TRÁMITES ANTE NOTARÍA" (no G&R branding, no street number) — replace with unedited phone photos if possible.
-  (filled) Coyoacán photos: assets/photos/coyoacan-01.jpg (sala de juntas), coyoacan-02.jpg (oficina privada)
-  PH-12  Office video → assets/video/recorrido.mp4 (+ optional poster assets/video/recorrido-poster.jpg) (slide 5)
-  PH-13..PH-17, PH-19, PH-20  (resolved) G&R's own CSF (SAT, issued 24/02/2026) → assets/docs/csf-gr.jpg, shown unredacted per user
-  PH-18  (resolved) CSF fiscal domicile = Coyoacán office (matriz); Tláhuac = client-service office (slides 5, 6, 13)
-  PH-21  Track record (slide 9) now shows 4 real, UNREDACTED client documents (per user): CitaSAT acuse, WhatsApp e.firma delivery
-         screenshot, Acuse único de inscripción RFC, client CSF → confirm client authorisation to show their data
-  PH-22  Client testimonial (with authorisation) (slide 9)
-  PH-23  Estimated time per process step (slide 8)
-  PH-24  Translation type (e.g. perito traductor autorizado) — confirm (slides 7 & 8)
-  PH-25  FAQ: do shareholders need to travel? — confirm answer (slide 10)
-  PH-26  FAQ: total processing time (slide 10)
-  PH-27  How many legal entities / RFCs are behind the 13 stores (slide 11)
-  PH-28  Fee amounts, currency, VAT (slide 12). Contract, volume-discount and payment terms are filled in.
-  PH-29  WhatsApp number (slide 13; also the wa.me link)
-  PH-30  E-mail
-  PH-31  WeChat ID (recommended for Chinese clients)
-  PH-32  Website URL
-  PH-33  Client name on the cover (slide 1)
-  PH-34  When hosted: absolute og:image / og:url for the WhatsApp link preview (see <head>)
-  PH-35  Presentation date (slide 1)
- Stock images in assets/stock/ are ILLUSTRATIVE (Unsplash licence, see assets/stock/CREDITS.txt) and are labelled
- "Imagen ilustrativa · 示意图" on screen. They must NOT be presented as G&R's office or team.
- Note for mainland-China viewers: Google Maps / Google Fonts may be blocked; the page still works (system fonts, address + copy button).
-=====================================================================================
--->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -51,13 +10,13 @@
 <meta property="og:title" content="G&amp;R TAX-LEGAL CONSULTING · RFC · e.firma · CSF">
 <meta property="og:description" content="Su puerta fiscal a México · 您进入墨西哥的税务通道">
 <meta property="og:type" content="website">
-<!-- PH-34: replace with absolute URLs once hosted -->
+
 <meta property="og:url" content="https://elybrom.github.io/guias/gr-tax-legal-7k3q/">
 <meta property="og:image" content="https://elybrom.github.io/guias/gr-tax-legal-7k3q/assets/og-cover.jpg">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Fonts load asynchronously so the page never waits for Google (blocked in mainland China); system CJK fonts are the fallback -->
+
 <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@600;700&display=swap">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="stylesheet" href="assets/premium.css">
@@ -67,7 +26,7 @@
 </head>
 <body class="l-both">
 
-<!-- ================= ICON SPRITE ================= -->
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
  <defs>
   <symbol id="i-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
@@ -102,7 +61,7 @@
  </defs>
 </svg>
 
-<!-- ================= CHROME ================= -->
+
 <div class="curtain" aria-hidden="true"><img src="assets/logo-white.png" alt=""><span class="bar"></span></div>
 <div class="bg" aria-hidden="true"></div>
 <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
@@ -136,7 +95,7 @@
 
 <main class="deck">
 
-<!-- ===================== 1 · COVER ===================== -->
+
 <section class="slide cover" data-es="Portada" data-zh="封面">
   <div class="cover-photo" aria-hidden="true">
     <img src="assets/stock/glass.jpg" alt="">
@@ -169,7 +128,7 @@
   </div>
 </section>
 
-<!-- ===================== 2 · ABOUT (light) ===================== -->
+
 <section class="slide light" data-es="Quiénes somos" data-zh="关于我们">
   <span class="bignum" aria-hidden="true">02</span>
   <div class="wrap">
@@ -202,7 +161,7 @@
   </div>
 </section>
 
-<!-- ===================== 3 · WHY CHOOSE US (lux dark) ===================== -->
+
 <section class="slide lux" data-es="Por qué elegirnos" data-zh="为什么选择我们">
   <div class="lux-bg" aria-hidden="true"><img src="assets/stock/scales.jpg" alt=""><span class="stock-tag"><span class="es">Imagen ilustrativa</span><span class="zh">示意图</span></span></div>
   <span class="bignum" aria-hidden="true">03</span>
@@ -233,7 +192,7 @@
   </div>
 </section>
 
-<!-- ===================== 4 · TEAM (light) ===================== -->
+
 <section class="slide-off light" hidden style="display:none" data-es="Nuestro equipo" data-zh="专业团队">
   <span class="bignum" aria-hidden="true">04</span>
   <div class="wrap">
@@ -249,7 +208,7 @@
   </div>
 </section>
 
-<!-- ===================== 5 · OFFICES (dark) ===================== -->
+
 <section class="slide office-slide" data-es="Nuestras oficinas" data-zh="办公地址">
   <span class="bignum" aria-hidden="true">05</span>
   <div class="motif-cloud" style="left:-60px;bottom:90px" aria-hidden="true"></div>
@@ -309,7 +268,7 @@
   </div>
 </section>
 
-<!-- ===================== 6 · LEGAL EXISTENCE (light) ===================== -->
+
 <section class="slide light" data-es="Existencia legal" data-zh="合法注册">
   <span class="bignum" aria-hidden="true">06</span>
   <div class="wrap">
@@ -344,7 +303,7 @@
   </div>
 </section>
 
-<!-- ===================== 7 · SERVICES (dark) ===================== -->
+
 <section class="slide" data-es="Servicios" data-zh="服务内容">
   <span class="bignum" aria-hidden="true">07</span>
   <div class="motif-tile" style="right:-40px;bottom:40px" aria-hidden="true"></div>
@@ -371,7 +330,7 @@
   </div>
 </section>
 
-<!-- ===================== 8 · PROCESS (light) ===================== -->
+
 <section class="slide light" data-es="Proceso paso a paso" data-zh="办理流程">
   <span class="bignum" aria-hidden="true">08</span>
   <div class="wrap">
@@ -431,7 +390,7 @@
   </div>
 </section>
 
-<!-- ===================== 9 · TRACK RECORD (dark) ===================== -->
+
 <section class="slide" data-es="Experiencia comprobable" data-zh="真实案例">
   <span class="bignum" aria-hidden="true">09</span>
   <div class="wrap">
@@ -449,7 +408,7 @@
   </div>
 </section>
 
-<!-- ===================== 10 · FAQ (light) ===================== -->
+
 <section class="slide light" data-es="Mercado Libre e impuestos" data-zh="美客多与税务问答">
   <span class="bignum" aria-hidden="true">10</span>
   <div class="wrap">
@@ -479,7 +438,7 @@
   </div>
 </section>
 
-<!-- ===================== 11 · PILOT (dark) ===================== -->
+
 <section class="slide" data-es="Plan piloto" data-zh="试点方案">
   <span class="bignum" aria-hidden="true">11</span>
   <div class="motif-cloud" style="right:-40px;top:120px" aria-hidden="true"></div>
@@ -505,7 +464,7 @@
   </div>
 </section>
 
-<!-- ===================== 12 · FEES (light) ===================== -->
+
 <section class="slide light" data-es="Honorarios" data-zh="服务费用">
   <span class="bignum" aria-hidden="true">12</span>
   <div class="wrap">
@@ -538,7 +497,7 @@
   </div>
 </section>
 
-<!-- ===================== 13 · CONTACT (lux dark) ===================== -->
+
 <section class="slide lux" data-es="Contacto y siguientes pasos" data-zh="联系方式与下一步">
   <div class="lux-bg" aria-hidden="true"><img src="assets/stock/cdmx-condesa.jpg" alt="" style="opacity:.32"><span class="stock-tag"><span class="es">Imagen ilustrativa</span><span class="zh">示意图</span></span></div>
   <span class="bignum" aria-hidden="true">13</span>
@@ -564,7 +523,7 @@
         <div class="c-row"><svg><use href="#i-pin"/></svg><div><div class="k inl"><span class="es">Atención a clientes</span><span class="zh">客户服务中心</span></div>Av. Eje 10 Sur 156, Col. Selene, Tláhuac, CDMX</div></div>
         <div class="c-row"><svg><use href="#i-building"/></svg><div><div class="k inl"><span class="es">Matriz · domicilio fiscal</span><span class="zh">总部 · 税务登记地址</span></div>Calle Ixtlixochitl Mz 38 Lt 55, Col. Adolfo Ruiz Cortines, Coyoacán, C.P. 04630, CDMX</div></div>
         <div class="c-actions">
-          <!-- PH-29: replace 52XXXXXXXXXX with the real number (country code + number, digits only) -->
+          
           <a class="btn btn-wa" hidden style="display:none"><svg><use href="#i-wa"/></svg><span class="inl"><span class="es">Escríbanos por WhatsApp</span><span class="zh">WhatsApp 联系我们</span></span></a>
           <span class="btn btn-ghost"><svg><use href="#i-clock"/></svg><span class="inl"><span class="es">Agendar reunión virtual</span><span class="zh">预约线上会议</span></span></span>
           <button class="btn btn-ghost" type="button" data-go="4"><svg><use href="#i-pin"/></svg><span class="inl"><span class="es">Ver sedes</span><span class="zh">查看办公室</span></span></button>
@@ -576,7 +535,7 @@
 
 </main>
 
-<!-- ================= LIGHTBOX / INDEX / TOAST ================= -->
+
 <div class="lightbox" role="dialog" aria-modal="true" aria-label="Galería / 图库">
   <button class="lb-btn lb-close" type="button" aria-label="Cerrar / 关闭"><svg><use href="#i-x"/></svg></button>
   <button class="lb-btn lb-prev" type="button" aria-label="Anterior / 上一张"><svg><use href="#i-l"/></svg></button>
