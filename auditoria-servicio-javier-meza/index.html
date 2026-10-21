@@ -1,34 +1,68 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>Auditoría del caso Servicio Javier Meza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Gloock&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f6f8;--card:#fff;--t:#1c2230;--m:#5b6474;--b:#e1e4ea;--a:#2457a6;--r:#c0392b;--y:#d69e00;--g:#2e7d32;--n:#6c757d}
-@media(prefers-color-scheme:dark){:root{--bg:#12151b;--card:#1b2029;--t:#e7eaf0;--m:#9aa3b2;--b:#2c3340;--a:#6ea0ff}}
-*{box-sizing:border-box}body{margin:0;font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--t)}
-header{background:linear-gradient(135deg,#1f3b6e,#2457a6);color:#fff;padding:22px 16px}header h1{margin:0 0 4px;font-size:1.45em}header p{margin:0;opacity:.85;font-size:.9em}
-main{max-width:920px;margin:auto;padding:12px}nav{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;flex-wrap:wrap;gap:6px;padding:8px 0}
-nav a{font-size:.82em;padding:4px 10px;border-radius:14px;background:var(--card);border:1px solid var(--b);color:var(--t);text-decoration:none}
-section{margin:18px 0}h2{font-size:1.15em;margin:0 0 8px;color:var(--a)}
-.card{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:14px;margin:8px 0}
-.warn{border-left:5px solid var(--r)}.grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
-.met b{display:block;font-size:1.6em}.met span{color:var(--m);font-size:.85em}
-.badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:.75em;font-weight:600;color:#fff}.risk{background:var(--r)}.pend{background:var(--y);color:#222}.done{background:var(--n)}
+:root{--bg:#FDFCF3;--card:#FFFEF8;--t:#3a3a2e;--m:#7a7766;--b:#d9d3bf;--o:#7E9A55;--a:#7E9A55;--rose:#C07A7A;--r:#C07A7A;--y:#d9a441;--n:#a39f8c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:14.5px/1.6 Poppins,system-ui,sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 14px;padding:16px 18px;position:relative;z-index:3}
+.brand{color:var(--rose);font-size:1.1em;font-weight:500}.top a.l{color:var(--t);text-decoration:none;font-size:.8em}
+.hero{position:relative;text-align:center;padding:30px 16px 46px;overflow:hidden}
+.hero .pill{position:relative;z-index:2}
+.hero h1{font-family:Gloock,"Abril Fatface",serif;font-weight:400;color:var(--o);font-size:clamp(2.4rem,10vw,5.2rem);line-height:.95;margin:14px auto 14px;max-width:900px;position:relative;z-index:2}
+.hero p{max-width:520px;margin:0 auto;font-size:.9em;position:relative;z-index:2}
+.deco{position:absolute;pointer-events:none;z-index:1}
+.pill,.badge{display:inline-block;background:var(--rose);color:#fff;border-radius:999px;padding:6px 20px;font-size:.95em}
+.badge{padding:2px 11px;font-size:.72em;font-weight:500}.badge.risk{background:var(--rose)}.badge.pend{background:var(--y)}.badge.done{background:var(--n)}
+main{max-width:920px;margin:auto;padding:0 14px 40px;position:relative;z-index:2}
+nav{position:sticky;top:0;z-index:5;background:rgba(253,252,243,.94);backdrop-filter:blur(6px);display:flex;flex-wrap:wrap;gap:6px;padding:10px 0}
+nav a{font-size:.78em;padding:4px 12px;border-radius:999px;border:1px solid var(--rose);color:var(--rose);text-decoration:none;background:var(--card)}
+section{margin:34px 0}h2{font-family:Gloock,serif;font-weight:400;color:var(--o);font-size:clamp(1.7rem,6vw,2.4rem);line-height:1.05;margin:0 0 12px}
+.card{background:var(--card);border:1.5px solid var(--o);border-radius:18px;padding:16px;margin:10px 0}
+.grid .card:nth-child(even),#incs .card:nth-child(even){border-color:var(--rose)}
+.warn{border-color:var(--rose);background:#fbefe9}.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.met b{display:block;font-family:Gloock,serif;font-weight:400;font-size:2em;color:var(--o)}.met span{color:var(--m);font-size:.84em}
 .tabs,.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}button,select,input{font:inherit}
-.tabs button{border:1px solid var(--b);background:var(--card);color:var(--t);border-radius:8px;padding:6px 10px;cursor:pointer}.tabs button.on{background:var(--a);color:#fff;border-color:var(--a)}
-select,input[type=search]{padding:7px 9px;border:1px solid var(--b);border-radius:8px;background:var(--card);color:var(--t);flex:1;min-width:140px}
-dl{margin:0}dt{font-size:.8em;color:var(--m);margin-top:8px}dd{margin:0}
-.tl{border-left:2px solid var(--b);margin-left:6px;padding-left:14px}.ev{position:relative;margin:0 0 12px}.ev:before{content:"";position:absolute;left:-21px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--a)}
-.ev .d{font-weight:600}.ev .s{font-size:.8em;color:var(--m);word-break:break-word}.tag{font-size:.72em;border:1px solid var(--b);border-radius:6px;padding:0 5px;margin-left:4px}
-.mx{position:relative;width:100%;aspect-ratio:1.3;border:1px solid var(--b);border-radius:10px;background:linear-gradient(to right,transparent 50%,rgba(192,57,43,.06) 50%)}
-.mx .q{position:absolute;font-size:.72em;color:var(--m);padding:6px}.dot{position:absolute;transform:translate(-50%,50%);font-size:.72em;display:flex;align-items:center;gap:4px;max-width:45%}
-.dot i{width:12px;height:12px;border-radius:50%;background:var(--r);flex:none}
+.tabs button{border:1.5px solid var(--rose);background:var(--card);color:var(--rose);border-radius:999px;padding:5px 13px;cursor:pointer;font-size:.85em}.tabs button.on{background:var(--rose);color:#fff}
+select,input[type=search]{padding:8px 12px;border:1.5px solid var(--o);border-radius:999px;background:var(--card);color:var(--t);flex:1;min-width:140px}
+dl{margin:0}dt{font-size:.75em;color:var(--rose);margin-top:9px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}dd{margin:0}
+.tl{border-left:2px dashed var(--o);margin-left:6px;padding-left:16px}.ev{position:relative;margin:0 0 14px}.ev:before{content:"";position:absolute;left:-23px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 3px var(--bg)}
+.ev .d{font-weight:600;color:var(--o)}.ev .s{font-size:.78em;color:var(--m);word-break:break-word}.tag{font-size:.7em;background:var(--rose);color:#fff;border-radius:999px;padding:0 7px;margin-left:6px}
+.mx{position:relative;width:100%;aspect-ratio:1.3;border:1.5px solid var(--o);border-radius:16px;background:linear-gradient(to right,transparent 50%,rgba(192,122,122,.09) 50%),linear-gradient(to bottom,rgba(126,154,85,.05) 50%,transparent 50%)}
+.mx .q{position:absolute;font-size:.72em;color:var(--m);padding:8px}.dot{position:absolute;transform:translate(-50%,50%);font-size:.7em;display:flex;align-items:center;gap:4px;max-width:46%}
+.dot i{width:12px;height:12px;border-radius:50%;background:var(--rose);flex:none}
 .ax{font-size:.75em;color:var(--m);display:flex;justify-content:space-between}
-.chk label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--b);cursor:pointer}.chk input{width:20px;height:20px;flex:none;margin-top:2px}
-.chk .ok span{text-decoration:line-through;color:var(--m)}.meta{font-size:.75em;color:var(--m);display:block}
-table{width:100%;border-collapse:collapse;font-size:.88em}td{border-bottom:1px solid var(--b);padding:7px 4px;vertical-align:top}td:first-child{font-family:ui-monospace,Menlo,monospace;font-size:.85em;word-break:break-all;width:45%}
-a{color:var(--a)}.btn{display:inline-block;margin:4px 6px 0 0;padding:8px 12px;border-radius:8px;background:var(--a);color:#fff;text-decoration:none;font-size:.9em}
+.chk label{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--b);cursor:pointer}.chk input{width:20px;height:20px;flex:none;margin-top:2px;accent-color:var(--o)}
+.chk .ok span{text-decoration:line-through;color:var(--m)}.meta{font-size:.72em;color:var(--rose);display:block}
+table{width:100%;border-collapse:collapse;font-size:.85em}td{border-bottom:1px solid var(--b);padding:8px 4px;vertical-align:top}td:first-child{font-family:ui-monospace,Menlo,monospace;font-size:.8em;word-break:break-all;width:45%;color:var(--o)}
+a{color:var(--rose)}.btn{display:inline-block;margin:6px 6px 0 0;padding:8px 16px;border-radius:999px;background:var(--o);color:#fff;text-decoration:none;font-size:.86em}.btn:nth-of-type(2),.btn:nth-of-type(3){background:var(--rose)}
 small{color:var(--m)}
-</style></head><body>
-<header><h1>Auditoría del caso Servicio Javier Meza</h1><p>Servicio Javier Meza, S.A. de C.V. · Revisión del 21 de octubre de 2026 · Basada en los documentos del expediente compartido</p></header>
+@media(max-width:600px){.deco.hide-m{display:none}}
+</style></head><body><svg width="0" height="0" style="position:absolute"><defs>
+<radialGradient id="pk" cx=".3" cy=".3"><stop offset="0" stop-color="#fff2f4"/><stop offset=".55" stop-color="#f4b6c2"/><stop offset="1" stop-color="#e58aa0"/></radialGradient>
+<radialGradient id="pe" cx=".5" cy=".5"><stop offset="0" stop-color="#f6c9a8" stop-opacity=".75"/><stop offset=".6" stop-color="#f3d6c0" stop-opacity=".45"/><stop offset="1" stop-color="#fdfcf3" stop-opacity="0"/></radialGradient>
+<filter id="wc"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="3" seed="4"/><feDisplacementMap in="SourceGraphic" scale="7"/><feGaussianBlur stdDeviation=".6"/></filter>
+<filter id="bl"><feGaussianBlur stdDeviation="18"/></filter>
+<g id="lily" filter="url(#wc)"><g fill="url(#pk)" opacity=".92">
+<path d="M100 100 C80 60 70 25 92 5 C108 28 112 65 100 100Z"/><path d="M100 100 C140 80 175 78 195 95 C170 115 135 115 100 100Z"/>
+<path d="M100 100 C130 130 140 165 125 190 C105 170 95 135 100 100Z"/><path d="M100 100 C70 130 40 145 10 135 C25 110 60 100 100 100Z"/>
+<path d="M100 100 C60 85 30 60 22 30 C55 38 85 65 100 100Z"/><path d="M100 100 C135 70 160 40 185 35 C178 65 145 90 100 100Z"/></g>
+<g stroke="#a8455a" stroke-width="1.2" opacity=".7" fill="none"><path d="M100 100 L120 70"/><path d="M100 100 L80 72"/><path d="M100 100 L128 92"/></g>
+<g fill="#b5543a"><circle cx="120" cy="70" r="3"/><circle cx="80" cy="72" r="3"/><circle cx="128" cy="92" r="3"/></g></g>
+<g id="bf" filter="url(#wc)" fill="url(#pk)" opacity=".85"><path d="M50 50 C30 20 5 25 8 45 C10 60 35 60 50 50Z"/><path d="M50 50 C70 20 95 25 92 45 C90 60 65 60 50 50Z"/><path d="M50 52 C35 65 22 85 35 90 C45 92 50 70 50 52Z"/><path d="M50 52 C65 65 78 85 65 90 C55 92 50 70 50 52Z"/><path d="M50 40 L50 70" stroke="#8a5a5a" stroke-width="2"/></g>
+<g id="stem" filter="url(#wc)"><path d="M60 0 C55 80 40 160 50 260" stroke="#8aa66a" stroke-width="3" fill="none"/><g fill="#a9bf8a" opacity=".85"><path d="M52 120 C20 110 10 90 12 80 C35 85 48 100 52 120Z"/><path d="M48 190 C80 175 92 160 95 150 C70 152 52 170 48 190Z"/></g>
+<g fill="url(#pk)"><ellipse cx="60" cy="10" rx="9" ry="16"/><ellipse cx="30" cy="60" rx="7" ry="12" transform="rotate(-30 30 60)"/><ellipse cx="85" cy="55" rx="7" ry="12" transform="rotate(30 85 55)"/></g></g>
+</defs></svg><div class="top"><span class="brand">Servicio Javier Meza</span><a class="l" href="#asuntos">Asuntos</a><a class="l" href="#tiempo">Línea de tiempo</a><a class="l" href="#acciones">Acciones</a></div>
+<header class="hero">
+<svg class="deco" style="right:-60px;top:40px;width:380px;height:380px" viewBox="0 0 400 400"><circle cx="200" cy="200" r="170" fill="url(#pe)" filter="url(#bl)"/></svg>
+<svg class="deco" style="left:-30px;top:-10px;width:clamp(130px,30vw,260px)" viewBox="0 0 200 200"><use href="#lily"/></svg>
+<svg class="deco hide-m" style="right:4%;top:10px;width:170px;transform:rotate(25deg)" viewBox="0 0 200 200"><use href="#lily"/></svg>
+<svg class="deco" style="right:12%;top:20px;width:clamp(36px,8vw,60px)" viewBox="0 0 100 100"><use href="#bf"/></svg>
+<svg class="deco hide-m" style="left:8%;bottom:10px;width:46px;transform:rotate(-20deg)" viewBox="0 0 100 100"><use href="#bf"/></svg>
+<svg class="deco" style="right:2%;bottom:-40px;width:clamp(60px,12vw,110px);opacity:.85" viewBox="0 0 120 260"><use href="#stem"/></svg>
+<span class="pill">Auditoría del caso</span>
+<h1>Servicio Javier Meza</h1>
+<p>Servicio Javier Meza, S.A. de C.V. · Revisión del 21 de octubre de 2026 · Basada en los documentos del expediente compartido</p>
+</header>
 <main>
 <nav><a href="#resumen">Resumen</a><a href="#asuntos">Asuntos</a><a href="#tiempo">Línea de tiempo</a><a href="#colegiado">Colegiado</a><a href="#riesgos">Riesgos</a><a href="#inc">Inconsistencias</a><a href="#acciones">Acciones</a><a href="#docs">Documentos</a></nav>
 
@@ -69,7 +103,7 @@ Presidenta: Mag. Verónica Judith Sánchez Valle<br>
 <section id="acciones"><h2>Acciones recomendadas</h2><div class="card chk" id="chk"></div><small id="prog"></small> · <a href="#" id="rst">Reiniciar</a><br><small>Lo que marques se guarda solo en este dispositivo.</small></section>
 
 <section id="docs"><h2>Índice de documentos</h2><input type="search" id="q" placeholder="Buscar archivo o tema (p. ej. suspensión)"><div class="card"><table id="dt"></table></div></section>
-<p><small>Elaborado con OCR de documentos escaneados; puede haber errores menores de lectura. No es asesoría legal: valida con tus abogados.</small></p>
+<svg class="deco hide-m" style="position:fixed;left:-20px;bottom:-30px;width:120px;opacity:.5" viewBox="0 0 120 260"><use href="#stem"/></svg><p><small>Elaborado con OCR de documentos escaneados; puede haber errores menores de lectura. No es asesoría legal: valida con tus abogados.</small></p>
 </main>
 <script>
 const MAT={A:"A · 1465/20 + A.D. 239/2024",B:"B · 1212/25-11-01-6",C:"C · 4718/23 + D.A. 385/2024",D:"D · Amparo 1183/2021",E:"E · 2072/20-08-01-6"};
