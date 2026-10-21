@@ -2,24 +2,24 @@
 <title>Auditoría del caso Servicio Javier Meza</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Gloock&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FDFCF3;--card:#FFFEF8;--t:#3a3a2e;--m:#7a7766;--b:#d9d3bf;--o:#7E9A55;--a:#7E9A55;--rose:#C07A7A;--r:#C07A7A;--y:#d9a441;--n:#a39f8c}
+:root{--bg:#F4EFE8;--card:#FBF8F3;--t:#3a3a2e;--m:#7a7766;--b:#d9d3bf;--o:#6F7F45;--a:#6F7F45;--rose:#B9767A;--r:#C9878A;--y:#d9a441;--n:#a39f8c}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:14.5px/1.6 Poppins,system-ui,sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden}
 .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 14px;padding:16px 18px;position:relative;z-index:3}
 .brand{color:var(--rose);font-size:1.1em;font-weight:500}.top a.l{color:var(--t);text-decoration:none;font-size:.8em}
-.hero{position:relative;text-align:center;padding:30px 16px 46px;overflow:hidden}
+.hero{position:relative;text-align:center;padding:92vw 16px 34px;overflow:hidden;background:linear-gradient(to bottom,rgba(244,239,232,0) 0,rgba(244,239,232,0) 55vw,rgba(244,239,232,.8) 85vw,#F4EFE8 104vw),url(hero.jpg) center top/100% auto no-repeat,#F4EFE8}@media(min-width:760px){.hero{background:linear-gradient(to right,#F4EFE8 0%,rgba(244,239,232,.92) 42%,rgba(244,239,232,.2) 70%,rgba(244,239,232,0) 100%),url(hero.jpg) right center/58% auto no-repeat,#F4EFE8;text-align:left;padding:90px 6% 80px;min-height:520px}.hero h1,.hero p{margin-left:0!important;max-width:560px!important}}
 .hero .pill{position:relative;z-index:2}
-.hero h1{font-family:Gloock,"Abril Fatface",serif;font-weight:400;color:var(--o);font-size:clamp(2.4rem,10vw,5.2rem);line-height:.95;margin:14px auto 14px;max-width:900px;position:relative;z-index:2}
+.hero h1{text-shadow:0 1px 12px rgba(244,239,232,.9);font-family:Gloock,"Abril Fatface",serif;font-weight:400;color:var(--o);font-size:clamp(2.4rem,10vw,5.2rem);line-height:.95;margin:14px auto 14px;max-width:900px;position:relative;z-index:2}
 .hero p{max-width:520px;margin:0 auto;font-size:.9em;position:relative;z-index:2}
 .deco{position:absolute;pointer-events:none;z-index:1}
 .pill,.badge{display:inline-block;background:var(--rose);color:#fff;border-radius:999px;padding:6px 20px;font-size:.95em}
 .badge{padding:2px 11px;font-size:.72em;font-weight:500}.badge.risk{background:var(--rose)}.badge.pend{background:var(--y)}.badge.done{background:var(--n)}
 main{max-width:920px;margin:auto;padding:0 14px 40px;position:relative;z-index:2}
-nav{position:sticky;top:0;z-index:5;background:rgba(253,252,243,.94);backdrop-filter:blur(6px);display:flex;flex-wrap:wrap;gap:6px;padding:10px 0}
+nav{position:sticky;top:0;z-index:5;background:rgba(244,239,232,.94);backdrop-filter:blur(6px);display:flex;flex-wrap:wrap;gap:6px;padding:10px 0}
 nav a{font-size:.78em;padding:4px 12px;border-radius:999px;border:1px solid var(--rose);color:var(--rose);text-decoration:none;background:var(--card)}
 section{margin:34px 0}h2{font-family:Gloock,serif;font-weight:400;color:var(--o);font-size:clamp(1.7rem,6vw,2.4rem);line-height:1.05;margin:0 0 12px}
 .card{background:var(--card);border:1.5px solid var(--o);border-radius:18px;padding:16px;margin:10px 0}
 .grid .card:nth-child(even),#incs .card:nth-child(even){border-color:var(--rose)}
-.warn{border-color:var(--rose);background:#fbefe9}.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.warn{border-color:var(--rose);background:#f6e6e3}.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
 .met b{display:block;font-family:Gloock,serif;font-weight:400;font-size:2em;color:var(--o)}.met span{color:var(--m);font-size:.84em}
 .tabs,.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}button,select,input{font:inherit}
 .tabs button{border:1.5px solid var(--rose);background:var(--card);color:var(--rose);border-radius:999px;padding:5px 13px;cursor:pointer;font-size:.85em}.tabs button.on{background:var(--rose);color:#fff}
@@ -53,12 +53,7 @@ small{color:var(--m)}
 <g fill="url(#pk)"><ellipse cx="60" cy="10" rx="9" ry="16"/><ellipse cx="30" cy="60" rx="7" ry="12" transform="rotate(-30 30 60)"/><ellipse cx="85" cy="55" rx="7" ry="12" transform="rotate(30 85 55)"/></g></g>
 </defs></svg><div class="top"><span class="brand">Servicio Javier Meza</span><a class="l" href="#asuntos">Asuntos</a><a class="l" href="#tiempo">Línea de tiempo</a><a class="l" href="#acciones">Acciones</a></div>
 <header class="hero">
-<svg class="deco" style="right:-60px;top:40px;width:380px;height:380px" viewBox="0 0 400 400"><circle cx="200" cy="200" r="170" fill="url(#pe)" filter="url(#bl)"/></svg>
-<svg class="deco" style="left:-30px;top:-10px;width:clamp(130px,30vw,260px)" viewBox="0 0 200 200"><use href="#lily"/></svg>
-<svg class="deco hide-m" style="right:4%;top:10px;width:170px;transform:rotate(25deg)" viewBox="0 0 200 200"><use href="#lily"/></svg>
-<svg class="deco" style="right:12%;top:20px;width:clamp(36px,8vw,60px)" viewBox="0 0 100 100"><use href="#bf"/></svg>
-<svg class="deco hide-m" style="left:8%;bottom:10px;width:46px;transform:rotate(-20deg)" viewBox="0 0 100 100"><use href="#bf"/></svg>
-<svg class="deco" style="right:2%;bottom:-40px;width:clamp(60px,12vw,110px);opacity:.85" viewBox="0 0 120 260"><use href="#stem"/></svg>
+<svg class="deco" style="right:8%;top:18px;width:clamp(34px,8vw,56px);z-index:2" viewBox="0 0 100 100"><use href="#bf"/></svg>
 <span class="pill">Auditoría del caso</span>
 <h1>Servicio Javier Meza</h1>
 <p>Servicio Javier Meza, S.A. de C.V. · Revisión del 21 de octubre de 2026 · Basada en los documentos del expediente compartido</p>
