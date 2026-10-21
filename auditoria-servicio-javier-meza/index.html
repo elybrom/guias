@@ -1,106 +1,113 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#F4EFE8">
 <title>Auditoría del caso Servicio Javier Meza</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Gloock&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Gloock&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F4EFE8;--card:#FBF8F3;--t:#3a3a2e;--m:#7a7766;--b:#d9d3bf;--o:#6F7F45;--a:#6F7F45;--rose:#B9767A;--r:#C9878A;--y:#d9a441;--n:#a39f8c}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:14.5px/1.6 Poppins,system-ui,sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden}
-.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 14px;padding:16px 18px;position:relative;z-index:3}
-.brand{color:var(--rose);font-size:1.1em;font-weight:500}.top a.l{color:var(--t);text-decoration:none;font-size:.8em}
-.hero{position:relative;text-align:center;padding:92vw 16px 34px;overflow:hidden;background:linear-gradient(to bottom,rgba(244,239,232,0) 0,rgba(244,239,232,0) 55vw,rgba(244,239,232,.8) 85vw,#F4EFE8 104vw),url(hero.jpg) center top/100% auto no-repeat,#F4EFE8}@media(min-width:760px){.hero{background:linear-gradient(to right,#F4EFE8 0%,rgba(244,239,232,.92) 42%,rgba(244,239,232,.2) 70%,rgba(244,239,232,0) 100%),url(hero.jpg) right center/58% auto no-repeat,#F4EFE8;text-align:left;padding:90px 6% 80px;min-height:520px}.hero h1,.hero p{margin-left:0!important;max-width:560px!important}}
-.hero .pill{position:relative;z-index:2}
-.hero h1{text-shadow:0 1px 12px rgba(244,239,232,.9);font-family:Gloock,"Abril Fatface",serif;font-weight:400;color:var(--o);font-size:clamp(2.4rem,10vw,5.2rem);line-height:.95;margin:14px auto 14px;max-width:900px;position:relative;z-index:2}
-.hero p{max-width:520px;margin:0 auto;font-size:.9em;position:relative;z-index:2}
-.deco{position:absolute;pointer-events:none;z-index:1}
-.pill,.badge{display:inline-block;background:var(--rose);color:#fff;border-radius:999px;padding:6px 20px;font-size:.95em}
-.badge{padding:2px 11px;font-size:.72em;font-weight:500}.badge.risk{background:var(--rose)}.badge.pend{background:var(--y)}.badge.done{background:var(--n)}
-main{max-width:920px;margin:auto;padding:0 14px 40px;position:relative;z-index:2}
-nav{position:sticky;top:0;z-index:5;background:rgba(244,239,232,.94);backdrop-filter:blur(6px);display:flex;flex-wrap:wrap;gap:6px;padding:10px 0}
-nav a{font-size:.78em;padding:4px 12px;border-radius:999px;border:1px solid var(--rose);color:var(--rose);text-decoration:none;background:var(--card)}
-section{margin:34px 0}h2{font-family:Gloock,serif;font-weight:400;color:var(--o);font-size:clamp(1.7rem,6vw,2.4rem);line-height:1.05;margin:0 0 12px}
-.card{background:var(--card);border:1.5px solid var(--o);border-radius:18px;padding:16px;margin:10px 0}
-.grid .card:nth-child(even),#incs .card:nth-child(even){border-color:var(--rose)}
-.warn{border-color:var(--rose);background:#f6e6e3}.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
-.met b{display:block;font-family:Gloock,serif;font-weight:400;font-size:2em;color:var(--o)}.met span{color:var(--m);font-size:.84em}
-.tabs,.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}button,select,input{font:inherit}
-.tabs button{border:1.5px solid var(--rose);background:var(--card);color:var(--rose);border-radius:999px;padding:5px 13px;cursor:pointer;font-size:.85em}.tabs button.on{background:var(--rose);color:#fff}
-select,input[type=search]{padding:8px 12px;border:1.5px solid var(--o);border-radius:999px;background:var(--card);color:var(--t);flex:1;min-width:140px}
-dl{margin:0}dt{font-size:.75em;color:var(--rose);margin-top:9px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}dd{margin:0}
-.tl{border-left:2px dashed var(--o);margin-left:6px;padding-left:16px}.ev{position:relative;margin:0 0 14px}.ev:before{content:"";position:absolute;left:-23px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 3px var(--bg)}
-.ev .d{font-weight:600;color:var(--o)}.ev .s{font-size:.78em;color:var(--m);word-break:break-word}.tag{font-size:.7em;background:var(--rose);color:#fff;border-radius:999px;padding:0 7px;margin-left:6px}
-.mx{position:relative;width:100%;aspect-ratio:1.3;border:1.5px solid var(--o);border-radius:16px;background:linear-gradient(to right,transparent 50%,rgba(192,122,122,.09) 50%),linear-gradient(to bottom,rgba(126,154,85,.05) 50%,transparent 50%)}
-.mx .q{position:absolute;font-size:.72em;color:var(--m);padding:8px}.dot{position:absolute;transform:translate(-50%,50%);font-size:.7em;display:flex;align-items:center;gap:4px;max-width:46%}
-.dot i{width:12px;height:12px;border-radius:50%;background:var(--rose);flex:none}
-.ax{font-size:.75em;color:var(--m);display:flex;justify-content:space-between}
-.chk label{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--b);cursor:pointer}.chk input{width:20px;height:20px;flex:none;margin-top:2px;accent-color:var(--o)}
-.chk .ok span{text-decoration:line-through;color:var(--m)}.meta{font-size:.72em;color:var(--rose);display:block}
-table{width:100%;border-collapse:collapse;font-size:.85em}td{border-bottom:1px solid var(--b);padding:8px 4px;vertical-align:top}td:first-child{font-family:ui-monospace,Menlo,monospace;font-size:.8em;word-break:break-all;width:45%;color:var(--o)}
-a{color:var(--rose)}.btn{display:inline-block;margin:6px 6px 0 0;padding:8px 16px;border-radius:999px;background:var(--o);color:#fff;text-decoration:none;font-size:.86em}.btn:nth-of-type(2),.btn:nth-of-type(3){background:var(--rose)}
-small{color:var(--m)}
-@media(max-width:600px){.deco.hide-m{display:none}}
-</style></head><body><svg width="0" height="0" style="position:absolute"><defs>
-<radialGradient id="pk" cx=".3" cy=".3"><stop offset="0" stop-color="#fff2f4"/><stop offset=".55" stop-color="#f4b6c2"/><stop offset="1" stop-color="#e58aa0"/></radialGradient>
-<radialGradient id="pe" cx=".5" cy=".5"><stop offset="0" stop-color="#f6c9a8" stop-opacity=".75"/><stop offset=".6" stop-color="#f3d6c0" stop-opacity=".45"/><stop offset="1" stop-color="#fdfcf3" stop-opacity="0"/></radialGradient>
-<filter id="wc"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="3" seed="4"/><feDisplacementMap in="SourceGraphic" scale="7"/><feGaussianBlur stdDeviation=".6"/></filter>
-<filter id="bl"><feGaussianBlur stdDeviation="18"/></filter>
-<g id="lily" filter="url(#wc)"><g fill="url(#pk)" opacity=".92">
-<path d="M100 100 C80 60 70 25 92 5 C108 28 112 65 100 100Z"/><path d="M100 100 C140 80 175 78 195 95 C170 115 135 115 100 100Z"/>
-<path d="M100 100 C130 130 140 165 125 190 C105 170 95 135 100 100Z"/><path d="M100 100 C70 130 40 145 10 135 C25 110 60 100 100 100Z"/>
-<path d="M100 100 C60 85 30 60 22 30 C55 38 85 65 100 100Z"/><path d="M100 100 C135 70 160 40 185 35 C178 65 145 90 100 100Z"/></g>
-<g stroke="#a8455a" stroke-width="1.2" opacity=".7" fill="none"><path d="M100 100 L120 70"/><path d="M100 100 L80 72"/><path d="M100 100 L128 92"/></g>
-<g fill="#b5543a"><circle cx="120" cy="70" r="3"/><circle cx="80" cy="72" r="3"/><circle cx="128" cy="92" r="3"/></g></g>
-<g id="bf" filter="url(#wc)" fill="url(#pk)" opacity=".85"><path d="M50 50 C30 20 5 25 8 45 C10 60 35 60 50 50Z"/><path d="M50 50 C70 20 95 25 92 45 C90 60 65 60 50 50Z"/><path d="M50 52 C35 65 22 85 35 90 C45 92 50 70 50 52Z"/><path d="M50 52 C65 65 78 85 65 90 C55 92 50 70 50 52Z"/><path d="M50 40 L50 70" stroke="#8a5a5a" stroke-width="2"/></g>
-<g id="stem" filter="url(#wc)"><path d="M60 0 C55 80 40 160 50 260" stroke="#8aa66a" stroke-width="3" fill="none"/><g fill="#a9bf8a" opacity=".85"><path d="M52 120 C20 110 10 90 12 80 C35 85 48 100 52 120Z"/><path d="M48 190 C80 175 92 160 95 150 C70 152 52 170 48 190Z"/></g>
-<g fill="url(#pk)"><ellipse cx="60" cy="10" rx="9" ry="16"/><ellipse cx="30" cy="60" rx="7" ry="12" transform="rotate(-30 30 60)"/><ellipse cx="85" cy="55" rx="7" ry="12" transform="rotate(30 85 55)"/></g></g>
-</defs></svg><div class="top"><span class="brand">Servicio Javier Meza</span><a class="l" href="#asuntos">Asuntos</a><a class="l" href="#tiempo">Línea de tiempo</a><a class="l" href="#acciones">Acciones</a></div>
-<header class="hero">
-<svg class="deco" style="right:8%;top:18px;width:clamp(34px,8vw,56px);z-index:2" viewBox="0 0 100 100"><use href="#bf"/></svg>
-<span class="pill">Auditoría del caso</span>
-<h1>Servicio Javier Meza</h1>
-<p>Servicio Javier Meza, S.A. de C.V. · Revisión del 21 de octubre de 2026 · Basada en los documentos del expediente compartido</p>
-</header>
+:root{--bg:#F4EFE8;--bg2:#EFE6DC;--glass:rgba(255,252,248,.72);--line:rgba(111,127,69,.28);--t:#2B2326;--m:#5E5256;--rose:#B9767A;--rose2:#C9878A;--leaf:#6F7F45;--warn:#B8860B;--gray:#7a6f72;--sh:0 10px 30px rgba(80,50,50,.10)}
+[data-theme=dark]{--bg:#1d1719;--bg2:#251d20;--glass:rgba(48,38,41,.72);--line:rgba(201,135,138,.3);--t:#F4EFE8;--m:#d2c4c6;--rose:#d4979a;--rose2:#e0a7a9;--leaf:#a9bb7a;--warn:#e2b54a;--gray:#b3a6a8;--sh:0 10px 30px rgba(0,0,0,.35)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{scroll-behavior:smooth}
+body{margin:0;font:18px/1.6 Poppins,system-ui,sans-serif;color:var(--t);background:radial-gradient(1200px 600px at 100% 0,rgba(201,135,138,.18),transparent 60%),radial-gradient(900px 500px at 0 100%,rgba(111,127,69,.14),transparent 60%),var(--bg);min-height:100vh;padding-bottom:96px}
+h1,h2,h3{font-family:Gloock,serif;font-weight:400;line-height:1.1;margin:0}
+h2{font-size:clamp(30px,7vw,40px);color:var(--leaf);margin-bottom:6px}h3{font-size:24px}
+.lead{color:var(--m);margin:0 0 18px}
+header.app{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{font-weight:600;color:var(--rose);font-size:17px}
+.iconbtn{min-width:48px;min-height:48px;border-radius:14px;border:1px solid var(--line);background:var(--glass);color:var(--t);font-size:20px;cursor:pointer}
+.hero{position:relative;border-radius:28px;overflow:hidden;margin:16px;min-height:300px;display:flex;align-items:flex-end;background:url(hero.jpg) center 30%/cover;box-shadow:var(--sh)}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 8%,rgba(244,239,232,.55) 45%,rgba(244,239,232,0) 75%)}
+[data-theme=dark] .hero:after{background:linear-gradient(to top,var(--bg) 8%,rgba(29,23,25,.6) 45%,rgba(29,23,25,0) 75%)}
+.hero .in{position:relative;z-index:1;padding:22px}
+.pill{display:inline-block;background:var(--rose);color:#fff;border-radius:999px;padding:6px 16px;font-size:15px;font-weight:500}
+.hero h1{font-size:clamp(40px,11vw,64px);color:var(--leaf);margin:10px 0 6px}
+.hero p{margin:0;font-size:16px;color:var(--t)}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(6,1fr);background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+nav.tabs a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:58px;border-radius:14px;color:var(--m);text-decoration:none;font-size:15px;font-weight:600;text-align:center;line-height:1.15}
+nav.tabs a .i{font-size:22px}nav.tabs a.on{color:#fff;background:linear-gradient(135deg,var(--rose),var(--rose2))}
+@media(min-width:900px){body{padding-bottom:30px}nav.tabs{position:sticky;top:73px;bottom:auto;max-width:1000px;margin:0 auto;border:1px solid var(--line);border-radius:18px;grid-template-columns:repeat(6,1fr);gap:4px}nav.tabs a{flex-direction:row;font-size:16px;gap:8px}.hero{max-width:1000px;margin:16px auto;min-height:380px}}
+main{max-width:1000px;margin:0 auto;padding:8px 16px 24px}
+.view{display:none}.view.on{display:block;animation:in .45s ease}@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:22px;padding:18px;margin:14px 0;box-shadow:var(--sh)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.kpi .v{font-family:Gloock,serif;font-size:clamp(40px,10vw,52px);line-height:1;color:var(--leaf)}.kpi .l{font-weight:600;margin-top:8px}.kpi .d{color:var(--m);font-size:16px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 14px;font-size:15px;font-weight:600;color:#fff;background:var(--gray)}
+.chip.risk{background:var(--rose)}.chip.pend{background:var(--warn)}.chip.ok{background:var(--leaf)}
+.alert{border:2px solid var(--rose);background:linear-gradient(135deg,rgba(201,135,138,.2),var(--glass))}
+.alert b{color:var(--rose)}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;border-radius:16px;background:linear-gradient(135deg,var(--leaf),#869a58);color:#fff;text-decoration:none;font-weight:600;font-size:17px;border:0;cursor:pointer;padding:0 14px;transition:transform .15s}
+.btn.r{background:linear-gradient(135deg,var(--rose),var(--rose2))}.btn.g{background:var(--glass);color:var(--t);border:1px solid var(--line)}.btn:active{transform:scale(.97)}
+.ringwrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.ring{--p:0;width:130px;height:130px;border-radius:50%;background:conic-gradient(var(--leaf) calc(var(--p)*1%),var(--rose2) 0);display:grid;place-items:center;flex:none;transition:--p 1s}
+.ring div{width:96px;height:96px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-family:Gloock,serif;font-size:30px}
+.legend span{display:flex;align-items:center;gap:8px}.legend i{width:16px;height:16px;border-radius:5px;display:inline-block}
+.acc{border:1px solid var(--line);border-radius:22px;background:var(--glass);margin:12px 0;overflow:hidden;box-shadow:var(--sh)}
+.acc button.h{all:unset;box-sizing:border-box;display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;padding:18px;cursor:pointer;min-height:64px}
+.acc .h .t{font-family:Gloock,serif;font-size:24px;line-height:1.2}.acc .h .arr{font-size:22px;transition:transform .3s}.acc.open .arr{transform:rotate(180deg)}
+.acc .b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}.acc.open .b{grid-template-rows:1fr}.acc .b>div{overflow:hidden;padding:0 18px}.acc.open .b>div{padding:0 18px 18px}
+dl{margin:0}dt{font-size:15px;font-weight:600;color:var(--rose);margin-top:12px;text-transform:uppercase;letter-spacing:.03em}dd{margin:2px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.fchip{min-height:48px;padding:0 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--glass);color:var(--t);font:inherit;font-size:16px;cursor:pointer}.fchip.on{background:var(--rose);border-color:var(--rose);color:#fff}
+.lbl{font-size:15px;font-weight:600;color:var(--m);margin-top:10px}
+.tl{position:relative;margin:18px 0 0 8px;padding-left:26px}.tl:before{content:"";position:absolute;left:6px;top:0;bottom:0;width:3px;border-radius:3px;background:linear-gradient(var(--rose2),var(--leaf))}
+.ev{position:relative;margin:0 0 14px;opacity:0;transform:translateX(12px);transition:opacity .4s,transform .4s}.ev.vis{opacity:1;transform:none}
+.ev:before{content:"";position:absolute;left:-27px;top:22px;width:16px;height:16px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 4px var(--bg)}
+.ev button{all:unset;box-sizing:border-box;display:block;width:100%;padding:14px 16px;border-radius:18px;background:var(--glass);border:1px solid var(--line);cursor:pointer}
+.ev .d{font-weight:700;color:var(--leaf)}.ev .m{font-size:15px;font-weight:600;background:var(--rose);color:#fff;border-radius:999px;padding:1px 10px;margin-left:8px}
+.ev .src{display:none;margin-top:8px;font-size:16px;color:var(--m);word-break:break-word}.ev.open .src{display:block}
+.mx{position:relative;width:100%;aspect-ratio:1/1;max-height:560px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(to right,transparent 50%,rgba(201,135,138,.14) 50%),linear-gradient(to bottom,rgba(201,135,138,.08) 50%,transparent 50%),var(--glass);overflow:hidden}
+.mx .q{position:absolute;font-size:15px;font-weight:600;color:var(--m);padding:10px}
+.mx .ln{position:absolute;background:var(--line)}
+.dotb{position:absolute;transform:translate(-50%,50%);width:48px;height:48px;border-radius:50%;border:0;background:radial-gradient(circle,var(--rose) 40%,rgba(185,118,122,.25) 41%);cursor:pointer;color:#fff;font-weight:700;font-size:17px;animation:pulse 2.4s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(185,118,122,0)}0%{box-shadow:0 0 0 0 rgba(185,118,122,.45)}}
+.ax{display:flex;justify-content:space-between;font-size:15px;color:var(--m);margin-top:6px}
+.rlist button{all:unset;box-sizing:border-box;display:flex;gap:12px;align-items:center;width:100%;min-height:56px;padding:10px 14px;border-radius:16px;cursor:pointer;border:1px solid var(--line);margin:8px 0;background:var(--glass)}
+.num{width:34px;height:34px;border-radius:50%;background:var(--rose);color:#fff;display:grid;place-items:center;font-weight:700;flex:none}
+.prog{height:16px;border-radius:999px;background:var(--bg2);overflow:hidden;border:1px solid var(--line)}.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose2),var(--leaf));transition:width .5s}
+.task{display:flex;gap:14px;align-items:center;min-height:64px;padding:12px 14px;border-radius:18px;border:1px solid var(--line);background:var(--glass);margin:10px 0;cursor:pointer}
+.task input{appearance:none;width:30px;height:30px;border-radius:9px;border:2px solid var(--leaf);flex:none;display:grid;place-items:center;cursor:pointer;margin:0}
+.task input:checked{background:var(--leaf)}.task input:checked:after{content:"✓";color:#fff;font-weight:700}
+.task.done .tx{text-decoration:line-through;color:var(--m)}.task .w{display:block;font-size:15px;font-weight:600;color:var(--rose)}
+input[type=search]{width:100%;min-height:56px;padding:0 18px;border-radius:16px;border:1.5px solid var(--line);background:var(--glass);color:var(--t);font:inherit}
+.doc{padding:14px 16px;border-radius:18px;border:1px solid var(--line);background:var(--glass);margin:10px 0}.doc .f{font-family:ui-monospace,Menlo,monospace;font-size:15px;color:var(--leaf);word-break:break-all}
+.sheetbg{position:fixed;inset:0;background:rgba(30,20,22,.45);z-index:50;opacity:0;pointer-events:none;transition:opacity .3s}.sheetbg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:51;background:var(--bg);border-radius:26px 26px 0 0;padding:14px 20px calc(24px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .35s ease;max-height:80vh;overflow:auto;box-shadow:0 -10px 40px rgba(0,0,0,.2);max-width:700px;margin:0 auto}
+.sheet.on{transform:none}.grab{width:48px;height:6px;border-radius:3px;background:var(--line);margin:0 auto 14px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.inc h3{color:var(--rose);font-size:22px;margin-bottom:6px}
+.note{font-size:16px;color:var(--m)}
+a{color:var(--rose)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.ev{opacity:1;transform:none}}
+</style></head><body>
+<header class="app"><span class="brand">Servicio Javier Meza</span><button class="iconbtn" id="theme" aria-label="Cambiar modo claro u oscuro">🌙</button></header>
+<section class="hero"><div class="in"><span class="pill">Auditoría del caso</span><h1>Servicio Javier Meza</h1><p>S.A. de C.V. · Revisión del 21 de octubre de 2026</p></div></section>
+<nav class="tabs" id="tabs">
+<a href="#resumen" data-v="resumen"><span class="i">◉</span>Inicio</a><a href="#asuntos" data-v="asuntos"><span class="i">▤</span>Asuntos</a><a href="#tiempo" data-v="tiempo"><span class="i">↧</span>Tiempo</a><a href="#riesgos" data-v="riesgos"><span class="i">◈</span>Riesgos</a><a href="#pendientes" data-v="pendientes"><span class="i">✓</span>Tareas</a><a href="#documentos" data-v="documentos"><span class="i">▢</span>Docs</a></nav>
 <main>
-<nav><a href="#resumen">Resumen</a><a href="#asuntos">Asuntos</a><a href="#tiempo">Línea de tiempo</a><a href="#colegiado">Colegiado</a><a href="#riesgos">Riesgos</a><a href="#inc">Inconsistencias</a><a href="#acciones">Acciones</a><a href="#docs">Documentos</a></nav>
-
-<section id="resumen"><h2>Resumen ejecutivo</h2>
-<div class="grid">
-<div class="card met"><b>$135.4 M</b><span>Crédito 2014 (1465/20): validez reconocida, en amparo</span> <span class="badge risk">Riesgo alto</span></div>
-<div class="card met"><b>$8.65 M</b><span>Crédito 2008 (1212/25): suspensión definitiva condicionada</span> <span class="badge pend">Activo</span></div>
-<div class="card met"><b>2 de 5</b><span>Asuntos activos (A y B); C concluido; D y E sin dato</span></div>
-<div class="card met"><b>1</b><span>Amparo pendiente: A.D. 239/2024, Cuarto TCC</span> <span class="badge done">Desconocido</span></div>
+<section class="view" id="v-resumen"><h2>Resumen</h2><p class="lead">Se perdió el juicio principal y su amparo no tiene resolución en los documentos. El crédito de 2008 está suspendido solo mientras el SAT resuelva sobre la garantía.</p>
+<div class="kpis">
+<div class="card kpi"><div class="v" data-c="135.4" data-p="$" data-s=" M">$0</div><div class="l">Crédito 2014 · juicio 1465/20</div><div class="d">Validez reconocida; en amparo</div><span class="chip risk">Riesgo alto</span></div>
+<div class="card kpi"><div class="v" data-c="8.65" data-p="$" data-s=" M" data-d="2">$0</div><div class="l">Crédito 2008 · juicio 1212/25</div><div class="d">Suspensión definitiva condicionada</div><span class="chip pend">Activo</span></div>
+<div class="card kpi"><div class="v" data-c="1">0</div><div class="l">Amparo pendiente</div><div class="d">A.D. 239/2024, Cuarto TCC</div><span class="chip">Desconocido</span></div>
 </div>
-<div class="card warn"><b>Seguridad:</b> el zip original del expediente en Google Drive estaba compartido como "cualquiera con el enlace, editor" y contiene la e.firma de la empresa, identificaciones, actas y declaraciones. Conviene restringir el acceso y valorar con el SAT la revocación de la e.firma.</div>
+<div class="card"><h3>Estado de los 5 asuntos</h3><div class="ringwrap" style="margin-top:12px"><div class="ring" id="ring"><div>5</div></div><div class="legend"><span><i style="background:var(--leaf)"></i>Activos: A y B (2)</span><span><i style="background:var(--rose2)"></i>Concluido o sin dato: C, D y E (3)</span></div></div></div>
+<div class="card alert"><b>Seguridad.</b> El zip original del expediente en Google Drive estaba compartido como "cualquiera con el enlace, editor" y contiene la e.firma de la empresa, identificaciones, actas y declaraciones. Conviene restringir el acceso y valorar con el SAT la revocación de la e.firma.</div>
+<div class="card"><h3>Tribunal Colegiado del amparo</h3><p style="margin:8px 0 0"><b>Cuarto Tribunal Colegiado en Materia Administrativa del Segundo Circuito</b> (Naucalpan) · A.D. 239/2024</p><p style="margin:6px 0">Av. 16 de Septiembre No. 784, Fracc. Industrial Alce Blanco, Naucalpan de Juárez, Edo. Méx., C.P. 53370 · Presidenta: Mag. Verónica Judith Sánchez Valle</p>
+<div class="actions"><a class="btn r" href="tel:+525553870509">📞 Llamar al Colegiado</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Av+16+de+Septiembre+784+Alce+Blanco+Naucalpan+53370" target="_blank" rel="noopener">📍 Ver mapa</a><a class="btn g" href="tel:+525553870550">Secretario de acuerdos (ext. 1026)</a><a class="btn g" href="https://www.oaj.gob.mx/Directorios/OJintcirc.aspx?cir=2" target="_blank" rel="noopener">Directorio oficial</a></div>
+<p class="note">Presidencia: 55 5387 0509 ext. 1020 · Secretario de acuerdos: 55 5387 0550 ext. 1026. Horario: no se publica uno propio; la regla general del CJF es de lunes a viernes de 9:00 a 15:00 h, así que conviene confirmar por teléfono. Este edificio no es la Sala del TFJA, que está en Fórum Naucalpan (Av. Primero de Mayo 120, piso 6, Torre 1). Directorio del OAJ actualizado el 22/05/2026.</p></div>
 </section>
-
-<section id="asuntos"><h2>Asuntos</h2><div class="tabs" id="tabs"></div><div class="card" id="tabc"></div></section>
-
-<section id="tiempo"><h2>Línea de tiempo</h2>
-<div class="filters"><select id="fm"><option value="">Todos los asuntos</option></select><select id="fy"><option value="">Todos los años</option></select></div>
-<small id="cnt"></small><div class="card"><div class="tl" id="tl"></div></div></section>
-
-<section id="colegiado"><h2>Tribunal Colegiado del amparo (A.D. 239/2024)</h2><div class="card">
-<b>Cuarto Tribunal Colegiado en Materia Administrativa del Segundo Circuito</b> (Naucalpan)<br>
-Quejosa: Servicio Javier Meza · contra la sentencia del 26/03/2024 del juicio 1465/20<br><br>
-Av. 16 de Septiembre No. 784, Fracc. Industrial Alce Blanco, Naucalpan de Juárez, Edo. Méx., C.P. 53370<br>
-Presidenta: Mag. Verónica Judith Sánchez Valle<br>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Av+16+de+Septiembre+784+Alce+Blanco+Naucalpan+53370" target="_blank" rel="noopener">Abrir en Google Maps</a>
-<a class="btn" href="tel:+525553870509">Presidencia 55 5387 0509 (ext. 1020)</a>
-<a class="btn" href="tel:+525553870550">Secretario de acuerdos 55 5387 0550 (ext. 1026)</a>
-<p><b>Horario:</b> no se publica uno propio. La regla general del CJF es de lunes a viernes de 9:00 a 15:00 h; confirmar por teléfono antes de ir.</p>
-<small>Fuente: <a href="https://www.oaj.gob.mx/Directorios/OJintcirc.aspx?cir=2" target="_blank" rel="noopener">directorio oficial del OAJ</a> (actualizado el 22/05/2026). No es el mismo edificio que la Sala del TFJA, que está en Fórum Naucalpan, Av. Primero de Mayo 120, piso 6, Torre 1.</small></div></section>
-
-<section id="riesgos"><h2>Matriz de riesgos</h2><div class="card">
+<section class="view" id="v-asuntos"><h2>Asuntos</h2><p class="lead">Toca un asunto para ver su detalle.</p><div id="accs"></div>
+<h2 style="margin-top:28px">Inconsistencias</h2><div class="grid2" id="incs"></div></section>
+<section class="view" id="v-tiempo"><h2>Línea de tiempo</h2><p class="lead">Filtra por asunto y año; toca un evento para ver su fuente.</p>
+<div class="lbl">Asunto</div><div class="chips" id="fm"></div><div class="lbl">Año</div><div class="chips" id="fy"></div><p class="note" id="cnt"></p><div class="tl" id="tl"></div></section>
+<section class="view" id="v-riesgos"><h2>Riesgos</h2><p class="lead">Toca un punto para ver el detalle. La ubicación es una valoración cualitativa, no un dato de los documentos.</p>
 <div class="mx" id="mx"><span class="q" style="left:0;top:0">Vigilar</span><span class="q" style="right:0;top:0">Prioridad</span><span class="q" style="left:0;bottom:0">Bajo</span><span class="q" style="right:0;bottom:0">Preparar</span></div>
-<div class="ax"><span>← Menor impacto</span><span>Mayor impacto →</span></div>
-<small>El eje vertical es la probabilidad (más arriba, más probable). La ubicación de cada riesgo es una valoración cualitativa, no un dato de los documentos.</small></div></section>
-
-<section id="inc"><h2>Inconsistencias detectadas</h2><div class="grid" id="incs"></div></section>
-
-<section id="acciones"><h2>Acciones recomendadas</h2><div class="card chk" id="chk"></div><small id="prog"></small> · <a href="#" id="rst">Reiniciar</a><br><small>Lo que marques se guarda solo en este dispositivo.</small></section>
-
-<section id="docs"><h2>Índice de documentos</h2><input type="search" id="q" placeholder="Buscar archivo o tema (p. ej. suspensión)"><div class="card"><table id="dt"></table></div></section>
-<svg class="deco hide-m" style="position:fixed;left:-20px;bottom:-30px;width:120px;opacity:.5" viewBox="0 0 120 260"><use href="#stem"/></svg><p><small>Elaborado con OCR de documentos escaneados; puede haber errores menores de lectura. No es asesoría legal: valida con tus abogados.</small></p>
+<div class="ax"><span>← Menor impacto</span><span>Mayor impacto →</span></div><p class="note">Eje vertical: probabilidad (más arriba, más probable).</p><div class="rlist" id="rlist"></div></section>
+<section class="view" id="v-pendientes"><h2>Pendientes</h2><p class="lead" id="ptxt"></p><div class="prog"><i id="pbar"></i></div><div id="chk"></div><button class="btn g" id="rst" style="width:100%;margin-top:10px">Reiniciar lista</button><p class="note">Lo que marques se guarda solo en este dispositivo.</p></section>
+<section class="view" id="v-documentos"><h2>Documentos</h2><p class="lead">Índice de los archivos del expediente, con lo que contiene cada uno. No se abrió el zip de la e.firma.</p><input type="search" id="q" placeholder="Buscar archivo o tema…"><div class="chips" id="dfil"></div><p class="note" id="dcnt"></p><div id="docs"></div>
+<p class="note">Elaborado con OCR de documentos escaneados; puede haber errores menores de lectura. No es asesoría legal: valida con tus abogados.</p></section>
 </main>
+<div class="sheetbg" id="sbg"></div><div class="sheet" id="sheet" role="dialog" aria-modal="true"><div class="grab"></div><div id="sc"></div><button class="btn g" id="sclose" style="width:100%;margin-top:16px">Cerrar</button></div>
 <script>
+
 const MAT={A:"A · 1465/20 + A.D. 239/2024",B:"B · 1212/25-11-01-6",C:"C · 4718/23 + D.A. 385/2024",D:"D · Amparo 1183/2021",E:"E · 2072/20-08-01-6"};
 const DET={
 A:["risk","Amparo sin resolución conocida",[["Órgano","Segunda Sala Regional en el Estado de México I (antes Norte-Este) → Cuarto TCC Adm. del 2° Circuito"],["Crédito","$135,421,646.65 (ISR, IVA, multas y recargos 2014) + reparto de utilidades de $8,414,777.15"],["Sentencia","26/03/2024: se reconoce la validez"],["Amparo","A.D. 239/2024 · suspensión sin garantía desde el 25/04/2024"],["Pendiente","La sentencia de amparo y la petición del SAT de cancelar la suspensión"]]],
@@ -144,17 +151,45 @@ const RISK=[["Perder el A.D. 239/2024",.92,.6],["Cancelación de la suspensión"
 const INC=[["Qué crédito se discute en el 1465/20","La sentencia y la demanda hablan del oficio 2020-3346 ($135.4 M, 2014); el mandamiento del 20/02/2025 lo vincula con el oficio 2019-9747 (2008)."],["Montos del crédito 2008","$2,581,671.00 en el mandamiento y $8,653,821.00 en la demanda del 1212/25."],["Número del oficio","Aparece como 500-73-07-12-02-2019-9747 y como 500-73-07-15-02-2019-9747, según el documento."],["Representación","Rodrigo presentó la demanda de 2020 y actuó en 2025, aunque sus poderes se revocaron el 09/04/2021 (acta 36,240)."],["Envío del expediente","La Sala omitió mandar al Colegiado el expediente administrativo hasta el 12/08/2024."],["Declaraciones anuales","2020 reporta $92,505,064 de ingresos; 2021 y 2022 están en $0. Las tres se presentaron del 28 al 29/12/2023."]];
 const ACT=[["Restringir el acceso público al zip en Drive","Hoy"],["Valorar con el SAT la revocación y renovación de la e.firma","Hoy"],["Consultar el A.D. 239/2024 en el PJF o por teléfono con el Cuarto TCC","Esta semana"],["Pedir a los abogados lo actuado sobre la cancelación de la suspensión","Esta semana"],["Confirmar con el SAT la respuesta a la garantía La Huerta y si hay embargo vigente","Esta semana"],["Revisar el estado del 1212/25 en el Boletín Jurisdiccional del TFJA","Esta semana"],["Aclarar con los abogados qué crédito se discute en el 1465/20","Próximo"],["Acreditar al representante legal válido y revocar autorizados no deseados","Próximo"],["Revisar con el contador las declaraciones 2021–2022 y las inconsistencias señaladas por el SAT","Próximo"]];
 const DOCS=[["nombreFile.pdf","Sentencia definitiva del 1465/20 (26/03/2024)"],["13771-24_ACUERDO_R11_S02.pdf","Acuerdo del 25/04/2024: amparo directo y suspensión"],["13814-24_ACUERDO_R11_S02.pdf","Acuerdo del 25/04/2024 sobre los alegatos del SAT"],["37668-23 / 6595-24_ACUERDO_R11_S02.pdf","Acuerdos del 1465/20 (2023 y 2024)"],["IMG-20240816-WA0020.jpg","Radicación del A.D. 239/2024 en el Cuarto TCC"],["CamScanner 28-09-2023 13.48.pdf","Demanda del 1465/20"],["CamScanner 28-09-2023 16.59.pdf","Resolución impugnada 2020-3346"],["IMG-20250425-WA0217/0218.jpg","Escritos cruzados de abril de 2025"],["IMG-20250806-WA0056.jpg","Aviso de cambio de sede de la Sala a Fórum Naucalpan"],["88.pdf / CamScanner 06-08-25 12.08.pdf","Admisión del 1212/25"],["CS PDF 2025-09-05 17.46.03.pdf","Contestación del SAT en el 1212/25"],["CS PDF 2025-09-08 16.31.08.pdf","Resolución 2019-9747 (crédito 2008)"],["CS PDF 2025-09-08 17.23.59.pdf","Mandamiento de ejecución y sentencia del D.A. 385/2024"],["escaneo_20250305_172331.pdf","Mandamiento de ejecución del 20/02/2025"],["DOC-20250925-WA0085","Suspensión provisional del 1212/25"],["DOC-20251021-WA0030","Interlocutoria del 08/10/2025"],["DOC-20251128-WA0054","Suspensión definitiva del 24/11/2025"],["AMPLIACION SERVICIO JAVIER MEZA (1).docx","Ampliación de demanda del 1212/25"],["IMG-20251024-WA0086/0088.jpg","Ofrecimiento de la garantía La Huerta"],["IMG-20250910-WA0156…0160.jpg","Sentencia del D.A. 385/2024"],["80877-23 / 198391-23 / 300026-23_ACUERDO_R17_S08.pdf","Juicio 4718/23"],["IMG-20221027-WA0047/48 · IMG-20230119-WA0050","Amparo 1183/2021 y su revisión"],["IMG-20231202-WA0094…97.jpg","Juicio 2072/20"],["SELLOS REVOCADOS SAT.pdf / SJM - OFICIO LIBERACION SELLOS DIGITALES.pdf","Cancelación y liberación de sellos digitales"],["escaneo-1.pdf","Acta 36,240 (09/04/2021): revocación de Rodrigo"],["20230103133026059.pdf","Acta 37,742 (16/11/2022)"],["constitutiva(0).pdf","Escritura constitutiva (07/11/1994)"],["DECLARACION ANUAL 2020–2022","Declaraciones anuales presentadas en diciembre de 2023"]];
-const $=s=>document.querySelector(s),esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-let tab="A";function rTab(){$("#tabs").innerHTML=Object.keys(MAT).map(k=>`<button class="${k==tab?"on":""}" data-k="${k}">${MAT[k]}</button>`).join("");const d=DET[tab];$("#tabc").innerHTML=`<span class="badge ${d[0]}">${d[1]}</span><dl>${d[2].map(p=>`<dt>${p[0]}</dt><dd>${esc(p[1])}</dd>`).join("")}</dl>`;}
-$("#tabs").onclick=e=>{if(e.target.dataset.k){tab=e.target.dataset.k;rTab()}};rTab();
-const yr=d=>d.slice(-4);Object.keys(MAT).forEach(k=>$("#fm").insertAdjacentHTML("beforeend",`<option value="${k}">${MAT[k]}</option>`));[...new Set(EV.map(e=>yr(e[0])))].sort().forEach(y=>$("#fy").insertAdjacentHTML("beforeend",`<option>${y}</option>`));
-function rTl(){const m=$("#fm").value,y=$("#fy").value,l=EV.filter(e=>(!m||e[1]==m)&&(!y||yr(e[0])==y));$("#cnt").textContent=l.length+" eventos";$("#tl").innerHTML=l.map(e=>`<div class="ev"><span class="d">${e[0]}</span><span class="tag">${e[1]}</span><div>${esc(e[2])}</div><div class="s">${esc(e[3])}</div></div>`).join("")}
-$("#fm").onchange=$("#fy").onchange=rTl;rTl();
-$("#mx").insertAdjacentHTML("beforeend",RISK.map(r=>`<span class="dot" style="left:${r[1]*100}%;bottom:${r[2]*100}%"><i></i>${r[0]}</span>`).join(""));
-$("#incs").innerHTML=INC.map(i=>`<div class="card"><b>${i[0]}</b><div>${esc(i[1])}</div></div>`).join("");
+const RD=["La sentencia del 26/03/2024 quedaría firme y el SAT podría cobrar el crédito de $135,421,646.65 (2014).","El SAT pidió en marzo de 2025 cancelar la suspensión del amparo; no hay resultado en los documentos.","La suspensión definitiva del 1212/25 dura solo hasta que el SAT acepte o rechace la garantía. El chat del 12/10/2026 menciona un embargo de la gasolinera.","Rodrigo Jiménez Meza actuó en 2020 y 2025 aunque sus poderes se revocaron el 09/04/2021 (acta 36,240).","Las declaraciones anuales 2021 y 2022 están en $0 y se presentaron en diciembre de 2023; el SAT citó por inconsistencias de 2020 a 2024."];
+const RN=["Alto","Alto","Medio-alto","Medio","Medio"];
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const th=localStorage.getItem("sjm-theme");if(th)document.documentElement.dataset.theme=th;
+$("#theme").onclick=()=>{const d=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=d;localStorage.setItem("sjm-theme",d);$("#theme").textContent=d==="dark"?"☀️":"🌙"};
+if(th==="dark")$("#theme").textContent="☀️";
+function count(){document.querySelectorAll("[data-c]").forEach(el=>{const t=+el.dataset.c,dp=+(el.dataset.d||(t%1?1:0)),p=el.dataset.p||"",s=el.dataset.s||"";if(RM){el.textContent=p+t.toFixed(dp)+s;return}let st=null;const f=ts=>{st=st||ts;const k=Math.min(1,(ts-st)/1100),e=1-Math.pow(1-k,3);el.textContent=p+(t*e).toFixed(dp)+s;if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)});const r=$("#ring");let v=0;const g=()=>{v=Math.min(40,v+(RM?40:1.5));r.style.setProperty("--p",v);if(v<40)requestAnimationFrame(g)};g()}
+function show(id){if(!document.getElementById("v-"+id))id="resumen";document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+id));document.querySelectorAll("#tabs a").forEach(a=>a.classList.toggle("on",a.dataset.v===id));if(id==="resumen")count();if(id==="tiempo")anim();window.scrollTo({top:id==="resumen"?0:document.querySelector("main").offsetTop-80,behavior:RM?"auto":"smooth"})}
+addEventListener("hashchange",()=>show(location.hash.slice(1)));
+// asuntos
+const CH={risk:"risk",pend:"pend",done:""};
+$("#accs").innerHTML=Object.keys(MAT).map((k,i)=>{const d=DET[k];return `<div class="acc${i==0?" open":""}"><button class="h" aria-expanded="${i==0}"><span><span class="t">${esc(MAT[k])}</span><br><span class="chip ${CH[d[0]]}">${esc(d[1])}</span></span><span class="arr">⌄</span></button><div class="b"><div><dl>${d[2].map(p=>`<dt>${esc(p[0])}</dt><dd>${esc(p[1])}</dd>`).join("")}</dl></div></div></div>`}).join("");
+$("#accs").onclick=e=>{const b=e.target.closest("button.h");if(!b)return;const a=b.parentNode;a.classList.toggle("open");b.setAttribute("aria-expanded",a.classList.contains("open"))};
+$("#incs").innerHTML=INC.map(i=>`<div class="card inc"><h3>${esc(i[0])}</h3><div>${esc(i[1])}</div></div>`).join("");
+// timeline
+let fm="",fy="";const yr=d=>d.slice(-4),YRS=[...new Set(EV.map(e=>yr(e[0])))].sort();
+function chips(){$("#fm").innerHTML=[["","Todos"],...Object.keys(MAT).map(k=>[k,k])].map(c=>`<button class="fchip${fm===c[0]?" on":""}" data-m="${c[0]}">${c[1]}</button>`).join("");$("#fy").innerHTML=[["","Todos"],...YRS.map(y=>[y,y])].map(c=>`<button class="fchip${fy===c[0]?" on":""}" data-y="${c[0]}">${c[1]}</button>`).join("")}
+function rTl(){const l=EV.filter(e=>(!fm||e[1]==fm)&&(!fy||yr(e[0])==fy));$("#cnt").textContent=l.length+" eventos";$("#tl").innerHTML=l.map(e=>`<div class="ev"><button><span class="d">${esc(e[0])}</span><span class="m">${e[1]}</span><div>${esc(e[2])}</div><div class="src">Fuente: ${esc(e[3])}</div></button></div>`).join("");anim()}
+function anim(){const evs=document.querySelectorAll(".ev");if(RM||!("IntersectionObserver" in window)){evs.forEach(e=>e.classList.add("vis"));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target)}}),{threshold:.1});evs.forEach(e=>io.observe(e))}
+$("#fm").onclick=e=>{const b=e.target.closest("button");if(!b)return;fm=b.dataset.m;chips();rTl()};$("#fy").onclick=e=>{const b=e.target.closest("button");if(!b)return;fy=b.dataset.y;chips();rTl()};
+$("#tl").onclick=e=>{const b=e.target.closest(".ev");if(b)b.classList.toggle("open")};chips();rTl();
+// sheet
+function sheet(html){$("#sc").innerHTML=html;$("#sbg").classList.add("on");$("#sheet").classList.add("on")}
+function close(){$("#sbg").classList.remove("on");$("#sheet").classList.remove("on")}
+$("#sbg").onclick=close;$("#sclose").onclick=close;addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+// risks
+function riskSheet(i){sheet(`<span class="chip risk">Nivel: ${RN[i]}</span><h3 style="margin:12px 0 8px">${esc(RISK[i][0])}</h3><p style="margin:0">${esc(RD[i])}</p><p class="note">La ubicación en la matriz es una valoración cualitativa.</p>`)}
+$("#mx").insertAdjacentHTML("beforeend",RISK.map((r,i)=>`<button class="dotb" style="left:${r[1]*100}%;bottom:${r[2]*100}%" data-i="${i}" aria-label="${esc(r[0])}">${i+1}</button>`).join(""));
+$("#rlist").innerHTML=RISK.map((r,i)=>`<button data-i="${i}"><span class="num">${i+1}</span><span>${esc(r[0])} · <b>${RN[i]}</b></span></button>`).join("");
+document.addEventListener("click",e=>{const b=e.target.closest("#mx .dotb,#rlist button");if(b)riskSheet(+b.dataset.i)});
+// checklist
 const KEY="auditoria-sjm-checks";let st=JSON.parse(localStorage.getItem(KEY)||"{}");
-function rChk(){$("#chk").innerHTML=ACT.map((a,i)=>`<label class="${st[i]?"ok":""}"><input type="checkbox" data-i="${i}" ${st[i]?"checked":""}><span>${a[0]}<span class="meta">${a[1]}</span></span></label>`).join("");$("#prog").textContent=ACT.filter((a,i)=>st[i]).length+" de "+ACT.length+" completadas"}
-$("#chk").onchange=e=>{st[e.target.dataset.i]=e.target.checked;localStorage.setItem(KEY,JSON.stringify(st));rChk()};$("#rst").onclick=e=>{e.preventDefault();st={};localStorage.removeItem(KEY);rChk()};rChk();
-function rDoc(){const q=$("#q").value.toLowerCase();$("#dt").innerHTML=DOCS.filter(d=>(d[0]+" "+d[1]).toLowerCase().includes(q)).map(d=>`<tr><td>${esc(d[0])}</td><td>${esc(d[1])}</td></tr>`).join("")}
-$("#q").oninput=rDoc;rDoc();
+function rChk(){$("#chk").innerHTML=ACT.map((a,i)=>`<label class="task${st[i]?" done":""}"><input type="checkbox" data-i="${i}" ${st[i]?"checked":""}><span><span class="w">${esc(a[1])}</span><span class="tx">${esc(a[0])}</span></span></label>`).join("");const n=ACT.filter((a,i)=>st[i]).length;$("#ptxt").textContent=n+" de "+ACT.length+" completadas";$("#pbar").style.width=(n/ACT.length*100)+"%"}
+$("#chk").onchange=e=>{st[e.target.dataset.i]=e.target.checked;localStorage.setItem(KEY,JSON.stringify(st));rChk()};$("#rst").onclick=()=>{st={};localStorage.removeItem(KEY);rChk()};rChk();
+// docs
+const DF=[["","Todos"],["1465","Juicio 1465/20"],["1212","Juicio 1212/25"],["amparo","Amparos"],["acta","Actas y sociedad"],["sat","SAT y fiscal"]];let df="";
+const DM=d=>{const s=(d[0]+" "+d[1]).toLowerCase();if(!df)return true;if(df==="1465")return s.includes("1465")||s.includes("2020-3346");if(df==="1212")return s.includes("1212")||s.includes("2019-9747")||s.includes("huerta")||s.includes("suspensión")||s.includes("interlocutoria");if(df==="amparo")return s.includes("a.d.")||s.includes("d.a.")||s.includes("amparo")||s.includes("radicación");if(df==="acta")return s.includes("acta")||s.includes("constitutiva")||s.includes("escritos");if(df==="sat")return s.includes("sat")||s.includes("sellos")||s.includes("declaraci")||s.includes("mandamiento");return true};
+function rDoc(){const q=$("#q").value.toLowerCase();const l=DOCS.filter(d=>DM(d)&&(d[0]+" "+d[1]).toLowerCase().includes(q));$("#dcnt").textContent=l.length+" documentos";$("#docs").innerHTML=l.map(d=>`<div class="doc"><div>${esc(d[1])}</div><div class="f">${esc(d[0])}</div></div>`).join("");$("#dfil").innerHTML=DF.map(f=>`<button class="fchip${df===f[0]?" on":""}" data-f="${f[0]}">${f[1]}</button>`).join("")}
+$("#q").oninput=rDoc;$("#dfil").onclick=e=>{const b=e.target.closest("button");if(b){df=b.dataset.f;rDoc()}};rDoc();
+show(location.hash.slice(1)||"resumen");
 </script></body></html>
