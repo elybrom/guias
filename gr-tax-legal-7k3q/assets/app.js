@@ -221,7 +221,7 @@
     var it = group[gi]; lbMedia.innerHTML = "";
     if (it.dataset.video){
       var v = document.createElement("video");
-      v.controls = true; v.playsInline = true; v.preload = "metadata";
+      v.controls = true; v.playsInline = true; v.muted = true; v.setAttribute("muted",""); v.setAttribute("playsinline",""); v.preload = "metadata";
       if (it.dataset.src && it.dataset.loaded) v.poster = it.dataset.src;
       v.src = it.dataset.video;
       v.onerror = function(){ lbMedia.innerHTML = phHTML(it); };
