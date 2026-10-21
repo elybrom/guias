@@ -89,10 +89,17 @@ nav.tabs{gap:2px}nav.tabs a .i{font-size:24px}
 table.t{width:100%;border-collapse:collapse;font-size:16px}table.t td,table.t th{border-bottom:1px solid var(--line);padding:9px 6px;text-align:left;vertical-align:top}table.t th{color:var(--rose)}
 .tw{overflow-x:auto}
 .urg{font-weight:700}.urg.u1{color:var(--rose)}.urg.u2{color:var(--warn)}.urg.u3{color:var(--leaf)}
+.mtag{display:inline-block;padding:6px 14px;border-radius:999px;color:#fff;font-weight:700;font-size:16px}.mtag.m1465{background:var(--rose)}.mtag.m1212{background:var(--leaf)}
+.c1465{color:var(--rose)!important}.c1212{color:var(--leaf)!important}
+.m1465b{border-left:6px solid var(--rose)}.m1212b{border-left:6px solid var(--leaf)}
+nav.tabs a.t1465 .i{color:var(--rose)}nav.tabs a.t1212 .i{color:var(--leaf)}
+nav.tabs a.t1465.on{background:var(--rose);color:#fff}nav.tabs a.t1212.on{background:var(--leaf);color:#fff}nav.tabs a.on .i{color:#fff}
+.ev .m.mA{background:var(--rose);color:#fff}.ev .m.mB{background:var(--leaf);color:#fff}
+#how1465 li,#how1212 li{margin-bottom:10px}
 </style></head><body><header class="app"><span class="brand">Asesoría · Servicio Javier Meza</span><button class="iconbtn" id="theme" aria-label="Cambiar modo claro u oscuro">🌙</button></header>
 <section class="hero"><div class="in"><span class="pill">Asesoría del caso</span><h1>Servicio Javier Meza</h1><p>Qué está pasando, qué sigue y qué se puede hacer · actualizado el 21 de octubre de 2026</p></div></section>
 <nav class="tabs" id="tabs">
-<a href="#inicio" data-v="inicio"><span class="i">◉</span>Inicio</a><a href="#ahora" data-v="ahora"><span class="i">⇢</span>Ahora</a><a href="#rutas" data-v="rutas"><span class="i">✦</span>Rutas</a><a href="#tecnico" data-v="tecnico"><span class="i">§</span>Técnico</a><a href="#pasos" data-v="pasos"><span class="i">✓</span>Pasos</a><a href="#docs" data-v="docs"><span class="i">▢</span>Docs</a></nav>
+<a href="#inicio" data-v="inicio"><span class="i">◉</span>Inicio</a><a href="#m1465" data-v="m1465" class="t1465"><span class="i">●</span>1465</a><a href="#m1212" data-v="m1212" class="t1212"><span class="i">●</span>1212</a><a href="#tecnico" data-v="tecnico"><span class="i">§</span>Abogada</a><a href="#pasos" data-v="pasos"><span class="i">✓</span>Pasos</a><a href="#docs" data-v="docs"><span class="i">▢</span>Docs</a></nav>
 <main>
 <!-- 1 -->
 <section class="view" id="v-inicio"><h2>En pocas palabras</h2>
@@ -113,7 +120,7 @@ table.t{width:100%;border-collapse:collapse;font-size:16px}table.t td,table.t th
 <path d="M180 150 V250" stroke="#C08A2B" stroke-width="3" stroke-dasharray="7 5"/>
 <rect x="20" y="250" width="320" height="74" rx="12" fill="#FFF6E6" stroke="#C08A2B" stroke-width="2"/><text x="180" y="274" font-size="15" text-anchor="middle" font-weight="700" fill="#8A5F14">¿Enlace? (hipótesis)</text><text x="180" y="295" font-size="14" text-anchor="middle" fill="#2B2326">SAT, 20/02/2025: el crédito 2008</text><text x="180" y="314" font-size="14" text-anchor="middle" fill="#2B2326">se impugnó en el 1465/20</text></svg>
 <p style="margin:4px 0"><b>Hipótesis, no confirmada:</b> el mandamiento del SAT del 20/02/2025 dice que el crédito de 2008 ya se había impugnado en el 1465/20. Eso explicaría que el 1212/25 se sobreseyera por "demanda repetida contra el mismo acto" (LFPCA, art. 8 fr. XVI). Se confirma leyendo la sentencia del 05/01/2026.</p>
-<p class="note"><b>Cómo leer el número</b> (lectura habitual; confirmar con la Sala): <b>1465/20</b> = número de juicio / año · <b>11</b> = región · <b>01 o 02</b> = Primera o Segunda Sala · <b>3 o 6</b> = ponencia · <b>OT</b> = sufijo adicional.</p></div>
+<p class="note"><b>Cómo leer el número</b> (según el aviso oficial del Boletín del TFJA): <b>1465/20</b> = número progresivo / año · <b>11</b> = región · <b>01 o 02</b> = Primera o Segunda Sala · <b>3 o 6</b> = ponencia · <b>OT</b> = vía ordinaria tradicional.</p></div>
 <div class="kpis">
 <div class="card kpi"><div class="v" data-c="135.4" data-p="$" data-s=" M">$0</div><div class="l">Crédito 2014 · juicio 1465/20</div><div class="d">Se perdió en el tribunal; resultado del amparo desconocido</div><span class="chip pend">Por confirmar</span></div>
 <div class="card kpi"><div class="v" data-c="8.65" data-d="2" data-p="$" data-s=" M">$0</div><div class="l">Crédito 2008 · juicio 1212/25</div><div class="d">Juicio sobreseído; firme desde el 30/01/2026</div><span class="chip risk">Firme</span></div>
@@ -130,11 +137,11 @@ table.t{width:100%;border-collapse:collapse;font-size:16px}table.t td,table.t th
 <div class="card alert"><b>Seguridad.</b> El zip original del expediente en Google Drive estaba compartido como "cualquiera con el enlace, editor" y contiene la e.firma de la empresa, identificaciones, actas y declaraciones. Conviene restringirlo y valorar con el SAT la revocación de la e.firma.</div>
 <div class="card disc"><b>Importante:</b> esto es orientación general hecha con los documentos disponibles y fuentes públicas. No sustituye la revisión del expediente completo ni la opinión de quien lleve el asunto.</div>
 </section>
-<!-- 2 -->
-<section class="view" id="v-ahora"><h2>Qué pasa ahora</h2>
-<div class="card note" style="border:2px solid var(--warn)"><b>Primero confirma qué expediente viste hoy.</b> El <b>1212/25-11-01-6</b> (Primera Sala) es el sobreseído y firme. El <b>1465/20-11-02-3-OT</b> es de la Segunda Sala, y su expediente se envió al Colegiado para el amparo. Revisa el número en la carátula: el "11-01" o el "11-02" te dice cuál es.</div>
-<h3 style="margin:18px 0 6px">Crédito 2008 (juicio 1212/25): ya está decidido</h3>
-<div class="card scen"><span class="chip risk">Firme desde el 30/01/2026</span><p>El juicio se sobreseyó; no hay sentencia sobre el fondo. El plazo para amparo directo contra esa sentencia era de 15 días hábiles (Ley de Amparo, art. 17) y ya pasó. Con el juicio cerrado, la suspensión ya no impide el cobro. Lo que importa ahora es <b>por qué</b> se sobreseyó: si la Sala dijo que el oficio 2019-9747 ya estaba impugnado en el 1465/20, la suerte de ese crédito puede quedar ligada al amparo A.D. 239/2024.</p></div>
+
+
+<section class="view" id="v-m1465"><span class="mtag m1465">1465 · Crédito 2014</span><h2 class="c1465">1465 · Crédito 2014 ($135 M)</h2>
+<div class="card m1465b"><h3>La historia</h3><p class="big">En 2020 la empresa demandó al SAT ante la <b>Segunda Sala</b> del Tribunal Federal de Justicia Administrativa por un <button class="g" data-g="credito">crédito</button> de <b>$135,421,646.65</b> del ejercicio 2014 (oficio 2020-3346), más reparto de utilidades de $8,414,777.15. El 26/03/2024 la Sala dijo que el SAT actuó legalmente. El 24/04/2024 la empresa promovió <button class="g" data-g="amparo">amparo directo</button>, que conoce el <b>Cuarto Tribunal Colegiado en Materia Administrativa del Segundo Circuito</b> como A.D. 239/2024.</p></div>
+<div class="card m1465b"><h3>Estado</h3><p><span class="chip pend">Resultado desconocido</span></p><p>La Sala concedió la <button class="g" data-g="suspension">suspensión</button> sin garantía el 25/04/2024. No tenemos documento que diga si el Colegiado ya resolvió.</p></div>
 <h3 style="margin:18px 0 6px">Crédito 2014 (A.D. 239/2024): tres escenarios</h3>
 <div class="tabs" id="scTabs"></div><div id="scBody"></div>
 <div class="card"><h3>Cómo saber cuál aplica</h3><div class="tw"><table class="t"><tr><th>Si en el expediente o en el portal ves…</th><th>Escenario</th></tr>
@@ -142,12 +149,18 @@ table.t{width:100%;border-collapse:collapse;font-size:16px}table.t td,table.t th
 <tr><td>"La Justicia de la Unión ampara y protege… para los efectos de…" o la Sala dictando una nueva sentencia "en cumplimiento de ejecutoria"</td><td>B</td></tr>
 <tr><td>Solo acuerdos de trámite (admisión, turno a ponencia, alegatos) y sin sentencia</td><td>C</td></tr>
 <tr><td>El expediente original 1465/20 de vuelta en la Segunda Sala, con oficio de devolución</td><td>Normalmente significa que el Colegiado ya resolvió (A o B): revisa la ejecutoria</td></tr></table></div></div>
-</section>
-<!-- 3 -->
-<section class="view" id="v-rutas"><h2>Opciones y esperanzas</h2><p class="lead">Las barras indican una orientación, no una garantía. Cada ruta depende de lo que digan los documentos que faltan.</p>
-<div class="chips" id="rFil"></div><div id="rBody"></div></section>
+<div class="card"><h3>Opciones y esperanzas</h3><div id="r1465"></div></div>
+<h3 style="margin:18px 0 6px">Línea de tiempo · 1465</h3><div class="tl" id="tl1465"></div>
+<div class="card m1465b"><h3>Cómo saber en qué va</h3><div id="how1465"></div></div></section>
+<section class="view" id="v-m1212"><span class="mtag m1212">1212 · Crédito 2008</span><h2 class="c1212">1212 · Crédito 2008</h2>
+<div class="card m1212b"><h3>La historia</h3><p class="big">En febrero de 2025 el SAT ordenó cobrar un crédito de 2008 (oficio 2019-9747; $2,581,671 según el SAT). En mayo de 2025 la empresa demandó ante la <b>Primera Sala</b> (juicio 1212/25, por $8,653,821 según la demanda) y obtuvo suspensión definitiva. El 05/01/2026 la Sala <button class="g" data-g="sobreseimiento">sobreseyó</button> el juicio: lo cerró sin decidir el fondo, porque consideró que la misma parte había demandado dos veces contra el mismo acto (LFPCA, art. 8 fr. XVI).</p></div>
+<div class="card m1212b"><h3>Estado</h3><p><span class="chip risk">Sobreseído · firme desde el 30/01/2026</span></p><p>El plazo para amparo directo (15 días hábiles, Ley de Amparo art. 17) ya pasó. La suspensión terminó con el juicio, así que el SAT puede cobrar por el <button class="g" data-g="pae">PAE</button>. Un chat del 12/10/2026 menciona un embargo de la gasolinera; no hay documento de ese embargo.</p></div>
+<div class="card"><h3>Opciones y esperanzas</h3><div id="r1212"></div></div>
+<h3 style="margin:18px 0 6px">Línea de tiempo · 1212</h3><div class="tl" id="tl1212"></div>
+<div class="card m1212b"><h3>Cómo saber en qué va</h3><div id="how1212"></div></div></section>
 <!-- 4 -->
-<section class="view" id="v-tecnico"><h2>Para la abogada</h2>
+<section class="view" id="v-tecnico"><h2>Para la abogada</h2><h3 style="margin:18px 0 6px">Todas las rutas</h3><p class="lead">Las barras indican una orientación, no una garantía. Cada ruta depende de lo que digan los documentos que faltan.</p>
+<div class="chips" id="rFil"></div><div id="rBody"></div>
 <div class="card"><h3>Expedientes y datos clave</h3><div class="tw"><table class="t" id="tk"></table></div></div>
 <div class="card"><h3>Hallazgos técnicos</h3><div id="tf"></div></div>
 <div class="card"><h3>Plazos por computar</h3><div class="tw"><table class="t" id="tp"></table></div></div>
@@ -242,7 +255,7 @@ $("#tf").innerHTML="<ul>"+TF.map(t=>`<li style="margin-bottom:8px">${esc(t)}</li
 $("#tp").innerHTML="<tr><th>Plazo</th><th>Regla</th><th>Estado</th></tr>"+TP.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("");
 $("#incs").innerHTML=INC.map(i=>`<div class="card"><b>${esc(i[0])}</b><p style="margin:6px 0 0">${esc(i[1])}</p></div>`).join("");
 let fm="",fy="";function chips(){$("#fm").innerHTML=[["","Todos"],...Object.keys(MAT).map(k=>[k,MAT[k]])].map(c=>`<button class="fchip${fm===c[0]?" on":""}" data-m="${c[0]}">${c[1]}</button>`).join("");$("#fy").innerHTML=[["","Todos"],...YRS.map(y=>[y,y])].map(c=>`<button class="fchip${fy===c[0]?" on":""}" data-y="${c[0]}">${c[1]}</button>`).join("")}
-function rTl(){const l=EV.filter(e=>(!fm||e[1]==fm)&&(!fy||yr(e[0])==fy));$("#cnt").textContent=l.length+" eventos";$("#tl").innerHTML=l.map(e=>`<div class="ev"><button><span class="d">${esc(e[0])}</span><span class="m">${e[1]}</span><div>${esc(e[2])}</div><div class="src">Fuente: ${esc(e[3])}</div></button></div>`).join("");anim()}
+function rTl(){const l=EV.filter(e=>(!fm||e[1]==fm)&&(!fy||yr(e[0])==fy));$("#cnt").textContent=l.length+" eventos";$("#tl").innerHTML=l.map(e=>`<div class="ev"><button><span class="d">${esc(e[0])}</span><span class="m m${e[1]}">${e[1]}</span><div>${esc(e[2])}</div><div class="src">Fuente: ${esc(e[3])}</div></button></div>`).join("");anim()}
 function anim(){const evs=document.querySelectorAll(".ev");if(RM||!("IntersectionObserver" in window)){evs.forEach(e=>e.classList.add("vis"));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target)}}),{threshold:.1});evs.forEach(e=>io.observe(e))}
 $("#fm").onclick=e=>{const b=e.target.closest("[data-m]");if(b){fm=b.dataset.m;chips();rTl()}};$("#fy").onclick=e=>{const b=e.target.closest("[data-y]");if(b){fy=b.dataset.y;chips();rTl()}};chips();rTl();
 const KEY="asesoria-sjm-checks";let st=JSON.parse(localStorage.getItem(KEY)||"{}");const UL={1:"Urgente",2:"Importante",3:"Después"};
@@ -254,4 +267,15 @@ $("#q").oninput=rDoc;rDoc();
 $("#lsrc").innerHTML=LS.map(l=>`<div class="doc"><a href="${l[1]}" target="_blank" rel="noopener">${esc(l[0])}</a></div>`).join("");
 const TK2="sjm-theme";const ap=t=>{document.documentElement.dataset.theme=t;$("#theme").textContent=t==="dark"?"☀️":"🌙"};ap(localStorage.getItem(TK2)||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"));$("#theme").onclick=()=>{const t=document.documentElement.dataset.theme==="dark"?"light":"dark";localStorage.setItem(TK2,t);ap(t)};
 show(location.hash.slice(1)||"inicio");
+const rtCard=r=>`<div class="card"><h3>${r[1]}</h3>${hope(r[2])}<p><b>De qué se trata:</b> ${r[4]}</p><p><b>De qué depende:</b> ${r[5]}</p></div>`;
+const inM=(r,y)=>r[3].includes(y)||r[3].includes("Cualquier")||r[3].includes("Multas");
+$("#r1465").innerHTML=RT.filter(r=>inM(r,"2014")).map(rtCard).join("")+'<p class="note">Orientación, no garantía. Ver también los escenarios arriba.</p>';
+$("#r1212").innerHTML=RT.filter(r=>inM(r,"2008")).map(rtCard).join("")+'<p class="note">Orientación, no garantía.</p>';
+const tlm=m=>EV.filter(e=>e[1]==m).map(e=>`<div class="ev vis"><button><span class="d">${esc(e[0])}</span><span class="m m${m}">${m=="A"?"1465":"1212"}</span><div>${esc(e[2])}</div><div class="src">Fuente: ${esc(e[3])}</div></button></div>`).join("");
+$("#tl1465").innerHTML=tlm("A");$("#tl1212").innerHTML=tlm("B");
+const how=(p,o)=>`<h3 style="margin:10px 0 6px">🏛️ En persona</h3>${p}<h3 style="margin:16px 0 6px">💻 En línea</h3>${o}<p class="note">Solo las partes y las personas autorizadas en el expediente pueden revisarlo completo y pedir copias. Lleva INE y el documento que acredite tu personalidad (poder o autorización).</p>`;
+$("#how1465").innerHTML=how(`<p><b>1. En el Colegiado</b> (Cuarto TCC en Materia Administrativa del Segundo Circuito): Av. 16 de Septiembre 784, Fracc. Industrial Alce Blanco, Naucalpan. Tel. 55 5387 0509 ext. 1020 (presidencia) o 55 5387 0550 ext. 1026 (secretario de acuerdos). Horario: confirma por teléfono; la regla general del CJF es lunes a viernes de 9:00 a 15:00.</p><div class="card note"><b>Qué decir:</b> "Vengo a consultar el amparo directo 239/2024, quejosa Servicio Javier Meza, S.A. de C.V."<br><b>Qué preguntar:</b> ¿Ya hay sentencia (ejecutoria)? ¿De qué fecha? ¿En qué sentido: concede, niega o sobresee? ¿Ya se devolvió el expediente a la Sala? Pide copia simple o certificada de la sentencia.</div><div class="actions"><a class="btn r" href="tel:+525553870509">📞 Presidencia</a><a class="btn g" href="tel:+525553870550">📞 Acuerdos</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Av+16+de+Septiembre+784+Alce+Blanco+Naucalpan+53370" target="_blank" rel="noopener">📍 Mapa</a></div><p><b>2. En la Segunda Sala del TFJA</b> (juicio 1465/20-11-02-3-OT): pregunta si el expediente ya regresó del Colegiado y si hay acuerdos de cumplimiento de la ejecutoria.</p>`,
+`<ol><li><b>Sentido del fallo, sin cuenta:</b> entra a <a href="https://sise.cjf.gob.mx/SiseInternet/default.aspx" target="_blank" rel="noopener">SISE (CJF)</a>. Elige <b>Circuito:</b> Segundo Circuito → <b>Órgano:</b> Cuarto Tribunal Colegiado en Materia Administrativa del Segundo Circuito → <b>Tipo de asunto:</b> Amparo directo → <b>Número:</b> 239/2024.</li><li><b>Acuerdos por expediente:</b> <a href="https://www.dgej.cjf.gob.mx/internet/expedientes/circuitos.asp?Cir=2&Exp=1" target="_blank" rel="noopener">DGEJ · Segundo Circuito</a>, con el mismo órgano, tipo y número.</li><li><b>Expediente electrónico completo:</b> <a href="https://www.serviciosenlinea.pjf.gob.mx/" target="_blank" rel="noopener">Portal de Servicios en Línea del PJF</a> → "Juzgados de Distrito y Tribunales de Circuito" → "Consulta de Expediente". Requiere usuario y firma electrónica (e.firma o FIREL), y estar autorizado en el expediente.</li><li><b>La Sala (1465/20):</b> <a href="https://www.tfja.gob.mx/boletin/jurisdiccional/" target="_blank" rel="noopener">Boletín Jurisdiccional del TFJA</a> → campo "Expediente": <b>1465/20-11-02-3-OT</b>, sin espacios. Ahí aparecen los acuerdos de devolución o de cumplimiento.</li></ol>`);
+$("#how1212").innerHTML=how(`<p><b>En la Primera Sala del TFJA</b> (Fórum Naucalpan). Tel. 55 1253 6330 ext. 2332, según el boletín del 30/10/2025. Hoy la magistrada es María Ozana Salazar Pérez.</p><div class="card note"><b>Qué decir:</b> "Vengo por el juicio 1212/25-11-01-6, actora Servicio Javier Meza, S.A. de C.V."<br><b>Qué pedir:</b> copia certificada de la sentencia de sobreseimiento del 05/01/2026 y del auto que la declara firme. Al leerla, busca <b>qué juicio anterior</b> cita la Sala como "demanda repetida" (art. 8 fr. XVI). Si es el 1465/20, el crédito de 2008 puede depender del amparo A.D. 239/2024.<br><b>Ojo:</b> el expediente se mandó al archivo de concentración (boletín del 05/06/2026), así que pedirlo puede tardar.</div><div class="actions"><a class="btn r" href="tel:+525512536330">📞 Primera Sala</a></div><p><b>Con el SAT:</b> pregunta qué etapa del cobro hay (requerimiento, embargo, avalúo, convocatoria de remate) y pide el estado de cuenta del crédito.</p>`,
+`<ol><li><a href="https://www.tfja.gob.mx/boletin/jurisdiccional/" target="_blank" rel="noopener">Boletín Jurisdiccional del TFJA</a> → campo "Expediente": <b>1212/25-11-01-6</b>, sin espacios. Muestra todas las notificaciones, incluida la del sobreseimiento y la de firmeza.</li><li>Si el juicio se llevó en línea: <a href="https://www.tfja.gob.mx/juicio_linea/consulta_del_expediente/" target="_blank" rel="noopener">guía de consulta del expediente en Juicio en Línea (TFJA)</a>; requiere clave de acceso de la parte.</li><li>Sentencias públicas: <a href="https://buscador.dgsjl.tfja.gob.mx/" target="_blank" rel="noopener">buscador de sentencias del TFJA</a> (las versiones públicas pueden tardar o no publicarse).</li></ol>`);
 </script></body></html>
