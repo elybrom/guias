@@ -277,3 +277,6 @@ body.on-light .brand .logo-dark{display:none} body.on-light .brand .logo-light{d
 .collapse > div{padding-top:0!important;padding-bottom:0!important}
 .qa .a > :last-child{margin-bottom:16px}
 .svc .body > :last-child{margin-bottom:18px}
+/* track: caption bar below image */
+.track .g-item.real.loaded img{bottom:44px;height:auto}
+.track .g-item.real .cap{top:auto;height:44px;padding:0 12px;display:flex;align-items:center;background:#0b1a3a;color:#fff;font-size:13px;line-height:1.2;border-top:1px solid rgba(255,255,255,.12)}
