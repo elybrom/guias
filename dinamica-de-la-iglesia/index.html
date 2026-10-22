@@ -27,7 +27,7 @@ main{max-width:1320px;margin:0 auto;padding:30px 40px 40px}
 .blq-t .n{font:500 6rem/.8 'Cormorant Garamond',serif;color:#754437}
 .blq-t h2{font:500 2.8rem/1.05 'Cormorant Garamond',serif;margin:.2em 0 .3em}
 .blq-t p{color:#55523F;margin:0}
-.cov{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:26px}
+.cov{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
 .libro{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/4;border-radius:6px 18px 18px 6px;overflow:hidden;text-decoration:none;color:#f4efe4;isolation:isolate;box-shadow:0 30px 50px -26px rgba(28,39,53,.75),inset 10px 0 18px -8px rgba(0,0,0,.45);transition:transform .35s,box-shadow .35s}
 .libro::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--f) center/cover;transition:transform .8s}
 .libro::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(28,39,53,.96) 0%,rgba(28,39,53,.5) 50%,rgba(28,39,53,.05) 100%)}
@@ -84,6 +84,7 @@ footer .s{font:italic 500 1.7rem 'Cormorant Garamond',serif;color:#f4efe4}
 <div class="cov">
 <a class="libro" data-s="labor-pastoral" href="../labor-pastoral/" style="--f:url(../img/ovejas2.webp)"><span class="lomo"></span><div class="in"><small>Libreta 2 · Clase 1</small><h3>Labor pastoral</h3><p>El pastor como siervo: cuidar, alimentar, guiar y proteger.</p><div class="bar"><i></i></div><div class="pc"><span class="t">Sin empezar</span></div></div></a>
 <a class="libro" data-s="josue-1-8-meditar" href="../josue-1-8-meditar/" style="--f:url(../img/jordanrio.webp)"><span class="lomo"></span><div class="in"><small>Libreta 3 · Jos 1:8–9 · Hch 20 · He 13:17</small><h3>La Palabra que nos guarda</h3><p>Meditar de día y de noche, esforzarse y velar contra los lobos.</p><div class="bar"><i></i></div><div class="pc"><span class="t">Sin empezar</span></div></div></a>
+<a class="libro" data-s="requisitos-obispo" href="../requisitos-obispo/" style="--f:url(../img/efeso.webp)"><span class="lomo"></span><div class="in"><small>Libreta 5 · 1 Timoteo 3:1–7 · Tito 1:5–9</small><h3>Los requisitos del obispo</h3><p>Desarrollo de cada atributo: griego, Strong y Vine, ejemplos y autoexamen.</p><div class="bar"><i></i></div><div class="pc"><span class="t">Sin empezar</span></div></div></a>
 <div class="libro pend corto"><div class="in"><small>Próximamente</small><h3>Siguiente clase</h3><p>Aparecerá aquí cuando la estudiemos.</p></div></div>
 </div></section>
 <section class="dev"><div class="blq-t"><div class="n">✦</div><span class="eyebrow">Devocional aparte</span><h2>Los siete «Yo soy» de Juan</h2><p>Para acompañar el curso a tu ritmo: pan, luz, puerta, pastor, resurrección, camino y vid. Ego eimi, con Strong y Vine.</p></div>
@@ -93,11 +94,11 @@ footer .s{font:italic 500 1.7rem 'Cormorant Garamond',serif;color:#f4efe4}
 <section class="pub"><div class="blq-t"><span class="eyebrow" style="color:#754437">De mi libreta</span><h2>Apuntes publicados</h2><p>Las hojas que envié y ya forman parte del curso.</p></div><div id="apPublicados"></div></section>
 </main>
 <footer><div class="s">Discipulable = transformable</div><p>Dinámica de la iglesia · Libretas de Eli Nogueron · RVR1960</p>
-<div class="creditos"><b>Imágenes:</b> Leonardo da Vinci, <i>La Última Cena</i> (dominio público) · rebaño de merinos, State Library of NSW (dominio público) · Yardenit, río Jordán (CC BY-SA 3.0) · <i>Pain de campagne</i> (CC BY 2.0). Créditos completos en cada libreta. Vía Wikimedia Commons. Fondo de arcos: foto de Eli.</div></footer>
+<div class="creditos"><b>Imágenes:</b> Leonardo da Vinci, <i>La Última Cena</i> (dominio público) · rebaño de merinos, State Library of NSW (dominio público) · Yardenit, río Jordán (CC BY-SA 3.0) · Biblioteca de Celso, Éfeso (CC BY-SA 3.0) · <i>Pain de campagne</i> (CC BY 2.0). Créditos completos en cada libreta. Vía Wikimedia Commons. Fondo de arcos: foto de Eli.</div></footer>
 <script>
 (function(){var pr={};try{pr=JSON.parse(localStorage.getItem('dinamica-progreso-v1'))||{}}catch(e){}
 var T={};document.querySelectorAll('.libro[data-s]').forEach(function(a){var s=a.dataset.s,r=pr[s],m=r?Math.min(100,r.max||0):0;T[s]=a.querySelector('h3').textContent;a.querySelector('.bar i').style.width=m+'%';a.querySelector('.pc .t').textContent=r?(m>=95?'Recorrida ✓':'Avance '+m+'%'):'Sin empezar'});
-var order=['unidad-iglesia','labor-pastoral','josue-1-8-meditar'];order.some(function(s){if(!pr[s]||(pr[s].max||0)<95){var a=document.querySelector('.libro[data-s="'+s+'"]');a&&a.classList.add('sig');return true}});
+var order=['unidad-iglesia','labor-pastoral','josue-1-8-meditar','requisitos-obispo'];order.some(function(s){if(!pr[s]||(pr[s].max||0)<95){var a=document.querySelector('.libro[data-s="'+s+'"]');a&&a.classList.add('sig');return true}});
 var l=pr._last,c=document.getElementById('cont');if(l&&pr[l]){c.href='../'+l+'/#continuar';c.firstChild.textContent='Continuar donde me quedé';document.getElementById('contS').textContent=T[l]+' · '+Math.min(100,pr[l].max||0)+'%'}
 var d=new Date().toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'});document.getElementById('hf').textContent=d;
 try{var h=JSON.parse(localStorage.getItem('dinamica-libreta-v2'))||[];if(h.length)document.getElementById('nh').textContent='Llevas '+h.length+(h.length===1?' hoja escrita':' hojas escritas')}catch(e){}

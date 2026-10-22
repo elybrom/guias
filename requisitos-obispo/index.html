@@ -1,0 +1,562 @@
+<!DOCTYPE html><html lang="es" data-libreta="requisitos-obispo"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1 Timoteo 3:1–7 · Los requisitos del obispo · Dinámica de la iglesia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Noto+Serif:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --arena:#D3C7AD; --azul:#28374A; --terra:#754437; --verde:#6B6751;
+  --arena-claro:#E9E2D2; --arena-2:#DED4BE; --verde-osc:#55523F; --tinta:#28374A;
+  --card:rgba(236,230,216,.80); --card-borde:rgba(40,55,74,.14);
+  --serif:'Cormorant Garamond','Playfair Display',Georgia,'Times New Roman',serif;
+  --sans:'Montserrat','Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --sombra:0 10px 30px -12px rgba(40,55,74,.35);
+  --radio:18px;
+  --bg-img:url("../img/fondo-arcos.webp");
+  --ruido:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .32  0 0 0 0 .26  0 0 0 0 .18  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:var(--sans);color:var(--tinta);background:var(--arena);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:var(--bg-img) center/cover no-repeat;filter:saturate(.75) blur(2px);transform:scale(1.04)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--ruido),linear-gradient(180deg,rgba(211,199,173,.88),rgba(211,199,173,.93));pointer-events:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+a{color:var(--terra)}
+:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:6px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(40,55,74,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--arena-claro);box-shadow:0 4px 18px rgba(0,0,0,.18)}
+.topbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px}
+.marca{font-family:var(--serif);font-size:1.25rem;font-weight:600;white-space:nowrap;letter-spacing:.02em;color:var(--arena);line-height:1.1}
+.marca small{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;opacity:.75;font-weight:500}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{color:var(--arena);text-decoration:none;font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border-radius:999px;white-space:nowrap;transition:background .25s,color .25s}
+.tabs a:hover{background:rgba(211,199,173,.14)}
+.tabs a.activo{background:var(--arena);color:var(--azul)}
+.mini-medidor{display:flex;align-items:center;gap:8px;background:rgba(211,199,173,.12);border:1px solid rgba(211,199,173,.3);border-radius:999px;padding:5px 12px 5px 6px;color:var(--arena);text-decoration:none;font-size:.78rem;font-weight:600;white-space:nowrap}
+.mini-medidor svg{width:26px;height:26px}
+.progreso{height:4px;background:rgba(211,199,173,.18)}
+.progreso span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--terra),#a5674f);transition:width .1s linear}
+.hero{position:relative;overflow:hidden;color:var(--azul);isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent);background:var(--bg-img) center 30%/cover no-repeat;filter:saturate(.8)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(211,199,173,.94) 0%,rgba(211,199,173,.80) 45%,rgba(211,199,173,.35) 100%);-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent)}
+.hero-in{max-width:1180px;margin:0 auto;padding:72px 22px 80px;display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
+.eyebrow{font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--verde-osc)}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.6rem,6.4vw,5rem);line-height:1.02;margin:.25em 0 .2em;letter-spacing:-.01em}
+.hero h1 em{color:var(--terra);font-style:italic}
+.hero .sub{font-size:1.05rem;max-width:34em}
+.hero .verso-hero{margin-top:26px;font-family:var(--serif);font-style:italic;font-size:1.45rem;color:var(--terra);border-left:3px solid var(--terra);padding:4px 0 4px 18px;max-width:30em;line-height:1.3}
+.hero .verso-hero cite{display:block;font-family:var(--sans);font-style:normal;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--verde-osc);margin-top:6px;font-weight:700}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;padding:8px 14px;border-radius:999px;background:rgba(40,55,74,.9);color:var(--arena-claro)}
+.chip.claro{background:rgba(236,230,216,.85);color:var(--azul);border:1px solid var(--card-borde)}
+.arco{justify-self:center;width:min(340px,100%);aspect-ratio:3/4.3;border-radius:999px 999px 18px 18px;background:var(--bg-img) center/cover;box-shadow:0 30px 60px -20px rgba(40,55,74,.55),0 0 0 10px rgba(236,230,216,.55),0 0 0 11px rgba(117,68,55,.35);position:relative;animation:aparece 1.2s ease both}
+.arco::after{content:"Buena obra desea";position:absolute;left:50%;bottom:22px;transform:translateX(-50%);background:rgba(40,55,74,.9);color:var(--arena);font-family:var(--serif);font-size:1.05rem;font-style:italic;padding:6px 16px;border-radius:999px;white-space:nowrap}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.btn{font-family:var(--sans);font-weight:600;font-size:.85rem;letter-spacing:.04em;border:0;border-radius:999px;padding:12px 20px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--sombra)}
+.btn-azul{background:var(--azul);color:var(--arena-claro)}
+.btn-terra{background:var(--terra);color:#F3ECDD}
+.btn-linea{background:transparent;color:var(--azul);border:1.5px solid var(--azul)}
+.btn-chico{padding:8px 14px;font-size:.78rem}
+main{max-width:1180px;margin:0 auto;padding:0 18px 60px}
+section.bloque{padding:56px 0 18px}
+.cab{display:flex;align-items:flex-end;gap:18px;margin-bottom:22px}
+.num{font-family:var(--serif);font-size:4.6rem;line-height:.8;color:var(--terra);font-weight:600;opacity:.9}
+.cab h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.1;margin:0;color:var(--azul);max-width:22em}
+.cab .eyebrow{display:block;margin-bottom:6px}
+.card{background:var(--card);backdrop-filter:blur(10px) saturate(1.1);-webkit-backdrop-filter:blur(10px) saturate(1.1);border:1px solid var(--card-borde);border-radius:var(--radio);padding:26px;box-shadow:var(--sombra)}
+.card h3{font-family:var(--serif);font-size:1.6rem;font-weight:600;margin:0 0 6px;color:var(--azul);line-height:1.15}
+.etiqueta{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#F1EBDD;background:var(--verde);padding:4px 10px;border-radius:999px;margin-bottom:10px}
+.etiqueta.terra{background:var(--terra)}
+.etiqueta.azul{background:var(--azul)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid-verso{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;align-items:stretch}
+.muted{color:var(--verde-osc)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visto{opacity:1;transform:none}
+@keyframes aparece{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:none}}
+.flip{perspective:1400px;background:none;border:0;padding:0;width:100%;height:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;display:block}
+.flip-in{display:grid;transition:transform .8s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d;height:100%}
+.flip[aria-pressed="true"] .flip-in{transform:rotateY(180deg)}
+.cara{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radio);padding:30px 28px 56px;position:relative;min-height:270px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--sombra)}
+.cara.frente{background:linear-gradient(160deg,#7d4a3c,var(--terra) 60%,#5f362b);color:#F4EDE0}
+.cara.frente::before,.cara.reverso::before{content:"";position:absolute;inset:12px;border:1px solid rgba(244,237,224,.32);border-radius:12px;pointer-events:none}
+.cara.reverso{background:var(--azul);color:var(--arena-claro);transform:rotateY(180deg)}
+.cara .ref{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;opacity:.85;margin-bottom:12px}
+.cara blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(1.35rem,2.4vw,1.75rem);line-height:1.3}
+.cara .idea{font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,1.6rem);line-height:1.3}
+.cara .idea strong{color:#E8C9A8;font-weight:700}
+.girar{position:absolute;bottom:18px;right:22px;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;opacity:.85;display:flex;align-items:center;gap:6px}
+.girar svg{width:16px;height:16px;transition:transform .6s}
+.flip:hover .girar svg{transform:rotate(180deg)}
+.items{display:grid;gap:14px}
+.item{background:rgba(244,240,230,.72);border:1px solid var(--card-borde);border-radius:14px;padding:16px 18px;transition:border-color .3s, box-shadow .3s}
+.item:focus-within{border-color:var(--terra);box-shadow:0 0 0 3px rgba(117,68,55,.12)}
+.item-top{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.item h4{margin:0;font-family:var(--serif);font-size:1.3rem;font-weight:600;line-height:1.2}
+.item p{margin:4px 0 0;font-size:.88rem;color:var(--verde-osc)}
+.valor{flex:none;min-width:52px;text-align:center;font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--terra);line-height:1;background:rgba(117,68,55,.08);border-radius:12px;padding:6px 8px}
+.valor small{display:block;font-family:var(--sans);font-size:.58rem;font-weight:600;letter-spacing:.1em;color:var(--verde-osc)}
+.escala{margin-top:12px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:999px;background:linear-gradient(90deg,var(--terra) var(--p,50%),rgba(40,55,74,.15) var(--p,50%))}
+input[type=range]::-moz-range-track{height:8px;border-radius:999px;background:rgba(40,55,74,.15)}
+input[type=range]::-moz-range-progress{height:8px;border-radius:999px;background:var(--terra)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--azul);border:3px solid var(--arena-claro);box-shadow:0 2px 8px rgba(0,0,0,.25);margin-top:-8px;transition:transform .2s}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--azul);border:3px solid var(--arena-claro)}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(1.15)}
+.marcas{display:flex;justify-content:space-between;font-size:.68rem;color:var(--verde-osc);font-weight:600;letter-spacing:.04em;padding:0 2px;gap:6px}
+.item details{margin-top:8px}
+.item summary{cursor:pointer;font-size:.78rem;font-weight:600;color:var(--terra);letter-spacing:.04em;list-style:none;display:inline-block;padding:4px 0}
+.item summary::-webkit-details-marker{display:none}
+.item summary::before{content:"✎ "}
+.item details[open] summary::before{content:"▾ "}
+textarea, input[type=text]{width:100%;font-family:var(--sans);font-size:.95rem;color:var(--azul);background:rgba(250,247,240,.85);border:1px solid rgba(40,55,74,.2);border-radius:12px;padding:12px 14px;line-height:1.6;resize:vertical;transition:border-color .25s, box-shadow .25s}
+textarea{min-height:110px;display:block}
+textarea:focus,input[type=text]:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 3px rgba(117,68,55,.15)}
+textarea::placeholder,input::placeholder{color:#7d7a66;font-style:italic}
+.lbl{display:block;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--verde-osc);margin-bottom:8px}
+.col-g{border-top:5px solid var(--verde)}
+.col-a{border-top:5px solid var(--terra)}
+.col-g h3,.col-a h3{display:flex;align-items:center;gap:10px}
+.icono{width:38px;height:38px;flex:none;border-radius:50%;display:grid;place-items:center;color:#F4EDE0}
+.icono svg{width:20px;height:20px}
+.col-g .icono{background:var(--verde)} .col-a .icono{background:var(--terra)}
+.col-g textarea,.col-a textarea{min-height:190px}
+.de-a{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch}
+.de-a .lado{border-radius:14px;padding:18px 20px}
+.de-a .de{background:rgba(40,55,74,.07);border:1px dashed rgba(40,55,74,.35)}
+.de-a .de p{text-decoration:line-through;text-decoration-color:rgba(117,68,55,.6);text-decoration-thickness:2px}
+.de-a .a{background:var(--verde);color:#F2EDE0}
+.de-a .flecha{display:grid;place-items:center;color:var(--terra)}
+.de-a .flecha svg{width:40px;height:40px;animation:empuja 2s ease-in-out infinite}
+@keyframes empuja{50%{transform:translateX(6px)}}
+.de-a p{margin:6px 0 0;font-family:var(--serif);font-size:1.3rem;line-height:1.25}
+.de-a small{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.check{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(244,240,230,.72);border:1px solid var(--card-borde);cursor:pointer;transition:background .3s,border-color .3s,transform .2s;position:relative}
+.check:hover{transform:translateX(3px)}
+.check input,.pill input,.dia input,.filtro input{position:absolute;opacity:0;width:1px;height:1px}
+.caja{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid var(--verde);display:grid;place-items:center;transition:background .25s,border-color .25s}
+.caja svg{width:16px;height:16px;stroke:#F4EDE0;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .35s ease .05s}
+.check input:checked + .caja{background:var(--verde);border-color:var(--verde)}
+.check input:checked + .caja svg{stroke-dashoffset:0}
+.check input:focus-visible + .caja{outline:3px solid var(--terra);outline-offset:2px}
+.check:has(input:checked){background:rgba(107,103,81,.14);border-color:rgba(107,103,81,.45)}
+.check .txt{font-size:.95rem}
+.check .txt b{font-weight:600}
+.cambio{text-align:center;padding:34px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.cambio .vieja{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);color:var(--verde-osc);font-style:italic;transition:all .6s ease;display:inline-block;position:relative}
+.cambio .vieja::after{content:"";position:absolute;left:-4%;top:52%;height:3px;width:0;background:var(--terra);transition:width .6s ease}
+.cambio.on .vieja{opacity:.55;transform:scale(.9)}
+.cambio.on .vieja::after{width:108%}
+.cambio .nueva{font-family:var(--serif);font-size:clamp(1.7rem,3.8vw,2.6rem);color:var(--terra);font-weight:600;line-height:1.15;max-height:0;opacity:0;overflow:hidden;transform:translateY(12px);transition:all .7s ease .2s}
+.cambio.on .nueva{max-height:220px;opacity:1;transform:none;margin-top:10px}
+.cambio .ref-peq{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--verde-osc);margin-top:12px}
+.reto{background:linear-gradient(150deg,rgba(40,55,74,.97),rgba(32,45,61,.97));color:var(--arena-claro);border:0}
+.reto h3{color:var(--arena)}
+.reto .muted,.reto .lbl{color:#C9BEA4}
+.reto input[type=text],.reto textarea{background:rgba(211,199,173,.12);color:var(--arena-claro);border-color:rgba(211,199,173,.35)}
+.reto input[type=text]::placeholder,.reto textarea::placeholder{color:#B9AE96}
+.acciones{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 4px}
+.pill,.dia,.filtro{position:relative}
+.pill span{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1.5px solid rgba(211,199,173,.5);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .25s;color:var(--arena-claro)}
+.pill input:checked + span{background:var(--arena);color:var(--azul);border-color:var(--arena)}
+.pill input:focus-visible + span{outline:3px solid #E8C9A8;outline-offset:2px}
+.dias{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:6px 0 14px}
+.dia span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;aspect-ratio:1;max-height:92px;width:100%;border-radius:14px;border:1.5px solid rgba(211,199,173,.4);cursor:pointer;font-weight:700;font-size:1rem;transition:all .3s;user-select:none}
+.dia span small{font-size:.58rem;letter-spacing:.08em;font-weight:600;opacity:.8}
+.dia input:checked + span{background:var(--terra);border-color:#a8705d;color:#F4EDE0;transform:scale(1.04);box-shadow:0 6px 16px -6px rgba(0,0,0,.5)}
+.dia input:checked + span small::after{content:" ✓"}
+.dia input:focus-visible + span{outline:3px solid #E8C9A8;outline-offset:2px}
+.barra{height:12px;border-radius:999px;background:rgba(211,199,173,.18);overflow:hidden}
+.barra span{display:block;height:100%;width:0;background:linear-gradient(90deg,#a5674f,#E8C9A8);border-radius:999px;transition:width .6s cubic-bezier(.2,.7,.2,1)}
+.barra-txt{display:flex;justify-content:space-between;font-size:.8rem;margin-top:8px;font-weight:600}
+.festejo{margin-top:12px;padding:12px 16px;border-radius:12px;background:rgba(232,201,168,.16);border:1px solid rgba(232,201,168,.45);font-family:var(--serif);font-size:1.2rem;display:none}
+.festejo.si{display:block;animation:aparece .6s ease}
+.nota-wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;padding:14px}
+.sello{width:220px;height:220px;flex:none;position:relative}
+.sello svg{width:100%;height:100%;overflow:visible;animation:gira 40s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.sello-centro{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.sello-centro div{width:120px;height:120px;border-radius:50%;background:var(--terra);color:#F4EDE0;display:grid;place-items:center;text-align:center;font-family:var(--serif);font-size:3rem;font-weight:700;box-shadow:inset 0 0 0 4px rgba(244,237,224,.35)}
+.nota blockquote{margin:0;font-family:var(--serif);font-size:clamp(2rem,4.6vw,3.6rem);line-height:1.08;color:var(--azul);font-weight:600}
+.nota blockquote .eq{color:var(--terra);font-style:italic}
+.nota .firma{margin-top:16px;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--verde-osc)}
+.nota .conex{margin-top:14px;font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--terra);line-height:1.35}
+.diagrama{padding:18px}
+.diagrama svg{width:100%;height:auto;display:block;max-width:640px;margin:0 auto}
+.diagrama .linea{fill:none;stroke:var(--terra);stroke-width:2.5;stroke-dasharray:7 9;animation:fluye 1.6s linear infinite}
+.diagrama .linea.verde{stroke:var(--verde)}
+@keyframes fluye{to{stroke-dashoffset:-32}}
+.nodo{cursor:pointer}
+.nodo rect{transition:transform .3s, filter .3s;transform-box:fill-box;transform-origin:center}
+.nodo:hover rect,.nodo:focus rect{filter:brightness(1.12);transform:scale(1.04)}
+.nodo:focus{outline:none}
+.nodo:focus-visible rect{stroke:#28374A;stroke-width:4}
+.centro-pulso{transform-box:fill-box;transform-origin:center;animation:pulso 3s ease-in-out infinite}
+@keyframes pulso{50%{transform:scale(1.08);opacity:.35}}
+.leyenda{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;font-size:.8rem;margin-top:8px;color:var(--verde-osc);font-weight:600}
+.leyenda i{display:inline-block;width:22px;height:0;border-top:3px dashed var(--terra);vertical-align:middle;margin-right:6px}
+.leyenda i.v{border-color:var(--verde)}
+.acordeon{display:grid;gap:12px}
+.paso{background:rgba(244,240,230,.78);border:1px solid var(--card-borde);border-radius:14px;overflow:hidden;transition:box-shadow .3s}
+.paso.abierto{box-shadow:var(--sombra)}
+.paso-btn{width:100%;display:flex;align-items:center;gap:16px;padding:16px 18px;background:none;border:0;cursor:pointer;text-align:left;font:inherit;color:var(--azul)}
+.paso-n{flex:none;width:42px;height:42px;border-radius:50%;background:var(--azul);color:var(--arena);display:grid;place-items:center;font-family:var(--serif);font-size:1.4rem;font-weight:700;transition:background .3s}
+.paso.abierto .paso-n{background:var(--terra)}
+.paso-t{flex:1}
+.paso-t b{display:block;font-family:var(--serif);font-size:1.3rem;font-weight:600;line-height:1.2}
+.paso-t small{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--verde-osc);font-weight:700}
+.paso-ico{width:22px;height:22px;flex:none;transition:transform .4s;color:var(--terra)}
+.paso.abierto .paso-ico{transform:rotate(45deg)}
+.paso-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
+.paso.abierto .paso-panel{grid-template-rows:1fr}
+.paso-panel > div{overflow:hidden;min-height:0}
+.paso-cont{padding:0 18px 18px 76px}
+.paso-cont p{margin:0 0 12px}
+.paso-cont textarea{min-height:80px}
+.filtro-q{background:var(--terra);color:#F4EDE0;border:0;text-align:center;padding:34px 28px}
+.filtro-q .etiqueta{background:rgba(244,237,224,.2)}
+.filtro-q p{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.2;margin:4px auto 0;max-width:24em;font-style:italic}
+.filtros{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 14px}
+.filtro span{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:18px 12px;border-radius:14px;border:2px solid rgba(40,55,74,.2);background:rgba(244,240,230,.75);cursor:pointer;transition:all .3s;font-family:var(--serif);font-size:1.25rem;font-weight:600;line-height:1.15;height:100%}
+.filtro span i{font-style:normal;width:40px;height:40px;flex:none;border-radius:50%;display:grid;place-items:center;background:rgba(40,55,74,.08);font-family:var(--sans);font-size:1rem;transition:all .3s}
+.filtro input:checked + span{border-color:var(--verde);background:rgba(107,103,81,.16)}
+.filtro input:checked + span i{background:var(--verde);color:#F4EDE0}
+.filtro input:focus-visible + span{outline:3px solid var(--terra);outline-offset:2px}
+.veredicto{padding:14px 18px;border-radius:12px;font-weight:600;font-size:.95rem;transition:background .4s,color .4s}
+.veredicto.espera{background:rgba(117,68,55,.12);color:var(--terra)}
+.veredicto.adelante{background:var(--verde);color:#F4EDE0}
+.verso-mini{font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--terra);line-height:1.35;border-left:3px solid var(--terra);padding-left:16px;margin:10px 0 6px}
+.verso-mini cite{display:block;font-family:var(--sans);font-style:normal;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--verde-osc);font-weight:700;margin-top:4px}
+.sub-h{font-family:var(--serif);font-size:1.35rem;font-weight:600;margin:22px 0 10px;color:var(--azul)}
+.ciclo{display:flex;align-items:center;gap:18px;padding:18px;border-radius:14px;background:rgba(40,55,74,.06);border:1px solid var(--card-borde)}
+.ciclo svg{flex:none;width:110px;height:110px}
+.ciclo .rueda{transform-origin:50px 50px;animation:gira 14s linear infinite}
+.ciclo p{margin:0;font-family:var(--serif);font-size:1.25rem;line-height:1.3}
+.medidor-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+.gauge{text-align:center}
+.gauge svg{width:100%;max-width:380px;height:auto}
+.gauge .estado{font-family:var(--serif);font-size:1.7rem;font-weight:600;color:var(--terra);margin-top:-4px;line-height:1.2}
+.gauge .estado-sub{font-size:.9rem;color:var(--verde-osc);max-width:26em;margin:6px auto 0}
+.radar svg{width:100%;max-width:440px;height:auto;display:block;margin:0 auto}
+.barras-lista{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;margin-top:18px}
+.bl{display:grid;grid-template-columns:130px 1fr 28px;gap:10px;align-items:center;font-size:.82rem;font-weight:600}
+.bl .t{height:10px;border-radius:999px;background:rgba(40,55,74,.12);overflow:hidden}
+.bl .t span{display:block;height:100%;background:var(--azul);border-radius:999px;transition:width .6s cubic-bezier(.2,.7,.2,1)}
+.bl .t span.p3{background:var(--verde)}
+.bl b{color:var(--terra);font-family:var(--serif);font-size:1.15rem;text-align:right}
+.herramientas{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;padding:26px}
+.aviso{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);opacity:0;background:var(--azul);color:var(--arena-claro);padding:10px 18px;border-radius:999px;font-size:.82rem;font-weight:600;box-shadow:var(--sombra);transition:all .35s;z-index:80;pointer-events:none}
+.aviso.si{opacity:1;transform:translate(-50%,0)}
+.contador{font-size:.82rem;font-weight:600}
+footer{text-align:center;padding:30px 18px 50px;color:var(--verde-osc);font-size:.82rem}
+footer .serif{font-family:var(--serif);font-size:1.4rem;color:var(--azul);font-style:italic}
+.subir{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:50%;background:var(--terra);color:#F4EDE0;border:0;display:grid;place-items:center;cursor:pointer;box-shadow:var(--sombra);opacity:0;transform:translateY(20px);transition:all .3s;z-index:60;pointer-events:none}
+.subir.si{opacity:1;transform:none;pointer-events:auto}
+.subir svg{width:20px;height:20px}
+@media (max-width:900px){
+  .hero-in{grid-template-columns:1fr;padding:36px 20px 52px;gap:28px}
+  .arco{order:-1;width:min(220px,58vw)}
+  .grid-verso,.grid2,.medidor-grid,.barras-lista{grid-template-columns:1fr}
+  .nota-wrap{grid-template-columns:1fr;justify-items:center;text-align:center;padding:10px 0}
+  .mini-medidor .txt{display:none}
+}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  .topbar-in{padding:8px 12px;gap:10px}
+  .marca{display:none}
+  .eyebrow{letter-spacing:.16em}
+  .diagrama{padding:10px 6px}
+  .card{padding:20px 18px}
+  .cab{gap:12px}
+  .num{font-size:3.2rem}
+  .de-a{grid-template-columns:1fr}
+  .de-a .flecha svg{transform:rotate(90deg);animation:none}
+  .paso-cont{padding:0 16px 16px}
+  .paso-btn{gap:12px;padding:14px}
+  .filtros{grid-template-columns:1fr}
+  .filtro span{flex-direction:row;justify-content:flex-start;text-align:left;padding:12px 14px}
+  .dias{gap:5px}
+  .dia span{border-radius:10px;font-size:.9rem}
+  .dia span small{font-size:.5rem;letter-spacing:0}
+  .sello{width:170px;height:170px}
+  .sello-centro div{width:92px;height:92px;font-size:2.4rem}
+  .bl{grid-template-columns:110px 1fr 26px;font-size:.76rem}
+  .cara{min-height:230px;padding:26px 22px 54px}
+  section.bloque{padding:40px 0 10px}
+  .ciclo{flex-direction:column;text-align:center}
+  .item-top{gap:10px}
+  .marcas span:nth-child(2){display:none}
+}
+@media print{
+  @page{margin:14mm}
+  body{background:#fff;font-size:11pt;color:#1e2a38}
+  body::before,body::after,.hero::before,.hero::after{display:none}
+  .topbar,.herramientas,.subir,.aviso,.hero-btns,.girar,.mini-medidor,.arco,#btnCambio,#abrirTodos,#cerrarTodos{display:none!important}
+  .hero-in{display:block;padding:0 0 10px}
+  .hero h1{font-size:30pt}
+  main{padding:0}
+  section.bloque{padding:16px 0 4px}
+  .cab{break-after:avoid;page-break-after:avoid}
+  .diagrama svg{max-width:420px}
+  .card,.item,.paso,.check{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important;border:1px solid #cdbfa3!important;break-inside:avoid}
+  .reto,.reto *{color:#1e2a38!important}
+  .reto input[type=text],.reto textarea{background:#fff!important}
+  .pill span,.dia span{border-color:#999!important}
+  .dia input:checked + span{background:#754437!important;color:#fff!important}
+  .reveal{opacity:1!important;transform:none!important}
+  .flip-in{display:block;transform:none!important}
+  .cara{backface-visibility:visible;-webkit-backface-visibility:visible;transform:none!important;min-height:0;margin-bottom:10px;padding:16px 20px;box-shadow:none;break-inside:avoid}
+  .cara.frente{background:#fff!important;color:#754437;border:2px solid #754437}
+  .cara.reverso{background:#f3eee3!important;color:#28374A;border:1px solid #28374A}
+  .cara.reverso .idea strong{color:#754437}
+  .cara::before{display:none}
+  .paso-panel{grid-template-rows:1fr!important}
+  .paso-ico{display:none}
+  .cambio .nueva{max-height:none;opacity:1;transform:none;margin-top:8px}
+  textarea,input[type=text]{background:#fff!important;border:1px solid #bbb!important;resize:none;overflow:visible}
+  .sello svg,.ciclo .rueda,.diagrama .linea,.centro-pulso{animation:none!important}
+  .filtro-q{background:#fff!important;color:#754437!important;border:2px solid #754437!important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style><link rel="stylesheet" href="../assets/tema.css"><style>:root{--hero:url("../img/efeso.webp")}#cat-llamado>.cab{--foto:url("../img/pergamino.webp")}#cat-caracter>.cab{--foto:url("../img/lampara.webp")}#cat-hogar>.cab{--foto:url("../img/familia.webp")}#cat-ensenanza>.cab{--foto:url("../img/pablo.webp")}#cat-madurez>.cab{--foto:url("../img/brote.webp")}#cat-testimonio>.cab{--foto:url("../img/creta.webp")}#texto>.cab{--foto:url("../img/tora.webp")}#tarjetas>.cab{--foto:url("../img/abraham.webp")}#clasificador>.cab{--foto:url("../img/arcos.webp")}#autoexamen>.cab{--foto:url("../img/luz.webp")}#emparejar>.cab{--foto:url("../img/biblia.webp")}#memoria>.cab{--foto:url("../img/tiberiades.webp")}#comparar>.cab{--foto:url("../img/mileto.webp")}#quiz>.cab{--foto:url("../img/pan.webp")}#plan>.cab{--foto:url("../img/camino.webp")}#intro>.cab{--foto:url("../img/pablo.webp")}#texto>.cab{--foto:url("../img/pergamino.webp")}.nota-mini{font-size:.82rem;color:var(--verde-osc);font-style:italic;margin:.8em 0 0}
+.card h3{margin-top:.6em}
+.mapa-cat{margin-top:22px}.chips-cat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.chipcat{display:block;text-decoration:none;color:var(--azul);background:#fff;border-radius:14px;padding:14px 16px;border-left:4px solid var(--terra);font-size:.82rem;line-height:1.45;transition:transform .2s}
+.chipcat:hover{transform:translateY(-3px)}.chipcat b{display:block;font-family:var(--serif);font-size:1.35rem;font-weight:600;margin-bottom:2px}
+.texto-ti .v{font-family:var(--serif);font-size:1.45rem;line-height:1.5;margin:.3em 0}.v .ref{font-family:var(--sans);font-size:.7rem;font-weight:700;color:var(--terra);margin-right:10px;vertical-align:super}
+.texto-ti a.w{color:var(--terra);text-decoration:none;border-bottom:2px solid rgba(117,68,55,.35)}.texto-ti a.w:hover{background:rgba(117,68,55,.1)}
+.attr{background:var(--card);border-radius:24px;margin:0 0 26px;overflow:hidden;box-shadow:var(--sombra);border:1px solid var(--card-borde)}
+.attr-h{background:linear-gradient(100deg,#28374A,#3a4c63);color:#f4efe4;padding:22px 30px}
+.attr-h .gr{font-family:var(--serif);font-size:1.5rem;color:#D3C7AD}.attr-h h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3vw,2.5rem);margin:.05em 0;color:#f4efe4;line-height:1.1}
+.attr-h .tr{font-size:.78rem;letter-spacing:.08em;color:#D3C7AD}.attr-h .tr b{color:#f4efe4;background:#754437;border-radius:999px;padding:2px 9px;margin-left:4px}
+.attr-g{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:26px 30px 30px}
+.attr h4{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin:1.1em 0 .3em}.attr .col>h4:first-child{margin-top:0}
+.attr p{margin:0}.attr .par{font-weight:600;color:var(--verde-osc)}
+.sino{display:grid;grid-template-columns:1fr 1fr;gap:12px}.sino>div{border-radius:14px;padding:12px 14px}.sino .si{background:rgba(107,103,81,.14)}.sino .no{background:rgba(117,68,55,.12)}
+.sino .si h4{color:#55523F;margin-top:0}.sino h4{margin-top:0}
+.ej{font-family:var(--serif);font-size:1.18rem;line-height:1.45}
+.preg{display:block;margin-top:16px}.preg span{display:block;font-weight:600;font-size:.92rem;margin-bottom:6px;color:var(--azul)}
+.preg textarea{min-height:90px;font-family:'Caveat',cursive;font-size:1.35rem;line-height:1.4;background:repeating-linear-gradient(180deg,#fffdf7 0 31px,rgba(40,90,140,.2) 31px 32px);border-left:3px solid rgba(192,57,43,.45)}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.tflip{perspective:1000px;height:220px;cursor:pointer;background:none;border:0;padding:0;font:inherit;text-align:center}
+.tflip .tin{display:block;position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}.tflip.v .tin{transform:rotateY(180deg)}
+.tflip .tf,.tflip .tb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:16px;box-shadow:var(--sombra)}
+.tflip .tf{background:#28374A;color:#f4efe4}.tflip .tf .tg{font-family:var(--serif);font-size:1.6rem;color:#D3C7AD}.tflip .tf .te{font-family:var(--serif);font-size:1.35rem;margin-top:6px}.tflip .tf small{font-size:.66rem;letter-spacing:.14em;opacity:.7;margin-top:8px}
+.tflip .tb{background:#f4efe4;color:var(--azul);transform:rotateY(180deg);font-size:.86rem;line-height:1.45;border:2px solid var(--terra)}
+.tflip .tok{position:absolute;top:10px;right:12px;font-size:.7rem;background:var(--verde);color:#fff;border-radius:999px;padding:2px 8px;display:none}.tflip.dom .tok{display:block}
+.tflip .tb label{margin-top:10px;font-size:.72rem;font-weight:600;color:var(--terra)}
+.cl-esc{font-family:var(--serif);font-size:1.5rem;line-height:1.4;margin:6px 0 16px}.cl-btns{display:flex;gap:10px;flex-wrap:wrap}
+.cl-fb{margin-top:14px;padding:14px;border-radius:14px;display:none}.cl-fb.on{display:block}.cl-fb.ok{background:rgba(107,103,81,.18)}.cl-fb.mal{background:rgba(117,68,55,.15)}
+.cl-top{display:flex;justify-content:space-between;font-size:.8rem;color:var(--verde-osc);margin-bottom:6px}
+.esc{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 12px;padding:7px 0;border-bottom:1px dashed rgba(40,55,74,.15);font-size:.88rem}
+.esc input{grid-column:1/-1;width:100%;accent-color:#754437}.esc b{color:var(--terra);font-family:var(--serif);font-size:1.3rem}
+.radar-card{position:sticky;top:90px}#radar{width:100%;height:auto}.radar-res{font-size:.88rem}.radar-res b{color:var(--terra)}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:14px 0}.match .colm{display:flex;flex-direction:column;gap:8px}
+.match button{border:1.5px solid rgba(40,55,74,.25);background:#fff;border-radius:12px;padding:10px 12px;font:600 .9rem var(--sans);color:var(--azul);cursor:pointer;text-align:left}
+.match button.g{font-family:var(--serif);font-size:1.25rem;font-weight:600}.match button.sel{border-color:var(--terra);background:rgba(117,68,55,.1)}
+.match button.hecho{background:var(--verde);color:#fff;border-color:var(--verde);cursor:default}.match button.err{animation:sh .35s}
+@keyframes sh{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}.match-msg{font-weight:600;color:var(--terra)}
+.mem-ctrl{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.mem-ctrl .btn,.cmp-f .btn,.cl-btns .btn{background:#e7dfcd;color:var(--azul)}.mem-ctrl .btn.act,.cmp-f .btn.act{background:var(--azul);color:#f4efe4}
+.mem{font-family:var(--serif);font-size:1.45rem;line-height:1.75}.mem .hue{display:inline-block;min-width:2.2em;border-bottom:2px solid var(--terra);color:transparent;cursor:pointer;border-radius:3px}.mem .hue.ver{color:var(--terra)}
+.mem .ini{color:var(--terra);cursor:pointer}.mem-check{display:grid;gap:8px;margin-top:16px}.mem-check select{font:inherit;padding:8px;border-radius:10px}
+.cmp{width:100%;border-collapse:separate;border-spacing:0 6px;margin-top:12px}.cmp th{text-align:left;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);padding:6px 12px}
+.cmp td{background:#fff;padding:10px 14px;width:50%;font-size:.92rem}.cmp tr td:first-child{border-radius:12px 0 0 12px}.cmp tr td:last-child{border-radius:0 12px 12px 0}
+.cmp tr.k-ambos td{background:rgba(107,103,81,.16)}.cmp tr.k-1ti td:first-child{background:rgba(40,55,74,.1);font-weight:600}.cmp tr.k-tit td:last-child{background:rgba(117,68,55,.13);font-weight:600}
+.cmp-f{display:flex;gap:6px;flex-wrap:wrap}.tit-txt{margin-top:12px}.tit-txt summary{cursor:pointer;font-weight:600;color:var(--terra)}.tit-txt .v{font-family:var(--serif);font-size:1.2rem;margin:.3em 0}
+.qz-p{font-family:var(--serif);font-size:1.6rem;line-height:1.3;margin:8px 0 14px}.qz-o{display:grid;gap:8px}.qz-o button{text-align:left;border:1.5px solid rgba(40,55,74,.2);background:#fff;border-radius:12px;padding:12px 14px;font:500 .95rem var(--sans);color:var(--azul);cursor:pointer}
+.qz-o button.ok{background:var(--verde);color:#fff;border-color:var(--verde)}.qz-o button.mal{background:var(--terra);color:#fff;border-color:var(--terra)}
+.qz-bar{height:6px;background:#e7dfcd;border-radius:9px;overflow:hidden}.qz-bar i{display:block;height:100%;background:var(--terra);transition:width .4s}
+.qz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:.85rem;color:var(--verde-osc)}
+.plan-sel{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 18px}.plan-sel button{border:1.5px solid rgba(40,55,74,.25);background:#fff;border-radius:999px;padding:7px 13px;font:600 .8rem var(--sans);color:var(--azul);cursor:pointer}
+.plan-sel button.on{background:var(--terra);color:#fff;border-color:var(--terra)}.plan-sel button.sug{box-shadow:0 0 0 3px rgba(117,68,55,.25)}
+.plan-i{background:#fff;border-radius:18px;padding:18px 20px;margin-bottom:14px}.plan-i h4{font-family:var(--serif);font-size:1.5rem;margin:0 0 8px;font-weight:600}
+.plan-i input[type=text]{margin-bottom:10px}.dias{display:grid;grid-template-columns:repeat(21,1fr);gap:4px}.dias label{display:block}.dias input{display:none}
+.dias span{display:grid;place-items:center;aspect-ratio:1;border-radius:8px;background:#efe8d8;font-size:.68rem;font-weight:600;cursor:pointer;color:var(--verde-osc)}.dias input:checked+span{background:var(--verde);color:#fff}
+.plan-i .racha{font-size:.8rem;color:var(--terra);font-weight:600;margin-top:8px}
+.cierre-c{margin-top:20px;text-align:center}.cierre-c .btn{margin-top:10px;font-size:1rem;padding:14px 26px}
+@media (max-width:900px){.attr-g{grid-template-columns:1fr;padding:20px;gap:12px}.attr-h{padding:18px 20px}.chips-cat{grid-template-columns:1fr}.sino{grid-template-columns:1fr}.radar-card{position:static}.dias{grid-template-columns:repeat(7,1fr)}.match{gap:8px 10px}.match button{font-size:.8rem;padding:8px}.match button.g{font-size:1.05rem}.cmp td{font-size:.8rem;padding:8px}.texto-ti .v{font-size:1.2rem}.tgrid{grid-template-columns:1fr 1fr;gap:10px}.tflip{height:180px}.tflip .tb{font-size:.76rem;padding:10px}}
+@media print{
+ .topbar,.hero,.apub,#tarjetas,#clasificador,#emparejar,#memoria,#comparar,#quiz,.aviso,.subir,.hero-credito,.cierre-c,.plan-sel,.mapa-cat,.creditos{display:none!important}
+ body{background:#fff!important;font-size:10.5pt}body::before,body::after{display:none!important}
+ .print-h{display:block!important}
+ .bloque{padding:8px 0;break-inside:auto}.bloque>.cab{min-height:0!important;padding:0!important;margin:10px 0!important;box-shadow:none;background:none!important}
+ .attr{break-inside:avoid;box-shadow:none;border:1px solid #bbb;margin-bottom:10px}.attr-h{background:#28374A!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:10px 14px}.attr-g{padding:10px 14px;gap:12px}
+ .preg textarea{background:#fff!important;font-size:13pt;min-height:0;height:auto!important;border:1px solid #999!important}
+ .radar-card{position:static}.auto-g{grid-template-columns:1fr 1fr}.esc input{display:none}
+ .dias span{background:#fff;border:1px solid #999}.dias input:checked+span{background:#6B6751!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .reveal{opacity:1!important;transform:none!important}
+}
+.print-h{display:none;text-align:center;margin-bottom:10px}.print-h h1{font-family:var(--serif);margin:0}
+.hero .pre{display:block;font-size:.42em;letter-spacing:.02em;margin-bottom:.15em}
+
+.tflip{display:block;width:100%}.gr,.tg,.match button.g,.attr-h .gr{font-family:'Noto Serif','Cormorant Garamond',serif!important}.attr-h .gr{font-size:1.3rem}.tflip .tf .tg{font-size:1.35rem}.match button.g{font-size:1.1rem}
+</style></head><body><a href="#intro" class="sr-only">Saltar al contenido</a>
+<header class="topbar"><div class="topbar-in"><div class="marca">1 Timoteo 3:1–7<small>Eli Nogueron</small></div>
+<nav class="tabs" aria-label="Secciones"><a class="curso" href="../dinamica-de-la-iglesia/">← Curso</a><a href="#inicio">Inicio</a><a href="#intro">Obispo</a><a href="#texto">Texto</a><a href="#cat-llamado">El llamado</a><a href="#cat-caracter">Carácter personal</a><a href="#cat-hogar">El hogar</a><a href="#cat-ensenanza">La enseñanza</a><a href="#cat-madurez">Madurez</a><a href="#cat-testimonio">Testimonio público</a><a href="#tarjetas">Tarjetas</a><a href="#clasificador">Escenarios</a><a href="#autoexamen">Autoexamen</a><a href="#emparejar">Griego</a><a href="#memoria">Memorizar</a><a href="#comparar">1 Ti / Tit</a><a href="#quiz">Quiz</a><a href="#plan">Mi plan</a><a class="milib" href="../mi-libreta/?l=requisitos-obispo">✎ Mi libreta</a></nav>
+<a href="#autoexamen" class="mini-medidor"><span>Tarea <b id="miniResp">0</b>/19</span></a></div><div class="progreso" aria-hidden="true"><span id="barraScroll"></span></div></header>
+<section class="hero" id="inicio"><span class="hero-credito">Foto: Benh LIEU SONG · CC BY-SA 3.0</span><div class="hero-in"><div>
+<span class="eyebrow">Dinámica de la iglesia · Bloque 2 · Libreta de Eli Nogueron</span>
+<h1><span class="pre">1 Timoteo 3:1–7 ·</span>Los requisitos <em>del obispo</em></h1>
+<p class="sub"><b>Tarea:</b> desarrollar cada atributo. Diecinueve palabras de Pablo a Timoteo en Éfeso: qué significan en griego, cómo se ven en la vida, quién las vivió en la Biblia… y cómo me examino yo.</p>
+<div class="verso-hero">“Palabra fiel: Si alguno anhela obispado, buena obra desea.”<cite>1 Timoteo 3:1 · RVR1960</cite></div>
+<div class="hero-meta"><span class="chip">Griego · Strong · Vine</span><span class="chip claro">8 interactivos</span><button type="button" class="chip" id="imprimir2" style="border:0;cursor:pointer">🖨 Imprimir mi tarea</button></div>
+</div><div class="arco" aria-hidden="true"></div></div></section>
+<main><section class="bloque" id="intro"><div class="cab reveal"><span class="num">01</span><div><span class="eyebrow">Introducción · Hch 20:17, 28 · Tit 1:5–7</span><h2>Obispo, anciano y pastor: una sola persona</h2></div></div>
+<div class="grid2"><div class="card reveal"><span class="etiqueta terra">Episkopos · presbyteros · poimēn</span>
+<p>En el Nuevo Testamento <b>obispo</b> (ἐπίσκοπος, <i>episkopos</i>, G1985: «el que supervisa»), <b>anciano</b> (πρεσβύτερος, <i>presbyteros</i>, G4245: «el mayor, el maduro») y <b>pastor</b> (ποιμήν) nombran el mismo servicio desde tres ángulos: la <b>tarea</b> de vigilar, la <b>madurez</b> de quien la hace y el <b>corazón</b> de pastor con que la hace.</p>
+<p>Pablo llama desde Mileto «a los ancianos de la iglesia» (Hch 20:17) y luego les dice: «el Espíritu Santo os ha puesto por <b>obispos</b>, para <b>apacentar</b> la iglesia del Señor» (Hch 20:28). En Tito 1:5–7 los «ancianos» del v. 5 son «el obispo» del v. 7. Pedro, «anciano también», ruega a los ancianos: «Apacentad la grey de Dios» (1 P 5:1–2).</p></div>
+<div class="card reveal"><span class="etiqueta">Dos frases clave</span>
+<h3>«Buena obra desea»</h3><p><b>Kalos</b> (G2570) es bueno en el sentido de noble, hermoso; <b>ergon</b> (G2041) es obra, trabajo. El obispado es una <b>obra</b>, no un título: Pablo honra el deseo de servir, y pone en seguida el estándar.</p>
+<h3>«Es necesario»</h3><p><b>Dei</b> (G1163) expresa una necesidad que no se negocia: «es necesario que el obispo sea…» (v. 2) y «también es necesario…» (v. 7). Los atributos no son ideales opcionales; son el retrato del carácter de Cristo que Dios pide en quienes guían a su pueblo, y la meta de todo creyente.</p>
+<p class="nota-mini">Strong verificado en Bible Hub · Vine parafraseado. «Palabra fiel» (1 Ti 3:1) es una de las cinco «palabras fieles» de las Pastorales (1 Ti 1:15; 3:1; 4:9; 2 Ti 2:11; Tit 3:8).</p></div></div>
+<div class="card reveal mapa-cat"><span class="etiqueta azul">Mapa de los atributos</span><div class="chips-cat"><a href="#cat-llamado" class="chipcat"><b>El llamado</b><span>anhela, obispado</span></a><a href="#cat-caracter" class="chipcat"><b>Carácter personal</b><span>irreprensible, sobrio, prudente, decoroso, no dado al vino, no pendenciero, no codicioso de ganancias deshonestas, amable, apacible, no avaro</span></a><a href="#cat-hogar" class="chipcat"><b>El hogar</b><span>marido de una sola mujer, hospedador, que gobierne bien su casa, hijos en sujeción con toda honestidad</span></a><a href="#cat-ensenanza" class="chipcat"><b>La enseñanza</b><span>apto para enseñar</span></a><a href="#cat-madurez" class="chipcat"><b>Madurez</b><span>no un neófito</span></a><a href="#cat-testimonio" class="chipcat"><b>Testimonio público</b><span>buen testimonio de los de afuera</span></a></div></div></section><section class="bloque" id="texto"><div class="cab reveal"><span class="num">02</span><div><span class="eyebrow">1 Timoteo 3:1–7 · RVR1960</span><h2>El texto: toca un atributo para ir a su estudio</h2></div></div>
+<div class="card reveal texto-ti"><p class="v"><span class="ref">3:1</span>Palabra fiel: Si alguno anhela obispado, buena obra desea.</p><p class="v"><span class="ref">3:2</span>Pero es necesario que el obispo sea irreprensible, marido de una sola mujer, sobrio, prudente, decoroso, hospedador, apto para enseñar;</p><p class="v"><span class="ref">3:3</span>no dado al vino, no pendenciero, no codicioso de ganancias deshonestas, sino amable, apacible, no avaro;</p><p class="v"><span class="ref">3:4</span>que gobierne bien su casa, que tenga a sus hijos en sujeción con toda honestidad</p><p class="v"><span class="ref">3:5</span>(pues el que no sabe gobernar su propia casa, ¿cómo cuidará de la iglesia de Dios?);</p><p class="v"><span class="ref">3:6</span>no un neófito, no sea que envaneciéndose caiga en la condenación del diablo.</p><p class="v"><span class="ref">3:7</span>También es necesario que tenga buen testimonio de los de afuera, para que no caiga en descrédito y en lazo del diablo.</p>
+<p class="nota-mini">✎ Crítica textual: «no codicioso de ganancias deshonestas» (μὴ αἰσχροκερδῆ) en 1 Ti 3:3 está en el Texto Recibido (base de la RVR1960), pero falta en muchos manuscritos antiguos (p. ej. Sinaítico, Alejandrino); el mismo requisito sí aparece sin duda en Tito 1:7 y para los diáconos en 1 Ti 3:8, así que la enseñanza es firme.</p></div></section><section class="bloque cat" id="cat-llamado"><div class="cab reveal"><span class="num">03</span><div><span class="eyebrow">Atributos · Antes de la lista: un deseo y una tarea</span><h2>El llamado</h2></div></div><article class="attr reveal" id="a-anhela"><header class="attr-h"><div><span class="gr">ὀρέγεται</span><h3>anhela</h3><span class="tr">oregō · <b>G3713</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine explica que el verbo describe el gesto de estirarse para alcanzar algo; en voz media expresa el deseo de quien se extiende hacia una meta. Lo usa para el anhelo de una patria mejor (He 11:16) y, en sentido negativo, para los que se extienden hacia el dinero (1 Ti 6:10).</p><h4>Significado</h4><p>Extender la mano hacia algo: un deseo que se mueve, no un capricho. Pablo no reprende el deseo de servir; lo llama «buena obra».</p><h4>Pasajes paralelos</h4><p class="par">He 11:16 · 1 Ti 6:10 · 1 P 5:2 («voluntariamente… con ánimo pronto»)</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Me ofrezco para servir sin que me rueguen; me preparo, estudio y me dejo formar porque deseo la obra, no el título.</p></div><div class="no"><h4>Lo contrario</h4><p>Ambición por la posición; o el extremo opuesto: indiferencia que nunca quiere cargar con nada.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Isaías: «Heme aquí, envíame a mí» (Is 6:8). Su disposición nació después de ver la santidad de Dios y su propia necesidad.</p>
+<label class="preg"><span>✎ ¿Qué deseo yo realmente cuando quiero servir: la obra o el reconocimiento?</span><textarea data-save="r-anhela" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-obispado"><header class="attr-h"><div><span class="gr">ἐπισκοπή</span><h3>obispado</h3><span class="tr">episkopē · <b>G1984 · G1985 (episkopos)</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine señala dos usos: «visitación», cuando Dios visita para bendecir o juzgar (Lc 19:44; 1 P 2:12), y el oficio de quien supervisa (Hch 1:20; 1 Ti 3:1). El episkopos es el que vigila y cuida a otros.</p><h4>Significado</h4><p>Supervisión que cuida: mirar por el rebaño como Dios mira por los suyos. Obispo, anciano y pastor son la misma persona vista desde tres ángulos.</p><h4>Pasajes paralelos</h4><p class="par">Hch 20:17, 28 · Tit 1:5–7 · 1 P 5:1–2 · Flp 1:1</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Cuido a los que Dios me encarga: los conozco, pregunto por ellos, oro por nombre y los busco cuando faltan.</p></div><div class="no"><h4>Lo contrario</h4><p>Supervisar para controlar o para figurar; ver el cargo como privilegio y no como servicio.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Pablo con los ancianos de Éfeso en Mileto (Hch 20:17–38): tres años de amonestar con lágrimas, de día y de noche.</p>
+<label class="preg"><span>✎ ¿A quién me ha puesto Dios cerca para «mirar por» él o ella esta semana?</span><textarea data-save="r-obispado" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article></section><section class="bloque cat" id="cat-caracter"><div class="cab reveal"><span class="num">04</span><div><span class="eyebrow">Atributos · Lo que soy cuando nadie me ve</span><h2>Carácter personal</h2></div></div><article class="attr reveal" id="a-irreprensible"><header class="attr-h"><div><span class="gr">ἀνεπίλημπτος</span><h3>irreprensible</h3><span class="tr">anepilēmptos · <b>G423</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine lo explica como «que no puede ser asido»: alguien en quien no hay de dónde agarrarse para acusarle con razón. Aparece en 1 Ti 3:2; 5:7 y 6:14.</p><h4>Significado</h4><p>No significa sin pecado, sino sin un asidero: ninguna falta pública y sostenida que desacredite el evangelio. Es el título que encabeza toda la lista.</p><h4>Pasajes paralelos</h4><p class="par">Tit 1:6–7 (anegklētos) · 1 Ti 3:10 · Flp 2:15 · Dn 6:4</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Cuando fallo, lo confieso y lo arreglo pronto; mi vida privada y pública dicen lo mismo.</p></div><div class="no"><h4>Lo contrario</h4><p>Una «manija» visible: un pecado conocido que no se trata, doble vida, cuentas pendientes.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Daniel: buscaron ocasión para acusarle «y no podían hallar ocasión alguna o falta» (Dn 6:4).</p>
+<label class="preg"><span>✎ ¿Hay alguna «manija» en mi vida de la que el enemigo podría agarrarme hoy?</span><textarea data-save="r-irreprensible" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-sobrio"><header class="attr-h"><div><span class="gr">νηφάλιος</span><h3>sobrio</h3><span class="tr">nēphalios · <b>G3524</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine lo define como libre de la influencia de los intoxicantes y, por extensión, templado y vigilante. Aparece en 1 Ti 3:2, 11 y Tit 2:2; el verbo afín nēphō es «sed sobrios y velad» (1 P 5:8).</p><h4>Significado</h4><p>Mente clara y despierta: nada me embota (vino, pantallas, ansiedad), de modo que puedo velar por mí y por otros.</p><h4>Pasajes paralelos</h4><p class="par">1 Ti 3:11 · Tit 2:2 · 1 Ts 5:6–8 · 1 P 5:8</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Tomo decisiones con calma; reconozco lo que me adormece espiritualmente y le pongo límite.</p></div><div class="no"><h4>Lo contrario</h4><p>Vivir aturdido: excesos, adicciones, distracción constante, reacciones impulsivas.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Daniel «propuso en su corazón no contaminarse» con el vino del rey (Dn 1:8) y conservó claridad para servir.</p>
+<label class="preg"><span>✎ ¿Qué cosa adormece hoy mi atención espiritual y cuánto espacio le doy?</span><textarea data-save="r-sobrio" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-prudente"><header class="attr-h"><div><span class="gr">σώφρων</span><h3>prudente</h3><span class="tr">sōphrōn · <b>G4998</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine lo explica como «de mente sana»: el que tiene dominio propio y frena sus impulsos. En Tito 1:8 la RVR1960 lo traduce «sobrio»; el sustantivo sōphrosynē es cordura y moderación.</p><h4>Significado</h4><p>Juicio sensato que gobierna los deseos; piensa antes de hablar y actuar.</p><h4>Pasajes paralelos</h4><p class="par">Tit 1:8 · Tit 2:2, 5–6 · Ro 12:3 · 2 Ti 1:7 (dominio propio)</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Escucho antes de opinar; mido mis palabras y mis compras; no me dejo llevar por el enojo o la euforia.</p></div><div class="no"><h4>Lo contrario</h4><p>Impulsividad, decisiones apresuradas, hablar sin pensar, extremos.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Abigail actuó con cordura y detuvo a David de vengarse por su mano (1 S 25:32–33).</p>
+<label class="preg"><span>✎ ¿En qué área (palabras, dinero, emociones) me falta pensar antes de actuar?</span><textarea data-save="r-prudente" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-decoroso"><header class="attr-h"><div><span class="gr">κόσμιος</span><h3>decoroso</h3><span class="tr">kosmios · <b>G2887</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine relaciona kosmios con kosmos en su sentido de «orden»: bien ordenado, de conducta digna. En 1 Ti 2:9 describe el vestido «decoroso».</p><h4>Significado</h4><p>Una vida ordenada y digna por fuera porque está ordenada por dentro: horarios, compromisos, trato y apariencia que honran a Cristo.</p><h4>Pasajes paralelos</h4><p class="par">1 Ti 2:9 · 1 Co 14:40 · Tit 2:10 («adornen la doctrina»)</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Cumplo lo que prometo, llego a tiempo, cuido mi presentación y mi forma de tratar a los demás.</p></div><div class="no"><h4>Lo contrario</h4><p>Desorden crónico, informalidad que deshonra, vulgaridad, incumplimiento.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">José administró con orden la casa de Potifar, la cárcel y Egipto; todo prosperaba en su mano (Gn 39:4, 22; 41:40).</p>
+<label class="preg"><span>✎ ¿Qué área desordenada de mi vida está «desadornando» el evangelio?</span><textarea data-save="r-decoroso" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-vino"><header class="attr-h"><div><span class="gr">πάροινος</span><h3>no dado al vino</h3><span class="tr">paroinos · <b>G3943</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine explica que la palabra significa literalmente «junto al vino»: el que se queda sentado junto al vino; de ahí el bebedor y el que se pone pendenciero por la bebida. Solo en 1 Ti 3:3 y Tit 1:7.</p><h4>Significado</h4><p>No estar dominado por el alcohol ni por ninguna sustancia o hábito que me controle.</p><h4>Pasajes paralelos</h4><p class="par">Tit 1:7 · Ef 5:18 · Pr 20:1 · Pr 23:29–35</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Nada me gobierna salvo el Espíritu; si algo me domina, lo confieso y busco ayuda.</p></div><div class="no"><h4>Lo contrario</h4><p>Dependencia, escándalos por la bebida, justificar excesos.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Contraste: Noé, embriagado, quedó expuesto y avergonzado (Gn 9:20–21). Positivo: los recabitas, fieles a su abstinencia (Jer 35:5–6).</p>
+<label class="preg"><span>✎ ¿Hay algo (sustancia, pantalla, hábito) que me gobierne más de lo que admito?</span><textarea data-save="r-vino" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-pendenciero"><header class="attr-h"><div><span class="gr">πλήκτης</span><h3>no pendenciero</h3><span class="tr">plēktēs · <b>G4131</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine lo define como «golpeador»: el violento, de mano o de palabra. Viene de plēssō, golpear. Solo en 1 Ti 3:3 y Tit 1:7.</p><h4>Significado</h4><p>Nunca usar la fuerza (física, verbal o emocional) para imponerse a otros.</p><h4>Pasajes paralelos</h4><p class="par">Tit 1:7 · 2 Ti 2:24 · 1 P 2:23 · Stg 1:19–20</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Bajo la voz, respiro, no humillo; si herí, pido perdón.</p></div><div class="no"><h4>Lo contrario</h4><p>Golpes, gritos, sarcasmo hiriente, intimidación, violencia en casa o en redes.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Pedro sacó la espada y cortó una oreja (Jn 18:10); Jesús, «cuando le maldecían, no respondía con maldición» (1 P 2:23).</p>
+<label class="preg"><span>✎ ¿Con quién tiendo a «golpear» con palabras cuando me frustro?</span><textarea data-save="r-pendenciero" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-codicioso"><header class="attr-h"><div><span class="gr">αἰσχροκερδής</span><h3>no codicioso de ganancias deshonestas</h3><span class="tr">aischrokerdēs · <b>G146</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine lo compone de aischros (vergonzoso) y kerdos (ganancia): ávido de ganancia vergonzosa. Aparece en Tit 1:7 y 1 Ti 3:8; el adverbio está en 1 P 5:2 («no por ganancia deshonesta»).</p><h4>Significado</h4><p>No usar el servicio a Dios ni ningún medio torcido para enriquecerse.</p><h4>Pasajes paralelos</h4><p class="par">Tit 1:7 · 1 Ti 3:8 · 1 P 5:2 · Tit 1:11</p><p class="nota-mini">✎ Crítica textual: falta en muchos manuscritos de 1 Ti 3:3 (presente en el Texto Recibido que sigue la RVR1960), pero aparece en Tit 1:7 y en 1 Ti 3:8.</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Soy transparente con el dinero; no cobro favores espirituales; rindo cuentas.</p></div><div class="no"><h4>Lo contrario</h4><p>Lucrar con el ministerio, manipular ofrendas, negocios turbios.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Giezi persiguió a Naamán para sacar plata y vestidos (2 R 5:20–27). Samuel pudo decir: «¿a quién he defraudado?» (1 S 12:3–4).</p>
+<label class="preg"><span>✎ ¿Hay alguna ganancia en mi vida que no podría explicar con tranquilidad delante de Dios?</span><textarea data-save="r-codicioso" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-amable"><header class="attr-h"><div><span class="gr">ἐπιεικής</span><h3>amable</h3><span class="tr">epieikēs · <b>G1933</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine lo describe como lo equitativo y razonable: quien no insiste en la letra de su derecho, sino que cede con consideración. Aparece en Flp 4:5, Tit 3:2, Stg 3:17 y 1 P 2:18.</p><h4>Significado</h4><p>Gentileza razonable: sé ceder, no exijo hasta el último centavo de mi derecho.</p><h4>Pasajes paralelos</h4><p class="par">Flp 4:5 («vuestra gentileza sea conocida») · Tit 3:2 · Stg 3:17 · 2 Co 10:1</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Cedo en lo secundario; trato con consideración al que se equivoca; no hago pagar todo.</p></div><div class="no"><h4>Lo contrario</h4><p>Rigidez, legalismo, «tengo derecho» como bandera.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">David tuvo a Saúl en sus manos y no le hizo daño (1 S 24:4–7).</p>
+<label class="preg"><span>✎ ¿Dónde estoy exigiendo «mi derecho» cuando podría ceder con gracia?</span><textarea data-save="r-amable" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-apacible"><header class="attr-h"><div><span class="gr">ἄμαχος</span><h3>apacible</h3><span class="tr">amachos · <b>G269</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine lo define como «no luchador»: el que no es contencioso ni busca pleito. Solo en 1 Ti 3:3 y Tit 3:2.</p><h4>Significado</h4><p>Paz por dentro que no necesita ganar cada discusión.</p><h4>Pasajes paralelos</h4><p class="par">Tit 3:2 · Ro 12:18 · 2 Ti 2:23–24 · Stg 3:17–18</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Escojo mis batallas; dejo ir discusiones que no edifican; busco la paz con todos.</p></div><div class="no"><h4>Lo contrario</h4><p>Espíritu de pleito, discutir por todo, dividir grupos.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Isaac dejó que le disputaran los pozos y siguió cavando hasta Rehobot (Gn 26:17–22).</p>
+<label class="preg"><span>✎ ¿Qué discusión debo soltar esta semana por amor a la paz?</span><textarea data-save="r-apacible" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-avaro"><header class="attr-h"><div><span class="gr">ἀφιλάργυρος</span><h3>no avaro</h3><span class="tr">aphilargyros · <b>G866</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine lo explica como «no amante del dinero» (a + philos + argyros, plata). Aparece aquí y en He 13:5: «sean vuestras costumbres sin avaricia».</p><h4>Significado</h4><p>Libertad del amor al dinero; contentamiento y generosidad.</p><h4>Pasajes paralelos</h4><p class="par">He 13:5 · 1 Ti 6:6–10 · Lc 12:15 · 1 P 5:2</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Doy con alegría; vivo contento; no mido a las personas por lo que tienen.</p></div><div class="no"><h4>Lo contrario</h4><p>Ansiedad por dinero, tacañería, envidia, decisiones guiadas solo por la ganancia.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Abraham no quiso tomar del rey de Sodoma desde un hilo hasta una correa de calzado (Gn 14:22–23). Contraste: Judas, que «sustraía de lo que se echaba» en la bolsa (Jn 12:6).</p>
+<label class="preg"><span>✎ ¿Qué revela mi manera de gastar y de dar sobre lo que amo?</span><textarea data-save="r-avaro" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article></section><section class="bloque cat" id="cat-hogar"><div class="cab reveal"><span class="num">05</span><div><span class="eyebrow">Atributos · La casa es el primer rebaño</span><h2>El hogar</h2></div></div><article class="attr reveal" id="a-unamujer"><header class="attr-h"><div><span class="gr">μιᾶς γυναικὸς ἀνήρ</span><h3>marido de una sola mujer</h3><span class="tr">mias gynaikos anēr · <b>G1520 · G1135 · G435</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine define anēr como el varón en cuanto tal y también como esposo; gynē como mujer y esposa según el contexto. La frase griega dice literalmente «hombre de una mujer».</p><h4>Significado</h4><p>Fidelidad marital exclusiva: un hombre entregado a una sola mujer en corazón, mirada y conducta. Hay debate sobre divorcio y viudez, pero todos coinciden en el centro: fidelidad sin doble corazón.</p><h4>Pasajes paralelos</h4><p class="par">Tit 1:6 · 1 Ti 5:9 (la forma inversa) · Mt 5:27–28 · Ef 5:25</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Cuido mis ojos, mis conversaciones y mis redes; honro a mi cónyuge en público y en privado. Si soy soltero, guardo pureza hoy.</p></div><div class="no"><h4>Lo contrario</h4><p>Coqueteo, pornografía, relaciones «emocionales» paralelas, desprecio del cónyuge.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Contraste: Salomón, cuyas muchas mujeres «inclinaron su corazón» (1 R 11:3–4). Positivo: Aquila y Priscila, sirviendo juntos (Hch 18:26).</p>
+<label class="preg"><span>✎ ¿Qué frontera concreta necesito poner para guardar la fidelidad de mi corazón?</span><textarea data-save="r-unamujer" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-hospedador"><header class="attr-h"><div><span class="gr">φιλόξενος</span><h3>hospedador</h3><span class="tr">philoxenos · <b>G5382</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine lo descompone en philos (amigo, que ama) y xenos (extraño): el que ama a los forasteros. Se usa en 1 Ti 3:2, Tit 1:8 y 1 P 4:9.</p><h4>Significado</h4><p>Una casa y una mesa abiertas, especialmente para el que no puede devolver el favor.</p><h4>Pasajes paralelos</h4><p class="par">Tit 1:8 · 1 P 4:9 («sin murmuraciones») · Ro 12:13 · He 13:2</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Invito a mi mesa a alguien nuevo o solo; abro mi casa para estudio, oración o un café.</p></div><div class="no"><h4>Lo contrario</h4><p>Casa cerrada, servicio solo «en el templo», hospitalidad con quejas o con interés.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Abraham corrió a recibir a los tres visitantes y les sirvió él mismo (Gn 18:1–8); «por ella algunos, sin saberlo, hospedaron ángeles» (He 13:2).</p>
+<label class="preg"><span>✎ ¿A quién puedo invitar a mi mesa este mes que no pueda devolverme la invitación?</span><textarea data-save="r-hospedador" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-gobierne"><header class="attr-h"><div><span class="gr">προΐστημι</span><h3>que gobierne bien su casa</h3><span class="tr">proistēmi · <b>G4291</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine lo explica como «estar delante»: presidir, dirigir y a la vez cuidar y proteger. Se usa de los ancianos que «gobiernan bien» (1 Ti 5:17) y de «ocuparse» en buenas obras (Tit 3:8).</p><h4>Significado</h4><p>Liderar mi casa al frente y con cuidado: dirección y ternura a la vez. «Si no sabe gobernar su casa, ¿cómo cuidará de la iglesia?»</p><h4>Pasajes paralelos</h4><p class="par">1 Ti 3:5, 12 · 1 Ti 5:17 · Ro 12:8 · 1 Ts 5:12 · Jos 24:15</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Dedico tiempo a mi familia; guío la devoción en casa; administro con orden.</p></div><div class="no"><h4>Lo contrario</h4><p>Ausencia, autoritarismo, casa en caos, delegar la fe de los hijos solo a la iglesia.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Josué: «yo y mi casa serviremos a Jehová» (Jos 24:15). Contraste: Elí, que no estorbó a sus hijos (1 S 3:13).</p>
+<label class="preg"><span>✎ ¿Qué paso concreto puedo dar para guiar espiritualmente a mi casa?</span><textarea data-save="r-gobierne" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article><article class="attr reveal" id="a-hijos"><header class="attr-h"><div><span class="gr">ὑποταγή · σεμνότης</span><h3>hijos en sujeción con toda honestidad</h3><span class="tr">hypotagē · semnotēs · <b>G5292 · G4587</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine define hypotagē como sujeción u ordenamiento bajo otro; y semnotēs como seriedad digna que inspira respeto (1 Ti 2:2; Tit 2:7).</p><h4>Significado</h4><p>Hijos que respetan a sus padres, guiados con una autoridad digna y no aplastante; la «honestidad» describe el modo del padre tanto como la conducta del hijo.</p><h4>Pasajes paralelos</h4><p class="par">Tit 1:6 · Ef 6:1–4 · Col 3:21 · 1 Ti 3:12</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Corrijo sin provocar a ira; soy coherente; mi autoridad se gana con respeto.</p></div><div class="no"><h4>Lo contrario</h4><p>Hijos sin límites o padres tiranos; doble discurso en casa.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Timoteo, formado en la fe por su abuela Loida y su madre Eunice (2 Ti 1:5; 3:15). Contraste: los hijos de Elí (1 S 2:12).</p>
+<label class="preg"><span>✎ ¿Cómo ejerzo la autoridad que Dios me dio (en casa, trabajo o ministerio): con dignidad o con dureza?</span><textarea data-save="r-hijos" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article></section><section class="bloque cat" id="cat-ensenanza"><div class="cab reveal"><span class="num">06</span><div><span class="eyebrow">Atributos · Retener la palabra fiel y darla a otros</span><h2>La enseñanza</h2></div></div><article class="attr reveal" id="a-ensenar"><header class="attr-h"><div><span class="gr">διδακτικός</span><h3>apto para enseñar</h3><span class="tr">didaktikos · <b>G1317</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine lo define como «hábil para enseñar». Solo aparece aquí y en 2 Ti 2:24, donde va unido a la amabilidad y la paciencia.</p><h4>Significado</h4><p>No es solo saber, sino poder comunicar la Palabra con fidelidad y paciencia, y corregir con mansedumbre.</p><h4>Pasajes paralelos</h4><p class="par">Tit 1:9 («retenedor de la palabra fiel… exhortar… convencer») · 2 Ti 2:2, 24–25 · Esd 7:10</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Estudio con constancia; comparto lo que aprendo con alguien más; respondo con la Biblia y con paciencia.</p></div><div class="no"><h4>Lo contrario</h4><p>Ignorancia bíblica, enseñar opiniones, o enseñar con arrogancia y sin paciencia.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Esdras «había preparado su corazón para inquirir la ley de Jehová y para cumplirla, y para enseñar» (Esd 7:10). Priscila y Aquila explicaron «más exactamente» el camino a Apolos (Hch 18:26).</p>
+<label class="preg"><span>✎ ¿A quién le estoy transmitiendo lo que aprendo (2 Ti 2:2)?</span><textarea data-save="r-ensenar" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article></section><section class="bloque cat" id="cat-madurez"><div class="cab reveal"><span class="num">07</span><div><span class="eyebrow">Atributos · Raíces antes que plataforma</span><h2>Madurez</h2></div></div><article class="attr reveal" id="a-neofito"><header class="attr-h"><div><span class="gr">νεόφυτος · τυφόω</span><h3>no un neófito</h3><span class="tr">neophytos · typhoō · <b>G3504 · G5187</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine define neophytos como «recién plantado», el nuevo convertido. Typhoō es «envolver en humo»: envanecerse, cegarse por orgullo (1 Ti 6:4; 2 Ti 3:4).</p><h4>Significado</h4><p>Raíces antes que plataforma: el recién convertido, puesto pronto en autoridad, corre el riesgo de hincharse de orgullo y caer como el diablo.</p><h4>Pasajes paralelos</h4><p class="par">1 Ti 5:22 («no impongas con ligereza las manos») · 1 Ti 3:10 · Pr 16:18 · Is 14:12–15</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Acepto el tiempo de prueba; sirvo en lo pequeño; no busco reconocimiento rápido.</p></div><div class="no"><h4>Lo contrario</h4><p>Querer el púlpito sin el proceso; ofenderse si no lo toman en cuenta.</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Uzías, «cuando ya era fuerte, su corazón se enalteció para su ruina» (2 Cr 26:16). Timoteo fue probado como hijo con su padre (Flp 2:22).</p>
+<label class="preg"><span>✎ ¿Estoy dispuesto a que Dios me pruebe en lo pequeño antes de darme más?</span><textarea data-save="r-neofito" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article></section><section class="bloque cat" id="cat-testimonio"><div class="cab reveal"><span class="num">08</span><div><span class="eyebrow">Atributos · Lo que ven los de afuera</span><h2>Testimonio público</h2></div></div><article class="attr reveal" id="a-testimonio"><header class="attr-h"><div><span class="gr">μαρτυρία · ὀνειδισμός · παγίς</span><h3>buen testimonio de los de afuera</h3><span class="tr">martyria · oneidismos · pagis · <b>G3141 · G3680 · G3803</b></span></div></header>
+<div class="attr-g"><div class="col"><h4>Vine</h4><p>Vine: martyria es testimonio o reputación; oneidismos, reproche o descrédito (He 11:26; 13:13); pagis, trampa o lazo para atrapar (1 Ti 6:9; 2 Ti 2:26).</p><h4>Significado</h4><p>Mi reputación ante vecinos, compañeros y autoridades importa: si es mala, el descrédito cae sobre Cristo y el diablo tiene un lazo listo.</p><h4>Pasajes paralelos</h4><p class="par">Col 4:5 · 1 P 2:12 · Hch 6:3 · 1 Ti 6:9 · 2 Ti 2:26</p></div>
+<div class="col"><div class="sino"><div class="si"><h4>Así se ve</h4><p>Pago mis deudas, hago bien mi trabajo, soy honesto con quienes no son creyentes.</p></div><div class="no"><h4>Lo contrario</h4><p>Fama de tramposo, mal empleado, mal vecino; «en la iglesia es uno, afuera es otro».</p></div></div>
+<h4>Ejemplo bíblico</h4><p class="ej">Ananías de Damasco, «que tenía buen testimonio de todos los judíos que allí moraban» (Hch 22:12). Cornelio: «que tiene buen testimonio en toda la nación de los judíos» (Hch 10:22).</p>
+<label class="preg"><span>✎ ¿Qué dirían de mí mis vecinos o compañeros si les preguntaran por mi carácter?</span><textarea data-save="r-testimonio" rows="3" placeholder="Mi respuesta…"></textarea></label></div></div></article></section><section class="bloque" id="tarjetas"><div class="cab reveal"><span class="num">09</span><div><span class="eyebrow">Interactivo · tarjetas</span><h2>Voltea cada atributo</h2></div></div><p class="intro-txt reveal">Toca una tarjeta: al frente el español y el griego; atrás, el sentido en una línea. Marca las que ya dominas.</p><div class="tgrid" id="flips"></div></section><section class="bloque" id="clasificador"><div class="cab reveal"><span class="num">10</span><div><span class="eyebrow">Interactivo · escenarios</span><h2>¿Cumple o no cumple?</h2></div></div><div class="card reveal"><div id="cl"></div></div></section><section class="bloque" id="autoexamen"><div class="cab reveal"><span class="num">11</span><div><span class="eyebrow">Interactivo · autoexamen</span><h2>¿Cómo voy en cada atributo?</h2></div></div><div class="grid2 auto-g"><div class="card reveal"><p class="nota-mini">1 = muy débil · 5 = firme. Sé honesto: esto es para crecer, no para condenarte.</p><div id="escalas"></div></div><div class="card reveal radar-card"><svg id="radar" viewBox="-70 -10 560 440" role="img" aria-label="Gráfica radar del autoexamen"></svg><div id="radarRes" class="radar-res"></div></div></div></section><section class="bloque" id="emparejar"><div class="cab reveal"><span class="num">12</span><div><span class="eyebrow">Interactivo · griego y español</span><h2>Empareja cada palabra</h2></div></div><div class="card reveal"><p class="nota-mini">Toca una palabra griega y luego su traducción en la RVR1960.</p><div class="match" id="match"></div><p id="matchMsg" class="match-msg"></p><button class="btn btn-linea btn-chico" type="button" id="matchReset">Revolver de nuevo</button></div></section><section class="bloque" id="memoria"><div class="cab reveal"><span class="num">13</span><div><span class="eyebrow">Interactivo · memorizador</span><h2>1 Timoteo 3:1–7 de memoria</h2></div></div><div class="card reveal"><div class="mem-ctrl"><span>Nivel:</span><button type="button" class="btn btn-chico" data-niv="0">Leer</button><button type="button" class="btn btn-chico" data-niv="1">Fácil</button><button type="button" class="btn btn-chico" data-niv="2">Medio</button><button type="button" class="btn btn-chico" data-niv="3">Difícil</button><button type="button" class="btn btn-chico" data-niv="4">Solo iniciales</button></div><div id="mem" class="mem"></div><p class="nota-mini">Toca cada espacio para revelar la palabra. Repite hasta decirlo sin mirar.</p><div class="mem-check"><select id="memV"></select><textarea id="memIn" rows="3" placeholder="Escribe el versículo de memoria…"></textarea><button type="button" class="btn btn-terra btn-chico" id="memBtn">Revisar</button><p id="memRes"></p></div></div></section><section class="bloque" id="comparar"><div class="cab reveal"><span class="num">14</span><div><span class="eyebrow">Interactivo · 1 Ti 3 y Tit 1</span><h2>Lado a lado: Timoteo y Tito</h2></div></div><div class="card reveal"><div class="cmp-f"><button type="button" class="btn btn-chico act" data-f="todo">Todo</button><button type="button" class="btn btn-chico" data-f="ambos">En ambos</button><button type="button" class="btn btn-chico" data-f="1ti">Solo 1 Ti</button><button type="button" class="btn btn-chico" data-f="tit">Solo Tito</button></div><table class="cmp"><thead><tr><th>1 Timoteo 3:1–7 (Éfeso)</th><th>Tito 1:5–9 (Creta)</th></tr></thead><tbody><tr data-k="ambos" class="k-ambos"><td>irreprensible (3:2)</td><td>irreprensible (1:6, 7)</td></tr><tr data-k="ambos" class="k-ambos"><td>marido de una sola mujer (3:2)</td><td>marido de una sola mujer (1:6)</td></tr><tr data-k="1ti" class="k-1ti"><td>sobrio · nēphalios (3:2)</td><td>—</td></tr><tr data-k="ambos" class="k-ambos"><td>prudente · sōphrōn (3:2)</td><td>sobrio · sōphrōn (1:8)</td></tr><tr data-k="1ti" class="k-1ti"><td>decoroso (3:2)</td><td>—</td></tr><tr data-k="ambos" class="k-ambos"><td>hospedador (3:2)</td><td>hospedador (1:8)</td></tr><tr data-k="ambos" class="k-ambos"><td>apto para enseñar (3:2)</td><td>retenedor de la palabra fiel… exhortar… convencer (1:9)</td></tr><tr data-k="ambos" class="k-ambos"><td>no dado al vino (3:3)</td><td>no dado al vino (1:7)</td></tr><tr data-k="ambos" class="k-ambos"><td>no pendenciero (3:3)</td><td>no pendenciero (1:7)</td></tr><tr data-k="ambos" class="k-ambos"><td>no codicioso de ganancias deshonestas (3:3)*</td><td>no codicioso de ganancias deshonestas (1:7)</td></tr><tr data-k="1ti" class="k-1ti"><td>amable (3:3)</td><td>—</td></tr><tr data-k="1ti" class="k-1ti"><td>apacible (3:3)</td><td>—</td></tr><tr data-k="1ti" class="k-1ti"><td>no avaro (3:3)</td><td>—</td></tr><tr data-k="1ti" class="k-1ti"><td>gobierne bien su casa (3:4–5)</td><td>—</td></tr><tr data-k="ambos" class="k-ambos"><td>hijos en sujeción con toda honestidad (3:4)</td><td>hijos creyentes, no acusados de disolución ni de rebeldía (1:6)</td></tr><tr data-k="1ti" class="k-1ti"><td>no un neófito (3:6)</td><td>—</td></tr><tr data-k="1ti" class="k-1ti"><td>buen testimonio de los de afuera (3:7)</td><td>—</td></tr><tr data-k="tit" class="k-tit"><td>—</td><td>no soberbio (1:7)</td></tr><tr data-k="tit" class="k-tit"><td>—</td><td>no iracundo (1:7)</td></tr><tr data-k="tit" class="k-tit"><td>—</td><td>amante de lo bueno (1:8)</td></tr><tr data-k="tit" class="k-tit"><td>—</td><td>justo, santo (1:8)</td></tr><tr data-k="tit" class="k-tit"><td>—</td><td>dueño de sí mismo (1:8)</td></tr><tr data-k="tit" class="k-tit"><td>—</td><td>como administrador de Dios (1:7)</td></tr></tbody></table><p class="nota-mini">* Ver nota de crítica textual. Tito añade «como administrador de Dios» (oikonomos): el anciano administra lo que es de Otro.</p><details class="tit-txt"><summary>Leer Tito 1:5–9 (RVR1960)</summary><p class="v"><span class="ref">1:5</span>Por esta causa te dejé en Creta, para que corrigieses lo deficiente, y establecieses ancianos en cada ciudad, así como yo te mandé;</p><p class="v"><span class="ref">1:6</span>el que fuere irreprensible, marido de una sola mujer, y tenga hijos creyentes que no estén acusados de disolución ni de rebeldía.</p><p class="v"><span class="ref">1:7</span>Porque es necesario que el obispo sea irreprensible, como administrador de Dios; no soberbio, no iracundo, no dado al vino, no pendenciero, no codicioso de ganancias deshonestas,</p><p class="v"><span class="ref">1:8</span>sino hospedador, amante de lo bueno, sobrio, justo, santo, dueño de sí mismo,</p><p class="v"><span class="ref">1:9</span>retenedor de la palabra fiel tal como ha sido enseñada, para que también pueda exhortar con sana enseñanza y convencer a los que contradicen.</p></details><details class="tit-txt"><summary>Leer 1 Pedro 5:1–4 (RVR1960)</summary><p class="v"><span class="ref">5:1</span>Ruego a los ancianos que están entre vosotros, yo anciano también con ellos, y testigo de los padecimientos de Cristo, que soy también participante de la gloria que será revelada:</p><p class="v"><span class="ref">5:2</span>Apacentad la grey de Dios que está entre vosotros, cuidando de ella, no por fuerza, sino voluntariamente; no por ganancia deshonesta, sino con ánimo pronto;</p><p class="v"><span class="ref">5:3</span>no como teniendo señorío sobre los que están a vuestro cuidado, sino siendo ejemplos de la grey.</p><p class="v"><span class="ref">5:4</span>Y cuando aparezca el Príncipe de los pastores, vosotros recibiréis la corona incorruptible de gloria.</p></details></div></section><section class="bloque" id="quiz"><div class="cab reveal"><span class="num">15</span><div><span class="eyebrow">Repaso · 15 preguntas</span><h2>Quiz de la clase</h2></div></div><div class="card reveal" id="qz"></div></section><section class="bloque" id="plan"><div class="cab reveal"><span class="num">16</span><div><span class="eyebrow">Plan de crecimiento · 21 días</span><h2>Elijo tres atributos para trabajar</h2></div></div><div class="card reveal"><p class="nota-mini">Elige 3 atributos (el autoexamen te sugiere los más bajos), escribe una acción concreta y marca cada día que la practiques.</p><div id="planSel" class="plan-sel"></div><div id="planG"></div></div><div class="card reveal cierre-c"><span class="etiqueta terra">Para entregar</span><h3>Mi tarea: desarrollo de cada atributo</h3><p>El botón imprime (o guarda como PDF) todo el desarrollo de los atributos con tus respuestas, tu autoexamen y tu plan.</p><button type="button" class="btn btn-terra" id="imprimir">🖨 Imprimir mi tarea</button></div></section></main>
+<section class="apub" id="publicados"><div class="apub-in"><div><span class="eyebrow" style="color:#D3C7AD">De mi libreta</span><h2>Apuntes publicados</h2><p>Lo que escribí en mi libreta y quedó publicado para esta clase.</p><a class="btn-lib" href="../mi-libreta/?l=requisitos-obispo">✎ Abrir mi libreta</a></div><div id="apPublicados"></div></div></section>
+<footer><div class="serif">“…siendo ejemplos de la grey.” — 1 Pedro 5:3</div><p>Libreta de Eli Nogueron · Dinámica de la iglesia · Bloque 2 · Los requisitos del obispo · RVR1960 · Strong (Bible Hub) · Vine parafraseado</p>
+<div class="creditos"><b>Fotografías e imágenes:</b> <a href="https://commons.wikimedia.org/wiki/File:Ephesus_Celsus_Library_Fa%C3%A7ade.jpg" rel="noopener">Ephesus Celsus Library Façade</a> — Benh LIEU SONG (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Codex_Sinaiticus.jpg" rel="noopener">Codex Sinaiticus</a> — PotatoCow25 (CC0) · <a href="https://commons.wikimedia.org/wiki/File:Group_of_ancient_hellenistic_an_roan_oil_lamps.jpg" rel="noopener">Group of ancient hellenistic an roan oil lamps</a> — Combirom2 (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Family_in_Prayer_before_a_Meal_by_Jan_Steen_Philadelphia_Museum_of_Art.jpg" rel="noopener">Family in Prayer before a Meal by Jan Steen Philadelphia Mus</a> — Jan Steen (Public domain) · <a href="https://commons.wikimedia.org/wiki/File:Valentin_de_Boulogne_-_Saint_Paul_Writing_His_Epistles_-_BF.1991.4_-_Museum_of_Fine_Arts.jpg" rel="noopener">Valentin de Boulogne - Saint Paul Writing His Epistles - BF.</a> — Valentin de Boulogne (Public domain) · <a href="https://commons.wikimedia.org/wiki/File:Young_seedling_of_tomato_emerging_from_soil_-_India.jpg" rel="noopener">Young seedling of tomato emerging from soil - India</a> — Ksheera Piraati (CC BY 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Northern_coast_Crete.jpg" rel="noopener">Northern coast Crete</a> — Jebulon (CC0) · <a href="https://commons.wikimedia.org/wiki/File:(Venice)_The_Three_Angels_appearing_to_Abraham_by_Giandomenico_Tiepolo_-_Gallerie_Accademia.jpg" rel="noopener">(Venice) The Three Angels appearing to Abraham by Giandomeni</a> — Didier Descouens (Public domain) · <a href="https://commons.wikimedia.org/wiki/File:Torah_scroll_writing.jpg" rel="noopener">Torah scroll writing</a> — Liran1977 (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Pain_de_campagne_2.jpg" rel="noopener">Pain de campagne 2</a> — lazy fri13th (CC BY 2.0) · <a href="https://commons.wikimedia.org/wiki/File:Sea_of_Galilee_BW_2.jpg" rel="noopener">Sea of Galilee BW 2</a> — Berthold Werner (CC BY-SA 3.0) · <a href="https://commons.wikimedia.org/wiki/File:Miletus-amphitheatre_ruins.jpg" rel="noopener">Miletus-amphitheatre ruins</a> — Jarekadam at Polish Wikipedia (Public domain) · <a href="https://commons.wikimedia.org/wiki/File:Ranger_under_stone_arches_at_Mission_San_Jose_(ce5dfdd3-340c-4e24-8050-968b80a7fdef).JPG" rel="noopener">Ranger under stone arches at Mission San Jose (ce5dfdd3-340c</a> — NPS Photo (Public domain) · <a href="https://commons.wikimedia.org/wiki/File:Christ_among_the_Pharisees.jpg" rel="noopener">Christ among the Pharisees</a> — Jacob Jordaens (Public domain) · <a href="https://commons.wikimedia.org/wiki/File:Light_rays_through_trees_at_sunrise.jpg" rel="noopener">Light rays through trees at sunrise</a> — SubhanSanjaya (CC BY-SA 4.0) · <a href="https://commons.wikimedia.org/wiki/File:Arnold_B%C3%B6cklin_-_Der_Gang_nach_Emmaus_(1870).jpg" rel="noopener">Arnold Böcklin - Der Gang nach Emmaus (1870)</a> — Arnold Böcklin (Public domain). Vía Wikimedia Commons. Fondo de arcos: foto de Eli.</div></footer>
+<div class="aviso" id="aviso" role="status">Guardado ✓</div><script>(function(){'use strict';
+var D={"A": [{"id": "anhela", "cat": "llamado", "es": "anhela", "gr": "ὀρέγεται", "tr": "oregō", "st": "G3713", "sig": "Extender la mano hacia algo: un deseo que se mueve, no un capricho."}, {"id": "obispado", "cat": "llamado", "es": "obispado", "gr": "ἐπισκοπή", "tr": "episkopē", "st": "G1984 · G1985 (episkopos)", "sig": "Supervisión que cuida: mirar por el rebaño como Dios mira por los suyos."}, {"id": "irreprensible", "cat": "caracter", "es": "irreprensible", "gr": "ἀνεπίλημπτος", "tr": "anepilēmptos", "st": "G423", "sig": "No significa sin pecado, sino sin un asidero: ninguna falta pública y sostenida que desacredite el evangelio."}, {"id": "unamujer", "cat": "hogar", "es": "marido de una sola mujer", "gr": "μιᾶς γυναικὸς ἀνήρ", "tr": "mias gynaikos anēr", "st": "G1520 · G1135 · G435", "sig": "Fidelidad marital exclusiva: un hombre entregado a una sola mujer en corazón, mirada y conducta."}, {"id": "sobrio", "cat": "caracter", "es": "sobrio", "gr": "νηφάλιος", "tr": "nēphalios", "st": "G3524", "sig": "Mente clara y despierta: nada me embota (vino, pantallas, ansiedad), de modo que puedo velar por mí y por otros."}, {"id": "prudente", "cat": "caracter", "es": "prudente", "gr": "σώφρων", "tr": "sōphrōn", "st": "G4998", "sig": "Juicio sensato que gobierna los deseos; piensa antes de hablar y actuar."}, {"id": "decoroso", "cat": "caracter", "es": "decoroso", "gr": "κόσμιος", "tr": "kosmios", "st": "G2887", "sig": "Una vida ordenada y digna por fuera porque está ordenada por dentro: horarios, compromisos, trato y apariencia que honran a Cristo."}, {"id": "hospedador", "cat": "hogar", "es": "hospedador", "gr": "φιλόξενος", "tr": "philoxenos", "st": "G5382", "sig": "Una casa y una mesa abiertas, especialmente para el que no puede devolver el favor."}, {"id": "ensenar", "cat": "ensenanza", "es": "apto para enseñar", "gr": "διδακτικός", "tr": "didaktikos", "st": "G1317", "sig": "No es solo saber, sino poder comunicar la Palabra con fidelidad y paciencia, y corregir con mansedumbre."}, {"id": "vino", "cat": "caracter", "es": "no dado al vino", "gr": "πάροινος", "tr": "paroinos", "st": "G3943", "sig": "No estar dominado por el alcohol ni por ninguna sustancia o hábito que me controle."}, {"id": "pendenciero", "cat": "caracter", "es": "no pendenciero", "gr": "πλήκτης", "tr": "plēktēs", "st": "G4131", "sig": "Nunca usar la fuerza (física, verbal o emocional) para imponerse a otros."}, {"id": "codicioso", "cat": "caracter", "es": "no codicioso de ganancias deshonestas", "gr": "αἰσχροκερδής", "tr": "aischrokerdēs", "st": "G146", "sig": "No usar el servicio a Dios ni ningún medio torcido para enriquecerse."}, {"id": "amable", "cat": "caracter", "es": "amable", "gr": "ἐπιεικής", "tr": "epieikēs", "st": "G1933", "sig": "Gentileza razonable: sé ceder, no exijo hasta el último centavo de mi derecho."}, {"id": "apacible", "cat": "caracter", "es": "apacible", "gr": "ἄμαχος", "tr": "amachos", "st": "G269", "sig": "Paz por dentro que no necesita ganar cada discusión."}, {"id": "avaro", "cat": "caracter", "es": "no avaro", "gr": "ἀφιλάργυρος", "tr": "aphilargyros", "st": "G866", "sig": "Libertad del amor al dinero; contentamiento y generosidad."}, {"id": "gobierne", "cat": "hogar", "es": "que gobierne bien su casa", "gr": "προΐστημι", "tr": "proistēmi", "st": "G4291", "sig": "Liderar mi casa al frente y con cuidado: dirección y ternura a la vez."}, {"id": "hijos", "cat": "hogar", "es": "hijos en sujeción con toda honestidad", "gr": "ὑποταγή · σεμνότης", "tr": "hypotagē · semnotēs", "st": "G5292 · G4587", "sig": "Hijos que respetan a sus padres, guiados con una autoridad digna y no aplastante; la «honestidad» describe el modo del padre tanto como la conducta del hijo."}, {"id": "neofito", "cat": "madurez", "es": "no un neófito", "gr": "νεόφυτος · τυφόω", "tr": "neophytos · typhoō", "st": "G3504 · G5187", "sig": "Raíces antes que plataforma: el recién convertido, puesto pronto en autoridad, corre el riesgo de hincharse de orgullo y caer como el diablo."}, {"id": "testimonio", "cat": "testimonio", "es": "buen testimonio de los de afuera", "gr": "μαρτυρία · ὀνειδισμός · παγίς", "tr": "martyria · oneidismos · pagis", "st": "G3141 · G3680 · G3803", "sig": "Mi reputación ante vecinos, compañeros y autoridades importa: si es mala, el descrédito cae sobre Cristo y el diablo tiene un lazo listo."}], "CATS": [["llamado", "El llamado"], ["caracter", "Carácter personal"], ["hogar", "El hogar"], ["ensenanza", "La enseñanza"], ["madurez", "Madurez"], ["testimonio", "Testimonio público"]], "ESC": [["Don Rubén lleva 20 años en la iglesia; cuando alguien lo contradice en la reunión, alza la voz y golpea la mesa.", "no", "pendenciero"], ["Ana y su esposo abren su casa cada viernes para que jóvenes sin familia cenen y estudien la Biblia.", "si", "hospedador"], ["Un hermano recién bautizado, muy talentoso, pide que lo pongan a predicar el próximo mes «porque Dios le dio el don».", "no", "neofito"], ["En su trabajo todos saben que Luis paga a tiempo y no hace trampas, aunque nadie lo vigile.", "si", "testimonio"], ["Marcos cobra «una ofrenda especial» por orar por la gente en privado.", "no", "codicioso"], ["Cuando le corrigen un error doctrinal, Sara abre la Biblia, escucha y luego explica con paciencia a otros lo que aprendió.", "si", "ensenar"], ["Pedro no cede nunca en nada: si el reglamento dice algo, lo aplica sin misericordia aunque hiera a alguien.", "no", "amable"], ["Jorge tiene sus finanzas en orden, llega a tiempo y cumple lo que promete.", "si", "decoroso"], ["Un líder pasa las noches de fin de semana bebiendo hasta perder el control «porque no es pecado tomar».", "no", "vino"], ["Elena prefiere perder una discusión antes que dividir al grupo; busca la paz y sigue sirviendo.", "si", "apacible"], ["Un hermano descuida a su familia: sus hijos casi no lo ven porque «está en la obra» todos los días.", "no", "gobierne"], ["Tomás no deja que la pantalla ni el enojo le nublen la mente; se detiene a orar antes de decidir.", "si", "sobrio"]], "QZ": [["¿Qué significa literalmente oregō («anhela»)?", ["Exigir un derecho", "Estirarse para alcanzar algo", "Ser elegido por sorteo", "Heredar un cargo"], 1], ["Según Hch 20:17, 28, ¿a quiénes llama Pablo «obispos»?", ["A los apóstoles", "A los diáconos", "A los ancianos de Éfeso", "A los evangelistas"], 2], ["Anepilēmptos («irreprensible») describe a alguien…", ["sin pecado alguno", "sin asidero del que acusarle con razón", "que nunca ha sido criticado", "con estudios teológicos"], 1], ["¿Qué número Strong corresponde a philoxenos (hospedador)?", ["G5382", "G1317", "G4131", "G866"], 0], ["Paroinos (no dado al vino) significa literalmente…", ["enemigo del vino", "junto al vino", "vendedor de vino", "sin sed"], 1], ["Plēktēs (pendenciero) viene de un verbo que significa…", ["golpear", "mentir", "huir", "gritar"], 0], ["¿Dónde falta en muchos manuscritos «no codicioso de ganancias deshonestas»?", ["Tito 1:7", "1 Timoteo 3:3", "1 Pedro 5:2", "1 Timoteo 3:8"], 1], ["Epieikēs (amable) tiene el sentido de…", ["ser simpático con todos", "ceder con razonabilidad, sin exigir todo mi derecho", "hablar con dulzura", "ser tímido"], 1], ["Aphilargyros («no avaro») literalmente es…", ["no amante de la plata", "no prestamista", "no comerciante", "sin propiedades"], 0], ["Proistēmi («gobierne») combina…", ["mandar y castigar", "estar delante y cuidar", "administrar dinero", "hablar en público"], 1], ["Neophytos significa…", ["recién plantado", "joven de edad", "nuevo en la ciudad", "sin estudios"], 0], ["¿Qué peligro corre el neófito según 1 Ti 3:6?", ["Cansarse pronto", "Envanecerse y caer en la condenación del diablo", "Enseñar mal", "Gastar mucho"], 1], ["Pagis (lazo) en 1 Ti 3:7 es…", ["una cuerda de medir", "una trampa para atrapar", "un collar", "un pacto"], 1], ["¿Qué requisito aparece en Tito 1 pero NO en 1 Timoteo 3?", ["Hospedador", "No iracundo", "Irreprensible", "No pendenciero"], 1], ["«Sobrio» en 1 Ti 3:2 traduce nēphalios; ¿qué palabra griega traduce «prudente»?", ["kosmios", "sōphrōn", "semnotēs", "amachos"], 1]], "MATCH": [["ὀρέγεται", "anhela", "anhela"], ["ἀνεπίλημπτος", "irreprensible", "irreprensible"], ["νηφάλιος", "sobrio", "sobrio"], ["σώφρων", "prudente", "prudente"], ["κόσμιος", "decoroso", "decoroso"], ["φιλόξενος", "hospedador", "hospedador"], ["διδακτικός", "apto para enseñar", "ensenar"], ["πάροινος", "no dado al vino", "vino"], ["πλήκτης", "no pendenciero", "pendenciero"], ["ἐπιεικής", "amable", "amable"], ["ἄμαχος", "apacible", "apacible"], ["ἀφιλάργυρος", "no avaro", "avaro"]], "TXT": [["1", "Palabra fiel: Si alguno anhela obispado, buena obra desea."], ["2", "Pero es necesario que el obispo sea irreprensible, marido de una sola mujer, sobrio, prudente, decoroso, hospedador, apto para enseñar;"], ["3", "no dado al vino, no pendenciero, no codicioso de ganancias deshonestas, sino amable, apacible, no avaro;"], ["4", "que gobierne bien su casa, que tenga a sus hijos en sujeción con toda honestidad"], ["5", "(pues el que no sabe gobernar su propia casa, ¿cómo cuidará de la iglesia de Dios?);"], ["6", "no un neófito, no sea que envaneciéndose caiga en la condenación del diablo."], ["7", "También es necesario que tenga buen testimonio de los de afuera, para que no caiga en descrédito y en lazo del diablo."]]},KEY='libreta-obispo-eli-v1',S={};try{S=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){S={}}
+function $(s,c){return(c||document).querySelector(s)}function $$(s,c){return[].slice.call((c||document).querySelectorAll(s))}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var tA,tG;function aviso(t){var a=$('#aviso');a.textContent=t||'Guardado ✓';a.classList.add('si');clearTimeout(tA);tA=setTimeout(function(){a.classList.remove('si')},1200)}
+function guardar(){clearTimeout(tG);tG=setTimeout(function(){try{localStorage.setItem(KEY,JSON.stringify(S));aviso()}catch(e){aviso('No se pudo guardar')}},300)}
+function alto(t){t.style.height='auto';t.style.height=(t.scrollHeight+2)+'px'}
+function cuenta(){var n=D.A.filter(function(a){return(S['r-'+a.id]||'').trim()}).length;$('#miniResp').textContent=n}
+$$('[data-save]').forEach(function(el){var k=el.dataset.save;if(S[k]!=null)el.value=S[k];el.addEventListener('input',function(){S[k]=el.value;guardar();cuenta();if(el.tagName==='TEXTAREA')alto(el)});if(el.tagName==='TEXTAREA')setTimeout(function(){alto(el)},50)});cuenta();
+// reveal + barra + pestaña activa
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});$$('.reveal').forEach(function(r){io.observe(r)})}else $$('.reveal').forEach(function(r){r.classList.add('visto')});
+var secs=$$('main>section[id], #inicio'),tabs=$$('.tabs a[href^="#"]');
+addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-innerHeight;$('#barraScroll').style.width=(h>0?scrollY/h*100:0)+'%';var cur='inicio';secs.forEach(function(s){if(s.getBoundingClientRect().top<120)cur=s.id});tabs.forEach(function(t){t.classList.toggle('activo',t.getAttribute('href')==='#'+cur)})},{passive:true});
+// palabras del texto enlazadas
+var LNK=[['anhela','anhela'],['obispado','obispado'],['irreprensible','irreprensible'],['marido de una sola mujer','unamujer'],['sobrio','sobrio'],['prudente','prudente'],['decoroso','decoroso'],['hospedador','hospedador'],['apto para enseñar','ensenar'],['no dado al vino','vino'],['no pendenciero','pendenciero'],['no codicioso de ganancias deshonestas','codicioso'],['amable','amable'],['apacible','apacible'],['no avaro','avaro'],['gobierne bien su casa','gobierne'],['hijos en sujeción con toda honestidad','hijos'],['no un neófito','neofito'],['buen testimonio de los de afuera','testimonio']];
+$$('.texto-ti .v').forEach(function(p){var h=p.innerHTML;LNK.forEach(function(l){h=h.replace(l[0],'<a class="w" href="#a-'+l[1]+'">'+l[0]+'</a>')});p.innerHTML=h});
+var byId={};D.A.forEach(function(a){byId[a.id]=a});
+// tarjetas
+S.dom=S.dom||{};$('#flips').innerHTML=D.A.map(function(a){return '<button type="button" class="tflip'+(S.dom[a.id]?' dom':'')+'" data-id="'+a.id+'"><span class="tin"><span class="tf"><span class="tok">Dominada</span><span class="tg">'+esc(a.gr)+'</span><span class="te">'+esc(a.es)+'</span><small>'+esc(a.tr)+' · '+esc(a.st)+'</small></span><span class="tb"><span>'+esc(a.sig)+'</span><label data-dom>'+(S.dom[a.id]?'✓ Ya la domino':'☐ Marcar como dominada')+'</label></span></span></button>'}).join('');
+$('#flips').addEventListener('click',function(e){var f=e.target.closest('.tflip');if(!f)return;if(e.target.closest('[data-dom]')){var id=f.dataset.id;S.dom[id]=!S.dom[id];f.classList.toggle('dom',S.dom[id]);e.target.closest('[data-dom]').textContent=S.dom[id]?'✓ Ya la domino':'☐ Marcar como dominada';guardar();return}f.classList.toggle('v')});
+// clasificador
+var ci=0,cp=0,cr=0;function cl(){var box=$('#cl');if(ci>=D.ESC.length){box.innerHTML='<p class="cl-esc">Terminaste: '+cp+' de '+D.ESC.length+' bien.</p><button class="btn btn-azul btn-chico" type="button" id="clR">Otra vez</button>';$('#clR').onclick=function(){ci=cp=0;cl()};S.clBest=Math.max(S.clBest||0,cp);guardar();return}
+var s=D.ESC[ci];box.innerHTML='<div class="cl-top"><span>Escenario '+(ci+1)+' de '+D.ESC.length+'</span><span>Aciertos: '+cp+'</span></div><p class="cl-esc">'+esc(s[0])+'</p><div class="cl-btns"><button class="btn" type="button" data-r="si">✓ Cumple</button><button class="btn" type="button" data-r="no">✗ No cumple</button></div><div class="cl-fb" id="clFb"></div>';
+$$('[data-r]',box).forEach(function(b){b.onclick=function(){if(cr)return;cr=1;var ok=b.dataset.r===s[1];if(ok)cp++;var a=byId[s[2]],fb=$('#clFb');fb.className='cl-fb on '+(ok?'ok':'mal');fb.innerHTML='<b>'+(ok?'¡Bien!':'Mira de nuevo.')+'</b> '+(s[1]==='si'?'Cumple':'No cumple')+' con <a href="#a-'+a.id+'">«'+esc(a.es)+'»</a> ('+esc(a.gr)+', '+esc(a.st)+'). <br><button class="btn btn-azul btn-chico" type="button" id="clN" style="margin-top:10px">Siguiente →</button>';$('#clN').onclick=function(){ci++;cr=0;cl()}}})}cl();
+// autoexamen + radar
+S.esc=S.esc||{};var ATR=D.A.filter(function(a){return a.cat!=='llamado'});
+$('#escalas').innerHTML=ATR.map(function(a){var v=S.esc[a.id]||3;return '<label class="esc"><span>'+esc(a.es)+'</span><b id="ev-'+a.id+'">'+v+'</b><input type="range" min="1" max="5" step="1" value="'+v+'" data-esc="'+a.id+'" aria-label="'+esc(a.es)+'"></label>'}).join('');
+function radar(){var N=ATR.length,cx=210,cy=210,R=150,s='';for(var l=1;l<=5;l++){var pts=[];for(var i=0;i<N;i++){var an=-Math.PI/2+i*2*Math.PI/N;pts.push((cx+Math.cos(an)*R*l/5).toFixed(1)+','+(cy+Math.sin(an)*R*l/5).toFixed(1))}s+='<polygon points="'+pts.join(' ')+'" fill="'+(l%2?'rgba(211,199,173,.25)':'none')+'" stroke="rgba(40,55,74,.18)"/>'}
+var vp=[];ATR.forEach(function(a,i){var an=-Math.PI/2+i*2*Math.PI/N,v=S.esc[a.id]||3;vp.push((cx+Math.cos(an)*R*v/5).toFixed(1)+','+(cy+Math.sin(an)*R*v/5).toFixed(1));var lx=cx+Math.cos(an)*(R+22),ly=cy+Math.sin(an)*(R+22);s+='<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+Math.cos(an)*R).toFixed(1)+'" y2="'+(cy+Math.sin(an)*R).toFixed(1)+'" stroke="rgba(40,55,74,.15)"/><text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" font-size="9.5" font-family="Montserrat" fill="#28374A" text-anchor="'+(Math.abs(Math.cos(an))<.2?'middle':Math.cos(an)>0?'start':'end')+'" dominant-baseline="middle">'+esc(a.es.replace(/^que |^no codicioso.*$/,function(m){return m.indexOf('codicioso')>=0?'no codicioso':''}).slice(0,22))+'</text>'});
+s+='<polygon points="'+vp.join(' ')+'" fill="rgba(117,68,55,.35)" stroke="#754437" stroke-width="2"/>';vp.forEach(function(p){var q=p.split(',');s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="3.5" fill="#754437"/>'});$('#radar').innerHTML=s;
+var ord=ATR.slice().sort(function(a,b){return(S.esc[a.id]||3)-(S.esc[b.id]||3)});var prom=ATR.reduce(function(t,a){return t+(S.esc[a.id]||3)},0)/ATR.length;
+$('#radarRes').innerHTML='Promedio: <b>'+prom.toFixed(1)+'</b>/5 · Para trabajar: <b>'+ord.slice(0,3).map(function(a){return esc(a.es)}).join('</b>, <b>')+'</b>';sug=ord.slice(0,3).map(function(a){return a.id});pintaPlan()}
+var sug=[];$('#escalas').addEventListener('input',function(e){var k=e.target.dataset.esc;if(!k)return;S.esc[k]=+e.target.value;$('#ev-'+k).textContent=e.target.value;guardar();radar()});
+// emparejar
+function mezcla(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+var mSel=null,mOk=0;function match(){mSel=null;mOk=0;$('#matchMsg').textContent='';var g=mezcla(D.MATCH),e=mezcla(D.MATCH);$('#match').innerHTML='<div class="colm">'+g.map(function(m){return '<button type="button" class="g" data-m="'+m[2]+'">'+esc(m[0])+'</button>'}).join('')+'</div><div class="colm">'+e.map(function(m){return '<button type="button" class="e" data-m="'+m[2]+'">'+esc(m[1])+'</button>'}).join('')+'</div>'}
+$('#match').addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.classList.contains('hecho'))return;if(b.classList.contains('g')){$$('#match .g').forEach(function(x){x.classList.remove('sel')});b.classList.add('sel');mSel=b;return}if(!mSel){$('#matchMsg').textContent='Primero toca la palabra griega.';return}
+if(mSel.dataset.m===b.dataset.m){mSel.classList.remove('sel');mSel.classList.add('hecho');b.classList.add('hecho');mSel=null;mOk++;$('#matchMsg').textContent=mOk===D.MATCH.length?'¡Completo! '+mOk+' de '+mOk+' ✓':mOk+' de '+D.MATCH.length;if(mOk===D.MATCH.length){S.match=(S.match||0)+1;guardar()}}else{b.classList.add('err');setTimeout(function(){b.classList.remove('err')},400)}});
+$('#matchReset').onclick=match;match();
+// memorizador
+var niv=S.memNiv||1;function mem(){var h=D.TXT.map(function(v,vi){var w=v[1].split(' ');return '<p><sup class="ref" style="color:#754437;font:700 .7rem Montserrat">3:'+v[0]+'</sup> '+w.map(function(x,i){if(niv===0)return esc(x);if(niv===4)return '<span class="ini" data-w="'+esc(x)+'">'+esc(x.match(/^[(¿«“]*./)[0])+'…</span>';var oc=(niv===1&&i%4===2)||(niv===2&&i%2===1)||(niv===3&&i%5!==0);return oc?'<span class="hue" data-w="'+esc(x)+'">'+esc(x)+'</span>':esc(x)}).join(' ')+'</p>'}).join('');$('#mem').innerHTML=h;$$('.mem-ctrl [data-niv]').forEach(function(b){b.classList.toggle('act',+b.dataset.niv===niv)})}
+$('.mem-ctrl').addEventListener('click',function(e){var b=e.target.closest('[data-niv]');if(b){niv=+b.dataset.niv;S.memNiv=niv;guardar();mem()}});
+$('#mem').addEventListener('click',function(e){var h=e.target.closest('.hue,.ini');if(!h)return;if(h.classList.contains('hue'))h.classList.toggle('ver');else h.textContent=h.dataset.w});mem();
+$('#memV').innerHTML=D.TXT.map(function(v,i){return '<option value="'+i+'">1 Timoteo 3:'+v[0]+'</option>'}).join('');
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zñ ]/g,' ').split(/\s+/).filter(Boolean)}
+$('#memBtn').onclick=function(){var v=D.TXT[+$('#memV').value][1],a=norm(v),b=norm($('#memIn').value),ok=0;a.forEach(function(w,i){if(b[i]===w)ok++});var p=Math.round(ok/a.length*100);$('#memRes').innerHTML='<b>'+p+'%</b> de palabras en su lugar. '+(p>=90?'¡Excelente! 🎉':p>=60?'Vas muy bien; repasa y vuelve a intentar.':'Sigue practicando con el nivel Fácil.');S.mem=S.mem||{};S.mem[$('#memV').value]=Math.max(S.mem[$('#memV').value]||0,p);guardar()};
+// comparador
+$('.cmp-f').addEventListener('click',function(e){var b=e.target.closest('[data-f]');if(!b)return;$$('.cmp-f .btn').forEach(function(x){x.classList.toggle('act',x===b)});$$('.cmp tbody tr').forEach(function(t){t.style.display=b.dataset.f==='todo'||t.dataset.k===b.dataset.f?'':'none'})});
+// quiz
+var qi=0,qp=0,qr=0;function qz(){var box=$('#qz');if(qi>=D.QZ.length){S.qzBest=Math.max(S.qzBest||0,qp);guardar();box.innerHTML='<p class="qz-p">Resultado: '+qp+' de '+D.QZ.length+'</p><p>Mejor marca: <b>'+S.qzBest+'</b>/'+D.QZ.length+'</p><button class="btn btn-terra" type="button" id="qzR">Repetir</button>';$('#qzR').onclick=function(){qi=qp=0;qz()};return}
+var q=D.QZ[qi];box.innerHTML='<div class="qz-bar"><i style="width:'+(qi/D.QZ.length*100)+'%"></i></div><p class="qz-p">'+(qi+1)+'. '+esc(q[0])+'</p><div class="qz-o">'+q[1].map(function(o,i){return '<button type="button" data-i="'+i+'">'+esc(o)+'</button>'}).join('')+'</div><div class="qz-nav"><span>Aciertos: '+qp+'</span><span>Mejor: '+(S.qzBest||0)+'/'+D.QZ.length+'</span></div>';qr=0;
+$$('.qz-o button',box).forEach(function(b){b.onclick=function(){if(qr)return;qr=1;var i=+b.dataset.i;if(i===q[2]){qp++;b.classList.add('ok')}else{b.classList.add('mal');$$('.qz-o button',box)[q[2]].classList.add('ok')}setTimeout(function(){qi++;qz()},1100)}})}qz();
+// plan
+S.plan=S.plan||{sel:[],acc:{},dias:{}};
+function pintaPlan(){var p=S.plan;$('#planSel').innerHTML=ATR.map(function(a){return '<button type="button" class="'+(p.sel.indexOf(a.id)>=0?'on ':'')+(sug.indexOf(a.id)>=0?'sug':'')+'" data-p="'+a.id+'">'+esc(a.es)+'</button>'}).join('');
+$('#planG').innerHTML=p.sel.length?p.sel.map(function(id){var a=byId[id],d=p.dias[id]||[],r=0;for(var i=20;i>=0;i--){if(d[i]){r=0;for(var j=i;j>=0&&d[j];j--)r++;break}}var tot=d.filter(Boolean).length;return '<div class="plan-i"><h4>'+esc(a.es)+' <small style="font:600 .75rem Montserrat;color:#754437">'+esc(a.gr)+'</small></h4><input type="text" data-acc="'+id+'" placeholder="Mi acción concreta (p. ej. invitar a alguien a comer el domingo)" value="'+esc(p.acc[id]||'')+'"><div class="dias">'+Array.apply(null,Array(21)).map(function(_,i){return '<label><input type="checkbox" data-d="'+id+'" data-i="'+i+'"'+(d[i]?' checked':'')+'><span>'+(i+1)+'</span></label>'}).join('')+'</div><p class="racha">'+tot+' de 21 días · racha actual: '+r+'</p></div>'}).join(''):'<p class="nota-mini">Aún no eliges atributos. Los marcados con aro son los más bajos de tu autoexamen.</p>'}
+$('#planSel').addEventListener('click',function(e){var b=e.target.closest('[data-p]');if(!b)return;var id=b.dataset.p,s=S.plan.sel,i=s.indexOf(id);if(i>=0)s.splice(i,1);else{if(s.length>=3){aviso('Máximo 3 atributos');return}s.push(id)}guardar();pintaPlan()});
+$('#planG').addEventListener('input',function(e){var id=e.target.dataset.acc;if(id){S.plan.acc[id]=e.target.value;guardar()}});
+$('#planG').addEventListener('change',function(e){var id=e.target.dataset.d;if(!id)return;var d=S.plan.dias[id]=S.plan.dias[id]||[];d[+e.target.dataset.i]=e.target.checked;guardar();pintaPlan()});
+radar();
+// imprimir
+var ph=document.createElement('div');ph.className='print-h';ph.innerHTML='<h1>Los requisitos del obispo · 1 Timoteo 3:1–7</h1><p>Tarea de Eli Nogueron · Dinámica de la iglesia · Bloque 2 · <span id="phF"></span></p>';$('main').insertBefore(ph,$('main').firstChild);
+function imp(){$('#phF').textContent=new Date().toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'});$$('textarea').forEach(alto);window.print()}
+$('#imprimir').onclick=imp;$('#imprimir2').onclick=imp;addEventListener('beforeprint',function(){$$('.reveal').forEach(function(r){r.classList.add('visto')});$$('details').forEach(function(d){d.open=true})});
+})();
+</script><script src="../assets/curso.js"></script></body></html>
