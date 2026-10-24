@@ -1,27 +1,35 @@
 <!doctype html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>Guía: Clausura de la gasera en Tláhuac</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--p:#e75480;--pd:#b8336a;--bl:#fff0f5;--li:#efe3ff;--rg:#c98b7a;--tx:#3d2433}
-*{box-sizing:border-box}body{margin:0;font:19px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--tx);background:linear-gradient(160deg,#ffe4ef,#f3e8ff 60%,#ffeede);min-height:100vh;padding-bottom:96px}
-header{padding:22px 18px 10px;text-align:center}h1{font-size:27px;margin:.2em 0;color:var(--pd)}header p{margin:0;color:#7a4a63}
-nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#fffafcee;backdrop-filter:blur(8px);border-top:2px solid #f7c6d9;z-index:9}
-nav button{flex:1;border:0;background:none;padding:8px 2px 10px;font-size:12.5px;color:#8a5c74;font-family:inherit}nav button span{display:block;font-size:24px}
-nav button.on{color:var(--pd);font-weight:700;background:#ffe1ec}
-@media(min-width:760px){nav{position:sticky;top:0;bottom:auto}body{padding-bottom:20px}nav button{font-size:15px}}
-main{max-width:760px;margin:auto;padding:8px 14px}section{display:none}section.on{display:block;animation:f .3s}@keyframes f{from{opacity:0;transform:translateY(6px)}}
-h2{color:var(--pd);font-size:24px}h3{color:var(--pd);margin:.3em 0}
-.card{background:#fff;border-radius:22px;padding:16px 18px;margin:14px 0;box-shadow:0 6px 18px #e7548022;border:1px solid #fbd3e2}
-.big{background:linear-gradient(135deg,#ff8fb3,#c9a3ff);color:#fff;border:0}.big h3{color:#fff;font-size:23px}
-.cd{display:flex;align-items:center;gap:12px}.cd .n{min-width:78px;text-align:center;background:var(--bl);border-radius:16px;padding:6px;font-weight:800;color:var(--pd);font-size:26px;line-height:1.1}.cd .n small{display:block;font-size:13px;font-weight:600}
-.tag{display:inline-block;border-radius:99px;padding:1px 10px;font-size:15px;font-weight:700}.v{background:#dff7e8;color:#1d7a46}.nv{background:#fff1cc;color:#8a6100}
-.tl{border-left:4px dotted var(--p);margin-left:10px;padding-left:18px}.tl .card{position:relative}.tl .card:before{content:"🌸";position:absolute;left:-34px;top:14px;font-size:22px}
-details{background:#fff;border-radius:18px;margin:10px 0;border:1px solid #f3c4d6;overflow:hidden}summary{padding:14px 16px;font-weight:700;cursor:pointer;color:var(--pd);list-style:none}summary:after{content:" 💗";}details[open] summary{background:var(--bl)}details>div{padding:4px 16px 14px}
-label.ck{display:flex;gap:12px;align-items:flex-start;background:#fff;border-radius:16px;padding:12px 14px;margin:8px 0;border:1px solid #f6cadb}label.ck input{width:26px;height:26px;accent-color:var(--p);flex:none;margin-top:3px}label.ck.done{opacity:.6;text-decoration:line-through}
-.two{display:grid;gap:12px}@media(min-width:600px){.two{grid-template-columns:1fr 1fr}}.win{border:3px solid var(--p)}
-.warn{background:#fff4f8;border-left:6px solid var(--p)}.disc{font-size:16px;color:#7a5a6a;text-align:center;margin:26px 8px}
-ul{padding-left:22px}li{margin:4px 0}.bar{height:12px;border-radius:9px;background:#fde;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#ff8fb3,#c9a3ff)}
+:root{--cream:#f6eee3;--paper:#fbf6ee;--sand:#e9dccb;--tan:#c9ae8e;--ink:#3a2c22;--mute:#6e5a4a;--red:#b3121f;--redd:#8c0d17;--line:#e2d3bf}
+*{box-sizing:border-box}
+body{margin:0;font:19px/1.65 Lora,Georgia,serif;color:var(--ink);background:var(--cream);min-height:100vh;padding-bottom:96px;position:relative}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(118deg,transparent 0 38%,rgba(120,90,60,.10) 38% 52%,transparent 52% 64%,rgba(120,90,60,.07) 64% 72%,transparent 72%),radial-gradient(circle at 85% 8%,#fff7e6 0,transparent 45%),linear-gradient(180deg,#f8f1e7,#efe3d3)}
+h1,h2,h3,summary,.cd .n{font-family:"Cormorant Garamond",Georgia,serif}
+header{padding:30px 20px 18px;text-align:center;margin:0 14px;border-bottom:1px solid var(--line)}
+header:before{content:"— Expediente —";display:block;font:italic 500 16px "Cormorant Garamond",serif;letter-spacing:.25em;color:var(--tan);margin-bottom:6px}
+h1{font-size:34px;line-height:1.15;margin:.1em 0 .3em;color:var(--ink);font-weight:600}header p{margin:0;color:var(--mute);font-style:italic}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:rgba(251,246,238,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:9;box-shadow:0 -6px 20px rgba(80,55,30,.08)}
+nav button{flex:1;border:0;background:none;padding:8px 2px 10px;font:600 12.5px Lora,serif;color:var(--mute);position:relative}nav button span{display:block;font-size:22px;filter:saturate(.6) sepia(.25)}
+nav button.on{color:var(--red)}nav button.on span{filter:none}nav button.on:after{content:"";position:absolute;top:0;left:28%;right:28%;height:3px;background:var(--red);border-radius:0 0 3px 3px}
+@media(min-width:760px){nav{position:sticky;top:0;bottom:auto;border-top:0;border-bottom:1px solid var(--line)}nav button.on:after{top:auto;bottom:0}body{padding-bottom:20px}nav button{font-size:15px}}
+main{max-width:760px;margin:auto;padding:8px 16px}section{display:none}section.on{display:block;animation:f .35s}@keyframes f{from{opacity:0;transform:translateY(6px)}}
+h2{color:var(--ink);font-size:31px;font-weight:600;margin:26px 0 8px}h2:after{content:"";display:block;width:56px;height:2px;background:var(--red);margin-top:6px}
+h3{color:var(--ink);margin:.25em 0;font-size:24px;font-weight:700}
+.card{background:var(--paper);border-radius:6px;padding:18px 20px;margin:16px 0;border:1px solid var(--line);box-shadow:14px 16px 30px -18px rgba(70,45,20,.35)}
+.big{background:linear-gradient(125deg,#fffaf2 0 55%,#efe2cf 55% 100%);border-left:4px solid var(--red)}.big h3{color:var(--redd);font-size:27px;font-style:italic}
+.cd{display:flex;align-items:center;gap:14px}.cd .n{min-width:84px;text-align:center;background:var(--red);color:#fff8f0;border-radius:4px;padding:8px 6px;font-weight:700;font-size:32px;line-height:1}.cd .n small{display:block;font:600 13px Lora,serif;margin-top:3px}
+.tag{display:inline-block;border-radius:3px;padding:0 9px;font:600 14.5px Lora,serif;letter-spacing:.02em;vertical-align:middle}.v{background:#e3ecd9;color:#2f5a1e;border:1px solid #c3d4b0}.nv{background:#f6e3c6;color:#7a4c00;border:1px solid #e3c597}
+.tl{border-left:1px solid var(--tan);margin-left:10px;padding-left:20px}.tl .card{position:relative}.tl .card:before{content:"";position:absolute;left:-27px;top:24px;width:12px;height:12px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px var(--cream)}
+details{background:var(--paper);border-radius:6px;margin:10px 0;border:1px solid var(--line);overflow:hidden}summary{padding:14px 18px;font-weight:700;font-size:22px;cursor:pointer;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:10px}summary::-webkit-details-marker{display:none}summary:after{content:"+";color:var(--red);font-size:26px;line-height:1;transition:.25s}details[open] summary:after{transform:rotate(45deg)}details[open] summary{background:#f3e8d8}details>div{padding:6px 18px 16px}
+label.ck{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border-radius:6px;padding:13px 15px;margin:8px 0;border:1px solid var(--line)}label.ck input{width:26px;height:26px;accent-color:var(--red);flex:none;margin-top:3px}label.ck.done{opacity:.6;text-decoration:line-through}
+.two{display:grid;gap:12px}@media(min-width:600px){.two{grid-template-columns:1fr 1fr}}.win{border:2px solid var(--red)}
+.warn{background:#fbefe6;border-left:4px solid var(--red)}.disc{font-size:16px;color:var(--mute);text-align:center;margin:30px 8px;font-style:italic}
+ul{padding-left:22px}li{margin:5px 0}li::marker{color:var(--red)}b{color:var(--redd)}.big b,.cd b{color:inherit}.bar{height:10px;border-radius:2px;background:var(--sand);overflow:hidden}.bar i{display:block;height:100%;background:var(--red)}
+small{color:var(--mute)}
 </style></head><body>
-<header><h1>💅 Guía: Clausura de la gasera en Tláhuac</h1><p>Todo el show explicado bonito ✨ · Exp. TLH/DVR/PC/001/2023</p></header>
+<header><h1>Guía: Clausura de la gasera en Tláhuac</h1><p>Todo el show, explicado con calma · Exp. TLH/DVR/PC/001/2023</p></header>
 <nav id="nav"><button data-t="inicio" class="on"><span>🌸</span>Qué show</button><button data-t="historia"><span>📖</span>Historia</button><button data-t="arma"><span>⚔️</span>Caducidad</button><button data-t="hacer"><span>✅</span>Qué hacemos</button><button data-t="pipc"><span>🧯</span>Programa</button><button data-t="abogada"><span>👩‍⚖️</span>Abogada</button></nav>
 <main>
 <section id="inicio" class="on">
