@@ -23,25 +23,37 @@ import {DRACOLoader} from 'three/addons/loaders/DRACOLoader.js';
 import {VRButton} from 'three/addons/webxr/VRButton.js';
 const ROOMS=[[0, 0, 3.3, 3.6, "Vestidor"], [3.3, 0, 4.4, 1.5, "WC"], [4.4, 0, 5.6, 1.5, "Regadera"], [3.3, 1.5, 5.6, 3.0, "Lavabos"], [0, 3.6, 5.6, 8.0, "Recámara principal"], [3.3, 3.0, 5.6, 3.6, ""], [0, 8.0, 5.6, 11.2, "Sala"], [5.6, 0, 9.3, 2.8, "Recámara 3"], [5.6, 2.8, 9.3, 4.0, "Pasillo"], [9.3, 0, 11.2, 3.0, "Patio de luz (tendedero)"], [9.3, 3.0, 11.2, 4.8, "Lavado y planchado"], [11.2, 0, 14, 3.6, "Recámara visitas"], [12.2, 3.6, 14, 6.0, "Baño completo"], [12.2, 6.0, 14, 8.4, "Bodega / blancos"], [12.2, 8.4, 14, 11.2, "Oficina (entrada directa)"], [11.2, 3.6, 12.2, 8.6, "Pa- sillo"], [5.6, 4.0, 9.3, 8.4, "Cocina + isla (4-5 bancos)"], [9.3, 4.8, 11.2, 8.4, "Hornos, refri y alacena"], [5.6, 8.4, 9.3, 11.2, "Comedor 6"], [9.3, 8.4, 12.2, 11.2, "Estar / chimenea + entrada"]];
 const Z0=0.205, ZT=3.305, EYE=1.6;
-const P={'Descanso':[14.75,11.8,11.0,11.0,0],'Entrada':[11.7,10.6,8,8,0],'Sala':[2.5,9.8,8,6,0],'Comedor':[7.4,9.8,7.4,5,0],'Cocina':[7.0,7.9,9.5,5,0],
+const P={'Descanso':[14.75,11.8,11.0,11.0,0],'Entrada':[11.7,10.6,8,8,0],'Sala':[1.8,9.0,9,10.4,0],'Comedor':[7.4,9.8,7.4,5,0],'Cocina':[6.0,9.4,8.6,5.4,0],
 'Recámara principal':[4.6,7.4,1,4,0],'Vestidor':[2.0,3.3,1.6,0,0],'Baño':[4.9,2.5,3.6,1.0,0],'Recámara 3':[7.5,2.3,6,0.5,0],'Visitas':[12.0,3.2,13.5,0.5,0],
 'Oficina':[12.7,10.5,13.5,8.8,0],'Lavado':[10.5,4.4,10,1,0],'Balcón':[7.5,11.7,1,11.6,0],'Terraza':[4,3,12,8,1]};
 const r=new THREE.WebGLRenderer({antialias:true});r.setPixelRatio(Math.min(devicePixelRatio,2));r.setSize(innerWidth,innerHeight);
-r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=0.8;r.outputColorSpace=THREE.SRGBColorSpace;r.xr.enabled=true;document.body.appendChild(r.domElement);
+r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=1.0;r.outputColorSpace=THREE.SRGBColorSpace;r.xr.enabled=true;document.body.appendChild(r.domElement);
 document.body.appendChild(VRButton.createButton(r));const vb=document.getElementById('VRButton');if(vb){vb.style.bottom='150px';const fx=()=>{const t=vb.textContent;const n=t.replace('ENTER VR','VER EN VR').replace('EXIT VR','SALIR DE VR').replace('VR NOT SUPPORTED','VR no disponible aquí').replace('WEBXR NOT AVAILABLE','VR no disponible aquí');if(n!==t)vb.textContent=n;};new MutationObserver(fx).observe(vb,{childList:true,characterData:true,subtree:true});fx();}
 const sc=new THREE.Scene();sc.background=new THREE.Color(0xe9dcc8);sc.fog=new THREE.Fog(0xe9dcc8,40,120);
 const cam=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,0.05,300);const rig=new THREE.Group();rig.add(cam);sc.add(rig);
-sc.add(new THREE.HemisphereLight(0xfff3e0,0x8a7560,1.4));const sun=new THREE.DirectionalLight(0xffe2b8,1.6);sun.position.set(10,30,25);sc.add(sun);
+sc.add(new THREE.HemisphereLight(0xfff3e0,0xd8c8b0,1.0));const sun=new THREE.DirectionalLight(0xffe2b8,0.5);sun.position.set(10,30,25);sc.add(sun);
 // warm interior lights per room
-for(const q of ROOMS){const l=new THREE.PointLight(0xffc98a,2.5,5,1.8);l.position.set((q[0]+q[2])/2,ZT-0.3,(q[1]+q[3])/2);sc.add(l);}
+const ledM=new THREE.MeshBasicMaterial({color:0xffc27a});
+for(const q of ROOMS){const z1=Math.min(q[3],11.0),w=q[2]-q[0],d=z1-q[1];if(w<1||d<1)continue;const y=ZT-0.04;
+ for(const [x,z,sx,sz] of [[(q[0]+q[2])/2,q[1]+0.12,w-0.3,0.04],[(q[0]+q[2])/2,z1-0.12,w-0.3,0.04],[q[0]+0.12,(q[1]+z1)/2,0.04,d-0.3],[q[2]-0.12,(q[1]+z1)/2,0.04,d-0.3]]){const m=new THREE.Mesh(new THREE.BoxGeometry(sx,0.02,sz),ledM);m.position.set(x,y,z);sc.add(m);}
+ const l=new THREE.PointLight(0xffb870,1.2,4.5,2);l.position.set((q[0]+q[2])/2,ZT-0.25,(q[1]+z1)/2);sc.add(l);}
+const TL=new THREE.TextureLoader();const tx=(f,rep)=>{const t=TL.load('tex/'+f);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rep,rep);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=4;return t};
+const TEX={wood:tx('oak.jpg',1),walnut:tx('walnut.jpg',1),marble:tx('marble.jpg',0.5),stone:tx('stone.jpg',0.5),travert:tx('stone.jpg',0.5),tile:tx('marble.jpg',0.7),wall:tx('wall.jpg',0.5)};
+const LM=TL.load('tex/lightmap.jpg');LM.flipY=false;LM.channel=1;LM.colorSpace=THREE.SRGBColorSpace;
 const colliders=[];let floorY=Z0;
 const dl=new DRACOLoader();dl.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
 const gl=new GLTFLoader();gl.setDRACOLoader(dl);
-gl.load('depa.glb',g=>{g.scene.traverse(o=>{if(o.isMesh){const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>{m.side=THREE.DoubleSide;if(m.emissive&&m.emissiveIntensity>0)m.emissiveIntensity=2;});colliders.push(o);}});
-sc.add(g.scene);const roof=new THREE.Mesh(new THREE.PlaneGeometry(14,11.1),new THREE.MeshStandardMaterial({color:0xd9cdb8,roughness:.9}));roof.rotation.x=-Math.PI/2;roof.position.set(7,ZT+0.12,5.56);roof.visible=false;sc.add(roof);colliders.push(roof);window.roof=roof;document.getElementById('load').remove();go('Descanso');},undefined,e=>{document.getElementById('load').textContent='No se pudo cargar el modelo';});
+gl.load('depa.glb',g=>{g.scene.traverse(o=>{if(o.isMesh){const ms=Array.isArray(o.material)?o.material:[o.material];const hasLM=!!o.geometry.attributes.uv1;ms.forEach(m=>{m.side=THREE.DoubleSide;const k=(m.name||'').replace(/\.\d+$/,'');
+ if(TEX[k]){m.map=TEX[k];m.color.set(0xffffff);if(k==='marble'||k==='tile'){m.roughness=0.25;}}
+ if(k==='smoke'){m.transparent=true;m.opacity=0.55;m.color.set(0x3a2e26);m.roughness=0.1;}
+ if(k==='glass'){m.transparent=true;m.opacity=0.18;m.depthWrite=false;}
+ if(hasLM&&k!=='glass'&&k!=='smoke'&&k!=='emit'&&k!=='white'){m.lightMap=LM;m.lightMapIntensity=4.0;}
+ if(k==='emit'){m.emissive=new THREE.Color(0xffb36b);m.emissiveIntensity=3;}
+ m.needsUpdate=true;});colliders.push(o);}});
+sc.add(g.scene);const roof=new THREE.Mesh(new THREE.PlaneGeometry(14,11.1),new THREE.MeshStandardMaterial({color:0xd9cdb8,roughness:.9}));roof.rotation.x=-Math.PI/2;roof.position.set(7,ZT+0.12,5.56);roof.visible=false;sc.add(roof);const cg=new THREE.Mesh(new THREE.PlaneGeometry(14,11.12),new THREE.MeshBasicMaterial({color:0xe9dfd0}));cg.rotation.x=Math.PI/2;cg.position.set(7,ZT-0.015,5.56);sc.add(cg);window.ceilP=cg;colliders.push(roof);window.roof=roof;document.getElementById('load').remove();go('Descanso');},undefined,e=>{document.getElementById('load').textContent='No se pudo cargar el modelo';});
 let yaw=0,pitch=0;const sel=document.getElementById('sel');Object.keys(P).forEach(k=>{const o=document.createElement('option');o.textContent=k;sel.appendChild(o)});
 sel.onchange=()=>go(sel.value);
-function go(k){const p=P[k];floorY=p[4]?ZT+0.12:Z0;if(window.roof)roof.visible=!!p[4];rig.position.set(p[0],floorY+(r.xr.isPresenting?0:EYE),p[1]);yaw=Math.atan2(-(p[2]-p[0]),-(p[3]-p[1]));pitch=p[4]?-0.35:0;sel.value=k;}
+function go(k){const p=P[k];floorY=p[4]?ZT+0.12:Z0;if(window.roof){roof.visible=!!p[4];ceilP.visible=!p[4];}rig.position.set(p[0],floorY+(r.xr.isPresenting?0:EYE),p[1]);yaw=Math.atan2(-(p[2]-p[0]),-(p[3]-p[1]));pitch=p[4]?-0.35:0;sel.value=k;}
 function here(){const x=rig.position.x,z=rig.position.z;if(floorY>1)return 'Terraza';for(const q of ROOMS)if(x>=q[0]&&x<=q[2]&&z>=q[1]&&z<=q[3]&&q[4])return q[4];if(z>11)return 'Balcón / descanso';return '';}
 // look drag
 let drag=null;const cv=r.domElement;
