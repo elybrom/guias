@@ -1,0 +1,98 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Depa Noguerón · Plano interactivo</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#f4efe7;color:#2b2118}
+header{padding:14px 16px 6px}h1{margin:0;font-size:22px}header p{margin:4px 0 0;color:#7a6550;font-size:14px}
+#wrap{position:relative;margin:6px auto;max-width:900px}svg{width:100%;height:auto;display:block;touch-action:manipulation}
+.room{fill:transparent;cursor:pointer}.room:hover,.room.on{fill:rgba(255,190,110,.22)}
+.lbl{font-size:.32px;font-weight:700;fill:#2b2118;paint-order:stroke;stroke:#fff8;stroke-width:.08px;pointer-events:none;text-anchor:middle}
+#bar{display:flex;flex-wrap:wrap;gap:8px;padding:8px 12px;justify-content:center}
+button,.btn{font:600 15px system-ui;border:0;border-radius:22px;padding:10px 16px;background:#2b2118;color:#f6eee2;text-decoration:none}
+.b2{background:#e6d9c6;color:#2b2118}
+#bubble{position:absolute;transform:translate(-50%,-130%);background:#fff;border-radius:14px;padding:4px 10px;font-size:15px;box-shadow:0 2px 8px #0003;white-space:nowrap;pointer-events:none;display:none}
+#modal{position:fixed;inset:0;background:#000c;display:none;align-items:center;justify-content:center;z-index:20;padding:12px}
+#modal .c{background:#fbf7f1;border-radius:16px;max-width:820px;width:100%;overflow:hidden}
+#modal img{width:100%;display:block}#modal .t{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;gap:8px}
+#modal h2{margin:0;font-size:18px}
+#note{font-size:13px;color:#7a6550;text-align:center;padding:0 16px 20px}
+</style></head><body>
+<header><h1>Depa Noguerón · 3er piso</h1><p>Toca un cuarto: el muñequito camina por las puertas y te muestra cómo se ve.</p></header>
+<div id="bar"><button id="dia">▶ Mi día</button><button id="flujo" class="b2">🍳 Flujo de cocina</button><a class="btn b2" href="360/">🕶 Recorrido 360°</a></div>
+<div id="wrap"><svg id="s" viewBox="-2.4 -1.2 20 15">
+<image href="img/planta.jpg" x="-2.4" y="-1.2" width="20" height="15"/>
+<g id="rooms"></g><g id="extra"></g><path id="trail" fill="none" stroke="#2e9e4e" stroke-width=".07" stroke-dasharray=".2 .14"/>
+<g id="flow"></g>
+<g id="av"><ellipse cx="0" cy=".05" rx=".26" ry=".1" fill="#0003"/><circle r=".22" fill="#e07a3c" stroke="#fff" stroke-width=".05"/><circle cy="-.02" r=".09" fill="#fff"/></g>
+</svg><div id="bubble"></div></div>
+<p id="note">Plano del modelo 3D · medidas ≈, confirmar en obra · orientación por confirmar</p>
+<div id="modal"><div class="c"><img id="mimg"><div class="t"><h2 id="mt"></h2><span><a id="m360" class="btn b2" href="#">360°</a> <button id="mx">Cerrar</button></span></div></div></div>
+<script>
+const ROOMS=[[0, 0, 3.3, 3.6, "Vestidor", 11.4], [3.3, 0, 4.4, 1.5, "WC", 1.7], [4.4, 0, 5.6, 1.5, "Regadera", 1.8], [3.3, 1.5, 5.6, 3.0, "Lavabos", 3.4], [0, 3.6, 5.6, 8.0, "Recámara principal", 22.7], [0, 8.0, 5.6, 11.12, "Sala", 14.7], [5.6, 0, 9.3, 2.8, "Recámara 3", 10.4], [5.6, 2.8, 9.3, 4.0, "Pasillo", 4.4], [9.3, 0, 11.2, 3.0, "Patio de luz (tendedero)", 5.7], [9.3, 3.0, 11.2, 4.8, "Lavado y planchado", 3.4], [11.2, 0, 14, 3.6, "Recámara visitas", 10.1], [12.2, 3.6, 14, 6.0, "Baño completo", 4.3], [12.2, 6.0, 14, 8.4, "Bodega / blancos", 4.3], [12.2, 8.4, 14, 11.12, "Oficina (entrada directa)", 4.9], [11.2, 3.6, 12.2, 8.6, "Pa- sillo", 5.0], [5.6, 4.0, 9.3, 8.4, "Cocina + isla (4-5 bancos)", 16.3], [9.3, 4.8, 11.2, 8.4, "Hornos, refri y alacena", 6.8], [5.6, 8.4, 9.3, 11.12, "Comedor 6", 9.8], [9.3, 8.4, 12.2, 11.12, "Estar / chimenea + entrada", 7.8]], DOORS=[[5.6, 3.05, "v", 0.9, "0.90"], [1.6, 3.6, "h", 0.8, "0.80"], [3.6, 3.0, "h", 0.8, "0.80"], [3.5, 1.5, "h", 0.7, "0.70"], [4.6, 1.5, "h", 0.7, "0.70"], [6.0, 2.8, "h", 0.8, "0.80"], [7.0, 4.0, "h", 0.9, "0.90"], [9.3, 3.15, "v", 0.8, "0.80"], [10.4, 3.0, "h", 0.8, "0.80 al patio"], [11.4, 3.6, "h", 0.8, "0.80"], [12.2, 4.6, "v", 0.7, "0.70"], [12.2, 6.6, "v", 0.8, "0.80"], [11.3, 8.6, "h", 0.8, "0.80"], [12.2, 9.3, "v", 0.8, "0.80"]];
+const OPEN=['Sala','Comedor','Estar','Cocina','Hornos'];
+// node graph
+const N={},E={};function node(id,x,y){N[id]=[x,y];E[id]=E[id]||[]}function link(a,b){E[a].push(b);E[b].push(a)}
+const roomAt=(x,y)=>ROOMS.find(r=>x>r[0]&&x<r[2]&&y>r[1]&&y<r[3]);
+ROOMS.forEach(r=>node(r[4],(r[0]+r[2])/2,(r[1]+r[3])/2));
+DOORS.forEach((d,i)=>{const[x,y,o,w]=d;const mx=o=='h'?x+w/2:x,my=o=='h'?y:y+w/2;const id='d'+i;node(id,mx,my);
+ const a=o=='h'?roomAt(mx,my-.3):roomAt(mx-.3,my),b=o=='h'?roomAt(mx,my+.3):roomAt(mx+.3,my);if(a)link(id,a[4]);if(b)link(id,b[4]);});
+// open social area adjacency
+const soc=ROOMS.filter(r=>OPEN.some(o=>r[4].startsWith(o)));
+soc.forEach(a=>soc.forEach(b=>{if(a!==b&&a[0]<=b[2]+.01&&b[0]<=a[2]+.01&&a[1]<=b[3]+.01&&b[1]<=a[3]+.01){const x=(Math.max(a[0],b[0])+Math.min(a[2],b[2]))/2,y=(Math.max(a[1],b[1])+Math.min(a[3],b[3]))/2;const id='o'+a[4]+b[4];if(!N[id]){node(id,x,y);link(id,a[4]);link(id,b[4]);}}}));
+const R=n=>ROOMS.find(r=>r[4].startsWith(n))[4];
+node('Descanso',13.2,11.75);node('dMain',11.7,11.1);link('dMain',R('Estar'));link('dMain','Descanso');node('dOf',13.45,11.1);link('dOf',R('Oficina'));link('dOf','Descanso');
+node('Balcón',5.6,11.65);node('gB',5.6,11.0);link('gB',R('Sala'));link('gB','Balcón');
+node('esc0',14.75,11.4);link('Descanso','esc0');node('Terraza',14.75,5.6);link('esc0','Terraza');
+const SPACES=[['Descanso','Descanso','descanso','descanso','👋 Llegar','door'],[R('Estar'),'Estar con chimenea','estar','estar','🔥 Prender la chimenea','fire'],[R('Sala'),'Sala','sala','sala','📺 Ver una peli','tv'],
+[R('Comedor'),'Comedor','comedor','comedor','🍽 Comer','dish'],[R('Cocina'),'Cocina','cocina','cocina','☕ Hacer café','coffee'],[R('Recámara principal'),'Recámara principal','recamara','recamara','😴 Dormir','sleep'],
+[R('Vestidor'),'Vestidor','vestidor','vestidor','👔 Vestirse','cloth'],[R('Lavabos'),'Baño principal','bano','bano','🚿 Bañarse','water'],[R('Recámara 3'),'Recámara 3','rec3','rec3','📚 Leer','page'],
+[R('Recámara visitas'),'Recámara de visitas','visitas','visitas','🧳 Recibir visita','door'],[R('Baño completo'),'Baño completo','banocomp','banocomp','🪥 Lavarse los dientes','water'],
+[R('Oficina'),'Oficina','oficina','oficina','💻 Trabajar','type'],[R('Lavado'),'Lavado y patio','lavado','lavado','🧺 Lavar ropa','wash'],[R('Bodega'),'Bodega / blancos','bodega','bodega','🧻 Guardar toallas','cloth'],
+[R('Pasillo'),'Pasillo','pasillo','pasillo','🚶 Pasar','step'],['Balcón','Balcón','balcon','balcon','🌇 Ver el atardecer','bird'],['Terraza','Terraza','terraza','terraza','✨ Ver estrellas','chime']];
+// draw clickable rooms
+const S=document.getElementById('s'),G=document.getElementById('rooms'),ns='http://www.w3.org/2000/svg';
+function el(t,a,p){const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);(p||G).appendChild(e);return e}
+SPACES.forEach(sp=>{let x0,y0,x1,y1;const r=ROOMS.find(q=>q[4]===sp[0]);
+ if(r){[x0,y0,x1,y1]=r}else if(sp[0]=='Balcón'){[x0,y0,x1,y1]=[2,11.05,9.3,12.25]}else if(sp[0]=='Descanso'){[x0,y0,x1,y1]=[11.2,11.25,15.35,12.25]}else{[x0,y0,x1,y1]=[14.15,4.3,15.35,11.2]}
+ const g=el('rect',{x:x0,y:y0,width:x1-x0,height:y1-y0,class:'room'});g.onclick=()=>{stopAll();goTo(sp)};sp.el=g;
+ const t=el('text',{x:(x0+x1)/2,y:(y0+y1)/2,class:'lbl'});const m=r&&r[5]?` ${r[5]} m²`:'';t.textContent=sp[1].replace(' principal',' ppal')+(x1-x0>1.7?m:'');
+ if(x1-x0<1.6)t.setAttribute('style','font-size:.22px');if(sp[0]=='Terraza'){t.setAttribute('transform',`rotate(-90 ${(x0+x1)/2} ${(y0+y1)/2})`);t.textContent='Escalera → Terraza'}});
+// path
+function path(a,b){const D={},P={},Q=new Set(Object.keys(N));for(const k of Q)D[k]=1e9;D[a]=0;
+ while(Q.size){let u=null;for(const k of Q)if(u===null||D[k]<D[u])u=k;Q.delete(u);if(u===b)break;for(const v of E[u]){const w=Math.hypot(N[u][0]-N[v][0],N[u][1]-N[v][1]);if(D[u]+w<D[v]){D[v]=D[u]+w;P[v]=u}}}
+ const out=[b];while(out[0]!==a&&P[out[0]])out.unshift(P[out[0]]);return out.map(k=>N[k])}
+let cur='Descanso',pos=[...N['Descanso']],busy=false,cancel=0;const av=document.getElementById('av');
+function place(){av.setAttribute('transform',`translate(${pos[0]} ${pos[1]})`);const b=document.getElementById('bubble'),rc=S.getBoundingClientRect();b.style.left=(pos[0]+2.4)/20*rc.width+'px';b.style.top=(pos[1]+1.2)/15*rc.height+'px'}
+place();
+function walk(pts,tk){return new Promise(res=>{let i=0;const sp=1.6;let last=performance.now();
+ function f(t){if(tk!==cancel)return res(false);const dt=(t-last)/1000;last=t;if(i>=pts.length)return res(true);const[tx,ty]=pts[i];const dx=tx-pos[0],dy=ty-pos[1],l=Math.hypot(dx,dy);
+  if(l<sp*dt){pos=[tx,ty];i++}else{pos[0]+=dx/l*sp*dt;pos[1]+=dy/l*sp*dt}place();requestAnimationFrame(f)}requestAnimationFrame(f)})}
+// sounds (generated)
+let AC;function ac(){AC=AC||new(window.AudioContext||window.webkitAudioContext)();return AC}
+function tone(f,d,type='sine',v=.15,t0=0){const a=ac(),o=a.createOscillator(),g=a.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,a.currentTime+t0);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+t0+d);o.connect(g).connect(a.destination);o.start(a.currentTime+t0);o.stop(a.currentTime+t0+d)}
+function noise(d,f=1000,q=1,v=.2){const a=ac(),b=a.createBuffer(1,a.sampleRate*d,a.sampleRate),x=b.getChannelData(0);for(let i=0;i<x.length;i++)x[i]=Math.random()*2-1;const s=a.createBufferSource();s.buffer=b;const fl=a.createBiquadFilter();fl.type='bandpass';fl.frequency.value=f;fl.Q.value=q;const g=a.createGain();g.gain.value=v;g.gain.linearRampToValueAtTime(0,a.currentTime+d);s.connect(fl).connect(g).connect(a.destination);s.start()}
+const SND={door:()=>{tone(660,.3);tone(880,.4,'sine',.12,.2)},fire:()=>noise(1.6,500,.6,.35),tv:()=>{tone(523,.2,'square',.05);tone(659,.2,'square',.05,.2);tone(784,.3,'square',.05,.4)},dish:()=>{tone(2200,.4,'triangle',.1);tone(2600,.3,'triangle',.08,.15)},
+coffee:()=>noise(1.4,2500,2,.2),sleep:()=>{tone(392,.8,'sine',.1);tone(330,1,'sine',.1,.5)},cloth:()=>noise(.6,3000,.8,.15),water:()=>noise(1.6,4000,.5,.25),page:()=>noise(.25,5000,1,.2),
+type:()=>{for(let i=0;i<10;i++)tone(1800+Math.random()*400,.04,'square',.05,i*.11)},wash:()=>noise(1.6,300,1,.4),step:()=>{tone(120,.1,'sine',.3);tone(110,.1,'sine',.3,.3)},bird:()=>{for(let i=0;i<4;i++)tone(2500+i*300,.12,'sine',.08,i*.15)},chime:()=>{[784,988,1175,1568].forEach((f,i)=>tone(f,.8,'sine',.08,i*.15))}};
+const bub=document.getElementById('bubble');function say(t){bub.textContent=t;bub.style.display=t?'block':'none'}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function goTo(sp,auto){const tk=++cancel;SPACES.forEach(s=>s.el.classList.remove('on'));sp.el.classList.add('on');say('');
+ const pts=path(nearest(),sp[0]);const ok=await walk(pts,tk);if(!ok)return false;cur=sp[0];say(sp[4]);try{SND[sp[5]]()}catch(e){}
+ await sleep(1300);if(tk!==cancel)return false;show(sp);if(auto){await sleep(2600);if(tk!==cancel)return false;hide()}return true}
+function nearest(){let b=null,bd=1e9;for(const k in N){const d=Math.hypot(N[k][0]-pos[0],N[k][1]-pos[1]);if(d<bd){bd=d;b=k}}return b}
+const modal=document.getElementById('modal');function show(sp){document.getElementById('mimg').src='img/'+sp[2]+'.jpg';document.getElementById('mt').textContent=sp[1];document.getElementById('m360').href='360/#'+sp[3];modal.style.display='flex'}
+function hide(){modal.style.display='none'}document.getElementById('mx').onclick=hide;modal.onclick=e=>{if(e.target===modal)hide()};
+function stopAll(){cancel++;hide();say('');document.getElementById('flow').innerHTML='';document.getElementById('trail').setAttribute('d','')}
+const DAY=['Recámara principal','Lavabos','Vestidor','Cocina','Comedor','Oficina','Lavado','Sala','Balcón','Terraza','Recámara principal'];
+const DAYTXT={'Recámara principal':['☀️ Buenos días','😴 Buenas noches']};
+document.getElementById('dia').onclick=async()=>{stopAll();const tk=cancel;let first=true;
+ for(const n of DAY){const sp=SPACES.find(s=>s[0]==(['Balcón','Terraza'].includes(n)?n:R(n)));const t=sp[4];if(DAYTXT[n]){sp[4]=first?DAYTXT[n][0]:DAYTXT[n][1]}
+  const ok=await goTo(sp,true);sp[4]=t;first=false;if(!ok||tk!==cancel)return;await sleep(300)}say('')};
+// kitchen flow (Eli's layout: back counter y 4.15-4.8 x 5.8-9.1, island x 6-9 y 5.9-7.0, tower x 9.45-10.1 y 5.0-8.2)
+const FLOW=[[9.2,5.6,'1 Guardar','🧊 Refri (torre)'],[8.5,5.25,'2 Lavar','🚰 Tarja'],[7.5,5.25,'3 Preparar','🔪 Barra'],[6.4,5.25,'4 Cocinar','🔥 Parrilla'],[7.5,5.5,'5 Servir','🍽 Isla']];
+document.getElementById('flujo').onclick=async()=>{stopAll();const tk=cancel;const fg=document.getElementById('flow'),tr=document.getElementById('trail');
+ const st=path(nearest(),R('Cocina'));if(!await walk(st,tk))return;let d=`M${pos[0]} ${pos[1]}`;
+ for(const[x,y,l,s]of FLOW){if(!await walk([[x,y]],tk))return;d+=` L${x} ${y}`;tr.setAttribute('d',d);
+  el('circle',{cx:x,cy:y,r:.12,fill:'#2e9e4e'},fg);const t=el('text',{x:x,y:y-.25,class:'lbl',style:'font-size:.26px;fill:#1d6b33'},fg);t.textContent=l;say(s);try{tone(700+FLOW.indexOf(FLOW.find(f=>f[2]==l))*120,.25,'sine',.12)}catch(e){};await sleep(1100);if(tk!==cancel)return}
+ say('✅ Listo para servir')};
+addEventListener('resize',place);
+</script></body></html>
