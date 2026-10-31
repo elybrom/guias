@@ -90,28 +90,38 @@ th{background:var(--vino);color:var(--crema);text-align:left;padding:8px;font-fa
 details.pe{border:1px solid #e3d2b8;border-radius:12px;padding:10px 12px;margin:8px 0;background:#fff9ef}details.pe summary{font-weight:700;cursor:pointer;color:var(--vino)}
 .repaso{columns:2 280px;column-gap:20px;font-size:.88rem}.repaso div{break-inside:avoid;margin-bottom:8px;padding:8px 10px;border-radius:10px;background:#fff9ef;border-left:4px solid var(--vino)}
 footer{text-align:center;color:var(--crema);padding:20px;font-family:'Fraunces';font-style:italic;text-shadow:0 1px 6px #000}
+
+/* repisa de discos */
+nav{background:linear-gradient(#1d2430bb,#1d2430dd),url(discos.webp) center/cover;border-radius:10px;padding:10px 10px 0;gap:3px;align-items:flex-end;border-bottom:8px solid #5a3a26;box-shadow:0 8px 18px #0006;margin:10px auto 0;width:calc(100% - 24px)}
+nav a{writing-mode:vertical-rl;transform:rotate(180deg);height:118px;width:36px;padding:8px 4px;border-radius:3px 3px 0 0;border:0;border-left:2px solid #0004;font-family:'Fraunces';font-size:.78rem;display:flex;align-items:center;justify-content:flex-start;background:var(--vino);color:var(--crema);box-shadow:inset -3px 0 0 #ffffff22;transition:transform .2s}
+nav a:nth-child(5n+2){background:var(--mez);height:126px}nav a:nth-child(5n+3){background:var(--crema);color:var(--vino);height:110px}nav a:nth-child(5n+4){background:var(--oli);height:122px}nav a:nth-child(5n){background:#1c1c1c;color:#ffb36b;height:114px}
+nav a:hover{transform:rotate(180deg) translateY(8px)}nav a.done{background:var(--nar)!important;color:#1d1d1d!important}
+.shelf{height:84px;margin:18px 0 -4px;border-radius:12px;background:linear-gradient(90deg,#1d243066,transparent 30%,transparent 70%,#1d243066),url(discos.webp) center 60%/cover;border-bottom:8px solid #5a3a26;box-shadow:0 10px 20px #0007}
+.shelf:nth-of-type(2n){background-position:center 20%}
+#fc{background:linear-gradient(#1d243088,#1d2430b0),url(discos.webp) center/cover}#fc h2{color:#ffcf9a}#fc .sub{color:var(--crema)}#fc .ba{color:var(--t)}
+#quiz{background:linear-gradient(#f8f0e2e6,#f8f0e2f0),url(discos.webp) center/cover}
 .tema,.blk{animation:up .5s ease both}@keyframes up{from{opacity:0;transform:translateY(12px)}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media print{body:before,body:after,.prog,nav,.score{display:none}.tema,.blk{box-shadow:none;backdrop-filter:none}}
 </style></head><body>
-<header><div class="poster paper" style="background:var(--vino)"><div class="top px"><span>DERECHO · 1er PARCIAL</span><span>SÁB 31·OCT·2026</span></div>
+<header><div class="poster paper" style="background:linear-gradient(100deg,#7d1f24f2 0%,#7d1f24d9 55%,#7d1f2466 100%),url(discos.webp) center 30%/cover"><div class="top px"><span>DERECHO · 1er PARCIAL</span><span>SÁB 31·OCT·2026</span></div>
 <h1>Retórica <em>para la</em> Interpretación &amp; Argumentación Jurídica</h1><p>Guía interactiva para Xime · 12 temas · flashcards · juegos · quiz ⚖️☕</p><div class="chk"></div></div></header>
 <div class="prog"><div class="in"><span class="px">PROGRESO</span><div class="bar"><i id="pb"></i></div><span id="pt">0/12</span></div></div>
 <nav id="nav"></nav>
 <main>
 <div id="temas"></div>
 
-<section class="blk" id="fc"><div class="wave"></div><h2>💿 Flashcards en vinil</h2><p class="sub">Toca un disco para voltearlo.</p><div class="cards" id="cards"></div></section>
+<div class="shelf"></div><section class="blk" id="fc"><div class="wave"></div><h2>💿 Flashcards en vinil</h2><p class="sub">Toca un disco para voltearlo.</p><div class="cards" id="cards"></div></section>
 
-<section class="blk" id="m1"><div class="wave"></div><h2>🕵️ Relaciona: falacia ↔ ejemplo</h2><p class="sub">Elige la falacia de cada frase y califica.</p><div class="match" id="mf"></div><button class="act" onclick="checkM('mf')">Calificar</button><button class="act" style="background:var(--mez)" onclick="resetM('mf')">Reiniciar</button><div class="res" id="mf-r"></div></section>
+<div class="shelf"></div><section class="blk" id="m1"><div class="wave"></div><h2>🕵️ Relaciona: falacia ↔ ejemplo</h2><p class="sub">Elige la falacia de cada frase y califica.</p><div class="match" id="mf"></div><button class="act" onclick="checkM('mf')">Calificar</button><button class="act" style="background:var(--mez)" onclick="resetM('mf')">Reiniciar</button><div class="res" id="mf-r"></div></section>
 
-<section class="blk" id="m2"><div class="wave"></div><h2>🔎 Relaciona: método ↔ definición</h2><p class="sub">¿Qué método interpretativo es?</p><div class="match" id="mm"></div><button class="act" onclick="checkM('mm')">Calificar</button><button class="act" style="background:var(--mez)" onclick="resetM('mm')">Reiniciar</button><div class="res" id="mm-r"></div></section>
+<div class="shelf"></div><section class="blk" id="m2"><div class="wave"></div><h2>🔎 Relaciona: método ↔ definición</h2><p class="sub">¿Qué método interpretativo es?</p><div class="match" id="mm"></div><button class="act" onclick="checkM('mm')">Calificar</button><button class="act" style="background:var(--mez)" onclick="resetM('mm')">Reiniciar</button><div class="res" id="mm-r"></div></section>
 
-<section class="blk" id="quiz"><div class="wave"></div><h2>✅ Quiz · 25 preguntas</h2><p class="sub">Retroalimentación al instante. Mejor puntaje: <b id="best">—</b> <button class="act" style="padding:5px 12px;margin:0 0 0 6px" onclick="location.hash='quiz';location.reload()">Reiniciar</button></p><div id="qz"></div><div class="score" id="sc">PUNTAJE 0/25</div></section>
+<div class="shelf"></div><section class="blk" id="quiz"><div class="wave"></div><h2>✅ Quiz · 25 preguntas</h2><p class="sub">Retroalimentación al instante. Mejor puntaje: <b id="best">—</b> <button class="act" style="padding:5px 12px;margin:0 0 0 6px" onclick="location.hash='quiz';location.reload()">Reiniciar</button></p><div id="qz"></div><div class="score" id="sc">PUNTAJE 0/25</div></section>
 
-<section class="blk" id="pex"><div class="wave"></div><h2>📝 Preguntas probables</h2><p class="sub">Piensa tu respuesta y luego ábrela.</p><div id="pe"></div></section>
+<div class="shelf"></div><section class="blk" id="pex"><div class="wave"></div><h2>📝 Preguntas probables</h2><p class="sub">Piensa tu respuesta y luego ábrela.</p><div id="pe"></div></section>
 
-<section class="blk" id="rf"><div class="wave"></div><h2>⭐ Repaso final · 1 página</h2><div class="repaso" id="rp"></div></section>
+<div class="shelf"></div><section class="blk" id="rf"><div class="wave"></div><h2>⭐ Repaso final · 1 página</h2><div class="repaso" id="rp"></div></section>
 </main><footer>☕ Hecho con cariño para Xime · ¡Éxito mañana! 🎷</footer>
 <script>
 const R=(t,e)=>`<div class="rev"><button>👆 ${t}</button><div>${e}</div></div>`;
