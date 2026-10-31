@@ -1,261 +1,181 @@
 <!DOCTYPE html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Guía: Retórica para la Interpretación y Argumentación Jurídica</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;600;700&family=Silkscreen&display=swap" rel="stylesheet">
 <style>
-/* Vibe: interior retro 70s — lámpara naranja, muros crema, tapete burdeos, vinilos y jazz */
-:root{--b:#7a1f1f;--b2:#e8590c;--or:#ff7a1a;--bg:#f3e9dc;--c:#fffaf2;--t:#2b1d16;--m:#7b6a5d;--ok:#5f7a3a;--no:#a3241f;--am:#d98a1c;--ink:#1c1714;--chrome:#c9c6c1}
+:root{--vino:#7d1f24;--vino2:#a3343a;--crema:#f4ead8;--paper:#fbf4e6;--mez:#2f4a66;--mez2:#4a6382;--cafe:#5a3a26;--oli:#5f6b3a;--terra:#c0623a;--nar:#e0812e;--ink:#1d2430;--t:#2a211b;--ok:#4f7a3a;--no:#b0302a}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:'DM Sans',system-ui,sans-serif;color:var(--t);line-height:1.6;background:var(--bg) radial-gradient(circle at 12% 4%,#ffb36655,transparent 40%) fixed;background-image:radial-gradient(circle at 12% 4%,#ffb36666,transparent 42%),radial-gradient(circle at 92% 60%,#ff7a1a22,transparent 38%)}
-h1,h2,h3{font-family:'Fraunces',Georgia,serif;letter-spacing:-.01em}
-header{position:relative;overflow:hidden;background:var(--ink);color:#f7e8d3;padding:42px 18px 34px;text-align:center;border-bottom:10px solid var(--b);box-shadow:inset 0 -10px 0 #b8432f}
-header:before{content:"";position:absolute;width:260px;height:260px;left:50%;top:-150px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,#ffb15c,#ff7a1a 45%,#ff7a1a00 72%);filter:blur(2px);animation:glow 4s ease-in-out infinite}
-@keyframes glow{50%{opacity:.75;transform:translateX(-50%) scale(1.06)}}
-header h1{position:relative;margin:40px 0 8px;font-size:clamp(1.6rem,6vw,2.6rem);font-weight:900;color:#fff2e0;text-shadow:0 0 22px #ff7a1a88}
-header p{position:relative;margin:4px 0;color:#e9cfae;font-style:italic}
-.badge{position:relative;display:inline-block;background:var(--or);color:var(--ink);padding:6px 16px;border-radius:99px;font-size:.85rem;font-weight:700;margin-top:12px;box-shadow:0 0 18px #ff7a1a99}
-nav{position:sticky;top:0;z-index:9;background:#1c1714ee;backdrop-filter:blur(6px);overflow-x:auto;white-space:nowrap;padding:9px;border-bottom:2px solid var(--chrome)}
-nav a{display:inline-block;padding:6px 12px;margin:2px;border-radius:99px;background:linear-gradient(#e9e7e3,#b9b5ae);color:var(--ink);text-decoration:none;font-size:.82rem;font-weight:700;transition:.2s}
-nav a:hover{background:var(--or);box-shadow:0 0 12px #ff7a1a}
-main{max-width:920px;margin:auto;padding:14px}
-section{position:relative;background:var(--c);border-radius:22px;padding:22px 18px;margin:20px 0;box-shadow:0 10px 30px #5a2a1222,0 0 0 1px #e6d5c0;border-top:6px solid var(--or);animation:up .6s ease both}
-section:nth-of-type(3n+2){border-top-color:var(--b)}section:nth-of-type(3n){border-top-color:var(--am)}
-section:after{content:"";position:absolute;right:16px;top:16px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle,var(--or) 0 14%,var(--ink) 16% 100%);opacity:.85;box-shadow:0 0 0 3px #3a2e28 inset}
-@keyframes up{from{opacity:0;transform:translateY(14px)}}
-h2{margin:0 40px 10px 0;color:var(--b);font-size:1.5rem;font-weight:900}h3{color:#b8432f;font-size:1.1rem;margin-bottom:4px}
-.ej{background:#f6efe1;border-left:5px solid var(--ok);padding:11px 13px;border-radius:12px;margin:12px 0}
-.mn{background:#ffe8cc;border-left:5px solid var(--or);padding:11px 13px;border-radius:12px;margin:12px 0;box-shadow:0 0 16px #ff7a1a22}
-.ojo{background:#f7dcd6;border-left:5px solid var(--no);padding:11px 13px;border-radius:12px;margin:12px 0}
-.tw{overflow-x:auto;border-radius:14px}table{border-collapse:collapse;width:100%;font-size:.92rem;margin:8px 0}
-th{background:var(--b);color:#fff2e0;padding:9px;text-align:left;font-family:'Fraunces',serif}td{border-bottom:1px solid #ead9c4;padding:9px;vertical-align:top}tr:nth-child(even) td{background:#f8efe3}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
-.card{perspective:900px;height:175px;cursor:pointer}.in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}
-.card.f .in{transform:rotateY(180deg)}.fa,.ba{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:14px;display:flex;align-items:center;justify-content:center;text-align:center}
-.fa{background:radial-gradient(circle at 50% 50%,#2b211c 0 30%,#1c1714 31% 100%);color:#ffb15c;font-family:'Fraunces',serif;font-weight:900;font-size:1.15rem;box-shadow:0 0 0 6px #3a2e28 inset,0 6px 16px #0003}
-.card:hover .fa{box-shadow:0 0 0 6px #3a2e28 inset,0 0 22px #ff7a1a88}
-.ba{background:var(--c);border:3px solid var(--or);transform:rotateY(180deg);font-size:.9rem}
-.q{border:1px solid #e6d5c0;border-radius:16px;padding:13px;margin:10px 0;background:#fffdf8}.q p{margin:0 0 8px;font-weight:700}
-.q button,.btn{display:block;width:100%;text-align:left;margin:6px 0;padding:11px;border-radius:12px;border:1px solid #dcc7ad;background:#f7eee2;font:inherit;font-size:.95rem;cursor:pointer;color:var(--t);transition:.15s}
-.q button:hover{border-color:var(--or);background:#fff1e0}
-.q button.ok{background:#e3ebcf;border-color:var(--ok)}.q button.no{background:#f7d6cf;border-color:var(--no)}
-.fb{font-size:.9rem;margin-top:6px}.score{position:sticky;bottom:10px;background:var(--ink);color:#ffb15c;padding:11px;border-radius:99px;text-align:center;font-weight:700;font-family:'Fraunces',serif;box-shadow:0 0 20px #ff7a1a66;border:2px solid var(--or)}
-details{border:1px solid #e6d5c0;border-radius:14px;padding:11px 13px;margin:9px 0;background:#fffdf8}summary{font-weight:700;cursor:pointer;color:var(--b)}
-.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{background:#ffe8cc;color:var(--b);padding:4px 10px;border-radius:99px;font-size:.85rem}
-.repaso{border-top-color:var(--ink)!important;background:repeating-linear-gradient(45deg,#7a1f1f0a 0 10px,transparent 10px 20px),#fff7ec}.repaso li{margin:4px 0}
-.btn.sm{display:inline-block;width:auto;background:var(--or);color:var(--ink);border:0;text-align:center;font-weight:700}
-footer{text-align:center;color:#e9cfae;background:var(--ink);font-size:.85rem;padding:24px;border-top:10px solid var(--b);font-family:'Fraunces',serif;font-style:italic}
-
-/* Fondo: café sobre mezclilla */
-:root{--b:#2f4a66;--den:#4a6382;--or:#c8742e;--b2:#a0562a;--am:#b8864f;--ink:#1f2a36;--bg:#d9d2c6;--c:#fbf5eccc}
-body{background:var(--ink)!important;position:relative}
-body:before{content:"";position:fixed;inset:0;z-index:-1;background:url(fondo.webp) center/cover no-repeat;}
-body:after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(#1f2a3640,#1f2a3626 40%,#1f2a3659)}
-@media (min-width:900px) and (hover:hover){body:before,body:after{display:none}body{background:linear-gradient(#1f2a3640,#1f2a3659),url(fondo.webp) center/cover no-repeat fixed!important}}
-header{background:#1f2a36d9!important;backdrop-filter:blur(6px);border-bottom-color:var(--b2)!important;box-shadow:inset 0 -10px 0 var(--den)!important}
-section{background:var(--c)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 12px 34px #0f182455,0 0 0 1px #fff6}
-section:nth-of-type(3n+2){border-top-color:var(--den)}
-h2{color:var(--b)}h3{color:var(--b2)}th{background:var(--den)}
-.repaso{background:repeating-linear-gradient(45deg,#2f4a660d 0 10px,transparent 10px 20px),#fbf5ecd9!important}
-.fa{color:#e9b98a!important}
-footer{background:#1f2a36e6!important;border-top-color:var(--den)!important}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-@media print{nav,.score{display:none}section{break-inside:avoid;box-shadow:none}}
+body{margin:0;font-family:'DM Sans',system-ui,sans-serif;color:var(--t);line-height:1.55;background:var(--ink)}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:url(fondo.webp) center/cover no-repeat}
+body:after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(#1d243055,#1d243033 40%,#1d243077)}
+.paper{background-color:var(--paper);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;margin:0}
+.px{font-family:'Silkscreen',monospace;letter-spacing:.04em}
+/* póster */
+header{max-width:960px;margin:18px auto 0;padding:0 12px}
+.poster{position:relative;background:var(--vino);color:var(--crema);border-radius:6px;padding:20px 18px 0;box-shadow:0 18px 40px #0007;overflow:hidden}
+.poster:before{content:"";position:absolute;inset:8px;border:1px solid #f4ead866;pointer-events:none}
+.poster .top{display:flex;justify-content:space-between;font-size:.7rem;border-bottom:1px solid #f4ead866;padding-bottom:6px}
+.poster h1{font-size:clamp(2rem,8vw,3.6rem);line-height:.95;font-weight:900;margin:16px 0 6px;color:var(--crema)}
+.poster h1 em{font-style:italic;color:#ffc58a}
+.poster p{margin:0 0 12px;opacity:.9}
+.chk{height:58px;margin:0 -18px;background:url(ajedrez.webp) center/cover;border-top:3px solid var(--crema)}
+.prog{position:sticky;top:0;z-index:20;background:#1d2430ee;backdrop-filter:blur(8px);color:var(--crema);padding:8px 12px}
+.prog .in{max-width:960px;margin:auto;display:flex;gap:10px;align-items:center;font-size:.8rem}
+.bar{flex:1;height:10px;border-radius:9px;background:#ffffff22;overflow:hidden}.bar i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--nar) 0 10px,#ffb36b 10px 20px);transition:width .5s}
+nav{max-width:960px;margin:8px auto 0;display:flex;gap:6px;overflow-x:auto;padding:4px 12px 8px}
+nav a{flex:none;padding:6px 11px;border-radius:99px;background:#f4ead8e6;color:var(--vino);text-decoration:none;font-size:.78rem;font-weight:700;border:1px dashed var(--nar)}
+nav a.done{background:var(--oli);color:#fff}
+main{max-width:960px;margin:auto;padding:6px 12px 40px}
+/* tarjetas tema: mezclilla con costura */
+.tema{margin:16px 0;border-radius:18px;background:#f8f0e2e8;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 12px 30px #0006;position:relative}
+.tema:before{content:"";position:absolute;inset:6px;border:2px dashed var(--nar);border-radius:14px;pointer-events:none;opacity:.8}
+.tema>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:18px;background:linear-gradient(#2f4a66f2,#253b53f2),url(mezclilla.webp) center/cover;background-blend-mode:multiply;color:var(--crema)}
+.tema>summary::-webkit-details-marker{display:none}
+.tema[open]>summary{border-radius:18px 18px 0 0}
+.num{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:repeating-radial-gradient(circle,#151515 0 2px,#262626 2px 4px);color:#ffb36b;font-family:'Silkscreen';font-size:.8rem;box-shadow:0 0 0 3px #333 inset}
+.tema h2{font-size:1.2rem;flex:1}.tema .ok{font-size:1.2rem}
+.tema>summary .ar{transition:.3s}.tema[open]>summary .ar{transform:rotate(180deg)}
+.body{padding:16px 18px 20px}
+.kp{margin:0;padding:0;list-style:none}.kp li{padding:6px 0 6px 26px;position:relative;border-bottom:1px dotted #c9b79c}.kp li:before{content:"";position:absolute;left:4px;top:12px;width:12px;height:12px;background:conic-gradient(var(--vino) 25%,var(--crema) 0 50%,var(--vino) 0 75%,var(--crema) 0);border:1px solid var(--vino)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.vs.c3{grid-template-columns:repeat(3,1fr)}
+.box{border-radius:14px;padding:12px;background:#fff9ef;border:1px solid #e3d2b8;box-shadow:0 3px 0 #0001}
+.box h3{font-size:1rem;margin-bottom:6px}.box.a{border-top:5px solid var(--vino)}.box.b{border-top:5px solid var(--mez)}.box.c{border-top:5px solid var(--oli)}.box.d{border-top:5px solid var(--terra)}
+.box ul{margin:0;padding-left:18px;font-size:.9rem}
+@media(max-width:620px){.vs,.vs.c3{grid-template-columns:1fr}}
+.tw{overflow-x:auto;border-radius:12px;margin:10px 0;box-shadow:0 0 0 1px #d8c4a5}
+table{border-collapse:collapse;width:100%;font-size:.88rem;background:#fffaf1}
+th{background:var(--vino);color:var(--crema);text-align:left;padding:8px;font-family:'Fraunces'}td{padding:8px;border-top:1px solid #ead9bf;vertical-align:top}tr:nth-child(even) td{background:#f6ecdc}td:first-child{font-weight:700;color:var(--mez)}
+.rev{margin:8px 0;border-radius:12px;border:1px dashed var(--oli);background:#eef0e2;overflow:hidden}
+.rev button{all:unset;cursor:pointer;display:block;width:100%;padding:9px 12px;font-weight:700;color:var(--oli);box-sizing:border-box}
+.rev div{max-height:0;transition:max-height .35s;padding:0 12px}.rev.on div{max-height:400px;padding:0 12px 10px}
+.mn{margin:10px 0;padding:10px 12px;border-radius:12px;background:#ffe6c9;border-left:5px solid var(--nar);font-size:.92rem}
+.ojo{margin:10px 0;padding:10px 12px;border-radius:12px;background:#f6d9d3;border-left:5px solid var(--no);font-size:.92rem}
+.done-btn{margin-top:12px;all:unset;cursor:pointer;display:inline-block;padding:8px 14px;border-radius:99px;background:var(--mez);color:var(--crema);font-weight:700;font-size:.85rem}
+.done-btn.y{background:var(--oli)}
+/* silogismo */
+.sil{display:grid;gap:6px;margin:10px 0}.sil .p{padding:10px 12px;border-radius:12px;background:#fff9ef;border:1px solid #e3d2b8;cursor:pointer}
+.sil .lab{font-family:'Silkscreen';font-size:.65rem;color:var(--cafe)}.sil .line{height:3px;background:var(--t);margin:2px 20px}
+.M{background:#ffd9a8;border-radius:5px;padding:0 4px}.Ma{background:#d9c6ef;border-radius:5px;padding:0 4px}.Me{background:#c6e3c4;border-radius:5px;padding:0 4px}
+.legend{display:flex;gap:6px;flex-wrap:wrap;font-size:.8rem}
+/* timeline */
+.tl{display:flex;gap:6px;overflow-x:auto;padding:6px 2px}.tl button{flex:1;min-width:92px;border:0;border-radius:12px;padding:10px 6px;background:var(--mez);color:var(--crema);font:700 .8rem 'DM Sans';cursor:pointer;position:relative}
+.tl button b{display:block;font-family:'Silkscreen';font-size:.65rem;opacity:.8}
+.tl button.on{background:var(--nar);color:#1d1d1d;transform:translateY(-3px)}
+.tlout{margin-top:8px;padding:12px;border-radius:12px;background:#fff9ef;border:1px dashed var(--nar);min-height:60px}
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:6px}.tabs button{border:1px solid var(--vino);background:#fff9ef;color:var(--vino);border-radius:99px;padding:6px 12px;font:700 .82rem 'DM Sans';cursor:pointer}.tabs button.on{background:var(--vino);color:var(--crema)}
+/* secciones extra */
+.blk{margin:22px 0;border-radius:18px;padding:18px;background:#f8f0e2eb;backdrop-filter:blur(10px);box-shadow:0 12px 30px #0006;position:relative}
+.blk:before{content:"";position:absolute;inset:6px;border:2px dashed var(--nar);border-radius:14px;pointer-events:none;opacity:.7}
+.blk h2{font-size:1.5rem;color:var(--vino);margin-bottom:4px}.sub{font-size:.85rem;color:var(--cafe);margin:0 0 10px}
+.wave{height:22px;margin:-18px -18px 14px;border-radius:18px 18px 0 0;background:url(ajedrez.webp) center/cover}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.card{perspective:900px;aspect-ratio:1;cursor:pointer}.card .in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}
+.card.f .in{transform:rotateY(180deg)}.fa,.ba{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;padding:18%}
+.fa{background:repeating-radial-gradient(circle,#161616 0 2px,#222 2px 4px);color:#ffcf9a;font:900 .95rem 'Fraunces';box-shadow:0 6px 14px #0006}
+.fa:after{content:"";position:absolute;width:22%;height:22%;border-radius:50%;background:var(--vino);border:3px solid var(--crema);z-index:-0;opacity:.9;bottom:39%;left:39%;display:none}
+.ba{background:var(--crema);border:4px solid var(--vino);transform:rotateY(180deg);font-size:.78rem;border-radius:16px;padding:12px}
+.match{display:grid;gap:8px}.mrow{display:grid;grid-template-columns:1fr 190px;gap:8px;align-items:center;padding:8px;border-radius:12px;background:#fff9ef;border:1px solid #e3d2b8;font-size:.88rem}
+.mrow select{width:100%;padding:8px;border-radius:10px;border:1px solid var(--mez2);background:#fff;font:inherit;font-size:.85rem}
+.mrow.g{background:#e2ecd4;border-color:var(--ok)}.mrow.b{background:#f6d9d3;border-color:var(--no)}
+@media(max-width:560px){.mrow{grid-template-columns:1fr}}
+.act{all:unset;cursor:pointer;display:inline-block;margin:10px 6px 0 0;padding:9px 16px;border-radius:99px;background:var(--vino);color:var(--crema);font-weight:700}
+.res{font-weight:700;margin-top:8px;color:var(--mez)}
+.q{border:1px solid #e3d2b8;border-radius:14px;padding:12px;margin:10px 0;background:#fff9ef}.q p{margin:0 0 8px;font-weight:700}
+.q button{display:block;width:100%;text-align:left;margin:5px 0;padding:10px;border-radius:10px;border:1px solid #d9c3a3;background:#f6ecdc;font:inherit;font-size:.92rem;cursor:pointer;color:var(--t)}
+.q button.ok{background:#dbe8cc;border-color:var(--ok)}.q button.no{background:#f4d3cc;border-color:var(--no)}
+.fb{font-size:.86rem;margin-top:4px}
+.score{position:sticky;bottom:10px;z-index:5;margin-top:10px;background:var(--ink);color:#ffcf9a;border:2px dashed var(--nar);padding:10px;border-radius:99px;text-align:center;font-family:'Silkscreen';font-size:.85rem}
+details.pe{border:1px solid #e3d2b8;border-radius:12px;padding:10px 12px;margin:8px 0;background:#fff9ef}details.pe summary{font-weight:700;cursor:pointer;color:var(--vino)}
+.repaso{columns:2 280px;column-gap:20px;font-size:.88rem}.repaso div{break-inside:avoid;margin-bottom:8px;padding:8px 10px;border-radius:10px;background:#fff9ef;border-left:4px solid var(--vino)}
+footer{text-align:center;color:var(--crema);padding:20px;font-family:'Fraunces';font-style:italic;text-shadow:0 1px 6px #000}
+.tema,.blk{animation:up .5s ease both}@keyframes up{from{opacity:0;transform:translateY(12px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{body:before,body:after,.prog,nav,.score{display:none}.tema,.blk{box-shadow:none;backdrop-filter:none}}
 </style></head><body>
-<header><h1>⚖️ Retórica para la Interpretación y Argumentación Jurídica</h1><p>Guía de estudio interactiva · Primer examen parcial</p><span class="badge">📅 Sábado 31 de octubre de 2026 · ¡Tú puedes, Xime! 💪</span></header>
-<nav><a href="#t1">1 Lógica</a><a href="#t2">2 Formal/Material</a><a href="#t3">3 Falacias</a><a href="#t4">4 Concepto-Juicio-Raciocinio</a><a href="#t5">5 Verdad/Validez</a><a href="#t6">6 Silogismo</a><a href="#t7">7 Retórica</a><a href="#t8">8 Fases</a><a href="#t9">9 Discurso</a><a href="#t10">10 Interpretación</a><a href="#t11">11 Métodos</a><a href="#t12">12 Interp. vs Argum.</a><a href="#fc">🃏 Flashcards</a><a href="#fal">🕵️ Falacias</a><a href="#quiz">✅ Quiz</a><a href="#pe">📝 Examen</a><a href="#rf">⭐ Repaso</a></nav>
+<header><div class="poster paper" style="background:var(--vino)"><div class="top px"><span>DERECHO · 1er PARCIAL</span><span>SÁB 31·OCT·2026</span></div>
+<h1>Retórica <em>para la</em> Interpretación &amp; Argumentación Jurídica</h1><p>Guía interactiva para Xime · 12 temas · flashcards · juegos · quiz ⚖️☕</p><div class="chk"></div></div></header>
+<div class="prog"><div class="in"><span class="px">PROGRESO</span><div class="bar"><i id="pb"></i></div><span id="pt">0/12</span></div></div>
+<nav id="nav"></nav>
 <main>
+<div id="temas"></div>
 
-<section id="t1"><h2>1. Definición de lógica</h2>
-<p>La <b>lógica</b> es la disciplina que estudia los <b>principios y reglas del razonamiento correcto</b>: permite distinguir cuándo una conclusión se sigue válidamente de sus premisas. Su objeto no es <i>qué</i> pensamos, sino <i>cómo</i> inferimos.</p>
-<p><b>En el Derecho</b> sirve para construir y controlar argumentos: que una sentencia esté <b>motivada</b> y que la conclusión (el fallo) se derive de las normas y los hechos probados. Recuerda que el art. 16 constitucional exige que todo acto de molestia esté <b>fundado y motivado</b>.</p>
-<h3>Principios lógicos clásicos</h3>
-<div class="tw"><table><tr><th>Principio</th><th>Enunciado</th><th>En Derecho</th></tr>
-<tr><td>Identidad</td><td>A es A</td><td>Un término (“poseedor”) debe usarse con el mismo sentido en todo el argumento.</td></tr>
-<tr><td>No contradicción</td><td>Algo no puede ser A y no-A a la vez y en el mismo sentido</td><td>Una sentencia no puede tener por probado y no probado el mismo hecho.</td></tr>
-<tr><td>Tercero excluido</td><td>O es A o es no-A</td><td>Una conducta está permitida o no lo está.</td></tr>
-<tr><td>Razón suficiente</td><td>Todo tiene una razón de ser</td><td>Toda decisión debe tener motivación suficiente.</td></tr></table></div>
-<div class="ej"><b>Ejemplo jurídico:</b> Si la ley establece una consecuencia para quien realiza cierta conducta, y se acredita que Juan la realizó, la conclusión lógica es que debe aplicarse la consecuencia.</div></section>
+<section class="blk" id="fc"><div class="wave"></div><h2>💿 Flashcards en vinil</h2><p class="sub">Toca un disco para voltearlo.</p><div class="cards" id="cards"></div></section>
 
-<section id="t2"><h2>2. Lógica formal vs. lógica material</h2>
-<div class="tw"><table><tr><th></th><th>Lógica formal</th><th>Lógica material</th></tr>
-<tr><td><b>Estudia</b></td><td>La <b>forma o estructura</b> del razonamiento</td><td>El <b>contenido</b> de las premisas</td></tr>
-<tr><td><b>Pregunta</b></td><td>¿La conclusión se sigue de las premisas?</td><td>¿Las premisas son verdaderas, justificadas, aplicables?</td></tr>
-<tr><td><b>Resultado</b></td><td>Válido / inválido</td><td>Verdadero / falso; aceptable / no</td></tr>
-<tr><td><b>Ignora</b></td><td>El contenido</td><td>—(lo examina)</td></tr>
-<tr><td><b>En Derecho</b></td><td>Revisar si el fallo deriva de norma + hechos</td><td>Revisar si la norma está vigente y es aplicable, si los hechos están probados</td></tr></table></div>
-<div class="ej"><b>Ejemplo:</b> “Todo contrato firmado obliga; este documento fue firmado; luego obliga”. Formalmente es válido. Materialmente falla si el “documento” no es un contrato o la firma es falsa (vicio del consentimiento, nulidad).</div>
-<div class="mn">🧠 <b>Mnemotecnia:</b> <b>F</b>ormal = <b>F</b>orma (el molde). <b>M</b>aterial = <b>M</b>ateria (lo que va dentro).</div></section>
+<section class="blk" id="m1"><div class="wave"></div><h2>🕵️ Relaciona: falacia ↔ ejemplo</h2><p class="sub">Elige la falacia de cada frase y califica.</p><div class="match" id="mf"></div><button class="act" onclick="checkM('mf')">Calificar</button><button class="act" style="background:var(--mez)" onclick="resetM('mf')">Reiniciar</button><div class="res" id="mf-r"></div></section>
 
-<section id="t3"><h2>3. Falacias</h2>
-<p>Una <b>falacia</b> es un razonamiento que <b>parece correcto pero no lo es</b>: contiene un error lógico o argumentativo que lo hace engañoso. Pueden ser <b>formales</b> (error de estructura, p. ej. afirmar el consecuente) o <b>informales/materiales</b> (error de contenido, relevancia o lenguaje).</p>
-<div class="tw"><table><tr><th>Falacia</th><th>Qué hace</th><th>Ejemplo jurídico</th></tr>
-<tr><td><b>Ad hominem</b></td><td>Ataca a la persona, no al argumento</td><td>“No atienda al abogado de la defensa, ya lo sancionaron una vez.”</td></tr>
-<tr><td><b>Ad populum</b></td><td>Apela a la mayoría u opinión popular</td><td>“Todo el pueblo sabe que es culpable; condénelo.”</td></tr>
-<tr><td><b>Ad baculum</b></td><td>Apela a la fuerza o amenaza</td><td>“Firme el convenio o le irá peor en el juicio.”</td></tr>
-<tr><td><b>Ad verecundiam</b></td><td>Autoridad falsa o no pertinente</td><td>“Es correcto porque lo dijo un actor famoso en entrevista.”</td></tr>
-<tr><td><b>Falsa causa</b> (post hoc)</td><td>Supone causalidad por sucesión temporal</td><td>“Lo condenaron después de cambiar de abogado; el cambio causó la condena.”</td></tr>
-<tr><td><b>Generalización apresurada</b></td><td>Conclusión general con pocos casos</td><td>“Dos peritos se equivocaron; todos los peritajes son inútiles.”</td></tr>
-<tr><td><b>Petición de principio</b></td><td>La conclusión ya está en las premisas</td><td>“Es culpable porque cometió el delito.”</td></tr>
-<tr><td><b>Ad ignorantiam</b></td><td>Algo es verdad porque no se probó lo contrario</td><td>“No demostró que no estuvo ahí; luego estuvo.” (contraría la presunción de inocencia, art. 20 constitucional)</td></tr>
-<tr><td><b>Ad misericordiam</b></td><td>Apela a la lástima en vez de razones</td><td>“Absuélvalo, es padre de cinco hijos” (sin relación con los hechos).</td></tr>
-<tr><td><b>Hombre de paja</b></td><td>Distorsiona el argumento contrario para atacarlo</td><td>“La actora pide pensión; o sea, quiere vivir sin trabajar para siempre.”</td></tr>
-<tr><td><b>Falso dilema</b></td><td>Presenta solo dos opciones cuando hay más</td><td>“O se aprueba la prisión preventiva o el imputado huirá.”</td></tr>
-<tr><td><b>Pendiente resbaladiza</b></td><td>Cadena de consecuencias exageradas sin prueba</td><td>“Si se admite este amparo, se acabará el orden jurídico.”</td></tr></table></div>
-<div class="mn">🧠 <b>Latín rápido:</b> <i>hominem</i>=persona · <i>populum</i>=pueblo · <i>baculum</i>=bastón (garrote) · <i>verecundiam</i>=respeto (autoridad) · <i>ignorantiam</i>=ignorancia · <i>misericordiam</i>=compasión.</div>
-<div class="ojo">⚠️ Citar una autoridad <b>pertinente</b> (jurisprudencia de la SCJN, un perito en su materia) NO es falacia. La falacia es usar autoridad <b>irrelevante</b> o como única razón.</div></section>
+<section class="blk" id="m2"><div class="wave"></div><h2>🔎 Relaciona: método ↔ definición</h2><p class="sub">¿Qué método interpretativo es?</p><div class="match" id="mm"></div><button class="act" onclick="checkM('mm')">Calificar</button><button class="act" style="background:var(--mez)" onclick="resetM('mm')">Reiniciar</button><div class="res" id="mm-r"></div></section>
 
-<section id="t4"><h2>4. Concepto, juicio y raciocinio</h2>
-<p>Son las tres <b>operaciones/formas del pensamiento</b>, de lo simple a lo complejo:</p>
-<div class="tw"><table><tr><th></th><th>Concepto</th><th>Juicio</th><th>Raciocinio</th></tr>
-<tr><td>Qué es</td><td>Representación mental de un objeto, sin afirmar ni negar</td><td>Afirma o niega algo de un sujeto (S es P)</td><td>Relaciona juicios para obtener uno nuevo (conclusión)</td></tr>
-<tr><td>Expresión</td><td>Término (palabra)</td><td>Proposición (oración)</td><td>Argumento</td></tr>
-<tr><td>¿V/F?</td><td>No</td><td><b>Sí</b>: verdadero o falso</td><td>Válido o inválido</td></tr>
-<tr><td>Ejemplo</td><td>“contrato”, “delito”, “juez”</td><td>“El contrato genera obligaciones”</td><td>“Todo contrato válido obliga; este es válido; luego obliga”</td></tr></table></div>
-<div class="mn">🧠 <b>Mnemotecnia “Ladrillo–Pared–Casa”:</b> concepto = ladrillo, juicio = pared, raciocinio = casa. Términos → Proposiciones → Argumentos.</div></section>
+<section class="blk" id="quiz"><div class="wave"></div><h2>✅ Quiz · 25 preguntas</h2><p class="sub">Retroalimentación al instante. Mejor puntaje: <b id="best">—</b> <button class="act" style="padding:5px 12px;margin:0 0 0 6px" onclick="location.hash='quiz';location.reload()">Reiniciar</button></p><div id="qz"></div><div class="score" id="sc">PUNTAJE 0/25</div></section>
 
-<section id="t5"><h2>5. Verdad, validez y solidez</h2>
-<div class="tw"><table><tr><th>Verdad</th><th>Validez</th><th>Solidez</th></tr>
-<tr><td>Propiedad de las <b>proposiciones</b></td><td>Propiedad de los <b>argumentos</b> (estructura)</td><td>Argumento <b>válido + premisas verdaderas</b></td></tr>
-<tr><td>Corresponde con la realidad</td><td>Si premisas fueran verdaderas, la conclusión necesariamente lo sería</td><td>Garantiza conclusión verdadera</td></tr></table></div>
-<div class="ej"><b>Válido pero no sólido:</b> “Todos los jueces son mexicanos por nacimiento; Ana es jueza; luego Ana es mexicana por nacimiento”. La forma es perfecta; si la premisa mayor es falsa para algún tipo de juez, el argumento no es sólido.<br><b>Clave:</b> un argumento válido puede tener premisas y conclusión falsas; lo que <b>nunca</b> ocurre en uno válido es premisas verdaderas y conclusión falsa.</div>
-<div class="mn">🧠 <b>Verdad</b> = Vínculo con la realidad · <b>Validez</b> = Vía correcta (forma) · <b>Solidez</b> = Suma de ambas.</div></section>
+<section class="blk" id="pex"><div class="wave"></div><h2>📝 Preguntas probables</h2><p class="sub">Piensa tu respuesta y luego ábrela.</p><div id="pe"></div></section>
 
-<section id="t6"><h2>6. El silogismo</h2>
-<p>Razonamiento <b>deductivo</b> compuesto por <b>dos premisas</b> y una <b>conclusión</b>, con <b>tres términos</b>. El modelo clásico es el silogismo categórico (Aristóteles).</p>
-<div class="tw"><table><tr><th>Elemento</th><th>Qué es</th><th>Ejemplo</th></tr>
-<tr><td>Premisa mayor</td><td>Contiene el término mayor (regla general)</td><td>Todos los contratos legales deben cumplirse.</td></tr>
-<tr><td>Premisa menor</td><td>Contiene el término menor (caso)</td><td>Este arrendamiento es un contrato legal.</td></tr>
-<tr><td>Conclusión</td><td>Une término menor y mayor</td><td>Este arrendamiento debe cumplirse.</td></tr>
-<tr><td>Término mayor (P)</td><td>Predicado de la conclusión</td><td>“deben cumplirse”</td></tr>
-<tr><td>Término menor (S)</td><td>Sujeto de la conclusión</td><td>“este arrendamiento”</td></tr>
-<tr><td>Término medio (M)</td><td>Aparece en ambas premisas, <b>nunca en la conclusión</b></td><td>“contrato legal”</td></tr></table></div>
-<h3>Reglas básicas</h3><ol><li>Solo tres términos (si no, falacia de <b>cuatro términos</b>, p. ej. usar “ley” con dos sentidos).</li><li>El término medio no aparece en la conclusión.</li><li>El término medio debe tomarse universalmente al menos una vez.</li><li>Ningún término puede tener en la conclusión mayor extensión que en las premisas.</li><li>De dos premisas negativas no se concluye nada.</li><li>De dos premisas particulares no se concluye nada.</li><li>Dos afirmativas no dan conclusión negativa.</li><li>La conclusión sigue a la parte más débil (si una premisa es negativa o particular, la conclusión también).</li></ol>
-<h3>Silogismo jurídico y subsunción</h3>
-<p><b>Premisa mayor = norma</b> (supuesto → consecuencia) · <b>Premisa menor = hechos probados</b> · <b>Conclusión = fallo</b>. <b>Subsunción</b> es encuadrar el hecho concreto en el supuesto abstracto de la norma.</p>
-<div class="ej"><b>Ejemplo (CPF art. 302):</b> “Comete homicidio el que priva de la vida a otro” (PM) · Se probó que X privó de la vida a Y (Pm) · Luego X cometió homicidio y se le aplica la pena correspondiente (C).</div>
-<div class="ojo">⚠️ Crítica: el silogismo solo justifica la <b>forma</b> (justificación interna); elegir la norma y probar los hechos requiere justificación externa (argumentación).</div>
-<div class="mn">🧠 <b>N + H = F</b>: Norma + Hechos = Fallo. El <b>M</b>edio está en <b>M</b>edio de las premisas y se va antes del final.</div></section>
-
-<section id="t7"><h2>7. Retórica</h2>
-<p>Para <b>Aristóteles</b> (<i>Retórica</i>), es la facultad de considerar en cada caso <b>lo que es apto para persuadir</b>. Es el arte de construir y expresar discursos para convencer a un auditorio. Distinguió tres géneros: <b>judicial</b> (pasado: acusar/defender), <b>deliberativo</b> (futuro: aconsejar) y <b>epidíctico</b> (presente: elogiar/censurar).</p>
-<div class="tw"><table><tr><th>Prueba</th><th>Se basa en</th><th>Ejemplo en un alegato</th></tr>
-<tr><td><b>Ethos</b></td><td>Credibilidad y carácter del orador</td><td>El abogado muestra preparación, honestidad y respeto al tribunal.</td></tr>
-<tr><td><b>Pathos</b></td><td>Emociones del auditorio</td><td>Describe el daño sufrido por la víctima.</td></tr>
-<tr><td><b>Logos</b></td><td>Razones, pruebas, argumentos</td><td>Cita la norma, la jurisprudencia y las pruebas periciales.</td></tr></table></div>
-<div class="mn">🧠 <b>E-P-L</b>: <b>E</b>l (orador) – <b>P</b>úblico (emoción) – <b>L</b>ógica (razón). Ethos=Yo, Pathos=Tú, Logos=El argumento.</div></section>
-
-<section id="t8"><h2>8. Fases (cánones) de la retórica</h2>
-<div class="tw"><table><tr><th>#</th><th>Fase</th><th>Consiste en</th><th>En una demanda/alegato</th></tr>
-<tr><td>1</td><td><b>Inventio</b></td><td>Hallar ideas y argumentos</td><td>Investigar hechos, normas, jurisprudencia y pruebas</td></tr>
-<tr><td>2</td><td><b>Dispositio</b></td><td>Ordenarlos</td><td>Estructurar: hechos, derecho, puntos petitorios</td></tr>
-<tr><td>3</td><td><b>Elocutio</b></td><td>Expresarlos con buen lenguaje y estilo</td><td>Redacción clara, precisa, persuasiva</td></tr>
-<tr><td>4</td><td><b>Memoria</b></td><td>Memorizar el discurso</td><td>Preparar el alegato oral (juicios orales)</td></tr>
-<tr><td>5</td><td><b>Actio</b> (pronuntiatio)</td><td>Pronunciarlo con voz y gestos</td><td>Exposición en audiencia</td></tr></table></div>
-<div class="mn">🧠 <b>“Inventa, Dispón, Embellece, Memoriza, Actúa”</b> → <b>I-D-E-M-A</b> (“¡IDEMA!”). Encontrar → Ordenar → Expresar → Recordar → Pronunciar.</div></section>
-
-<section id="t9"><h2>9. Partes del discurso</h2>
-<div class="tw"><table><tr><th>Parte</th><th>Función</th><th>Ejemplo en alegato</th></tr>
-<tr><td><b>Exordio</b></td><td>Captar atención y benevolencia</td><td>“Su Señoría, este caso trata de la libertad de una persona inocente.”</td></tr>
-<tr><td><b>Narración</b></td><td>Exponer los hechos</td><td>Relato cronológico de lo ocurrido</td></tr>
-<tr><td><b>División</b> (partición)</td><td>Anunciar los puntos a tratar</td><td>“Demostraré tres cosas: …”</td></tr>
-<tr><td><b>Confirmación</b></td><td>Probar la tesis propia</td><td>Pruebas y fundamentos</td></tr>
-<tr><td><b>Refutación</b></td><td>Rebatir al contrario</td><td>Desacreditar la versión de la contraparte</td></tr>
-<tr><td><b>Peroración</b> (epílogo)</td><td>Resumir y mover al auditorio</td><td>“Por todo lo expuesto, solicito la absolución.”</td></tr></table></div>
-<div class="mn">🧠 <b>“En Navidad Dan Cajas Rojas Preciosas”</b> → Exordio, Narración, División, Confirmación, Refutación, Peroración.</div>
-<div class="ojo">No confundas: <b>fases</b> (tema 8) = proceso de <i>elaborar</i> el discurso; <b>partes</b> (tema 9) = <i>estructura</i> del discurso ya hecho. La división/partición ocurre dentro de la <i>dispositio</i>.</div></section>
-
-<section id="t10"><h2>10. Interpretación jurídica</h2>
-<p>Actividad intelectual que <b>determina el sentido y alcance</b> de una norma para aplicarla a un caso concreto. Es necesaria porque el lenguaje jurídico puede ser <b>ambiguo, vago, con lagunas o antinomias</b>.</p>
-<h3>Por quién la realiza</h3>
-<div class="tw"><table><tr><th>Tipo</th><th>Sujeto</th><th>Fuerza</th></tr>
-<tr><td>Auténtica</td><td>El legislador</td><td>Obligatoria general</td></tr>
-<tr><td>Judicial</td><td>Jueces; la jurisprudencia de la SCJN y tribunales es obligatoria en los términos de la Ley de Amparo</td><td>Obligatoria en el caso / según jurisprudencia</td></tr>
-<tr><td>Doctrinal</td><td>Juristas, académicos</td><td>Orientadora</td></tr></table></div>
-<div class="ej"><b>Fundamento mexicano:</b> el <b>art. 14 constitucional</b>, último párrafo: en juicios civiles la sentencia será conforme a la letra o a la <b>interpretación jurídica</b> de la ley, y a falta de ésta, en los <b>principios generales del derecho</b>. El <b>art. 1º</b> ordena interpretar las normas de derechos humanos conforme a la Constitución y los tratados, favoreciendo la protección más amplia (<b>principio pro persona</b>, reforma de 2011).</div>
-<div class="ej"><b>Ejemplo:</b> si la ley dice “plazo razonable”, se interpreta el contexto y el caso para definir su alcance.</div></section>
-
-<section id="t11"><h2>11. Métodos interpretativos</h2>
-<div class="tw"><table><tr><th>Método</th><th>Pregunta clave</th><th>Ejemplo</th></tr>
-<tr><td><b>Gramatical / literal</b></td><td>¿Qué dicen las palabras?</td><td>Significado de “domicilio” según el texto</td></tr>
-<tr><td><b>Sistemático</b></td><td>¿Cómo encaja con el resto del ordenamiento?</td><td>Leer un artículo del Código Civil junto con la Constitución y otros artículos</td></tr>
-<tr><td><b>Histórico</b></td><td>¿Qué antecedentes tiene?</td><td>Exposición de motivos, debates legislativos, leyes anteriores</td></tr>
-<tr><td><b>Teleológico / finalista</b></td><td>¿Para qué existe la norma?</td><td>Interés superior de la niñez como fin de normas familiares</td></tr>
-<tr><td><b>Lógico</b></td><td>¿Qué lectura evita absurdos y contradicciones?</td><td>Argumentos <i>a fortiori</i>, <i>a contrario</i>, reducción al absurdo</td></tr>
-<tr><td><b>Analógico</b></td><td>¿Hay caso semejante regulado? (misma razón)</td><td>Aplicar una norma civil a un caso no previsto pero similar</td></tr></table></div>
-<div class="ojo">🚫 <b>Penal:</b> el <b>art. 14 constitucional</b>, tercer párrafo, prohíbe imponer pena alguna por <b>simple analogía, y aun por mayoría de razón</b>, que no esté decretada por una ley exactamente aplicable al delito (<b>legalidad y taxatividad</b>: <i>nullum crimen, nulla poena sine lege</i>). La analogía no puede crear delitos ni penas.</div>
-<div class="mn">🧠 <b>“Gracias Sistema, Historia Te Lo Agradece”</b> → Gramatical, Sistemático, Histórico, Teleológico, Lógico, Analógico.</div></section>
-
-<section id="t12"><h2>12. Interpretación vs. argumentación</h2>
-<div class="tw"><table><tr><th></th><th>Interpretación</th><th>Argumentación</th></tr>
-<tr><td>Objetivo</td><td>Determinar qué significa la norma</td><td>Dar razones que justifiquen una conclusión</td></tr>
-<tr><td>Pregunta</td><td>¿Qué dice/alcance?</td><td>¿Por qué así se debe decidir?</td></tr>
-<tr><td>Producto</td><td>Un significado</td><td>Una decisión justificada</td></tr>
-<tr><td>Momento</td><td>Primero</td><td>Después (justifica la interpretación elegida)</td></tr></table></div>
-<div class="ej">Se complementan: <b>primero se interpreta y luego se argumenta</b> por qué esa interpretación es la correcta y cómo se aplica al caso. Una sentencia que solo interpreta sin argumentar carece de motivación.</div></section>
-
-<section id="fc"><h2>🃏 Flashcards (toca para voltear)</h2><div class="cards" id="cards"></div></section>
-
-<section id="fal"><h2>🕵️ Ejercicio: identifica la falacia</h2><p>Elige qué falacia es cada frase.</p><div id="falq"></div></section>
-
-<section id="quiz"><h2>✅ Quiz (25 preguntas)</h2><p>Retroalimentación inmediata. <button class="btn sm" onclick="location.reload()">Reiniciar</button></p><div id="qz"></div><div class="score" id="sc">Puntaje: 0 / 25</div></section>
-
-<section id="pe"><h2>📝 Preguntas probables de examen</h2><div id="pex"></div></section>
-
-<section id="rf" class="repaso"><h2>⭐ Repaso final en 1 página</h2><ul>
-<li><b>Lógica:</b> reglas del razonamiento correcto. Principios: identidad, no contradicción, tercero excluido, razón suficiente.</li>
-<li><b>Formal</b> = forma (válido/inválido) · <b>Material</b> = contenido (verdadero/falso).</li>
-<li><b>Falacia:</b> parece correcto y no lo es. hominem=persona · populum=mayoría · baculum=amenaza · verecundiam=autoridad · falsa causa=post hoc · generalización=pocos casos · petición de principio=círculo · ignorantiam=no se probó lo contrario · misericordiam=lástima · hombre de paja=deformar · falso dilema=solo 2 opciones.</li>
-<li><b>Concepto</b> (término, no V/F) → <b>Juicio</b> (proposición, V/F) → <b>Raciocinio</b> (argumento, válido/inválido).</li>
-<li><b>Verdad</b>=proposiciones · <b>Validez</b>=forma · <b>Solidez</b>=válido + premisas verdaderas.</li>
-<li><b>Silogismo:</b> 2 premisas + conclusión, 3 términos. Medio en premisas, nunca en conclusión. Jurídico: Norma + Hechos = Fallo (subsunción).</li>
-<li><b>Retórica</b> (Aristóteles): arte de persuadir. Ethos (orador), Pathos (emoción), Logos (razón). Géneros: judicial, deliberativo, epidíctico.</li>
-<li><b>Fases IDEMA:</b> Inventio, Dispositio, Elocutio, Memoria, Actio.</li>
-<li><b>Partes:</b> Exordio, Narración, División, Confirmación, Refutación, Peroración.</li>
-<li><b>Interpretación:</b> fijar sentido y alcance. Auténtica/judicial/doctrinal. Art. 14 (civil: letra, interpretación, principios generales); art. 1º pro persona.</li>
-<li><b>Métodos:</b> gramatical, sistemático, histórico, teleológico, lógico, analógico. <b>Penal: prohibida la analogía y mayoría de razón (art. 14).</b></li>
-<li><b>Interpretar</b> = qué significa · <b>Argumentar</b> = por qué se decide así. Primero interpreto, luego argumento.</li></ul></section>
-</main><footer>🎷 Hecho con cariño para Xime · ¡Éxito en tu examen! ⚖️✨</footer>
+<section class="blk" id="rf"><div class="wave"></div><h2>⭐ Repaso final · 1 página</h2><div class="repaso" id="rp"></div></section>
+</main><footer>☕ Hecho con cariño para Xime · ¡Éxito mañana! 🎷</footer>
 <script>
-const F=[["Lógica","Disciplina que estudia las reglas del razonamiento correcto."],["Lógica formal","Estudia la forma: si la conclusión se sigue de las premisas."],["Lógica material","Estudia el contenido: si las premisas son verdaderas."],["Falacia","Razonamiento que parece correcto pero es erróneo."],["Concepto","Representación mental; no afirma ni niega. Ej. “delito”."],["Juicio","Afirma o niega algo de un sujeto; es verdadero o falso."],["Raciocinio","Relaciona juicios para obtener una conclusión."],["Validez","Propiedad de la estructura del argumento."],["Solidez","Argumento válido con premisas verdaderas."],["Término medio","Aparece en ambas premisas y nunca en la conclusión."],["Subsunción","Encuadrar el hecho concreto en el supuesto de la norma."],["Ethos","Credibilidad del orador."],["Pathos","Emociones del auditorio."],["Logos","Razones y pruebas."],["Inventio","Hallar ideas y argumentos."],["Dispositio","Ordenar los argumentos."],["Elocutio","Expresar con buen estilo."],["Exordio","Captar la atención del auditorio."],["Peroración","Resumir y mover al auditorio al final."],["Método teleológico","Busca la finalidad de la norma."],["Art. 14 CPEUM (penal)","Prohíbe penas por analogía o mayoría de razón."],["Interpretar vs argumentar","Qué significa la norma vs. por qué se decide así."]];
-document.getElementById('cards').innerHTML=F.map(f=>`<div class="card" onclick="this.classList.toggle('f')"><div class="in"><div class="fa">${f[0]}</div><div class="ba">${f[1]}</div></div></div>`).join('');
-function mk(el,Q,cb){document.getElementById(el).innerHTML=Q.map((q,i)=>`<div class="q" id="${el}${i}"><p>${i+1}. ${q[0]}</p>${q[1].map((o,j)=>`<button onclick="ans('${el}',${i},${j})">${o}</button>`).join('')}<div class="fb"></div></div>`).join('');window[el]=Q}
-let pts=0;
-function ans(el,i,j){const q=window[el][i],d=document.getElementById(el+i);if(d.dataset.d)return;d.dataset.d=1;const b=d.querySelectorAll('button');b[q[2]].classList.add('ok');if(j!==q[2])b[j].classList.add('no');else if(el=='qz'){pts++;document.getElementById('sc').textContent=`Puntaje: ${pts} / 25`}d.querySelector('.fb').innerHTML=(j===q[2]?'✅ ¡Correcto! ':'❌ Incorrecto. ')+q[3]}
-const FL=["Ad hominem","Ad populum","Ad baculum","Ad verecundiam","Falsa causa","Generalización apresurada","Petición de principio","Ad ignorantiam","Ad misericordiam","Hombre de paja","Falso dilema"];
-const fq=[["“El testimonio del perito no vale: es divorciado y tiene deudas.”",0,"Ataca a la persona, no su peritaje."],["“Si no retira la denuncia, sus hijos lo pagarán.”",2,"Amenaza."],["“La fiscalía no probó que el acusado no estuvo en la escena, así que estuvo.”",7,"Invierte la carga de la prueba; viola la presunción de inocencia."],["“El acusado miente porque es un mentiroso.”",6,"La conclusión se presupone en la premisa."],["“Millones en redes piden su condena; el juez debe condenarlo.”",1,"Apela a la mayoría."],["“Mi cliente perdió su empleo y su casa; merece ganar este juicio.”",8,"Apela a la lástima sin razones jurídicas."],["“La defensa propone libertad condicional; o sea, quiere a los criminales sueltos en la calle.”",9,"Deforma la postura contraria."],["“O se aumenta la pena a 80 años o la delincuencia nunca bajará.”",10,"Ignora otras opciones."],["“Desde que se reformó el código subieron los robos; la reforma causó los robos.”",4,"Post hoc: sucesión no es causalidad."],["“Dos notarios de Puebla cometieron fraude; los notarios son defraudadores.”",5,"Pocos casos para una regla general."],["“Esta interpretación es correcta porque la apoyó un influencer muy famoso.”",3,"Autoridad no pertinente."]];
-mk('falq',fq.map(x=>[x[0],FL,x[1],x[2]]));
-const Q=[["La lógica estudia principalmente…",["El contenido de las leyes","Las reglas del razonamiento correcto","Las emociones del auditorio","La historia del Derecho"],1,"Su objeto es la corrección del razonamiento."],
-["La lógica formal se ocupa de…",["La verdad de las premisas","La estructura del razonamiento","Los hechos probados","La jurisprudencia"],1,"Formal = forma."],
-["Revisar si una norma está vigente y es aplicable corresponde a la lógica…",["Formal","Material","Simbólica","Modal"],1,"Es examinar el contenido de la premisa."],
-["“No le crea, es un abogado sin ética” es…",["Ad populum","Ad hominem","Ad baculum","Falso dilema"],1,"Ataque personal."],
-["“Acepte o lo despido” es…",["Ad baculum","Ad misericordiam","Ad verecundiam","Petición de principio"],0,"Apela a la fuerza/amenaza."],
-["Concluir que algo es verdad porque no se probó lo contrario es…",["Ad ignorantiam","Falsa causa","Ad populum","Hombre de paja"],0,"Apelación a la ignorancia."],
-["Lo que no afirma ni niega y no es verdadero ni falso es…",["El juicio","El concepto","El raciocinio","La premisa"],1,"El concepto solo representa."],
-["“El contrato genera obligaciones” es un…",["Concepto","Juicio","Raciocinio","Silogismo"],1,"Afirma algo de un sujeto."],
-["La verdad es propiedad de…",["Los argumentos","Las proposiciones","Los conceptos","Las falacias"],1,"Las proposiciones son V o F."],
-["Un argumento válido con premisas verdaderas es…",["Falaz","Sólido","Inválido","Material"],1,"Solidez = validez + verdad."],
-["¿Puede un argumento válido tener conclusión falsa?",["Nunca","Sí, si alguna premisa es falsa","Solo en Derecho penal","Solo si es inductivo"],1,"Lo imposible es premisas verdaderas y conclusión falsa."],
-["El término que aparece en ambas premisas pero no en la conclusión es el…",["Mayor","Menor","Medio","Predicado"],2,"Término medio."],
-["El término mayor es…",["El sujeto de la conclusión","El predicado de la conclusión","El término medio","La premisa menor"],1,"Mayor = predicado de la conclusión."],
-["En el silogismo jurídico, la premisa mayor es…",["Los hechos","La norma","La sentencia","La prueba"],1,"Norma general."],
-["Encuadrar un hecho en el supuesto normativo se llama…",["Analogía","Subsunción","Exordio","Inventio"],1,"Subsunción."],
-["De dos premisas negativas…",["Se concluye una negativa","No se concluye nada","Se concluye una afirmativa","Se concluye una particular"],1,"Regla del silogismo."],
-["La credibilidad del orador es…",["Logos","Pathos","Ethos","Actio"],2,"Ethos."],
-["La fase de ordenar los argumentos es…",["Inventio","Dispositio","Elocutio","Memoria"],1,"Dispositio."],
-["Pronunciar el discurso con voz y gestos es…",["Actio","Elocutio","Peroración","Narración"],0,"Actio o pronuntiatio."],
-["La parte del discurso que capta la atención es…",["Peroración","Exordio","Refutación","División"],1,"Exordio."],
-["Rebatir los argumentos contrarios es la…",["Confirmación","Refutación","Narración","Peroración"],1,"Refutación."],
-["El método que busca la finalidad de la norma es el…",["Gramatical","Histórico","Teleológico","Sistemático"],2,"Teleológico/finalista."],
-["Acudir a la exposición de motivos es método…",["Histórico","Analógico","Lógico","Gramatical"],0,"Revisa antecedentes."],
-["En materia penal, según el art. 14 constitucional…",["Se permite la analogía si beneficia al Estado","Se prohíbe imponer penas por analogía o mayoría de razón","Se aplican principios generales del derecho","Se interpreta solo históricamente"],1,"Principio de legalidad penal."],
-["Interpretar es a argumentar como…",["Qué significa : por qué se decide así","Forma : contenido","Ethos : pathos","Juicio : concepto"],0,"Interpretación determina sentido; argumentación justifica."]];
-mk('qz',Q);
-const P=[["¿Qué diferencia hay entre verdad y validez? Da un ejemplo.","La verdad es propiedad de las proposiciones (corresponden con la realidad); la validez es propiedad de la estructura del argumento (la conclusión se sigue necesariamente). Ej.: “Todos los contratos son verbales; la compraventa es contrato; luego es verbal” es válido pero no verdadero ni sólido."],
-["Explica el silogismo jurídico con un ejemplo.","Premisa mayor: la norma (CPF art. 302: comete homicidio el que priva de la vida a otro). Premisa menor: hechos probados (X privó de la vida a Y). Conclusión: X cometió homicidio y se le aplica la pena. La operación de encuadrar el hecho en la norma es la subsunción."],
-["Define falacia y explica tres con ejemplos jurídicos.","Razonamiento aparentemente correcto pero erróneo. Ad hominem: descalificar al testigo por su vida privada. Ad baculum: “firme o le irá peor”. Ad ignorantiam: “no probó su inocencia, luego es culpable”, contrario a la presunción de inocencia."],
-["¿Qué son ethos, pathos y logos?","Las tres pruebas de persuasión de Aristóteles: ethos (credibilidad del orador), pathos (emociones del auditorio), logos (razones y pruebas). Un buen alegato combina las tres."],
-["Enumera las fases de la retórica y las partes del discurso.","Fases: inventio, dispositio, elocutio, memoria, actio. Partes: exordio, narración, división, confirmación, refutación, peroración. Las fases son el proceso de elaboración; las partes, la estructura."],
-["¿Por qué en materia penal no se aplica la analogía?","Porque el art. 14 constitucional prohíbe imponer penas por simple analogía o mayoría de razón; rige la legalidad y taxatividad: solo es delito y pena lo previsto exactamente en ley."],
-["Diferencia entre interpretación y argumentación jurídica.","Interpretar es determinar el sentido y alcance de la norma; argumentar es dar razones que justifiquen una decisión. Se complementan: primero se interpreta y luego se argumenta por qué esa interpretación y su aplicación son correctas."],
-["Distingue concepto, juicio y raciocinio.","Concepto: representación mental (“delito”), no es V/F. Juicio: afirma o niega (“el robo es delito”), es V/F. Raciocinio: enlaza juicios para concluir (silogismo), es válido o inválido."]];
-document.getElementById('pex').innerHTML=P.map(p=>`<details><summary>${p[0]}</summary><p>${p[1]}</p></details>`).join('');
+const R=(t,e)=>`<div class="rev"><button>👆 ${t}</button><div>${e}</div></div>`;
+const T=[
+["Definición de lógica",`<ul class="kp"><li><b>Lógica:</b> estudia las <b>reglas del razonamiento correcto</b>: cuándo una conclusión se sigue de sus premisas.</li><li>Le importa <i>cómo</i> inferimos, no <i>qué</i> pensamos.</li><li>En Derecho: controla que el fallo derive de normas + hechos (art. 16 const.: actos <b>fundados y motivados</b>).</li></ul>
+<div class="tw"><table><tr><th>Principio</th><th>Fórmula</th><th>En Derecho</th></tr><tr><td>Identidad</td><td>A es A</td><td>“Poseedor” significa lo mismo en todo el argumento</td></tr><tr><td>No contradicción</td><td>No A y no-A a la vez</td><td>Un hecho no puede estar probado y no probado</td></tr><tr><td>Tercero excluido</td><td>A o no-A</td><td>La conducta está permitida o no</td></tr><tr><td>Razón suficiente</td><td>Todo tiene razón</td><td>Toda decisión necesita motivación</td></tr></table></div>
+${R("Ver ejemplo jurídico","Si la ley sanciona una conducta y se acredita que Juan la realizó, la conclusión lógica es aplicar la sanción.")}`],
+["Lógica formal vs. material",`<div class="vs"><div class="box a"><h3>📐 Formal</h3><ul><li>Estudia la <b>forma</b></li><li>¿La conclusión se sigue?</li><li>Resultado: <b>válido / inválido</b></li><li>Ignora el contenido</li></ul></div><div class="box b"><h3>📦 Material</h3><ul><li>Estudia el <b>contenido</b></li><li>¿Premisas verdaderas y aplicables?</li><li>Resultado: <b>verdadero / falso</b></li><li>Norma vigente, hechos probados</li></ul></div></div>
+<div class="mn">🧠 <b>F</b>ormal = <b>F</b>orma (el molde) · <b>M</b>aterial = <b>M</b>ateria (el relleno).</div>
+${R("Ver ejemplo","“Todo contrato firmado obliga; este documento fue firmado; luego obliga.” Formalmente válido. Materialmente falla si no es contrato o la firma es falsa.")}`],
+["Falacias",`<ul class="kp"><li><b>Falacia:</b> razonamiento que <b>parece correcto pero no lo es</b>.</li><li><b>Formales</b> (error de estructura) e <b>informales</b> (de contenido, relevancia o lenguaje).</li></ul>
+<div class="tw"><table><tr><th>Falacia</th><th>Truco</th><th>Ejemplo jurídico</th></tr>${FAL().map(f=>`<tr><td>${f[0]}</td><td>${f[1]}</td><td>${f[2]}</td></tr>`).join('')}</table></div>
+<div class="mn">🧠 hominem=persona · populum=pueblo · baculum=garrote · verecundiam=respeto/autoridad · ignorantiam=ignorancia · misericordiam=compasión.</div>
+<div class="ojo">⚠️ Citar autoridad <b>pertinente</b> (jurisprudencia, perito en su materia) NO es falacia.</div>`],
+["Concepto, juicio y raciocinio",`<div class="vs c3"><div class="box a"><h3>🧱 Concepto</h3><ul><li>Representación mental</li><li>No afirma ni niega</li><li>Se expresa en un <b>término</b></li><li>No es V/F</li><li><i>“delito”</i></li></ul></div><div class="box b"><h3>🧱🧱 Juicio</h3><ul><li>Afirma o niega algo de un sujeto</li><li>Se expresa en <b>proposición</b></li><li><b>Es V o F</b></li><li><i>“El contrato genera obligaciones”</i></li></ul></div><div class="box c"><h3>🏠 Raciocinio</h3><ul><li>Enlaza juicios → conclusión</li><li>Se expresa en <b>argumento</b></li><li>Válido / inválido</li><li><i>Silogismo</i></li></ul></div></div><div class="mn">🧠 Ladrillo → Pared → Casa.</div>`],
+["Verdad, validez y solidez",`<div class="vs c3"><div class="box a"><h3>✔️ Verdad</h3><ul><li>De las <b>proposiciones</b></li><li>Corresponde con la realidad</li></ul></div><div class="box b"><h3>🔗 Validez</h3><ul><li>De los <b>argumentos</b></li><li>Si las premisas fueran V, la conclusión <b>necesariamente</b> sería V</li></ul></div><div class="box c"><h3>💎 Solidez</h3><ul><li><b>Válido + premisas verdaderas</b></li><li>Garantiza conclusión verdadera</li></ul></div></div>
+<div class="ojo">🔑 Un argumento válido puede tener premisas y conclusión falsas. Lo que <b>nunca</b> pasa: premisas verdaderas y conclusión falsa.</div>
+${R("Ver ejemplo válido pero no sólido","“Todos los contratos son verbales; la compraventa es un contrato; luego es verbal.” La forma es correcta, pero la premisa mayor es falsa.")}`],
+["El silogismo",`<ul class="kp"><li>Razonamiento <b>deductivo</b>: 2 premisas + conclusión, <b>3 términos</b>.</li><li><b>Subsunción:</b> encuadrar el hecho concreto en el supuesto de la norma.</li></ul>
+<div class="legend"><span class="Ma">Término mayor (P)</span><span class="M">Término medio (M)</span><span class="Me">Término menor (S)</span></div>
+<div class="sil"><div class="p"><span class="lab">PREMISA MAYOR · NORMA</span><br>Todos los <span class="M">contratos legales</span> <span class="Ma">deben cumplirse</span>.</div><div class="p"><span class="lab">PREMISA MENOR · HECHOS</span><br><span class="Me">Este arrendamiento</span> es un <span class="M">contrato legal</span>.</div><div class="line"></div><div class="p" style="border:2px solid var(--vino)"><span class="lab">CONCLUSIÓN · FALLO</span><br><span class="Me">Este arrendamiento</span> <span class="Ma">debe cumplirse</span>.</div></div>
+<div class="mn">🧠 <b>N + H = F</b> (Norma + Hechos = Fallo). El <b>medio</b> se queda en medio: nunca llega a la conclusión.</div>
+${R("Ver las 8 reglas","1) Solo 3 términos (si no: falacia de cuatro términos). 2) El medio no va en la conclusión. 3) El medio, universal al menos una vez. 4) Ningún término más extenso en la conclusión que en las premisas. 5) Dos negativas: nada se concluye. 6) Dos particulares: nada. 7) Dos afirmativas no dan negativa. 8) La conclusión sigue la parte más débil.")}
+${R("Ver silogismo penal (CPF art. 302)","PM: comete homicidio el que priva de la vida a otro. Pm: se probó que X privó de la vida a Y. C: X cometió homicidio y se le aplica la pena.")}
+<div class="ojo">El silogismo justifica la forma (justificación interna); elegir la norma y probar hechos requiere argumentar (justificación externa).</div>`],
+["Retórica",`<ul class="kp"><li>Aristóteles (<i>Retórica</i>): facultad de ver en cada caso <b>lo apto para persuadir</b>.</li><li>Géneros: <b>judicial</b> (pasado), <b>deliberativo</b> (futuro), <b>epidíctico</b> (presente).</li></ul>
+<div class="vs c3"><div class="box d"><h3>🎩 Ethos</h3><ul><li>Credibilidad del orador</li><li><i>Abogado preparado y honesto</i></li></ul></div><div class="box a"><h3>❤️ Pathos</h3><ul><li>Emociones del auditorio</li><li><i>Describe el daño a la víctima</i></li></ul></div><div class="box b"><h3>🧠 Logos</h3><ul><li>Razones y pruebas</li><li><i>Norma, jurisprudencia, peritajes</i></li></ul></div></div><div class="mn">🧠 Ethos = Yo · Pathos = Tú · Logos = El argumento.</div>`],
+["Fases de la retórica",`<p class="sub">Toca cada fase 👇 (proceso para <b>elaborar</b> el discurso)</p><div class="tl" data-tl="fases"></div><div class="tlout"></div><div class="mn">🧠 <b>I-D-E-M-A</b>: Inventa, Dispón, Embellece, Memoriza, Actúa.</div>`],
+["Partes del discurso",`<p class="sub">Toca cada parte 👇 (<b>estructura</b> del discurso)</p><div class="tl" data-tl="partes"></div><div class="tlout"></div><div class="mn">🧠 “<b>E</b>n <b>N</b>avidad <b>D</b>an <b>C</b>ajas <b>R</b>ojas <b>P</b>reciosas”.</div><div class="ojo">Fases = cómo se <i>hace</i>. Partes = cómo se <i>ordena</i>. La división ocurre dentro de la <i>dispositio</i>.</div>`],
+["Interpretación jurídica",`<ul class="kp"><li>Determinar el <b>sentido y alcance</b> de una norma para aplicarla a un caso.</li><li>Necesaria por <b>ambigüedad, vaguedad, lagunas y antinomias</b>.</li><li><b>Art. 14 const.</b> (civil): conforme a la letra o interpretación jurídica de la ley; a falta, <b>principios generales del derecho</b>.</li><li><b>Art. 1º</b>: derechos humanos conforme a Constitución y tratados, <b>pro persona</b>.</li></ul>
+<div class="vs c3"><div class="box a"><h3>Auténtica</h3><ul><li>Legislador</li><li>Obligatoria general</li></ul></div><div class="box b"><h3>Judicial</h3><ul><li>Jueces / jurisprudencia</li><li>Obligatoria en el caso o según la Ley de Amparo</li></ul></div><div class="box c"><h3>Doctrinal</h3><ul><li>Juristas</li><li>Orientadora</li></ul></div></div>${R("Ver ejemplo","Si la ley dice “plazo razonable”, el juez interpreta según contexto y caso para fijar su alcance.")}`],
+["Métodos interpretativos",`<p class="sub">Toca un método 👇</p><div class="tabs" id="tabs"></div><div class="tlout" id="tabout"></div><div class="ojo">🚫 <b>Penal:</b> el art. 14 const. prohíbe imponer penas por <b>simple analogía y aun por mayoría de razón</b>. Legalidad y taxatividad: <i>nullum crimen, nulla poena sine lege</i>.</div><div class="mn">🧠 “<b>G</b>racias <b>S</b>istema, <b>H</b>istoria <b>T</b>e <b>L</b>o <b>A</b>gradece”.</div>`],
+["Interpretación vs. argumentación",`<div class="vs"><div class="box b"><h3>🔍 Interpretación</h3><ul><li>¿Qué <b>significa</b> la norma?</li><li>Produce un significado</li><li>Va <b>primero</b></li></ul></div><div class="box a"><h3>🗣️ Argumentación</h3><ul><li>¿<b>Por qué</b> se decide así?</li><li>Produce una decisión justificada</li><li>Va <b>después</b></li></ul></div></div><div class="mn">Se complementan: <b>interpreto → argumento</b>. Sin argumentar, la sentencia carece de motivación.</div>`]];
+function FAL(){return[["Ad hominem","Ataca a la persona","“No le crea al defensor, ya lo sancionaron.”"],["Ad populum","Apela a la mayoría","“Todo el pueblo dice que es culpable.”"],["Ad baculum","Amenaza / fuerza","“Firme el convenio o le irá peor.”"],["Ad verecundiam","Autoridad no pertinente","“Es correcto porque lo dijo un actor famoso.”"],["Falsa causa","Después de ⇒ por causa de","“Cambió de abogado y lo condenaron: el cambio causó la condena.”"],["Generalización apresurada","Pocos casos ⇒ regla","“Dos peritos fallaron: todos los peritajes son inútiles.”"],["Petición de principio","Conclusión en las premisas","“Es culpable porque cometió el delito.”"],["Ad ignorantiam","No se probó lo contrario","“No probó que no estuvo; luego estuvo” (viola presunción de inocencia, art. 20).”"],["Ad misericordiam","Apela a la lástima","“Absuélvalo, tiene cinco hijos.”"],["Hombre de paja","Deforma la postura contraria","“Pide pensión: quiere vivir sin trabajar.”"],["Falso dilema","Solo dos opciones","“O prisión preventiva o huirá.”"],["Pendiente resbaladiza","Cadena exagerada sin prueba","“Si se concede este amparo, se acaba el orden jurídico.”"]]}
+const TL={fases:[["Inventio","Hallar ideas y argumentos","Investigar hechos, normas, jurisprudencia y pruebas."],["Dispositio","Ordenarlos","Estructurar hechos, derecho y puntos petitorios."],["Elocutio","Expresarlos con estilo","Redacción clara, precisa y persuasiva."],["Memoria","Memorizar","Preparar el alegato oral."],["Actio","Pronunciar con voz y gestos","Exposición en la audiencia (también pronuntiatio)."]],
+partes:[["Exordio","Captar atención y benevolencia","“Su Señoría, este caso trata de la libertad de una persona inocente.”"],["Narración","Exponer los hechos","Relato cronológico."],["División","Anunciar los puntos","“Demostraré tres cosas…”"],["Confirmación","Probar la tesis propia","Pruebas y fundamentos."],["Refutación","Rebatir al contrario","Desacreditar la versión de la contraparte."],["Peroración","Resumir y mover al auditorio","“Por lo expuesto, solicito la absolución.”"]]};
+const MET=[["Gramatical","¿Qué dicen las palabras?","Significado de “domicilio” según el texto."],["Sistemático","¿Cómo encaja con todo el ordenamiento?","Leer un artículo del Código Civil junto con otros y la Constitución."],["Histórico","¿Qué antecedentes tiene?","Exposición de motivos, debates, leyes anteriores."],["Teleológico","¿Para qué existe la norma?","El interés superior de la niñez como fin de normas familiares."],["Lógico","¿Qué lectura evita absurdos y contradicciones?","Argumentos a fortiori, a contrario, reducción al absurdo."],["Analógico","¿Hay un caso semejante regulado (misma razón)?","Aplicar una norma civil a un caso no previsto pero similar. Prohibido para crear delitos o penas."]];
+const KEY='retorica-xime-v1';let st=JSON.parse(localStorage.getItem(KEY)||'{}');st.d=st.d||{};
+const save=()=>localStorage.setItem(KEY,JSON.stringify(st));
+function prog(){const n=Object.values(st.d).filter(Boolean).length;document.getElementById('pb').style.width=(n/12*100)+'%';document.getElementById('pt').textContent=n+'/12';
+document.querySelectorAll('nav a[data-i]').forEach(a=>a.classList.toggle('done',!!st.d[a.dataset.i]));
+document.querySelectorAll('.tema').forEach((t,i)=>{t.querySelector('.ok').textContent=st.d[i]?'✅':'';const b=t.querySelector('.done-btn');b.classList.toggle('y',!!st.d[i]);b.textContent=st.d[i]?'✓ Estudiado':'Marcar como estudiado'})}
+document.getElementById('temas').innerHTML=T.map((t,i)=>`<details class="tema" id="t${i+1}"${i==0?' open':''}><summary><span class="num">${String(i+1).padStart(2,'0')}</span><h2>${t[0]}</h2><span class="ok"></span><span class="ar">▾</span></summary><div class="body">${t[1]}<button class="done-btn" data-i="${i}">Marcar como estudiado</button></div></details>`).join('');
+document.getElementById('nav').innerHTML=T.map((t,i)=>`<a href="#t${i+1}" data-i="${i}">${i+1} ${t[0].split(' ')[0]}</a>`).join('')+'<a href="#fc">💿 Flash</a><a href="#m1">🕵️ Falacias</a><a href="#m2">🔎 Métodos</a><a href="#quiz">✅ Quiz</a><a href="#pex">📝 Examen</a><a href="#rf">⭐ Repaso</a>';
+document.querySelectorAll('nav a[data-i]').forEach(a=>a.onclick=()=>{document.getElementById('t'+(+a.dataset.i+1)).open=true});
+document.querySelectorAll('.done-btn').forEach(b=>b.onclick=()=>{const i=b.dataset.i;st.d[i]=!st.d[i];save();prog()});
+document.querySelectorAll('.rev button').forEach(b=>b.onclick=()=>b.parentNode.classList.toggle('on'));
+document.querySelectorAll('[data-tl]').forEach(el=>{const L=TL[el.dataset.tl],out=el.nextElementSibling;el.innerHTML=L.map((x,i)=>`<button><b>${i+1}</b>${x[0]}</button>`).join('');const bs=el.querySelectorAll('button');const show=i=>{bs.forEach(b=>b.classList.remove('on'));bs[i].classList.add('on');out.innerHTML=`<b>${L[i][0]}:</b> ${L[i][1]}.<br><i>En el foro:</i> ${L[i][2]}`};bs.forEach((b,i)=>b.onclick=()=>show(i));show(0)});
+(()=>{const tb=document.getElementById('tabs'),o=document.getElementById('tabout');tb.innerHTML=MET.map(m=>`<button>${m[0]}</button>`).join('');const bs=tb.querySelectorAll('button');const sh=i=>{bs.forEach(b=>b.classList.remove('on'));bs[i].classList.add('on');o.innerHTML=`<b>${MET[i][0]}:</b> ${MET[i][1]}<br><i>Ej.:</i> ${MET[i][2]}`};bs.forEach((b,i)=>b.onclick=()=>sh(i));sh(0)})();
+prog();
+const FC=[["Lógica","Reglas del razonamiento correcto"],["Lógica formal","Forma: ¿se sigue la conclusión?"],["Lógica material","Contenido: ¿premisas verdaderas?"],["Falacia","Parece correcto pero no lo es"],["Concepto","Representación mental; no es V/F"],["Juicio","Afirma o niega; es V o F"],["Raciocinio","Enlaza juicios para concluir"],["Validez","Propiedad de la forma del argumento"],["Solidez","Válido + premisas verdaderas"],["Término medio","En ambas premisas, nunca en la conclusión"],["Subsunción","Encuadrar el hecho en la norma"],["Ethos","Credibilidad del orador"],["Pathos","Emociones del auditorio"],["Logos","Razones y pruebas"],["Inventio","Hallar argumentos"],["Dispositio","Ordenar argumentos"],["Elocutio","Expresar con estilo"],["Exordio","Captar la atención"],["Peroración","Resumir y mover al final"],["Teleológico","Busca la finalidad de la norma"],["Art. 14 penal","Sin penas por analogía ni mayoría de razón"],["Interpretar vs argumentar","Qué significa vs por qué se decide"]];
+document.getElementById('cards').innerHTML=FC.map(f=>`<div class="card"><div class="in"><div class="fa">${f[0]}</div><div class="ba">${f[1]}</div></div></div>`).join('');
+document.querySelectorAll('.card').forEach(c=>c.onclick=()=>c.classList.toggle('f'));
+const MD={mf:{opts:FAL().slice(0,11).map(f=>f[0]),items:[["“El perito no vale: es divorciado y tiene deudas.”",0],["“Si no retira la denuncia, sus hijos lo pagarán.”",2],["“La fiscalía no probó que no estuvo ahí; luego estuvo.”",7],["“El acusado miente porque es un mentiroso.”",6],["“Millones en redes piden su condena.”",1],["“Perdió su casa; merece ganar el juicio.”",8],["“La defensa pide libertad condicional: quiere criminales sueltos.”",9],["“O 80 años de pena o nunca bajará el delito.”",10],["“Desde la reforma subieron los robos; la reforma los causó.”",4],["“Dos notarios defraudaron: los notarios son defraudadores.”",5],["“Es correcto porque lo apoyó un influencer.”",3]]},
+mm:{opts:MET.map(m=>m[0]),items:[["Atiende al significado de las palabras del texto",0],["Relaciona la norma con el resto del ordenamiento",1],["Revisa la exposición de motivos",2],["Busca la finalidad de la norma",3],["Evita contradicciones y absurdos",4],["Aplica la norma de un caso semejante no previsto",5]]}};
+function shuf(a){return a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1])}
+function buildM(id){const m=MD[id];document.getElementById(id).innerHTML=shuf(m.items).map(it=>`<div class="mrow" data-a="${it[1]}"><span>${it[0]}</span><select><option value="">— elige —</option>${m.opts.map((o,j)=>`<option value="${j}">${o}</option>`).join('')}</select></div>`).join('');document.getElementById(id+'-r').textContent=''}
+function checkM(id){let ok=0,rs=document.querySelectorAll('#'+id+' .mrow');rs.forEach(r=>{const g=r.querySelector('select').value===r.dataset.a;r.classList.remove('g','b');r.classList.add(g?'g':'b');if(g)ok++;else r.title='Correcta: '+MD[id].opts[r.dataset.a]});document.getElementById(id+'-r').textContent=`${ok}/${rs.length} correctas ${ok==rs.length?'🎉 ¡Perfecto!':'· Las rojas: mantén presionado/pasa el cursor para ver la correcta, o revisa el tema.'}`}
+function resetM(id){buildM(id)}buildM('mf');buildM('mm');
+const Q=[["La lógica estudia principalmente…",["El contenido de las leyes","Las reglas del razonamiento correcto","Las emociones del auditorio","La historia del Derecho"],1,"Su objeto es la corrección del razonamiento."],["La lógica formal se ocupa de…",["La verdad de las premisas","La estructura del razonamiento","Los hechos probados","La jurisprudencia"],1,"Formal = forma."],["Revisar si una norma está vigente y es aplicable es lógica…",["Formal","Material","Simbólica","Modal"],1,"Examina el contenido."],["“No le crea, es un abogado sin ética” es…",["Ad populum","Ad hominem","Ad baculum","Falso dilema"],1,"Ataque personal."],["“Acepte o lo despido” es…",["Ad baculum","Ad misericordiam","Ad verecundiam","Petición de principio"],0,"Amenaza."],["Algo es verdad porque no se probó lo contrario:",["Ad ignorantiam","Falsa causa","Ad populum","Hombre de paja"],0,"Apelación a la ignorancia."],["No afirma ni niega, no es V ni F:",["Juicio","Concepto","Raciocinio","Premisa"],1,"El concepto solo representa."],["“El contrato genera obligaciones” es un…",["Concepto","Juicio","Raciocinio","Silogismo"],1,"Afirma algo de un sujeto."],["La verdad es propiedad de…",["Los argumentos","Las proposiciones","Los conceptos","Las falacias"],1,"Las proposiciones son V o F."],["Válido + premisas verdaderas =",["Falaz","Sólido","Inválido","Material"],1,"Solidez."],["¿Un argumento válido puede tener conclusión falsa?",["Nunca","Sí, si alguna premisa es falsa","Solo en penal","Solo si es inductivo"],1,"Imposible solo con premisas verdaderas."],["Aparece en ambas premisas, no en la conclusión:",["Mayor","Menor","Medio","Predicado"],2,"Término medio."],["El término mayor es…",["Sujeto de la conclusión","Predicado de la conclusión","El medio","La premisa menor"],1,"Predicado de la conclusión."],["En el silogismo jurídico la premisa mayor es…",["Los hechos","La norma","La sentencia","La prueba"],1,"La norma general."],["Encuadrar el hecho en el supuesto normativo:",["Analogía","Subsunción","Exordio","Inventio"],1,"Subsunción."],["De dos premisas negativas…",["Sale una negativa","No se concluye nada","Sale una afirmativa","Sale una particular"],1,"Regla del silogismo."],["Credibilidad del orador:",["Logos","Pathos","Ethos","Actio"],2,"Ethos."],["Fase de ordenar los argumentos:",["Inventio","Dispositio","Elocutio","Memoria"],1,"Dispositio."],["Pronunciar con voz y gestos:",["Actio","Elocutio","Peroración","Narración"],0,"Actio / pronuntiatio."],["Parte que capta la atención:",["Peroración","Exordio","Refutación","División"],1,"Exordio."],["Rebatir al contrario:",["Confirmación","Refutación","Narración","Peroración"],1,"Refutación."],["Busca la finalidad de la norma:",["Gramatical","Histórico","Teleológico","Sistemático"],2,"Teleológico."],["Acudir a la exposición de motivos es método…",["Histórico","Analógico","Lógico","Gramatical"],0,"Revisa antecedentes."],["En penal, el art. 14 constitucional…",["Permite la analogía si conviene","Prohíbe penas por analogía o mayoría de razón","Manda aplicar principios generales","Solo admite interpretación histórica"],1,"Legalidad penal."],["Interpretar es a argumentar como…",["Qué significa : por qué se decide así","Forma : contenido","Ethos : pathos","Juicio : concepto"],0,"Interpretación fija sentido; argumentación justifica."]];
+let pts=0,done=0;document.getElementById('best').textContent=st.best!=null?st.best+'/25':'—';
+document.getElementById('qz').innerHTML=Q.map((q,i)=>`<div class="q" data-i="${i}"><p>${i+1}. ${q[0]}</p>${q[1].map((o,j)=>`<button data-j="${j}">${o}</button>`).join('')}<div class="fb"></div></div>`).join('');
+document.querySelectorAll('.q').forEach(d=>d.querySelectorAll('button').forEach(b=>b.onclick=()=>{if(d.dataset.d)return;d.dataset.d=1;const q=Q[d.dataset.i],j=+b.dataset.j,bs=d.querySelectorAll('button');bs[q[2]].classList.add('ok');if(j!==q[2])b.classList.add('no');else pts++;done++;d.querySelector('.fb').innerHTML=(j===q[2]?'✅ ¡Correcto! ':'❌ Incorrecto. ')+q[3];document.getElementById('sc').textContent=`PUNTAJE ${pts}/25 · ${done} RESPONDIDAS`;if(done==25){st.best=Math.max(st.best||0,pts);save();document.getElementById('best').textContent=st.best+'/25';document.getElementById('sc').textContent+=pts>=20?' · ¡CRACK! 🎉':' · ¡REPASA Y OTRA VEZ!'}}));
+const P=[["¿Diferencia entre verdad y validez? Da un ejemplo.","Verdad: propiedad de las proposiciones (corresponden con la realidad). Validez: propiedad de la estructura (la conclusión se sigue necesariamente). “Todos los contratos son verbales; la compraventa es contrato; luego es verbal” es válido pero no sólido."],["Explica el silogismo jurídico con un ejemplo.","PM: norma (CPF art. 302, homicidio). Pm: hechos probados (X privó de la vida a Y). C: X cometió homicidio y se le aplica la pena. Encuadrar el hecho en la norma es la subsunción."],["Define falacia y explica tres con ejemplos jurídicos.","Razonamiento aparentemente correcto pero erróneo. Ad hominem: descalificar al testigo por su vida privada. Ad baculum: “firme o le irá peor”. Ad ignorantiam: “no probó su inocencia, luego es culpable”, contrario a la presunción de inocencia."],["¿Qué son ethos, pathos y logos?","Pruebas de persuasión de Aristóteles: credibilidad del orador, emociones del auditorio, razones y pruebas."],["Fases de la retórica y partes del discurso.","Fases: inventio, dispositio, elocutio, memoria, actio. Partes: exordio, narración, división, confirmación, refutación, peroración. Fases = proceso; partes = estructura."],["¿Por qué en penal no se aplica la analogía?","El art. 14 const. prohíbe penas por simple analogía o mayoría de razón; rigen legalidad y taxatividad."],["Interpretación vs. argumentación.","Interpretar: fijar sentido y alcance de la norma. Argumentar: dar razones que justifiquen la decisión. Primero se interpreta, luego se argumenta."],["Concepto, juicio y raciocinio.","Concepto: representación (“delito”), no V/F. Juicio: afirma o niega, V/F. Raciocinio: enlaza juicios para concluir; válido/inválido."]];
+document.getElementById('pe').innerHTML=P.map(p=>`<details class="pe"><summary>${p[0]}</summary><p>${p[1]}</p></details>`).join('');
+const RP=[["Lógica","Reglas del razonamiento correcto. Identidad, no contradicción, tercero excluido, razón suficiente."],["Formal / Material","Forma (válido) vs contenido (verdadero)."],["Falacias","hominem persona · populum mayoría · baculum amenaza · verecundiam autoridad · falsa causa post hoc · generalización pocos casos · petición círculo · ignorantiam sin prueba contraria · misericordiam lástima · paja deformar · falso dilema 2 opciones."],["Concepto→Juicio→Raciocinio","Término (no V/F) → proposición (V/F) → argumento (válido)."],["Verdad·Validez·Solidez","Proposiciones · forma · válido + premisas verdaderas."],["Silogismo","2 premisas, 3 términos; medio nunca en la conclusión. Norma + Hechos = Fallo (subsunción)."],["Retórica","Aristóteles: persuadir. Ethos, pathos, logos. Judicial, deliberativo, epidíctico."],["Fases IDEMA","Inventio, Dispositio, Elocutio, Memoria, Actio."],["Partes","Exordio, Narración, División, Confirmación, Refutación, Peroración."],["Interpretación","Sentido y alcance. Auténtica, judicial, doctrinal. Art. 14 civil; art. 1º pro persona."],["Métodos","Gramatical, sistemático, histórico, teleológico, lógico, analógico. Penal: sin analogía (art. 14)."],["Interp. vs Argum.","Qué significa vs por qué se decide. Primero interpreto, luego argumento."]];
+document.getElementById('rp').innerHTML=RP.map(r=>`<div><b>${r[0]}:</b> ${r[1]}</div>`).join('');
 </script></body></html>
