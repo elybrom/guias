@@ -93,8 +93,8 @@ footer{text-align:center;color:var(--crema);padding:20px;font-family:'Fraunces';
 
 /* repisa de discos */
 nav{background:linear-gradient(#1d2430bb,#1d2430dd),url(discos.webp) center/cover;border-radius:10px;padding:10px 10px 0;gap:3px;align-items:flex-end;border-bottom:8px solid #5a3a26;box-shadow:0 8px 18px #0006;margin:10px auto 0;width:calc(100% - 24px)}
-nav a{writing-mode:vertical-rl;transform:rotate(180deg);height:118px;width:36px;padding:8px 4px;border-radius:3px 3px 0 0;border:0;border-left:2px solid #0004;font-family:'Fraunces';font-size:.78rem;display:flex;align-items:center;justify-content:flex-start;background:var(--vino);color:var(--crema);box-shadow:inset -3px 0 0 #ffffff22;transition:transform .2s}
-nav a:nth-child(5n+2){background:var(--mez);height:126px}nav a:nth-child(5n+3){background:var(--crema);color:var(--vino);height:110px}nav a:nth-child(5n+4){background:var(--oli);height:122px}nav a:nth-child(5n){background:#1c1c1c;color:#ffb36b;height:114px}
+nav a{writing-mode:vertical-rl;transform:rotate(180deg);height:138px;width:34px;padding:8px 4px;white-space:nowrap;font-size:.72rem!important;border-radius:3px 3px 0 0;border:0;border-left:2px solid #0004;font-family:'Fraunces';font-size:.78rem;display:flex;align-items:center;justify-content:flex-start;background:var(--vino);color:var(--crema);box-shadow:inset -3px 0 0 #ffffff22;transition:transform .2s}
+nav a:nth-child(5n+2){background:var(--mez);height:146px}nav a:nth-child(5n+3){background:var(--crema);color:var(--vino);height:132px}nav a:nth-child(5n+4){background:var(--oli);height:142px}nav a:nth-child(5n){background:#1c1c1c;color:#ffb36b;height:136px}
 nav a:hover{transform:rotate(180deg) translateY(8px)}nav a.done{background:var(--nar)!important;color:#1d1d1d!important}
 .shelf{height:84px;margin:18px 0 -4px;border-radius:12px;background:linear-gradient(90deg,#1d243066,transparent 30%,transparent 70%,#1d243066),url(discos.webp) center 60%/cover;border-bottom:8px solid #5a3a26;box-shadow:0 10px 20px #0007}
 .shelf:nth-of-type(2n){background-position:center 20%}
@@ -165,7 +165,8 @@ function prog(){const n=Object.values(st.d).filter(Boolean).length;document.getE
 document.querySelectorAll('nav a[data-i]').forEach(a=>a.classList.toggle('done',!!st.d[a.dataset.i]));
 document.querySelectorAll('.tema').forEach((t,i)=>{t.querySelector('.ok').textContent=st.d[i]?'✅':'';const b=t.querySelector('.done-btn');b.classList.toggle('y',!!st.d[i]);b.textContent=st.d[i]?'✓ Estudiado':'Marcar como estudiado'})}
 document.getElementById('temas').innerHTML=T.map((t,i)=>`<details class="tema" id="t${i+1}"${i==0?' open':''}><summary><span class="num">${String(i+1).padStart(2,'0')}</span><h2>${t[0]}</h2><span class="ok"></span><span class="ar">▾</span></summary><div class="body">${t[1]}<button class="done-btn" data-i="${i}">Marcar como estudiado</button></div></details>`).join('');
-document.getElementById('nav').innerHTML=T.map((t,i)=>`<a href="#t${i+1}" data-i="${i}">${i+1} ${t[0].split(' ')[0]}</a>`).join('')+'<a href="#fc">💿 Flash</a><a href="#m1">🕵️ Falacias</a><a href="#m2">🔎 Métodos</a><a href="#quiz">✅ Quiz</a><a href="#pex">📝 Examen</a><a href="#rf">⭐ Repaso</a>';
+const SP=['Lógica','Formal/Material','Falacias','Concepto/Juicio','Verdad/Validez','Silogismo','Retórica','Fases','Discurso','Interpretación','Métodos','Interp. vs Arg.'];
+document.getElementById('nav').innerHTML=T.map((t,i)=>`<a href="#t${i+1}" data-i="${i}">${i+1} · ${SP[i]}</a>`).join('')+'<a href="#fc">💿 Flash</a><a href="#m1">🕵️ Falacias</a><a href="#m2">🔎 Métodos</a><a href="#quiz">✅ Quiz</a><a href="#pex">📝 Examen</a><a href="#rf">⭐ Repaso</a>';
 document.querySelectorAll('nav a[data-i]').forEach(a=>a.onclick=()=>{document.getElementById('t'+(+a.dataset.i+1)).open=true});
 document.querySelectorAll('.done-btn').forEach(b=>b.onclick=()=>{const i=b.dataset.i;st.d[i]=!st.d[i];save();prog()});
 document.querySelectorAll('.rev button').forEach(b=>b.onclick=()=>b.parentNode.classList.toggle('on'));
