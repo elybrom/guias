@@ -1,35 +1,49 @@
 <!DOCTYPE html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Guía: Retórica para la Interpretación y Argumentación Jurídica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--b:#1e3a8a;--b2:#3b82f6;--bg:#f4f6fb;--c:#fff;--t:#1f2937;--m:#6b7280;--ok:#059669;--no:#dc2626;--am:#f59e0b}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--t);line-height:1.55}
-header{background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:28px 18px 22px;text-align:center}
-header h1{margin:0 0 6px;font-size:1.6rem}header p{margin:4px 0;opacity:.92}
-.badge{display:inline-block;background:#fff3;padding:4px 12px;border-radius:99px;font-size:.85rem;margin-top:8px}
-nav{position:sticky;top:0;z-index:9;background:#fff;box-shadow:0 2px 8px #0001;overflow-x:auto;white-space:nowrap;padding:8px}
-nav a{display:inline-block;padding:6px 11px;margin:2px;border-radius:99px;background:#eef2ff;color:var(--b);text-decoration:none;font-size:.85rem;font-weight:600}
+/* Vibe: interior retro 70s — lámpara naranja, muros crema, tapete burdeos, vinilos y jazz */
+:root{--b:#7a1f1f;--b2:#e8590c;--or:#ff7a1a;--bg:#f3e9dc;--c:#fffaf2;--t:#2b1d16;--m:#7b6a5d;--ok:#5f7a3a;--no:#a3241f;--am:#d98a1c;--ink:#1c1714;--chrome:#c9c6c1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:'DM Sans',system-ui,sans-serif;color:var(--t);line-height:1.6;background:var(--bg) radial-gradient(circle at 12% 4%,#ffb36655,transparent 40%) fixed;background-image:radial-gradient(circle at 12% 4%,#ffb36666,transparent 42%),radial-gradient(circle at 92% 60%,#ff7a1a22,transparent 38%)}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;letter-spacing:-.01em}
+header{position:relative;overflow:hidden;background:var(--ink);color:#f7e8d3;padding:42px 18px 34px;text-align:center;border-bottom:10px solid var(--b);box-shadow:inset 0 -10px 0 #b8432f}
+header:before{content:"";position:absolute;width:260px;height:260px;left:50%;top:-150px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,#ffb15c,#ff7a1a 45%,#ff7a1a00 72%);filter:blur(2px);animation:glow 4s ease-in-out infinite}
+@keyframes glow{50%{opacity:.75;transform:translateX(-50%) scale(1.06)}}
+header h1{position:relative;margin:40px 0 8px;font-size:clamp(1.6rem,6vw,2.6rem);font-weight:900;color:#fff2e0;text-shadow:0 0 22px #ff7a1a88}
+header p{position:relative;margin:4px 0;color:#e9cfae;font-style:italic}
+.badge{position:relative;display:inline-block;background:var(--or);color:var(--ink);padding:6px 16px;border-radius:99px;font-size:.85rem;font-weight:700;margin-top:12px;box-shadow:0 0 18px #ff7a1a99}
+nav{position:sticky;top:0;z-index:9;background:#1c1714ee;backdrop-filter:blur(6px);overflow-x:auto;white-space:nowrap;padding:9px;border-bottom:2px solid var(--chrome)}
+nav a{display:inline-block;padding:6px 12px;margin:2px;border-radius:99px;background:linear-gradient(#e9e7e3,#b9b5ae);color:var(--ink);text-decoration:none;font-size:.82rem;font-weight:700;transition:.2s}
+nav a:hover{background:var(--or);box-shadow:0 0 12px #ff7a1a}
 main{max-width:920px;margin:auto;padding:14px}
-section{background:var(--c);border-radius:16px;padding:18px;margin:16px 0;box-shadow:0 2px 10px #0000000d;border-top:5px solid var(--b2)}
-section:nth-of-type(3n+2){border-top-color:#10b981}section:nth-of-type(3n){border-top-color:#a855f7}
-h2{margin-top:0;color:var(--b);font-size:1.3rem}h3{color:#4338ca;font-size:1.05rem;margin-bottom:4px}
-.ej{background:#ecfdf5;border-left:4px solid var(--ok);padding:10px 12px;border-radius:8px;margin:10px 0}
-.mn{background:#fef3c7;border-left:4px solid var(--am);padding:10px 12px;border-radius:8px;margin:10px 0}
-.ojo{background:#fee2e2;border-left:4px solid var(--no);padding:10px 12px;border-radius:8px;margin:10px 0}
-.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.92rem;margin:8px 0}
-th{background:var(--b);color:#fff;padding:8px;text-align:left}td{border-bottom:1px solid #e5e7eb;padding:8px;vertical-align:top}tr:nth-child(even) td{background:#f9fafb}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
-.card{perspective:900px;height:170px;cursor:pointer}.in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
-.card.f .in{transform:rotateY(180deg)}.fa,.ba{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:center;text-align:center}
-.fa{background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;font-weight:700;font-size:1.05rem}.ba{background:#fff;border:2px solid #6366f1;transform:rotateY(180deg);font-size:.88rem}
-.q{border:1px solid #e5e7eb;border-radius:12px;padding:12px;margin:10px 0}.q p{margin:0 0 8px;font-weight:600}
-.q button,.btn{display:block;width:100%;text-align:left;margin:5px 0;padding:10px;border-radius:10px;border:1px solid #c7d2fe;background:#f8faff;font-size:.95rem;cursor:pointer;color:var(--t)}
-.q button.ok{background:#d1fae5;border-color:var(--ok)}.q button.no{background:#fee2e2;border-color:var(--no)}
-.fb{font-size:.9rem;margin-top:6px}.score{position:sticky;bottom:10px;background:var(--b);color:#fff;padding:10px;border-radius:12px;text-align:center;font-weight:700}
-details{border:1px solid #e5e7eb;border-radius:10px;padding:10px 12px;margin:8px 0}summary{font-weight:600;cursor:pointer}
-.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{background:#eef2ff;color:var(--b);padding:4px 10px;border-radius:99px;font-size:.85rem}
-.repaso{border-top-color:#111!important;background:#fffdf5}.repaso li{margin:3px 0}
-.btn.sm{display:inline-block;width:auto;background:var(--b);color:#fff;border:0;text-align:center}
-footer{text-align:center;color:var(--m);font-size:.8rem;padding:20px}
+section{position:relative;background:var(--c);border-radius:22px;padding:22px 18px;margin:20px 0;box-shadow:0 10px 30px #5a2a1222,0 0 0 1px #e6d5c0;border-top:6px solid var(--or);animation:up .6s ease both}
+section:nth-of-type(3n+2){border-top-color:var(--b)}section:nth-of-type(3n){border-top-color:var(--am)}
+section:after{content:"";position:absolute;right:16px;top:16px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle,var(--or) 0 14%,var(--ink) 16% 100%);opacity:.85;box-shadow:0 0 0 3px #3a2e28 inset}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
+h2{margin:0 40px 10px 0;color:var(--b);font-size:1.5rem;font-weight:900}h3{color:#b8432f;font-size:1.1rem;margin-bottom:4px}
+.ej{background:#f6efe1;border-left:5px solid var(--ok);padding:11px 13px;border-radius:12px;margin:12px 0}
+.mn{background:#ffe8cc;border-left:5px solid var(--or);padding:11px 13px;border-radius:12px;margin:12px 0;box-shadow:0 0 16px #ff7a1a22}
+.ojo{background:#f7dcd6;border-left:5px solid var(--no);padding:11px 13px;border-radius:12px;margin:12px 0}
+.tw{overflow-x:auto;border-radius:14px}table{border-collapse:collapse;width:100%;font-size:.92rem;margin:8px 0}
+th{background:var(--b);color:#fff2e0;padding:9px;text-align:left;font-family:'Fraunces',serif}td{border-bottom:1px solid #ead9c4;padding:9px;vertical-align:top}tr:nth-child(even) td{background:#f8efe3}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.card{perspective:900px;height:175px;cursor:pointer}.in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}
+.card.f .in{transform:rotateY(180deg)}.fa,.ba{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:14px;display:flex;align-items:center;justify-content:center;text-align:center}
+.fa{background:radial-gradient(circle at 50% 50%,#2b211c 0 30%,#1c1714 31% 100%);color:#ffb15c;font-family:'Fraunces',serif;font-weight:900;font-size:1.15rem;box-shadow:0 0 0 6px #3a2e28 inset,0 6px 16px #0003}
+.card:hover .fa{box-shadow:0 0 0 6px #3a2e28 inset,0 0 22px #ff7a1a88}
+.ba{background:var(--c);border:3px solid var(--or);transform:rotateY(180deg);font-size:.9rem}
+.q{border:1px solid #e6d5c0;border-radius:16px;padding:13px;margin:10px 0;background:#fffdf8}.q p{margin:0 0 8px;font-weight:700}
+.q button,.btn{display:block;width:100%;text-align:left;margin:6px 0;padding:11px;border-radius:12px;border:1px solid #dcc7ad;background:#f7eee2;font:inherit;font-size:.95rem;cursor:pointer;color:var(--t);transition:.15s}
+.q button:hover{border-color:var(--or);background:#fff1e0}
+.q button.ok{background:#e3ebcf;border-color:var(--ok)}.q button.no{background:#f7d6cf;border-color:var(--no)}
+.fb{font-size:.9rem;margin-top:6px}.score{position:sticky;bottom:10px;background:var(--ink);color:#ffb15c;padding:11px;border-radius:99px;text-align:center;font-weight:700;font-family:'Fraunces',serif;box-shadow:0 0 20px #ff7a1a66;border:2px solid var(--or)}
+details{border:1px solid #e6d5c0;border-radius:14px;padding:11px 13px;margin:9px 0;background:#fffdf8}summary{font-weight:700;cursor:pointer;color:var(--b)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{background:#ffe8cc;color:var(--b);padding:4px 10px;border-radius:99px;font-size:.85rem}
+.repaso{border-top-color:var(--ink)!important;background:repeating-linear-gradient(45deg,#7a1f1f0a 0 10px,transparent 10px 20px),#fff7ec}.repaso li{margin:4px 0}
+.btn.sm{display:inline-block;width:auto;background:var(--or);color:var(--ink);border:0;text-align:center;font-weight:700}
+footer{text-align:center;color:#e9cfae;background:var(--ink);font-size:.85rem;padding:24px;border-top:10px solid var(--b);font-family:'Fraunces',serif;font-style:italic}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media print{nav,.score{display:none}section{break-inside:avoid;box-shadow:none}}
 </style></head><body>
 <header><h1>⚖️ Retórica para la Interpretación y Argumentación Jurídica</h1><p>Guía de estudio interactiva · Primer examen parcial</p><span class="badge">📅 Sábado 31 de octubre de 2026 · ¡Tú puedes, Xime! 💪</span></header>
@@ -185,7 +199,7 @@ footer{text-align:center;color:var(--m);font-size:.8rem;padding:20px}
 <li><b>Interpretación:</b> fijar sentido y alcance. Auténtica/judicial/doctrinal. Art. 14 (civil: letra, interpretación, principios generales); art. 1º pro persona.</li>
 <li><b>Métodos:</b> gramatical, sistemático, histórico, teleológico, lógico, analógico. <b>Penal: prohibida la analogía y mayoría de razón (art. 14).</b></li>
 <li><b>Interpretar</b> = qué significa · <b>Argumentar</b> = por qué se decide así. Primero interpreto, luego argumento.</li></ul></section>
-</main><footer>Hecho con cariño para Xime · ¡Éxito en tu examen! ⚖️✨</footer>
+</main><footer>🎷 Hecho con cariño para Xime · ¡Éxito en tu examen! ⚖️✨</footer>
 <script>
 const F=[["Lógica","Disciplina que estudia las reglas del razonamiento correcto."],["Lógica formal","Estudia la forma: si la conclusión se sigue de las premisas."],["Lógica material","Estudia el contenido: si las premisas son verdaderas."],["Falacia","Razonamiento que parece correcto pero es erróneo."],["Concepto","Representación mental; no afirma ni niega. Ej. “delito”."],["Juicio","Afirma o niega algo de un sujeto; es verdadero o falso."],["Raciocinio","Relaciona juicios para obtener una conclusión."],["Validez","Propiedad de la estructura del argumento."],["Solidez","Argumento válido con premisas verdaderas."],["Término medio","Aparece en ambas premisas y nunca en la conclusión."],["Subsunción","Encuadrar el hecho concreto en el supuesto de la norma."],["Ethos","Credibilidad del orador."],["Pathos","Emociones del auditorio."],["Logos","Razones y pruebas."],["Inventio","Hallar ideas y argumentos."],["Dispositio","Ordenar los argumentos."],["Elocutio","Expresar con buen estilo."],["Exordio","Captar la atención del auditorio."],["Peroración","Resumir y mover al auditorio al final."],["Método teleológico","Busca la finalidad de la norma."],["Art. 14 CPEUM (penal)","Prohíbe penas por analogía o mayoría de razón."],["Interpretar vs argumentar","Qué significa la norma vs. por qué se decide así."]];
 document.getElementById('cards').innerHTML=F.map(f=>`<div class="card" onclick="this.classList.toggle('f')"><div class="in"><div class="fa">${f[0]}</div><div class="ba">${f[1]}</div></div></div>`).join('');
