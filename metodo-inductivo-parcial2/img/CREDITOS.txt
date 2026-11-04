@@ -1,0 +1,21 @@
+Fotos de Unsplash (licencia Unsplash):
+hero.jpg: https://unsplash.com/photos/photo-1616187039821-422a9f2bfe4b
+interp.jpg: https://unsplash.com/photos/photo-1581447109200-bf2769116351
+contenido.jpg: https://unsplash.com/photos/photo-1536063766742-b514ee70707f
+contexto.jpg: https://unsplash.com/photos/photo-1550585167-7634ca7de884
+comparacion.jpg: https://unsplash.com/photos/photo-1612350495102-fb43af38bb16
+cultura.jpg: https://unsplash.com/photos/photo-1563514227147-6d2ff665a6a0
+consulta.jpg: https://unsplash.com/photos/photo-1580569214296-5cf2bffc5ccd
+dificultades.jpg: https://unsplash.com/photos/photo-1562133558-4a3906179c67
+strong.jpg: https://unsplash.com/photos/photo-1591195852468-03a01d1375d6
+figurado.jpg: https://unsplash.com/photos/photo-1589832331026-62c755f29214
+aplic.jpg: https://unsplash.com/photos/photo-1515823064-d6e0c04616a7
+sustitutos.jpg: https://unsplash.com/photos/photo-1620416265040-cc777cad1883
+pasos.jpg: https://unsplash.com/photos/photo-1593485589800-579b43749b15
+inventario.jpg: https://unsplash.com/photos/photo-1600818797017-d6e5027210bb
+quiz.jpg: https://unsplash.com/photos/photo-1582794543139-8ac9cb0f7b11
+repaso.jpg: https://unsplash.com/photos/photo-1582794543462-0d7922e50cf5
+metodo.jpg: https://unsplash.com/photos/photo-1546700908-fee5d28cec11
+orquidea.jpg: https://unsplash.com/photos/photo-1605996370592-b6f7a81e382e
+pasajes.jpg: https://unsplash.com/photos/photo-1594100513700-659fa01ce822
+leon.jpg: https://unsplash.com/photos/photo-1546182990-dffeafbe841d
