@@ -86,7 +86,7 @@ footer details{font-size:10px;opacity:.5;text-align:left;max-width:520px;margin:
 <h1>100 Años<i>de Gratitud</i></h1>
 <div class="lead">Concierto del Centenario — conducción a dos voces</div>
 <div class="duo"><div class="who a"><small>VOZ 1</small><b>Aarón Mora</b></div><div class="who e"><small>VOZ 2</small><b>Eli Nogueron</b></div></div>
-<div class="meta">Teatro de la Ciudad Esperanza Iris · 16:20–19:20 (hora CDMX)<br>Presbiterio Sur Oriente del Valle de México</div>
+<div class="meta">Teatro de la Ciudad Esperanza Iris · Acceso 16:00 · Concierto 17:00 (hora CDMX)<br>Presbiterio Sur Oriente del Valle de México</div>
 <div class="scroll"></div></section>
 <p class="intro">Toca cada momento para abrir tus líneas, márcalo al terminar y, en el teatro, activa el modo escenario para leer en grande, una línea a la vez.</p>
 <div class="bar"><div class="seg"><i id="pill"></i><button data-f="" class="on">Ambos</button><button data-f="E">Eli</button><button data-f="A">Aarón</button></div>
@@ -98,16 +98,18 @@ footer details{font-size:10px;opacity:.5;text-align:left;max-width:520px;margin:
 <script>
 const D=[
 {act:"Antes de empezar"},
+["16:00","Acceso al Teatro Esperanza Iris","",[],"Apertura de puertas con música cristiana de fondo. Sin hablar."],
 ["16:20","Primera llamada","",[["E","Amadas hermanas y amados hermanos, bienvenidos al Teatro de la Ciudad Esperanza Iris."],["E","En unos momentos comenzará «100 Años de Gratitud». Les invitamos a ocupar sus lugares."]],"Desde cabina o micrófono, según producción."],
 ["16:25","Segunda llamada","aplauso",[["A","Segunda llamada. Nos alegra su presencia en este encuentro de música, fe y gratitud."],["A","Tomen sus asientos y pongan sus celulares en silencio, por favor."]]],
 ["16:30","Tercera llamada","escenario",[["E","Tercera llamada, tercera llamada. Vamos a recordar la fidelidad de Dios a través de nuestra historia."],["A","Atención al escenario. Sean todos bienvenidos al Concierto del Centenario…"],["B","«100 Años de Gratitud»."]]],
-["16:35","Cortinilla · Renuevo Band","domo",[],"Video con la voz del Hno. Gersain y preludio de Renuevo Band, 16:40–17:00. Fuera de escena; no hay intervención hablada."],
-{act:"Primer acto"},
+["16:35","Cortinilla y video · Hno. Gersain","",[],"Cue de producción: cortinilla de apertura + video con la voz del Hno. Gersain (referencia: la dinámica de cuando el Hno. Gersain entra a la transmisión). Conductores fuera de escena; sin hablar."],
+["16:40","Preludio · Renuevo Band","",[],"16:40–17:00 · 20 min. Con el video del preludio (minuta 1.3). No interrumpir ni invadir su tiempo; sin hablar."],
+{act:"17:00 · Inicio del concierto"},
 ["17:00","Bienvenida y oración","velas",[["E","Que la paz de Dios sea con todos. Bienvenidos a esta celebración tan significativa: «100 Años de Gratitud»."],["A","En nombre del Presbiterio Sur Oriente del Valle de México, es un privilegio recibirles. Cien años nos invitan a reconocer al Dios que ha sostenido su obra."],["E","Salmo 100:5: «Porque Jehová es bueno…"],["A","…para siempre es su misericordia…"],["B","…y su verdad por todas las generaciones»."],["A","Que esto sea más que un encuentro musical: una expresión de adoración. Unamos nuestros corazones en oración."],["E","🙏 Señor, gracias por tu fidelidad en estos cien años y por las generaciones que nos antecedieron. Que cada nota sea para tu gloria. En el nombre de Jesucristo. Amén.",1]],"Todo el bloque, con oración, en máximo 5 minutos."],
 ["17:05","Coro Metropolitano","coro2",[["E","La música ha sido, por generaciones, una hermosa manera de proclamar nuestra fe…"],["A","…y de expresar la gratitud que llevamos en el corazón. Recibamos con un cálido aplauso al Coro Metropolitano."]],"Salida discreta de ambos. 15 min."],
-["17:20","Cápsula 1 · Centenario de las Iglesias","coro",[["A","Celebrar cien años es hacer memoria…"],["E","…y agradecer a quienes, con su fe y servicio, forman parte de esta historia."],["A","Dirijamos la atención a la pantalla."],["E","Nuestra primera cápsula: el Centenario de las Iglesias."]],"Video y explicación, 5 min."],
+["17:20","Cápsula 1 · Video del Centenario de las Iglesias y explicación","coro",[["A","Celebrar cien años es hacer memoria…"],["E","…y agradecer a quienes, con su fe y servicio, forman parte de esta historia."],["A","Dirijamos la atención a la pantalla."],["E","Nuestra primera cápsula: el Centenario de las Iglesias."]],"Video y explicación, 5 min."],
 ["17:25","Orquesta Aquiles Mireles","violin",[["A","La música instrumental transmite solemnidad y belleza; también nuestros talentos sirven a Dios."],["E","Recibamos con un cálido aplauso a la Orquesta Aquiles Mireles."]],"15 min."],
-["17:40","Cápsula 2 · Sur Oriente y saludo","orquesta",[["E","Reconozcamos el trabajo, la comunión y el servicio de las iglesias de nuestra comunidad de fe."],["A","Conozcamos parte de esta historia en el video del Presbiterio Sur Oriente."],["E","Agradecemos a las iglesias, representantes, autoridades e invitados especiales que hoy nos acompañan."],["A","Su presencia honra esta conmemoración. Sean todos cordialmente bienvenidos."],["B","[Nombres y cargos: pendientes de la Comisión de Protocolo]"]],"Saludo solo si el tiempo lo permite. Bloque de 5 min."],
+["17:40","Cápsula 2 · Video del Sur Oriente y bienvenida a iglesias, autoridades e invitados","orquesta",[["E","Reconozcamos el trabajo, la comunión y el servicio de las iglesias de nuestra comunidad de fe."],["A","Conozcamos parte de esta historia en el video del Presbiterio Sur Oriente."],["E","Agradecemos a las iglesias, representantes, autoridades e invitados especiales que hoy nos acompañan."],["A","Su presencia honra esta conmemoración. Sean todos cordialmente bienvenidos."],["B","[Nombres y cargos: pendientes de la Comisión de Protocolo]"]],"Saludo solo si el tiempo lo permite. Bloque de 5 min."],
 {quote:1},
 {act:"Segundo acto"},
 ["17:45","Institutos de Música · IMMAMP","partitura",[["E","La fe y el servicio se transmiten de generación en generación; la formación musical cultiva disciplina y excelencia."],["A","El IMMAMP lleva más de 40 años formando ministros de música en más de 18 planteles, bajo la dirección de los Hnos. Víctor González Corona y Samuel Antonio Martínez Rincón."],["A","Demos la bienvenida a los Institutos de Música."]],"15 min."],
