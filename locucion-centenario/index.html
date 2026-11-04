@@ -1,6 +1,6 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Guía de Locución · 100 Años de Gratitud</title><meta name="theme-color" content="#0a0405">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Playfair+Display:ital,wght@0,700;1,500&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Playfair+Display:ital,wght@0,700;1,500&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 <style>
 :root{--g:#d6ad5c;--g2:#f6dc98;--bg:#0a0405;--a:#7cb8ff;--e:#ff8db4;--glass:rgba(28,10,12,.55)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{scroll-behavior:smooth}
@@ -89,6 +89,27 @@ body.study .ln:not(.rev):after{content:"toca para revelar";position:absolute;rig
 body.study .card.done{opacity:1}
 #toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,20px);z-index:40;display:flex;align-items:center;gap:8px;padding:10px 12px 10px 16px;border-radius:30px;background:rgba(20,6,9,.92);backdrop-filter:blur(14px);border:1px solid rgba(214,173,92,.5);box-shadow:0 10px 30px rgba(0,0,0,.6);font:500 15px 'Cormorant Garamond';color:#f0e2c4;white-space:nowrap;opacity:0;pointer-events:none;transition:.35s}
 #toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}#toast button{border:0;border-radius:20px;padding:7px 12px;font:600 11px Inter;background:none;color:#cbb88f}#toast #tYes{background:linear-gradient(90deg,var(--g),var(--g2));color:#1b0709}
+
+/* --- legibilidad --- */
+:root{--tx:#F5EFE3;--g:#E8C26A;--g2:#FFE3A0;--a:#9CCBFF;--e:#FFA9C9;--fs:19px}
+body{color:var(--tx);font-weight:500}body:after{opacity:.035}
+.intro,.hero .lead,.meta{color:#EFE6D4;font-family:Lora,serif}.intro{font-size:18px;line-height:1.6}.meta{font-size:14px;opacity:1}
+.card{background:#140A0C!important;backdrop-filter:none!important;border:1px solid rgba(232,194,106,.55)!important}
+.card:before{border-color:rgba(232,194,106,.12)}
+.ti h3{color:#FFF8EA;font-weight:700}.time{color:var(--g);font-size:13px}
+.ln{font-family:Lora,serif;font-size:var(--fs);line-height:1.6;font-weight:500;color:var(--tx);background:#1E1214;backdrop-filter:none;border:1px solid rgba(255,255,255,.08)}
+.ln b{font-size:12px;letter-spacing:1.5px}
+.A{border-left:4px solid var(--a)}.E{border-left:4px solid var(--e)}
+.ln.B{font-family:Lora,serif;font-weight:600;font-size:calc(var(--fs) + 2px);color:#FFE3A0;background:#2A1C10;border:1.5px solid var(--g)}.ln.B b{color:#FFD27A}
+.ln.pray{font-style:normal}
+.note{color:#E9DCC0;opacity:1;font-size:14px;line-height:1.5}
+.chip{font-size:10px;padding:4px 9px}.ca{background:#16304d;color:#CFE6FF;border-color:var(--a)}.ce{background:#4a1a2c;color:#FFD6E4;border-color:var(--e)}.cn{background:#2a2a2a;color:#eee}
+.num{-webkit-text-stroke:1.2px var(--g)}
+.seg button{color:#F5EFE3;font-size:14px}.pill{font-size:12px;color:#FFE3A0;border-color:rgba(232,194,106,.7)}
+.bar{background:#0E0607}.quote{background:#140A0C}.quote p{color:#FFE3A0;font-weight:700}.quote small{color:#EFE6D4}
+#stuHint{color:#EFE6D4;font-family:Lora;font-size:13px}.tools{flex-wrap:wrap}.aa{display:flex;gap:4px;margin-left:auto}
+body.study .ln:not(.rev){text-shadow:0 0 12px rgba(245,239,227,.7)}
+#sTxt{font-family:Lora,serif;font-weight:600;color:#FFF8EA}#stage:before{background:rgba(10,4,5,.94)}
 </style></head><body>
 <div style="position:fixed;inset:-40px;z-index:-1;background:url(domo.jpg) center/cover;filter:blur(24px) brightness(.18) saturate(1.2)"></div><section class="hero"><div class="bg"></div>
 <div class="kick">✦ Guía de locución · 27·XI·2026</div>
@@ -99,7 +120,7 @@ body.study .card.done{opacity:1}
 <div class="scroll"></div></section>
 <p class="intro">Toca cada momento para abrir tus líneas, márcalo al terminar y, en el teatro, activa el modo escenario para leer en grande, una línea a la vez.</p>
 <div class="bar"><div class="seg"><i id="pill"></i><button data-f="" class="on">Ambos</button><button data-f="E">Eli</button><button data-f="A">Aarón</button></div>
-<div class="pr"><span id="pt">0/0</span><div><i id="pg"></i></div><button id="rst" class="pill">↺ Reiniciar</button></div><div class="tools"><button id="stu" class="pill">📖 Modo estudio</button><span id="stuHint">Toca cada línea para revelarla</span><button id="revAll" class="pill">Mostrar todo</button></div></div>
+<div class="pr"><span id="pt">0/0</span><div><i id="pg"></i></div><button id="rst" class="pill">↺ Reiniciar</button></div><div class="tools"><button id="stu" class="pill">📖 Modo estudio</button><span id="stuHint">Toca cada línea para revelarla</span><button id="revAll" class="pill">Mostrar todo</button><span class="aa"><button id="aM" class="pill" aria-label="Texto más chico">A−</button><button id="aP" class="pill" aria-label="Texto más grande">A+</button></span></div></div>
 <div id="toast"><span>¿Borrar todas las marcas?</span><button id="tNo">Cancelar</button><button id="tYes">Reiniciar</button></div>
 <main id="m"></main>
 <footer><h2>¡A Dios sea toda la gloria!</h2></footer>
@@ -152,5 +173,6 @@ function show(){const[b,l]=S[k];sTime.textContent=b[0]+' · '+b[1];sWho.textCont
 go.onclick=()=>{steps();stage.classList.add('on');show()};
 nx.onclick=()=>{if(k<S.length-1){if(S[k+1][2]!=S[k][2])ck(S[k][2],true);k++;show()}else{ck(S[k][2],true);stage.classList.remove('on')}};
 pv.onclick=()=>{if(k>0){k--;show()}};cl.onclick=()=>stage.classList.remove('on');
+let fs=+localStorage.lcFs||19;function setFs(){fs=Math.max(16,Math.min(26,fs));document.documentElement.style.setProperty('--fs',fs+'px');localStorage.lcFs=fs}aM.onclick=()=>{fs--;setFs()};aP.onclick=()=>{fs++;setFs()};setFs();
 draw();
 </script></body></html>
