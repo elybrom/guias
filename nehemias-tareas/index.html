@@ -2,6 +2,7 @@
 <html lang="es-MX">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, max-age=0">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#FBE3EA">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -976,12 +977,12 @@ body.rf-off .rf{display:none}
 </nav>
 
 <style id="hero-legible">
-.hero-card{position:relative; z-index:3; max-width:min(640px,100%); margin:0 auto; padding:18px 20px 20px;
- background:rgba(255,250,243,.86); -webkit-backdrop-filter:blur(10px) saturate(1.1); backdrop-filter:blur(10px) saturate(1.1);
+.hero-card{position:relative; z-index:50; isolation:isolate; opacity:1 !important; animation:none !important; mix-blend-mode:normal !important; max-width:min(640px,100%); margin:0 auto; padding:18px 20px 20px;
+ background:rgba(255,248,240,.92); -webkit-backdrop-filter:blur(10px) saturate(1.1); backdrop-filter:blur(10px) saturate(1.1);
  border:1px solid rgba(244,169,191,.55); border-radius:24px; box-shadow:0 10px 30px -12px rgba(74,44,42,.35); text-align:center}
-.hero-card h1{color:#3B2422 !important; text-shadow:none !important}
+.hero-card h1{color:#3a2a24 !important; opacity:1 !important; mix-blend-mode:normal !important; text-shadow:none !important}
 .hero-card h1 em{color:#A23E62 !important}
-.hero-card .lede,.hero-card .hero-quote{color:#4A2E2A !important; opacity:1 !important}
+.hero-card .lede,.hero-card .hero-quote,.hero-card p{color:#3a2a24 !important; opacity:1 !important; mix-blend-mode:normal !important; animation:none !important; -webkit-text-fill-color:currentColor; text-shadow:none !important; filter:none !important}
 .hero-card .sub{color:#A23E62 !important; opacity:1 !important}
 .hero-card .eyebrow{color:#4F6E31 !important; opacity:1 !important}
 .hero-card .lede{margin-left:auto; margin-right:auto; text-align:left}
