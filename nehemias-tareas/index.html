@@ -975,11 +975,26 @@ body.rf-off .rf{display:none}
   </div>
 </nav>
 
+<style id="hero-legible">
+.hero-card{position:relative; z-index:3; max-width:min(640px,100%); margin:0 auto; padding:18px 20px 20px;
+ background:rgba(255,250,243,.86); -webkit-backdrop-filter:blur(10px) saturate(1.1); backdrop-filter:blur(10px) saturate(1.1);
+ border:1px solid rgba(244,169,191,.55); border-radius:24px; box-shadow:0 10px 30px -12px rgba(74,44,42,.35); text-align:center}
+.hero-card h1{color:#3B2422 !important; text-shadow:none !important}
+.hero-card h1 em{color:#A23E62 !important}
+.hero-card .lede,.hero-card .hero-quote{color:#4A2E2A !important; opacity:1 !important}
+.hero-card .sub{color:#A23E62 !important; opacity:1 !important}
+.hero-card .eyebrow{color:#4F6E31 !important; opacity:1 !important}
+.hero-card .lede{margin-left:auto; margin-right:auto; text-align:left}
+.hero-card > .badge{display:inline-block}
+@media (max-width:520px){.hero-card{padding:14px 14px 16px; border-radius:20px}}
+</style>
 <header class="hero">
   <img class="hero-pin" src="assets/photos/t-ladrillo3.jpg" alt="" width="72" height="72" loading="eager">
-  <p class="eyebrow">Escuela de Alabanza · Método Inductivo · Mtro. Fermín IV</p>
+  <div class="hero-card">
+<p class="eyebrow">Escuela de Alabanza · Método Inductivo · Mtro. Fermín IV</p>
   <h1>Nehemías 1–13<br><em>marcado con colores</em></h1>
   <p class="lede">Observación del texto aplicando las diez estrategias de lectura: verbos, sujeto, predicado y adverbios en la capa gramatical; repeticiones, contrastes, condiciones y cronología en la capa de observación. Con las conexiones bíblicas del pasaje — Ester, Daniel, Esdras, José y Moisés.</p>
+</div>
   <div class="hero-meta">
     <div><dt>Alumna</dt><dd>Elisa Danahé Nogueron Vázquez</dd></div>
     <div><dt>Materia</dt><dd>Método Inductivo</dd></div>

@@ -1204,6 +1204,19 @@ footer::before{content:""; display:block; width:56px; height:56px; margin:0 auto
 .hero h1{text-shadow:0 1px 0 rgba(255,255,255,.6)}
 
 </style>
+<style id="hero-legible">
+.hero-card{position:relative; z-index:3; max-width:min(640px,100%); margin:0 auto; padding:18px 20px 20px;
+ background:rgba(255,250,243,.86); -webkit-backdrop-filter:blur(10px) saturate(1.1); backdrop-filter:blur(10px) saturate(1.1);
+ border:1px solid rgba(244,169,191,.55); border-radius:24px; box-shadow:0 10px 30px -12px rgba(74,44,42,.35); text-align:center}
+.hero-card h1{color:#3B2422 !important; text-shadow:none !important}
+.hero-card h1 em{color:#A23E62 !important}
+.hero-card .lede,.hero-card .hero-quote{color:#4A2E2A !important; opacity:1 !important}
+.hero-card .sub{color:#A23E62 !important; opacity:1 !important}
+.hero-card .eyebrow{color:#4F6E31 !important; opacity:1 !important}
+.hero-card .lede{margin-left:auto; margin-right:auto; text-align:left}
+.hero-card > .badge{display:inline-block}
+@media (max-width:520px){.hero-card{padding:14px 14px 16px; border-radius:20px}}
+</style>
 </head>
 <body>
 
@@ -1237,11 +1250,13 @@ footer::before{content:""; display:block; width:56px; height:56px; margin:0 auto
 
   <header class="hero" id="inicio">
     <div class="hero-bg" aria-hidden="true"></div>
-    <span class="badge">Apuntes de clase</span>
+    <div class="hero-card">
+<span class="badge">Apuntes de clase</span>
     <img class="hero-pin" src="assets/photos/t-cafe1.jpg" alt="" width="72" height="72" loading="eager">
     <h1>Método Inductivo</h1>
     <p class="sub">Notas para recordar</p>
     <p class="hero-quote">La verdad objetiva de Dios que sale del texto — no lo que yo infiero.</p>
+</div>
     <div class="paleta-chip" title="Paleta Orquídea · Matcha · Ladrillo · Crema">
       <span class="swatches" aria-hidden="true">
         <span class="sw" style="background:#F4A9BF"></span>
