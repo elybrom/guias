@@ -39,14 +39,14 @@ body:after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:50;o
 .pr button{background:none;border:0;color:var(--g);font-size:15px}
 main{max-width:640px;margin:auto;padding:8px 14px}
 .act{font-family:Cinzel;color:var(--g);letter-spacing:4px;font-size:12px;text-align:center;margin:34px 0 6px;display:flex;align-items:center;gap:12px}.act:before,.act:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent)}
-.card{position:relative;margin:22px 0;border-radius:22px;overflow:hidden;min-height:210px;opacity:0;transform:translateY(40px) scale(.97);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1),filter .4s;box-shadow:0 25px 50px rgba(0,0,0,.55);isolation:isolate}
+.card{position:relative;margin:22px 0;border-radius:22px;overflow:hidden;border:1px solid rgba(214,173,92,.45);background:linear-gradient(160deg,rgba(26,8,11,.78),rgba(6,2,3,.82));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transform:translateY(40px) scale(.97);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1),filter .4s;box-shadow:0 25px 50px rgba(0,0,0,.55);isolation:isolate}
 .card.in{opacity:1;transform:none}
 .card .ph{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform 1.2s}
-.card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,4,5,.05) 0,rgba(10,4,5,.45) 45%,rgba(18,5,8,.96) 100%)}
-.card.open .ph{transform:scale(1.08)}.card.done{filter:grayscale(.85) brightness(.6)}
-.hd{padding:110px 16px 16px;cursor:pointer;display:flex;align-items:flex-end;gap:12px}
+.card:before{content:"";position:absolute;inset:4px;border:1px solid rgba(214,173,92,.15);border-radius:18px;pointer-events:none}.card.open{box-shadow:0 0 30px rgba(214,173,92,.18)}
+.card.open .ph{transform:scale(1.08)}.card.done{opacity:.45}
+.hd{padding:18px 16px;cursor:pointer;display:flex;align-items:flex-end;gap:12px}
 .num{font-family:'Playfair Display';font-size:46px;line-height:.8;color:transparent;-webkit-text-stroke:1px var(--g2);opacity:.85}
-.ti{flex:1}.time{font:700 11px Inter;letter-spacing:3px;color:var(--g2)}
+.ti{flex:1}.time{font:700 12px Cinzel;letter-spacing:3px;color:var(--g)}
 .ti h3{margin:3px 0 6px;font-family:'Playfair Display';font-size:22px;line-height:1.1}
 .chip{display:inline-block;font:700 9px Inter;letter-spacing:1.5px;padding:3px 8px;border-radius:20px;margin-right:4px;backdrop-filter:blur(8px)}
 .ca{background:rgba(124,184,255,.2);color:var(--a);border:1px solid rgba(124,184,255,.4)}.ce{background:rgba(255,141,180,.2);color:var(--e);border:1px solid rgba(255,141,180,.4)}.cn{background:rgba(255,255,255,.1);color:#ddd}
@@ -61,14 +61,14 @@ main{max-width:640px;margin:auto;padding:8px 14px}
 .ln.pray{font-style:italic}
 .note{margin:2px 14px 16px;font-size:12px;color:#e9cf95;opacity:.85;display:flex;gap:6px}
 body.fA .ln.E,body.fE .ln.A{display:none}
-.quote{position:relative;margin:30px 0;padding:60px 22px;border-radius:22px;overflow:hidden;text-align:center;background:url(velas.jpg) center/cover}
-.quote:before{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(40,8,14,.6),rgba(10,4,5,.92))}
+.quote{position:relative;margin:30px 0;padding:60px 22px;border-radius:22px;overflow:hidden;text-align:center;border:1px solid rgba(214,173,92,.45);background:rgba(20,6,9,.6)}
+
 .quote p{position:relative;font-family:'Playfair Display';font-style:italic;font-size:24px;line-height:1.3;color:var(--g2);margin:0}.quote small{position:relative;display:block;margin-top:12px;font:600 11px Inter;letter-spacing:3px;color:#e4cfa5}
 .fab{position:fixed;bottom:calc(18px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:30;border:0;border-radius:40px;padding:15px 26px;font:700 15px Inter;color:#1b0709;background:linear-gradient(90deg,var(--g),var(--g2));box-shadow:0 0 0 0 rgba(246,220,152,.6),0 10px 30px rgba(0,0,0,.6);animation:pulse 2.6s infinite;display:flex;gap:8px;align-items:center}
 @keyframes pulse{70%{box-shadow:0 0 0 18px rgba(246,220,152,0),0 10px 30px rgba(0,0,0,.6)}}
 #stage{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;padding:calc(20px + env(safe-area-inset-top)) 20px calc(20px + env(safe-area-inset-bottom));opacity:0;pointer-events:none;transition:.5s}
 #stage.on{opacity:1;pointer-events:auto}
-#sBg{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(3px) brightness(.35);transform:scale(1.1);transition:background-image .6s}
+#sBg{position:absolute;inset:0;background:#0a0405}
 #stage:before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at 50% 40%,rgba(60,12,20,.35),rgba(10,4,5,.95))}
 #stage>*:not(#sBg){position:relative;z-index:2}
 .stop{display:flex;justify-content:space-between;align-items:center;font:700 11px Inter;letter-spacing:2px;color:var(--g2)}
@@ -81,25 +81,24 @@ body.fA .ln.E,body.fE .ln.A{display:none}
 footer{text-align:center;padding:40px 20px 20px}footer h2{font-family:'Playfair Display';font-style:italic;color:var(--g2);font-size:28px;margin:0 0 14px}
 footer details{font-size:10px;opacity:.5;text-align:left;max-width:520px;margin:auto}
 </style></head><body>
-<section class="hero"><div class="bg"></div>
+<div style="position:fixed;inset:-40px;z-index:-1;background:url(domo.jpg) center/cover;filter:blur(24px) brightness(.18) saturate(1.2)"></div><section class="hero"><div class="bg"></div>
 <div class="kick">✦ Guía de locución · 27·XI·2026</div>
 <h1>100 Años<i>de Gratitud</i></h1>
 <div class="lead">Concierto del Centenario — conducción a dos voces</div>
 <div class="duo"><div class="who a"><small>VOZ 1</small><b>Aarón Mora</b></div><div class="who e"><small>VOZ 2</small><b>Eli Nogueron</b></div></div>
 <div class="meta">Teatro de la Ciudad Esperanza Iris · 16:20–19:20 (hora CDMX)<br>Presbiterio Sur Oriente del Valle de México</div>
 <div class="scroll"></div></section>
-<div class="collage"><figure class="c1"><img src="mic.jpg" alt=""></figure><figure class="c2"><img src="duo.jpg" alt=""></figure><figure class="c3"><img src="mesa.jpg" alt=""></figure><div class="tag">tu voz, su gloria</div></div>
 <p class="intro">Toca cada momento para abrir tus líneas, márcalo al terminar y, en el teatro, activa el modo escenario para leer en grande, una línea a la vez.</p>
 <div class="bar"><div class="seg"><i id="pill"></i><button data-f="" class="on">Ambos</button><button data-f="E">Eli</button><button data-f="A">Aarón</button></div>
 <div class="pr"><span id="pt">0/0</span><div><i id="pg"></i></div><button id="rst" title="Reiniciar">↺</button></div></div>
 <main id="m"></main>
-<footer><h2>¡A Dios sea toda la gloria!</h2><details><summary>Créditos de fotos</summary>Fotos de referencia de Eli (domo, micrófono, mesa). Wikimedia Commons: «Peace Concert Hall Audience» CC BY-SA 4.0; «Open bible isaiah» Ken Horn CC BY 2.0; «Great Amber Concert Hall, Liepāja Symphony Orchestra» CC0; «New York Philharmonic Orchestra on stage in Guangzhou» dominio público; «Music sheet (close-up)» geograph CC BY-SA 2.0; «Guitarist in the spotlight» Linda Xu CC0; «A young girl sits among the audience at the rehearsal…» CC BY-SA 4.0; «Hand on an old violin close-up» Shixart1985 CC BY 2.0; «Dülmen, St.-Viktor-Kirche» CC BY-SA 4.0; «A choir in a concert 1962» CC BY 4.0; «Oslo gospelkor Mizpa» 3s CC BY-SA 3.0; «Northern District City Hall Theatre stage» CC BY-SA 4.0.</details></footer>
+<footer><h2>¡A Dios sea toda la gloria!</h2></footer>
 <button class="fab" id="go">🎙 Modo escenario</button>
 <div id="stage"><div id="sBg"></div><div class="stop"><span id="sTime"></span><button id="cl">✕</button></div><div id="sBar"><i></i></div><div id="sWho"></div><div id="sTxt"></div><div class="sb"><button id="pv">◀</button><button id="nx">Siguiente ▶</button></div></div>
 <script>
 const D=[
 {act:"Antes de empezar"},
-["16:20","Primera llamada","duo",[["E","Amadas hermanas y amados hermanos, bienvenidos al Teatro de la Ciudad Esperanza Iris."],["E","En unos momentos comenzará «100 Años de Gratitud». Les invitamos a ocupar sus lugares."]],"Desde cabina o micrófono, según producción."],
+["16:20","Primera llamada","",[["E","Amadas hermanas y amados hermanos, bienvenidos al Teatro de la Ciudad Esperanza Iris."],["E","En unos momentos comenzará «100 Años de Gratitud». Les invitamos a ocupar sus lugares."]],"Desde cabina o micrófono, según producción."],
 ["16:25","Segunda llamada","aplauso",[["A","Segunda llamada. Nos alegra su presencia en este encuentro de música, fe y gratitud."],["A","Tomen sus asientos y pongan sus celulares en silencio, por favor."]]],
 ["16:30","Tercera llamada","escenario",[["E","Tercera llamada, tercera llamada. Vamos a recordar la fidelidad de Dios a través de nuestra historia."],["A","Atención al escenario. Bienvenidos al Concierto del Centenario: «100 Años de Gratitud»."]]],
 ["16:35","Cortinilla · Renuevo Band","domo",[],"Video con la voz del Hno. Gersain y preludio de Renuevo Band, 16:40–17:00. Fuera de escena; no hay intervención hablada."],
@@ -122,7 +121,7 @@ const D=[
 const W={A:"AARÓN MORA",E:"ELI NOGUERON",B:"AMBOS"},C={A:"var(--a)",E:"var(--e)",B:"var(--g2)"};
 const B=D.filter(Array.isArray);let done=JSON.parse(localStorage.lcDone2||"{}"),F="";
 function draw(){let n=0;m.innerHTML=D.map(x=>{if(x.act)return`<div class="act">${x.act}</div>`;if(x.quote)return`<div class="quote card"><p>«Porque Jehová es bueno; para siempre es su misericordia»</p><small>SALMO 100:5</small></div>`;const i=n++,s=new Set(x[3].map(l=>l[0]));
-return`<article class="card ${done[i]?'done':''}" id="c${i}"><div class="ph" style="background-image:url(${x[2]}.jpg)"></div><div class="hd" onclick="tg(${i})"><span class="num">${String(i+1).padStart(2,'0')}</span><div class="ti"><div class="time">${x[0]}</div><h3>${x[1]}</h3>${s.has('A')||s.has('B')?'<span class="chip ca">AARÓN</span>':''}${s.has('E')||s.has('B')?'<span class="chip ce">ELI</span>':''}${!s.size?'<span class="chip cn">SIN HABLAR</span>':''}</div><input type="checkbox" class="ck" ${done[i]?'checked':''} onclick="event.stopPropagation();ck(${i},this.checked)"></div><div class="bd"><div>${x[3].map(l=>`<div class="ln ${l[0]} ${l[2]?'pray':''}"><b>${W[l[0]]}</b>${l[1]}</div>`).join('')}${x[4]?`<div class="note">🎬 ${x[4]}</div>`:''}</div></div></article>`}).join('');pr();obs()}
+return`<article class="card ${done[i]?'done':''}" id="c${i}"><div class="hd" onclick="tg(${i})"><span class="num">${String(i+1).padStart(2,'0')}</span><div class="ti"><div class="time">${x[0]}</div><h3>${x[1]}</h3>${s.has('A')||s.has('B')?'<span class="chip ca">AARÓN</span>':''}${s.has('E')||s.has('B')?'<span class="chip ce">ELI</span>':''}${!s.size?'<span class="chip cn">SIN HABLAR</span>':''}</div><input type="checkbox" class="ck" ${done[i]?'checked':''} onclick="event.stopPropagation();ck(${i},this.checked)"></div><div class="bd"><div>${x[3].map(l=>`<div class="ln ${l[0]} ${l[2]?'pray':''}"><b>${W[l[0]]}</b>${l[1]}</div>`).join('')}${x[4]?`<div class="note">🎬 ${x[4]}</div>`:''}</div></div></article>`}).join('');pr();obs()}
 function obs(){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}}),{threshold:.15});document.querySelectorAll('.card').forEach(c=>o.observe(c))}
 function tg(i){document.getElementById('c'+i).classList.toggle('open')}
 function ck(i,v){done[i]=v;localStorage.lcDone2=JSON.stringify(done);const c=document.getElementById('c'+i);if(c){c.classList.toggle('done',v);c.querySelector('.ck').checked=v}pr()}
@@ -133,7 +132,7 @@ addEventListener('load',()=>pill(btns[0]));addEventListener('resize',()=>pill(bt
 rst.onclick=()=>{if(confirm('¿Reiniciar marcas?')){done={};localStorage.lcDone2='{}';draw()}};
 let S=[],k=0;const sb=document.querySelector('#sBar i');
 function steps(){S=[];B.forEach((b,i)=>{if(!b[3].length)S.push([b,['B','🎬 '+b[4]],i]);b[3].forEach(l=>{if(!F||l[0]==F||l[0]=='B')S.push([b,l,i])})});k=S.findIndex(s=>!done[s[2]]);if(k<0)k=0}
-function show(){const[b,l]=S[k];sTime.textContent=b[0]+' · '+b[1];sWho.textContent=W[l[0]];sWho.style.color=C[l[0]];sTxt.textContent=l[1];sTxt.style.animation='none';sTxt.offsetHeight;sTxt.style.animation='';sBg.style.backgroundImage=`url(${b[2]}.jpg)`;sb.style.width=(k+1)/S.length*100+'%'}
+function show(){const[b,l]=S[k];sTime.textContent=b[0]+' · '+b[1];sWho.textContent=W[l[0]];sWho.style.color=C[l[0]];sTxt.textContent=l[1];sTxt.style.animation='none';sTxt.offsetHeight;sTxt.style.animation='';sb.style.width=(k+1)/S.length*100+'%'}
 go.onclick=()=>{steps();stage.classList.add('on');show()};
 nx.onclick=()=>{if(k<S.length-1){if(S[k+1][2]!=S[k][2])ck(S[k][2],true);k++;show()}else{ck(S[k][2],true);stage.classList.remove('on')}};
 pv.onclick=()=>{if(k>0){k--;show()}};cl.onclick=()=>stage.classList.remove('on');
