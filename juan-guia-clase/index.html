@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="es-MX" data-guia="juan-guia-clase">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evangelio de Juan · Guía de clase</title>
+<meta name="description" content="Guía de clase del Evangelio de Juan con libreta digital. Jesús es el centro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --arena:#D3C7AD; --azul:#28374A; --terra:#754437; --verde:#6B6751;
+  --arena-claro:#E9E2D2; --verde-osc:#55523F; --tinta:#28374A;
+  --card:rgba(236,230,216,.86); --card-borde:rgba(40,55,74,.14);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Montserrat',system-ui,sans-serif;
+  --mano:'Caveat',cursive;
+  --sombra:0 10px 30px -12px rgba(40,55,74,.35);
+  --radio:18px;
+  --bg-img:url("../img/fondo-arcos.webp");
+  --ruido:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .32  0 0 0 0 .26  0 0 0 0 .18  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;font-family:var(--sans);color:var(--tinta);background:var(--arena);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:var(--bg-img) center/cover no-repeat;filter:saturate(.75) blur(2px);transform:scale(1.04)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--ruido),linear-gradient(180deg,rgba(211,199,173,.88),rgba(211,199,173,.93));pointer-events:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+a{color:var(--terra)}
+:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:6px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.topbar{position:sticky;top:0;z-index:80;background:rgba(40,55,74,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--arena-claro);box-shadow:0 4px 18px rgba(0,0,0,.2)}
+.topbar-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 14px}
+.marca{font-family:var(--serif);font-size:1.15rem;font-weight:600;white-space:nowrap;color:var(--arena);line-height:1.1}
+.marca small{display:block;font-family:var(--sans);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;opacity:.75;font-weight:500}
+.tabs{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;flex:1;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{color:var(--arena);text-decoration:none;font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:7px 10px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
+.tabs a:hover,.tabs a.activo{background:var(--arena);color:var(--azul)}
+.tabs a.milib{background:rgba(117,68,55,.85);color:#F4EDE0}
+.progreso{height:3px;background:rgba(211,199,173,.15)}
+.progreso span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--terra),#a5674f)}
+.hero{position:relative;overflow:hidden;color:var(--azul);isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent);background:url("../img/luz.webp") center 40%/cover no-repeat;filter:saturate(.85)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,rgba(211,199,173,.95) 0%,rgba(211,199,173,.82) 48%,rgba(211,199,173,.3) 100%);-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+.hero-in{max-width:1180px;margin:0 auto;padding:64px 20px 72px;display:grid;grid-template-columns:1.3fr .7fr;gap:36px;align-items:center}
+.eyebrow{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--verde-osc)}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.4rem,5.8vw,4.4rem);line-height:1.02;margin:.2em 0 .15em}
+.hero h1 em{color:var(--terra);font-style:italic}
+.hero .sub{font-size:1.02rem;max-width:36em}
+.hero .verso-hero{margin-top:22px;font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--terra);border-left:3px solid var(--terra);padding:4px 0 4px 16px;max-width:30em;line-height:1.3}
+.hero .verso-hero cite{display:block;font-family:var(--sans);font-style:normal;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--verde-osc);margin-top:6px;font-weight:700}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{display:inline-flex;font-size:.74rem;font-weight:600;padding:7px 12px;border-radius:999px;background:rgba(40,55,74,.9);color:var(--arena-claro)}
+.chip.claro{background:rgba(236,230,216,.88);color:var(--azul);border:1px solid var(--card-borde)}
+.arco{justify-self:center;width:min(300px,100%);aspect-ratio:3/4;border-radius:999px 999px 16px 16px;background:url("../img/tora.webp") center/cover;box-shadow:0 28px 55px -18px rgba(40,55,74,.55),0 0 0 9px rgba(236,230,216,.55),0 0 0 10px rgba(117,68,55,.35);position:relative}
+.arco::after{content:"Jesús es el centro";position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:rgba(40,55,74,.92);color:var(--arena);font-family:var(--serif);font-size:.95rem;font-style:italic;padding:5px 14px;border-radius:999px;white-space:nowrap}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{font-family:var(--sans);font-weight:600;font-size:.84rem;border:0;border-radius:999px;padding:11px 18px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;text-decoration:none;transition:transform .2s,box-shadow .2s;color:inherit}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--sombra)}
+.btn-azul{background:var(--azul);color:var(--arena-claro)}
+.btn-terra{background:var(--terra);color:#F3ECDD}
+.btn-linea{background:transparent;color:var(--azul);border:1.5px solid var(--azul)}
+.btn-chico{padding:7px 12px;font-size:.74rem}
+main{max-width:1180px;margin:0 auto;padding:0 16px 70px}
+section.bloque{padding:48px 0 12px}
+.cab{display:flex;align-items:flex-end;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.num{font-family:var(--serif);font-size:4.2rem;line-height:.8;color:var(--terra);font-weight:600;opacity:.9}
+.cab h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.55rem,3.4vw,2.5rem);line-height:1.1;margin:0;color:var(--azul);max-width:22em}
+.cab .eyebrow{display:block;margin-bottom:4px}
+.anotar{margin-left:auto;align-self:center}
+.card{background:var(--card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--card-borde);border-radius:var(--radio);padding:22px 24px;box-shadow:var(--sombra);margin-bottom:16px}
+.card h3{font-family:var(--serif);font-size:1.45rem;font-weight:600;margin:0 0 8px;color:var(--azul)}
+.card h4{font-family:var(--serif);font-size:1.15rem;margin:14px 0 6px;color:var(--terra)}
+.etiqueta{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#F1EBDD;background:var(--verde);padding:3px 9px;border-radius:999px;margin-bottom:8px}
+.etiqueta.terra{background:var(--terra)}.etiqueta.azul{background:var(--azul)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.muted{color:var(--verde-osc)}
+.verso{font-family:var(--serif);font-style:italic;font-size:1.2rem;color:var(--terra);border-left:3px solid var(--terra);padding:2px 0 2px 14px;margin:12px 0;line-height:1.35}
+.verso cite{display:block;font-family:var(--sans);font-style:normal;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--verde-osc);margin-top:4px;font-weight:700}
+.pill-ref{display:inline-block;font-size:.72rem;font-weight:700;background:rgba(40,55,74,.08);color:var(--azul);padding:2px 8px;border-radius:6px;margin:0 2px}
+.img-card{border-radius:14px;overflow:hidden;margin:10px 0 4px}
+.img-card img{width:100%;height:auto;display:block;max-height:280px;object-fit:cover}
+.img-card figcaption{font-size:.7rem;color:var(--verde-osc);padding:6px 2px 0}
+details.acordeon{background:rgba(244,240,230,.65);border:1px solid var(--card-borde);border-radius:14px;margin:10px 0;overflow:hidden}
+details.acordeon summary{cursor:pointer;padding:14px 18px;font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--azul);list-style:none;display:flex;align-items:center;gap:10px}
+details.acordeon summary::-webkit-details-marker{display:none}
+details.acordeon summary::before{content:"+";flex:none;width:26px;height:26px;border-radius:50%;background:var(--azul);color:var(--arena);display:grid;place-items:center;font-family:var(--sans);font-size:.9rem;font-weight:700}
+details.acordeon[open] summary::before{content:"−"}
+details.acordeon .acordeon-body{padding:0 18px 16px;font-size:.95rem}
+.oia{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.oia .caja{border-radius:14px;padding:14px 16px;border-top:4px solid}
+.oia .obs{background:rgba(40,55,74,.06);border-color:var(--azul)}
+.oia .int{background:rgba(117,68,55,.08);border-color:var(--terra)}
+.oia .apl{background:rgba(107,103,81,.1);border-color:var(--verde)}
+.oia strong{display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+.timeline{display:flex;gap:0;overflow-x:auto;padding:10px 0 18px}
+.tl-item{flex:0 0 180px;position:relative;padding:0 12px 0 0}
+.tl-item::before{content:"";position:absolute;left:0;top:28px;width:100%;height:2px;background:rgba(117,68,55,.35)}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--terra);border:3px solid var(--arena-claro);position:relative;z-index:1;margin-bottom:10px}
+.tl-item h5{margin:0;font-family:var(--serif);font-size:1.05rem;color:var(--azul)}
+.tl-item p{margin:4px 0 0;font-size:.78rem;color:var(--verde-osc)}
+.quiz{margin-top:12px}
+.quiz .q{margin:10px 0;padding:12px 14px;border-radius:12px;background:rgba(244,240,230,.7);border:1px solid var(--card-borde)}
+.quiz .q b{font-family:var(--serif);font-size:1.05rem}
+.quiz label{display:flex;gap:10px;align-items:flex-start;margin:8px 0;cursor:pointer;font-size:.9rem}
+.quiz .feedback{font-size:.85rem;margin-top:6px;padding:8px 10px;border-radius:8px;display:none}
+.quiz .feedback.ok{display:block;background:rgba(107,103,81,.18);color:var(--verde-osc)}
+.quiz .feedback.no{display:block;background:rgba(117,68,55,.12);color:var(--terra)}
+.hilo{background:linear-gradient(135deg,rgba(40,55,74,.96),rgba(32,45,61,.96));color:var(--arena-claro);border:0;text-align:center;padding:28px 24px}
+.hilo h3{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);color:var(--arena);margin:0 0 8px}
+.hilo p{margin:0 auto;max-width:40em;opacity:.92}
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch;margin:12px 0}
+.compare .lado{border-radius:12px;padding:14px 16px}
+.compare .mal{background:rgba(40,55,74,.07);border:1px dashed rgba(40,55,74,.3)}
+.compare .bien{background:var(--verde);color:#F2EDE0}
+.compare .flecha{display:grid;place-items:center;font-size:1.6rem;color:var(--terra)}
+#libreta{scroll-margin-top:90px}
+.lib-wrap{background:rgba(40,55,74,.94);border-radius:22px;padding:18px;box-shadow:var(--sombra);color:var(--arena-claro)}
+.lib-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.lib-tabs button{background:rgba(211,199,173,.12);border:1px solid rgba(211,199,173,.35);color:var(--arena);border-radius:999px;padding:9px 16px;font:600 .8rem var(--sans);cursor:pointer}
+.lib-tabs button.on{background:var(--arena);color:var(--azul)}
+.lib-panel{display:none}.lib-panel.on{display:block}
+.pen-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.pen-toolbar label{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;opacity:.85}
+.pen-toolbar .swatch{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0}
+.pen-toolbar .swatch.on{border-color:#fff;box-shadow:0 0 0 2px var(--terra)}
+.pen-toolbar .tool{background:rgba(211,199,173,.15);border:1px solid rgba(211,199,173,.4);color:var(--arena);border-radius:10px;padding:7px 11px;font:600 .72rem var(--sans);cursor:pointer}
+.pen-toolbar .tool.on{background:var(--terra);border-color:var(--terra);color:#fff}
+.canvas-box{position:relative;background:#f7f1e4;border-radius:12px;overflow:hidden;touch-action:none;border:1px solid rgba(0,0,0,.12)}
+#penCanvas{display:block;width:100%;height:min(62vh,520px);touch-action:none;cursor:crosshair}
+.pen-status{font-size:.75rem;opacity:.8;margin-top:8px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.write-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.write-toolbar button{background:rgba(211,199,173,.15);border:1px solid rgba(211,199,173,.4);color:var(--arena);border-radius:10px;padding:7px 12px;font:600 .72rem var(--sans);cursor:pointer}
+.write-select{background:rgba(211,199,173,.12);border:1px solid rgba(211,199,173,.35);color:var(--arena);border-radius:10px;padding:7px 10px;font:600 .75rem var(--sans)}
+.hoja-texto{min-height:min(55vh,480px);border-radius:12px;padding:28px 28px 28px 56px;background:linear-gradient(90deg,transparent 42px,rgba(192,57,43,.45) 42px,rgba(192,57,43,.45) 44px,transparent 44px),linear-gradient(180deg,transparent 31px,rgba(40,90,140,.22) 31px),linear-gradient(135deg,#fbf6ea,#efe5d0);background-size:100% 100%,100% 32px,100% 100%;color:#1f3a5f;font:500 1.35rem/32px var(--mano);outline:none;border:1px solid rgba(0,0,0,.1);white-space:pre-wrap}
+.hoja-texto:empty:before{content:attr(data-placeholder);opacity:.45;font-style:italic}
+.write-status{font-size:.75rem;opacity:.85;margin-top:8px}
+footer{max-width:1180px;margin:0 auto;padding:30px 18px 60px;text-align:center;color:var(--verde-osc);font-size:.82rem}
+footer .serif{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--azul);margin-bottom:8px}
+footer .creditos{margin-top:14px;font-size:.7rem;line-height:1.5;opacity:.85}
+@media (max-width:860px){
+  .hero-in{grid-template-columns:1fr;padding:48px 16px 56px}
+  .arco{display:none}
+  .grid2,.grid3,.oia{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  .compare .flecha{transform:rotate(90deg)}
+  .marca small{display:none}
+  .tabs a{font-size:.62rem;padding:6px 8px}
+  .hoja-texto{padding:22px 16px 22px 48px;font-size:1.2rem}
+}
+@media print{
+  .topbar,.anotar,.pen-toolbar,.write-toolbar,.lib-tabs,.hero-btns,.progreso{display:none!important}
+  body::before,body::after{display:none}body{background:#fff}
+  .hoja-texto{background:#fff;border:1px solid #ccc;color:#000}
+}
+</style>
+</head>
+<body>
+<a class="sr-only" href="#contenido">Saltar al contenido</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="marca">Juan · Guía<small>Eli Nogueron</small></div>
+    <nav class="tabs" aria-label="Secciones">
+      <a href="#inicio">Inicio</a>
+      <a href="#critica">1 · Crítica</a>
+      <a href="#juan8a">2 · Luz</a>
+      <a href="#juan8b">3 · Libres</a>
+      <a href="#intimidad">4 · Intimidad</a>
+      <a href="#cena">5 · Cena</a>
+      <a href="#juan15">6 · Amigos</a>
+      <a href="#juan16">7 · Mundo</a>
+      <a class="milib" href="#libreta">✎ Mi libreta</a>
+    </nav>
+  </div>
+  <div class="progreso" aria-hidden="true"><span id="barraProg"></span></div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-in">
+    <div>
+      <span class="eyebrow">Guía de clase · Evangelio de Juan</span>
+      <h1>Evangelio de Juan<br><em>Guía de clase</em></h1>
+      <p class="sub">Crítica textual, la luz del mundo, la libertad que da el Hijo, la intimidad del discípulo amado, la Cena y el discurso de la vid. Todo el hilo apunta a una sola verdad:</p>
+      <blockquote class="verso-hero">«Yo soy la luz del mundo; el que me sigue, no andará en tinieblas, sino que tendrá la luz de la vida.»<cite>Juan 8:12</cite></blockquote>
+      <div class="hero-meta">
+        <span class="chip">Jesús es el centro</span>
+        <span class="chip claro">Observación · Interpretación · Aplicación</span>
+        <span class="chip claro">Libreta: pluma + teclado</span>
+      </div>
+      <div class="hero-btns">
+        <a class="btn btn-azul" href="#critica">Empezar estudio</a>
+        <a class="btn btn-terra" href="#libreta">Abrir mi libreta</a>
+        <a class="btn btn-linea" href="#mapa">Ver mapa</a>
+      </div>
+    </div>
+    <div class="arco" role="img" aria-label="Torá / Escrituras"></div>
+  </div>
+</section>
+
+<main id="contenido">
+
+<section class="bloque" id="mapa">
+  <div class="cab"><div><span class="eyebrow">Mapa de la guía</span><h2>De la crítica a la misión</h2></div>
+  <button type="button" class="btn btn-chico btn-linea anotar" data-sec="Mapa">✎ Anotar</button></div>
+  <div class="card">
+    <div class="timeline" role="list">
+      <div class="tl-item" role="listitem"><div class="tl-dot"></div><h5>Crítica textual</h5><p>¿Qué texto leemos y por qué confiamos?</p></div>
+      <div class="tl-item" role="listitem"><div class="tl-dot"></div><h5>Juan 8 · Luz</h5><p>Fiesta, adulterio, «Yo soy la luz»</p></div>
+      <div class="tl-item" role="listitem"><div class="tl-dot"></div><h5>Juan 8 · Libres</h5><p>Permanecer, hijo vs esclavo, Abraham</p></div>
+      <div class="tl-item" role="listitem"><div class="tl-dot"></div><h5>Intimidad</h5><p>El discípulo a quien Jesús amaba</p></div>
+      <div class="tl-item" role="listitem"><div class="tl-dot"></div><h5>Cena</h5><p>Palabras del Señor en la mesa</p></div>
+      <div class="tl-item" role="listitem"><div class="tl-dot"></div><h5>Juan 15</h5><p>Amigos, amor sacrificial</p></div>
+      <div class="tl-item" role="listitem"><div class="tl-dot"></div><h5>15–16</h5><p>Mundo, Espíritu, «conviene que me vaya»</p></div>
+    </div>
+  </div>
+  <div class="card hilo">
+    <h3>Jesús es el centro</h3>
+    <p>La luz del templo, la Torá, el juicio, la cruz, la libertad, la amistad y la misión se concentran en una sola persona: el Hijo que revela al Padre.</p>
+  </div>
+</section>
+
+<section class="bloque" id="critica">
+  <div class="cab"><span class="num">01</span><div><span class="eyebrow">Fundamento</span><h2>Crítica textual: ¿qué texto leemos?</h2></div>
+  <button type="button" class="btn btn-chico btn-linea anotar" data-sec="Crítica textual">✎ Anotar</button></div>
+  <div class="grid2">
+    <div class="card">
+      <span class="etiqueta azul">Observación</span>
+      <h3>No tenemos los originales</h3>
+      <p>Los autógrafos se escribieron en materiales perecederos: papiro y pergamino. Con el uso y el clima se deterioran. Lo que tenemos son <strong>copias</strong> —muchas—, hechas a mano a lo largo de siglos.</p>
+      <figure class="img-card"><img src="../img/pergamino.webp" alt="Pergamino antiguo" loading="lazy" width="800" height="500"><figcaption>Materiales antiguos: frágiles, preciosos, copiados a mano.</figcaption></figure>
+    </div>
+    <div class="card">
+      <span class="etiqueta terra">Distinción clave</span>
+      <h3>Baja crítica y alta crítica</h3>
+      <p><strong>Baja crítica (crítica textual):</strong> reconstruir el texto más cercano al original comparando manuscritos. Pregunta: <em>«¿Qué decía el texto?»</em></p>
+      <p><strong>Alta crítica:</strong> estudia autoría, fecha, fuentes y composición literaria. Pregunta: <em>«¿Cómo y cuándo se formó este escrito?»</em></p>
+      <p class="muted">En esta guía nos enfocamos en la baja crítica: por qué confiamos en el texto de Juan que leemos.</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Dos criterios prácticos</h3>
+    <div class="grid2">
+      <div><h4>1. Intervalo original → copia más antigua</h4><p>Cuanto menor es la brecha entre la composición y la copia más temprana conservada, más cerca estamos del texto inicial.</p></div>
+      <div><h4>2. Número de copias</h4><p>Más manuscritos independientes permiten comparar variantes y detectar errores de copia con mayor seguridad.</p></div>
+    </div>
+    <details class="acordeon">
+      <summary>Comparación orientativa (cifras aproximadas y discutidas)</summary>
+      <div class="acordeon-body">
+        <p>Las cifras exactas varían según especialistas; úsalas como <strong>orden de magnitud</strong>, no como dogma:</p>
+        <ul>
+          <li><strong>Homero, Odisea:</strong> la brecha entre composición y los manuscritos más antiguos completos suele medirse en muchos siglos (a menudo se habla de un milenio o más para ejemplares sustanciales).</li>
+          <li><strong>Nuevo Testamento:</strong> fragmento temprano del Evangelio de Juan: <span class="pill-ref">P52</span> (papiro Rylands), datado con frecuencia hacia <strong>~125–150 d.C.</strong> (rangos más amplios existen). Contiene porciones de Juan 18.</li>
+          <li>Papiros importantes de Juan: <span class="pill-ref">P66</span> y <span class="pill-ref">P75</span> (siglo II/III, según dataciones habituales), con texto extenso.</li>
+        </ul>
+        <p class="muted">Conclusión pedagógica: el NT, y Juan en particular, goza de un testimonio manuscrito relativamente temprano y abundante frente a muchas obras clásicas.</p>
+      </div>
+    </details>
+  </div>
+  <div class="card">
+    <span class="etiqueta">Caso de estudio</span>
+    <h3>La perícopa de la adúltera (Juan 7:53–8:11)</h3>
+    <div class="oia">
+      <div class="caja obs"><strong>Observación</strong>Esta perícopa <em>no aparece</em> en los manuscritos más antiguos de Juan: P66, P75, Códice Sinaítico (ℵ) y Códice Vaticano (B), entre otros.</div>
+      <div class="caja int"><strong>Interpretación</strong>La mayoría de editores críticos la marcan como texto de tradición posterior o de ubicación incierta. Eso no niega la verdad teológica de la gracia; sí exige honestidad histórica.</div>
+      <div class="caja apl"><strong>Aplicación</strong>Podemos predicar su mensaje (gracia + llamado a no pecar) con transparencia: «la tradición lo preservó; los MSS más tempranos de Juan no lo traen aquí».</div>
+    </div>
+    <p class="verso">«Ni yo te condeno; vete, y no peques más.»<cite>Juan 8:11 (texto tradicional)</cite></p>
+  </div>
+  <div class="card quiz" data-quiz="q1">
+    <h3>Preguntas de repaso · Crítica textual</h3>
+    <div class="q"><b>1.</b> ¿Qué estudia principalmente la <em>baja crítica</em>?<br>
+      <label><input type="radio" name="q1a" value="0"> Autoría y fuentes literarias del libro</label>
+      <label><input type="radio" name="q1a" value="1"> La reconstrucción del texto más cercano al original</label>
+      <label><input type="radio" name="q1a" value="0"> La aplicación pastoral del pasaje</label>
+      <div class="feedback" data-ok="1"></div></div>
+    <div class="q"><b>2.</b> ¿Qué es cierto sobre Juan 7:53–8:11 en los MSS más tempranos?<br>
+      <label><input type="radio" name="q1b" value="1"> Está ausente en P66, P75, Sinaítico y Vaticano</label>
+      <label><input type="radio" name="q1b" value="0"> Aparece en todos los papiros del siglo II</label>
+      <label><input type="radio" name="q1b" value="0"> Solo falta en traducciones modernas</label>
+      <div class="feedback" data-ok="1"></div></div>
+    <button type="button" class="btn btn-chico btn-azul" data-check>Comprobar</button>
+  </div>
+</section>
+
+<section class="bloque" id="juan8a">
+  <div class="cab"><span class="num">02</span><div><span class="eyebrow">Juan 8 · Fiesta de los Tabernáculos</span><h2>A. La mujer · B. Yo soy la luz</h2></div>
+  <button type="button" class="btn btn-chico btn-linea anotar" data-sec="Juan 8 — Luz del mundo">✎ Anotar</button></div>
+  <div class="card">
+    <span class="etiqueta azul">Contexto</span>
+    <h3>La fiesta y el simbolismo del templo</h3>
+    <p>En la Fiesta de los Tabernáculos (Sukkot) había rituales de <strong>agua</strong> y de <strong>luz</strong>. Jesús ya se había puesto en el centro del agua (<span class="pill-ref">Jn 7:37–38</span>). Ahora se pone en el centro de la luz (<span class="pill-ref">8:12</span>). Como en el AT, los ritos del templo apuntan más allá de sí mismos.</p>
+    <div class="grid2">
+      <figure class="img-card"><img src="../img/luz.webp" alt="Luz entre árboles" loading="lazy"><figcaption>La luz: símbolo festivo que Jesús reclama para sí.</figcaption></figure>
+      <figure class="img-card"><img src="../img/tora.webp" alt="Rollo de la Torá" loading="lazy"><figcaption>La Torá era llamada «luz» (Sal 119:105; Sal 19).</figcaption></figure>
+    </div>
+  </div>
+  <div class="card">
+    <h3>A. La mujer sorprendida en adulterio (7:53–8:11)</h3>
+    <p class="muted">Recordatorio: ver sección de crítica textual sobre su ausencia en MSS tempranos. El relato tradicional enseña con claridad la dinámica de la gracia.</p>
+    <ul>
+      <li><strong>La trampa:</strong> los líderes traen a la mujer (no al hombre) para poner a Jesús entre la ley (<span class="pill-ref">Dt 22:22–24</span>) y la opinión romana / su propia reputación.</li>
+      <li><strong>«El que de vosotros esté sin pecado…»</strong> — expone a los acusadores; la ley que usan como arma se vuelve espejo.</li>
+      <li><strong>Gracia en acción:</strong> «Ni yo te condeno; vete, y no peques más.» Ni condenación barata ni permiso para seguir en pecado: perdón + nuevo camino.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>B. «Yo soy la luz del mundo» (8:12–30)</h3>
+    <p class="verso">«Yo soy la luz del mundo; el que me sigue, no andará en tinieblas…»<cite>Juan 8:12</cite></p>
+    <details class="acordeon" open>
+      <summary>De arriba / de abajo · apariencias · mesías político</summary>
+      <div class="acordeon-body">
+        <p>Jesús distingue: Él es <strong>de arriba</strong>; ellos juzgan <strong>según la carne</strong> / apariencias (<span class="pill-ref">8:15,23</span>). Esperan un mesías político y no reconocen al enviado del Padre. Por eso: «si no creéis que yo soy, <strong>moriréis en vuestros pecados</strong>» (<span class="pill-ref">8:24</span>).</p>
+      </div>
+    </details>
+    <details class="acordeon">
+      <summary>«Cuando hayáis levantado al Hijo del Hombre» (8:28)</summary>
+      <div class="acordeon-body">
+        <p>El «levantar» une <strong>cruz y exaltación</strong>: <span class="pill-ref">Jn 3:14</span> (serpiente de Nm 21), <span class="pill-ref">8:28</span>, <span class="pill-ref">12:32–33</span>. La cruz es trono: ahí se ve que el Padre lo envió. Eco de <span class="pill-ref">Dn 7:13</span> (Hijo del Hombre) y del <strong>YO SOY</strong> (<span class="pill-ref">Éx 3:14</span>; Jn 8:24,28,58).</p>
+        <p class="muted">Nota: el hilo del «levantar» no es principalmente Juan 13 (servicio); está en 3:14; 8:28; 12:32–33.</p>
+      </div>
+    </details>
+    <details class="acordeon">
+      <summary>La «bomba» judía: la Torá era luz — Jesús es la luz</summary>
+      <div class="acordeon-body">
+        <p>Salmo 119:105: «Lámpara es a mis pies tu palabra». Salmo 19: la ley del Señor ilumina. Jesús no solo trae luz: <strong>Él es</strong> la luz. Seguirlo es permanecer en la verdad de Dios, no solo en la ley como sistema.</p>
+        <p>Paralelo de Génesis 1: Dios dijo «sea la luz»; en Juan, la Palabra es vida y luz de los hombres (<span class="pill-ref">Jn 1:4–9</span>).</p>
+      </div>
+    </details>
+    <div class="oia">
+      <div class="caja obs"><strong>Observación</strong>La luz expone. Quien no quiere venir a la luz ya está bajo juicio por el rechazo (<span class="pill-ref">Jn 3:19–21</span>).</div>
+      <div class="caja int"><strong>Interpretación</strong>El juicio no es solo futuro externo: es autoexposición al rechazar a Jesús, la revelación verdadera de Dios.</div>
+      <div class="caja apl"><strong>Aplicación</strong>Lo que respondes a Jesús —recibirlo o rechazarlo— es salvación o juicio. Dios habló por la palabra; ahora habla por el Hijo.</div>
+    </div>
+  </div>
+  <div class="card quiz" data-quiz="q2">
+    <h3>Preguntas de repaso · Luz del mundo</h3>
+    <div class="q"><b>1.</b> ¿Con qué rito de la fiesta conecta especialmente Juan 8:12?<br>
+      <label><input type="radio" name="q2a" value="1"> Las antorchas / iluminación del templo</label>
+      <label><input type="radio" name="q2a" value="0"> El sacrificio diario del cordero</label>
+      <label><input type="radio" name="q2a" value="0"> El lavatorio de los sacerdotes</label>
+      <div class="feedback" data-ok="1"></div></div>
+    <div class="q"><b>2.</b> ¿Dónde más desarrolla Juan el «levantar» al Hijo del Hombre?<br>
+      <label><input type="radio" name="q2b" value="1"> Juan 3:14 y 12:32–33 (y 8:28)</label>
+      <label><input type="radio" name="q2b" value="0"> Solo en Juan 13</label>
+      <label><input type="radio" name="q2b" value="0"> Solo en el Apocalipsis</label>
+      <div class="feedback" data-ok="1"></div></div>
+    <button type="button" class="btn btn-chico btn-azul" data-check>Comprobar</button>
+  </div>
+</section>
+
+<section class="bloque" id="juan8b">
+  <div class="cab"><span class="num">03</span><div><span class="eyebrow">Juan 8:31–59</span><h2>Permanecer · verdad · libertad · Abraham</h2></div>
+  <button type="button" class="btn btn-chico btn-linea anotar" data-sec="Juan 8 — Permanecer y libertad">✎ Anotar</button></div>
+  <div class="card">
+    <p>Al final de 8:30, «muchos creyeron en él». Pero, como en <span class="pill-ref">Juan 6</span>, Jesús <strong>empuja al discipulado</strong>: la fe superficial se filtra.</p>
+    <p class="verso">«Si vosotros permaneciereis en mi palabra, seréis verdaderamente mis discípulos; y conoceréis la verdad, y la verdad os hará libres.»<cite>Juan 8:31–32</cite></p>
+  </div>
+  <div class="card">
+    <h3>Esclavo vs hijo en la casa (8:35–36)</h3>
+    <div class="compare">
+      <div class="lado mal"><small class="eyebrow">Esclavo</small><p>Puede estar en la casa, pero <strong>no hereda</strong>. No queda para siempre.</p></div>
+      <div class="flecha">→</div>
+      <div class="lado bien"><small class="eyebrow" style="color:#E9E2D2">Hijo</small><p>Es el <strong>heredero</strong>. Solo el Hijo puede dar verdadera libertad y pertenencia a la familia.</p></div>
+    </div>
+    <p>Jesús es el único con derecho pleno en la casa del Padre. El linaje o la observancia religiosa, sin Él, es como ser esclavo en la casa: cerca, pero sin herencia. Conexión con <span class="pill-ref">Jn 1:12–13</span>: nacer de Dios para ser hijos.</p>
+    <p class="verso">«Así que, si el Hijo os libertare, seréis verdaderamente libres.»<cite>Juan 8:36</cite></p>
+  </div>
+  <div class="card">
+    <h3>«Jamás hemos sido esclavos» · linaje · Génesis 18</h3>
+    <p>Responden apelando a Abraham. Jesús concede la descendencia biológica («sé que sois descendientes de Abraham») pero señala: <strong>procuráis matarme</strong> — las obras delatan otro padre.</p>
+    <figure class="img-card"><img src="../img/abraham.webp" alt="Referencia a Abraham" loading="lazy"><figcaption>Abraham: no solo sangre, sino fe y acogida.</figcaption></figure>
+    <details class="acordeon" open>
+      <summary>¿Qué hizo Abraham distinto? (Génesis 18)</summary>
+      <div class="acordeon-body">
+        <p>En Gn 18 Abraham <strong>recibe / acoge</strong> al Señor (hospitalidad, diálogo, fe). Ellos quieren <strong>matar</strong> al que habla la verdad oída del Padre. Misma sangre, obras opuestas → otro padre espiritual.</p>
+        <p><strong>Ironía:</strong> «Un padre tenemos, que es Dios» (8:41), mientras el que es «de arriba» está delante. Jesús: si Dios fuera su padre, lo amarían (8:42). Luego: «Vosotros de vuestro padre el diablo sois» (8:44) — mentira y homicidio como marcas.</p>
+      </div>
+    </details>
+    <p><strong>Paralelo AT:</strong> seguridad falsa («Dios no permitirá… / somos el pueblo») mientras no se oye a los profetas — camino al exilio. Aquí: seguridad en el linaje mientras se rechaza al Hijo.</p>
+  </div>
+  <div class="card">
+    <span class="etiqueta terra">Aplicación</span>
+    <h3>1 Juan 3 · religión vs relación</h3>
+    <ul>
+      <li>Amar a Dios y ser indiferente al hermano es autoengaño (<span class="pill-ref">1 Jn 4:20</span>; 3:14–18).</li>
+      <li>Caín: lo que brotó del corazón fue homicidio. La indiferencia puede ser una forma de odio.</li>
+      <li>Las obras no <em>compran</em> la relación; pero la relación verdadera (permanecer en su palabra) <strong>transforma</strong> las obras.</li>
+      <li>Se puede «hacer todo» religiosamente y seguir esclavizado al pecado. Hay diferencia entre sistema religioso y vida con el Hijo.</li>
+    </ul>
+  </div>
+  <div class="card quiz" data-quiz="q3">
+    <h3>Preguntas de repaso · Libertad</h3>
+    <div class="q"><b>1.</b> Según 8:35–36, ¿quién puede dar libertad verdadera de pertenecer a la familia de Dios?<br>
+      <label><input type="radio" name="q3a" value="1"> El Hijo, porque es el heredero de la casa</label>
+      <label><input type="radio" name="q3a" value="0"> El linaje de Abraham por sí solo</label>
+      <label><input type="radio" name="q3a" value="0"> La observancia perfecta de la ley</label>
+      <div class="feedback" data-ok="1"></div></div>
+    <div class="q"><b>2.</b> En Génesis 18, ¿qué contraste destaca la clase frente a los interlocutores de Jesús?<br>
+      <label><input type="radio" name="q3b" value="1"> Abraham acogió al Señor; ellos buscan matar a Jesús</label>
+      <label><input type="radio" name="q3b" value="0"> Abraham construyó el templo; ellos no</label>
+      <label><input type="radio" name="q3b" value="0"> Abraham escribió la Torá</label>
+      <div class="feedback" data-ok="1"></div></div>
+    <button type="button" class="btn btn-chico btn-azul" data-check>Comprobar</button>
+  </div>
+</section>
+
+<section class="bloque" id="intimidad">
+  <div class="cab"><span class="num">04</span><div><span class="eyebrow">El discípulo amado</span><h2>Intimidad de Juan con Jesús</h2></div>
+  <button type="button" class="btn btn-chico btn-linea anotar" data-sec="Intimidad Juan–Jesús">✎ Anotar</button></div>
+  <div class="grid2">
+    <div class="card">
+      <span class="etiqueta">Círculo íntimo</span>
+      <h3>Pedro, Jacobo y Juan</h3>
+      <ul>
+        <li>Hija de Jairo — <span class="pill-ref">Mc 5:37</span></li>
+        <li>Transfiguración — <span class="pill-ref">Mt 17:1</span></li>
+        <li>Getsemaní — <span class="pill-ref">Mc 14:33</span></li>
+      </ul>
+      <p class="muted">No es exclusividad arrogante: es confianza encomendada en momentos clave.</p>
+    </div>
+    <div class="card">
+      <span class="etiqueta terra">Identidad</span>
+      <h3>«El discípulo a quien Jesús amaba»</h3>
+      <p><span class="pill-ref">Jn 13:23</span>; <span class="pill-ref">19:26</span>; <span class="pill-ref">20:2</span>; <span class="pill-ref">21:7,20</span>. No presume: se define por <strong>ser amado</strong>.</p>
+      <p>En la cena: recostado junto a Jesús, pregunta quién traicionará (<span class="pill-ref">13:23–25</span>).</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="grid3">
+      <div><h4>Al pie de la cruz</h4><p><span class="pill-ref">19:26–27</span> — Jesús le confía a su madre. Intimidad = responsabilidad.</p></div>
+      <div><h4>Sepulcro y lago</h4><p>«Vio y creyó» (<span class="pill-ref">20:8</span>). «¡Es el Señor!» (<span class="pill-ref">21:7</span>).</p></div>
+      <div><h4>Transformación</h4><p>De «hijo del trueno» (<span class="pill-ref">Mc 3:17</span>; <span class="pill-ref">Lc 9:54</span>) a apóstol del amor (1 Juan).</p></div>
+    </div>
+    <p class="muted"><strong>Posible parentesco (con cautela):</strong> comparando Mt 27:56, Mc 15:40 y Jn 19:25, algunos identifican a Salomé (madre de Juan) como hermana de María; Juan sería primo de Jesús. Es hipótesis plausible, no certeza.</p>
+    <p><strong>Hilo con Juan 8:</strong> la intimidad nace de <em>permanecer en su palabra</em>, no del linaje ni de la religión vacía.</p>
+  </div>
+  <div class="card quiz" data-quiz="q4">
+    <h3>Pregunta de repaso</h3>
+    <div class="q"><b>¿Cómo se presenta Juan a sí mismo en su Evangelio?</b><br>
+      <label><input type="radio" name="q4a" value="0"> Como el mayor de los apóstoles</label>
+      <label><input type="radio" name="q4a" value="1"> Como «el discípulo a quien Jesús amaba»</label>
+      <label><input type="radio" name="q4a" value="0"> Como primo confirmado de Jesús</label>
+      <div class="feedback" data-ok="1"></div></div>
+    <button type="button" class="btn btn-chico btn-azul" data-check>Comprobar</button>
+  </div>
+</section>
+
+<section class="bloque" id="cena">
+  <div class="cab"><span class="num">05</span><div><span class="eyebrow">La noche de la traición</span><h2>Palabras de Jesús en la Cena del Señor</h2></div>
+  <button type="button" class="btn btn-chico btn-linea anotar" data-sec="Cena del Señor">✎ Anotar</button></div>
+  <div class="grid2">
+    <div class="card"><figure class="img-card"><img src="../img/cena.webp" alt="Cena / mesa" loading="lazy"><figcaption>La mesa: cuerpo, sangre, memoria y esperanza.</figcaption></figure></div>
+    <div class="card">
+      <span class="etiqueta azul">Sinópticos + Pablo</span>
+      <ul>
+        <li>«Tomad, comed; esto es mi cuerpo» — <span class="pill-ref">Mt 26:26</span>; Lc 22:19 (+ «haced esto en memoria de mí»)</li>
+        <li>«Esto es mi sangre del nuevo pacto…» — <span class="pill-ref">Mt 26:27–28</span>; Lc 22:20</li>
+        <li>«No beberé más… hasta… en el reino» — <span class="pill-ref">Mt 26:29</span></li>
+        <li>«¡Cuánto he deseado comer esta pascua…!» — <span class="pill-ref">Lc 22:15</span></li>
+        <li>Pablo: memoria + anuncio de la muerte «hasta que él venga» — <span class="pill-ref">1 Co 11:24–26</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <h3>En Juan: no el pan y la copa, sí la intimidad de esa noche</h3>
+    <ul>
+      <li>Lavamiento: «Si no te lavare, no tendrás parte conmigo» — <span class="pill-ref">Jn 13:8</span></li>
+      <li>Mandamiento nuevo: «Que os améis unos a otros; como yo os he amado» — <span class="pill-ref">13:34–35</span></li>
+      <li>Discurso de despedida: capítulos <strong>14–17</strong> (casa del Padre, vid, Espíritu, oración sacerdotal)</li>
+    </ul>
+    <p>Ahí está Juan recostado junto a Él (<span class="pill-ref">13:23</span>): la Cena es doctrina y también cercanía.</p>
+  </div>
+</section>
+
+<section class="bloque" id="juan15">
+  <div class="cab"><span class="num">06</span><div><span class="eyebrow">Juan 15:12–16</span><h2>De siervos a amigos · amor sacrificial</h2></div>
+  <button type="button" class="btn btn-chico btn-linea anotar" data-sec="Juan 15 — Amigos">✎ Anotar</button></div>
+  <div class="card">
+    <figure class="img-card"><img src="../img/vid.webp" alt="Viña" loading="lazy"><figcaption>La vid: permanecer, fructificar, amar.</figcaption></figure>
+    <p class="verso">«Nadie tiene mayor amor que este, que uno ponga su vida por sus amigos.»<cite>Juan 15:13</cite></p>
+    <div class="grid2">
+      <div><h4>De siervos a amigos (15:15)</h4><p>Ya no solo siervos: amigos, porque Jesús les da a conocer lo que oyó del Padre. Amistad = intimidad + revelación.</p></div>
+      <div><h4>Marca del discípulo</h4><p><strong>Obediencia</strong> + <strong>amor sacrificial</strong> (como el de Jesús; cf. Lázaro amado, y la cruz). Así el mundo conoce (<span class="pill-ref">13:35</span>).</p></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>1 Juan frente a la élite del «conocimiento secreto»</h3>
+    <p>Falsos maestros formaban una élite espiritual con gnosis especial. Juan responde: conoce a Dios quien <strong>le ama, le obedece y ama al hermano</strong> (<span class="pill-ref">1 Jn 2:3–4</span>; <span class="pill-ref">4:12,20</span>). Hacemos visible a Dios (<span class="pill-ref">Jn 13:35</span>; <span class="pill-ref">17:21–23</span>; 1 Jn 4:12).</p>
+    <p>El Espíritu sigue revelando a Jesús (<span class="pill-ref">15:26</span>; 16:13–14).</p>
+    <p class="verso">«No me elegisteis vosotros a mí, sino que yo os elegí a vosotros…»<cite>Juan 15:16</cite></p>
+    <p>Eco de <span class="pill-ref">Dt 7:6–8</span> y <span class="pill-ref">9:4–6</span>: elección por amor, no por mérito — para que no se suba la cabeza al entrar a la tierra. Gracia → misión: ir y llevar fruto.</p>
+  </div>
+  <div class="card quiz" data-quiz="q5">
+    <h3>Pregunta de repaso</h3>
+    <div class="q"><b>Según 15:13–15, el fruto de permanecer incluye un amor…</b><br>
+      <label><input type="radio" name="q5a" value="1"> Sacrificial (dar la vida por los amigos)</label>
+      <label><input type="radio" name="q5a" value="0"> Solo sentimental y privado</label>
+      <label><input type="radio" name="q5a" value="0"> Reservado a una élite con conocimiento secreto</label>
+      <div class="feedback" data-ok="1"></div></div>
+    <button type="button" class="btn btn-chico btn-azul" data-check>Comprobar</button>
+  </div>
+</section>
+
+<section class="bloque" id="juan16">
+  <div class="cab"><span class="num">07</span><div><span class="eyebrow">Juan 15:17–16:7</span><h2>Pacto en Cristo · mundo · Espíritu</h2></div>
+  <button type="button" class="btn btn-chico btn-linea anotar" data-sec="Juan 15–16 — Mundo y Espíritu">✎ Anotar</button></div>
+  <div class="card">
+    <span class="etiqueta azul">Teología del pacto</span>
+    <h3>Redefinido en torno a Cristo — sin «borrar» a Israel</h3>
+    <p>No se trata de sustituir a Israel. La historia de Israel <strong>se cumple</strong> en Jesús. Los hijos de Abraham por la fe (<span class="pill-ref">Gá 3:7,29</span>) forman el pueblo rescatado. Promesas a Abraham y a David encuentran su «sí» en Él. <strong>Jesús es el centro</strong>; de Él salen los testigos al mundo.</p>
+  </div>
+  <div class="card">
+    <h3>El mundo aborrece · expulsión · testimonio</h3>
+    <ul>
+      <li>Las tinieblas aborrecen la luz porque Jesús testifica que sus obras son malas (<span class="pill-ref">15:18–25</span>; <span class="pill-ref">3:19–20</span>; <span class="pill-ref">7:7</span>).</li>
+      <li>Discípulos: en el mundo, no del mundo (<span class="pill-ref">15:19</span>; <span class="pill-ref">17:14–16</span>).</li>
+      <li>Expulsados de sinagogas (<span class="pill-ref">16:1–4</span>); cf. el ciego en <span class="pill-ref">9:22,34</span>.</li>
+      <li>Testimonio doble: el Espíritu de verdad y los discípulos (<span class="pill-ref">15:26–27</span>).</li>
+    </ul>
+    <p class="verso">«Os conviene que yo me vaya; porque si no me fuera, el Consolador no vendría a vosotros.»<cite>Juan 16:7</cite></p>
+    <p>La vida cristiana es posible por la presencia de Cristo en nosotros mediante el Espíritu. En medio de la hostilidad, permanecer produce amor y obediencia: testimonio visible de quién es Dios.</p>
+  </div>
+  <div class="card quiz" data-quiz="q6">
+    <h3>Preguntas de repaso · Mundo y Espíritu</h3>
+    <div class="q"><b>1.</b> La guía afirma sobre Israel y la iglesia que…<br>
+      <label><input type="radio" name="q6a" value="1"> Israel no es sustituido; su historia se cumple en Jesús</label>
+      <label><input type="radio" name="q6a" value="0"> La iglesia reemplaza por completo a Israel sin continuidad</label>
+      <label><input type="radio" name="q6a" value="0"> Las promesas a David quedaron anuladas</label>
+      <div class="feedback" data-ok="1"></div></div>
+    <div class="q"><b>2.</b> Según 16:7, ¿por qué «conviene» que Jesús se vaya?<br>
+      <label><input type="radio" name="q6b" value="1"> Para que venga el Consolador</label>
+      <label><input type="radio" name="q6b" value="0"> Para abandonar el mundo definitivamente</label>
+      <label><input type="radio" name="q6b" value="0"> Para que los discípulos ya no den testimonio</label>
+      <div class="feedback" data-ok="1"></div></div>
+    <button type="button" class="btn btn-chico btn-azul" data-check>Comprobar</button>
+  </div>
+</section>
+
+<section class="bloque" id="libreta">
+  <div class="cab"><span class="num">✎</span><div><span class="eyebrow">Espacio personal</span><h2>Mi libreta</h2></div></div>
+  <div class="lib-wrap">
+    <p style="margin:0 0 12px;opacity:.9;font-size:.92rem">Dos modos: <strong>pluma digital</strong> (canvas, presión, varias páginas) y <strong>escribir normal</strong> (texto enriquecido). Todo se guarda en este navegador (localStorage).</p>
+    <div class="lib-tabs" role="tablist">
+      <button type="button" class="on" role="tab" aria-selected="true" data-libtab="pen">🖋 Pluma digital</button>
+      <button type="button" role="tab" aria-selected="false" data-libtab="write">⌨ Escribir normal</button>
+    </div>
+    <div class="lib-panel on" id="panelPen" role="tabpanel">
+      <div class="pen-toolbar" id="penToolbar">
+        <button type="button" class="tool on" data-tool="pen" title="Pluma">Pluma</button>
+        <button type="button" class="tool" data-tool="high" title="Resaltador">Resaltador</button>
+        <button type="button" class="tool" data-tool="erase" title="Borrador">Borrador</button>
+        <span style="width:1px;height:22px;background:rgba(211,199,173,.3)"></span>
+        <button type="button" class="swatch on" data-color="#28374A" style="background:#28374A" title="Azul tinta"></button>
+        <button type="button" class="swatch" data-color="#754437" style="background:#754437" title="Terracota"></button>
+        <button type="button" class="swatch" data-color="#1a5f2a" style="background:#1a5f2a" title="Verde"></button>
+        <button type="button" class="swatch" data-color="#8B0000" style="background:#8B0000" title="Rojo"></button>
+        <button type="button" class="swatch" data-color="#f4e28c" style="background:#f4e28c" title="Amarillo resaltador"></button>
+        <label>Grosor <input type="range" id="penWidth" min="1" max="28" value="3"></label>
+        <label>Fondo <select id="penBg"><option value="lined">Renglones</option><option value="grid">Cuadrícula</option><option value="blank">En blanco</option></select></label>
+        <button type="button" class="tool" id="penUndo">Deshacer</button>
+        <button type="button" class="tool" id="penRedo">Rehacer</button>
+        <button type="button" class="tool" id="penClear">Limpiar</button>
+        <button type="button" class="tool" id="penExport">PNG</button>
+        <button type="button" class="tool" id="penPrev">←</button>
+        <span id="penPageLbl" style="font-size:.8rem">1 / 1</span>
+        <button type="button" class="tool" id="penNext">→</button>
+        <button type="button" class="tool" id="penAdd">+ Página</button>
+      </div>
+      <div class="canvas-box" id="canvasBox">
+        <canvas id="penCanvas" width="1000" height="700" aria-label="Lienzo de pluma digital"></canvas>
+      </div>
+      <div class="pen-status"><span id="penSave">Listo</span><span>Consejo: con stylus se ignora la palma (touch). Presión si el dispositivo la reporta.</span></div>
+    </div>
+    <div class="lib-panel" id="panelWrite" role="tabpanel">
+      <div class="write-toolbar">
+        <select class="write-select" id="writeSec" aria-label="Sección de apuntes">
+          <option value="general">General</option>
+          <option value="critica">Crítica textual</option>
+          <option value="luz">Juan 8 — Luz</option>
+          <option value="libres">Juan 8 — Libres</option>
+          <option value="intimidad">Intimidad</option>
+          <option value="cena">Cena</option>
+          <option value="amigos">Juan 15 — Amigos</option>
+          <option value="mundo">Juan 15–16 — Mundo</option>
+        </select>
+        <button type="button" data-cmd="bold"><b>N</b></button>
+        <button type="button" data-cmd="italic"><i>I</i></button>
+        <button type="button" data-cmd="insertUnorderedList">• Lista</button>
+        <button type="button" id="writeExport">Descargar .txt</button>
+        <button type="button" id="writePrint">Imprimir</button>
+        <button type="button" id="writeClear">Vaciar sección</button>
+      </div>
+      <div class="hoja-texto" id="writeArea" contenteditable="true" role="textbox" aria-multiline="true" data-placeholder="Escribe tus apuntes aquí…"></div>
+      <div class="write-status"><span id="writeSave">Listo</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="serif">«Jesús es el centro.» — hilo de esta guía</div>
+  <p>Evangelio de Juan · Guía de clase · Eli Nogueron · Referencias RVR1960</p>
+  <div class="creditos">Imágenes del sitio (<code>img/</code>): luz, Torá, pergamino, Abraham, cena, vid, fondo de arcos. Cifras de manuscritos: orientativas; consulta aparatos críticos (NA/UBS) para detalle. La perícopa 7:53–8:11 se presenta con honestidad textual.</div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var bar=document.getElementById('barraProg');
+function onScroll(){
+  var h=document.documentElement;
+  var max=h.scrollHeight-h.clientHeight;
+  bar.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+  var ids=['inicio','critica','juan8a','juan8b','intimidad','cena','juan15','juan16','libreta'];
+  var cur=ids[0];
+  for(var i=0;i<ids.length;i++){
+    var el=document.getElementById(ids[i]);
+    if(el && el.getBoundingClientRect().top<=100) cur=ids[i];
+  }
+  document.querySelectorAll('.tabs a').forEach(function(a){
+    a.classList.toggle('activo', a.getAttribute('href')==='#'+cur);
+  });
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+document.querySelectorAll('[data-check]').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var box=btn.closest('[data-quiz]');
+    box.querySelectorAll('.q').forEach(function(q){
+      var fb=q.querySelector('.feedback');
+      var ok=fb.getAttribute('data-ok');
+      var sel=q.querySelector('input:checked');
+      fb.classList.remove('ok','no');
+      if(!sel){ fb.textContent='Elige una opción.'; fb.classList.add('no'); return; }
+      if(sel.value===ok){ fb.textContent='✓ Correcto.'; fb.classList.add('ok'); }
+      else { fb.textContent='✗ Revisa el apartado de arriba.'; fb.classList.add('no'); }
+    });
+  });
+});
+
+var KEY_PEN='juan-guia-clase-pen-v1';
+var KEY_TXT='juan-guia-clase-txt-v1';
+document.querySelectorAll('[data-libtab]').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('[data-libtab]').forEach(function(x){x.classList.remove('on');x.setAttribute('aria-selected','false');});
+    b.classList.add('on'); b.setAttribute('aria-selected','true');
+    document.getElementById('panelPen').classList.toggle('on', b.dataset.libtab==='pen');
+    document.getElementById('panelWrite').classList.toggle('on', b.dataset.libtab==='write');
+    if(b.dataset.libtab==='pen') resizeCanvas();
+  });
+});
+
+var writeArea=document.getElementById('writeArea');
+var writeSec=document.getElementById('writeSec');
+var writeSave=document.getElementById('writeSave');
+var txtState={};
+try{ txtState=JSON.parse(localStorage.getItem(KEY_TXT)||'{}')||{}; }catch(e){ txtState={}; }
+function loadTxt(){ writeArea.innerHTML=txtState[writeSec.value]||''; }
+function saveTxt(){
+  txtState[writeSec.value]=writeArea.innerHTML;
+  try{ localStorage.setItem(KEY_TXT, JSON.stringify(txtState)); writeSave.textContent='Guardado ✓'; }
+  catch(e){ writeSave.textContent='No se pudo guardar'; }
+  clearTimeout(saveTxt._t); saveTxt._t=setTimeout(function(){ writeSave.textContent='Listo'; },1200);
+}
+writeSec.addEventListener('change',function(){ loadTxt(); });
+writeArea.addEventListener('input',saveTxt);
+loadTxt();
+document.querySelectorAll('[data-cmd]').forEach(function(b){
+  b.addEventListener('click',function(){ document.execCommand(b.dataset.cmd,false,null); writeArea.focus(); saveTxt(); });
+});
+document.getElementById('writeExport').onclick=function(){
+  var tmp=document.createElement('div'); tmp.innerHTML=writeArea.innerHTML;
+  var text=(tmp.innerText||'').trim()||'(vacío)';
+  var blob=new Blob(['# '+writeSec.options[writeSec.selectedIndex].text+'\n\n'+text],{type:'text/plain'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='apuntes-juan-'+writeSec.value+'.txt'; a.click(); URL.revokeObjectURL(a.href);
+};
+document.getElementById('writePrint').onclick=function(){ window.print(); };
+document.getElementById('writeClear').onclick=function(){
+  if(confirm('¿Vaciar los apuntes de esta sección?')){ writeArea.innerHTML=''; saveTxt(); }
+};
+
+document.querySelectorAll('.anotar').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var sec=btn.getAttribute('data-sec')||'General';
+    document.querySelector('[data-libtab="write"]').click();
+    document.getElementById('libreta').scrollIntoView({behavior:'smooth'});
+    var map={
+      'Crítica textual':'critica','Juan 8 — Luz del mundo':'luz','Juan 8 — Permanecer y libertad':'libres',
+      'Intimidad Juan–Jesús':'intimidad','Cena del Señor':'cena','Juan 15 — Amigos':'amigos',
+      'Juan 15–16 — Mundo y Espíritu':'mundo','Mapa':'general'
+    };
+    writeSec.value=map[sec]||'general';
+    loadTxt();
+    if(!writeArea.innerHTML.trim()){
+      writeArea.innerHTML='<div><b>'+sec+'</b></div><div><br></div>';
+      saveTxt();
+    }
+    writeArea.focus();
+  });
+});
+
+var canvas=document.getElementById('penCanvas');
+var ctx=canvas.getContext('2d');
+var penSave=document.getElementById('penSave');
+var tool='pen', color='#28374A', drawing=false, last=null;
+var pages=[], pageIdx=0, undoStack=[], redoStack=[];
+var penDetected=false;
+
+function blankPage(){ return { strokes:[], bg: document.getElementById('penBg').value }; }
+try{
+  var raw=JSON.parse(localStorage.getItem(KEY_PEN)||'null');
+  if(raw && raw.pages && raw.pages.length){ pages=raw.pages; pageIdx=Math.min(raw.pageIdx||0, pages.length-1); }
+  else { pages=[blankPage()]; }
+}catch(e){ pages=[blankPage()]; }
+
+function persistPen(){
+  try{
+    localStorage.setItem(KEY_PEN, JSON.stringify({pages:pages, pageIdx:pageIdx}));
+    penSave.textContent='Guardado ✓';
+  }catch(e){ penSave.textContent='Límite de almacenamiento'; }
+  clearTimeout(persistPen._t); persistPen._t=setTimeout(function(){ penSave.textContent='Listo'; },1000);
+}
+
+function resizeCanvas(){
+  var box=document.getElementById('canvasBox');
+  var w=box.clientWidth;
+  var h=Math.min(window.innerHeight*0.62, 520);
+  var ratio=window.devicePixelRatio||1;
+  canvas.style.width=w+'px'; canvas.style.height=h+'px';
+  canvas.width=Math.floor(w*ratio); canvas.height=Math.floor(h*ratio);
+  ctx.setTransform(ratio,0,0,ratio,0,0);
+  redraw();
+}
+
+function drawBg(){
+  var w=canvas.clientWidth, h=canvas.clientHeight;
+  var bg=(pages[pageIdx]&&pages[pageIdx].bg)||document.getElementById('penBg').value;
+  ctx.save();
+  ctx.setTransform(window.devicePixelRatio||1,0,0,window.devicePixelRatio||1,0,0);
+  ctx.fillStyle='#f7f1e4';
+  ctx.fillRect(0,0,w,h);
+  ctx.strokeStyle='rgba(40,90,140,.22)';
+  ctx.lineWidth=1;
+  if(bg==='lined'){
+    for(var y=36;y<h;y+=28){ ctx.beginPath(); ctx.moveTo(16,y); ctx.lineTo(w-16,y); ctx.stroke(); }
+    ctx.strokeStyle='rgba(192,57,43,.4)'; ctx.beginPath(); ctx.moveTo(52,8); ctx.lineTo(52,h-8); ctx.stroke();
+  } else if(bg==='grid'){
+    for(var x=20;x<w;x+=24){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke(); }
+    for(var y2=20;y2<h;y2+=24){ ctx.beginPath(); ctx.moveTo(0,y2); ctx.lineTo(w,y2); ctx.stroke(); }
+  }
+  ctx.restore();
+}
+
+function redraw(){
+  drawBg();
+  var strokes=(pages[pageIdx]&&pages[pageIdx].strokes)||[];
+  strokes.forEach(function(s){ paintStroke(s); });
+  document.getElementById('penPageLbl').textContent=(pageIdx+1)+' / '+pages.length;
+}
+
+function paintStroke(s){
+  if(!s.points||s.points.length<1) return;
+  ctx.save();
+  ctx.lineCap='round'; ctx.lineJoin='round';
+  if(s.tool==='erase'){
+    ctx.globalCompositeOperation='destination-out';
+    ctx.strokeStyle='rgba(0,0,0,1)';
+    ctx.lineWidth=s.width||16;
+  } else if(s.tool==='high'){
+    ctx.globalCompositeOperation='multiply';
+    ctx.strokeStyle=s.color||'#f4e28c';
+    ctx.globalAlpha=0.35;
+    ctx.lineWidth=s.width||18;
+  } else {
+    ctx.globalCompositeOperation='source-over';
+    ctx.strokeStyle=s.color||'#28374A';
+    ctx.globalAlpha=1;
+    ctx.lineWidth=s.width||3;
+  }
+  ctx.beginPath();
+  var p0=s.points[0];
+  ctx.moveTo(p0.x,p0.y);
+  for(var i=1;i<s.points.length;i++){
+    var p=s.points[i];
+    if(s.tool==='pen' && p.w){ ctx.lineWidth=p.w; }
+    ctx.lineTo(p.x,p.y);
+  }
+  if(s.points.length===1){ ctx.arc(p0.x,p0.y,(s.width||3)/2,0,Math.PI*2); ctx.fillStyle=ctx.strokeStyle; ctx.fill(); }
+  else ctx.stroke();
+  ctx.restore();
+}
+
+function pos(e){
+  var r=canvas.getBoundingClientRect();
+  return {x:(e.clientX-r.left), y:(e.clientY-r.top)};
+}
+function pressureWidth(e, base){
+  var p = (typeof e.pressure==='number' && e.pressure>0) ? e.pressure : 0.5;
+  if(e.pointerType==='touch') p=0.5;
+  return Math.max(1, base * (0.45 + p*1.1));
+}
+var curStroke=null;
+function startDraw(e){
+  if(e.pointerType==='touch' && penDetected) return;
+  if(e.pointerType==='pen') penDetected=true;
+  drawing=true;
+  canvas.setPointerCapture(e.pointerId);
+  var base=parseFloat(document.getElementById('penWidth').value)||3;
+  if(tool==='high') base=Math.max(base,14);
+  if(tool==='erase') base=Math.max(base,16);
+  var pt=pos(e); pt.w=pressureWidth(e, base);
+  curStroke={tool:tool, color:color, width:base, points:[pt]};
+  last=pt; e.preventDefault();
+}
+function moveDraw(e){
+  if(!drawing||!curStroke) return;
+  if(e.pointerType==='touch' && penDetected) return;
+  var pt=pos(e); pt.w=pressureWidth(e, curStroke.width);
+  curStroke.points.push(pt);
+  ctx.save();
+  ctx.lineCap='round'; ctx.lineJoin='round';
+  if(tool==='erase'){ ctx.globalCompositeOperation='destination-out'; ctx.strokeStyle='rgba(0,0,0,1)'; ctx.lineWidth=pt.w; }
+  else if(tool==='high'){ ctx.globalCompositeOperation='multiply'; ctx.strokeStyle=color; ctx.globalAlpha=0.35; ctx.lineWidth=pt.w; }
+  else { ctx.globalCompositeOperation='source-over'; ctx.strokeStyle=color; ctx.lineWidth=pt.w; }
+  ctx.beginPath(); ctx.moveTo(last.x,last.y); ctx.lineTo(pt.x,pt.y); ctx.stroke();
+  ctx.restore();
+  last=pt; e.preventDefault();
+}
+function endDraw(e){
+  if(!drawing) return;
+  drawing=false;
+  if(curStroke && curStroke.points.length){
+    undoStack.push(pages[pageIdx].strokes.slice());
+    redoStack=[];
+    pages[pageIdx].strokes.push(curStroke);
+    persistPen();
+  }
+  curStroke=null;
+}
+canvas.addEventListener('pointerdown',startDraw);
+canvas.addEventListener('pointermove',moveDraw);
+canvas.addEventListener('pointerup',endDraw);
+canvas.addEventListener('pointercancel',endDraw);
+canvas.addEventListener('pointerleave',function(e){ if(drawing) endDraw(e); });
+
+document.querySelectorAll('#penToolbar [data-tool]').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#penToolbar [data-tool]').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on'); tool=b.dataset.tool;
+  });
+});
+document.querySelectorAll('#penToolbar .swatch').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#penToolbar .swatch').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on'); color=b.dataset.color;
+  });
+});
+document.getElementById('penBg').addEventListener('change',function(){
+  pages[pageIdx].bg=this.value; redraw(); persistPen();
+});
+document.getElementById('penUndo').onclick=function(){
+  if(!pages[pageIdx].strokes.length) return;
+  redoStack.push(pages[pageIdx].strokes.slice());
+  pages[pageIdx].strokes.pop();
+  redraw(); persistPen();
+};
+document.getElementById('penRedo').onclick=function(){
+  if(!redoStack.length) return;
+  undoStack.push(pages[pageIdx].strokes.slice());
+  pages[pageIdx].strokes=redoStack.pop();
+  redraw(); persistPen();
+};
+document.getElementById('penClear').onclick=function(){
+  if(!confirm('¿Limpiar esta página?')) return;
+  undoStack.push(pages[pageIdx].strokes.slice());
+  pages[pageIdx].strokes=[]; redraw(); persistPen();
+};
+document.getElementById('penExport').onclick=function(){
+  var a=document.createElement('a');
+  a.download='libreta-juan-p'+(pageIdx+1)+'.png';
+  a.href=canvas.toDataURL('image/png'); a.click();
+};
+document.getElementById('penPrev').onclick=function(){
+  if(pageIdx>0){ pageIdx--; undoStack=[]; redoStack=[]; document.getElementById('penBg').value=pages[pageIdx].bg||'lined'; redraw(); persistPen(); }
+};
+document.getElementById('penNext').onclick=function(){
+  if(pageIdx<pages.length-1){ pageIdx++; undoStack=[]; redoStack=[]; document.getElementById('penBg').value=pages[pageIdx].bg||'lined'; redraw(); persistPen(); }
+};
+document.getElementById('penAdd').onclick=function(){
+  pages.push(blankPage()); pageIdx=pages.length-1; undoStack=[]; redoStack=[]; redraw(); persistPen();
+};
+addEventListener('resize',function(){ if(document.getElementById('panelPen').classList.contains('on')) resizeCanvas(); });
+setTimeout(resizeCanvas, 50);
+})();
+</script>
+</body>
+</html>
