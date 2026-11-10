@@ -1,198 +1,455 @@
 <!doctype html><html lang="es-MX"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#FBF5EE"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Tríadas">
+<meta name="theme-color" content="#F6F0E9"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Tríadas">
 <title>Tríadas: cerradas, abiertas e inversiones · App de Eli</title>
 <meta name="description" content="App para estudiar tríadas cerradas, abiertas e inversiones con pentagrama, piano y corrección paso a paso.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='52'%3E🌸%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233B2A22'/%3E%3Cg fill='%23F3DCDC'%3E%3Cellipse cx='32' cy='46' rx='9' ry='6.5'/%3E%3Cellipse cx='32' cy='32' rx='9' ry='6.5' fill='%23EBD9A6'/%3E%3Cellipse cx='32' cy='18' rx='9' ry='6.5' fill='%23B9D0E2'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Noto+Music&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
-<style>:root{--cream:#FBF5EE;--paper:#FFFDFA;--blush:#F4D3CF;--blush2:#EBB2AE;--rose:#C9677B;--rose2:#A84D63;--sage:#BFD9EE;--sage2:#5B8FC0;--gold:#E8C766;--lav:#CFE4F5;--ink:#5A3E33;--coffee:#6B4A3A;--latte:#C9A27E;--baby:#BFD9EE;--baby2:#5B8FC0;--yel:#F8E8A6;--ink2:#8A6B5C;--line:#EADFD3;--bad:#D9485F;--ok:#4A86B8;--r:24px;--sh:0 1px 2px rgba(80,50,40,.06),0 8px 24px -8px rgba(120,70,60,.18);--fs:'Cormorant Garamond',Georgia,serif;--fh:'Caveat',cursive;--fu:'Nunito',system-ui,sans-serif}
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Music&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.webp">
+<style>:root{
+--bg:#F6F0E9;--bg2:#EFE6DC;--surface:#FFFCF8;--surface2:#FBF6F0;
+--ink:#33241D;--ink2:#6E5D52;--ink3:#A0907F;--line:#E9DED2;--line2:#F1E9E0;
+--mocha:#7C5A48;--latte:#C8AE96;
+--rose:#B56F78;--rose-d:#9A5560;--rose-l:#E9C7C6;--rose-t:#F7E9E7;
+--blue:#5F87A6;--blue-d:#4A6F8C;--blue-l:#BFD3E2;--blue-t:#EAF1F6;
+--gold:#B8923F;--gold-l:#EBD9A6;--gold-t:#F8F0DC;
+--bad:#C2525E;--bad-t:#FBEDEE;--ok:#4F7FA3;--ok-t:#EAF2F8;
+--r0:#B56F78;--r1:#B8923F;--r2:#5F87A6;
+--rad:24px;--rad-s:16px;--rad-xs:12px;
+--sh1:0 1px 2px rgba(51,36,29,.05),0 2px 8px -2px rgba(51,36,29,.06);
+--sh2:0 1px 2px rgba(51,36,29,.04),0 12px 32px -12px rgba(78,52,40,.22);
+--sh3:0 24px 64px -20px rgba(51,36,29,.35);
+--fd:'Fraunces','Noto Music',Georgia,'Times New Roman',serif;--fu:'DM Sans','Noto Music',system-ui,-apple-system,sans-serif;
+--ease:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.4,.5,1);
+--nav-h:76px;
+}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{background:var(--cream)}
-body{margin:0;font-variant-numeric:lining-nums;font-family:var(--fu);color:var(--ink);background:var(--cream);min-height:100vh;overflow-x:hidden;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .32 0 0 0 0 .25 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
-.wash{position:fixed;border-radius:50%;filter:blur(40px);opacity:.55;z-index:-1;pointer-events:none}
-.w1{width:320px;height:300px;background:radial-gradient(circle,#F6C9CC 0,#F6C9CC00 70%);top:-90px;right:-110px}
-.w2{width:300px;height:300px;background:radial-gradient(circle,#CFE4F5 0,#CFE4F500 70%);bottom:80px;left:-140px}
-.w3{width:240px;height:240px;background:radial-gradient(circle,#D6E8F7 0,#D6E8F700 70%);top:40%;right:-120px}
-#app{max-width:560px;margin:0 auto;padding:0 16px calc(110px + env(safe-area-inset-bottom))}
-header.top{display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top)) 2px 6px;position:sticky;top:0;z-index:20;background:linear-gradient(var(--cream) 70%,#FBF5EE00)}
-.brand{display:flex;align-items:center;gap:10px;cursor:pointer}
-.brand .logo{width:42px;height:42px}
-.brand h1{font-family:var(--fs);font-style:italic;font-weight:600;font-size:28px;margin:0;line-height:1;letter-spacing:.2px}
-.brand small{display:block;font-family:var(--fh);font-size:17px;color:var(--rose);margin-top:1px}
-.pills{display:flex;gap:6px;align-items:center}
-.pill{display:flex;align-items:center;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:6px 10px;font-weight:800;font-size:14px;box-shadow:var(--sh)}
-.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;font-size:18px;cursor:pointer;box-shadow:var(--sh);color:var(--ink)}
-h2.sec{font-family:var(--fs);font-weight:600;font-size:30px;margin:18px 2px 4px;line-height:1.05}
-h2.sec em{color:var(--rose);font-style:italic}
-p.lead{margin:2px 2px 14px;color:var(--ink2);font-size:15.5px;line-height:1.45}
-.hand{font-family:var(--fh);color:var(--rose);font-size:21px}
-.card{background:var(--paper);border-radius:var(--r);box-shadow:var(--sh);border:1px solid #F1E6DB;padding:16px;position:relative;margin-bottom:14px;animation:up .45s cubic-bezier(.2,.8,.2,1) both}
-.tape{position:absolute;top:-10px;left:50%;width:84px;height:22px;transform:translateX(-50%) rotate(-3deg);background:repeating-linear-gradient(45deg,#F2C6C6cc 0 6px,#F7DADAcc 6px 12px);border-radius:3px;box-shadow:0 1px 2px #0001}
-.tape.sage{background:repeating-linear-gradient(45deg,#BBD7EEcc 0 6px,#D7E8F6cc 6px 12px);transform:translateX(-50%) rotate(2deg)}
-.tape.lav{background:repeating-linear-gradient(90deg,#C9E0F3cc 0 5px,#DDEBF8cc 5px 10px)}
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-/* Masonry tipo Pinterest */
-.masonry{columns:2;column-gap:12px}
-.pin{break-inside:avoid;display:block;margin-bottom:12px;border-radius:22px;overflow:hidden;background:var(--paper);box-shadow:var(--sh);border:1px solid #F1E6DB;cursor:pointer;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s;animation:up .5s cubic-bezier(.2,.8,.2,1) both;position:relative}
-.pin:active{transform:scale(.97)}
-.pin .art{display:block;width:100%}
-.pin .body{padding:10px 13px 13px}
-.pin h3{font-family:var(--fs);font-size:22px;font-weight:600;margin:0;line-height:1.05}
-.pin p{margin:4px 0 0;font-size:13px;color:var(--ink2);line-height:1.35}
-.pin .badge{position:absolute;top:10px;right:10px;background:var(--rose);color:#fff;font-weight:800;font-size:12px;border-radius:99px;padding:3px 9px}
-.hero{display:flex;gap:14px;align-items:center;padding:18px 16px;overflow:hidden;background:linear-gradient(135deg,#FFF9F5,#FBEDEA)}
-.hero h2{font-family:var(--fs);font-size:31px;margin:0;line-height:1;font-weight:600}
-.hero h2 em{color:var(--rose)}
-.hero p{margin:6px 0 10px;color:var(--ink2);font-size:14px}
-.ring{flex:0 0 auto}
-.btn{appearance:none;border:0;border-radius:18px;padding:15px 18px;font:800 16px var(--fu);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .12s,background .2s,opacity .2s;min-height:52px;color:var(--ink)}
-.btn:active{transform:scale(.96)}
-.btn.pri{background:linear-gradient(135deg,#D47487,#B9566D);color:#fff;box-shadow:0 8px 18px -8px #B9566D}
-.btn.sage{background:linear-gradient(135deg,#8DB8DE,#5B8FC0);color:#fff;box-shadow:0 8px 18px -8px #5B8FC0}
-.btn.soft{background:#F6ECE6;color:var(--ink)}
-.btn.ghost{background:transparent;border:1.5px solid var(--line)}
-.btn[disabled]{opacity:.4;pointer-events:none}
-.btn.sm{min-height:40px;padding:9px 13px;font-size:14px;border-radius:14px}
-.btn.block{width:100%}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-.row>.btn{flex:1}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:1.5px solid var(--line);background:var(--paper);border-radius:99px;padding:10px 15px;font:700 15px var(--fu);cursor:pointer;min-height:46px;color:var(--ink);transition:all .15s}
-.chip.on{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-1px)}
-.chip.ok{background:#E3EFF9;border-color:var(--ok);color:#2F5F8C}
-.chip.bad{background:#FBE3E8;border-color:var(--bad);color:#9E2C47}
-.chip.cif{font-family:var(--fs);font-size:22px;font-weight:700;padding:6px 16px}
-.label{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink2);margin:14px 2px 8px}
-/* Pentagrama */
-.staff{width:100%;display:block;overflow:visible;max-height:240px}
-.staffwrap{background:#FFFEFC;border-radius:18px;border:1px solid #F0E5DA;padding:4px 2px;background-image:linear-gradient(#fff0,#fff0)}
-.slot{cursor:pointer}
-.slot:active .nh{opacity:.6}
-.nh{transition:fill .3s}
-.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1) both}
-@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:none;opacity:1}}
-.shake{animation:shake .45s}
-@keyframes shake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
-/* Piano */
-.pianoWrap{overflow-x:auto;overflow-y:hidden;border-radius:16px;padding:0 0 6px;scrollbar-width:thin;-webkit-overflow-scrolling:touch;background:linear-gradient(#6B4A3A,#4E3529);padding:10px 8px 8px;box-shadow:inset 0 2px 8px #0004}
-.piano{position:relative;height:168px;display:flex}
-.wk{flex:0 0 46px;height:100%;background:linear-gradient(#fff,#FBF7F2);border:1px solid #d9cfc6;border-radius:0 0 9px 9px;margin-right:2px;position:relative;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;font-size:11px;font-weight:800;color:#a99;transition:background .12s;user-select:none;box-shadow:inset 0 -5px 0 #eee3d9}
-.wk.c::before{content:attr(data-o);position:absolute;top:6px;font-size:10px;color:#cbb}
-.bk{position:absolute;top:0;width:30px;height:100px;background:linear-gradient(#7A5646,#4A3226);border-radius:0 0 7px 7px;z-index:2;cursor:pointer;box-shadow:inset 0 -4px 0 #000a,0 2px 3px #0005;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:9px;color:#bbb;font-weight:700;user-select:none;line-height:1.1;text-align:center}
-.wk.sel{background:linear-gradient(#F9D5DA,#F2B9C2)!important;color:var(--rose2)}
-.bk.sel{background:linear-gradient(#E27F96,#B9566D)!important;color:#fff}
-.wk.hi{background:linear-gradient(#FFF,#FBEFC0)!important;color:#8F7020}
-.bk.hi{background:linear-gradient(#E8C766,#B08C2E)!important;color:#fff}
-.wk.r0{background:linear-gradient(#fff,#F7C9D0)!important;color:#B9566D}.bk.r0{background:linear-gradient(#E58A9C,#B9566D)!important;color:#fff}
-.wk.r1{background:linear-gradient(#fff,#F8E8A6)!important;color:#8F7020}.bk.r1{background:linear-gradient(#F0D27A,#B08C2E)!important;color:#fff}
-.wk.r2{background:linear-gradient(#fff,#CFE4F5)!important;color:#3F6F9C}.bk.r2{background:linear-gradient(#8DB8DE,#4C7FAF)!important;color:#fff}
-.wk.bad{background:linear-gradient(#fff,#F6B7C4)!important}.bk.bad{background:linear-gradient(#ee7a93,#C23D5D)!important}
-.wk:active,.wk.press{background:linear-gradient(#f5efe9,#eadfd5)}
-/* Quiz */
-.qtop{display:flex;align-items:center;gap:10px;margin:8px 0 12px}
-.bar{flex:1;height:10px;border-radius:99px;background:#EFE4DA;overflow:hidden}
-.bar>i{display:block;height:100%;background:linear-gradient(90deg,#E7A0AC,#C9677B);border-radius:99px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
-.prompt{text-align:center;padding:18px 14px 14px}
-.prompt .k{font-size:12px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:var(--ink2)}
-.prompt .cif{font-family:var(--fs);font-weight:700;font-size:58px;line-height:1;margin:6px 0 4px}
-.prompt .pos{display:inline-block;background:#F6E7E3;color:var(--rose2);border-radius:99px;padding:6px 14px;font-weight:800;font-size:15px}
-.prompt .hint{font-family:var(--fh);font-size:20px;color:var(--sage2);margin-top:6px}
-.slots{display:flex;gap:10px;justify-content:center;margin:6px 0 4px}
-.nslot{width:88px;height:70px;border-radius:18px;border:2px dashed #E3D3C6;display:grid;place-items:center;font-family:var(--fs);font-size:30px;font-weight:700;cursor:pointer;background:#FFFDFB;position:relative;transition:all .15s}
-.nslot small{position:absolute;top:4px;font:800 10px var(--fu);color:var(--ink2);letter-spacing:.5px}
-.nslot.act{border-style:solid;border-color:var(--rose);box-shadow:0 0 0 4px #F4D3CF88}
-.nslot.bad{border-color:var(--bad);background:#FDEDF0;border-style:solid}
-.nslot.ok{border-color:var(--ok);background:#EDF5FC;border-style:solid}
-.letters{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.letters .chip,.accs .chip{padding:0;min-height:52px;font-size:17px;border-radius:14px}
-.accs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:6px}
-.accs .chip{font-family:'Noto Music',var(--fu);font-size:22px}
-/* Hoja de retroalimentación */
-.sheet{position:fixed;left:0;right:0;bottom:0;z-index:60;max-height:88vh;overflow:auto;background:var(--paper);border-radius:28px 28px 0 0;box-shadow:0 -12px 40px -10px #6a3a4055;padding:10px 18px calc(18px + env(safe-area-inset-bottom));transform:translateY(calc(100% + 80px));transition:transform .42s cubic-bezier(.2,.9,.2,1),visibility 0s .42s;visibility:hidden;max-width:600px;margin:0 auto}
-.sheet.open{transform:none;visibility:visible;transition:transform .42s cubic-bezier(.2,.9,.2,1)}
-body.still .card,body.still .pin,body.still .pop{animation:none!important}
-.sheet .grab{width:44px;height:5px;border-radius:9px;background:#E6D9CE;margin:0 auto 10px}
-.scrim{position:fixed;inset:0;background:#3b2b3433;z-index:55;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(2px)}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--fu);color:var(--ink);background:var(--bg);min-height:100vh;overflow-x:hidden;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;font-optical-sizing:auto}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+a{color:inherit;text-decoration:none}
+b,strong{font-weight:600;color:var(--ink)}
+.shell{min-height:100vh}
+#app{max-width:520px;margin:0 auto;padding:0 20px calc(var(--nav-h) + 40px + env(safe-area-inset-bottom))}
+#app.full{padding-bottom:120px}
+.view{animation:viewIn .5s var(--ease) both}
+@keyframes viewIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.still .view,.still .view *{animation:none!important}
+.stag>*{animation:viewIn .55s var(--ease) both}
+.stag>*:nth-child(2){animation-delay:.04s}.stag>*:nth-child(3){animation-delay:.08s}.stag>*:nth-child(4){animation-delay:.12s}.stag>*:nth-child(5){animation-delay:.16s}.stag>*:nth-child(6){animation-delay:.2s}.stag>*:nth-child(7){animation-delay:.24s}.stag>*:nth-child(n+8){animation-delay:.28s}
+
+/* ---------- Top bar ---------- */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:calc(20px + env(safe-area-inset-top)) 0 16px}
+.hello small{display:block;font-size:13px;font-weight:500;color:var(--ink3);letter-spacing:.02em}
+.hello h1{font-family:var(--fd);font-weight:500;font-size:28px;line-height:1.1;margin:2px 0 0;letter-spacing:-.01em}
+.hello h1 em{font-style:italic;color:var(--rose)}
+.chips-top{display:flex;gap:8px;align-items:center}
+.stat-chip{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:99px;background:var(--surface);box-shadow:var(--sh1);font-weight:600;font-size:14px;font-variant-numeric:tabular-nums}
+.stat-chip svg{width:16px;height:16px}
+.icon-btn{width:40px;height:40px;border-radius:50%;background:var(--surface);box-shadow:var(--sh1);display:grid;place-items:center;transition:transform .2s var(--ease)}
+.icon-btn:active{transform:scale(.92)}
+.icon-btn svg{width:20px;height:20px}
+
+/* ---------- Section titles ---------- */
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;margin:32px 0 16px}
+.sec-h h2{font-family:var(--fd);font-weight:500;font-size:22px;margin:0;letter-spacing:-.01em}
+.sec-h a,.sec-h span{font-size:13px;font-weight:600;color:var(--ink3)}
+.page-h{padding:calc(24px + env(safe-area-inset-top)) 0 8px}
+.page-h .eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+.page-h h1{font-family:var(--fd);font-weight:500;font-size:34px;line-height:1.08;margin:8px 0 8px;letter-spacing:-.02em}
+.page-h h1 em{font-style:italic;color:var(--mocha)}
+.page-h p{margin:0;color:var(--ink2);font-size:15px}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+
+/* ---------- Cards ---------- */
+.card{background:var(--surface);border-radius:var(--rad);box-shadow:var(--sh2);padding:24px;margin-bottom:16px;position:relative}
+.card.flat{box-shadow:var(--sh1)}
+.card.tight{padding:16px}
+.tap{transition:transform .25s var(--ease),box-shadow .25s var(--ease);cursor:pointer}
+.tap:active{transform:scale(.98)}
+@media (hover:hover){.tap:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(51,36,29,.04),0 20px 40px -16px rgba(78,52,40,.3)}}
+
+/* photo */
+.ph{position:relative;overflow:hidden;background:var(--bg2)}
+.ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph::after{content:"";position:absolute;inset:0;pointer-events:none}
+.ov-cafe::after{background:linear-gradient(180deg,rgba(51,36,29,.05) 0%,rgba(51,36,29,.25) 45%,rgba(43,29,22,.82) 100%)}
+.ov-rose::after{background:linear-gradient(180deg,rgba(181,111,120,.10),rgba(120,62,72,.78))}
+.ov-blue::after{background:linear-gradient(180deg,rgba(95,135,166,.10),rgba(46,74,98,.80))}
+.ov-gold::after{background:linear-gradient(180deg,rgba(184,146,63,.08),rgba(98,72,30,.80))}
+.ov-soft::after{background:linear-gradient(180deg,rgba(246,240,233,0),rgba(51,36,29,.35))}
+.tint-rose>img{filter:sepia(.18) saturate(.85)}
+.tint-blue>img{filter:saturate(.8) hue-rotate(-6deg)}
+.tint-gold>img{filter:sepia(.25) saturate(.9)}
+
+/* hero */
+.hero{border-radius:28px;min-height:360px;color:#FFF8F1;box-shadow:var(--sh3);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;isolation:isolate}
+.hero>img{object-position:50% 30%}
+.hero .in{position:relative;z-index:2}
+.hero .tag svg{width:14px;height:14px}
+.hero .tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,248,241,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,248,241,.25);padding:6px 12px;border-radius:99px;margin-bottom:16px}
+.hero h2{font-family:var(--fd);font-weight:400;font-size:34px;line-height:1.05;margin:0 0 8px;letter-spacing:-.02em;color:#FFF8F1}
+.hero h2 em{font-style:italic;color:#F3D2D0}
+.hero p{margin:0 0 20px;color:rgba(255,248,241,.82);font-size:15px;max-width:30ch}
+.hero .row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.hero .ringbox{position:absolute;top:20px;right:20px;z-index:2}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 24px;border-radius:99px;font-weight:600;font-size:16px;letter-spacing:.005em;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s,opacity .2s;white-space:nowrap;user-select:none}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px}
+.btn.pri{background:var(--ink);color:#FFF8F1;box-shadow:0 8px 20px -8px rgba(51,36,29,.55)}
+.btn.rose{background:var(--rose);color:#fff;box-shadow:0 8px 20px -8px rgba(154,85,96,.6)}
+.btn.blue{background:var(--blue);color:#fff;box-shadow:0 8px 20px -8px rgba(74,111,140,.6)}
+.btn.light{background:#FFF8F1;color:var(--ink)}
+.btn.soft{background:var(--bg2);color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink2);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.sm{height:40px;padding:0 16px;font-size:14px}
+.btn.block{display:flex;width:100%}
+.btn[disabled]{opacity:.38;pointer-events:none;box-shadow:none}
+.btn-row{display:flex;gap:8px}.btn-row>.btn{flex:1}
+
+/* stats strip */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.stat{background:var(--surface);border-radius:var(--rad-s);padding:16px 12px;box-shadow:var(--sh1);text-align:left}
+.stat .v{font-family:var(--fd);font-size:26px;font-weight:500;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat .v small{font-family:var(--fu);font-size:13px;color:var(--ink3);font-weight:500;margin-left:2px}
+.stat .t{font-size:12px;color:var(--ink3);margin-top:8px;font-weight:500}
+.stat .ic{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;margin-bottom:12px}
+.stat .ic svg{width:16px;height:16px}
+
+/* mode carousel */
+.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:4px 20px 16px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.mode{flex:0 0 72%;max-width:260px;height:300px;border-radius:var(--rad);scroll-snap-align:start;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;box-shadow:var(--sh2)}
+.mode .in{position:relative;z-index:2}
+.mode .ico{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:grid;place-items:center;margin-bottom:12px;border:1px solid rgba(255,255,255,.28)}
+.mode .ico svg{width:22px;height:22px}
+.mode h3{font-family:var(--fd);font-weight:500;font-size:26px;margin:0 0 4px;letter-spacing:-.01em;color:#fff}
+.mode p{margin:0;font-size:14px;color:rgba(255,255,255,.85);line-height:1.4}
+
+/* list rows */
+.lrow{display:flex;align-items:center;gap:16px;background:var(--surface);border-radius:20px;padding:12px;box-shadow:var(--sh1);margin-bottom:8px}
+.lrow .thumb{width:72px;height:72px;border-radius:14px;flex:0 0 auto}
+.lrow .tx{flex:1;min-width:0}
+.lrow .tx small{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.lrow .tx h3{font-family:var(--fd);font-weight:500;font-size:18px;margin:2px 0 2px;line-height:1.2;letter-spacing:-.005em}
+.lrow .tx p{margin:0;font-size:13px;color:var(--ink2);line-height:1.35}
+.lrow .end{flex:0 0 auto;color:var(--ink3);display:grid;place-items:center;width:32px;height:32px}
+.lrow .end svg{width:18px;height:18px}
+.check-ok{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center}
+.check-ok svg{width:16px!important;height:16px!important}
+
+/* wide feature */
+.feat{border-radius:var(--rad);min-height:180px;padding:20px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:var(--sh2);margin-bottom:12px}
+.feat .in{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.feat h3{font-family:var(--fd);font-weight:500;font-size:24px;margin:0 0 4px;color:#fff;letter-spacing:-.01em}
+.feat p{margin:0;font-size:14px;color:rgba(255,255,255,.85)}
+.feat .go{width:44px;height:44px;border-radius:50%;background:#FFF8F1;color:var(--ink);display:grid;place-items:center;flex:0 0 auto}
+.feat .go svg{width:20px;height:20px}
+.badge{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 8px;border-radius:99px;background:var(--rose);color:#fff;font-size:12px;font-weight:700}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.two .feat{min-height:200px;margin:0}
+.two .feat h3{font-size:20px}
+.verse{text-align:center;font-family:var(--fd);font-style:italic;color:var(--ink3);font-size:15px;margin:40px 0 8px}
+
+/* progress bar & ring */
+.pbar{height:6px;border-radius:99px;background:var(--line2);overflow:hidden}
+.pbar>i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--rose),var(--gold));transition:width .6s var(--ease)}
+.ring{display:block}
+.ring circle.fg{transition:stroke-dashoffset 1.1s var(--ease)}
+
+/* ---------- Nav ---------- */
+#nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;width:calc(100% - 24px);max-width:480px;transition:transform .35s var(--ease),opacity .3s}
+#nav.hide{transform:translate(-50%,140%);opacity:0;pointer-events:none}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);height:68px;padding:6px;border-radius:26px;background:rgba(255,252,248,.82);backdrop-filter:saturate(1.6) blur(22px);-webkit-backdrop-filter:saturate(1.6) blur(22px);box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 0 0 1px rgba(51,36,29,.06),0 18px 40px -16px rgba(51,36,29,.35)}
+.tabs a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-radius:20px;font-size:11px;font-weight:600;color:var(--ink3);transition:color .25s,background .3s var(--ease)}
+.tabs a svg{width:22px;height:22px;transition:transform .3s var(--spring)}
+.tabs a.on{color:var(--ink);background:var(--rose-t)}
+.tabs a.on svg{transform:translateY(-1px) scale(1.06);color:var(--rose-d)}
+.brandrail,.railfoot{display:none}
+
+/* ---------- Lesson ---------- */
+.cover{height:320px;margin:0 -20px;border-radius:0 0 32px 32px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top)) 20px 48px}
+.cover .in{position:relative;z-index:2}
+.cover .top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center}
+.glass-btn{width:40px;height:40px;border-radius:50%;background:rgba(255,248,241,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,248,241,.3);display:grid;place-items:center;color:#fff}
+.glass-btn svg{width:20px;height:20px}
+.glass-pill{height:32px;padding:0 12px;border-radius:99px;background:rgba(255,248,241,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,248,241,.3);display:inline-flex;align-items:center;font-size:12px;font-weight:600;letter-spacing:.04em}
+.cover h1{font-family:var(--fd);font-weight:400;font-size:34px;line-height:1.05;margin:8px 0 6px;letter-spacing:-.02em;color:#fff}
+.cover p{margin:0;color:rgba(255,255,255,.85);font-size:15px}
+.lesson-body{margin-top:-24px;position:relative;z-index:3}
+.prose{font-size:16px;line-height:1.6;color:var(--ink2)}
+.prose p{margin:0 0 12px}.prose p:last-child{margin:0}
+.formula{display:grid;gap:8px;margin:16px 0}
+.formula>div{background:var(--surface2);border-radius:var(--rad-xs);padding:12px 16px;font-size:14px;color:var(--ink2);box-shadow:inset 0 0 0 1px var(--line2)}
+.formula>div>b:first-child{display:block;font-size:15px;margin-bottom:2px}
+.formula .mono{font-family:var(--fd);font-style:italic;color:var(--mocha);font-size:15px}
+.tip{display:flex;gap:12px;background:var(--gold-t);border-radius:var(--rad-s);padding:16px;font-size:14.5px;line-height:1.55;color:var(--ink2);margin-top:16px}
+.tip .i{flex:0 0 32px;height:32px;border-radius:10px;background:#fff;display:grid;place-items:center;color:var(--gold)}
+.tip .i svg{width:18px;height:18px}
+.tip.blue{background:var(--blue-t)}.tip.blue .i{color:var(--blue)}
+.tip.rose{background:var(--rose-t)}.tip.rose .i{color:var(--rose)}
+.card-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px}
+.card-h h3{font-family:var(--fd);font-weight:500;font-size:20px;margin:0;letter-spacing:-.01em}
+.legend{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-size:12px;color:var(--ink2);margin:8px 0 0;font-weight:500}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:0}
+.steps li{counter-increment:s;position:relative;padding:0 0 20px 48px;font-size:15px;line-height:1.55;color:var(--ink2)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:32px;height:32px;border-radius:50%;background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--line);display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--ink)}
+.steps li::after{content:"";position:absolute;left:15.5px;top:34px;bottom:4px;width:1.5px;background:var(--line)}
+.steps li:last-child{padding-bottom:0}.steps li:last-child::after{display:none}
+.steps li:last-child::before{background:var(--ink);color:#fff;box-shadow:none}
+.quiz-opts{display:grid;gap:8px}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:12px 16px;border-radius:var(--rad-s);background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);font-weight:500;font-size:15px;text-align:left;transition:all .25s var(--ease);width:100%}
+.opt:active{transform:scale(.98)}
+.opt.on{box-shadow:inset 0 0 0 2px var(--ink);background:#fff}
+.opt.ok{box-shadow:inset 0 0 0 2px var(--ok);background:var(--ok-t);color:var(--blue-d)}
+.opt.bad{box-shadow:inset 0 0 0 2px var(--bad);background:var(--bad-t);color:var(--bad)}
+.opt .mk{width:24px;height:24px;flex:0 0 auto}
+.answer{margin-top:16px;border-radius:var(--rad-s);padding:16px;font-size:14.5px;line-height:1.55;animation:viewIn .4s var(--ease)}
+.answer.ok{background:var(--ok-t);color:#2E4E66}.answer.bad{background:var(--bad-t);color:#7A3038}
+.answer b{color:inherit}
+.lnav{display:flex;gap:8px;margin-top:24px}.lnav .btn{flex:1}
+
+/* ---------- Staff ---------- */
+.staff{display:block;width:100%;height:auto;overflow:visible}
+.staffbox{background:var(--surface2);border-radius:var(--rad-s);padding:16px 12px 8px;box-shadow:inset 0 0 0 1px var(--line2)}
+.staff .slot{cursor:pointer}
+.staff .slot .hl{opacity:0;transition:opacity .2s}
+.staff .slot:hover .hl{opacity:1}
+.staff .nh{transform-box:fill-box;transform-origin:center}
+.anim .nh{animation:noteIn .55s var(--spring) both}
+@keyframes noteIn{from{opacity:0;transform:translateY(-6px) scale(.6)}to{opacity:1;transform:none}}
+.ringpulse{animation:rp 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes rp{0%,100%{opacity:1}50%{opacity:.45}}
+
+/* ---------- Piano ---------- */
+.piano-wrap{position:relative;margin:16px -8px 0;border-radius:18px;overflow:hidden;background:linear-gradient(#2A1D17,#1B120E);padding:10px 0 12px;box-shadow:0 14px 30px -14px rgba(27,18,14,.7)}
+.piano-wrap::before,.piano-wrap::after{content:"";position:absolute;top:0;bottom:0;width:22px;z-index:5;pointer-events:none}
+.piano-wrap::before{left:0;background:linear-gradient(90deg,#1E1410,rgba(30,20,16,0))}
+.piano-wrap::after{right:0;background:linear-gradient(-90deg,#1E1410,rgba(30,20,16,0))}
+.piano-felt{position:absolute;left:0;right:0;top:8px;height:3px;background:linear-gradient(90deg,#8E3F4B,#B56F78,#8E3F4B);z-index:4;opacity:.9}
+.piano-sc{overflow-x:auto;scrollbar-width:none;padding:0 12px;scroll-behavior:smooth}
+.piano-sc::-webkit-scrollbar{display:none}
+.piano{position:relative;height:168px;margin-top:3px;--wk:42px}
+.wk{position:absolute;top:0;width:var(--wk);height:168px;border-radius:0 0 8px 8px;background:linear-gradient(180deg,#F4EEE6 0%,#FFFDF9 12%,#FBF7F1 85%,#EDE5DA 100%);box-shadow:inset -1px 0 0 rgba(0,0,0,.12),inset 0 -6px 0 #E3D9CC,0 2px 2px rgba(0,0,0,.3);display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding-bottom:12px;font-size:11px;font-weight:600;color:#A89888;cursor:pointer;transition:background .15s,transform .08s;user-select:none}
+.wk:active,.wk.press{transform:translateY(1px);box-shadow:inset -1px 0 0 rgba(0,0,0,.12),inset 0 -2px 0 #E3D9CC}
+.wk .oc{position:absolute;bottom:32px;font-size:9px;color:#C4B6A6;font-weight:600;letter-spacing:.04em}
+.bk{position:absolute;top:0;width:28px;height:104px;margin-left:-14px;border-radius:0 0 6px 6px;z-index:2;background:linear-gradient(180deg,#2B211C 0%,#1A1210 70%,#0F0A08 100%);box-shadow:inset 0 -5px 0 rgba(255,255,255,.07),inset 1px 0 0 rgba(255,255,255,.06),0 3px 5px rgba(0,0,0,.45);cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding-bottom:8px;font-size:7.5px;letter-spacing:-.1px;line-height:1.2;color:rgba(255,255,255,.55);font-weight:600;text-align:center;user-select:none;transition:transform .08s}
+.bk:active{transform:translateY(1px)}
+.wk .dot,.bk .dot{position:absolute;left:50%;width:24px;height:24px;margin-left:-12px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:700;box-shadow:0 4px 10px -2px rgba(0,0,0,.35);animation:dotIn .35s var(--spring)}
+.wk .dot{bottom:44px}.bk .dot{bottom:28px;width:20px;height:20px;margin-left:-10px;font-size:9px}
+@keyframes dotIn{from{transform:scale(0)}to{transform:scale(1)}}
+.wk.r0,.wk.r1,.wk.r2,.wk.sel{color:var(--ink)}
+.wk.r0{background:linear-gradient(180deg,#EED3D2,#F7E6E4 70%,#EBCFCD)}
+.wk.r1{background:linear-gradient(180deg,#EFE1BA,#F8EFD6 70%,#EADBAF)}
+.wk.r2{background:linear-gradient(180deg,#CFDDE9,#E6EEF5 70%,#C9D8E5)}
+.wk.sel{background:linear-gradient(180deg,#EAD9CC,#F6EDE5 70%,#E5D3C4)}
+.bk.r0{background:linear-gradient(180deg,#8E4E58,#6E3842)}.bk.r1{background:linear-gradient(180deg,#9A7A33,#735A22)}.bk.r2{background:linear-gradient(180deg,#4F7593,#3A5A73)}.bk.sel{background:linear-gradient(180deg,#6A4B3C,#4A3328)}
+.dot.r0{background:var(--r0)}.dot.r1{background:var(--r1)}.dot.r2{background:var(--r2)}.dot.sel{background:var(--ink)}
+
+/* ---------- Quiz ---------- */
+.qbar{display:flex;align-items:center;gap:12px;padding:calc(16px + env(safe-area-inset-top)) 0 16px;position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg) 75%,rgba(246,240,233,0))}
+.qbar .pbar{flex:1;height:10px}
+.qbar .cnt{font-size:13px;font-weight:600;color:var(--ink3);font-variant-numeric:tabular-nums;min-width:36px;text-align:right}
+.qhead{border-radius:var(--rad);overflow:hidden;box-shadow:var(--sh2);background:var(--surface);margin-bottom:16px}
+.qhead .band{height:72px;display:flex;align-items:flex-end;padding:16px 20px;color:#fff}
+.qhead .band .in{position:relative;z-index:2;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.qhead .band .in svg{width:16px;height:16px}
+.qhead .body{padding:16px 20px 20px;text-align:center}
+.qhead .k{font-size:14px;color:var(--ink2);margin-bottom:4px}
+.qhead .cif{font-family:var(--fd);font-weight:500;font-size:52px;line-height:1.05;letter-spacing:-.02em;margin:0 0 12px;font-variant-numeric:lining-nums}
+.pos-pill{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 16px;border-radius:99px;background:var(--rose-t);color:var(--rose-d);font-weight:600;font-size:14px}
+.pos-pill.q{background:var(--gold-t);color:#7D6224}
+.hint{font-size:13px;color:var(--ink3);margin-top:8px}
+.field-l{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:24px 0 8px}
+.field-l:first-child{margin-top:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.grid7{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.choice{min-height:52px;border-radius:var(--rad-xs);background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--line),var(--sh1);font-weight:600;font-size:16px;transition:all .2s var(--ease);display:flex;align-items:center;justify-content:center;padding:4px;text-align:center;line-height:1.15}
+.choice:active{transform:scale(.95)}
+.choice.on{background:var(--ink);color:#FFF8F1;box-shadow:0 6px 14px -6px rgba(51,36,29,.6)}
+.choice.cif{font-family:var(--fd);font-size:24px;font-weight:500;min-height:64px}
+.choice.sm{font-size:13px;min-height:44px}
+.choice[disabled]{opacity:.35}
+.choice.acc{font-size:20px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.nslot{height:80px;border-radius:var(--rad-s);background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;transition:all .2s var(--ease)}
+.nslot small{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.nslot b{font-family:var(--fd);font-size:26px;font-weight:500;min-height:32px;line-height:32px}
+.nslot.act{box-shadow:inset 0 0 0 2px var(--rose);background:#fff}
+.nslot.act small{color:var(--rose)}
+.ctrls{display:flex;gap:8px;margin-top:16px}.ctrls .btn{flex:1}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:24px 20px calc(16px + env(safe-area-inset-bottom));background:linear-gradient(rgba(246,240,233,0),var(--bg) 40%)}
+.sticky-cta .btn{max-width:480px;margin:0 auto}
+.notepills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.npill{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px 0 6px;border-radius:99px;background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--line2);font-weight:600;font-size:14px}
+.npill i{font-style:normal;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:11px;font-weight:700}
+.empty-staff{font-size:13px;color:var(--ink3);text-align:center;margin-top:4px;min-height:20px}
+
+/* ---------- Sheet ---------- */
+.scrim{position:fixed;inset:0;background:rgba(33,23,18,.42);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .35s;z-index:60}
 .scrim.open{opacity:1;pointer-events:auto}
-.fb-h{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-.fb-h .em{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:26px;flex:0 0 auto}
-.fb-h.ok .em{background:#E3EFF9}.fb-h.bad .em{background:#FBE3E8}
-.fb-h h3{margin:0;font-family:var(--fs);font-size:28px;line-height:1}
-.fb-h p{margin:3px 0 0;color:var(--ink2);font-size:14px}
-.oops{background:#FFF4F5;border:1px solid #F6D3DA;border-radius:16px;padding:10px 12px;margin:10px 0;font-size:15px;line-height:1.45}
-.oops li{margin:3px 0}
-ol.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0}
-ol.steps li{counter-increment:s;position:relative;padding:10px 12px 10px 46px;margin-bottom:8px;background:#FBF7F1;border-radius:14px;font-size:15px;line-height:1.45}
-ol.steps li::before{content:counter(s);position:absolute;left:10px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--sage);color:#2F5F8C;font-weight:900;display:grid;place-items:center;font-size:14px}
-.legend{display:flex;gap:12px;justify-content:center;font-size:12.5px;color:var(--ink2);margin:4px 0}
-.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:4px;vertical-align:-1px}
-/* Nav */
-nav.tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:40;display:flex;gap:2px;background:#FFFDFAe6;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid #EFE2D6;border-radius:26px;padding:6px;box-shadow:0 10px 30px -10px #7a4a5055;width:min(530px,calc(100% - 20px))}
-nav.tabs a{flex:1;text-align:center;text-decoration:none;color:var(--ink2);font-size:11px;font-weight:800;padding:7px 2px 6px;border-radius:20px;display:flex;flex-direction:column;align-items:center;gap:2px;transition:all .2s}
-nav.tabs a svg{width:24px;height:24px}
-nav.tabs a.on{background:linear-gradient(135deg,#F6DADB,#F1C9CC);color:var(--rose2)}
-.toast{position:fixed;top:calc(16px + env(safe-area-inset-top));left:50%;transform:translate(-50%,-250%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:18px;font-weight:800;z-index:90;transition:transform .4s cubic-bezier(.2,1.4,.4,1);box-shadow:0 10px 30px #0003;white-space:nowrap}
-.toast.show{transform:translate(-50%,0)}
-#petals{position:fixed;inset:0;pointer-events:none;z-index:95}
-.lesson-list .lsn{display:flex;gap:14px;align-items:center;cursor:pointer}
-.lsn .num{width:50px;height:50px;border-radius:16px;display:grid;place-items:center;font-family:var(--fs);font-size:26px;font-weight:700;flex:0 0 auto}
-.lsn h3{margin:0;font-family:var(--fs);font-size:22px;line-height:1.05}
-.lsn p{margin:3px 0 0;font-size:13.5px;color:var(--ink2)}
-.lsn .done{margin-left:auto;font-size:20px}
-.prose{font-size:16px;line-height:1.55}
-.prose b{color:var(--rose2)}
-.note-card{background:#FBF4EC;border-left:4px solid var(--gold);border-radius:12px;padding:10px 12px;margin:10px 0;font-size:15px}
-.formula{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:8px 0}
-.formula div{background:#FBF7F1;border-radius:14px;padding:10px;border:1px solid #F1E6DB}
-.formula b{font-family:var(--fs);font-size:20px;display:block;color:var(--ink)}
-.stat{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat .card{margin:0;text-align:center;padding:14px 8px}
-.stat .v{font-family:var(--fs);font-size:40px;font-weight:700;line-height:1}
-.stat .t{font-size:12px;font-weight:800;color:var(--ink2);letter-spacing:.6px;text-transform:uppercase;margin-top:4px}
-.hbar{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:14px;font-weight:700}
-.hbar span:first-child{width:96px}
-.hbar .bar{height:12px}
-.hbar em{font-style:normal;width:44px;text-align:right;color:var(--ink2)}
-.mist{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
-.mist b{font-family:var(--fs);font-size:22px;min-width:76px}
-.mist span{font-size:13px;color:var(--ink2);flex:1}
-.toggle{display:flex;background:#F3E9E1;border-radius:99px;padding:4px}
-.toggle button{flex:1;border:0;background:transparent;border-radius:99px;padding:10px;font:800 14px var(--fu);cursor:pointer;color:var(--ink2);min-height:42px}
-.toggle button.on{background:var(--paper);color:var(--ink);box-shadow:var(--sh)}
-.notes-list{display:flex;justify-content:center;gap:8px;margin:8px 0}
-.notes-list div{background:#FBF7F1;border-radius:14px;padding:6px 12px;text-align:center;min-width:76px}
-.notes-list b{font-family:var(--fs);font-size:24px;display:block}
-.notes-list small{font-size:11px;font-weight:800;color:var(--ink2);text-transform:uppercase}
-details.exp summary{cursor:pointer;font-weight:800;color:var(--sage2);padding:8px 0;list-style:none}
-.center{text-align:center}
-.mt{margin-top:12px}
-.quizopt .chip{flex:1 1 40%}
-.foot{font-family:var(--fh);text-align:center;color:#b99;font-size:18px;margin:20px 0}
-@media (min-width:600px){.prompt .cif{font-size:68px}}
+.sheet{position:fixed;left:50%;bottom:0;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;overscroll-behavior:contain;background:var(--bg);border-radius:32px 32px 0 0;box-shadow:0 -20px 60px -20px rgba(33,23,18,.5);transform:translate(-50%,105%);visibility:hidden;transition:transform .5s var(--ease),visibility 0s .5s;z-index:70;padding:8px 20px calc(24px + env(safe-area-inset-bottom))}
+.sheet.open{transform:translate(-50%,0);visibility:visible;transition:transform .5s var(--ease)}
+.grab{width:40px;height:5px;border-radius:9px;background:var(--line);margin:4px auto 16px}
+.fb-head{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.fb-head .bub{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;flex:0 0 auto}
+.fb-head .bub svg{width:28px;height:28px}
+.fb-head.ok .bub{background:var(--blue);color:#fff;box-shadow:0 10px 24px -8px rgba(74,111,140,.7);animation:pop .6s var(--spring)}
+.fb-head.bad .bub{background:var(--rose-t);color:var(--rose-d)}
+@keyframes pop{0%{transform:scale(.3) rotate(-20deg)}100%{transform:none}}
+.fb-head h3{font-family:var(--fd);font-weight:500;font-size:26px;margin:0;line-height:1.1;letter-spacing:-.01em}
+.fb-head p{margin:4px 0 0;font-size:14px;color:var(--ink2)}
+.draw path{stroke-dasharray:30;stroke-dashoffset:30;animation:draw .5s .2s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.pts{display:inline-flex;align-items:center;gap:4px;height:28px;padding:0 10px;border-radius:99px;background:var(--gold-t);color:#7D6224;font-weight:700;font-size:13px;margin-left:4px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cmp .pane{border-radius:20px;padding:12px 8px 12px;text-align:center;position:relative}
+.cmp .pane.y{background:var(--bad-t)}.cmp .pane.c{background:var(--ok-t)}
+.cmp .lab{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.cmp .pane.y .lab{color:var(--bad)}.cmp .pane.c .lab{color:var(--ok)}
+.cmp .lab svg{width:14px;height:14px}
+.cmp .nn{font-size:13px;font-weight:600;color:var(--ink2);margin:4px 0 8px;min-height:20px}
+.cmp .play{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:99px;background:#fff;font-size:12px;font-weight:600;box-shadow:var(--sh1)}
+.cmp .play svg{width:12px;height:12px}
+.why{background:var(--surface);border-radius:20px;padding:16px 20px;margin-top:12px;box-shadow:var(--sh1)}
+.why h4,.how h4{margin:0 0 12px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);display:flex;align-items:center;gap:8px}
+.why ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.why li{position:relative;padding-left:20px;font-size:15px;line-height:1.5;color:var(--ink2)}
+.why li::before{content:"";position:absolute;left:2px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--rose)}
+.how{background:var(--surface);border-radius:20px;padding:20px;margin-top:12px;box-shadow:var(--sh1)}
+.res-c{text-align:center;padding:8px 0 0}
+.res-c h3{font-family:var(--fd);font-weight:500;font-size:32px;margin:16px 0 4px;letter-spacing:-.02em}
+.res-c p{color:var(--ink2);margin:0}
+.seg{display:flex;background:var(--bg2);border-radius:14px;padding:4px;gap:4px}
+.seg button{flex:1;height:40px;border-radius:10px;font-size:14px;font-weight:600;color:var(--ink2);transition:all .25s var(--ease)}
+.seg button.on{background:var(--surface);color:var(--ink);box-shadow:var(--sh1)}
+
+/* toast + fx */
+.toast{visibility:hidden;opacity:0;position:fixed;left:50%;top:calc(16px + env(safe-area-inset-top));transform:translate(-50%,-160%);background:var(--ink);color:#FFF8F1;padding:12px 20px;border-radius:99px;font-weight:600;font-size:14px;z-index:90;transition:transform .45s var(--spring);box-shadow:var(--sh3);white-space:nowrap}
+.toast.show{transform:translate(-50%,0);visibility:visible;opacity:1}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:80}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+
+/* practice setup */
+.mtiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mtile{height:168px;border-radius:20px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;box-shadow:var(--sh1);transition:transform .25s var(--ease),box-shadow .25s}
+.mtile .in{position:relative;z-index:2}
+.mtile h3{font-family:var(--fd);font-weight:500;font-size:20px;margin:0;color:#fff}
+.mtile p{margin:2px 0 0;font-size:12px;color:rgba(255,255,255,.85);line-height:1.3}
+.mtile .ck{position:absolute;top:12px;right:12px;z-index:3;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.25);border:1.5px solid rgba(255,255,255,.7);display:grid;place-items:center;transition:all .25s var(--spring)}
+.mtile .ck svg{width:16px;height:16px;opacity:0}
+.mtile.on{box-shadow:0 0 0 3px var(--bg),0 0 0 5.5px var(--ink),var(--sh2)}
+.mtile.on .ck{background:#fff;color:var(--ink);border-color:#fff}.mtile.on .ck svg{opacity:1}
+.src-list{display:grid;gap:8px}
+.src{display:flex;align-items:center;gap:12px;padding:16px;border-radius:var(--rad-s);background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--line);text-align:left;width:100%;transition:all .2s var(--ease)}
+.src .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:0 0 auto}
+.src .ic svg{width:20px;height:20px}
+.src b{display:block;font-size:15px}.src small{color:var(--ink3);font-size:13px}
+.src .rd{margin-left:auto;width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--line);flex:0 0 auto;transition:all .2s}
+.src.on{box-shadow:inset 0 0 0 2px var(--ink);background:#fff}.src.on .rd{box-shadow:inset 0 0 0 7px var(--ink)}
+.src[disabled]{opacity:.45}
+
+/* explore */
+.bigcif{text-align:center;padding:8px 0 16px}
+.bigcif b{display:block;font-family:var(--fd);font-weight:500;font-size:56px;line-height:1;letter-spacing:-.02em}
+.bigcif span{display:inline-block;margin-top:12px}
+details.acc{margin-top:16px;border-radius:var(--rad-s);background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line2)}
+details.acc summary{list-style:none;cursor:pointer;padding:16px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary svg{width:18px;height:18px;transition:transform .3s var(--ease)}
+details.acc[open] summary svg{transform:rotate(180deg)}
+details.acc .steps{padding:4px 16px 20px}
+
+/* progress page */
+.prog-hero{display:flex;align-items:center;gap:20px}
+.prog-hero .tx h3{font-family:var(--fd);font-weight:500;font-size:22px;margin:0 0 4px}
+.prog-hero .tx p{margin:0;color:var(--ink2);font-size:14px}
+.hbar{display:grid;grid-template-columns:96px 1fr 44px;align-items:center;gap:12px;margin:12px 0;font-size:14px}
+.hbar span{color:var(--ink2);font-weight:500}
+.hbar em{font-style:normal;text-align:right;font-weight:600;font-variant-numeric:tabular-nums;font-size:13px}
+.mist{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line2)}
+.mist:last-of-type{border-bottom:0}
+.mist b{font-family:var(--fd);font-weight:500;font-size:20px}
+.mist span{font-size:13px;color:var(--ink3);text-align:right}
+.tag-s{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:99px;font-size:12px;font-weight:600}
+.tg-rose{background:var(--rose-t);color:var(--rose-d)}.tg-blue{background:var(--blue-t);color:var(--blue-d)}.tg-gold{background:var(--gold-t);color:#7D6224}
+
+/* tarea */
+.chord-card .hd{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
+.chord-card .hd b{font-family:var(--fd);font-weight:500;font-size:32px;letter-spacing:-.02em}
+.chord-card .hd span{font-size:13px;color:var(--ink3);text-align:right}
+
+/* ---------- Desktop ---------- */
+@media (min-width:960px){
+ :root{--nav-h:0px}
+ body{background:var(--bg)}
+ .shell{display:grid;grid-template-columns:260px 1fr}
+ #nav{position:sticky;top:0;left:auto;bottom:auto;transform:none!important;opacity:1!important;pointer-events:auto!important;width:auto;max-width:none;height:100vh;padding:32px 20px;display:flex;flex-direction:column}
+ #nav.hide{transform:none}
+ .railfoot{display:block}
+ .brandrail{display:flex;align-items:center;gap:12px;margin:0 8px 40px}
+ .brandrail .lg{width:44px;height:44px;border-radius:14px;background:var(--ink);display:grid;place-items:center}
+ .brandrail b{font-family:var(--fd);font-weight:500;font-size:22px;display:block;line-height:1}
+ .brandrail small{font-size:12px;color:var(--ink3)}
+ .tabs{display:flex;flex-direction:column;height:auto;gap:4px;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;padding:0;border-radius:0}
+ .tabs a{flex-direction:row;justify-content:flex-start;gap:12px;height:48px;padding:0 16px;border-radius:14px;font-size:15px}
+ .tabs a:hover{background:var(--bg2);color:var(--ink)}
+ .tabs a.on{background:var(--surface);box-shadow:var(--sh1)}
+ .railfoot{margin-top:auto;font-family:var(--fd);font-style:italic;color:var(--ink3);font-size:14px;padding:0 8px;line-height:1.4}
+ #app{max-width:1040px;width:100%;padding:0 48px 64px}
+ #app.full{max-width:720px}
+ .topbar{padding-top:40px}
+ .hello h1{font-size:36px}
+ .home{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);grid-template-areas:"hero stats" "hero cont" "hero feats" "modes modes";column-gap:24px;align-items:start}
+ .a-hero{grid-area:hero}.a-stats{grid-area:stats}.a-cont{grid-area:cont}.a-feats{grid-area:feats}.a-modes{grid-area:modes}
+ .a-cont .sec-h{margin-top:24px}
+ .a-feats .two{grid-template-columns:1fr 1fr}.a-feats .feat{min-height:190px}
+ .hero{min-height:460px}
+ .hero h2{font-size:44px}
+ .stats{margin-top:0}
+ .rail{margin:0;padding:4px 0 8px;overflow:visible;display:grid;grid-template-columns:repeat(3,1fr)}
+ .mode{max-width:none;height:320px}
+ .lesson-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+ .lesson-grid .lrow{margin:0}
+ .cover{margin:24px 0 0;border-radius:32px;height:360px}
+ .lesson-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;align-items:start}
+ .page-h{padding-top:48px}
+ .page-h h1{font-size:44px}
+ .mtiles{grid-template-columns:repeat(4,1fr)}
+ .sticky-cta{left:260px}
+ .sheet{bottom:50%;border-radius:32px;transform:translate(-50%,calc(50% + 100vh));max-height:88vh}
+ .sheet.open{transform:translate(-50%,50%)}
+ .piano-wrap{margin:16px 0 0}
+ .qhead .cif{font-size:64px}
+ .tarea-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+ .tarea-grid .card{margin:0}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-.btn.pri{background:linear-gradient(135deg,#D98597,#B8607A)}
-.btn.sage{background:linear-gradient(135deg,#8DB8DE,#5B8FC0);box-shadow:0 8px 18px -8px #5B8FC0}
-.chip.on{background:var(--coffee);border-color:var(--coffee)}
-.bar>i{background:linear-gradient(90deg,#F3D77E,#E9A9B5,#8DB8DE)}
-nav.tabs a.on{background:linear-gradient(135deg,#FBE3E8,#DCEBF8);color:var(--coffee)}
-.toast{background:var(--coffee)}
-.hero{background:linear-gradient(135deg,#FFF8EC 0%,#FCE6EA 55%,#E3EFF9 100%)!important}
-.note-card{border-left-color:#E8C766;background:#FFF9E6}
-ol.steps li::before{background:#BFD9EE;color:#2F5F8C}
-.w1{background:radial-gradient(circle,#F6C9D2 0,#F6C9D200 70%)}
-.w2{background:radial-gradient(circle,#C9E0F3 0,#C9E0F300 70%)}
-.w3{background:radial-gradient(circle,#FBEBB0 0,#FBEBB000 70%)}
-.pill{color:var(--coffee)}
+.choice .ag{width:auto;height:26px;display:block}
+.live-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.live-row .empty-staff{margin:0;text-align:left;font-weight:600;color:var(--ink2)}
+.mini{display:flex;gap:8px}
+.icon-btn.sm{width:36px;height:36px}.icon-btn.sm svg{width:16px;height:16px}
+.icon-btn[disabled]{opacity:.35;pointer-events:none}
+@media (max-width:959px){.qhead .band{height:56px;padding:12px 20px}.qhead .cif{font-size:46px}}
+.bigcif .pos-pill{display:inline-flex}
+@media (min-width:960px){.sticky-cta{position:sticky;left:auto;right:auto;bottom:24px;padding:0;background:none;margin-top:24px}#app.full{padding-bottom:48px}}
+.aci{height:1.05em;width:auto;aspect-ratio:var(--ar,.3);display:inline-block;vertical-align:-.1em;overflow:visible;margin:0 .01em}
+.cif .aci,.choice.cif .aci,.bigcif .aci,.chord-card .hd .aci,.mist b .aci{height:.8em;vertical-align:.12em;margin-left:.03em}
 </style></head><body>
-<div class="wash w1"></div><div class="wash w2"></div><div class="wash w3"></div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="ink" x="-5%" y="-20%" width="110%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
-<filter id="wc" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="7" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="3.5" result="d"/><feGaussianBlur in="d" stdDeviation=".35"/></filter></svg>
-<main id="app"></main><div id="nav"></div>
-<div class="scrim" id="scrim"></div><div class="sheet" id="sheet" role="dialog"></div><div class="toast" id="toast"></div><canvas id="petals"></canvas>
-<script>/* ===== Motor de teoría (ortografía por letras) ===== */
+<div class="shell"><aside id="nav"></aside><main id="app"></main></div>
+<div class="scrim" id="scrim"></div><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div><div class="toast" id="toast"></div><canvas id="fx"></canvas>
+<script>const GLY={"gClef": "M376 415l25 -145c3 -18 3 -18 29 -18c147 0 241 -113 241 -241c0 -113 -67 -198 -168 -238c-14 -6 -15 -5 -13 -17c11 -62 29 -157 29 -214c0 -170 -130 -200 -197 -200c-151 0 -190 98 -190 163c0 62 40 115 107 115c61 0 96 -47 96 -102c0 -58 -36 -85 -67 -94 c-23 -7 -32 -10 -32 -17c0 -13 26 -29 80 -29c59 0 159 18 159 166c0 47 -15 134 -27 201c-2 12 -4 11 -15 9c-20 -4 -46 -6 -69 -6c-245 0 -364 165 -364 339c0 202 153 345 297 464c12 10 11 12 9 24c-7 41 -14 106 -14 164c0 104 24 229 98 311c20 22 51 48 65 48 c11 0 37 -28 52 -50c41 -60 65 -146 65 -233c0 -153 -82 -280 -190 -381c-6 -6 -8 -7 -6 -19zM470 943c-61 0 -133 -96 -133 -252c0 -32 2 -66 6 -92c2 -13 6 -14 13 -8c79 69 174 159 174 270c0 55 -27 82 -60 82zM361 262l-21 128c-2 11 -4 12 -14 4 c-47 -38 -93 -75 -153 -142c-83 -94 -93 -173 -93 -232c0 -139 113 -236 288 -236c20 0 40 2 56 5c15 3 16 3 14 14l-50 298c-2 11 -4 12 -20 8c-61 -17 -100 -60 -100 -117c0 -46 30 -89 72 -107c7 -3 15 -6 15 -13c0 -6 -4 -11 -12 -11c-7 0 -19 3 -27 6 c-68 23 -115 87 -115 177c0 85 57 164 145 194c18 6 18 5 15 24zM430 103l49 -285c2 -12 4 -12 16 -6c56 28 94 79 94 142c0 88 -67 156 -148 163c-12 1 -13 -2 -11 -14z", "whole": "M216 125c93 0 206 -52 206 -123c0 -70 -52 -127 -216 -127c-149 0 -206 60 -206 127c0 68 83 123 216 123zM111 63c-2 -8 -3 -16 -3 -24c0 -32 15 -66 35 -89c21 -28 58 -52 94 -52c10 0 21 1 31 4c33 8 46 36 46 67c0 60 -55 134 -124 134c-31 0 -68 -5 -79 -40z", "flat": "M12 -170c-8 10 -12 581 -12 581c1 18 17 28 31 28c10 0 19 -6 19 -17c0 -20 -6 -260 -7 -282c0 -7 4 -14 11 -17c2 -1 3 -1 5 -1c5 0 16 9 22 14c14 9 38 17 55 17c46 -3 90 -39 90 -96c0 -46 -31 -107 -120 -169c-25 -17 -49 -44 -79 -61c0 0 -3 -2 -6 -2s-6 1 -9 5z M47 -81c0 -5 2 -15 11 -15c3 0 6 1 10 3c43 27 89 81 89 135c0 25 -12 58 -41 58c-23 0 -63 -29 -70 -49c-1 -4 -2 -16 -2 -32c0 -40 3 -100 3 -100z", "natural": "M141 181l15 5c1 1 3 1 4 1c4 0 8 -3 8 -8v-502c0 -7 -6 -12 -12 -12h-13c-7 0 -12 5 -12 12v149c0 8 -7 11 -17 11c-29 0 -85 -24 -99 -30c-1 -1 -3 -1 -4 -1l-2 -1c-6 0 -9 3 -9 9v515c0 7 5 12 12 12h13c6 0 12 -5 12 -12v-167c0 -4 4 -5 10 -5c26 0 90 23 90 23 c1 0 2 1 4 1zM37 39v-103c0 -4 5 -6 12 -6c25 0 82 23 82 41v103c0 4 -3 5 -9 5c-24 0 -85 -26 -85 -40z", "sharp": "M237 118l-26 -10c-8 -3 -13 -22 -13 -29v-93c0 -12 7 -18 13 -18l26 10c2 1 3 1 5 1c4 0 7 -3 7 -8v-71c0 -6 -5 -14 -12 -17c0 0 -21 -8 -28 -11s-11 -15 -11 -23v-142c0 -6 -6 -11 -17 -11c-7 0 -13 5 -13 11v125c0 6 -5 18 -14 18l-2 -1h-1l-61 -25 c-5 -2 -10 -9 -10 -22v-139c0 -6 -7 -11 -17 -11c-7 0 -13 5 -13 11v123c0 5 -5 16 -12 16c-1 0 -2 0 -3 -1c-9 -3 -23 -9 -24 -9l-2 -1c-6 0 -9 3 -9 9v71c0 6 5 14 12 16c0 0 21 9 27 11c6 3 11 12 11 23v99c0 8 -6 18 -14 18l-1 -1c-8 -4 -23 -10 -24 -10l-2 -1 c-6 0 -9 3 -9 9v71c0 6 5 14 12 16c0 0 20 8 26 11s12 13 12 27v135c0 6 6 11 16 11c7 0 14 -5 14 -11v-120c0 -8 3 -20 12 -20c17 4 51 18 63 25c9 6 12 19 13 29v130c0 6 6 11 16 11c8 0 14 -5 14 -11v-122c0 -8 7 -13 14 -13c5 1 25 9 25 9c2 1 3 1 5 1c4 0 7 -3 7 -8 v-71c0 -6 -5 -14 -12 -17zM168 -45c2 9 4 37 4 64s-2 52 -4 57c-2 4 -8 6 -15 6c-25 0 -71 -21 -73 -38c-2 -8 -3 -43 -3 -74c0 -24 1 -46 3 -50c1 -3 6 -5 12 -5c23 0 70 20 76 40z", "dsharp": "M190 -32h10c17 0 35 -2 40 -7c4 -5 7 -23 7 -40c0 -36 -7 -46 -45 -46c-17 0 -33 4 -40 10c-4 3 -5 20 -5 38c-4 14 -21 46 -34 46s-25 -28 -31 -42c-1 -1 -2 -3 -2 -4c0 -16 -2 -33 -8 -38c-6 -7 -22 -10 -37 -10c-17 0 -33 4 -40 10c-3 2 -5 20 -5 38s2 35 5 38 c6 5 25 7 43 7h10c14 5 46 21 46 34c0 7 -36 27 -47 33c-3 0 -6 -1 -10 -1c-17 0 -35 4 -42 10c-3 3 -5 21 -5 39s2 35 5 37c6 5 24 7 41 7c16 0 32 -2 36 -7c5 -4 8 -22 8 -39c4 -14 20 -47 34 -47c12 0 28 36 33 47c0 18 1 36 5 39c5 5 23 7 41 7c41 0 44 -6 44 -47 c0 -16 -2 -31 -7 -36c-10 -8 -29 -10 -41 -10l-6 1h-3c-14 -5 -47 -20 -47 -34c0 -7 36 -27 47 -33z", "dflat": "M314 151h6c47 -1 91 -38 91 -94c0 -46 -32 -107 -122 -170c-23 -16 -47 -44 -78 -60c0 0 -3 -2 -6 -2c-2 0 -5 1 -8 5c-3 3 -5 60 -7 135c-19 -24 -47 -51 -84 -77c-23 -17 -48 -45 -79 -61c0 0 -3 -2 -6 -2s-6 1 -9 5c-7 9 -12 581 -12 581c1 17 17 26 31 26 c10 0 19 -5 19 -16c0 -19 -7 -260 -7 -281c0 -8 4 -15 11 -17c2 -1 3 -1 5 -1c9 0 16 9 24 13c16 9 28 16 47 16h6c19 0 36 -6 51 -16c-2 139 -3 276 -3 276c2 17 18 26 31 26c10 0 19 -5 19 -16c0 -19 -6 -260 -6 -281c0 -8 3 -15 10 -17c1 -1 3 -1 5 -1c9 0 17 9 24 13 c16 9 29 16 47 16zM67 -93c45 28 90 78 90 134c0 25 -10 59 -40 59c-24 0 -65 -30 -71 -50c-1 -4 -2 -16 -2 -32c0 -39 3 -98 3 -98c0 -6 3 -16 11 -16c2 0 6 1 9 3zM251 -93c45 28 89 78 89 134c0 20 -6 37 -15 49c-6 7 -14 10 -24 10c-24 0 -66 -30 -72 -50 c-1 -3 -1 -12 -1 -23c0 -38 3 -107 3 -107c0 -6 3 -16 11 -16c2 0 5 1 9 3z"};
+</script><script>/* ===== Motor de teoría (ortografía por letras) ===== */
 const T = (function(){
 const LET=['C','D','E','F','G','A','B'];
 const SOL=['Do','Re','Mi','Fa','Sol','La','Si'];
@@ -302,10 +559,39 @@ const nm=n=>T.name(n,S.sys);
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 const POSK=['fund','inv1','inv2','abierta'];
-const ROLEC=['#C8667E','#C9A23A','#5B8FC0'];
+const ROLEC=['#B56F78','#B8923F','#5F87A6'];
+const INK='#33241D',BAD='#C2525E',OK='#4F7FA3';
 const cif=(root,type)=>T.cifrado(root,type);
+const pretty=s=>s.replace(/([A-G])bb/g,'$1𝄫').replace(/([A-G])##/g,'$1𝄪').replace(/([A-G])b/g,'$1♭').replace(/([A-G])#/g,'$1♯');
+const H=s=>s;
 function qLabel(q){if(q.slash){const v=T.voicing(q.root,q.type,q.pos);return T.cifrado(q.root,q.type,v.roles[0]);}return cif(q.root,q.type);}
-const fullCif=q=>q.slash?qLabel(q):cif(q.root,q.type)+(q.pos==='fund'?'':q.pos==='abierta'?' (abierta)':'/'+T.letName(T.voicing(q.root,q.type,q.pos).notes[0]));
+const fullCif=q=>q.slash?qLabel(q):cif(q.root,q.type)+(q.pos==='fund'||q.pos==='abierta'?'':'/'+T.letName(T.voicing(q.root,q.type,q.pos).notes[0]));
+const roleShort=(type,r)=>['F',type==='sus4'?'4':'3','5'][r];
+const IMG=k=>`img/${k}.webp`;
+const ph=(k,cls='',pos='')=>`<img src="${IMG(k)}" alt="" decoding="async" ${pos?`style="object-position:${pos}"`:''}>`;
+/* ===== Iconos ===== */
+const P={home:'<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/>',
+book:'<path d="M2 4.5c3-1 6.5-1 10 1.5 3.5-2.5 7-2.5 10-1.5v14c-3-1-6.5-1-10 1.5-3.5-2.5-7-2.5-10-1.5z"/><path d="M12 6v14"/>',
+target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
+compass:'<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>',
+chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+flame:'<path d="M12 22c4 0 7-2.8 7-7 0-3.5-2.2-5.6-3.6-7.6-.4 1.9-1.4 3.1-2.6 3.6.3-3.4-1.2-6.6-4.3-9-.3 3.3-1.7 5.2-3.2 7C4 11 3 12.8 3 15c0 4.2 4 7 9 7z"/>',
+star:'<path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/>',
+check:'<path d="m5 12.5 4.5 4.5L19 7.5"/>',x:'<path d="M6 6l12 12M18 6 6 18"/>',
+left:'<path d="M15 5l-7 7 7 7"/>',right:'<path d="m9 5 7 7-7 7"/>',arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+play:'<path d="M7 4.5v15l12-7.5z" fill="currentColor"/>',
+vol:'<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/>',
+gear:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
+piano:'<rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M8.5 4v9M15.5 4v9M8.5 13v7M15.5 13v7M12 13v7"/><path d="M7 4h3v9H7zM14 4h3v9h-3z" fill="currentColor"/>',
+eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+pen:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+bulb:'<path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/>',
+down:'<path d="m6 9 6 6 6-6"/>',refresh:'<path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/>',
+shuffle:'<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>',notebook:'<rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 3v18M12 8h5M12 12h5"/>',
+music:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+heal:'<path d="M12 21s-7.5-4.6-9.3-9.6C1.4 7.8 3.7 4 7.4 4c2 0 3.5 1 4.6 2.6C13.1 5 14.6 4 16.6 4c3.7 0 6 3.8 4.7 7.4C19.5 16.4 12 21 12 21z"/>',
+trophy:'<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>'};
+const I=(k,sw=1.8)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[k]}</svg>`;
 /* ===== Audio: piano Salamander (Tone.js) con respaldo sintetizado ===== */
 const AU={ctx:null,smp:null,ready:false,
 init(){try{if(!this.ctx){this.ctx=new(window.AudioContext||window.webkitAudioContext)();this.out=this.ctx.createDynamicsCompressor();this.out.connect(this.ctx.destination);}if(this.ctx.state==='suspended')this.ctx.resume();}catch(e){}
@@ -317,223 +603,210 @@ load(){if(this._l)return;this._l=1;const s=document.createElement('script');s.sr
 synth(m,t,dur){const c=this.ctx;if(!c)return;const f=440*Math.pow(2,(m-69)/12);const g=c.createGain();const lp=c.createBiquadFilter();lp.type='lowpass';lp.frequency.value=Math.min(5200,f*6);
   [[1,'triangle',.5],[2,'sine',.16],[3,'sine',.06]].forEach(([k,tp,v])=>{const o=c.createOscillator();o.type=tp;o.frequency.value=f*k;const og=c.createGain();og.gain.value=v;o.connect(og).connect(lp);o.start(t);o.stop(t+dur+.1);});
   lp.connect(g).connect(this.out);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.32,t+.008);g.gain.exponentialRampToValueAtTime(.001,t+dur);},
-play(ms,mode='both'){if(!S.sound)return;this.init();ms=[...ms].sort((a,b)=>a-b);
+play(ms,mode='both'){if(!S.sound||!ms.length)return;this.init();ms=[...ms].sort((a,b)=>a-b);
   const useS=this.ready&&window.Tone&&Tone.context.state==='running';
   const now=useS?Tone.now():(this.ctx?this.ctx.currentTime:0);const sched=[];
   if(mode!=='block')ms.forEach((m,i)=>sched.push([m,i*.28,.9]));
   if(mode!=='arp'){const off=mode==='both'?ms.length*.28+.25:0;ms.forEach(m=>sched.push([m,off,1.8]));}
   sched.forEach(([m,dt,d])=>{if(useS){this.smp.triggerAttackRelease(Tone.Frequency(m,'midi').toNote(),d,now+dt+.02);}else this.synth(m,now+dt+.02,d+.8);});}
 };
-/* ===== Pentagrama SVG ===== */
-const SP=10,BOT=104;const yOf=st=>BOT-(st-30)*SP/2;
-function chordGlyphs(notes,cx,opts){ // notes: [{n,c,lab}]
-  let s='';if(!notes.length)return '';const arr=notes.map((x,i)=>({...x,st:T.step(x.n),i})).sort((a,b)=>a.st-b.st);
-  let prev=null;arr.forEach(x=>{x.dx=0;if(prev&&x.st-prev.st<=1){x.dx=prev.dx===0?13:(x.st===prev.st?26:0);}prev=x;});
-  // líneas adicionales
-  const minSt=arr[0].st,maxSt=arr[arr.length-1].st;const hasShift=arr.some(x=>x.dx);const maxDx=Math.max(...arr.map(x=>x.dx));
-  for(let st=28;st>=minSt;st-=2)s+=`<line x1="${cx-11}" x2="${cx+11+maxDx}" y1="${yOf(st)}" y2="${yOf(st)}" stroke="#5A3E33" stroke-width="1.3"/>`;
-  for(let st=40;st<=maxSt;st+=2)s+=`<line x1="${cx-11}" x2="${cx+11+maxDx}" y1="${yOf(st)}" y2="${yOf(st)}" stroke="#5A3E33" stroke-width="1.3"/>`;
-  // alteraciones (columnas de arriba hacia abajo)
-  const cols=[];[...arr].reverse().forEach(x=>{if(!x.n.a)return;let c=0;while((cols[c]||[]).some(st=>Math.abs(st-x.st)<6))c++;(cols[c]=cols[c]||[]).push(x.st);x.col=c;});
-  arr.forEach((x,k)=>{const y=yOf(x.st),X=cx+x.dx,col=x.c||'#5A3E33';
-    const d=opts.anim?`style="animation-delay:${k*.07}s"`:'';
-    s+=`<g class="${opts.anim?'pop':''}" ${d} style="transform-origin:${X}px ${y}px;${opts.anim?'animation-delay:'+k*.07+'s':''}">`;
-    if(x.n.a){const g=T.ACC[x.n.a];const ax=cx-14-x.col*12-(x.n.a===2?0:0);s+=`<text x="${ax}" y="${y+(x.n.a<0?2:4)}" font-family="Noto Music" font-size="${x.n.a===2?15:21}" text-anchor="end" fill="${col}">${g}</text>`;}
-    s+=`<ellipse class="nh" cx="${X}" cy="${y}" rx="7" ry="4.9" fill="${col}"/><ellipse cx="${X}" cy="${y}" rx="3.3" ry="2.6" transform="rotate(-38 ${X} ${y})" fill="#FFFEFC"/>`;
-    if(x.ring)s+=`<circle cx="${X}" cy="${y}" r="11" fill="none" stroke="${col}" stroke-width="2" stroke-dasharray="3 2.5"/>`;
-    if(x.lab)s+=`<text x="${X+(hasShift&&!x.dx?-0:0)+16+(hasShift?13:0)}" y="${y+5}" font-family="Caveat" font-size="15" font-weight="700" fill="${col}">${x.lab}</text>`;
+/* ===== Pentagrama SVG (glifos Bravura / SMuFL) ===== */
+const SP=10,TOPL=52,BOT=TOPL+40,SC=SP/250,HW=422*SC;
+const yOf=st=>BOT-(st-30)*SP/2;
+const AGL={'-2':['dflat',413],'-1':['flat',226],'0':['natural',168],'1':['sharp',249],'2':['dsharp',250]};
+const gl=(k,x,y,fill,cls='',st='')=>{const pth=`<path d="${GLY[k]}" transform="translate(${x.toFixed(2)} ${y.toFixed(2)}) scale(${SC} ${-SC})" fill="${fill}"/>`;return cls?`<g class="${cls}" ${st?`style="${st}"`:''}>${pth}</g>`:pth;};
+function chordSVG(notes,cx,anim){if(!notes.length)return '';
+  const arr=notes.map((x,i)=>({...x,st:T.step(x.n)})).sort((a,b)=>a.st-b.st);
+  const cols=[];arr.forEach(x=>{let c=0;while((cols[c]||[]).some(s=>Math.abs(s-x.st)<=1))c++;(cols[c]=cols[c]||[]).push(x.st);x.col=c;});
+  const gap=arr.some(x=>x.ring)&&cols.length>1?HW+3:HW-1;const nc=cols.length,x0=cx-(gap*(nc-1)+HW)/2;let s='';
+  const minSt=arr[0].st,maxSt=arr[arr.length-1].st;const lx1=x0-5,lx2=x0+gap*(nc-1)+HW+5;
+  for(let st=28;st>=minSt;st-=2)s+=`<line x1="${lx1}" x2="${lx2}" y1="${yOf(st)}" y2="${yOf(st)}" stroke="${INK}" stroke-width="1.6"/>`;
+  for(let st=40;st<=maxSt;st+=2)s+=`<line x1="${lx1}" x2="${lx2}" y1="${yOf(st)}" y2="${yOf(st)}" stroke="${INK}" stroke-width="1.6"/>`;
+  const acols=[];[...arr].reverse().forEach(x=>{if(x.n.a==null||(!x.n.a&&!x.nat))return;let c=0;while((acols[c]||[]).some(s=>Math.abs(s-x.st)<6))c++;(acols[c]=acols[c]||[]).push(x.st);x.ac=c;});
+  const acW=c=>c*14;
+  arr.forEach((x,k)=>{const y=yOf(x.st),X=x0+x.col*gap,col=x.c||INK;const dl=anim?`animation-delay:${(k*.08).toFixed(2)}s`:'';
+    if(x.ac!=null){const [g,w]=AGL[x.n.a];const ax=x0-3-acW(x.ac)-w*SC;s+=gl(g,ax,y,col,'nh',dl);}
+    s+=gl('whole',X,y,col,'nh',dl);
+    if(x.ring)s+=`<ellipse class="ringpulse" cx="${(X+HW/2).toFixed(1)}" cy="${y}" rx="11.5" ry="9" fill="none" stroke="${col}" stroke-width="2" stroke-dasharray="3.5 3"/>`;});
+  return s;}
+// slots: [{notes:[{n,c,ring}], label, sub, lc}]
+function staff(slots,o={}){const n=slots.length;const sw=o.sw||(n>=4?72:n===3?86:n===2?100:110);const CL=50;const W=CL+n*sw+(o.end?10:6);
+  const hasL=slots.some(x=>x.label),hasS=slots.some(x=>x.sub);const H=BOT+(hasS?66:hasL?50:34);
+  let s=`<svg class="staff ${o.anim?'anim':''}" viewBox="0 0 ${W} ${H}" style="max-width:${Math.round(W*(o.scale||1.45))}px;margin:0 auto" role="img" aria-label="pentagrama">`;
+  for(let i=0;i<5;i++){const y=BOT-i*SP;s+=`<line x1="2" x2="${W-2}" y1="${y}" y2="${y}" stroke="${INK}" stroke-width="1" opacity=".42"/>`;}
+  s+=`<line x1="2" x2="2" y1="${TOPL}" y2="${BOT}" stroke="${INK}" stroke-width="1.2" opacity=".6"/><line x1="${W-2}" x2="${W-2}" y1="${TOPL}" y2="${BOT}" stroke="${INK}" stroke-width="${o.end?2.6:1.2}" opacity=".6"/>`;
+  s+=gl('gClef',9,BOT-SP,INK);
+  slots.forEach((sl,i)=>{const x=CL+i*sw,cx=x+sw/2;
+    if(i>0&&o.bars)s+=`<line x1="${x}" x2="${x}" y1="${TOPL}" y2="${BOT}" stroke="${INK}" stroke-width="1" opacity=".35"/>`;
+    const ms=sl.notes.map(z=>T.midi(z.n)).join(',');
+    s+=`<g class="slot" ${ms?`data-act="play" data-m="${ms}"`:''}><rect class="hl" x="${x+4}" y="6" width="${sw-8}" height="${H-10}" rx="12" fill="rgba(181,111,120,.07)"/><rect x="${x}" y="0" width="${sw}" height="${H}" fill="transparent"/>`;
+    s+=chordSVG(sl.notes,cx,o.anim);
+    if(sl.label)s+=`<text x="${cx}" y="${BOT+40}" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="500" fill="${sl.lc||INK}">${sl.label}</text>`;
+    if(sl.sub)s+=`<text x="${cx}" y="${BOT+58}" text-anchor="middle" font-family="DM Sans,system-ui,sans-serif" font-size="11" font-weight="600" letter-spacing=".3" fill="#A0907F">${sl.sub}</text>`;
     s+='</g>';});
-  return s;
-}
-// slots: [{notes:[{n,c,lab,ring}], label, sub, play:true}]
-function staff(slots,o={}){
-  let sw=o.slotW||(slots.length>3?74:92),W=58+slots.length*sw+8;const H=o.short?150:168;const MW=o.minW||300;if(W<MW){sw=(MW-66)/slots.length;W=MW;}
-  let s=`<svg class="staff" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="pentagrama">`;
-  s+='<g filter="url(#ink)">';for(let i=0;i<5;i++){const y=BOT-i*SP;s+=`<line x1="4" x2="${W-4}" y1="${y}" y2="${y}" stroke="#5A3E33" stroke-width="1.05" stroke-linecap="round" opacity=".82"/>`;}
-  s+=`<line x1="4" x2="4" y1="${BOT-40}" y2="${BOT}" stroke="#5A3E33" stroke-width="1.2"/><line x1="${W-4}" x2="${W-4}" y1="${BOT-40}" y2="${BOT}" stroke="#5A3E33" stroke-width="1.2"/></g>`;
-  s+=`<text x="8" y="${BOT-9}" font-family="Noto Music" font-size="56" fill="#5A3E33">𝄞</text>`;
-  slots.forEach((sl,i)=>{const cx=58+i*sw+sw/2;
-    if(i>0&&o.bars)s+=`<line x1="${58+i*sw}" x2="${58+i*sw}" y1="${BOT-40}" y2="${BOT}" stroke="#5A3E33" stroke-width=".8" opacity=".5"/>`;
-    const ms=sl.notes.map(x=>T.midi(x.n)).join(',');
-    s+=`<g class="slot" data-act="play" data-m="${ms}"><rect x="${58+i*sw}" y="10" width="${sw}" height="${H-10}" fill="transparent"/>`;
-    if(sl.bg)s+=`<rect x="${58+i*sw+4}" y="14" width="${sw-8}" height="${H-18}" rx="12" fill="${sl.bg}"/>`;
-    s+=chordGlyphs(sl.notes,cx-4,{anim:o.anim});
-    if(sl.label)s+=`<text x="${cx}" y="${H-(sl.sub?20:8)}" text-anchor="middle" font-family="Caveat" font-size="19" font-weight="700" fill="${sl.lc||'#A84D63'}">${sl.label}</text>`;
-    if(sl.sub)s+=`<text x="${cx}" y="${H-4}" text-anchor="middle" font-family="Nunito" font-size="10.5" font-weight="800" fill="#9A7E70">${sl.sub}</text>`;
-    s+='</g>';});
-  return s+'</svg>';
-}
-const roleNotes=(v,type,labels=true)=>v.notes.map((n,i)=>({n,c:ROLEC[v.roles[i]],lab:labels?['F',type==='sus4'?'4':'3','5'][v.roles[i]]:''}));
+  return s+'</svg>';}
+function accSVG(a){if(!a&&a!==0)return '';const [g,w]=AGL[a];const ww=w*SC*1.5+4;return `<svg class="ag" viewBox="0 0 ${ww} 40" width="${ww}" height="26" aria-hidden="true">${gl(g,2,24,'currentColor')}</svg>`;}
+const roleNotes=v=>v.notes.map((n,i)=>({n,c:ROLEC[v.roles[i]]}));
+const npills=(v,type)=>`<div class="notepills">${v.notes.map((n,i)=>`<span class="npill"><i style="background:${ROLEC[v.roles[i]]}">${roleShort(type,v.roles[i])}</i>${nm(n)}</span>`).join('')}</div>`;
+const legend=type=>`<div class="legend"><span><i style="background:${ROLEC[0]}"></i>fundamental</span><span><i style="background:${ROLEC[1]}"></i>${type==='sus4'?'4ª':'3ª'}</span><span><i style="background:${ROLEC[2]}"></i>5ª</span></div>`;
 /* ===== Piano ===== */
-const PLO=57,PHI=89;const BLK=[1,3,6,8,10];
-function piano(marks={},o={}){const lo=o.lo||PLO,hi=o.hi||PHI;let w='',b='',wi=0;
-  const lab=m=>{const L=S.sys==='let'?['C','','D','','E','F','','G','','A','','B']:['Do','','Re','','Mi','Fa','','Sol','','La','','Si'];return L[m%12];};
-  const blab=m=>{const p=m%12;const sh=S.sys==='let'?{1:'C♯<br>D♭',3:'D♯<br>E♭',6:'F♯<br>G♭',8:'G♯<br>A♭',10:'A♯<br>B♭'}:{1:'Do♯<br>Re♭',3:'Re♯<br>Mi♭',6:'Fa♯<br>Sol♭',8:'Sol♯<br>La♭',10:'La♯<br>Si♭'};return o.blabels?sh[p]:'';};
-  for(let m=lo;m<=hi;m++){const cls=marks[m]||'';if(BLK.includes(m%12)){b+=`<div class="bk ${cls}" data-act="key" data-m="${m}" style="left:${wi*48-16}px">${blab(m)}</div>`;}
-    else{w+=`<div class="wk ${m%12===0?'c':''} ${cls}" data-act="key" data-m="${m}" data-o="${m%12===0?lab(m)+(Math.floor(m/12)-1):''}">${lab(m)}</div>`;wi++;}}
-  return `<div class="pianoWrap" data-lo="${lo}"><div class="piano" style="width:${wi*48}px">${w}${b}</div></div>`;}
-function scrollPiano(toMidi){if(!isFinite(toMidi))toMidi=59;document.querySelectorAll('.pianoWrap').forEach(pw=>{const lo=+pw.dataset.lo;let wi=0;for(let m=lo;m<toMidi;m++)if(!BLK.includes(m%12))wi++;pw.scrollLeft=Math.max(0,wi*48-60);});}
-function marksFor(v){const mk={};v.notes.forEach((n,i)=>mk[T.midi(n)]='r'+v.roles[i]);return mk;}
-/* ===== Decoración: flores acuarela ===== */
-function blossom(x,y,r,rot,c1,c2,id){let p='';for(let i=0;i<5;i++){const a=rot+i*72;p+=`<path d="M0 0 C ${-r*.55} ${-r*.35}, ${-r*.6} ${-r*.95}, ${-r*.18} ${-r*1.05} Q 0 ${-r*.88} ${r*.18} ${-r*1.05} C ${r*.6} ${-r*.95}, ${r*.55} ${-r*.35}, 0 0Z" transform="rotate(${a})" fill="url(#${id})" opacity=".92"/>`;}
-  let st='';for(let i=0;i<7;i++){const a=(rot+i*51)*Math.PI/180;st+=`<line x1="0" y1="0" x2="${Math.cos(a)*r*.42}" y2="${Math.sin(a)*r*.42}" stroke="#B35D6E" stroke-width="1"/><circle cx="${Math.cos(a)*r*.45}" cy="${Math.sin(a)*r*.45}" r="${r*.05}" fill="#E8C766"/>`;}
-  return `<g transform="translate(${x} ${y})" filter="url(#wc)">${p}</g><g transform="translate(${x} ${y})">${st}<circle r="${r*.12}" fill="#E7A9B0"/></g>`;}
-const GRADS=`<defs><radialGradient id="pk"><stop offset="0" stop-color="#FFF4F4"/><stop offset=".55" stop-color="#F7C8CC"/><stop offset="1" stop-color="#E9A1AA"/></radialGradient><radialGradient id="pk2"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#F9DCD9"/><stop offset="1" stop-color="#EDB9B6"/></radialGradient><radialGradient id="lv"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#DCEBF8"/><stop offset="1" stop-color="#A9CDEA"/></radialGradient></defs>`;
-function branchArt(w=300,h=140,bg='#FBEFEC'){return `<svg class="art" viewBox="0 0 ${w} ${h}">${GRADS}<rect width="${w}" height="${h}" fill="${bg}"/>
-<path d="M-10 ${h*.85} C ${w*.25} ${h*.7}, ${w*.45} ${h*.55}, ${w+10} ${h*.18}" stroke="#7A5A4A" stroke-width="3.2" fill="none" stroke-linecap="round" filter="url(#ink)"/>
-<path d="M${w*.42} ${h*.6} C ${w*.5} ${h*.75}, ${w*.58} ${h*.8}, ${w*.68} ${h*.86}" stroke="#7A5A4A" stroke-width="2" fill="none" stroke-linecap="round"/>
-<path d="M${w*.2} ${h*.74} q 8 -28 30 -40" stroke="#7A5A4A" stroke-width="1.6" fill="none"/>
-<ellipse cx="${w*.3}" cy="${h*.66}" rx="10" ry="4" transform="rotate(-30 ${w*.3} ${h*.66})" fill="#A9CDEA" opacity=".8"/>
-<ellipse cx="${w*.77}" cy="${h*.4}" rx="11" ry="4.5" transform="rotate(20 ${w*.77} ${h*.4})" fill="#A9CDEA" opacity=".8"/>
-${blossom(w*.62,h*.4,22,10,'','','pk')}${blossom(w*.86,h*.22,17,40,'','','pk2')}${blossom(w*.3,h*.42,14,-20,'','','pk2')}${blossom(w*.7,h*.83,12,5,'','','pk')}${blossom(w*.12,h*.77,9,30,'','','pk')}
-<circle cx="${w*.45}" cy="${h*.5}" r="4" fill="#F4C3C8"/><circle cx="${w*.95}" cy="${h*.5}" r="3" fill="#F4C3C8"/></svg>`;}
-function miniStaffArt(bg,notes,col='#5A3E33'){return `<svg class="art" viewBox="0 0 300 150"><rect width="300" height="150" fill="${bg}"/>${GRADS}
-${[0,1,2,3,4].map(i=>`<line x1="20" x2="280" y1="${55+i*12}" y2="${55+i*12}" stroke="${col}" stroke-width="1.2" opacity=".55" filter="url(#ink)"/>`).join('')}
-<text x="22" y="114" font-family="Noto Music" font-size="68" fill="${col}" opacity=".85">𝄞</text>
-${notes.map(([x,st,c])=>{const y=103-(st-30)*6;return `<ellipse cx="${x}" cy="${y}" rx="8.4" ry="5.8" fill="${c||col}"/><ellipse cx="${x}" cy="${y}" rx="4" ry="3.1" transform="rotate(-38 ${x} ${y})" fill="${bg}"/>`}).join('')}
-${blossom(262,30,16,15,'','','pk')}${blossom(240,22,10,40,'','','pk2')}</svg>`;}
-function pianoArt(bg){let k='';for(let i=0;i<9;i++)k+=`<rect x="${18+i*30}" y="40" width="28" height="92" rx="5" fill="#FFFDFA" stroke="#E2D4C8"/>`;[0,1,3,4,5,7,8].forEach(i=>{if(i<8)k+=`<rect x="${38+i*30}" y="40" width="18" height="56" rx="4" fill="#6B4A3A"/>`;});
-  return `<svg class="art" viewBox="0 0 300 150">${GRADS}<rect width="300" height="150" fill="${bg}"/>${k}<rect x="78" y="40" width="28" height="92" rx="5" fill="#F7C8CC" opacity=".9"/><rect x="138" y="40" width="28" height="92" rx="5" fill="#F8E8A6"/><rect x="198" y="40" width="28" height="92" rx="5" fill="#CFE4F5"/>${blossom(30,28,15,0,'','','pk')}${blossom(275,128,13,30,'','','lv')}</svg>`;}
-function quillArt(bg){return `<svg class="art" viewBox="0 0 300 170">${GRADS}<rect width="300" height="170" fill="${bg}"/>
-<text x="30" y="100" font-family="Caveat" font-size="38" fill="#5A3E33" opacity=".85">La♭ · Do♭ · Mi♭</text><path d="M38 118 C 110 108, 190 124, 262 112" stroke="#C9677B" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#ink)"/>
-<path d="M240 30 C 200 60, 190 90, 186 128 L 192 126 C 200 92, 220 62, 262 30 Z" fill="#DCEBF8" stroke="#6E9CC6" stroke-width="1.2"/><line x1="250" y1="34" x2="188" y2="128" stroke="#6E9CC6"/>${blossom(50,40,14,10,'','','pk')}</svg>`;}
-function eyeArt(bg){return `<svg class="art" viewBox="0 0 300 190">${GRADS}<rect width="300" height="190" fill="${bg}"/><circle cx="150" cy="96" r="58" fill="#FFFDFA" stroke="#5A3E33" stroke-width="2" filter="url(#ink)"/><circle cx="150" cy="96" r="58" fill="none" stroke="#E8C766" stroke-width="5" opacity=".35"/><line x1="192" y1="138" x2="236" y2="178" stroke="#5A3E33" stroke-width="9" stroke-linecap="round"/>
-${[0,1,2,3,4].map(i=>`<line x1="104" x2="196" y1="${76+i*10}" y2="${76+i*10}" stroke="#5A3E33" opacity=".5"/>`).join('')}
-<ellipse cx="140" cy="116" rx="6.5" ry="4.6" fill="#C9677B"/><ellipse cx="140" cy="106" rx="6.5" ry="4.6" fill="#C9A23A"/><ellipse cx="140" cy="96" rx="6.5" ry="4.6" fill="#5B8FC0"/>${blossom(40,40,18,10,'','','pk')}${blossom(262,40,12,30,'','','pk2')}</svg>`;}
+const PLO=57,PHI=89,BLK=[1,3,6,8,10],WK=42;
+function piano(marks={},o={}){let w='',b='',wi=0;
+  const L=S.sys==='let'?['C','','D','','E','F','','G','','A','','B']:['Do','','Re','','Mi','Fa','','Sol','','La','','Si'];
+  const BL=S.sys==='let'?{1:'C♯<br>D♭',3:'D♯<br>E♭',6:'F♯<br>G♭',8:'G♯<br>A♭',10:'A♯<br>B♭'}:{1:'Do♯<br>Re♭',3:'Re♯<br>Mi♭',6:'Fa♯<br>Sol♭',8:'Sol♯<br>La♭',10:'La♯<br>Si♭'};
+  for(let m=PLO;m<=PHI;m++){const mk=marks[m];const cls=mk?mk.c:'';const dot=mk?`<span class="dot ${mk.c}">${mk.t||''}</span>`:'';
+    if(BLK.includes(m%12))b+=`<div class="bk ${cls}" data-act="key" data-m="${m}" style="left:${wi*WK}px">${dot}${o.blabels&&!mk?BL[m%12]:''}</div>`;
+    else{w+=`<div class="wk ${cls}" data-act="key" data-m="${m}" style="left:${wi*WK}px">${dot}${m%12===0&&!mk?`<span class="oc">${L[0]}${Math.floor(m/12)-1}</span>`:''}${L[m%12]}</div>`;wi++;}}
+  return `<div class="piano-wrap"><div class="piano-felt"></div><div class="piano-sc"><div class="piano" style="width:${wi*WK}px">${w}${b}</div></div></div>`;}
+function scrollPiano(lo,hi,smooth){document.querySelectorAll('.piano-sc').forEach(sc=>{const wx=m=>{let wi=0;for(let k=PLO;k<m;k++)if(!BLK.includes(k%12))wi++;return wi*WK;};
+  const a=wx(lo),z=wx(hi)+WK;const target=Math.max(0,(a+z)/2-sc.clientWidth/2+12);sc.style.scrollBehavior=smooth?'smooth':'auto';sc.scrollLeft=target;});}
+const marksFor=(v,type)=>{const mk={};v.notes.forEach((n,i)=>mk[T.midi(n)]={c:'r'+v.roles[i],t:roleShort(type,v.roles[i])});return mk;};
+/* ===== Anillo de progreso ===== */
+function ring(v,max,o={}){const sz=o.size||88,sw=o.sw||8,r=(sz-sw)/2,c=2*Math.PI*r,p=max?Math.min(1,v/max):0;const id='g'+Math.random().toString(36).slice(2,7);
+  const light=o.light;return `<svg class="ring" width="${sz}" height="${sz}" viewBox="0 0 ${sz} ${sz}"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${light?'#F7DCDA':'#D9A3A8'}"/><stop offset="1" stop-color="${light?'#EBD9A6':'#B56F78'}"/></linearGradient></defs>
+  <circle cx="${sz/2}" cy="${sz/2}" r="${r}" stroke="${light?'rgba(255,248,241,.25)':'#EDE3D8'}" stroke-width="${sw}" fill="none"/>
+  <circle class="fg" cx="${sz/2}" cy="${sz/2}" r="${r}" stroke="url(#${id})" stroke-width="${sw}" fill="none" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${(c*(1-p)).toFixed(1)}" transform="rotate(-90 ${sz/2} ${sz/2})"/>
+  <text x="50%" y="${o.sub?sz/2+2:sz/2+7}" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-weight="500" font-size="${o.fs||24}" fill="${light?'#FFF8F1':INK}">${o.txt??v}</text>
+  ${o.sub?`<text x="50%" y="${sz/2+18}" text-anchor="middle" font-family="DM Sans,sans-serif" font-weight="600" font-size="10" fill="${light?'rgba(255,248,241,.75)':'#A0907F'}">${o.sub}</text>`:''}</svg>`;}
 /* ===== Lecciones ===== */
-const C={l:0,a:0},G_={l:4,a:0},F_={l:3,a:0},Ab={l:5,a:-1},Bb={l:6,a:-1},Eb={l:2,a:-1},D_={l:1,a:0};
+const C={l:0,a:0},G_={l:4,a:0},F_={l:3,a:0},Ab={l:5,a:-1},Eb={l:2,a:-1};
 const LESSONS=[
-{t:'¿Qué es una tríada?',s:'Tres notas, como un muñeco de nieve',c:'#F7DCDD',body:()=>`<p>Una <b>tríada</b> es un acorde de <b>3 notas</b> apiladas en terceras:</p>
-<div class="formula"><div><b style="color:${ROLEC[0]}">Fundamental</b>la que le da nombre</div><div><b style="color:${ROLEC[1]}">3ª</b>dice si es mayor o menor</div><div><b style="color:${ROLEC[2]}">5ª</b>le da estabilidad</div></div>
-<div class="note-card">🌸 <b>Truco:</b> en el pentagrama, la tríada en fundamental se ve como un <b>muñeco de nieve</b>: tres notas en líneas seguidas o en espacios seguidos.</div>`,
- demo:()=>({slots:[{notes:roleNotes(T.voicing(C,'M','fund'),'M'),label:'C',sub:'línea-línea-línea'},{notes:roleNotes(T.voicing(F_,'M','fund'),'M'),label:'F',sub:'espacio-espacio-espacio'}],v:T.voicing(C,'M','fund')}),
- quiz:{q:'¿Cuál es la 5ª de Re (D)?',o:['La','Sol','Si'],a:0,why:'Re → (Mi) → Fa → (Sol) → La. Saltando una letra: Re, Fa, La.'}},
-{t:'Terceras mayor y menor',s:'2 tonos o tono y medio',c:'#FBF0C8',body:()=>`<p>Una <b>3ª</b> abarca 3 letras (Do-Re-<b>Mi</b>). Hay dos tamaños:</p>
-<div class="formula"><div><b>3ª mayor (3M)</b>4 semitonos = 2 tonos<br><span class="hand">Do → Mi</span></div><div><b>3ª menor (3m)</b>3 semitonos = tono y medio<br><span class="hand">Do → Mi♭</span></div></div>
-<div class="note-card">🎹 Cuenta en el piano <b>todas</b> las teclas, blancas y negras: cada paso es un semitono.</div>`,
- demo:()=>({slots:[{notes:[{n:{l:0,a:0,o:4},c:ROLEC[0]},{n:{l:2,a:0,o:4},c:ROLEC[1]}],label:'3M',sub:'Do–Mi'},{notes:[{n:{l:0,a:0,o:4},c:ROLEC[0]},{n:{l:2,a:-1,o:4},c:ROLEC[1]}],label:'3m',sub:'Do–Mi♭'}],v:{notes:[{l:0,a:0,o:4},{l:2,a:0,o:4}],roles:[0,1]}}),
- quiz:{q:'Re → Fa es una…',o:['3ª menor','3ª mayor'],a:0,why:'Re, Re♯, Mi, Fa: 3 semitonos = tono y medio → 3ª menor.'}},
-{t:'Los 5 tipos',s:'mayor, menor, dism, aum y sus4',c:'#D9E9F6',body:()=>`<p>Cambiando el tamaño de las terceras salen los tipos. Se cifran así:</p>
-<div class="formula">${Object.entries(T.TYPES).map(([k,t])=>`<div><b>C${t.suf} <small style="font-size:14px;color:#888">· ${t.name}</small></b>${t.formula}<br><span class="hand">${T.tones(C,k).map(nm).join(' – ')}</span></div>`).join('')}</div>
-<div class="note-card">✍️ En tu cuaderno se escribe <b>dism</b> y <b>aum</b>. La <b>sus4</b> no tiene 3ª: la cambia por la 4ª.</div>`,
- demo:()=>({slots:Object.keys(T.TYPES).map(k=>({notes:roleNotes(T.voicing(C,k,'fund'),k,false),label:'C'+T.TYPES[k].suf})),v:T.voicing(C,'M','fund')}),
- quiz:{q:'3m + 3m es una tríada…',o:['aumentada','disminuida','menor'],a:1,why:'Dos terceras menores = disminuida (dism). Ej. Adism = La–Do–Mi♭.'}},
-{t:'Ortografía: letra sí, letra no',s:'Por qué A♭m lleva Do♭',c:'#E8DFF0',body:()=>`<p>Las notas de una tríada <b>siempre</b> van saltando una letra: <span class="hand">La – (Si) – Do – (Re) – Mi</span>. Primero elige la <b>letra</b> y luego la alteración.</p>
-<div class="note-card">Ejemplo <b>A♭m</b>: de La♭ sube una 3ª menor. La letra tiene que ser <b>Do</b>. La♭→Do son 4 semitonos, sobra uno → <b>Do♭</b>. ¡No Si! Si suena igual, pero es otra letra.</div>`,
- demo:()=>({slots:[{notes:roleNotes(T.voicing(Ab,'m','fund'),'m'),label:'A♭m ✓',lc:'#4A86B8'},{notes:[{n:{l:5,a:-1,o:4}},{n:{l:6,a:0,o:4},c:'#D9485F',ring:1},{n:{l:2,a:-1,o:5}}],label:'✗ con Si',lc:'#D9485F',sub:'suena igual, mal escrito'}],v:T.voicing(Ab,'m','fund')}),
- quiz:{q:'¿Cuál es la 3ª de Dbaum (D♭aum)?',o:['Mi♯','Fa','Fa♯'],a:1,why:'Re♭ → letra Fa. Re♭ a Fa = 4 semitonos = 3ª mayor → Fa. Luego Fa → La (3M). D♭aum = Re♭–Fa–La.'}},
-{t:'Cerrada e inversiones',s:'¿quién está en el bajo?',c:'#F7DCDD',body:()=>`<p><b>Cerrada</b>: las 3 notas lo más juntas posible, dentro de una octava.</p>
-<div class="formula"><div><b>Fundamental</b>la fundamental en el bajo</div><div><b>1ª inversión</b>la <b>3ª</b> en el bajo</div><div><b>2ª inversión</b>la <b>5ª</b> en el bajo</div></div>
-<div class="note-card">🎼 <b>Cifrado con diagonal:</b> lo de después de la “/” es el bajo. <b>B♭/D</b> = B♭ con Re abajo = 1ª inv. <b>F/C</b> = 2ª inv.</div>`,
- demo:()=>({slots:['fund','inv1','inv2'].map(p=>({notes:roleNotes(T.voicing(G_,'M',p),'M'),label:T.POSS[p],sub:p==='fund'?'G':T.cifrado(G_,'M',T.voicing(G_,'M',p).roles[0])})),v:T.voicing(G_,'M','fund')}),
- quiz:{q:'F/C es…',o:['1ª inversión','2ª inversión','fundamental'],a:1,why:'F = Fa–La–Do. Do es la 5ª y está en el bajo → 2ª inversión.'}},
-{t:'Tríada abierta',s:'la de en medio sube una octava',c:'#D9E9F6',body:()=>`<p>Para hacerla <b>abierta</b>: toma la cerrada y <b>sube una octava la nota de en medio</b>.</p>
-<div class="note-card">C cerrada: <span class="hand">Do – Mi – Sol</span> → C abierta: <span class="hand">Do – Sol – Mi</span> (fund – 5ª – 3ª). Las notas quedan separadas más de una octava, suena más amplio, como en un coro 🎶.</div>`,
- demo:()=>({slots:[{notes:roleNotes(T.voicing(C,'M','fund'),'M'),label:'cerrada'},{notes:roleNotes(T.voicing(C,'M','abierta'),'M'),label:'abierta'}],v:T.voicing(C,'M','abierta')}),
- quiz:{q:'F abierta es…',o:['Fa – Do – La','Fa – La – Do','La – Do – Fa'],a:0,why:'Cerrada Fa–La–Do; la de en medio (La) sube una octava → Fa–Do–La.'}},
-{t:'Cómo identificar un acorde',s:'3 pasos que nunca fallan',c:'#FBF0C8',body:()=>`<ol class="steps"><li>Lee las notas <b>de abajo hacia arriba</b>.</li><li>Acomódalas en <b>terceras</b> (letra sí, letra no): la de abajo de la torre es la <b>fundamental</b>.</li><li>Mide las terceras (tipo) y mira <b>qué nota está en el bajo</b> (posición). Si pasa de una octava, es <b>abierta</b>.</li></ol>`,
- demo:()=>({slots:[{notes:roleNotes(T.voicing(Eb,'M','inv1'),'M'),label:'¿?',sub:'Sol – Si♭ – Mi♭'},{notes:roleNotes(T.voicing(Eb,'M','fund'),'M'),label:'E♭',sub:'en terceras'}],v:T.voicing(Eb,'M','inv1')}),
- quiz:{q:'Sol – Si♭ – Mi♭ es…',o:['Gm 1ª inv','E♭ 1ª inv (E♭/G)','B♭ 2ª inv'],a:1,why:'En terceras: Mi♭–Sol–Si♭ = E♭. Sol (la 3ª) está en el bajo → 1ª inv = E♭/G.'}}
+{t:'¿Qué es una tríada?',s:'Tres notas apiladas en terceras',img:'keys',ov:'ov-cafe',min:3,body:()=>`<p>Una <b>tríada</b> es un acorde de <b>3 notas</b> apiladas en terceras. Cada una tiene un papel:</p>
+<div class="formula"><div><b style="color:${ROLEC[0]}">Fundamental</b>la que le da nombre al acorde</div><div><b style="color:${ROLEC[1]}">3ª</b>dice si es mayor o menor</div><div><b style="color:${ROLEC[2]}">5ª</b>le da estabilidad</div></div>
+<div class="tip"><span class="i">${I('bulb')}</span><div><b>Truco visual:</b> en fundamental se ve como un muñeco de nieve: tres notas en líneas seguidas o en espacios seguidos.</div></div>`,
+ demo:()=>({slots:[{notes:roleNotes(T.voicing(C,'M','fund')),label:'C',sub:'línea · línea · línea'},{notes:roleNotes(T.voicing(F_,'M','fund')),label:'F',sub:'espacio · espacio · espacio'}],v:T.voicing(C,'M','fund'),type:'M'}),
+ quiz:{q:'¿Cuál es la 5ª de D?',o:()=>[nm({l:5,a:0}),nm({l:4,a:0}),nm({l:6,a:0})],a:0,why:()=>`${nm({l:1,a:0})} → (${nm({l:2,a:0})}) → ${nm({l:3,a:0})} → (${nm({l:4,a:0})}) → <b>${nm({l:5,a:0})}</b>. Saltando una letra: ${nm({l:1,a:0})}, ${nm({l:3,a:0})}, ${nm({l:5,a:0})}.`}},
+{t:'Terceras mayor y menor',s:'Dos tonos o tono y medio',img:'hands',ov:'ov-cafe',min:3,body:()=>`<p>Una <b>3ª</b> abarca 3 letras (${nm({l:0,a:0})} – ${nm({l:1,a:0})} – <b>${nm({l:2,a:0})}</b>). Hay dos tamaños:</p>
+<div class="formula"><div><b>3ª mayor · 3M</b>4 semitonos = 2 tonos <span class="mono">· ${nm({l:0,a:0})} → ${nm({l:2,a:0})}</span></div><div><b>3ª menor · 3m</b>3 semitonos = tono y medio <span class="mono">· ${nm({l:0,a:0})} → ${nm({l:2,a:-1})}</span></div></div>
+<div class="tip blue"><span class="i">${I('piano')}</span><div>Cuenta en el piano <b>todas</b> las teclas, blancas y negras: cada paso es un semitono.</div></div>`,
+ demo:()=>({slots:[{notes:[{n:{l:0,a:0,o:4},c:ROLEC[0]},{n:{l:2,a:0,o:4},c:ROLEC[1]}],label:'3M',sub:'4 semitonos'},{notes:[{n:{l:0,a:0,o:4},c:ROLEC[0]},{n:{l:2,a:-1,o:4},c:ROLEC[1]}],label:'3m',sub:'3 semitonos'}],v:{notes:[{l:0,a:0,o:4},{l:2,a:0,o:4}],roles:[0,1]},type:'M'}),
+ quiz:{q:()=>`${nm({l:1,a:0})} → ${nm({l:3,a:0})} es una…`,o:()=>['3ª menor','3ª mayor'],a:0,why:()=>`${nm({l:1,a:0})}, ${nm({l:1,a:1})}, ${nm({l:2,a:0})}, ${nm({l:3,a:0})}: 3 semitonos = tono y medio → <b>3ª menor</b>.`}},
+{t:'Los 5 tipos',s:'Mayor, menor, dism, aum y sus4',img:'grand',ov:'ov-gold',min:4,body:()=>`<p>Cambiando el tamaño de las terceras salen los tipos. Así se cifran:</p>
+<div class="formula">${Object.entries(T.TYPES).map(([k,t])=>`<div><b>C${t.suf} <span style="font-weight:500;color:var(--ink3);font-size:13px">· ${t.formula}</span></b><span class="mono">${T.tones(C,k).map(nm).join(' – ')}</span></div>`).join('')}</div>
+<div class="tip rose"><span class="i">${I('pen')}</span><div>Se escribe <b>dism</b> y <b>aum</b>, como en tu cuaderno. La <b>sus4</b> no tiene 3ª: la cambia por la 4ª.</div></div>`,
+ demo:()=>({slots:Object.keys(T.TYPES).map(k=>({notes:roleNotes(T.voicing(C,k,'fund')),label:'C'+T.TYPES[k].suf})),v:T.voicing(C,'M','fund'),type:'M',sw:60}),
+ quiz:{q:'3m + 3m forma una tríada…',o:()=>['aum','dism','menor'],a:1,why:()=>`Dos terceras menores = <b>dism</b>. Ejemplo: Adism = ${T.tones({l:5,a:0},'dism').map(nm).join(' – ')}.`}},
+{t:'Ortografía: letra sí, letra no',s:'Por qué A♭m lleva C♭',img:'bookblue',ov:'ov-blue',min:4,body:()=>`<p>Las notas de una tríada <b>siempre</b> van saltando una letra: <span class="mono" style="font-family:var(--fd);font-style:italic">${nm({l:5,a:0})} – (${nm({l:6,a:0})}) – ${nm({l:0,a:0})} – (${nm({l:1,a:0})}) – ${nm({l:2,a:0})}</span>. Primero eliges la <b>letra</b>, luego la alteración.</p>
+<div class="tip"><span class="i">${I('bulb')}</span><div><b>A♭m:</b> desde ${nm({l:5,a:-1})} sube una 3ª menor. La letra tiene que ser <b>${nm({l:0,a:0})}</b>; de ${nm({l:5,a:-1})} a ${nm({l:0,a:0})} hay 4 semitonos, sobra uno → <b>${nm({l:0,a:-1})}</b>. No ${nm({l:6,a:0})}: suena igual, pero es otra letra.</div></div>`,
+ demo:()=>({slots:[{notes:roleNotes(T.voicing(Ab,'m','fund')),label:'A♭m',sub:'bien escrito',lc:OK},{notes:[{n:{l:5,a:-1,o:4},c:INK},{n:{l:6,a:0,o:4},c:BAD,ring:1},{n:{l:2,a:-1,o:5},c:INK}],label:'A♭m',lc:BAD,sub:'mal escrito'}],v:T.voicing(Ab,'m','fund'),type:'m'}),
+ quiz:{q:'¿Cuál es la 3ª de D♭aum?',o:()=>[nm({l:2,a:1}),nm({l:3,a:0}),nm({l:3,a:1})],a:1,why:()=>`Desde ${nm({l:1,a:-1})} la letra es ${nm({l:3,a:0})}: ${nm({l:1,a:-1})} → ${nm({l:3,a:0})} = 4 semitonos = 3M → <b>${nm({l:3,a:0})}</b>. D♭aum = ${T.tones({l:1,a:-1},'aum').map(nm).join(' – ')}.`}},
+{t:'Cerrada e inversiones',s:'¿Quién está en el bajo?',img:'flutes',ov:'ov-blue',min:4,body:()=>`<p><b>Cerrada:</b> las 3 notas lo más juntas posible, dentro de una octava. Según qué nota quede abajo:</p>
+<div class="formula"><div><b>Cerrada</b>la fundamental en el bajo</div><div><b>1ª inv.</b>la <b>3ª</b> en el bajo</div><div><b>2ª inv.</b>la <b>5ª</b> en el bajo</div></div>
+<div class="tip blue"><span class="i">${I('music')}</span><div><b>Cifrado con diagonal:</b> lo que va después de la “/” es el bajo. <b>B♭/D</b> = 1ª inv. · <b>F/C</b> = 2ª inv.</div></div>`,
+ demo:()=>({slots:['fund','inv1','inv2'].map(p=>({notes:roleNotes(T.voicing(G_,'M',p)),label:T.POSS[p],sub:p==='fund'?'G':T.cifrado(G_,'M',T.voicing(G_,'M',p).roles[0])})),v:T.voicing(G_,'M','fund'),type:'M'}),
+ quiz:{q:'F/C es…',o:()=>['1ª inv.','2ª inv.','cerrada'],a:1,why:()=>`F = ${T.tones(F_,'M').map(nm).join(' – ')}. ${nm({l:0,a:0})} es la 5ª y está en el bajo → <b>2ª inv.</b>`}},
+{t:'Tríada abierta',s:'La de en medio sube una octava',img:'flute',ov:'ov-rose',min:3,body:()=>`<p>Para hacerla <b>abierta</b>: toma la cerrada y <b>sube una octava la nota de en medio</b>. Queda fund – 5ª – 3ª.</p>
+<div class="tip rose"><span class="i">${I('music')}</span><div>C cerrada <b>${T.voicing(C,'M','fund').notes.map(nm).join(' – ')}</b> → C abierta <b>${T.voicing(C,'M','abierta').notes.map(nm).join(' – ')}</b>. Suena más amplio, como las voces de un coro.</div></div>`,
+ demo:()=>({slots:[{notes:roleNotes(T.voicing(C,'M','fund')),label:'cerrada',sub:'C'},{notes:roleNotes(T.voicing(C,'M','abierta')),label:'abierta',sub:'C'}],v:T.voicing(C,'M','abierta'),type:'M'}),
+ quiz:{q:'F abierta es…',o:()=>[T.voicing(F_,'M','abierta').notes.map(nm).join(' – '),T.voicing(F_,'M','fund').notes.map(nm).join(' – '),T.voicing(F_,'M','inv1').notes.map(nm).join(' – ')],a:0,why:()=>`Cerrada ${T.voicing(F_,'M','fund').notes.map(nm).join(' – ')}; la de en medio (${nm({l:5,a:0})}) sube una octava → <b>${T.voicing(F_,'M','abierta').notes.map(nm).join(' – ')}</b>.`}},
+{t:'Cómo identificar un acorde',s:'Tres pasos que nunca fallan',img:'sax',ov:'ov-gold',min:4,body:()=>`<ol class="steps"><li>Lee las notas <b>de abajo hacia arriba</b>.</li><li>Acomódalas en <b>terceras</b> (letra sí, letra no): la de abajo de esa torre es la <b>fundamental</b>.</li><li>Mide las terceras (tipo) y mira <b>qué nota está en el bajo</b> (posición). Si pasa de una octava, es <b>abierta</b>.</li></ol>`,
+ demo:()=>({slots:[{notes:roleNotes(T.voicing(Eb,'M','inv1')),label:'¿?',sub:'así aparece'},{notes:roleNotes(T.voicing(Eb,'M','fund')),label:'E♭',sub:'en terceras'}],v:T.voicing(Eb,'M','inv1'),type:'M'}),
+ quiz:{q:()=>`${T.voicing(Eb,'M','inv1').notes.map(nm).join(' – ')} es…`,o:()=>['Gm · 1ª inv.','E♭/G · 1ª inv.','B♭ · 2ª inv.'],a:1,why:()=>`En terceras: ${T.tones(Eb,'M').map(nm).join(' – ')} = E♭. ${nm({l:4,a:0})} (la 3ª) está en el bajo → <b>1ª inv. = E♭/G</b>.`}}
 ];
+const fv=x=>typeof x==='function'?x():x;
 /* ===== Preguntas ===== */
 function okRoot(r,ty){const mx=T.maxAcc(r,ty);if(S.level==='pro')return mx<=2;if(mx>1)return false;if((r.l===2||r.l===6)&&r.a===1)return false;if((r.l===3||r.l===0)&&r.a===-1)return false;return true;}
-function pool(src){
-  if(src==='tarea')return [...T.TAREA.map(T.parseChord),...T.SLASH.map(T.parseChord)];
+function pool(src){if(src==='tarea')return [...T.TAREA.map(T.parseChord),...T.SLASH.map(T.parseChord)];
   const out=[];for(const r of T.ALLROOTS)for(const ty in T.TYPES)if(okRoot(r,ty))out.push({root:r,type:ty,pos:null,slash:false});return out;}
 function makeQ(ch,mode){const q={root:ch.root,type:ch.type,slash:!!ch.slash,pos:ch.slash?ch.pos:(ch.pos&&ch.keepPos?ch.pos:rnd(POSK)),mode};if(mode==='mix')q.mode=rnd(['build','id','spell']);return q;}
 function buildSession(mode,src,n=10){let qs=[];
   if(src==='errores'){qs=shuffle(S.mistakes).slice(0,n).map(m=>({...m}));}
-  else{const p=pool(src);let bag=[];while(qs.length<n){if(!bag.length)bag=shuffle(p);const ch=bag.pop();qs.push(makeQ(ch,mode));}}
-  return {mode,src,qs,i:0,right:0,fresh:true};}
-let Q=null; // sesión actual
-let A={}; // estado de respuesta de la pregunta actual
+  else{const p=pool(src);let bag=[];while(qs.length<n){if(!bag.length)bag=shuffle(p);qs.push(makeQ(bag.pop(),mode));}}
+  return {mode,src,qs,i:0,right:0};}
+let Q=null,A={};
 const qid=q=>q.mode+'|'+T.key(q.root)+q.type+'|'+q.pos+(q.slash?'|s':'');
-/* ===== Ortografía de teclas ===== */
 const SHN=[[0,0],[0,1],[1,0],[1,1],[2,0],[3,0],[3,1],[4,0],[4,1],[5,0],[5,1],[6,0]],FLN=[[0,0],[1,-1],[1,0],[2,-1],[2,0],[3,0],[4,-1],[4,0],[5,-1],[5,0],[6,-1],[6,0]];
 function spellMidi(m,q){const tn=T.tones(q.root,q.type);const t=tn.find(x=>T.pc(x)===m%12);let l,a;if(t){l=t.l;a=t.a;}else{const fl=tn.some(x=>x.a<0)||(q.root.l===3&&q.root.a===0);[l,a]=(fl?FLN:SHN)[m%12];}const o=Math.round((m-T.NAT[l]-a)/12)-1;return {l,a,o};}
-function stackUp(ns){let out=[],prev=null;ns.forEach(n=>{let x={l:n.l,a:n.a,o:4};if(prev)while(T.step(x)<=T.step(prev))x.o++;else{}out.push(x);prev=x;});return out;}
+function stackUp(ns){let out=[],prev=null;ns.forEach(n=>{let x={l:n.l,a:n.a,o:4};if(prev)while(T.step(x)<=T.step(prev))x.o++;out.push(x);prev=x;});return out;}
+const MODES={build:{t:'Construir',d:'Toca las 3 notas en el piano',img:'pianist',ov:'ov-rose',ic:'piano'},id:{t:'Identificar',d:'Lee el pentagrama y di qué acorde es',img:'sheet',ov:'ov-blue',ic:'eye'},spell:{t:'Deletrear',d:'Escribe las notas con su ♯ o ♭',img:'hymnal',ov:'ov-gold',ic:'pen'},mix:{t:'Mezcla',d:'Un poco de todo',img:'sax',ov:'ov-cafe',ic:'shuffle'}};
 /* ===== Vistas ===== */
-const ICON={home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></svg>',
-learn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v13c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6v13"/></svg>',
-prac:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="17" r="3"/><circle cx="17" cy="15" r="3"/><path d="M10 17V5l10-2v12"/></svg>',
-lab:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 5v9M13 5v9M18 5v9M8 14v5M13 14v5"/></svg>',
-prog:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg>'};
-function nav(cur){const t=[['home','Inicio'],['learn','Aprender'],['prac','Practicar'],['lab','Explorar'],['prog','Progreso']];
-  return `<nav class="tabs">${t.map(([k,l])=>`<a href="#${k}" class="${cur===k?'on':''}">${ICON[k]}${l}</a>`).join('')}</nav>`;}
-function header(){return `<header class="top"><div class="brand" data-go="home"><svg class="logo" viewBox="0 0 60 60">${GRADS}${blossom(30,30,24,8,'','','pk')}</svg><div><h1>Tríadas</h1><small>el cuaderno de Eli</small></div></div>
-<div class="pills"><span class="pill" title="Racha">🔥 ${S.streak}</span><span class="pill" title="Puntos">✨ ${S.points}</span><button class="icon-btn" data-act="settings" aria-label="Ajustes">⚙︎</button></div></header>`;}
-function ring(v,max){const p=Math.min(1,v/max),r=34,c=2*Math.PI*r;return `<svg class="ring" width="92" height="92" viewBox="0 0 92 92"><circle cx="46" cy="46" r="${r}" stroke="#F1E2DA" stroke-width="9" fill="none"/><circle cx="46" cy="46" r="${r}" stroke="url(#rg)" stroke-width="9" fill="none" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-p)}" transform="rotate(-90 46 46)" style="transition:stroke-dashoffset 1s"/><defs><linearGradient id="rg"><stop offset="0" stop-color="#E7A0AC"/><stop offset="1" stop-color="#B9566D"/></linearGradient></defs><text x="46" y="45" text-anchor="middle" font-family="Cormorant Garamond" font-weight="700" font-size="26" fill="#5A3E33">${v}</text><text x="46" y="61" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10" fill="#9A7E70">de ${max} hoy</text></svg>`;}
-function vHome(){const td=S.days[today()]||0,nm_=S.mistakes.length;const ld=Object.keys(S.lessons).length;
- return `<div class="card hero" style="padding:16px"><div style="flex:1"><div class="hand">${saludo()}, Eli 🌸</div><h2>Tu cuaderno de <em>tríadas</em></h2><p>${td>=S.goal?'¡Meta del día cumplida! Sigue si quieres 💗':'Unos minutitos al día y te salen solas.'}</p><button class="btn pri sm" data-start="mix|tarea">Practicar mi tarea →</button></div>${ring(td,S.goal)}</div>
-<div class="masonry">
-<a class="pin" href="#learn">${branchArt(300,170,'#FBEFEC')}<div class="body"><h3>Aprender</h3><p>7 lecciones súper fáciles · ${ld}/7 listas</p></div></a>
-<div class="pin" data-start="build|tarea">${pianoArt('#FBF3D6')}<div class="body"><h3>Construir</h3><p>Toca las notas en el piano</p></div></div>
-<div class="pin" data-start="id|tarea">${eyeArt('#E8F2FA')}<div class="body"><h3>Identificar</h3><p>Ve el pentagrama y adivina el cifrado y la posición</p></div></div>
-<div class="pin" data-start="spell|tarea">${quillArt('#EAF3FB')}<div class="body"><h3>Deletrear</h3><p>Escribe las notas con su ♯ o ♭</p></div></div>
-<a class="pin" href="#tarea">${miniStaffArt('#FFF8F2',[[120,30,'#C9677B'],[120,32,'#C9A23A'],[120,34,'#5B8FC0'],[175,32],[175,34],[175,37],[225,30],[225,34],[225,39]])}<div class="body"><h3>Mi tarea</h3><p>Los 19 acordes de clase en todas sus posiciones</p></div></a>
-<div class="pin" ${nm_?'data-start="mix|errores"':'data-go="prog"'} style="background:linear-gradient(160deg,#FFF6F4,#FBE4E6)"><div class="body" style="padding:18px 14px"><div style="font-size:34px">🩹</div><h3>Repasar errores</h3><p>${nm_?nm_+' por corregir — ¡a por ellos!':'Sin errores pendientes ✨'}</p></div>${nm_?`<span class="badge">${nm_}</span>`:''}</div>
-<a class="pin" href="#lab" style="background:linear-gradient(160deg,#F1F7FC,#DCEBF7)"><div class="body" style="padding:18px 14px"><div style="font-size:34px">🔍</div><h3>Explorar</h3><p>Arma cualquier tríada y escúchala</p></div></a>
-<a class="pin" href="#prog" style="background:linear-gradient(160deg,#FDF7DF,#FBF0C8)"><div class="body" style="padding:18px 14px"><div style="font-size:34px">🏅</div><h3>${dayStreak()} día${dayStreak()===1?'':'s'} seguidos</h3><p>Mejor racha: ${S.best} · ${S.total?Math.round(100*S.right/S.total):0}% aciertos</p></div></a>
-</div><div class="foot">“Canten al Señor un cántico nuevo” · Sal 96 🎶</div>`;}
 function saludo(){const h=new Date().getHours();return h<12?'Buenos días':h<19?'Buenas tardes':'Buenas noches';}
-function vLearn(){return `<h2 class="sec">Aprender <em>paso a paso</em></h2><p class="lead">Lecciones cortitas con pentagrama y piano. Toca los acordes para escucharlos.</p><div class="lesson-list">
-${LESSONS.map((l,i)=>`<div class="card lsn" data-go="lesson/${i}" style="animation-delay:${i*.04}s"><div class="num" style="background:${l.c}">${i+1}</div><div><h3>${l.t}</h3><p>${l.s}</p></div><span class="done">${S.lessons[i]?'🌸':'›'}</span></div>`).join('')}</div>`;}
-function vLesson(i){const l=LESSONS[i];const d=l.demo();const q=l.quiz;
- return `<div class="row" style="margin-top:8px"><button class="btn ghost sm" data-go="learn" style="flex:0">← Lecciones</button></div>
-<h2 class="sec"><span class="hand" style="font-size:26px">Lección ${i+1}</span><br>${l.t}</h2>
-<div class="card"><div class="tape"></div><div class="prose">${l.body()}</div></div>
-<div class="card"><div class="tape sage"></div><div class="label" style="margin-top:4px">Toca para escuchar</div><div class="staffwrap">${staff(d.slots,{anim:true})}</div>
-<div class="legend"><span><i style="background:${ROLEC[0]}"></i>fundamental</span><span><i style="background:${ROLEC[1]}"></i>3ª</span><span><i style="background:${ROLEC[2]}"></i>5ª</span></div>
-<div class="mt">${piano(marksFor(d.v))}</div></div>
-<div class="card"><div class="tape lav"></div><div class="label" style="margin-top:4px">Mini reto</div><p class="prose" style="margin:4px 0 10px"><b style="color:var(--ink)">${q.q}</b></p><div class="chips quizopt" id="lq">${q.o.map((o,k)=>`<button class="chip" data-act="lq" data-k="${k}" data-i="${i}">${o}</button>`).join('')}</div><div id="lqw"></div></div>
-<div class="row">${i>0?`<button class="btn soft" data-go="lesson/${i-1}">← Anterior</button>`:''}${i<LESSONS.length-1?`<button class="btn pri" data-go="lesson/${i+1}">Siguiente →</button>`:`<button class="btn sage" data-start="mix|tarea">¡A practicar! 🎶</button>`}</div>`;}
-function vPrac(){return `<h2 class="sec">Practicar <em>con calma</em></h2><p class="lead">Rondas de 10. Si te equivocas, te enseño la corrección en el pentagrama, paso a paso.</p>
-<div class="label">1 · ¿Qué quieres practicar?</div><div class="chips" id="pm">${[['build','🎹 Construir'],['id','👁 Identificar'],['spell','✍️ Deletrear'],['mix','🌸 Mezcla']].map(([k,l])=>`<button class="chip ${PM.mode===k?'on':''}" data-act="pm" data-k="${k}">${l}</button>`).join('')}</div>
-<div class="label">2 · ¿Con qué acordes?</div><div class="chips">${[['tarea','📒 Mi tarea'],['todas','🎼 Todas las tonalidades'],['errores',`🩹 Mis errores (${S.mistakes.length})`]].map(([k,l])=>`<button class="chip ${PM.src===k?'on':''}" data-act="ps" data-k="${k}" ${k==='errores'&&!S.mistakes.length?'disabled style="opacity:.45"':''}>${l}</button>`).join('')}</div>
-${PM.src==='todas'?`<div class="label">Nivel</div><div class="toggle"><button class="${S.level==='basico'?'on':''}" data-act="lvl" data-k="basico">Básico (♯ y ♭)</button><button class="${S.level==='pro'?'on':''}" data-act="lvl" data-k="pro">Pro (𝄪 y 𝄫)</button></div>`:''}
-<div class="card mt" style="background:#FBF4EC"><div class="prose" style="font-size:14.5px">${({build:'<b>Construir:</b> te doy el cifrado y la posición y tú tocas las 3 notas en el piano, de abajo hacia arriba.',id:'<b>Identificar:</b> ves un acorde en el pentagrama (y lo puedes oír) y eliges su cifrado y su posición.',spell:'<b>Deletrear:</b> escribes las 3 notas con su alteración correcta (aquí sí importa si es Do♭ o Si).',mix:'<b>Mezcla:</b> un poquito de todo, para que se te quede de verdad.'})[PM.mode]}</div></div>
-<button class="btn pri block mt" data-act="startPM">Empezar ronda →</button>`;}
+const acc=()=>S.total?Math.round(100*S.right/S.total):0;
+function navHTML(cur){const t=[['home','Inicio','home'],['learn','Aprender','book'],['prac','Practicar','target'],['lab','Explorar','compass'],['prog','Progreso','chart']];
+ return `<div class="brandrail"><div class="lg"><svg width="26" height="26" viewBox="0 0 26 26"><ellipse cx="13" cy="20" rx="6" ry="4.3" fill="#E9C7C6"/><ellipse cx="13" cy="13" rx="6" ry="4.3" fill="#EBD9A6"/><ellipse cx="13" cy="6" rx="6" ry="4.3" fill="#BFD3E2"/></svg></div><div><b>Tríadas</b><small>el estudio de Eli</small></div></div>
+ <nav class="tabs">${t.map(([k,l,ic])=>`<a href="#${k}" class="${cur===k?'on':''}" ${cur===k?'aria-current="page"':''}>${I(ic)}<span>${l}</span></a>`).join('')}</nav>
+ <div class="railfoot">“Canten al Señor un cántico nuevo”<br><small>Salmo 96</small></div>`;}
+function vHome(){const td=S.days[today()]||0,nmis=S.mistakes.length,ld=Object.keys(S.lessons).length;const nx=Math.min(ld,6);const L=LESSONS[LESSONS.findIndex((_,i)=>!S.lessons[i])>=0?LESSONS.findIndex((_,i)=>!S.lessons[i]):nx];const li=LESSONS.indexOf(L);
+ return `<div class="view"><div class="topbar"><div class="hello"><small>${saludo()}</small><h1>Hola, <em>Eli</em></h1></div>
+ <div class="chips-top"><span class="stat-chip" title="Racha de aciertos" style="color:var(--rose-d)">${I('flame',2)}<span style="color:var(--ink)">${S.streak}</span></span><button class="icon-btn" data-act="settings" aria-label="Ajustes">${I('gear')}</button></div></div>
+ <div class="home stag">
+ <section class="a-hero"><div class="ph hero ov-cafe">${ph('hero')}<div class="ringbox">${ring(td,S.goal,{light:1,size:76,sw:6,fs:22,sub:'de '+S.goal+' hoy'})}</div>
+  <div class="in"><span class="tag">${I('notebook',2)} Tu tarea · 19 acordes</span><h2>Tríadas <em>cerradas y abiertas</em></h2><p>${td>=S.goal?'Meta del día cumplida. Si quieres, sigue un poquito más.':'Cerrada, 1ª inv., 2ª inv. y abierta, con corrección paso a paso.'}</p>
+  <button class="btn light" data-start="mix|tarea">Practicar mi tarea ${I('arrow',2)}</button></div></div></section>
+ <section class="a-stats"><div class="stats">
+  <div class="stat"><div class="ic" style="background:var(--rose-t);color:var(--rose-d)">${I('flame',2)}</div><div class="v">${dayStreak()}</div><div class="t">días seguidos</div></div>
+  <div class="stat"><div class="ic" style="background:var(--gold-t);color:var(--gold)">${I('star',2)}</div><div class="v">${S.points}</div><div class="t">puntos</div></div>
+  <div class="stat"><div class="ic" style="background:var(--blue-t);color:var(--blue)">${I('target',2)}</div><div class="v">${acc()}<small>%</small></div><div class="t">aciertos</div></div></div></section>
+ <section class="a-modes"><div class="sec-h"><h2>Modos de práctica</h2><a href="#prac">Configurar</a></div><div class="rail">
+  ${['build','id','spell'].map(k=>{const m=MODES[k];return `<div class="ph mode ${m.ov} tap" data-start="${k}|tarea">${ph(m.img)}<div class="in"><div class="ico">${I(m.ic)}</div><h3>${m.t}</h3><p>${m.d}</p></div></div>`;}).join('')}</div></section>
+ <section class="a-cont"><div class="sec-h"><h2>${ld>=7?'Repasa una lección':'Continúa aprendiendo'}</h2><span>${ld}/7</span></div>
+  <div class="lrow tap" data-go="lesson/${li}"><div class="ph thumb">${ph(L.img)}</div><div class="tx"><small>Lección ${li+1} · ${L.min} min</small><h3>${L.t}</h3><div class="pbar" style="margin-top:8px"><i style="width:${Math.round(ld/7*100)}%"></i></div></div><span class="end">${I('right',2)}</span></div></section>
+ <section class="a-feats"><div class="two">
+  <a class="ph feat ov-cafe tap" href="#tarea">${ph('oldmusic')}<div class="in"><div><h3>Mi tarea</h3><p>19 acordes, 4 posiciones</p></div></div></a>
+  <div class="ph feat ov-rose tap" ${nmis?'data-start="mix|errores"':'data-go="prog"'}>${ph('church')}<div class="in"><div><h3>Repasar errores</h3><p>${nmis?nmis+' por corregir':'Nada pendiente'}</p></div>${nmis?`<span class="badge">${nmis}</span>`:''}</div></div></div></section>
+ </div><p class="verse">“Canten al Señor un cántico nuevo” · Salmo 96</p></div>`;}
+function vLearn(){const ld=Object.keys(S.lessons).length;
+ return `<div class="view"><div class="page-h"><span class="eyebrow">Aprender</span><h1>Siete lecciones, <em>paso a paso</em></h1><p>Cortitas, con pentagrama y piano. Toca los acordes para escucharlos.</p></div>
+ <div class="card flat prog-hero" style="margin-top:24px">${ring(ld,7,{size:72,sw:7,fs:20,txt:ld+'/7'})}<div class="tx"><h3>${ld===7?'¡Todas completas!':ld?'Vas muy bien':'Empieza por la primera'}</h3><p>Cada lección termina con un mini reto.</p></div></div>
+ <div class="lesson-grid stag">${LESSONS.map((l,i)=>`<div class="lrow tap" data-go="lesson/${i}"><div class="ph thumb">${ph(l.img)}</div><div class="tx"><small>Lección ${i+1} · ${l.min} min</small><h3>${l.t}</h3><p>${l.s}</p></div><span class="end">${S.lessons[i]?`<span class="check-ok">${I('check',2.4)}</span>`:I('right',2)}</span></div>`).join('')}</div></div>`;}
+function vLesson(i){const l=LESSONS[i];if(!l)return vLearn();const d=l.demo();const q=l.quiz;
+ return `<div class="view"><div class="ph cover ${l.ov}">${ph(l.img)}<div class="top"><button class="glass-btn" data-go="learn" aria-label="Volver">${I('left',2)}</button><span class="glass-pill">${i+1} de 7</span></div>
+ <div class="in"><span class="eyebrow" style="color:rgba(255,248,241,.8)">Lección ${i+1} · ${l.min} min</span><h1>${l.t}</h1><p>${l.s}</p></div></div>
+ <div class="lesson-body"><div class="lesson-cols"><div class="card"><div class="prose">${l.body()}</div></div>
+ <div><div class="card"><div class="card-h"><h3>Míralo y escúchalo</h3><button class="btn soft sm" data-act="play" data-m="${d.v.notes.map(T.midi).join(',')}">${I('play')} Oír</button></div>
+ <div class="staffbox">${staff(d.slots,{anim:true,sw:d.sw,bars:d.slots.length>2,end:1})}</div>${legend(d.type)}${piano(marksFor(d.v,d.type))}
+ <p class="hint" style="text-align:center;margin-top:12px">Toca cualquier acorde del pentagrama para oírlo</p></div>
+ <div class="card"><div class="card-h"><h3>Mini reto</h3>${S.lessons[i]?'<span class="tag-s tg-blue">completado</span>':''}</div><p style="margin:0 0 16px;font-weight:600;font-size:17px">${fv(q.q)}</p>
+ <div class="quiz-opts" id="lq">${q.o().map((o,k)=>`<button class="opt" data-act="lq" data-k="${k}" data-i="${i}"><span>${o}</span></button>`).join('')}</div><div id="lqw"></div></div></div></div>
+ <div class="lnav">${i>0?`<button class="btn ghost" data-go="lesson/${i-1}">${I('left',2)} Anterior</button>`:''}${i<LESSONS.length-1?`<button class="btn pri" data-go="lesson/${i+1}">Siguiente ${I('right',2)}</button>`:`<button class="btn rose" data-start="mix|tarea">A practicar ${I('arrow',2)}</button>`}</div></div></div>`;}
 const PM={mode:'mix',src:'tarea'};
+function vPrac(){const desc={build:'Te doy el cifrado y la posición; tú tocas las 3 notas en el piano, de abajo hacia arriba.',id:'Ves un acorde en el pentagrama (y lo puedes oír) y eliges su cifrado y su posición.',spell:'Escribes las 3 notas con su alteración correcta. Aquí sí importa si es C♭ o B.',mix:'Un poco de cada modo, para que se te quede de verdad.'};
+ return `<div class="view"><div class="page-h"><span class="eyebrow">Practicar</span><h1>Rondas de 10, <em>con calma</em></h1><p>Si te equivocas, te enseño la corrección en el pentagrama, paso a paso.</p></div>
+ <div class="field-l" style="margin-top:32px">Modo</div><div class="mtiles">${Object.entries(MODES).map(([k,m])=>`<button class="ph mtile ${m.ov} ${PM.mode===k?'on':''}" data-act="pm" data-k="${k}">${ph(m.img)}<span class="ck">${I('check',2.6)}</span><div class="in"><h3>${m.t}</h3><p>${m.d}</p></div></button>`).join('')}</div>
+ <div class="field-l">Acordes</div><div class="src-list">
+  ${[['tarea','Mi tarea','19 acordes de clase con bajo y sin bajo','notebook','var(--rose-t)','var(--rose-d)'],['todas','Todas las tonalidades','Las 21 fundamentales × 5 tipos','grid','var(--blue-t)','var(--blue)'],['errores','Mis errores',S.mistakes.length?S.mistakes.length+' por repasar':'Aún no tienes errores guardados','heal','var(--gold-t)','var(--gold)']].map(([k,t,s,ic,bg,fg])=>`<button class="src ${PM.src===k?'on':''}" data-act="ps" data-k="${k}" ${k==='errores'&&!S.mistakes.length?'disabled':''}><span class="ic" style="background:${bg};color:${fg}">${I(ic)}</span><span><b>${t}</b><small>${s}</small></span><span class="rd"></span></button>`).join('')}</div>
+ ${PM.src==='todas'?`<div class="field-l">Nivel</div><div class="seg"><button class="${S.level==='basico'?'on':''}" data-act="lvl" data-k="basico">Básico · ♯ y ♭</button><button class="${S.level==='pro'?'on':''}" data-act="lvl" data-k="pro">Pro · dobles alteraciones</button></div>`:''}
+ <div class="tip blue" style="margin-top:24px"><span class="i">${I(MODES[PM.mode].ic)}</span><div><b>${MODES[PM.mode].t}.</b> ${desc[PM.mode]}</div></div>
+ <button class="btn pri block" style="margin-top:24px" data-act="startPM">Empezar ronda ${I('arrow',2)}</button></div>`;}
 function vTarea(){const tar=T.TAREA.map(T.parseChord);const sl=T.SLASH.map(T.parseChord);
- return `<h2 class="sec">Mi <em>tarea</em></h2><p class="lead">Cada acorde en cerrada, 1ª inv., 2ª inv. y abierta. Toca cualquiera para oírlo.</p>
-${tar.map((c,i)=>`<div class="card" style="animation-delay:${Math.min(i,8)*.03}s;padding:12px 10px 8px"><div style="display:flex;align-items:baseline;gap:10px;padding:0 6px"><b style="font-family:var(--fs);font-size:30px">${cif(c.root,c.type)}</b><span style="color:var(--ink2);font-size:13px">${T.TYPES[c.type].name} · ${T.tones(c.root,c.type).map(nm).join(' – ')}</span></div>
-<div class="staffwrap">${staff(POSK.map(p=>({notes:roleNotes(T.voicing(c.root,c.type,p),c.type,false),label:T.POSS[p]})),{bars:1,short:1})}</div></div>`).join('')}
-<h2 class="sec" style="font-size:24px">Con <em>bajo</em> (diagonal)</h2>
-<div class="card"><div class="staffwrap">${staff(sl.map(c=>({notes:roleNotes(T.voicing(c.root,c.type,c.pos),c.type),label:c.label.replace('b','♭').replace('b','♭'),sub:T.POSS[c.pos]})),{bars:1})}</div>
-<p class="prose" style="font-size:14px;margin:8px 4px 0">Lo que va después de la “/” es la nota del bajo. Si es la 3ª → 1ª inv.; si es la 5ª → 2ª inv.</p></div>
-<button class="btn pri block" data-start="mix|tarea">Practicar estos acordes →</button>`;}
+ return `<div class="view"><div class="page-h"><button class="btn ghost sm" data-go="home" style="margin-bottom:16px">${I('left',2)} Inicio</button><br><span class="eyebrow">Mi tarea</span><h1>19 acordes, <em>4 posiciones</em></h1><p>Cada acorde en cerrada, 1ª inv., 2ª inv. y abierta. Toca cualquiera para oírlo.</p></div>
+ <div class="tarea-grid stag" style="margin-top:24px">${tar.map(c=>`<div class="card chord-card tight"><div class="hd"><b>${H(pretty(cif(c.root,c.type)))}</b><span>${T.tones(c.root,c.type).map(nm).join(' · ')}</span></div>
+ <div class="staffbox">${staff(POSK.map(p=>({notes:roleNotes(T.voicing(c.root,c.type,p)),label:T.POSS[p]})),{bars:1,end:1,sw:70})}</div></div>`).join('')}
+ <div class="card chord-card tight"><div class="hd"><b>Con bajo</b><span>la nota tras la “/” es el bajo</span></div><div class="staffbox">${staff(sl.map(c=>({notes:roleNotes(T.voicing(c.root,c.type,c.pos)),label:pretty(c.label),sub:T.POSS[c.pos]})),{bars:1,end:1,sw:70})}</div></div></div>
+ ${legend('M')}<button class="btn pri block" style="margin-top:24px" data-start="mix|tarea">Practicar estos acordes ${I('arrow',2)}</button></div>`;}
 const LAB={root:{l:0,a:0},type:'M',pos:'fund'};
-function vLab(){const v=T.voicing(LAB.root,LAB.type,LAB.pos);const bad=T.maxAcc(LAB.root,LAB.type)>2;
- return `<h2 class="sec">Explorar <em>acordes</em></h2><p class="lead">Elige fundamental, tipo y posición. Mira, escucha y lee la explicación.</p>
-<div class="card"><div class="label" style="margin-top:0">Fundamental</div><div class="letters">${[0,1,2,3,4,5,6].map(l=>`<button class="chip ${LAB.root.l===l?'on':''}" data-act="labL" data-k="${l}">${S.sys==='let'?T.LET[l]:T.SOL[l]}</button>`).join('')}</div>
-<div class="accs" style="grid-template-columns:repeat(3,1fr)">${[-1,0,1].map(a=>`<button class="chip ${LAB.root.a===a?'on':''}" data-act="labA" data-k="${a}">${a?T.ACC[a]:'♮'}</button>`).join('')}</div>
-<div class="label">Tipo</div><div class="chips">${Object.keys(T.TYPES).map(k=>`<button class="chip ${LAB.type===k?'on':''}" data-act="labT" data-k="${k}">${T.TYPES[k].name}</button>`).join('')}</div>
-<div class="label">Posición</div><div class="chips">${POSK.map(k=>`<button class="chip ${LAB.pos===k?'on':''}" data-act="labP" data-k="${k}">${T.POSS[k]}</button>`).join('')}</div></div>
-${bad?`<div class="card center">Ese acorde necesitaría triple alteración 😅 Prueba otra fundamental.</div>`:`<div class="card"><div class="tape"></div><div class="center"><span style="font-family:var(--fs);font-size:44px;font-weight:700">${fullCif({root:LAB.root,type:LAB.type,pos:LAB.pos})}</span><div class="hand" style="font-size:19px">${T.TYPES[LAB.type].name} · ${T.POS[LAB.pos]}</div></div>
-<div class="staffwrap">${staff([{notes:roleNotes(v,LAB.type),label:''}],{anim:true})}</div>
-<div class="notes-list">${v.notes.map((n,i)=>`<div style="border-bottom:3px solid ${ROLEC[v.roles[i]]}"><b>${nm(n)}</b><small>${T.roles(LAB.type)[v.roles[i]]}</small></div>`).join('')}</div>
-<div class="row"><button class="btn soft sm" data-act="playv" data-mode="arp">▶ Arpegio</button><button class="btn soft sm" data-act="playv" data-mode="block">▶ Acorde</button></div>
-<div class="mt">${piano(marksFor(v))}</div>
-<details class="exp mt"><summary>📖 ¿Cómo se arma? (paso a paso)</summary><ol class="steps">${T.explainBuild(LAB.root,LAB.type,LAB.pos,S.sys).map(s=>`<li>${s}</li>`).join('')}</ol></details></div>`}`;}
-function vProg(){const acc=S.total?Math.round(100*S.right/S.total):0;
- const bars=(obj,keys,lab)=>keys.map(k=>{const s=obj[k]||{t:0,r:0};const p=s.t?Math.round(100*s.r/s.t):0;return `<div class="hbar"><span>${lab(k)}</span><div class="bar"><i style="width:${p}%"></i></div><em>${s.t?p+'%':'—'}</em></div>`;}).join('');
- return `<h2 class="sec">Tu <em>progreso</em></h2><p class="lead">Todo se guarda en este teléfono, sin cuentas ni contraseñas.</p>
-<div class="stat"><div class="card"><div class="v">✨ ${S.points}</div><div class="t">puntos</div></div><div class="card"><div class="v">🔥 ${S.best}</div><div class="t">mejor racha</div></div><div class="card"><div class="v">${acc}%</div><div class="t">aciertos (${S.total})</div></div><div class="card"><div class="v">🌸 ${dayStreak()}</div><div class="t">días seguidos</div></div></div>
-<div class="card mt"><div class="label" style="margin-top:0">Por tipo</div>${bars(S.byType,Object.keys(T.TYPES),k=>T.TYPES[k].name)}<div class="label">Por posición</div>${bars(S.byPos,POSK,k=>T.POSS[k])}</div>
-<div class="card"><div class="tape"></div><div class="label" style="margin-top:0">Errores por repasar (${S.mistakes.length})</div>
-${S.mistakes.length?S.mistakes.slice().reverse().slice(0,30).map(m=>`<div class="mist"><b>${qLabel(m)}</b><span>${T.POSS[m.pos]} · ${({build:'construir',id:'identificar',spell:'deletrear'})[m.mode]}${m.n>1?' · '+m.n+' veces':''}</span></div>`).join('')+`<button class="btn pri block mt" data-start="mix|errores">🩹 Repasar errores</button>`:'<p class="prose" style="color:var(--ink2)">Nada pendiente. ¡Bien hecho! 🌷</p>'}</div>
-<button class="btn ghost block" data-act="reset">Borrar mi progreso</button>`;}
+function vLab(){const v=T.voicing(LAB.root,LAB.type,LAB.pos);const bad=T.maxAcc(LAB.root,LAB.type)>2;const names=S.sys==='let'?T.LET:T.SOL;
+ return `<div class="view"><div class="page-h"><span class="eyebrow">Explorar</span><h1>Arma cualquier <em>tríada</em></h1><p>Elige fundamental, tipo y posición. Mira, escucha y lee cómo se arma.</p></div>
+ <div class="lesson-cols" style="margin-top:24px"><div class="card"><div class="field-l">Fundamental</div><div class="grid7">${[0,1,2,3,4,5,6].map(l=>`<button class="choice sm ${LAB.root.l===l?'on':''}" data-act="labL" data-k="${l}">${names[l]}</button>`).join('')}</div>
+ <div class="grid5" style="grid-template-columns:repeat(3,1fr);margin-top:8px">${[-1,0,1].map(a=>`<button class="choice acc ${LAB.root.a===a?'on':''}" data-act="labA" data-k="${a}" aria-label="${T.ACCW[a]}">${accSVG(a)}</button>`).join('')}</div>
+ <div class="field-l">Tipo</div><div class="grid5">${Object.keys(T.TYPES).map(k=>`<button class="choice sm ${LAB.type===k?'on':''}" data-act="labT" data-k="${k}">${k==='M'?'Mayor':k==='m'?'m':T.TYPES[k].suf}</button>`).join('')}</div>
+ <div class="field-l">Posición</div><div class="grid2">${POSK.map(k=>`<button class="choice sm ${LAB.pos===k?'on':''}" data-act="labP" data-k="${k}">${T.POSS[k]}</button>`).join('')}</div></div>
+ ${bad?`<div class="card"><p class="prose" style="text-align:center">Ese acorde necesitaría triple alteración. Prueba otra fundamental.</p></div>`:`<div class="card"><div class="bigcif"><b>${H(pretty(fullCif({root:LAB.root,type:LAB.type,pos:LAB.pos})))}</b><span class="pos-pill">${T.POSS[LAB.pos]}</span></div>
+ <div class="staffbox">${staff([{notes:roleNotes(v)}],{anim:true,end:1,sw:120})}</div>${npills(v,LAB.type)}
+ <div class="btn-row" style="margin-top:16px"><button class="btn soft sm" data-act="playv" data-mode="arp">${I('play')} Arpegio</button><button class="btn soft sm" data-act="playv" data-mode="block">${I('play')} Acorde</button></div>
+ ${piano(marksFor(v,LAB.type))}
+ <details class="acc"><summary>¿Cómo se arma? Paso a paso ${I('down',2)}</summary><ol class="steps">${T.explainBuild(LAB.root,LAB.type,LAB.pos,S.sys).map(s=>`<li>${s}</li>`).join('')}</ol></details></div>`}</div></div>`;}
+function vProg(){const a=acc();
+ const bars=(obj,keys,lab)=>keys.map(k=>{const s=obj[k]||{t:0,r:0};const p=s.t?Math.round(100*s.r/s.t):0;return `<div class="hbar"><span>${lab(k)}</span><div class="pbar"><i style="width:${p}%"></i></div><em>${s.t?p+'%':'—'}</em></div>`;}).join('');
+ return `<div class="view"><div class="page-h"><span class="eyebrow">Progreso</span><h1>Tu <em>avance</em></h1><p>Todo se guarda en este teléfono, sin cuentas ni contraseñas.</p></div>
+ <div class="lesson-cols" style="margin-top:24px"><div><div class="card prog-hero">${ring(a,100,{size:96,sw:9,fs:26,txt:a+'%',sub:'aciertos'})}<div class="tx"><h3>${S.total?S.right+' de '+S.total+' bien':'Aún sin rondas'}</h3><p>${S.total?'Cada error corregido suma para tu racha.':'Haz tu primera ronda y aquí verás tu avance.'}</p></div></div>
+ <div class="stats" style="margin:0 0 16px"><div class="stat"><div class="v">${S.points}</div><div class="t">puntos</div></div><div class="stat"><div class="v">${S.best}</div><div class="t">mejor racha</div></div><div class="stat"><div class="v">${dayStreak()}</div><div class="t">días seguidos</div></div></div>
+ <div class="card"><div class="card-h"><h3>Por tipo</h3></div>${bars(S.byType,Object.keys(T.TYPES),k=>k==='M'?'Mayor':k==='m'?'Menor':T.TYPES[k].suf)}<div class="card-h" style="margin-top:24px"><h3>Por posición</h3></div>${bars(S.byPos,POSK,k=>T.POSS[k])}</div></div>
+ <div><div class="card"><div class="card-h"><h3>Errores por repasar</h3><span class="badge" style="${S.mistakes.length?'':'background:var(--bg2);color:var(--ink3)'}">${S.mistakes.length}</span></div>
+ ${S.mistakes.length?S.mistakes.slice().reverse().slice(0,30).map(m=>`<div class="mist"><b>${H(pretty(qLabel(m)))}</b><span><span class="tag-s ${({build:'tg-rose',id:'tg-blue',spell:'tg-gold'})[m.mode]}">${MODES[m.mode].t}</span> ${T.POSS[m.pos]}${m.n>1?' · '+m.n+'×':''}</span></div>`).join('')+`<button class="btn rose block" style="margin-top:16px" data-start="mix|errores">${I('heal',2)} Repasar errores</button>`:'<p class="prose" style="margin:0">Nada pendiente. Cuando te equivoques, el acorde se guarda aquí para repasarlo.</p>'}</div>
+ <button class="btn ghost block" data-act="reset">Borrar mi progreso</button></div></div></div>`;}
 /* ===== Quiz ===== */
 function vQuiz(){if(!Q)return vPrac();const q=Q.qs[Q.i];const pct=Math.round(100*Q.i/Q.qs.length);
- const top=`<div class="qtop"><button class="icon-btn" data-act="quit" aria-label="Salir">✕</button><div class="bar"><i style="width:${pct}%"></i></div><span class="pill">${Q.i+1}/${Q.qs.length}</span></div>`;
- if(q.mode==='build')return top+qBuild(q);if(q.mode==='id')return top+qId(q);return top+qSpell(q);}
-function promptCard(q,kind){const lab=qLabel(q);const v=T.voicing(q.root,q.type,q.pos);
- return `<div class="card prompt"><div class="tape ${kind==='spell'?'lav':kind==='build'?'':'sage'}"></div><div class="k">${kind==='build'?'Construye en el piano':'Escribe las notas, de abajo hacia arriba'}</div><div class="cif">${lab}</div>
- ${q.slash?`<div class="pos">¿qué posición es? 🤔</div><div class="hint">El bajo es ${nm(v.notes[0])}</div>`:`<div class="pos">${T.POS[q.pos]}</div>`}</div>`;}
-function qBuild(q){const sel=A.sel||[];const sp=[...sel].sort((a,b)=>a-b).map(m=>({n:spellMidi(m,q),c:'#B9566D'}));const mk={};sel.forEach(m=>mk[m]='sel');
- return promptCard(q,'build')+`<div class="card" style="padding:10px"><div class="staffwrap" id="live">${staff([{notes:sp.length?sp:[],label:sp.length?sp.map(x=>nm(x.n)).join(' · '):'toca 3 teclas'}],{})}</div>
- <div class="mt">${piano(mk,{blabels:1})}</div><div class="row mt"><button class="btn soft sm" data-act="clear">Borrar</button><button class="btn soft sm" data-act="playsel" ${sel.length?'':'disabled'}>▶ Oír</button></div></div>
- <button class="btn pri block" data-act="check" ${sel.length===3?'':'disabled'}>Comprobar ${sel.length}/3</button>`;}
+ const top=`<div class="qbar"><button class="icon-btn" data-act="quit" aria-label="Salir">${I('x',2)}</button><div class="pbar"><i style="width:${pct}%"></i></div><span class="stat-chip" style="color:var(--rose-d);height:32px">${I('flame',2)}<span style="color:var(--ink)">${S.streak}</span></span><span class="cnt">${Q.i+1}/${Q.qs.length}</span></div>`;
+ return `<div class="view" id="qv">${top}${q.mode==='build'?qBuild(q):q.mode==='id'?qId(q):qSpell(q)}</div>`;}
+function band(mode){const m=MODES[mode];return `<div class="ph band ${m.ov}">${ph(m.img)}<div class="in">${I(m.ic,2)} ${m.t}</div></div>`;}
+function promptCard(q){const lab=qLabel(q);const v=T.voicing(q.root,q.type,q.pos);
+ return `<div class="qhead">${band(q.mode)}<div class="body"><div class="k">${q.mode==='build'?'Construye en el piano, de abajo hacia arriba':'Escribe las notas, de abajo hacia arriba'}</div><div class="cif">${H(pretty(lab))}</div>
+ ${q.slash?`<span class="pos-pill q">¿Qué posición es?</span><div class="hint">Pista: el bajo es ${nm(v.notes[0])}</div>`:`<span class="pos-pill">${T.POSS[q.pos]}</span>`}</div></div>`;}
+function qBuild(q){const sel=A.sel||[];const sorted=[...sel].sort((a,b)=>a-b);const sp=sorted.map(m=>({n:spellMidi(m,q),c:INK}));const mk={};sel.forEach(m=>mk[m]={c:'sel',t:''});
+ return promptCard(q)+`<div class="card tight"><div class="staffbox">${staff([{notes:sp}],{sw:130,scale:1.15})}<div class="live-row"><span class="empty-staff">${sp.length?sp.map(x=>nm(x.n)).join(' · '):'Toca 3 teclas en el piano'}</span><span class="mini"><button class="icon-btn sm" data-act="clear" aria-label="Borrar" ${sel.length?'':'disabled'}>${I('refresh',2)}</button><button class="icon-btn sm" data-act="playsel" aria-label="Oír" ${sel.length?'':'disabled'}>${I('play')}</button></span></div></div>
+ ${piano(mk,{blabels:1})}</div>
+ <div class="sticky-cta"><button class="btn pri block" data-act="check" ${sel.length===3?'':'disabled'}>${sel.length===3?'Comprobar':'Elige '+(3-sel.length)+' nota'+(3-sel.length===1?'':'s')+' más'}</button></div>`;}
 function idOptions(q){const ok=cif(q.root,q.type);const out=[{root:q.root,type:q.type}];const seen=new Set([ok]);
  const add=(r,t)=>{if(!r||out.length>=4)return;if(T.maxAcc(r,t)>2)return;const k=cif(r,t);if(seen.has(k))return;seen.add(k);out.push({root:{l:r.l,a:r.a},type:t});};
  for(const r of T.ALLROOTS)if(T.pc({...r,o:4})===T.pc({...q.root,o:4})&&r.l!==q.root.l){add(r,q.type);break;}
@@ -542,43 +815,46 @@ function idOptions(q){const ok=cif(q.root,q.type);const out=[{root:q.root,type:q
  let g=0;while(out.length<4&&g++<50)add(rnd(T.ALLROOTS),rnd(Object.keys(T.TYPES)));
  return shuffle(out);}
 function qId(q){if(!A.opts)A.opts=idOptions(q);const v=T.voicing(q.root,q.type,q.pos);
- return `<div class="card prompt" style="padding-bottom:8px"><div class="tape sage"></div><div class="k">¿Qué acorde es y en qué posición?</div>
- <div class="staffwrap mt">${staff([{notes:v.notes.map(n=>({n}))}],{anim:true})}</div><button class="btn soft sm mt" data-act="playq">▶ Escuchar</button></div>
- <div class="label">Cifrado</div><div class="chips quizopt">${A.opts.map((o,k)=>`<button class="chip cif ${A.c===k?'on':''}" data-act="idc" data-k="${k}">${cif(o.root,o.type)}</button>`).join('')}</div>
- <div class="label">Posición</div><div class="chips quizopt">${POSK.map(k=>`<button class="chip ${A.p===k?'on':''}" data-act="idp" data-k="${k}">${T.POSS[k]}</button>`).join('')}</div>
- <button class="btn pri block mt" data-act="check" ${A.c!=null&&A.p?'':'disabled'}>Comprobar</button>`;}
-function qSpell(q){const sl=A.slots||(A.slots=[null,null,null]);if(A.act==null)A.act=0;const rl=T.roles(q.type);
- const names=S.sys==='let'?T.LET:T.SOL;const filled=sl.filter(Boolean);
- return promptCard(q,'spell')+`<div class="card" style="padding:12px"><div class="slots">${sl.map((n,i)=>`<div class="nslot ${A.act===i?'act':''}" data-act="slot" data-k="${i}"><small>${['bajo','medio','arriba'][i]}</small>${n?nm(n):''}</div>`).join('')}</div>
- <div class="staffwrap mt">${staff([{notes:stackUp(filled).map(n=>({n,c:'#B9566D'}))}],{short:1})}</div>
- <div class="label">Letra</div><div class="letters">${names.map((x,l)=>`<button class="chip" data-act="spL" data-k="${l}">${x}</button>`).join('')}</div>
- <div class="label">Alteración (para la última nota)</div><div class="accs">${[-2,-1,0,1,2].map(a=>`<button class="chip" data-act="spA" data-k="${a}" title="${T.ACCW[a]}">${a?T.ACC[a]:'♮'}</button>`).join('')}</div></div>
- <button class="btn pri block" data-act="check" ${filled.length===3?'':'disabled'}>Comprobar</button>`;}
-/* --- Comprobación y retroalimentación --- */
-function evaluate(q){const v=T.voicing(q.root,q.type,q.pos);const rl=T.roles(q.type);const lab=qLabel(q);
- const R={ok:false,msgs:[],yours:[],correct:v.notes.map(n=>({n,c:'#4A86B8'})),yourM:[],corrM:v.notes.map(T.midi)};
+ return `<div class="qhead">${band('id')}<div class="body"><div class="k" style="margin-bottom:16px">¿Qué acorde es y en qué posición?</div>
+ <div class="staffbox">${staff([{notes:v.notes.map(n=>({n}))}],{anim:!A.seen,sw:130,scale:1.3})}</div><button class="btn soft sm" style="margin-top:16px" data-act="playq">${I('vol',2)} Escuchar</button></div></div>
+ <div class="card tight"><div class="field-l">Cifrado</div><div class="grid2">${A.opts.map((o,k)=>`<button class="choice cif ${A.c===k?'on':''}" data-act="idc" data-k="${k}">${H(pretty(cif(o.root,o.type)))}</button>`).join('')}</div>
+ <div class="field-l">Posición</div><div class="grid2">${POSK.map(k=>`<button class="choice ${A.p===k?'on':''}" data-act="idp" data-k="${k}">${T.POSS[k]}</button>`).join('')}</div></div>
+ <div class="sticky-cta"><button class="btn pri block" data-act="check" ${A.c!=null&&A.p?'':'disabled'}>Comprobar</button></div>`;}
+function qSpell(q){const sl=A.slots||(A.slots=[null,null,null]);if(A.act==null)A.act=0;const names=S.sys==='let'?T.LET:T.SOL;const filled=sl.filter(Boolean);const cur=sl[A.last??A.act];
+ return promptCard(q)+`<div class="card tight"><div class="slots">${sl.map((n,i)=>`<div class="nslot ${A.act===i?'act':''}" data-act="slot" data-k="${i}"><small>${['bajo','medio','arriba'][i]}</small><b>${n?nm(n):''}</b></div>`).join('')}</div>
+ <div class="staffbox" style="margin-top:12px">${staff([{notes:stackUp(filled).map(n=>({n,c:INK}))}],{sw:130,scale:1.3})}</div>
+ <div class="field-l">Letra</div><div class="grid7">${names.map((x,l)=>`<button class="choice sm" data-act="spL" data-k="${l}">${x}</button>`).join('')}</div>
+ <div class="field-l">Alteración</div><div class="grid5">${[-2,-1,0,1,2].map(a=>`<button class="choice acc ${cur&&cur.a===a?'on':''}" data-act="spA" data-k="${a}" title="${T.ACCW[a]}" aria-label="${T.ACCW[a]}">${accSVG(a)}</button>`).join('')}</div></div>
+ <div class="sticky-cta"><button class="btn pri block" data-act="check" ${filled.length===3?'':'disabled'}>Comprobar</button></div>`;}
+/* --- Comprobación --- */
+function evaluate(q){const v=T.voicing(q.root,q.type,q.pos);const rl=T.roles(q.type);const lab=pretty(qLabel(q));
+ const R={ok:false,msgs:[],yours:[],correct:v.notes.map(n=>({n,c:OK})),yourM:[],corrM:v.notes.map(T.midi),yourN:[]};
  if(q.mode==='build'){const s=[...A.sel].sort((a,b)=>a-b);const pcs=s.map(m=>m%12),exp=v.notes.map(T.pc);const set=new Set(exp);
    const bad=pcs.map((p,i)=>p!==exp[i]);let spanBad=false;if(!bad.some(Boolean)&&q.pos!=='abierta'&&s[2]-s[0]>=12){spanBad=true;bad[2]=true;}
-   R.ok=!bad.some(Boolean);R.yourM=s;R.yours=s.map((m,i)=>({n:spellMidi(m,q),c:bad[i]?'#D9485F':'#5A3E33',ring:bad[i]}));
+   if(!bad.some(Boolean)&&q.pos==='abierta'&&s[2]-s[0]<12){bad[2]=true;spanBad=true;}
+   R.ok=!bad.some(Boolean);R.yourM=s;R.yours=s.map((m,i)=>({n:spellMidi(m,q),c:bad[i]?BAD:INK,ring:bad[i]}));R.yourN=R.yours.map(x=>x.n);
    if(!R.ok){const allIn=pcs.every(p=>set.has(p))&&new Set(pcs).size===3;
-     if(spanBad)R.msgs.push(`Tienes las notas y el orden bien, pero quedaron separadas más de una octava. En <b>${T.POSS[q.pos]}</b> (cerrada) van lo más juntas posible.`);
-     else if(allIn)R.msgs.push(`¡Las 3 notas son de ${lab}! 👏 Solo el <b>orden</b> no: en ${T.POS[q.pos].toLowerCase()} el bajo debe ser la <b>${rl[v.roles[0]]}</b> (${nm(v.notes[0])}).`);
+     if(spanBad&&q.pos!=='abierta')R.msgs.push(`Tienes las notas y el orden bien, pero quedaron separadas más de una octava. En <b>${T.POSS[q.pos]}</b> van lo más juntas posible.`);
+     else if(spanBad)R.msgs.push(`Tienes las notas bien, pero en <b>abierta</b> la nota de en medio sube una octava: deben abarcar más de una octava.`);
+     else if(allIn)R.msgs.push(`Las 3 notas sí son de ${lab}. Solo el <b>orden</b> no: en ${T.POSS[q.pos]} el bajo debe ser la <b>${rl[v.roles[0]]}</b> (${nm(v.notes[0])}).`);
      else s.forEach((m,i)=>{if(!bad[i])return;const n=spellMidi(m,q);if(!set.has(m%12))R.msgs.push(`<b>${nm(n)}</b> no es parte de ${lab}. Sus notas son ${T.tones(q.root,q.type).map(nm).join(', ')}.`);else R.msgs.push(`<b>${nm(n)}</b> sí es del acorde, pero ahí (${['abajo','en medio','arriba'][i]}) va <b>${nm(v.notes[i])}</b>.`);});
-     if(q.pos==='abierta'&&!allIn&&pcs.every(p=>set.has(p)))R.msgs.push('Recuerda: abierta = fund – 5ª – 3ª (la de en medio sube una octava).');}}
- else if(q.mode==='spell'){const sl=A.slots;const yours=stackUp(sl);R.yourM=yours.map(T.midi);
-   const bad=sl.map((n,i)=>!T.same(n,v.notes[i]));R.ok=!bad.some(Boolean);R.yours=yours.map((n,i)=>({n,c:bad[i]?'#D9485F':'#5A3E33',ring:bad[i]}));
+     if(q.pos==='abierta'&&!spanBad&&!allIn)R.msgs.push('Recuerda: abierta = fund – 5ª – 3ª (la de en medio sube una octava).');}}
+ else if(q.mode==='spell'){const sl=A.slots;const yours=stackUp(sl);R.yourM=yours.map(T.midi);R.yourN=yours;
+   const bad=sl.map((n,i)=>!T.same(n,v.notes[i]));R.ok=!bad.some(Boolean);R.yours=yours.map((n,i)=>({n,c:bad[i]?BAD:INK,ring:bad[i]}));
+   const LN=c=>S.sys==='let'?T.LET[c.l]:T.SOL[c.l];
    sl.forEach((n,i)=>{if(!bad[i])return;const c=v.notes[i];const pos=['El bajo','La de en medio','La de arriba'][i];
-     if(T.pc(n)===T.pc(c))R.msgs.push(`${pos}: <b>${nm(n)}</b> suena igual que <b>${nm(c)}</b>, pero se escribe ${nm(c)}: la letra tiene que ser ${S.sys==='let'?T.LET[c.l]:T.SOL[c.l]} (letra sí, letra no).`);
-     else if(n.l===c.l)R.msgs.push(`${pos}: la letra ${S.sys==='let'?T.LET[c.l]:T.SOL[c.l]} está bien 👍, pero la alteración no: es <b>${nm(c)}</b>, no ${nm(n)}.`);
+     if(T.pc(n)===T.pc(c))R.msgs.push(`${pos}: <b>${nm(n)}</b> suena igual que <b>${nm(c)}</b>, pero se escribe ${nm(c)}: la letra tiene que ser ${LN(c)} (letra sí, letra no).`);
+     else if(n.l===c.l)R.msgs.push(`${pos}: la letra ${LN(c)} está bien, pero la alteración no: es <b>${nm(c)}</b>, no ${nm(n)}.`);
      else if(T.tones(q.root,q.type).some(t=>T.same(t,n)))R.msgs.push(`${pos}: <b>${nm(n)}</b> sí es de ${lab}, pero no va ahí; va <b>${nm(c)}</b> (la ${rl[v.roles[i]]}).`);
      else R.msgs.push(`${pos}: <b>${nm(n)}</b> no es de ${lab}; va <b>${nm(c)}</b> (la ${rl[v.roles[i]]}).`);});}
  else{const o=A.opts[A.c];const cOk=T.same(o.root,q.root)&&o.type===q.type,pOk=A.p===q.pos;R.ok=cOk&&pOk;
-   const yv=T.voicing(o.root,o.type,A.p);R.yourM=yv.notes.map(T.midi);R.yours=yv.notes.map((n,i)=>{const b=!(T.same(n,v.notes[i])&&T.step(n)===T.step(v.notes[i]));return {n,c:b?'#D9485F':'#5A3E33',ring:b};});
-   if(!cOk){const yt=T.tones(o.root,o.type).map(nm).join(' – ');R.msgs.push(`Elegiste <b>${cif(o.root,o.type)}</b>, que se escribe <b>${yt}</b>. Aquí las notas son <b>${T.tones(q.root,q.type).map(nm).join(' – ')}</b> → <b>${cif(q.root,q.type)}</b>.`);
-     if(T.pc({...o.root,o:4})===T.pc({...q.root,o:4})&&o.type===q.type)R.msgs.push('Suenan igual, pero la ortografía manda: fíjate en las letras del pentagrama. 😉');}
+   const yv=T.voicing(o.root,o.type,A.p);R.yourM=yv.notes.map(T.midi);R.yourN=yv.notes;R.yours=yv.notes.map((n,i)=>{const b=!(T.same(n,v.notes[i])&&T.step(n)===T.step(v.notes[i]));return {n,c:b?BAD:INK,ring:b};});
+   if(!cOk){const yt=T.tones(o.root,o.type).map(nm).join(' – ');R.msgs.push(`Elegiste <b>${pretty(cif(o.root,o.type))}</b>, que se escribe <b>${yt}</b>. Aquí las notas son <b>${T.tones(q.root,q.type).map(nm).join(' – ')}</b> → <b>${pretty(cif(q.root,q.type))}</b>.`);
+     if(T.pc({...o.root,o:4})===T.pc({...q.root,o:4})&&o.type===q.type)R.msgs.push('Suenan igual, pero la ortografía manda: fíjate en las letras del pentagrama.');}
    if(!pOk)R.msgs.push(`Posición: elegiste <b>${T.POSS[A.p]}</b>, pero el bajo es <b>${nm(v.notes[0])}</b> = la ${rl[v.roles[0]]}${q.pos==='abierta'?' y las notas pasan de una octava':''} → <b>${T.POSS[q.pos]}</b>.`);}
  R.steps=q.mode==='id'?T.explainIdentify(q.root,q.type,q.pos,S.sys):T.explainBuild(q.root,q.type,q.pos,S.sys);
- if(q.slash)R.steps.push(`Por eso <b>${lab}</b> es ${T.POS[q.pos].toLowerCase()}: lo de después de la “/” es el bajo.`);
+ if(q.slash)R.steps.push(`Por eso <b>${lab}</b> es ${T.POSS[q.pos]}: lo que va después de la “/” es el bajo.`);
+ R.steps=R.steps.map(s=>s.replace(/Cerrada en fundamental/g,'Cerrada').replace(/cerrada \(fundamental\)/gi,'cerrada').replace(/1ª inversión/g,'1ª inv.').replace(/2ª inversión/g,'2ª inv.'));
  return R;}
 function record(q,ok){const td=today();S.days[td]=(S.days[td]||0)+1;S.total++;
  const bt=S.byType[q.type]||(S.byType[q.type]={t:0,r:0});bt.t++;const bp=S.byPos[q.pos]||(S.byPos[q.pos]={t:0,r:0});bp.t++;
@@ -587,48 +863,55 @@ function record(q,ok){const td=today();S.days[td]=(S.days[td]||0)+1;S.total++;
  S.streak=0;if(ix>=0){S.mistakes[ix].n=(S.mistakes[ix].n||1)+1;}else S.mistakes.push({root:q.root,type:q.type,pos:q.pos,slash:q.slash,mode:q.mode,keepPos:true,n:1,ts:Date.now()});
  if(S.mistakes.length>80)S.mistakes.shift();save();return 0;}
 function check(){const q=Q.qs[Q.i];const R=evaluate(q);const pts=record(q,R.ok);A.done=true;
- const lab=qLabel(q);const v=T.voicing(q.root,q.type,q.pos);
- let h;if(R.ok){h=`<div class="grab"></div><div class="fb-h ok"><div class="em">🌸</div><div><h3>¡Muy bien!</h3><p>+${pts} puntos · racha ${S.streak} 🔥</p></div></div>
-  <div class="staffwrap">${staff([{notes:roleNotes(v,q.type),label:fullCif(q),sub:T.POSS[q.pos]}],{anim:true})}</div>
-  <p class="prose center" style="margin:8px 0">${lab} = <b>${T.tones(q.root,q.type).map(nm).join(' – ')}</b>${q.pos!=='fund'?` · ${T.POS[q.pos].toLowerCase()}: <b>${v.notes.map(nm).join(' – ')}</b>`:''}</p>`;}
- else{h=`<div class="grab"></div><div class="fb-h bad"><div class="em">💗</div><div><h3>Casi… lo corregimos</h3><p>Así quedó la tuya y así va la correcta</p></div></div>
-  <div class="staffwrap">${staff([{notes:R.yours,label:'la tuya',lc:'#D9485F',bg:'#FDF0F2'},{notes:R.correct,label:'correcta',lc:'#4A86B8',bg:'#EDF5FC'}],{anim:true,slotW:110})}</div>
-  <div class="legend"><span><i style="background:#D9485F"></i>nota equivocada</span><span><i style="background:#4A86B8"></i>correcta</span></div>
-  <div class="row"><button class="btn soft sm" data-act="pm1" data-m="${R.yourM.join(',')}">▶ La tuya</button><button class="btn sage sm" data-act="pm1" data-m="${R.corrM.join(',')}">▶ La correcta</button></div>
-  <div class="oops"><ul style="margin:0;padding-left:18px">${R.msgs.map(m=>`<li>${m}</li>`).join('')}</ul></div>
-  <div class="label">Paso a paso, súper fácil</div><ol class="steps">${R.steps.map(s=>`<li>${s}</li>`).join('')}</ol>`;}
- h+=`<button class="btn ${R.ok?'sage':'pri'} block mt" data-act="next">${Q.i+1<Q.qs.length?'Siguiente →':'Ver resultado 🌷'}</button>`;
+ const lab=pretty(qLabel(q));const v=T.voicing(q.root,q.type,q.pos);const last=Q.i+1>=Q.qs.length;let h;
+ if(R.ok){const praise=rnd(['¡Exacto!','¡Perfecto!','¡Muy bien!','¡Así se hace!']);
+  h=`<div class="grab"></div><div class="fb-head ok"><div class="bub"><svg class="draw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div><div><h3>${praise}</h3><p><span class="pts">+${pts}</span> &nbsp;racha de ${S.streak}</p></div></div>
+  <div class="card tight" style="box-shadow:var(--sh1)"><div class="staffbox">${staff([{notes:roleNotes(v),label:pretty(fullCif(q)),sub:T.POSS[q.pos]}],{anim:true,sw:140,end:1,scale:1.3})}</div>${npills(v,q.type)}</div>
+  <p class="prose" style="text-align:center;margin:0 0 8px">${lab} = <b>${T.tones(q.root,q.type).map(nm).join(' – ')}</b></p>`;}
+ else{h=`<div class="grab"></div><div class="fb-head bad"><div class="bub">${I('heal',2)}</div><div><h3>Casi. Lo corregimos juntas</h3><p>Compara la tuya con la correcta y escúchalas</p></div></div>
+  <div class="cmp"><div class="pane y"><div class="lab">${I('x',2.6)} La tuya</div>${staff([{notes:R.yours}],{anim:true,sw:96,scale:1.6})}<div class="nn">${R.yourN.map(nm).join(' · ')}</div><button class="play" data-act="pm1" data-m="${R.yourM.join(',')}">${I('play')} Oír</button></div>
+  <div class="pane c"><div class="lab">${I('check',2.6)} Correcta</div>${staff([{notes:R.correct}],{anim:true,sw:96,scale:1.6})}<div class="nn">${v.notes.map(nm).join(' · ')}</div><button class="play" data-act="pm1" data-m="${R.corrM.join(',')}">${I('play')} Oír</button></div></div>
+  <div class="why"><h4>${I('bulb',2).replace('<svg','<svg width="16" height="16"')} Qué pasó</h4><ul>${R.msgs.map(m=>`<li>${m}</li>`).join('')}</ul></div>
+  <div class="how"><h4>Paso a paso, súper fácil</h4><ol class="steps">${R.steps.map(s=>`<li>${s}</li>`).join('')}</ol></div>`;}
+ h+=`<button class="btn ${R.ok?'blue':'pri'} block" style="margin-top:20px" data-act="next">${last?'Ver resultado':R.ok?'Continuar':'Entendido, sigamos'} ${I('arrow',2)}</button>`;
  openSheet(h);
- if(R.ok){AU.play(R.corrM,'block');if(S.streak&&S.streak%5===0){petals(110);toast(`¡Racha de ${S.streak}! 🌸`);}}
- else{document.querySelector('#app .card')?.classList.add('shake');setTimeout(()=>AU.play(R.corrM,'both'),250);}
- const hdr=document.querySelector('.pills');if(hdr)hdr.outerHTML=header().match(/<div class="pills">[\s\S]*?<\/div>/)[0];}
+ if(R.ok){AU.play(R.corrM,'block');confetti(S.streak&&S.streak%5===0?140:60);if(S.streak&&S.streak%5===0)toast(`Racha de ${S.streak} seguidas`);}
+ else{$('#qv .qhead')?.classList.add('shake');setTimeout(()=>AU.play(R.corrM,'both'),250);}}
 function next(){closeSheet();Q.i++;A={};if(Q.i>=Q.qs.length){finish();return;}render();scrollTo({top:0,behavior:'smooth'});}
-function finish(){const r=Q.right,n=Q.qs.length;const src=Q.src,mode=Q.mode;Q=null;
- openSheet(`<div class="grab"></div><div class="center"><svg width="120" height="90" viewBox="0 0 120 90">${GRADS}${blossom(60,46,34,12,'','','pk')}</svg><h3 style="font-family:var(--fs);font-size:34px;margin:4px 0">${r===n?'¡Perfecto!':r>=n*.7?'¡Muy bien, Eli!':'¡Vas creciendo!'}</h3>
- <p class="prose">${r} de ${n} correctas · ✨ ${S.points} puntos</p>${S.mistakes.length?`<p class="hand">Tienes ${S.mistakes.length} errores para repasar 🩹</p>`:''}</div>
- <div class="row mt">${S.mistakes.length?`<button class="btn soft" data-start="mix|errores">Repasar errores</button>`:''}<button class="btn pri" data-start="${mode}|${src==='errores'?'tarea':src}">Otra ronda</button></div><button class="btn ghost block mt" data-act="home">Ir al inicio</button>`);
- if(r>=n*.7)petals(r===n?160:90);location.hash='#prac';}
-/* ===== Hojas, toasts, pétalos ===== */
-function openSheet(h){$('#sheet').innerHTML=h;$('#sheet').scrollTop=0;$('#sheet').classList.add('open');$('#scrim').classList.add('open');}
+function finish(){const r=Q.right,n=Q.qs.length;const src=Q.src,mode=Q.mode;Q=null;location.hash='#prac';
+ setTimeout(()=>{openSheet(`<div class="grab"></div><div class="res-c">${ring(r,n,{size:120,sw:10,fs:32,txt:r+'/'+n,sub:'correctas'})}<h3>${r===n?'¡Ronda perfecta!':r>=n*.7?'¡Muy bien, Eli!':'Vas creciendo'}</h3>
+ <p>${S.points} puntos en total${S.mistakes.length?` · ${S.mistakes.length} errores guardados para repasar`:''}</p></div>
+ <div class="btn-row" style="margin-top:24px">${S.mistakes.length?`<button class="btn soft" data-start="mix|errores">Repasar errores</button>`:''}<button class="btn pri" data-start="${mode}|${src==='errores'?'tarea':src}">Otra ronda</button></div><button class="btn ghost block" style="margin-top:8px" data-act="home">Ir al inicio</button>`);
+ if(r>=n*.7)confetti(r===n?180:90);},60);}
+/* ===== Hojas, toast, confeti ===== */
+function openSheet(h){const s=$('#sheet');s.innerHTML=h;decorate(s);s.scrollTop=0;s.classList.add('open');$('#scrim').classList.add('open');}
 function closeSheet(){$('#sheet').classList.remove('open');$('#scrim').classList.remove('open');}
-function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2200);}
-function petals(n){const cv=$('#petals'),ctx=cv.getContext('2d');const W=cv.width=innerWidth*devicePixelRatio,H=cv.height=innerHeight*devicePixelRatio;const cols=['#F7C8CC','#EFA7B1','#FBE0E0','#BFD9EE','#A9CDEA','#F8E8A6','#F3D77E','#C9A27E'];
- const P=Array.from({length:n},()=>({x:Math.random()*W,y:-Math.random()*H*.6,r:(6+Math.random()*8)*devicePixelRatio,vy:(1.5+Math.random()*2.5)*devicePixelRatio,vx:(Math.random()-.5)*2,a:Math.random()*6,va:(Math.random()-.5)*.12,s:Math.random()*6,c:rnd(cols)}));
- let t0=performance.now();(function f(t){ctx.clearRect(0,0,W,H);const el=t-t0;P.forEach(p=>{p.y+=p.vy;p.s+=.04;p.x+=p.vx+Math.sin(p.s)*1.2;p.a+=p.va;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.a);ctx.globalAlpha=Math.max(0,1-el/3600);ctx.fillStyle=p.c;ctx.beginPath();ctx.ellipse(0,0,p.r,p.r*.6,0,0,7);ctx.fill();ctx.restore();});if(el<3600)requestAnimationFrame(f);else ctx.clearRect(0,0,W,H);})(t0);}
-function settings(){openSheet(`<div class="grab"></div><h3 style="font-family:var(--fs);font-size:30px;margin:4px 0 10px">Ajustes</h3>
- <div class="label">Nombres de las notas</div><div class="toggle"><button class="${S.sys==='sol'?'on':''}" data-act="sys" data-k="sol">Do – Re – Mi</button><button class="${S.sys==='let'?'on':''}" data-act="sys" data-k="let">C – D – E</button></div>
- <div class="label">Nivel (todas las tonalidades)</div><div class="toggle"><button class="${S.level==='basico'?'on':''}" data-act="lvl" data-k="basico">Básico</button><button class="${S.level==='pro'?'on':''}" data-act="lvl" data-k="pro">Pro 𝄪 𝄫</button></div>
- <div class="label">Sonido</div><div class="toggle"><button class="${S.sound?'on':''}" data-act="snd" data-k="1">🔊 Con sonido</button><button class="${!S.sound?'on':''}" data-act="snd" data-k="0">🔇 Sin sonido</button></div>
- <div class="label">Meta diaria</div><div class="toggle">${[10,20,30].map(g=>`<button class="${S.goal===g?'on':''}" data-act="goal" data-k="${g}">${g} ejercicios</button>`).join('')}</div>
- <button class="btn pri block mt" data-act="close">Listo</button>`);}
+function toast(t){const e=$('#toast');e.textContent=t;decorate(e);e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2200);}
+function confetti(n){const cv=$('#fx'),ctx=cv.getContext('2d');const dpr=devicePixelRatio||1;const W=cv.width=innerWidth*dpr,H=cv.height=innerHeight*dpr;const cols=['#E9C7C6','#B56F78','#EBD9A6','#B8923F','#BFD3E2','#5F87A6','#C8AE96'];
+ const P=Array.from({length:n},()=>{const a=-Math.PI/2+(Math.random()-.5)*1.6,sp=(9+Math.random()*9)*dpr;return {x:W/2,y:H*.62,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,w:(5+Math.random()*6)*dpr,h:(8+Math.random()*8)*dpr,r:Math.random()*6,vr:(Math.random()-.5)*.3,c:rnd(cols),round:Math.random()<.35};});
+ const t0=performance.now();(function f(t){ctx.clearRect(0,0,W,H);const el=t-t0;P.forEach(p=>{p.vy+=.38*dpr;p.vx*=.985;p.vy*=.985;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.globalAlpha=Math.max(0,1-el/2600);ctx.fillStyle=p.c;if(p.round){ctx.beginPath();ctx.arc(0,0,p.w/2,0,7);ctx.fill();}else ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h*Math.abs(Math.cos(p.r*2)));ctx.restore();});if(el<2600)requestAnimationFrame(f);else ctx.clearRect(0,0,W,H);})(t0);}
+function settings(){openSheet(`<div class="grab"></div><h3 style="font-family:var(--fd);font-weight:500;font-size:28px;margin:0 0 8px">Ajustes</h3>
+ <div class="field-l">Nombres de las notas</div><div class="seg"><button class="${S.sys==='sol'?'on':''}" data-act="sys" data-k="sol">Do · Re · Mi</button><button class="${S.sys==='let'?'on':''}" data-act="sys" data-k="let">C · D · E</button></div>
+ <div class="field-l">Nivel (todas las tonalidades)</div><div class="seg"><button class="${S.level==='basico'?'on':''}" data-act="lvl" data-k="basico">Básico</button><button class="${S.level==='pro'?'on':''}" data-act="lvl" data-k="pro">Pro · dobles</button></div>
+ <div class="field-l">Sonido</div><div class="seg"><button class="${S.sound?'on':''}" data-act="snd" data-k="1">Con sonido</button><button class="${!S.sound?'on':''}" data-act="snd" data-k="0">Sin sonido</button></div>
+ <div class="field-l">Meta diaria</div><div class="seg">${[10,20,30].map(g=>`<button class="${S.goal===g?'on':''}" data-act="goal" data-k="${g}">${g}</button>`).join('')}</div>
+ <button class="btn pri block" style="margin-top:24px" data-act="close">Listo</button>`);}
+/* ===== Alteraciones en texto: glifos Bravura en línea ===== */
+const ACM={'♭':-1,'♯':1,'𝄪':2,'𝄫':-2,'♮':0};
+function aci(a){const [g,w]=AGL[a];return `<svg class="aci a${a<0?'f':a>0?'s':'n'}" viewBox="-15 -560 ${w+30} 900" style="aspect-ratio:${((w+30)/900).toFixed(3)}" aria-hidden="true"><path d="${GLY[g]}" transform="scale(1,-1)" fill="currentColor"/></svg>`;}
+function decorate(root){const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>/[♭♯𝄪𝄫]/u.test(n.nodeValue)&&!n.parentElement.closest('svg,textarea,input')?1:3});const list=[];while(tw.nextNode())list.push(tw.currentNode);
+ list.forEach(n=>{const span=document.createElement('span');span.innerHTML=n.nodeValue.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/(♭|♯|𝄪|𝄫)/gu,m=>aci(ACM[m]));const lab=n.nodeValue;n.parentNode.replaceChild(span,n);span.className='acw';});}
 /* ===== Render + router ===== */
-function render(){if(!render._keep)document.body.classList.remove('still');const h=(location.hash||'#home').slice(1);let cur='home',body;
+let lastHash=null;
+function render(keep){const h=(location.hash||'#home').slice(1);let cur='home',body,full=false;
  if(h==='learn'){cur='learn';body=vLearn();}else if(h.startsWith('lesson/')){cur='learn';body=vLesson(+h.split('/')[1]||0);}
- else if(h==='prac'||h==='quiz'){cur='prac';body=Q?vQuiz():vPrac();}else if(h==='lab'){cur='lab';body=vLab();}else if(h==='prog'){cur='prog';body=vProg();}
+ else if(h==='prac'||h==='quiz'){cur='prac';body=Q?vQuiz():vPrac();full=!!Q;}else if(h==='lab'){cur='lab';body=vLab();}else if(h==='prog'){cur='prog';body=vProg();}
  else if(h==='tarea'){cur='home';body=vTarea();}else body=vHome();
- $('#app').innerHTML=(Q&&cur==='prac'?'':header())+body;$('#nav').innerHTML=Q&&cur==='prac'?'':nav(cur);
- requestAnimationFrame(()=>{if(render._keep)return;const ms=[...document.querySelectorAll('.pianoWrap .r0,.pianoWrap .r1,.pianoWrap .r2')].map(e=>+e.dataset.m);scrollPiano(ms.length?Math.max(57,Math.min(...ms)-3):59);});}
-function rerenderKeep(){const y=scrollY;const pw=document.querySelector('.pianoWrap');const sl=pw?pw.scrollLeft:0;document.body.classList.add('still');render._keep=1;render();render._keep=0;scrollTo(0,y);const p=document.querySelector('.pianoWrap');if(p)p.scrollLeft=sl;requestAnimationFrame(()=>{const p2=document.querySelector('.pianoWrap');if(p2)p2.scrollLeft=sl;});}
+ document.body.classList.toggle('still',!!keep);
+ $('#app').innerHTML=body;decorate($('#app'));$('#app').classList.toggle('full',full);
+ const nav=$('#nav');nav.innerHTML=navHTML(cur);nav.classList.toggle('hide',full);
+ if(!keep)requestAnimationFrame(()=>{const ms=[...document.querySelectorAll('.piano .dot')].map(e=>+e.parentElement.dataset.m);if(ms.length)scrollPiano(Math.min(...ms),Math.max(...ms));else scrollPiano(60,71);});}
+function rerenderKeep(){const y=scrollY;const sc=[...document.querySelectorAll('.piano-sc')].map(e=>e.scrollLeft);render(true);scrollTo(0,y);document.querySelectorAll('.piano-sc').forEach((e,i)=>{e.style.scrollBehavior='auto';e.scrollLeft=sc[i]||0;});if(Q)A.seen=1;}
 function start(mode,src){Q=buildSession(mode,src);A={};closeSheet();if(location.hash==='#quiz')render();else location.hash='#quiz';scrollTo(0,0);}
 const ACT={
  play:d=>AU.play(d.m.split(',').map(Number)),pm1:d=>AU.play(d.m.split(',').map(Number),'both'),
@@ -636,25 +919,25 @@ const ACT={
  clear:()=>{A.sel=[];rerenderKeep();},playsel:()=>AU.play(A.sel,'both'),
  playq:()=>{const q=Q.qs[Q.i];AU.play(T.voicing(q.root,q.type,q.pos).notes.map(T.midi),'both');},
  idc:d=>{A.c=+d.k;rerenderKeep();},idp:d=>{A.p=d.k;rerenderKeep();},
- slot:d=>{A.act=+d.k;rerenderKeep();},
+ slot:d=>{A.act=+d.k;A.last=null;rerenderKeep();},
  spL:d=>{const i=A.act??0;A.slots[i]={l:+d.k,a:0,o:4};A.last=i;const nx=A.slots.findIndex((x,j)=>!x&&j>i);A.act=nx>=0?nx:A.slots.findIndex(x=>!x);if(A.act<0)A.act=i;rerenderKeep();AU.play([T.midi(A.slots[i])],'block');},
  spA:d=>{const i=A.last??A.act;if(!A.slots[i]){toast('Primero elige la letra');return;}A.slots[i].a=+d.k;rerenderKeep();AU.play([T.midi(A.slots[i])],'block');},
- check:()=>{if(A.done)return;check();},next:()=>next(),quit:()=>{Q=null;A={};closeSheet();render();},
- lq:d=>{const l=LESSONS[+d.i],k=+d.k;const okk=k===l.quiz.a;document.querySelectorAll('#lq .chip').forEach((b,j)=>{b.classList.toggle('ok',j===l.quiz.a);b.classList.toggle('bad',j===k&&!okk);});
-   $('#lqw').innerHTML=`<div class="${okk?'note-card':'oops'}" style="margin-top:10px">${okk?'🌸 ¡Exacto! ':'💗 Casi. '}${l.quiz.why}</div>`;if(okk){S.lessons[d.i]=1;save();petals(50);}},
- pm:d=>{PM.mode=d.k;render();},ps:d=>{if(d.k==='errores'&&!S.mistakes.length)return;PM.src=d.k;render();},startPM:()=>start(PM.mode,PM.src),
- lvl:d=>{S.level=d.k;save();if($('#sheet').classList.contains('open'))settings();render();},
- sys:d=>{S.sys=d.k;save();settings();render();},snd:d=>{S.sound=d.k==='1';save();settings();},goal:d=>{S.goal=+d.k;save();settings();render();},
+ check:()=>{if(A.done)return;check();},next:()=>next(),quit:()=>{Q=null;A={};closeSheet();location.hash='#prac';render();},
+ lq:d=>{const l=LESSONS[+d.i],k=+d.k;const okk=k===l.quiz.a;document.querySelectorAll('#lq .opt').forEach((b,j)=>{b.classList.toggle('ok',j===l.quiz.a);b.classList.toggle('bad',j===k&&!okk);});
+   $('#lqw').innerHTML=`<div class="answer ${okk?'ok':'bad'}"><b>${okk?'¡Exacto!':'Casi.'}</b> ${fv(l.quiz.why)}</div>`;decorate($('#lqw'));if(okk){S.lessons[d.i]=1;save();confetti(70);}},
+ pm:d=>{PM.mode=d.k;rerenderKeep();},ps:d=>{if(d.k==='errores'&&!S.mistakes.length)return;PM.src=d.k;rerenderKeep();},startPM:()=>start(PM.mode,PM.src),
+ lvl:d=>{S.level=d.k;save();if($('#sheet').classList.contains('open'))settings();rerenderKeep();},
+ sys:d=>{S.sys=d.k;save();settings();rerenderKeep();},snd:d=>{S.sound=d.k==='1';save();settings();},goal:d=>{S.goal=+d.k;save();settings();rerenderKeep();},
  settings:()=>settings(),close:()=>closeSheet(),home:()=>{closeSheet();location.hash='#home';},
  reset:()=>{if(confirm('¿Borrar puntos, rachas y errores?')){localStorage.removeItem(KEY);location.reload();}},
  labL:d=>{LAB.root={l:+d.k,a:LAB.root.a};rerenderKeep();},labA:d=>{LAB.root={l:LAB.root.l,a:+d.k};rerenderKeep();},labT:d=>{LAB.type=d.k;rerenderKeep();},labP:d=>{LAB.pos=d.k;rerenderKeep();},
  playv:d=>AU.play(T.voicing(LAB.root,LAB.type,LAB.pos).notes.map(T.midi),d.mode)
 };
 document.addEventListener('click',e=>{AU.init();const s=e.target.closest('[data-start]');if(s){const [m,src]=s.dataset.start.split('|');start(m,src);return;}
- const g=e.target.closest('[data-go]');if(g){location.hash='#'+g.dataset.go;return;}
- const a=e.target.closest('[data-act]');if(a&&ACT[a.dataset.act]&&!a.disabled){ACT[a.dataset.act](a.dataset);}});
+ const a=e.target.closest('[data-act]');if(a&&ACT[a.dataset.act]&&!a.disabled){ACT[a.dataset.act](a.dataset);return;}
+ const g=e.target.closest('[data-go]');if(g){location.hash='#'+g.dataset.go;}});
 $('#scrim').addEventListener('click',()=>{if(Q&&A.done)return;closeSheet();});
-addEventListener('hashchange',()=>{if(location.hash!=='#quiz'&&location.hash!=='#prac'&&Q){Q=null;A={};}closeSheet();render();scrollTo(0,0);});
-if(document.fonts)document.fonts.ready.then(()=>render());
+addEventListener('hashchange',()=>{if(location.hash!=='#quiz'&&Q){Q=null;A={};}closeSheet();render();scrollTo(0,0);});
+if(document.fonts)document.fonts.ready.then(()=>{if(!Q)render(true);});
 render();
 </script></body></html>
