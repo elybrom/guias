@@ -6,7 +6,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233B2A22'/%3E%3Cg fill='%23F3DCDC'%3E%3Cellipse cx='32' cy='46' rx='9' ry='6.5'/%3E%3Cellipse cx='32' cy='32' rx='9' ry='6.5' fill='%23EBD9A6'/%3E%3Cellipse cx='32' cy='18' rx='9' ry='6.5' fill='%23B9D0E2'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Music&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero.webp">
+<link rel="preload" as="image" href="img/hero-cafe-rosas.webp">
 <style>:root{
 --bg:#F6F0E9;--bg2:#EFE6DC;--surface:#FFFCF8;--surface2:#FBF6F0;
 --ink:#33241D;--ink2:#6E5D52;--ink3:#A0907F;--line:#E9DED2;--line2:#F1E9E0;
@@ -85,7 +85,8 @@ b,strong{font-weight:600;color:var(--ink)}
 
 /* hero */
 .hero{border-radius:28px;min-height:360px;color:#FFF8F1;box-shadow:var(--sh3);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;isolation:isolate}
-.hero>img{object-position:50% 30%}
+.hero>img{object-position:50% 100%}
+.hero.ov-cafe::after{background:linear-gradient(180deg,rgba(51,36,29,.38) 0%,rgba(51,36,29,.42) 40%,rgba(38,25,19,.88) 100%)}
 .hero .in{position:relative;z-index:2}
 .hero .tag svg{width:14px;height:14px}
 .hero .tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,248,241,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,248,241,.25);padding:6px 12px;border-radius:99px;margin-bottom:16px}
@@ -671,35 +672,35 @@ function ring(v,max,o={}){const sz=o.size||88,sw=o.sw||8,r=(sz-sw)/2,c=2*Math.PI
 /* ===== Lecciones ===== */
 const C={l:0,a:0},G_={l:4,a:0},F_={l:3,a:0},Ab={l:5,a:-1},Eb={l:2,a:-1};
 const LESSONS=[
-{t:'¿Qué es una tríada?',s:'Tres notas apiladas en terceras',img:'keys',ov:'ov-cafe',min:3,body:()=>`<p>Una <b>tríada</b> es un acorde de <b>3 notas</b> apiladas en terceras. Cada una tiene un papel:</p>
+{t:'¿Qué es una tríada?',s:'Tres notas apiladas en terceras',img:'teclas-madera',ov:'ov-cafe',min:3,body:()=>`<p>Una <b>tríada</b> es un acorde de <b>3 notas</b> apiladas en terceras. Cada una tiene un papel:</p>
 <div class="formula"><div><b style="color:${ROLEC[0]}">Fundamental</b>la que le da nombre al acorde</div><div><b style="color:${ROLEC[1]}">3ª</b>dice si es mayor o menor</div><div><b style="color:${ROLEC[2]}">5ª</b>le da estabilidad</div></div>
 <div class="tip"><span class="i">${I('bulb')}</span><div><b>Truco visual:</b> en fundamental se ve como un muñeco de nieve: tres notas en líneas seguidas o en espacios seguidos.</div></div>`,
  demo:()=>({slots:[{notes:roleNotes(T.voicing(C,'M','fund')),label:'C',sub:'línea · línea · línea'},{notes:roleNotes(T.voicing(F_,'M','fund')),label:'F',sub:'espacio · espacio · espacio'}],v:T.voicing(C,'M','fund'),type:'M'}),
  quiz:{q:'¿Cuál es la 5ª de D?',o:()=>[nm({l:5,a:0}),nm({l:4,a:0}),nm({l:6,a:0})],a:0,why:()=>`${nm({l:1,a:0})} → (${nm({l:2,a:0})}) → ${nm({l:3,a:0})} → (${nm({l:4,a:0})}) → <b>${nm({l:5,a:0})}</b>. Saltando una letra: ${nm({l:1,a:0})}, ${nm({l:3,a:0})}, ${nm({l:5,a:0})}.`}},
-{t:'Terceras mayor y menor',s:'Dos tonos o tono y medio',img:'hands',ov:'ov-cafe',min:3,body:()=>`<p>Una <b>3ª</b> abarca 3 letras (${nm({l:0,a:0})} – ${nm({l:1,a:0})} – <b>${nm({l:2,a:0})}</b>). Hay dos tamaños:</p>
+{t:'Terceras mayor y menor',s:'Dos tonos o tono y medio',img:'teclas-bokeh',ov:'ov-cafe',min:3,body:()=>`<p>Una <b>3ª</b> abarca 3 letras (${nm({l:0,a:0})} – ${nm({l:1,a:0})} – <b>${nm({l:2,a:0})}</b>). Hay dos tamaños:</p>
 <div class="formula"><div><b>3ª mayor · 3M</b>4 semitonos = 2 tonos <span class="mono">· ${nm({l:0,a:0})} → ${nm({l:2,a:0})}</span></div><div><b>3ª menor · 3m</b>3 semitonos = tono y medio <span class="mono">· ${nm({l:0,a:0})} → ${nm({l:2,a:-1})}</span></div></div>
 <div class="tip blue"><span class="i">${I('piano')}</span><div>Cuenta en el piano <b>todas</b> las teclas, blancas y negras: cada paso es un semitono.</div></div>`,
  demo:()=>({slots:[{notes:[{n:{l:0,a:0,o:4},c:ROLEC[0]},{n:{l:2,a:0,o:4},c:ROLEC[1]}],label:'3M',sub:'4 semitonos'},{notes:[{n:{l:0,a:0,o:4},c:ROLEC[0]},{n:{l:2,a:-1,o:4},c:ROLEC[1]}],label:'3m',sub:'3 semitonos'}],v:{notes:[{l:0,a:0,o:4},{l:2,a:0,o:4}],roles:[0,1]},type:'M'}),
  quiz:{q:()=>`${nm({l:1,a:0})} → ${nm({l:3,a:0})} es una…`,o:()=>['3ª menor','3ª mayor'],a:0,why:()=>`${nm({l:1,a:0})}, ${nm({l:1,a:1})}, ${nm({l:2,a:0})}, ${nm({l:3,a:0})}: 3 semitonos = tono y medio → <b>3ª menor</b>.`}},
-{t:'Los 5 tipos',s:'Mayor, menor, dism, aum y sus4',img:'grand',ov:'ov-gold',min:4,body:()=>`<p>Cambiando el tamaño de las terceras salen los tipos. Así se cifran:</p>
+{t:'Los 5 tipos',s:'Mayor, menor, dism, aum y sus4',img:'piano-cola',ov:'ov-gold',min:4,body:()=>`<p>Cambiando el tamaño de las terceras salen los tipos. Así se cifran:</p>
 <div class="formula">${Object.entries(T.TYPES).map(([k,t])=>`<div><b>C${t.suf} <span style="font-weight:500;color:var(--ink3);font-size:13px">· ${t.formula}</span></b><span class="mono">${T.tones(C,k).map(nm).join(' – ')}</span></div>`).join('')}</div>
 <div class="tip rose"><span class="i">${I('pen')}</span><div>Se escribe <b>dism</b> y <b>aum</b>, como en tu cuaderno. La <b>sus4</b> no tiene 3ª: la cambia por la 4ª.</div></div>`,
  demo:()=>({slots:Object.keys(T.TYPES).map(k=>({notes:roleNotes(T.voicing(C,k,'fund')),label:'C'+T.TYPES[k].suf})),v:T.voicing(C,'M','fund'),type:'M',sw:60}),
  quiz:{q:'3m + 3m forma una tríada…',o:()=>['aum','dism','menor'],a:1,why:()=>`Dos terceras menores = <b>dism</b>. Ejemplo: Adism = ${T.tones({l:5,a:0},'dism').map(nm).join(' – ')}.`}},
-{t:'Ortografía: letra sí, letra no',s:'Por qué A♭m lleva C♭',img:'bookblue',ov:'ov-blue',min:4,body:()=>`<p>Las notas de una tríada <b>siempre</b> van saltando una letra: <span class="mono" style="font-family:var(--fd);font-style:italic">${nm({l:5,a:0})} – (${nm({l:6,a:0})}) – ${nm({l:0,a:0})} – (${nm({l:1,a:0})}) – ${nm({l:2,a:0})}</span>. Primero eliges la <b>letra</b>, luego la alteración.</p>
+{t:'Ortografía: letra sí, letra no',s:'Por qué A♭m lleva C♭',img:'libro-flores-azules',ov:'ov-blue',min:4,body:()=>`<p>Las notas de una tríada <b>siempre</b> van saltando una letra: <span class="mono" style="font-family:var(--fd);font-style:italic">${nm({l:5,a:0})} – (${nm({l:6,a:0})}) – ${nm({l:0,a:0})} – (${nm({l:1,a:0})}) – ${nm({l:2,a:0})}</span>. Primero eliges la <b>letra</b>, luego la alteración.</p>
 <div class="tip"><span class="i">${I('bulb')}</span><div><b>A♭m:</b> desde ${nm({l:5,a:-1})} sube una 3ª menor. La letra tiene que ser <b>${nm({l:0,a:0})}</b>; de ${nm({l:5,a:-1})} a ${nm({l:0,a:0})} hay 4 semitonos, sobra uno → <b>${nm({l:0,a:-1})}</b>. No ${nm({l:6,a:0})}: suena igual, pero es otra letra.</div></div>`,
  demo:()=>({slots:[{notes:roleNotes(T.voicing(Ab,'m','fund')),label:'A♭m',sub:'bien escrito',lc:OK},{notes:[{n:{l:5,a:-1,o:4},c:INK},{n:{l:6,a:0,o:4},c:BAD,ring:1},{n:{l:2,a:-1,o:5},c:INK}],label:'A♭m',lc:BAD,sub:'mal escrito'}],v:T.voicing(Ab,'m','fund'),type:'m'}),
  quiz:{q:'¿Cuál es la 3ª de D♭aum?',o:()=>[nm({l:2,a:1}),nm({l:3,a:0}),nm({l:3,a:1})],a:1,why:()=>`Desde ${nm({l:1,a:-1})} la letra es ${nm({l:3,a:0})}: ${nm({l:1,a:-1})} → ${nm({l:3,a:0})} = 4 semitonos = 3M → <b>${nm({l:3,a:0})}</b>. D♭aum = ${T.tones({l:1,a:-1},'aum').map(nm).join(' – ')}.`}},
-{t:'Cerrada e inversiones',s:'¿Quién está en el bajo?',img:'flutes',ov:'ov-blue',min:4,body:()=>`<p><b>Cerrada:</b> las 3 notas lo más juntas posible, dentro de una octava. Según qué nota quede abajo:</p>
+{t:'Cerrada e inversiones',s:'¿Quién está en el bajo?',img:'flautas',ov:'ov-blue',min:4,body:()=>`<p><b>Cerrada:</b> las 3 notas lo más juntas posible, dentro de una octava. Según qué nota quede abajo:</p>
 <div class="formula"><div><b>Cerrada</b>la fundamental en el bajo</div><div><b>1ª inv.</b>la <b>3ª</b> en el bajo</div><div><b>2ª inv.</b>la <b>5ª</b> en el bajo</div></div>
 <div class="tip blue"><span class="i">${I('music')}</span><div><b>Cifrado con diagonal:</b> lo que va después de la “/” es el bajo. <b>B♭/D</b> = 1ª inv. · <b>F/C</b> = 2ª inv.</div></div>`,
  demo:()=>({slots:['fund','inv1','inv2'].map(p=>({notes:roleNotes(T.voicing(G_,'M',p)),label:T.POSS[p],sub:p==='fund'?'G':T.cifrado(G_,'M',T.voicing(G_,'M',p).roles[0])})),v:T.voicing(G_,'M','fund'),type:'M'}),
  quiz:{q:'F/C es…',o:()=>['1ª inv.','2ª inv.','cerrada'],a:1,why:()=>`F = ${T.tones(F_,'M').map(nm).join(' – ')}. ${nm({l:0,a:0})} es la 5ª y está en el bajo → <b>2ª inv.</b>`}},
-{t:'Tríada abierta',s:'La de en medio sube una octava',img:'flute',ov:'ov-rose',min:3,body:()=>`<p>Para hacerla <b>abierta</b>: toma la cerrada y <b>sube una octava la nota de en medio</b>. Queda fund – 5ª – 3ª.</p>
+{t:'Tríada abierta',s:'La de en medio sube una octava',img:'flauta-partitura',ov:'ov-rose',min:3,body:()=>`<p>Para hacerla <b>abierta</b>: toma la cerrada y <b>sube una octava la nota de en medio</b>. Queda fund – 5ª – 3ª.</p>
 <div class="tip rose"><span class="i">${I('music')}</span><div>C cerrada <b>${T.voicing(C,'M','fund').notes.map(nm).join(' – ')}</b> → C abierta <b>${T.voicing(C,'M','abierta').notes.map(nm).join(' – ')}</b>. Suena más amplio, como las voces de un coro.</div></div>`,
  demo:()=>({slots:[{notes:roleNotes(T.voicing(C,'M','fund')),label:'cerrada',sub:'C'},{notes:roleNotes(T.voicing(C,'M','abierta')),label:'abierta',sub:'C'}],v:T.voicing(C,'M','abierta'),type:'M'}),
  quiz:{q:'F abierta es…',o:()=>[T.voicing(F_,'M','abierta').notes.map(nm).join(' – '),T.voicing(F_,'M','fund').notes.map(nm).join(' – '),T.voicing(F_,'M','inv1').notes.map(nm).join(' – ')],a:0,why:()=>`Cerrada ${T.voicing(F_,'M','fund').notes.map(nm).join(' – ')}; la de en medio (${nm({l:5,a:0})}) sube una octava → <b>${T.voicing(F_,'M','abierta').notes.map(nm).join(' – ')}</b>.`}},
-{t:'Cómo identificar un acorde',s:'Tres pasos que nunca fallan',img:'sax',ov:'ov-gold',min:4,body:()=>`<ol class="steps"><li>Lee las notas <b>de abajo hacia arriba</b>.</li><li>Acomódalas en <b>terceras</b> (letra sí, letra no): la de abajo de esa torre es la <b>fundamental</b>.</li><li>Mide las terceras (tipo) y mira <b>qué nota está en el bajo</b> (posición). Si pasa de una octava, es <b>abierta</b>.</li></ol>`,
+{t:'Cómo identificar un acorde',s:'Tres pasos que nunca fallan',img:'tulipanes-piano',ov:'ov-gold',min:4,body:()=>`<ol class="steps"><li>Lee las notas <b>de abajo hacia arriba</b>.</li><li>Acomódalas en <b>terceras</b> (letra sí, letra no): la de abajo de esa torre es la <b>fundamental</b>.</li><li>Mide las terceras (tipo) y mira <b>qué nota está en el bajo</b> (posición). Si pasa de una octava, es <b>abierta</b>.</li></ol>`,
  demo:()=>({slots:[{notes:roleNotes(T.voicing(Eb,'M','inv1')),label:'¿?',sub:'así aparece'},{notes:roleNotes(T.voicing(Eb,'M','fund')),label:'E♭',sub:'en terceras'}],v:T.voicing(Eb,'M','inv1'),type:'M'}),
  quiz:{q:()=>`${T.voicing(Eb,'M','inv1').notes.map(nm).join(' – ')} es…`,o:()=>['Gm · 1ª inv.','E♭/G · 1ª inv.','B♭ · 2ª inv.'],a:1,why:()=>`En terceras: ${T.tones(Eb,'M').map(nm).join(' – ')} = E♭. ${nm({l:4,a:0})} (la 3ª) está en el bajo → <b>1ª inv. = E♭/G</b>.`}}
 ];
@@ -718,7 +719,7 @@ const qid=q=>q.mode+'|'+T.key(q.root)+q.type+'|'+q.pos+(q.slash?'|s':'');
 const SHN=[[0,0],[0,1],[1,0],[1,1],[2,0],[3,0],[3,1],[4,0],[4,1],[5,0],[5,1],[6,0]],FLN=[[0,0],[1,-1],[1,0],[2,-1],[2,0],[3,0],[4,-1],[4,0],[5,-1],[5,0],[6,-1],[6,0]];
 function spellMidi(m,q){const tn=T.tones(q.root,q.type);const t=tn.find(x=>T.pc(x)===m%12);let l,a;if(t){l=t.l;a=t.a;}else{const fl=tn.some(x=>x.a<0)||(q.root.l===3&&q.root.a===0);[l,a]=(fl?FLN:SHN)[m%12];}const o=Math.round((m-T.NAT[l]-a)/12)-1;return {l,a,o};}
 function stackUp(ns){let out=[],prev=null;ns.forEach(n=>{let x={l:n.l,a:n.a,o:4};if(prev)while(T.step(x)<=T.step(prev))x.o++;out.push(x);prev=x;});return out;}
-const MODES={build:{t:'Construir',d:'Toca las 3 notas en el piano',img:'pianist',ov:'ov-rose',ic:'piano'},id:{t:'Identificar',d:'Lee el pentagrama y di qué acorde es',img:'sheet',ov:'ov-blue',ic:'eye'},spell:{t:'Deletrear',d:'Escribe las notas con su ♯ o ♭',img:'hymnal',ov:'ov-gold',ic:'pen'},mix:{t:'Mezcla',d:'Un poco de todo',img:'sax',ov:'ov-cafe',ic:'shuffle'}};
+const MODES={build:{t:'Construir',d:'Toca las 3 notas en el piano',img:'teclas-doradas',ov:'ov-rose',ic:'piano'},id:{t:'Identificar',d:'Lee el pentagrama y di qué acorde es',img:'partitura-luz',ov:'ov-blue',ic:'eye'},spell:{t:'Deletrear',d:'Escribe las notas con su ♯ o ♭',img:'himnario',ov:'ov-gold',ic:'pen'},mix:{t:'Mezcla',d:'Un poco de todo',img:'vinilo-ambar',ov:'ov-cafe',ic:'shuffle'}};
 /* ===== Vistas ===== */
 function saludo(){const h=new Date().getHours();return h<12?'Buenos días':h<19?'Buenas tardes':'Buenas noches';}
 const acc=()=>S.total?Math.round(100*S.right/S.total):0;
@@ -730,7 +731,7 @@ function vHome(){const td=S.days[today()]||0,nmis=S.mistakes.length,ld=Object.ke
  return `<div class="view"><div class="topbar"><div class="hello"><small>${saludo()}</small><h1>Hola, <em>Eli</em></h1></div>
  <div class="chips-top"><span class="stat-chip" title="Racha de aciertos" style="color:var(--rose-d)">${I('flame',2)}<span style="color:var(--ink)">${S.streak}</span></span><button class="icon-btn" data-act="settings" aria-label="Ajustes">${I('gear')}</button></div></div>
  <div class="home stag">
- <section class="a-hero"><div class="ph hero ov-cafe">${ph('hero')}<div class="ringbox">${ring(td,S.goal,{light:1,size:76,sw:6,fs:22,sub:'de '+S.goal+' hoy'})}</div>
+ <section class="a-hero"><div class="ph hero ov-cafe">${ph('hero-cafe-rosas')}<div class="ringbox">${ring(td,S.goal,{light:1,size:76,sw:6,fs:22,sub:'de '+S.goal+' hoy'})}</div>
   <div class="in"><span class="tag">${I('notebook',2)} Tu tarea · 19 acordes</span><h2>Tríadas <em>cerradas y abiertas</em></h2><p>${td>=S.goal?'Meta del día cumplida. Si quieres, sigue un poquito más.':'Cerrada, 1ª inv., 2ª inv. y abierta, con corrección paso a paso.'}</p>
   <button class="btn light" data-start="mix|tarea">Practicar mi tarea ${I('arrow',2)}</button></div></div></section>
  <section class="a-stats"><div class="stats">
@@ -742,8 +743,8 @@ function vHome(){const td=S.days[today()]||0,nmis=S.mistakes.length,ld=Object.ke
  <section class="a-cont"><div class="sec-h"><h2>${ld>=7?'Repasa una lección':'Continúa aprendiendo'}</h2><span>${ld}/7</span></div>
   <div class="lrow tap" data-go="lesson/${li}"><div class="ph thumb">${ph(L.img)}</div><div class="tx"><small>Lección ${li+1} · ${L.min} min</small><h3>${L.t}</h3><div class="pbar" style="margin-top:8px"><i style="width:${Math.round(ld/7*100)}%"></i></div></div><span class="end">${I('right',2)}</span></div></section>
  <section class="a-feats"><div class="two">
-  <a class="ph feat ov-cafe tap" href="#tarea">${ph('oldmusic')}<div class="in"><div><h3>Mi tarea</h3><p>19 acordes, 4 posiciones</p></div></div></a>
-  <div class="ph feat ov-rose tap" ${nmis?'data-start="mix|errores"':'data-go="prog"'}>${ph('church')}<div class="in"><div><h3>Repasar errores</h3><p>${nmis?nmis+' por corregir':'Nada pendiente'}</p></div>${nmis?`<span class="badge">${nmis}</span>`:''}</div></div></div></section>
+  <a class="ph feat ov-cafe tap" href="#tarea">${ph('partitura-flores-secas')}<div class="in"><div><h3>Mi tarea</h3><p>19 acordes, 4 posiciones</p></div></div></a>
+  <div class="ph feat ov-rose tap" ${nmis?'data-start="mix|errores"':'data-go="prog"'}>${ph('peonias-partitura')}<div class="in"><div><h3>Repasar errores</h3><p>${nmis?nmis+' por corregir':'Nada pendiente'}</p></div>${nmis?`<span class="badge">${nmis}</span>`:''}</div></div></div></section>
  </div><p class="verse">“Canten al Señor un cántico nuevo” · Salmo 96</p></div>`;}
 function vLearn(){const ld=Object.keys(S.lessons).length;
  return `<div class="view"><div class="page-h"><span class="eyebrow">Aprender</span><h1>Siete lecciones, <em>paso a paso</em></h1><p>Cortitas, con pentagrama y piano. Toca los acordes para escucharlos.</p></div>
