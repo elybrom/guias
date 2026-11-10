@@ -49,6 +49,7 @@ section{scroll-margin-top:64px;margin-top:38px}
 .ctrl label,.lbl{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mocha2)}
 .keys12{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
 .keys12 button{font:600 .9rem "DM Sans";padding:9px 2px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--mocha);cursor:pointer}
+.keys12 .auto{grid-column:1/-1;padding:11px}
 .keys12 button.on{background:var(--mocha);color:#fff;border-color:var(--mocha);box-shadow:0 4px 12px -4px rgba(107,74,62,.6)}
 .seg{display:flex;background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px}
 .seg button{flex:1;font:600 .82rem "DM Sans";border:0;background:transparent;padding:9px 6px;border-radius:10px;color:var(--mocha2);cursor:pointer}
@@ -169,6 +170,16 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:50px}
 .fab .nm{font-weight:700;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fab .nt{font-family:Fraunces,serif;font-size:1.25rem;min-width:44px;text-align:center;background:var(--yellow);color:var(--mocha);border-radius:99px;padding:3px 12px}
 .fab button{border:0;background:#fff;color:var(--mocha);border-radius:99px;width:38px;height:38px;font-size:1rem;cursor:pointer}
+.scaleshow .pills{display:block;margin:0}
+.scaleshow + .btns{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.scaleshow + .btns .btn{justify-content:center;padding:12px 4px;font-size:.84rem}
+.scaleshow{background:linear-gradient(135deg,var(--yellow2),#fff);border:1px solid var(--line);border-radius:18px;padding:12px 12px 6px;margin-bottom:6px}
+.scaleshow .tonicName{font-family:Fraunces,serif;font-size:1.15rem;text-transform:none;letter-spacing:0;color:var(--mocha)}
+.rowlbl{font-size:.72rem;font-weight:700;color:var(--blueD);margin:8px 0 2px;letter-spacing:.06em;text-transform:uppercase}
+.prow{display:grid;gap:6px}
+.prow .pill{font-size:1.1rem;padding:8px 2px;min-width:0}
+.prow .pill small{font-size:.72rem;color:var(--roseD);font-weight:700}
+.vol{font-size:.8rem;color:var(--mocha2);background:var(--blue2);border-radius:10px;padding:6px 10px;margin:-4px 0 10px}
 .sing-note{font-size:.85rem;color:var(--muted);margin-top:6px}
 </style>
 </head>
@@ -211,7 +222,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:50px}
       </ul>
     </div>
   </div>
-  <div class="tip y" style="margin-top:14px">💡 <b>Cómo usar esta guía:</b> elige una tónica en <b>Ajustes</b>. Todas las escalas se reescriben en esa tonalidad, con la ortografía correcta (en las escalas de 7 notas cada letra sale una sola vez). Toca <b>▶ Escuchar</b>, luego <b>🎯 Tónica</b> y canta tú sola con <b>🎤 Cantar</b>.</div>
+  <div class="tip y" style="margin-top:14px">💡 <b>Cómo usar esta guía:</b> elige una tónica en <b>Ajustes</b>. Todas las escalas se reescriben en esa tonalidad, con la ortografía correcta (en las escalas de 7 notas cada letra sale una sola vez). Toca <b>▶ Escuchar</b> (sube el volumen), luego <b>🎯 Tónica</b> y canta tú sola con <b>🎤 Cantar</b>.</div>
 </section>
 
 <!-- 2 AJUSTES -->
@@ -219,9 +230,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:50px}
   <div class="sec-h"><span class="n">02</span><h2>Ajustes</h2></div>
   <div class="card panel">
     <div class="ctrl"><span class="lbl">Tónica (en qué nota empiezas)</span><div class="keys12" id="keys"></div>
-      <span class="hint">La ortografía se ajusta sola: en mayor sale Re♭, Mi♭, La♭; en menor sale Do♯, Sol♯. Así nunca salen tonalidades raras.</span></div>
+      <span class="hint">En <b>Automático</b>, las escalas mayores salen en Do y las menores en La, como en clase. Si eliges otra tónica, la ortografía se ajusta sola: en mayor sale Re♭, Mi♭, La♭; en menor sale Do♯, Sol♯. Así nunca salen tonalidades raras.</span></div>
     <div class="ctrl"><span class="lbl">Cómo ver las notas</span>
-      <div class="seg" id="disp"><button data-v="syl" class="on">Sílabas de clase (Do móvil)</button><button data-v="name">Nombres (Do Re Mi)</button><button data-v="letter">Letras (C D E)</button></div></div>
+      <div class="seg" id="disp"><button data-v="name" class="on">Do Re Mi + sílabas</button><button data-v="letter">C D E + sílabas</button><button data-v="syl">Solo sílabas</button></div><span class="hint">Arriba va el nombre real de la nota y abajo, chiquita, la sílaba de clase (Do móvil). Ojo: en Do móvil "Si" es otra cosa.</span></div>
     <div class="ctrl"><span class="lbl">Dirección</span>
       <div class="seg" id="dir"><button data-v="both" class="on">Sube y baja</button><button data-v="up">Solo sube</button></div></div>
     <div class="ctrl" style="margin-bottom:0"><span class="lbl">Tempo · <span class="tempo-v" id="tv">80</span> bpm</span>
@@ -336,6 +347,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:50px}
 <footer>Guía de estudio de Eli · Alabanza · Hecha a partir de lo que se dijo en clase<br>Lo marcado con <b>?</b> no se escuchó claro en el audio.</footer>
 </div>
 
+<audio id="player" preload="auto" playsinline webkit-playsinline></audio>
 <div class="fab" id="fab"><span class="nm" id="fabName">—</span><span class="nt" id="fabNote">·</span><button id="fabStop" aria-label="Detener">■</button></div>
 
 <script>
@@ -426,48 +438,73 @@ function degLbl(d,alt){return (alt<0?"♭":alt>0?"♯":"")+(d+1);}
 function formulaOf(def){const out=[];for(let i=1;i<def.semi.length;i++){const st=def.semi[i]-def.semi[i-1];out.push(st);}return out;}
 
 /* ===== STATE ===== */
-const LS="eli_teorico_v1";
+const LS="eli_teorico_v2";
 const saved=JSON.parse(localStorage.getItem(LS)||"{}");
-const state=Object.assign({pc:0,disp:"syl",dir:"both",tempo:80,todo:{},q:{ok:0,tot:0,streak:0,best:0}},saved);
+const state=Object.assign({pc:-1,disp:"name",dir:"both",tempo:80,todo:{},q:{ok:0,tot:0,streak:0,best:0}},saved);
 function save(){localStorage.setItem(LS,JSON.stringify(state));}
 
-/* ===== AUDIO ===== */
-let ctx=null,master=null,playing=[],timers=[];
-function ac(){ if(!ctx){ctx=new (window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=.5;
-  const comp=ctx.createDynamicsCompressor();master.connect(comp);comp.connect(ctx.destination);} if(ctx.state==="suspended")ctx.resume(); return ctx;}
+/* ===== AUDIO (WAV via <audio> = suena aunque el iPhone esté en silencio; WebAudio de respaldo) ===== */
+const SR=22050, player=document.getElementById("player");
+let ctx=null,fbSrc=null,fbStart=0,rafId=0,usingFb=false,curOn=null,curSeq=null,curRoot=null,curHide=false,curEnd=0,lastIdx=-1;
 function mtof(m){return 440*Math.pow(2,(m-69)/12);}
-function tone(m,t,dur){const c=ac(),f=mtof(m),g=c.createGain(),lp=c.createBiquadFilter();lp.type="lowpass";lp.frequency.value=Math.min(4200,f*7);
-  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.55,t+.012);g.gain.exponentialRampToValueAtTime(.22,t+.25);
-  g.gain.exponentialRampToValueAtTime(.12,t+dur*.9);g.gain.exponentialRampToValueAtTime(.0008,t+dur+.35);
-  g.connect(lp);lp.connect(master);
-  [[1,"triangle",.8],[2,"sine",.22],[3,"sine",.06],[1.003,"sine",.25]].forEach(([mul,type,amp])=>{const o=c.createOscillator(),og=c.createGain();o.type=type;o.frequency.value=f*mul;og.gain.value=amp;o.connect(og);og.connect(g);o.start(t);o.stop(t+dur+.4);playing.push(o);});}
-function stopAll(){timers.forEach(clearTimeout);timers=[];playing.forEach(o=>{try{o.stop()}catch(e){}});playing=[];
-  document.querySelectorAll(".pill.play").forEach(e=>e.classList.remove("play"));document.querySelectorAll(".kbd .hit").forEach(e=>e.classList.remove("hit"));
-  document.querySelectorAll(".staffbox .nh.hit").forEach(e=>e.classList.remove("hit"));fab.classList.remove("show");}
+function ac(){if(!ctx){const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;ctx=new C();}if(ctx.state==="suspended")ctx.resume();return ctx;}
+function addNote(buf,m,t,d,vol){const f=mtof(m),s0=Math.floor(t*SR),len=Math.floor((d+.4)*SR);
+  const H=[[1,1,.0],[2,.5,1.2],[3,.25,2.2],[4,.13,3.2],[5,.07,4.4],[6,.035,5.5]];const w=2*Math.PI*f/SR;
+  for(let i=0;i<len&&s0+i<buf.length;i++){const tt=i/SR;let env=Math.min(1,tt/.005)*Math.exp(-tt*1.8);if(tt>d)env*=Math.exp(-(tt-d)*12);
+    let v=0;for(let k=0;k<H.length;k++){const h=H[k];if(f*h[0]>SR/2-500)continue;v+=h[1]*Math.exp(-tt*h[2])*Math.sin(w*h[0]*i);}
+    buf[s0+i]+=v*env*(vol||1);}}
+function addClick(buf,t){const s0=Math.floor(t*SR);for(let i=0;i<SR*.04&&s0+i<buf.length;i++)buf[s0+i]+=.5*Math.exp(-i/(SR*.006))*Math.sin(2*Math.PI*1600*i/SR);}
+function wavURL(buf){let pk=0;for(let i=0;i<buf.length;i++){const a=Math.abs(buf[i]);if(a>pk)pk=a;}const g=pk>0?.92/pk:1;
+  const n=buf.length,ab=new ArrayBuffer(44+n*2),v=new DataView(ab);const W=(o,str)=>{for(let i=0;i<str.length;i++)v.setUint8(o+i,str.charCodeAt(i));};
+  W(0,"RIFF");v.setUint32(4,36+n*2,true);W(8,"WAVE");W(12,"fmt ");v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);
+  v.setUint32(24,SR,true);v.setUint32(28,SR*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);W(36,"data");v.setUint32(40,n*2,true);
+  for(let i=0;i<n;i++){let x=buf[i]*g;x=x>1?1:x<-1?-1:x;v.setInt16(44+i*2,x*32767,true);}
+  return URL.createObjectURL(new Blob([ab],{type:"audio/wav"}));}
+const cache=new Map();
+// build: returns {url,buf,onsets,total}
+function build(seq,mode){const beat=60/state.tempo,key=mode+"|"+state.tempo+"|"+seq.map(n=>n.midi).join(",");if(cache.has(key))return cache.get(key);
+  let ev=[],on=[],total;
+  if(mode==="tonic"){ev=[[seq[0].midi,0,1.8,1],[seq[0].midi-12,0,1.8,.7]];on=[0];total=2.4;}
+  else if(mode==="sing"){ev=[[seq[0].midi,0,beat*2.5,1]];const off=beat*4;seq.forEach((n,i)=>on.push(off+i*beat));total=off+seq.length*beat+.8;}
+  else{seq.forEach((n,i)=>{const t=.05+i*beat;on.push(t);ev.push([n.midi,t,i===seq.length-1?beat*1.8:beat*.92,1]);});total=.05+seq.length*beat+1.6;}
+  const buf=new Float32Array(Math.ceil(total*SR));ev.forEach(e=>addNote(buf,e[0],e[1],e[2],e[3]));
+  if(mode==="sing"){addClick(buf,beat*2);addClick(buf,beat*3);}
+  const r={url:wavURL(buf),buf,onsets:on,total};if(cache.size>40){const k=cache.keys().next().value;URL.revokeObjectURL(cache.get(k).url);cache.delete(k);}cache.set(key,r);return r;}
+// silent unlock on first gesture
+let unlocked=false;const SILENT=wavURL(new Float32Array(SR/20));
+function unlock(){if(unlocked)return;unlocked=true;try{if(!player.src){player.src=SILENT;const p=player.play();if(p&&p.catch)p.catch(()=>{});}}catch(e){}const c=ac();
+  if(c){try{const b=c.createBuffer(1,1,SR),s=c.createBufferSource();s.buffer=b;s.connect(c.destination);s.start(0);}catch(e){}}}
+["touchend","click","keydown"].forEach(ev=>document.addEventListener(ev,unlock,{capture:true,passive:true}));
+function nowT(){return usingFb?(ctx.currentTime-fbStart):player.currentTime;}
+function clearHL(){document.querySelectorAll(".pill.play").forEach(e=>e.classList.remove("play"));document.querySelectorAll(".kbd .hit").forEach(e=>e.classList.remove("hit"));
+  document.querySelectorAll(".staffbox .nh.hit").forEach(e=>e.classList.remove("hit"));}
+function stopAll(){cancelAnimationFrame(rafId);rafId=0;try{player.pause();}catch(e){}if(fbSrc){try{fbSrc.stop()}catch(e){}fbSrc=null;}usingFb=false;curSeq=null;clearHL();fab.classList.remove("show");}
 const fab=document.getElementById("fab");document.getElementById("fabStop").onclick=stopAll;
-// mode: "play" | "tonic" | "sing" (tonic then silent visual guide)
+function tick(){if(!curSeq)return;const t=nowT();let idx=-1;for(let i=0;i<curOn.length;i++)if(t>=curOn[i]-.01)idx=i;
+  if(idx!==lastIdx&&idx>=0){lastIdx=idx;setNote(curRoot,idx,curSeq,curHide);}
+  if(t>=curEnd||(!usingFb&&player.ended)){stopAll();return;}rafId=requestAnimationFrame(tick);}
+function fallback(r){const c=ac();if(!c)return false;const b=c.createBuffer(1,r.buf.length,SR);let pk=0;for(const x of r.buf)pk=Math.max(pk,Math.abs(x));
+  const g=pk?.92/pk:1,ch=b.getChannelData(0);for(let i=0;i<r.buf.length;i++)ch[i]=r.buf[i]*g;fbSrc=c.createBufferSource();fbSrc.buffer=b;fbSrc.connect(c.destination);
+  fbStart=c.currentTime+.03;fbSrc.start(fbStart);usingFb=true;return true;}
+// mode: "play" | "tonic" | "sing"
 function perform(seq,name,root,mode,hide){
-  stopAll();const c=ac(),beat=60/state.tempo,t0=c.currentTime+.08;
-  document.getElementById("fabName").textContent=name;fab.classList.add("show");
-  if(mode==="tonic"){tone(seq[0].midi,t0,1.8);tone(seq[0].midi-12,t0,1.8);setNote(root,0,seq);
-    timers.push(setTimeout(stopAll,2300));return;}
-  let off=0;
-  if(mode==="sing"){tone(seq[0].midi,t0,beat*2.5);document.getElementById("fabNote").textContent="🎯";off=beat*4;
-    for(let k=0;k<2;k++)clickAt(t0+beat*2+k*beat);}
-  seq.forEach((n,i)=>{const t=t0+off+i*beat;const last=i===seq.length-1;
-    if(mode==="play")tone(n.midi,t,last?beat*1.8:beat*.95);
-    timers.push(setTimeout(()=>setNote(root,i,seq,hide),(t-c.currentTime)*1000));});
-  timers.push(setTimeout(stopAll,(t0+off+seq.length*beat+1-c.currentTime)*1000));
+  stopAll();unlock();const r=build(seq,mode);
+  curSeq=mode==="tonic"?[seq[0]]:seq;curOn=r.onsets;curRoot=root;curHide=hide;curEnd=r.total;lastIdx=-1;
+  document.getElementById("fabName").textContent=name;document.getElementById("fabNote").textContent=mode==="sing"?"🎯":"♪";fab.classList.add("show");
+  let started=false;
+  try{player.src=r.url;player.currentTime=0;const p=player.play();
+    if(p&&p.then){p.then(()=>{started=true;}).catch(()=>{if(curSeq&&fallback(r)){}});}else started=true;}
+  catch(e){fallback(r);}
+  rafId=requestAnimationFrame(tick);
 }
-function clickAt(t){const c=ac(),o=c.createOscillator(),g=c.createGain();o.frequency.value=1500;g.gain.setValueAtTime(.15,t);g.gain.exponentialRampToValueAtTime(.001,t+.05);o.connect(g);g.connect(master);o.start(t);o.stop(t+.06);}
+function previewNote(m){const seq=[{midi:m}];const r=build(seq,"play");try{player.src=r.url;player.currentTime=0;const p=player.play();if(p&&p.catch)p.catch(()=>fallback(r));}catch(e){fallback(r);}}
 function setNote(root,i,seq,hide){
-  if(root){root.querySelectorAll(".pill.play").forEach(e=>e.classList.remove("play"));
-    const p=root.querySelectorAll(".pill[data-i]")[i];if(p)p.classList.add("play");
-    root.querySelectorAll(".kbd .hit").forEach(e=>e.classList.remove("hit"));
+  if(root){clearHL();root.querySelectorAll('.pill[data-i="'+i+'"]').forEach(p=>p.classList.add("play"));
     const k=root.querySelector('.kbd [data-m="'+seq[i].midi+'"]');if(k)k.classList.add("hit");
-    root.querySelectorAll(".nh.hit").forEach(e=>e.classList.remove("hit"));const h=root.querySelector('.nh[data-i="'+i+'"]');if(h)h.classList.add("hit");}
+    const h=root.querySelector('.nh[data-i="'+i+'"]');if(h)h.classList.add("hit");}
   document.getElementById("fabNote").textContent=hide?"♪":label(seq[i]);
 }
+window.__A={player,build,cache};
 
 /* ===== STAFF (SVG) ===== */
 function staffSVG(seq){
@@ -503,9 +540,11 @@ function kbdHTML(seq){
     else h+='<div class="b'+cls+'" data-m="'+m+'" style="left:'+(wi*ww-ww*.3)+'%;width:'+(ww*.6)+'%"></div>';}
   return h+'</div>';
 }
-function pillsHTML(seq){
-  return seq.map((n,i)=>{const alt=(n.alt&&n.alt!==0)||(n.cu!==undefined&&n.a!==0);
-    return '<span class="pill'+(alt?" alt":"")+'" data-i="'+i+'">'+label(n)+'<small>'+sub(n)+'</small></span>';}).join("");
+function pillsHTML(seq,upLen){
+  const chip=(n,i)=>{const alt=(n.alt&&n.alt!==0)||(n.cu!==undefined&&n.a!==0);
+    return '<span class="pill'+(alt?" alt":"")+'" data-i="'+i+'">'+label(n)+'<small>'+sub(n)+'</small></span>';};
+  let up='',dn='';for(let i=0;i<upLen;i++)up+=chip(seq[i],i);for(let i=upLen-1;i<seq.length;i++)dn+=chip(seq[i],i);
+  const cols=upLen>8?5:4;return '<div class="rowlbl">↑ Sube</div><div class="prow" style="grid-template-columns:repeat('+cols+',1fr)">'+up+'</div><div class="rowlbl">↓ Baja</div><div class="prow" style="grid-template-columns:repeat('+cols+',1fr)">'+dn+'</div>';
 }
 function staticLine(def,pc){ // static example line in note names, ascending (and descending if differs)
   const up=buildSeq(def,pc,"up").map(n=>nameOf(n,"name")).join(" ");
@@ -522,9 +561,7 @@ function cardHTML(id,def,isArp){
     (def.dsemi?'<div class="lbl">Bajando (como la natural)</div><div class="formula">'+formulaOf({semi:def.dsemi.slice().reverse()}).reverse().map(st=>'<span class="'+(st===1?"f-S":"f-T")+'">'+(st===1?"S":"T")+'</span>').join("")+'</div>':"");
   return '<div class="card scard'+(def.maybe?" maybe-card":"")+'" data-id="'+id+'">'+
    '<div class="top"><div><h3>'+def.name+'</h3><div class="sub">'+(def.sub||"")+'</div>'+(def.maybe?'<div style="margin-top:6px"><span class="tag maybe">? Por si acaso: no se confirmó en el audio</span></div>':'<div style="margin-top:6px"><span class="tag ok">✓ Entra al examen</span></div>')+'</div><div class="badge '+def.col+'">'+def.emoji+'</div></div>'+
-   '<div class="body">'+fml+'<div class="lbl">Grados</div><div class="degs">'+degs+'</div>'+
-   '<div class="lbl">En <span class="tonicName"></span></div><div class="pills"></div>'+
-   '<div class="btns"><button class="btn main" data-act="play">▶ Escuchar</button><button class="btn yel" data-act="tonic">🎯 Tónica</button><button class="btn blue" data-act="sing">🎤 Cantar</button><button class="btn stop" data-act="stop">■</button></div>'+
+   '<div class="body">'+'<div class="scaleshow"><div class="lbl"><span class="tonicName"></span></div><div class="pills"></div></div>'+'<div class="btns"><button class="btn main" data-act="play">▶ Escuchar</button><button class="btn yel" data-act="tonic">🎯 Tónica</button><button class="btn blue" data-act="sing">🎤 Cantar</button></div><div class="vol">🔊 Si no oyes nada, sube el volumen (en iPhone también suena con el modo silencio).</div>'+fml+'<div class="lbl">Grados</div><div class="degs">'+degs+'</div>'+
    '<div class="sing-note">🎤 <b>Cantar:</b> suena solo la tónica, dos clics y luego la guía avanza en silencio para que cantes a capela.</div>'+
    '<div class="staffbox"></div><div class="kbdbox"></div>'+
    '<div class="why">'+def.why+'</div><div class="tip">🎙️ '+def.tip+'</div>'+
@@ -535,10 +572,8 @@ function cardHTML(id,def,isArp){
 }
 function chromHTML(){
   return '<div class="card scard" data-id="chrom"><div class="top"><div><h3>Cromática</h3><div class="sub">Los 12 semitonos seguidos.</div><div style="margin-top:6px"><span class="tag ok">✓ Entra al examen</span></div></div><div class="badge c-rose">🌈</div></div><div class="body">'+
-  '<div class="lbl">Fórmula</div><div class="formula">'+Array(12).fill('<span class="f-S">S</span>').join("")+'</div>'+
+  '<div class="scaleshow"><div class="lbl"><span class="tonicName"></span></div><div class="pills"></div></div>'+'<div class="btns"><button class="btn main" data-act="play">▶ Escuchar</button><button class="btn yel" data-act="tonic">🎯 Tónica</button><button class="btn blue" data-act="sing">🎤 Cantar</button></div><div class="vol">🔊 Si no oyes nada, sube el volumen (en iPhone también suena con el modo silencio).</div>'+'<div class="lbl">Fórmula</div><div class="formula">'+Array(12).fill('<span class="f-S">S</span>').join("")+'</div>'+
   '<div class="why"><b>Sube con sostenidos</b> y <b>baja con bemoles</b>: son 13 notas de ida (con la octava) y 13 de regreso.</div>'+
-  '<div class="lbl">En <span class="tonicName"></span></div><div class="pills"></div>'+
-  '<div class="btns"><button class="btn main" data-act="play">▶ Escuchar</button><button class="btn yel" data-act="tonic">🎯 Tónica</button><button class="btn blue" data-act="sing">🎤 Cantar</button><button class="btn stop" data-act="stop">■</button></div>'+
   '<div class="staffbox"></div><div class="kbdbox"></div>'+
   '<div class="tip">🎙️ Divídela en grupos: <b>Do Di Re Ri Mi</b> · <b>Fa Fi So Si</b> · <b>La Li Ti Do</b>. Entre <b>Mi‑Fa</b> y <b>Ti‑Do</b> no hay nota intermedia. Canta los semitonos chiquitos, sin deslizarte entre notas.</div>'+
   '<details class="more"><summary>Ejemplos fijos en Do y en La</summary><div class="ex">'+
@@ -552,28 +587,29 @@ document.getElementById("chromCard").innerHTML=chromHTML();
 document.getElementById("arpCards").innerHTML=["tmay","tmen"].map(k=>cardHTML(k,ARPS[k],true)).join("");
 function defOf(id){return id==="chrom"?CHROM:(SCALES[id]||ARPS[id]);}
 function seqOf(id,pc,dir){return id==="chrom"?buildChrom(pc,dir):buildSeq(defOf(id),pc,dir);}
-function tonicLabel(id){const d=defOf(id),t=tonicOf(state.pc,d.q),n=LET_ES[t.L]+ACC_U[t.a];
-  if(id==="chrom")return n; if(id in ARPS)return n+(d.q==="min"?" menor":" mayor"); return n+(d.q==="min"?" menor":" mayor");}
+function pcFor(id){if(state.pc>=0)return state.pc;return defOf(id).q==="min"&&id!=="chrom"?9:0;}
+function tonicLabel(id){const d=defOf(id),t=tonicOf(pcFor(id),d.q),n=LET_ES[t.L]+ACC_U[t.a];
+  if(id==="chrom")return "Desde "+n; return n+(d.q==="min"?" menor":" mayor");}
 function renderCards(){
-  document.querySelectorAll(".scard").forEach(card=>{const id=card.dataset.id,seq=seqOf(id,state.pc,state.dir);
-    card.querySelector(".pills").innerHTML=pillsHTML(seq);
+  document.querySelectorAll(".scard").forEach(card=>{const id=card.dataset.id,pc=pcFor(id),both=seqOf(id,pc,"both"),upLen=seqOf(id,pc,"up").length;
+    card.querySelector(".pills").innerHTML=pillsHTML(both,upLen);
     card.querySelector(".tonicName").textContent=tonicLabel(id);
-    card.querySelector(".staffbox").innerHTML=staffSVG(seq);
-    card.querySelector(".kbdbox").innerHTML=kbdHTML(seq);});
+    card.querySelector(".staffbox").innerHTML=staffSVG(both);
+    card.querySelector(".kbdbox").innerHTML=kbdHTML(both);});
 }
 document.addEventListener("click",e=>{const b=e.target.closest("[data-act]");if(!b)return;const card=b.closest(".scard"),id=card.dataset.id;
   const act=b.dataset.act;if(act==="stop"){stopAll();return;}
-  perform(seqOf(id,state.pc,state.dir),defOf(id).name+" · "+tonicLabel(id).replace(/ (mayor|menor)$/,""),card,act);});
+  perform(seqOf(id,pcFor(id),state.dir),defOf(id).name+" · "+tonicLabel(id).replace(/ (mayor|menor)$/,""),card,act);});
 
 /* ===== SETTINGS ===== */
 const keysEl=document.getElementById("keys");
-keysEl.innerHTML=KEYBTN.map((k,i)=>'<button data-pc="'+i+'" title="'+KEYLBL[i]+'">'+k.replace(" ","<br>")+'</button>').join("");
+keysEl.innerHTML='<button data-pc="-1" class="auto">Automático: Do mayor · La menor</button>'+KEYBTN.map((k,i)=>'<button data-pc="'+i+'" title="'+KEYLBL[i]+'">'+k.replace(" ","<br>")+'</button>').join("");
 function syncSettings(){keysEl.querySelectorAll("button").forEach(b=>b.classList.toggle("on",+b.dataset.pc===state.pc));
   document.querySelectorAll("#disp button").forEach(b=>b.classList.toggle("on",b.dataset.v===state.disp));
   document.querySelectorAll("#dir button").forEach(b=>b.classList.toggle("on",b.dataset.v===state.dir));
   document.getElementById("tempo").value=state.tempo;document.getElementById("tv").textContent=state.tempo;}
 keysEl.onclick=e=>{const b=e.target.closest("button");if(!b)return;state.pc=+b.dataset.pc;save();syncSettings();renderCards();renderCmp();
-  const c=ac();tone(60+state.pc,c.currentTime+.02,.8);};
+  previewNote(60+(state.pc<0?0:state.pc));};
 document.getElementById("disp").onclick=e=>{const b=e.target.closest("button");if(!b)return;state.disp=b.dataset.v;save();syncSettings();renderCards();renderCmp();};
 document.getElementById("dir").onclick=e=>{const b=e.target.closest("button");if(!b)return;state.dir=b.dataset.v;save();syncSettings();renderCards();};
 document.getElementById("tempo").oninput=e=>{state.tempo=+e.target.value;document.getElementById("tv").textContent=state.tempo;save();};
@@ -583,7 +619,7 @@ function renderCmp(){
   const rows=[["Mayor","mayor"],["Natural","natural"],["Armónica","armonica"],["Jazz minor","jazz"]];
   let h='<tr><th></th>'+[1,2,3,4,5,6,7].map(n=>'<th style="text-align:center">'+n+'</th>').join("")+'</tr>';
   rows.forEach(([nm,id])=>{const d=SCALES[id];h+='<tr><td class="nm">'+nm+'</td>';
-    const seq=buildSeq(d,state.pc,"up");
+    const seq=buildSeq(d,state.pc<0?0:state.pc,"up");
     for(let i=0;i<7;i++){const alt=(d.semi[i]%12)-MAJ[i];const nat=SCALES.natural.semi[i];
       const cls=alt<0?"d":(id!=="mayor"&&d.semi[i]>nat?"u":"");
       h+='<td class="'+cls+'">'+degLbl(i,alt)+'<div style="font-size:.66rem;font-weight:500;opacity:.85">'+label(seq[i])+'</div></td>';}
