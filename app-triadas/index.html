@@ -6,15 +6,15 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='52'%3E🌸%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Noto+Music&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
-<style>:root{--cream:#FBF5EE;--paper:#FFFDFA;--blush:#F4D3CF;--blush2:#EBB2AE;--rose:#C9677B;--rose2:#A84D63;--sage:#B9CDB4;--sage2:#6F9478;--gold:#C9A15E;--lav:#D9CCE6;--ink:#2D3350;--ink2:#5B6079;--line:#EADFD3;--bad:#E05A78;--ok:#4F9A6C;--r:24px;--sh:0 1px 2px rgba(80,50,40,.06),0 8px 24px -8px rgba(120,70,60,.18);--fs:'Cormorant Garamond',Georgia,serif;--fh:'Caveat',cursive;--fu:'Nunito',system-ui,sans-serif}
+<style>:root{--cream:#FBF5EE;--paper:#FFFDFA;--blush:#F4D3CF;--blush2:#EBB2AE;--rose:#C9677B;--rose2:#A84D63;--sage:#BFD9EE;--sage2:#5B8FC0;--gold:#E8C766;--lav:#CFE4F5;--ink:#5A3E33;--coffee:#6B4A3A;--latte:#C9A27E;--baby:#BFD9EE;--baby2:#5B8FC0;--yel:#F8E8A6;--ink2:#8A6B5C;--line:#EADFD3;--bad:#D9485F;--ok:#4A86B8;--r:24px;--sh:0 1px 2px rgba(80,50,40,.06),0 8px 24px -8px rgba(120,70,60,.18);--fs:'Cormorant Garamond',Georgia,serif;--fh:'Caveat',cursive;--fu:'Nunito',system-ui,sans-serif}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{background:var(--cream)}
 body{margin:0;font-variant-numeric:lining-nums;font-family:var(--fu);color:var(--ink);background:var(--cream);min-height:100vh;overflow-x:hidden;
 background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .32 0 0 0 0 .25 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 .wash{position:fixed;border-radius:50%;filter:blur(40px);opacity:.55;z-index:-1;pointer-events:none}
 .w1{width:320px;height:300px;background:radial-gradient(circle,#F6C9CC 0,#F6C9CC00 70%);top:-90px;right:-110px}
-.w2{width:300px;height:300px;background:radial-gradient(circle,#CFE0C8 0,#CFE0C800 70%);bottom:80px;left:-140px}
-.w3{width:240px;height:240px;background:radial-gradient(circle,#E3D6EE 0,#E3D6EE00 70%);top:40%;right:-120px}
+.w2{width:300px;height:300px;background:radial-gradient(circle,#CFE4F5 0,#CFE4F500 70%);bottom:80px;left:-140px}
+.w3{width:240px;height:240px;background:radial-gradient(circle,#D6E8F7 0,#D6E8F700 70%);top:40%;right:-120px}
 #app{max-width:560px;margin:0 auto;padding:0 16px calc(110px + env(safe-area-inset-bottom))}
 header.top{display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top)) 2px 6px;position:sticky;top:0;z-index:20;background:linear-gradient(var(--cream) 70%,#FBF5EE00)}
 .brand{display:flex;align-items:center;gap:10px;cursor:pointer}
@@ -30,8 +30,8 @@ p.lead{margin:2px 2px 14px;color:var(--ink2);font-size:15.5px;line-height:1.45}
 .hand{font-family:var(--fh);color:var(--rose);font-size:21px}
 .card{background:var(--paper);border-radius:var(--r);box-shadow:var(--sh);border:1px solid #F1E6DB;padding:16px;position:relative;margin-bottom:14px;animation:up .45s cubic-bezier(.2,.8,.2,1) both}
 .tape{position:absolute;top:-10px;left:50%;width:84px;height:22px;transform:translateX(-50%) rotate(-3deg);background:repeating-linear-gradient(45deg,#F2C6C6cc 0 6px,#F7DADAcc 6px 12px);border-radius:3px;box-shadow:0 1px 2px #0001}
-.tape.sage{background:repeating-linear-gradient(45deg,#C3D6BDcc 0 6px,#D7E5D2cc 6px 12px);transform:translateX(-50%) rotate(2deg)}
-.tape.lav{background:repeating-linear-gradient(90deg,#DCCFEAcc 0 5px,#E9E0F2cc 5px 10px)}
+.tape.sage{background:repeating-linear-gradient(45deg,#BBD7EEcc 0 6px,#D7E8F6cc 6px 12px);transform:translateX(-50%) rotate(2deg)}
+.tape.lav{background:repeating-linear-gradient(90deg,#C9E0F3cc 0 5px,#DDEBF8cc 5px 10px)}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 /* Masonry tipo Pinterest */
 .masonry{columns:2;column-gap:12px}
@@ -50,7 +50,7 @@ p.lead{margin:2px 2px 14px;color:var(--ink2);font-size:15.5px;line-height:1.45}
 .btn{appearance:none;border:0;border-radius:18px;padding:15px 18px;font:800 16px var(--fu);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .12s,background .2s,opacity .2s;min-height:52px;color:var(--ink)}
 .btn:active{transform:scale(.96)}
 .btn.pri{background:linear-gradient(135deg,#D47487,#B9566D);color:#fff;box-shadow:0 8px 18px -8px #B9566D}
-.btn.sage{background:linear-gradient(135deg,#86AB8E,#668E72);color:#fff;box-shadow:0 8px 18px -8px #668E72}
+.btn.sage{background:linear-gradient(135deg,#8DB8DE,#5B8FC0);color:#fff;box-shadow:0 8px 18px -8px #5B8FC0}
 .btn.soft{background:#F6ECE6;color:var(--ink)}
 .btn.ghost{background:transparent;border:1.5px solid var(--line)}
 .btn[disabled]{opacity:.4;pointer-events:none}
@@ -61,7 +61,7 @@ p.lead{margin:2px 2px 14px;color:var(--ink2);font-size:15.5px;line-height:1.45}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{border:1.5px solid var(--line);background:var(--paper);border-radius:99px;padding:10px 15px;font:700 15px var(--fu);cursor:pointer;min-height:46px;color:var(--ink);transition:all .15s}
 .chip.on{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-1px)}
-.chip.ok{background:#E3F0E5;border-color:var(--ok);color:#2D6A44}
+.chip.ok{background:#E3EFF9;border-color:var(--ok);color:#2F5F8C}
 .chip.bad{background:#FBE3E8;border-color:var(--bad);color:#9E2C47}
 .chip.cif{font-family:var(--fs);font-size:22px;font-weight:700;padding:6px 16px}
 .label{font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink2);margin:14px 2px 8px}
@@ -76,18 +76,18 @@ p.lead{margin:2px 2px 14px;color:var(--ink2);font-size:15.5px;line-height:1.45}
 .shake{animation:shake .45s}
 @keyframes shake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
 /* Piano */
-.pianoWrap{overflow-x:auto;overflow-y:hidden;border-radius:16px;padding:0 0 6px;scrollbar-width:thin;-webkit-overflow-scrolling:touch;background:linear-gradient(#3a3550,#2b2840);padding:10px 8px 8px;box-shadow:inset 0 2px 8px #0004}
+.pianoWrap{overflow-x:auto;overflow-y:hidden;border-radius:16px;padding:0 0 6px;scrollbar-width:thin;-webkit-overflow-scrolling:touch;background:linear-gradient(#6B4A3A,#4E3529);padding:10px 8px 8px;box-shadow:inset 0 2px 8px #0004}
 .piano{position:relative;height:168px;display:flex}
 .wk{flex:0 0 46px;height:100%;background:linear-gradient(#fff,#FBF7F2);border:1px solid #d9cfc6;border-radius:0 0 9px 9px;margin-right:2px;position:relative;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;font-size:11px;font-weight:800;color:#a99;transition:background .12s;user-select:none;box-shadow:inset 0 -5px 0 #eee3d9}
 .wk.c::before{content:attr(data-o);position:absolute;top:6px;font-size:10px;color:#cbb}
-.bk{position:absolute;top:0;width:30px;height:100px;background:linear-gradient(#4a4560,#242033);border-radius:0 0 7px 7px;z-index:2;cursor:pointer;box-shadow:inset 0 -4px 0 #000a,0 2px 3px #0005;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:9px;color:#bbb;font-weight:700;user-select:none;line-height:1.1;text-align:center}
+.bk{position:absolute;top:0;width:30px;height:100px;background:linear-gradient(#7A5646,#4A3226);border-radius:0 0 7px 7px;z-index:2;cursor:pointer;box-shadow:inset 0 -4px 0 #000a,0 2px 3px #0005;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:9px;color:#bbb;font-weight:700;user-select:none;line-height:1.1;text-align:center}
 .wk.sel{background:linear-gradient(#F9D5DA,#F2B9C2)!important;color:var(--rose2)}
 .bk.sel{background:linear-gradient(#E27F96,#B9566D)!important;color:#fff}
-.wk.hi{background:linear-gradient(#FFF,#F6E1C4)!important;color:#9a7437}
-.bk.hi{background:linear-gradient(#C9A15E,#8e6d36)!important;color:#fff}
+.wk.hi{background:linear-gradient(#FFF,#FBEFC0)!important;color:#8F7020}
+.bk.hi{background:linear-gradient(#E8C766,#B08C2E)!important;color:#fff}
 .wk.r0{background:linear-gradient(#fff,#F7C9D0)!important;color:#B9566D}.bk.r0{background:linear-gradient(#E58A9C,#B9566D)!important;color:#fff}
-.wk.r1{background:linear-gradient(#fff,#F2DDB6)!important;color:#9a7437}.bk.r1{background:linear-gradient(#D8B36F,#9C7738)!important;color:#fff}
-.wk.r2{background:linear-gradient(#fff,#CDE0C9)!important;color:#4F7A5B}.bk.r2{background:linear-gradient(#8DB395,#56806A)!important;color:#fff}
+.wk.r1{background:linear-gradient(#fff,#F8E8A6)!important;color:#8F7020}.bk.r1{background:linear-gradient(#F0D27A,#B08C2E)!important;color:#fff}
+.wk.r2{background:linear-gradient(#fff,#CFE4F5)!important;color:#3F6F9C}.bk.r2{background:linear-gradient(#8DB8DE,#4C7FAF)!important;color:#fff}
 .wk.bad{background:linear-gradient(#fff,#F6B7C4)!important}.bk.bad{background:linear-gradient(#ee7a93,#C23D5D)!important}
 .wk:active,.wk.press{background:linear-gradient(#f5efe9,#eadfd5)}
 /* Quiz */
@@ -104,7 +104,7 @@ p.lead{margin:2px 2px 14px;color:var(--ink2);font-size:15.5px;line-height:1.45}
 .nslot small{position:absolute;top:4px;font:800 10px var(--fu);color:var(--ink2);letter-spacing:.5px}
 .nslot.act{border-style:solid;border-color:var(--rose);box-shadow:0 0 0 4px #F4D3CF88}
 .nslot.bad{border-color:var(--bad);background:#FDEDF0;border-style:solid}
-.nslot.ok{border-color:var(--ok);background:#EDF6EF;border-style:solid}
+.nslot.ok{border-color:var(--ok);background:#EDF5FC;border-style:solid}
 .letters{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
 .letters .chip,.accs .chip{padding:0;min-height:52px;font-size:17px;border-radius:14px}
 .accs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:6px}
@@ -118,14 +118,14 @@ body.still .card,body.still .pin,body.still .pop{animation:none!important}
 .scrim.open{opacity:1;pointer-events:auto}
 .fb-h{display:flex;align-items:center;gap:12px;margin-bottom:8px}
 .fb-h .em{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:26px;flex:0 0 auto}
-.fb-h.ok .em{background:#E3F0E5}.fb-h.bad .em{background:#FBE3E8}
+.fb-h.ok .em{background:#E3EFF9}.fb-h.bad .em{background:#FBE3E8}
 .fb-h h3{margin:0;font-family:var(--fs);font-size:28px;line-height:1}
 .fb-h p{margin:3px 0 0;color:var(--ink2);font-size:14px}
 .oops{background:#FFF4F5;border:1px solid #F6D3DA;border-radius:16px;padding:10px 12px;margin:10px 0;font-size:15px;line-height:1.45}
 .oops li{margin:3px 0}
 ol.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0}
 ol.steps li{counter-increment:s;position:relative;padding:10px 12px 10px 46px;margin-bottom:8px;background:#FBF7F1;border-radius:14px;font-size:15px;line-height:1.45}
-ol.steps li::before{content:counter(s);position:absolute;left:10px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--sage);color:#2E5A3D;font-weight:900;display:grid;place-items:center;font-size:14px}
+ol.steps li::before{content:counter(s);position:absolute;left:10px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--sage);color:#2F5F8C;font-weight:900;display:grid;place-items:center;font-size:14px}
 .legend{display:flex;gap:12px;justify-content:center;font-size:12.5px;color:var(--ink2);margin:4px 0}
 .legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:4px;vertical-align:-1px}
 /* Nav */
@@ -172,6 +172,20 @@ details.exp summary{cursor:pointer;font-weight:800;color:var(--sage2);padding:8p
 .foot{font-family:var(--fh);text-align:center;color:#b99;font-size:18px;margin:20px 0}
 @media (min-width:600px){.prompt .cif{font-size:68px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.btn.pri{background:linear-gradient(135deg,#D98597,#B8607A)}
+.btn.sage{background:linear-gradient(135deg,#8DB8DE,#5B8FC0);box-shadow:0 8px 18px -8px #5B8FC0}
+.chip.on{background:var(--coffee);border-color:var(--coffee)}
+.bar>i{background:linear-gradient(90deg,#F3D77E,#E9A9B5,#8DB8DE)}
+nav.tabs a.on{background:linear-gradient(135deg,#FBE3E8,#DCEBF8);color:var(--coffee)}
+.toast{background:var(--coffee)}
+.hero{background:linear-gradient(135deg,#FFF8EC 0%,#FCE6EA 55%,#E3EFF9 100%)!important}
+.note-card{border-left-color:#E8C766;background:#FFF9E6}
+ol.steps li::before{background:#BFD9EE;color:#2F5F8C}
+.w1{background:radial-gradient(circle,#F6C9D2 0,#F6C9D200 70%)}
+.w2{background:radial-gradient(circle,#C9E0F3 0,#C9E0F300 70%)}
+.w3{background:radial-gradient(circle,#FBEBB0 0,#FBEBB000 70%)}
+.pill{color:var(--coffee)}
 </style></head><body>
 <div class="wash w1"></div><div class="wash w2"></div><div class="wash w3"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="ink" x="-5%" y="-20%" width="110%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
@@ -288,7 +302,7 @@ const nm=n=>T.name(n,S.sys);
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 const POSK=['fund','inv1','inv2','abierta'];
-const ROLEC=['#C9677B','#B08A45','#5E8A6B'];
+const ROLEC=['#C8667E','#C9A23A','#5B8FC0'];
 const cif=(root,type)=>T.cifrado(root,type);
 function qLabel(q){if(q.slash){const v=T.voicing(q.root,q.type,q.pos);return T.cifrado(q.root,q.type,v.roles[0]);}return cif(q.root,q.type);}
 const fullCif=q=>q.slash?qLabel(q):cif(q.root,q.type)+(q.pos==='fund'?'':q.pos==='abierta'?' (abierta)':'/'+T.letName(T.voicing(q.root,q.type,q.pos).notes[0]));
@@ -317,11 +331,11 @@ function chordGlyphs(notes,cx,opts){ // notes: [{n,c,lab}]
   let prev=null;arr.forEach(x=>{x.dx=0;if(prev&&x.st-prev.st<=1){x.dx=prev.dx===0?13:(x.st===prev.st?26:0);}prev=x;});
   // líneas adicionales
   const minSt=arr[0].st,maxSt=arr[arr.length-1].st;const hasShift=arr.some(x=>x.dx);const maxDx=Math.max(...arr.map(x=>x.dx));
-  for(let st=28;st>=minSt;st-=2)s+=`<line x1="${cx-11}" x2="${cx+11+maxDx}" y1="${yOf(st)}" y2="${yOf(st)}" stroke="#2D3350" stroke-width="1.3"/>`;
-  for(let st=40;st<=maxSt;st+=2)s+=`<line x1="${cx-11}" x2="${cx+11+maxDx}" y1="${yOf(st)}" y2="${yOf(st)}" stroke="#2D3350" stroke-width="1.3"/>`;
+  for(let st=28;st>=minSt;st-=2)s+=`<line x1="${cx-11}" x2="${cx+11+maxDx}" y1="${yOf(st)}" y2="${yOf(st)}" stroke="#5A3E33" stroke-width="1.3"/>`;
+  for(let st=40;st<=maxSt;st+=2)s+=`<line x1="${cx-11}" x2="${cx+11+maxDx}" y1="${yOf(st)}" y2="${yOf(st)}" stroke="#5A3E33" stroke-width="1.3"/>`;
   // alteraciones (columnas de arriba hacia abajo)
   const cols=[];[...arr].reverse().forEach(x=>{if(!x.n.a)return;let c=0;while((cols[c]||[]).some(st=>Math.abs(st-x.st)<6))c++;(cols[c]=cols[c]||[]).push(x.st);x.col=c;});
-  arr.forEach((x,k)=>{const y=yOf(x.st),X=cx+x.dx,col=x.c||'#2D3350';
+  arr.forEach((x,k)=>{const y=yOf(x.st),X=cx+x.dx,col=x.c||'#5A3E33';
     const d=opts.anim?`style="animation-delay:${k*.07}s"`:'';
     s+=`<g class="${opts.anim?'pop':''}" ${d} style="transform-origin:${X}px ${y}px;${opts.anim?'animation-delay:'+k*.07+'s':''}">`;
     if(x.n.a){const g=T.ACC[x.n.a];const ax=cx-14-x.col*12-(x.n.a===2?0:0);s+=`<text x="${ax}" y="${y+(x.n.a<0?2:4)}" font-family="Noto Music" font-size="${x.n.a===2?15:21}" text-anchor="end" fill="${col}">${g}</text>`;}
@@ -335,17 +349,17 @@ function chordGlyphs(notes,cx,opts){ // notes: [{n,c,lab}]
 function staff(slots,o={}){
   let sw=o.slotW||(slots.length>3?74:92),W=58+slots.length*sw+8;const H=o.short?150:168;const MW=o.minW||300;if(W<MW){sw=(MW-66)/slots.length;W=MW;}
   let s=`<svg class="staff" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="pentagrama">`;
-  s+='<g filter="url(#ink)">';for(let i=0;i<5;i++){const y=BOT-i*SP;s+=`<line x1="4" x2="${W-4}" y1="${y}" y2="${y}" stroke="#2D3350" stroke-width="1.05" stroke-linecap="round" opacity=".82"/>`;}
-  s+=`<line x1="4" x2="4" y1="${BOT-40}" y2="${BOT}" stroke="#2D3350" stroke-width="1.2"/><line x1="${W-4}" x2="${W-4}" y1="${BOT-40}" y2="${BOT}" stroke="#2D3350" stroke-width="1.2"/></g>`;
-  s+=`<text x="8" y="${BOT-9}" font-family="Noto Music" font-size="56" fill="#2D3350">𝄞</text>`;
+  s+='<g filter="url(#ink)">';for(let i=0;i<5;i++){const y=BOT-i*SP;s+=`<line x1="4" x2="${W-4}" y1="${y}" y2="${y}" stroke="#5A3E33" stroke-width="1.05" stroke-linecap="round" opacity=".82"/>`;}
+  s+=`<line x1="4" x2="4" y1="${BOT-40}" y2="${BOT}" stroke="#5A3E33" stroke-width="1.2"/><line x1="${W-4}" x2="${W-4}" y1="${BOT-40}" y2="${BOT}" stroke="#5A3E33" stroke-width="1.2"/></g>`;
+  s+=`<text x="8" y="${BOT-9}" font-family="Noto Music" font-size="56" fill="#5A3E33">𝄞</text>`;
   slots.forEach((sl,i)=>{const cx=58+i*sw+sw/2;
-    if(i>0&&o.bars)s+=`<line x1="${58+i*sw}" x2="${58+i*sw}" y1="${BOT-40}" y2="${BOT}" stroke="#2D3350" stroke-width=".8" opacity=".5"/>`;
+    if(i>0&&o.bars)s+=`<line x1="${58+i*sw}" x2="${58+i*sw}" y1="${BOT-40}" y2="${BOT}" stroke="#5A3E33" stroke-width=".8" opacity=".5"/>`;
     const ms=sl.notes.map(x=>T.midi(x.n)).join(',');
     s+=`<g class="slot" data-act="play" data-m="${ms}"><rect x="${58+i*sw}" y="10" width="${sw}" height="${H-10}" fill="transparent"/>`;
     if(sl.bg)s+=`<rect x="${58+i*sw+4}" y="14" width="${sw-8}" height="${H-18}" rx="12" fill="${sl.bg}"/>`;
     s+=chordGlyphs(sl.notes,cx-4,{anim:o.anim});
     if(sl.label)s+=`<text x="${cx}" y="${H-(sl.sub?20:8)}" text-anchor="middle" font-family="Caveat" font-size="19" font-weight="700" fill="${sl.lc||'#A84D63'}">${sl.label}</text>`;
-    if(sl.sub)s+=`<text x="${cx}" y="${H-4}" text-anchor="middle" font-family="Nunito" font-size="10.5" font-weight="800" fill="#7a7f95">${sl.sub}</text>`;
+    if(sl.sub)s+=`<text x="${cx}" y="${H-4}" text-anchor="middle" font-family="Nunito" font-size="10.5" font-weight="800" fill="#9A7E70">${sl.sub}</text>`;
     s+='</g>';});
   return s+'</svg>';
 }
@@ -362,30 +376,30 @@ function scrollPiano(toMidi){if(!isFinite(toMidi))toMidi=59;document.querySelect
 function marksFor(v){const mk={};v.notes.forEach((n,i)=>mk[T.midi(n)]='r'+v.roles[i]);return mk;}
 /* ===== Decoración: flores acuarela ===== */
 function blossom(x,y,r,rot,c1,c2,id){let p='';for(let i=0;i<5;i++){const a=rot+i*72;p+=`<path d="M0 0 C ${-r*.55} ${-r*.35}, ${-r*.6} ${-r*.95}, ${-r*.18} ${-r*1.05} Q 0 ${-r*.88} ${r*.18} ${-r*1.05} C ${r*.6} ${-r*.95}, ${r*.55} ${-r*.35}, 0 0Z" transform="rotate(${a})" fill="url(#${id})" opacity=".92"/>`;}
-  let st='';for(let i=0;i<7;i++){const a=(rot+i*51)*Math.PI/180;st+=`<line x1="0" y1="0" x2="${Math.cos(a)*r*.42}" y2="${Math.sin(a)*r*.42}" stroke="#B35D6E" stroke-width="1"/><circle cx="${Math.cos(a)*r*.45}" cy="${Math.sin(a)*r*.45}" r="${r*.05}" fill="#C9A15E"/>`;}
+  let st='';for(let i=0;i<7;i++){const a=(rot+i*51)*Math.PI/180;st+=`<line x1="0" y1="0" x2="${Math.cos(a)*r*.42}" y2="${Math.sin(a)*r*.42}" stroke="#B35D6E" stroke-width="1"/><circle cx="${Math.cos(a)*r*.45}" cy="${Math.sin(a)*r*.45}" r="${r*.05}" fill="#E8C766"/>`;}
   return `<g transform="translate(${x} ${y})" filter="url(#wc)">${p}</g><g transform="translate(${x} ${y})">${st}<circle r="${r*.12}" fill="#E7A9B0"/></g>`;}
-const GRADS=`<defs><radialGradient id="pk"><stop offset="0" stop-color="#FFF4F4"/><stop offset=".55" stop-color="#F7C8CC"/><stop offset="1" stop-color="#E9A1AA"/></radialGradient><radialGradient id="pk2"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#F9DCD9"/><stop offset="1" stop-color="#EDB9B6"/></radialGradient><radialGradient id="lv"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#E8DDF1"/><stop offset="1" stop-color="#CBB8DE"/></radialGradient></defs>`;
+const GRADS=`<defs><radialGradient id="pk"><stop offset="0" stop-color="#FFF4F4"/><stop offset=".55" stop-color="#F7C8CC"/><stop offset="1" stop-color="#E9A1AA"/></radialGradient><radialGradient id="pk2"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#F9DCD9"/><stop offset="1" stop-color="#EDB9B6"/></radialGradient><radialGradient id="lv"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#DCEBF8"/><stop offset="1" stop-color="#A9CDEA"/></radialGradient></defs>`;
 function branchArt(w=300,h=140,bg='#FBEFEC'){return `<svg class="art" viewBox="0 0 ${w} ${h}">${GRADS}<rect width="${w}" height="${h}" fill="${bg}"/>
 <path d="M-10 ${h*.85} C ${w*.25} ${h*.7}, ${w*.45} ${h*.55}, ${w+10} ${h*.18}" stroke="#7A5A4A" stroke-width="3.2" fill="none" stroke-linecap="round" filter="url(#ink)"/>
 <path d="M${w*.42} ${h*.6} C ${w*.5} ${h*.75}, ${w*.58} ${h*.8}, ${w*.68} ${h*.86}" stroke="#7A5A4A" stroke-width="2" fill="none" stroke-linecap="round"/>
 <path d="M${w*.2} ${h*.74} q 8 -28 30 -40" stroke="#7A5A4A" stroke-width="1.6" fill="none"/>
-<ellipse cx="${w*.3}" cy="${h*.66}" rx="10" ry="4" transform="rotate(-30 ${w*.3} ${h*.66})" fill="#A9C4A1" opacity=".8"/>
-<ellipse cx="${w*.77}" cy="${h*.4}" rx="11" ry="4.5" transform="rotate(20 ${w*.77} ${h*.4})" fill="#A9C4A1" opacity=".8"/>
+<ellipse cx="${w*.3}" cy="${h*.66}" rx="10" ry="4" transform="rotate(-30 ${w*.3} ${h*.66})" fill="#A9CDEA" opacity=".8"/>
+<ellipse cx="${w*.77}" cy="${h*.4}" rx="11" ry="4.5" transform="rotate(20 ${w*.77} ${h*.4})" fill="#A9CDEA" opacity=".8"/>
 ${blossom(w*.62,h*.4,22,10,'','','pk')}${blossom(w*.86,h*.22,17,40,'','','pk2')}${blossom(w*.3,h*.42,14,-20,'','','pk2')}${blossom(w*.7,h*.83,12,5,'','','pk')}${blossom(w*.12,h*.77,9,30,'','','pk')}
 <circle cx="${w*.45}" cy="${h*.5}" r="4" fill="#F4C3C8"/><circle cx="${w*.95}" cy="${h*.5}" r="3" fill="#F4C3C8"/></svg>`;}
-function miniStaffArt(bg,notes,col='#2D3350'){return `<svg class="art" viewBox="0 0 300 150"><rect width="300" height="150" fill="${bg}"/>${GRADS}
+function miniStaffArt(bg,notes,col='#5A3E33'){return `<svg class="art" viewBox="0 0 300 150"><rect width="300" height="150" fill="${bg}"/>${GRADS}
 ${[0,1,2,3,4].map(i=>`<line x1="20" x2="280" y1="${55+i*12}" y2="${55+i*12}" stroke="${col}" stroke-width="1.2" opacity=".55" filter="url(#ink)"/>`).join('')}
 <text x="22" y="114" font-family="Noto Music" font-size="68" fill="${col}" opacity=".85">𝄞</text>
 ${notes.map(([x,st,c])=>{const y=103-(st-30)*6;return `<ellipse cx="${x}" cy="${y}" rx="8.4" ry="5.8" fill="${c||col}"/><ellipse cx="${x}" cy="${y}" rx="4" ry="3.1" transform="rotate(-38 ${x} ${y})" fill="${bg}"/>`}).join('')}
 ${blossom(262,30,16,15,'','','pk')}${blossom(240,22,10,40,'','','pk2')}</svg>`;}
-function pianoArt(bg){let k='';for(let i=0;i<9;i++)k+=`<rect x="${18+i*30}" y="40" width="28" height="92" rx="5" fill="#FFFDFA" stroke="#E2D4C8"/>`;[0,1,3,4,5,7,8].forEach(i=>{if(i<8)k+=`<rect x="${38+i*30}" y="40" width="18" height="56" rx="4" fill="#3A3550"/>`;});
-  return `<svg class="art" viewBox="0 0 300 150">${GRADS}<rect width="300" height="150" fill="${bg}"/>${k}<rect x="78" y="40" width="28" height="92" rx="5" fill="#F7C8CC" opacity=".9"/><rect x="138" y="40" width="28" height="92" rx="5" fill="#F2DDB6"/><rect x="198" y="40" width="28" height="92" rx="5" fill="#CDE0C9"/>${blossom(30,28,15,0,'','','pk')}${blossom(275,128,13,30,'','','lv')}</svg>`;}
+function pianoArt(bg){let k='';for(let i=0;i<9;i++)k+=`<rect x="${18+i*30}" y="40" width="28" height="92" rx="5" fill="#FFFDFA" stroke="#E2D4C8"/>`;[0,1,3,4,5,7,8].forEach(i=>{if(i<8)k+=`<rect x="${38+i*30}" y="40" width="18" height="56" rx="4" fill="#6B4A3A"/>`;});
+  return `<svg class="art" viewBox="0 0 300 150">${GRADS}<rect width="300" height="150" fill="${bg}"/>${k}<rect x="78" y="40" width="28" height="92" rx="5" fill="#F7C8CC" opacity=".9"/><rect x="138" y="40" width="28" height="92" rx="5" fill="#F8E8A6"/><rect x="198" y="40" width="28" height="92" rx="5" fill="#CFE4F5"/>${blossom(30,28,15,0,'','','pk')}${blossom(275,128,13,30,'','','lv')}</svg>`;}
 function quillArt(bg){return `<svg class="art" viewBox="0 0 300 170">${GRADS}<rect width="300" height="170" fill="${bg}"/>
-<text x="30" y="100" font-family="Caveat" font-size="38" fill="#2D3350" opacity=".85">La♭ · Do♭ · Mi♭</text><path d="M38 118 C 110 108, 190 124, 262 112" stroke="#C9677B" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#ink)"/>
-<path d="M240 30 C 200 60, 190 90, 186 128 L 192 126 C 200 92, 220 62, 262 30 Z" fill="#E8DDF1" stroke="#9C88B5" stroke-width="1.2"/><line x1="250" y1="34" x2="188" y2="128" stroke="#9C88B5"/>${blossom(50,40,14,10,'','','pk')}</svg>`;}
-function eyeArt(bg){return `<svg class="art" viewBox="0 0 300 190">${GRADS}<rect width="300" height="190" fill="${bg}"/><circle cx="150" cy="96" r="58" fill="#FFFDFA" stroke="#2D3350" stroke-width="2" filter="url(#ink)"/><circle cx="150" cy="96" r="58" fill="none" stroke="#C9A15E" stroke-width="5" opacity=".35"/><line x1="192" y1="138" x2="236" y2="178" stroke="#2D3350" stroke-width="9" stroke-linecap="round"/>
-${[0,1,2,3,4].map(i=>`<line x1="104" x2="196" y1="${76+i*10}" y2="${76+i*10}" stroke="#2D3350" opacity=".5"/>`).join('')}
-<ellipse cx="140" cy="116" rx="6.5" ry="4.6" fill="#C9677B"/><ellipse cx="140" cy="106" rx="6.5" ry="4.6" fill="#B08A45"/><ellipse cx="140" cy="96" rx="6.5" ry="4.6" fill="#5E8A6B"/>${blossom(40,40,18,10,'','','pk')}${blossom(262,40,12,30,'','','pk2')}</svg>`;}
+<text x="30" y="100" font-family="Caveat" font-size="38" fill="#5A3E33" opacity=".85">La♭ · Do♭ · Mi♭</text><path d="M38 118 C 110 108, 190 124, 262 112" stroke="#C9677B" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#ink)"/>
+<path d="M240 30 C 200 60, 190 90, 186 128 L 192 126 C 200 92, 220 62, 262 30 Z" fill="#DCEBF8" stroke="#6E9CC6" stroke-width="1.2"/><line x1="250" y1="34" x2="188" y2="128" stroke="#6E9CC6"/>${blossom(50,40,14,10,'','','pk')}</svg>`;}
+function eyeArt(bg){return `<svg class="art" viewBox="0 0 300 190">${GRADS}<rect width="300" height="190" fill="${bg}"/><circle cx="150" cy="96" r="58" fill="#FFFDFA" stroke="#5A3E33" stroke-width="2" filter="url(#ink)"/><circle cx="150" cy="96" r="58" fill="none" stroke="#E8C766" stroke-width="5" opacity=".35"/><line x1="192" y1="138" x2="236" y2="178" stroke="#5A3E33" stroke-width="9" stroke-linecap="round"/>
+${[0,1,2,3,4].map(i=>`<line x1="104" x2="196" y1="${76+i*10}" y2="${76+i*10}" stroke="#5A3E33" opacity=".5"/>`).join('')}
+<ellipse cx="140" cy="116" rx="6.5" ry="4.6" fill="#C9677B"/><ellipse cx="140" cy="106" rx="6.5" ry="4.6" fill="#C9A23A"/><ellipse cx="140" cy="96" rx="6.5" ry="4.6" fill="#5B8FC0"/>${blossom(40,40,18,10,'','','pk')}${blossom(262,40,12,30,'','','pk2')}</svg>`;}
 /* ===== Lecciones ===== */
 const C={l:0,a:0},G_={l:4,a:0},F_={l:3,a:0},Ab={l:5,a:-1},Bb={l:6,a:-1},Eb={l:2,a:-1},D_={l:1,a:0};
 const LESSONS=[
@@ -394,30 +408,30 @@ const LESSONS=[
 <div class="note-card">🌸 <b>Truco:</b> en el pentagrama, la tríada en fundamental se ve como un <b>muñeco de nieve</b>: tres notas en líneas seguidas o en espacios seguidos.</div>`,
  demo:()=>({slots:[{notes:roleNotes(T.voicing(C,'M','fund'),'M'),label:'C',sub:'línea-línea-línea'},{notes:roleNotes(T.voicing(F_,'M','fund'),'M'),label:'F',sub:'espacio-espacio-espacio'}],v:T.voicing(C,'M','fund')}),
  quiz:{q:'¿Cuál es la 5ª de Re (D)?',o:['La','Sol','Si'],a:0,why:'Re → (Mi) → Fa → (Sol) → La. Saltando una letra: Re, Fa, La.'}},
-{t:'Terceras mayor y menor',s:'2 tonos o tono y medio',c:'#F3E6CF',body:()=>`<p>Una <b>3ª</b> abarca 3 letras (Do-Re-<b>Mi</b>). Hay dos tamaños:</p>
+{t:'Terceras mayor y menor',s:'2 tonos o tono y medio',c:'#FBF0C8',body:()=>`<p>Una <b>3ª</b> abarca 3 letras (Do-Re-<b>Mi</b>). Hay dos tamaños:</p>
 <div class="formula"><div><b>3ª mayor (3M)</b>4 semitonos = 2 tonos<br><span class="hand">Do → Mi</span></div><div><b>3ª menor (3m)</b>3 semitonos = tono y medio<br><span class="hand">Do → Mi♭</span></div></div>
 <div class="note-card">🎹 Cuenta en el piano <b>todas</b> las teclas, blancas y negras: cada paso es un semitono.</div>`,
  demo:()=>({slots:[{notes:[{n:{l:0,a:0,o:4},c:ROLEC[0]},{n:{l:2,a:0,o:4},c:ROLEC[1]}],label:'3M',sub:'Do–Mi'},{notes:[{n:{l:0,a:0,o:4},c:ROLEC[0]},{n:{l:2,a:-1,o:4},c:ROLEC[1]}],label:'3m',sub:'Do–Mi♭'}],v:{notes:[{l:0,a:0,o:4},{l:2,a:0,o:4}],roles:[0,1]}}),
  quiz:{q:'Re → Fa es una…',o:['3ª menor','3ª mayor'],a:0,why:'Re, Re♯, Mi, Fa: 3 semitonos = tono y medio → 3ª menor.'}},
-{t:'Los 5 tipos',s:'mayor, menor, dism, aum y sus4',c:'#DDE8D8',body:()=>`<p>Cambiando el tamaño de las terceras salen los tipos. Se cifran así:</p>
+{t:'Los 5 tipos',s:'mayor, menor, dism, aum y sus4',c:'#D9E9F6',body:()=>`<p>Cambiando el tamaño de las terceras salen los tipos. Se cifran así:</p>
 <div class="formula">${Object.entries(T.TYPES).map(([k,t])=>`<div><b>C${t.suf} <small style="font-size:14px;color:#888">· ${t.name}</small></b>${t.formula}<br><span class="hand">${T.tones(C,k).map(nm).join(' – ')}</span></div>`).join('')}</div>
 <div class="note-card">✍️ En tu cuaderno se escribe <b>dism</b> y <b>aum</b>. La <b>sus4</b> no tiene 3ª: la cambia por la 4ª.</div>`,
  demo:()=>({slots:Object.keys(T.TYPES).map(k=>({notes:roleNotes(T.voicing(C,k,'fund'),k,false),label:'C'+T.TYPES[k].suf})),v:T.voicing(C,'M','fund')}),
  quiz:{q:'3m + 3m es una tríada…',o:['aumentada','disminuida','menor'],a:1,why:'Dos terceras menores = disminuida (dism). Ej. Adism = La–Do–Mi♭.'}},
 {t:'Ortografía: letra sí, letra no',s:'Por qué A♭m lleva Do♭',c:'#E8DFF0',body:()=>`<p>Las notas de una tríada <b>siempre</b> van saltando una letra: <span class="hand">La – (Si) – Do – (Re) – Mi</span>. Primero elige la <b>letra</b> y luego la alteración.</p>
 <div class="note-card">Ejemplo <b>A♭m</b>: de La♭ sube una 3ª menor. La letra tiene que ser <b>Do</b>. La♭→Do son 4 semitonos, sobra uno → <b>Do♭</b>. ¡No Si! Si suena igual, pero es otra letra.</div>`,
- demo:()=>({slots:[{notes:roleNotes(T.voicing(Ab,'m','fund'),'m'),label:'A♭m ✓',lc:'#4F9A6C'},{notes:[{n:{l:5,a:-1,o:4}},{n:{l:6,a:0,o:4},c:'#E05A78',ring:1},{n:{l:2,a:-1,o:5}}],label:'✗ con Si',lc:'#E05A78',sub:'suena igual, mal escrito'}],v:T.voicing(Ab,'m','fund')}),
+ demo:()=>({slots:[{notes:roleNotes(T.voicing(Ab,'m','fund'),'m'),label:'A♭m ✓',lc:'#4A86B8'},{notes:[{n:{l:5,a:-1,o:4}},{n:{l:6,a:0,o:4},c:'#D9485F',ring:1},{n:{l:2,a:-1,o:5}}],label:'✗ con Si',lc:'#D9485F',sub:'suena igual, mal escrito'}],v:T.voicing(Ab,'m','fund')}),
  quiz:{q:'¿Cuál es la 3ª de Dbaum (D♭aum)?',o:['Mi♯','Fa','Fa♯'],a:1,why:'Re♭ → letra Fa. Re♭ a Fa = 4 semitonos = 3ª mayor → Fa. Luego Fa → La (3M). D♭aum = Re♭–Fa–La.'}},
 {t:'Cerrada e inversiones',s:'¿quién está en el bajo?',c:'#F7DCDD',body:()=>`<p><b>Cerrada</b>: las 3 notas lo más juntas posible, dentro de una octava.</p>
 <div class="formula"><div><b>Fundamental</b>la fundamental en el bajo</div><div><b>1ª inversión</b>la <b>3ª</b> en el bajo</div><div><b>2ª inversión</b>la <b>5ª</b> en el bajo</div></div>
 <div class="note-card">🎼 <b>Cifrado con diagonal:</b> lo de después de la “/” es el bajo. <b>B♭/D</b> = B♭ con Re abajo = 1ª inv. <b>F/C</b> = 2ª inv.</div>`,
  demo:()=>({slots:['fund','inv1','inv2'].map(p=>({notes:roleNotes(T.voicing(G_,'M',p),'M'),label:T.POSS[p],sub:p==='fund'?'G':T.cifrado(G_,'M',T.voicing(G_,'M',p).roles[0])})),v:T.voicing(G_,'M','fund')}),
  quiz:{q:'F/C es…',o:['1ª inversión','2ª inversión','fundamental'],a:1,why:'F = Fa–La–Do. Do es la 5ª y está en el bajo → 2ª inversión.'}},
-{t:'Tríada abierta',s:'la de en medio sube una octava',c:'#DDE8D8',body:()=>`<p>Para hacerla <b>abierta</b>: toma la cerrada y <b>sube una octava la nota de en medio</b>.</p>
+{t:'Tríada abierta',s:'la de en medio sube una octava',c:'#D9E9F6',body:()=>`<p>Para hacerla <b>abierta</b>: toma la cerrada y <b>sube una octava la nota de en medio</b>.</p>
 <div class="note-card">C cerrada: <span class="hand">Do – Mi – Sol</span> → C abierta: <span class="hand">Do – Sol – Mi</span> (fund – 5ª – 3ª). Las notas quedan separadas más de una octava, suena más amplio, como en un coro 🎶.</div>`,
  demo:()=>({slots:[{notes:roleNotes(T.voicing(C,'M','fund'),'M'),label:'cerrada'},{notes:roleNotes(T.voicing(C,'M','abierta'),'M'),label:'abierta'}],v:T.voicing(C,'M','abierta')}),
  quiz:{q:'F abierta es…',o:['Fa – Do – La','Fa – La – Do','La – Do – Fa'],a:0,why:'Cerrada Fa–La–Do; la de en medio (La) sube una octava → Fa–Do–La.'}},
-{t:'Cómo identificar un acorde',s:'3 pasos que nunca fallan',c:'#F3E6CF',body:()=>`<ol class="steps"><li>Lee las notas <b>de abajo hacia arriba</b>.</li><li>Acomódalas en <b>terceras</b> (letra sí, letra no): la de abajo de la torre es la <b>fundamental</b>.</li><li>Mide las terceras (tipo) y mira <b>qué nota está en el bajo</b> (posición). Si pasa de una octava, es <b>abierta</b>.</li></ol>`,
+{t:'Cómo identificar un acorde',s:'3 pasos que nunca fallan',c:'#FBF0C8',body:()=>`<ol class="steps"><li>Lee las notas <b>de abajo hacia arriba</b>.</li><li>Acomódalas en <b>terceras</b> (letra sí, letra no): la de abajo de la torre es la <b>fundamental</b>.</li><li>Mide las terceras (tipo) y mira <b>qué nota está en el bajo</b> (posición). Si pasa de una octava, es <b>abierta</b>.</li></ol>`,
  demo:()=>({slots:[{notes:roleNotes(T.voicing(Eb,'M','inv1'),'M'),label:'¿?',sub:'Sol – Si♭ – Mi♭'},{notes:roleNotes(T.voicing(Eb,'M','fund'),'M'),label:'E♭',sub:'en terceras'}],v:T.voicing(Eb,'M','inv1')}),
  quiz:{q:'Sol – Si♭ – Mi♭ es…',o:['Gm 1ª inv','E♭ 1ª inv (E♭/G)','B♭ 2ª inv'],a:1,why:'En terceras: Mi♭–Sol–Si♭ = E♭. Sol (la 3ª) está en el bajo → 1ª inv = E♭/G.'}}
 ];
@@ -448,18 +462,18 @@ function nav(cur){const t=[['home','Inicio'],['learn','Aprender'],['prac','Pract
   return `<nav class="tabs">${t.map(([k,l])=>`<a href="#${k}" class="${cur===k?'on':''}">${ICON[k]}${l}</a>`).join('')}</nav>`;}
 function header(){return `<header class="top"><div class="brand" data-go="home"><svg class="logo" viewBox="0 0 60 60">${GRADS}${blossom(30,30,24,8,'','','pk')}</svg><div><h1>Tríadas</h1><small>el cuaderno de Eli</small></div></div>
 <div class="pills"><span class="pill" title="Racha">🔥 ${S.streak}</span><span class="pill" title="Puntos">✨ ${S.points}</span><button class="icon-btn" data-act="settings" aria-label="Ajustes">⚙︎</button></div></header>`;}
-function ring(v,max){const p=Math.min(1,v/max),r=34,c=2*Math.PI*r;return `<svg class="ring" width="92" height="92" viewBox="0 0 92 92"><circle cx="46" cy="46" r="${r}" stroke="#F1E2DA" stroke-width="9" fill="none"/><circle cx="46" cy="46" r="${r}" stroke="url(#rg)" stroke-width="9" fill="none" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-p)}" transform="rotate(-90 46 46)" style="transition:stroke-dashoffset 1s"/><defs><linearGradient id="rg"><stop offset="0" stop-color="#E7A0AC"/><stop offset="1" stop-color="#B9566D"/></linearGradient></defs><text x="46" y="45" text-anchor="middle" font-family="Cormorant Garamond" font-weight="700" font-size="26" fill="#2D3350">${v}</text><text x="46" y="61" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10" fill="#8a8ea3">de ${max} hoy</text></svg>`;}
+function ring(v,max){const p=Math.min(1,v/max),r=34,c=2*Math.PI*r;return `<svg class="ring" width="92" height="92" viewBox="0 0 92 92"><circle cx="46" cy="46" r="${r}" stroke="#F1E2DA" stroke-width="9" fill="none"/><circle cx="46" cy="46" r="${r}" stroke="url(#rg)" stroke-width="9" fill="none" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-p)}" transform="rotate(-90 46 46)" style="transition:stroke-dashoffset 1s"/><defs><linearGradient id="rg"><stop offset="0" stop-color="#E7A0AC"/><stop offset="1" stop-color="#B9566D"/></linearGradient></defs><text x="46" y="45" text-anchor="middle" font-family="Cormorant Garamond" font-weight="700" font-size="26" fill="#5A3E33">${v}</text><text x="46" y="61" text-anchor="middle" font-family="Nunito" font-weight="800" font-size="10" fill="#9A7E70">de ${max} hoy</text></svg>`;}
 function vHome(){const td=S.days[today()]||0,nm_=S.mistakes.length;const ld=Object.keys(S.lessons).length;
  return `<div class="card hero" style="padding:16px"><div style="flex:1"><div class="hand">${saludo()}, Eli 🌸</div><h2>Tu cuaderno de <em>tríadas</em></h2><p>${td>=S.goal?'¡Meta del día cumplida! Sigue si quieres 💗':'Unos minutitos al día y te salen solas.'}</p><button class="btn pri sm" data-start="mix|tarea">Practicar mi tarea →</button></div>${ring(td,S.goal)}</div>
 <div class="masonry">
 <a class="pin" href="#learn">${branchArt(300,170,'#FBEFEC')}<div class="body"><h3>Aprender</h3><p>7 lecciones súper fáciles · ${ld}/7 listas</p></div></a>
-<div class="pin" data-start="build|tarea">${pianoArt('#F5EBDD')}<div class="body"><h3>Construir</h3><p>Toca las notas en el piano</p></div></div>
-<div class="pin" data-start="id|tarea">${eyeArt('#EAF1E6')}<div class="body"><h3>Identificar</h3><p>Ve el pentagrama y adivina el cifrado y la posición</p></div></div>
-<div class="pin" data-start="spell|tarea">${quillArt('#F1EBF6')}<div class="body"><h3>Deletrear</h3><p>Escribe las notas con su ♯ o ♭</p></div></div>
-<a class="pin" href="#tarea">${miniStaffArt('#FFF8F2',[[120,30,'#C9677B'],[120,32,'#B08A45'],[120,34,'#5E8A6B'],[175,32],[175,34],[175,37],[225,30],[225,34],[225,39]])}<div class="body"><h3>Mi tarea</h3><p>Los 19 acordes de clase en todas sus posiciones</p></div></a>
+<div class="pin" data-start="build|tarea">${pianoArt('#FBF3D6')}<div class="body"><h3>Construir</h3><p>Toca las notas en el piano</p></div></div>
+<div class="pin" data-start="id|tarea">${eyeArt('#E8F2FA')}<div class="body"><h3>Identificar</h3><p>Ve el pentagrama y adivina el cifrado y la posición</p></div></div>
+<div class="pin" data-start="spell|tarea">${quillArt('#EAF3FB')}<div class="body"><h3>Deletrear</h3><p>Escribe las notas con su ♯ o ♭</p></div></div>
+<a class="pin" href="#tarea">${miniStaffArt('#FFF8F2',[[120,30,'#C9677B'],[120,32,'#C9A23A'],[120,34,'#5B8FC0'],[175,32],[175,34],[175,37],[225,30],[225,34],[225,39]])}<div class="body"><h3>Mi tarea</h3><p>Los 19 acordes de clase en todas sus posiciones</p></div></a>
 <div class="pin" ${nm_?'data-start="mix|errores"':'data-go="prog"'} style="background:linear-gradient(160deg,#FFF6F4,#FBE4E6)"><div class="body" style="padding:18px 14px"><div style="font-size:34px">🩹</div><h3>Repasar errores</h3><p>${nm_?nm_+' por corregir — ¡a por ellos!':'Sin errores pendientes ✨'}</p></div>${nm_?`<span class="badge">${nm_}</span>`:''}</div>
-<a class="pin" href="#lab" style="background:linear-gradient(160deg,#F4F8F1,#E2ECDD)"><div class="body" style="padding:18px 14px"><div style="font-size:34px">🔍</div><h3>Explorar</h3><p>Arma cualquier tríada y escúchala</p></div></a>
-<a class="pin" href="#prog" style="background:linear-gradient(160deg,#FBF6EC,#F3E6CF)"><div class="body" style="padding:18px 14px"><div style="font-size:34px">🏅</div><h3>${dayStreak()} día${dayStreak()===1?'':'s'} seguidos</h3><p>Mejor racha: ${S.best} · ${S.total?Math.round(100*S.right/S.total):0}% aciertos</p></div></a>
+<a class="pin" href="#lab" style="background:linear-gradient(160deg,#F1F7FC,#DCEBF7)"><div class="body" style="padding:18px 14px"><div style="font-size:34px">🔍</div><h3>Explorar</h3><p>Arma cualquier tríada y escúchala</p></div></a>
+<a class="pin" href="#prog" style="background:linear-gradient(160deg,#FDF7DF,#FBF0C8)"><div class="body" style="padding:18px 14px"><div style="font-size:34px">🏅</div><h3>${dayStreak()} día${dayStreak()===1?'':'s'} seguidos</h3><p>Mejor racha: ${S.best} · ${S.total?Math.round(100*S.right/S.total):0}% aciertos</p></div></a>
 </div><div class="foot">“Canten al Señor un cántico nuevo” · Sal 96 🎶</div>`;}
 function saludo(){const h=new Date().getHours();return h<12?'Buenos días':h<19?'Buenas tardes':'Buenas noches';}
 function vLearn(){return `<h2 class="sec">Aprender <em>paso a paso</em></h2><p class="lead">Lecciones cortitas con pentagrama y piano. Toca los acordes para escucharlos.</p><div class="lesson-list">
@@ -542,24 +556,24 @@ function qSpell(q){const sl=A.slots||(A.slots=[null,null,null]);if(A.act==null)A
  <button class="btn pri block" data-act="check" ${filled.length===3?'':'disabled'}>Comprobar</button>`;}
 /* --- Comprobación y retroalimentación --- */
 function evaluate(q){const v=T.voicing(q.root,q.type,q.pos);const rl=T.roles(q.type);const lab=qLabel(q);
- const R={ok:false,msgs:[],yours:[],correct:v.notes.map(n=>({n,c:'#4F9A6C'})),yourM:[],corrM:v.notes.map(T.midi)};
+ const R={ok:false,msgs:[],yours:[],correct:v.notes.map(n=>({n,c:'#4A86B8'})),yourM:[],corrM:v.notes.map(T.midi)};
  if(q.mode==='build'){const s=[...A.sel].sort((a,b)=>a-b);const pcs=s.map(m=>m%12),exp=v.notes.map(T.pc);const set=new Set(exp);
    const bad=pcs.map((p,i)=>p!==exp[i]);let spanBad=false;if(!bad.some(Boolean)&&q.pos!=='abierta'&&s[2]-s[0]>=12){spanBad=true;bad[2]=true;}
-   R.ok=!bad.some(Boolean);R.yourM=s;R.yours=s.map((m,i)=>({n:spellMidi(m,q),c:bad[i]?'#E05A78':'#2D3350',ring:bad[i]}));
+   R.ok=!bad.some(Boolean);R.yourM=s;R.yours=s.map((m,i)=>({n:spellMidi(m,q),c:bad[i]?'#D9485F':'#5A3E33',ring:bad[i]}));
    if(!R.ok){const allIn=pcs.every(p=>set.has(p))&&new Set(pcs).size===3;
      if(spanBad)R.msgs.push(`Tienes las notas y el orden bien, pero quedaron separadas más de una octava. En <b>${T.POSS[q.pos]}</b> (cerrada) van lo más juntas posible.`);
      else if(allIn)R.msgs.push(`¡Las 3 notas son de ${lab}! 👏 Solo el <b>orden</b> no: en ${T.POS[q.pos].toLowerCase()} el bajo debe ser la <b>${rl[v.roles[0]]}</b> (${nm(v.notes[0])}).`);
      else s.forEach((m,i)=>{if(!bad[i])return;const n=spellMidi(m,q);if(!set.has(m%12))R.msgs.push(`<b>${nm(n)}</b> no es parte de ${lab}. Sus notas son ${T.tones(q.root,q.type).map(nm).join(', ')}.`);else R.msgs.push(`<b>${nm(n)}</b> sí es del acorde, pero ahí (${['abajo','en medio','arriba'][i]}) va <b>${nm(v.notes[i])}</b>.`);});
      if(q.pos==='abierta'&&!allIn&&pcs.every(p=>set.has(p)))R.msgs.push('Recuerda: abierta = fund – 5ª – 3ª (la de en medio sube una octava).');}}
  else if(q.mode==='spell'){const sl=A.slots;const yours=stackUp(sl);R.yourM=yours.map(T.midi);
-   const bad=sl.map((n,i)=>!T.same(n,v.notes[i]));R.ok=!bad.some(Boolean);R.yours=yours.map((n,i)=>({n,c:bad[i]?'#E05A78':'#2D3350',ring:bad[i]}));
+   const bad=sl.map((n,i)=>!T.same(n,v.notes[i]));R.ok=!bad.some(Boolean);R.yours=yours.map((n,i)=>({n,c:bad[i]?'#D9485F':'#5A3E33',ring:bad[i]}));
    sl.forEach((n,i)=>{if(!bad[i])return;const c=v.notes[i];const pos=['El bajo','La de en medio','La de arriba'][i];
      if(T.pc(n)===T.pc(c))R.msgs.push(`${pos}: <b>${nm(n)}</b> suena igual que <b>${nm(c)}</b>, pero se escribe ${nm(c)}: la letra tiene que ser ${S.sys==='let'?T.LET[c.l]:T.SOL[c.l]} (letra sí, letra no).`);
      else if(n.l===c.l)R.msgs.push(`${pos}: la letra ${S.sys==='let'?T.LET[c.l]:T.SOL[c.l]} está bien 👍, pero la alteración no: es <b>${nm(c)}</b>, no ${nm(n)}.`);
      else if(T.tones(q.root,q.type).some(t=>T.same(t,n)))R.msgs.push(`${pos}: <b>${nm(n)}</b> sí es de ${lab}, pero no va ahí; va <b>${nm(c)}</b> (la ${rl[v.roles[i]]}).`);
      else R.msgs.push(`${pos}: <b>${nm(n)}</b> no es de ${lab}; va <b>${nm(c)}</b> (la ${rl[v.roles[i]]}).`);});}
  else{const o=A.opts[A.c];const cOk=T.same(o.root,q.root)&&o.type===q.type,pOk=A.p===q.pos;R.ok=cOk&&pOk;
-   const yv=T.voicing(o.root,o.type,A.p);R.yourM=yv.notes.map(T.midi);R.yours=yv.notes.map((n,i)=>{const b=!(T.same(n,v.notes[i])&&T.step(n)===T.step(v.notes[i]));return {n,c:b?'#E05A78':'#2D3350',ring:b};});
+   const yv=T.voicing(o.root,o.type,A.p);R.yourM=yv.notes.map(T.midi);R.yours=yv.notes.map((n,i)=>{const b=!(T.same(n,v.notes[i])&&T.step(n)===T.step(v.notes[i]));return {n,c:b?'#D9485F':'#5A3E33',ring:b};});
    if(!cOk){const yt=T.tones(o.root,o.type).map(nm).join(' – ');R.msgs.push(`Elegiste <b>${cif(o.root,o.type)}</b>, que se escribe <b>${yt}</b>. Aquí las notas son <b>${T.tones(q.root,q.type).map(nm).join(' – ')}</b> → <b>${cif(q.root,q.type)}</b>.`);
      if(T.pc({...o.root,o:4})===T.pc({...q.root,o:4})&&o.type===q.type)R.msgs.push('Suenan igual, pero la ortografía manda: fíjate en las letras del pentagrama. 😉');}
    if(!pOk)R.msgs.push(`Posición: elegiste <b>${T.POSS[A.p]}</b>, pero el bajo es <b>${nm(v.notes[0])}</b> = la ${rl[v.roles[0]]}${q.pos==='abierta'?' y las notas pasan de una octava':''} → <b>${T.POSS[q.pos]}</b>.`);}
@@ -578,8 +592,8 @@ function check(){const q=Q.qs[Q.i];const R=evaluate(q);const pts=record(q,R.ok);
   <div class="staffwrap">${staff([{notes:roleNotes(v,q.type),label:fullCif(q),sub:T.POSS[q.pos]}],{anim:true})}</div>
   <p class="prose center" style="margin:8px 0">${lab} = <b>${T.tones(q.root,q.type).map(nm).join(' – ')}</b>${q.pos!=='fund'?` · ${T.POS[q.pos].toLowerCase()}: <b>${v.notes.map(nm).join(' – ')}</b>`:''}</p>`;}
  else{h=`<div class="grab"></div><div class="fb-h bad"><div class="em">💗</div><div><h3>Casi… lo corregimos</h3><p>Así quedó la tuya y así va la correcta</p></div></div>
-  <div class="staffwrap">${staff([{notes:R.yours,label:'la tuya',lc:'#E05A78',bg:'#FDF0F2'},{notes:R.correct,label:'correcta',lc:'#4F9A6C',bg:'#EFF7F0'}],{anim:true,slotW:110})}</div>
-  <div class="legend"><span><i style="background:#E05A78"></i>nota equivocada</span><span><i style="background:#4F9A6C"></i>correcta</span></div>
+  <div class="staffwrap">${staff([{notes:R.yours,label:'la tuya',lc:'#D9485F',bg:'#FDF0F2'},{notes:R.correct,label:'correcta',lc:'#4A86B8',bg:'#EDF5FC'}],{anim:true,slotW:110})}</div>
+  <div class="legend"><span><i style="background:#D9485F"></i>nota equivocada</span><span><i style="background:#4A86B8"></i>correcta</span></div>
   <div class="row"><button class="btn soft sm" data-act="pm1" data-m="${R.yourM.join(',')}">▶ La tuya</button><button class="btn sage sm" data-act="pm1" data-m="${R.corrM.join(',')}">▶ La correcta</button></div>
   <div class="oops"><ul style="margin:0;padding-left:18px">${R.msgs.map(m=>`<li>${m}</li>`).join('')}</ul></div>
   <div class="label">Paso a paso, súper fácil</div><ol class="steps">${R.steps.map(s=>`<li>${s}</li>`).join('')}</ol>`;}
@@ -598,7 +612,7 @@ function finish(){const r=Q.right,n=Q.qs.length;const src=Q.src,mode=Q.mode;Q=nu
 function openSheet(h){$('#sheet').innerHTML=h;$('#sheet').scrollTop=0;$('#sheet').classList.add('open');$('#scrim').classList.add('open');}
 function closeSheet(){$('#sheet').classList.remove('open');$('#scrim').classList.remove('open');}
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2200);}
-function petals(n){const cv=$('#petals'),ctx=cv.getContext('2d');const W=cv.width=innerWidth*devicePixelRatio,H=cv.height=innerHeight*devicePixelRatio;const cols=['#F7C8CC','#EFA7B1','#FBE0E0','#CDE0C9','#E8DDF1','#F2DDB6'];
+function petals(n){const cv=$('#petals'),ctx=cv.getContext('2d');const W=cv.width=innerWidth*devicePixelRatio,H=cv.height=innerHeight*devicePixelRatio;const cols=['#F7C8CC','#EFA7B1','#FBE0E0','#BFD9EE','#A9CDEA','#F8E8A6','#F3D77E','#C9A27E'];
  const P=Array.from({length:n},()=>({x:Math.random()*W,y:-Math.random()*H*.6,r:(6+Math.random()*8)*devicePixelRatio,vy:(1.5+Math.random()*2.5)*devicePixelRatio,vx:(Math.random()-.5)*2,a:Math.random()*6,va:(Math.random()-.5)*.12,s:Math.random()*6,c:rnd(cols)}));
  let t0=performance.now();(function f(t){ctx.clearRect(0,0,W,H);const el=t-t0;P.forEach(p=>{p.y+=p.vy;p.s+=.04;p.x+=p.vx+Math.sin(p.s)*1.2;p.a+=p.va;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.a);ctx.globalAlpha=Math.max(0,1-el/3600);ctx.fillStyle=p.c;ctx.beginPath();ctx.ellipse(0,0,p.r,p.r*.6,0,0,7);ctx.fill();ctx.restore();});if(el<3600)requestAnimationFrame(f);else ctx.clearRect(0,0,W,H);})(t0);}
 function settings(){openSheet(`<div class="grab"></div><h3 style="font-family:var(--fs);font-size:30px;margin:4px 0 10px">Ajustes</h3>
