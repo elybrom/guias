@@ -1,8 +1,8 @@
 <!doctype html><html lang="es-MX"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#F6F0E9"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Tríadas">
-<title>Tríadas: cerradas, abiertas e inversiones · App de Eli</title>
-<meta name="description" content="App para estudiar tríadas cerradas, abiertas e inversiones con pentagrama, piano y corrección paso a paso.">
+<meta name="theme-color" content="#F6F0E9"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Teoría">
+<title>Teoría musical: tríadas, séptimas y examen · App de Eli</title>
+<meta name="description" content="App para estudiar teoría musical: tríadas, séptimas, funciones, Drop 2, dominantes secundarias, escalas menores, intercambio modal, simbología, formas y oído, con pentagrama, piano y corrección paso a paso.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233B2A22'/%3E%3Cg fill='%23F3DCDC'%3E%3Cellipse cx='32' cy='46' rx='9' ry='6.5'/%3E%3Cellipse cx='32' cy='32' rx='9' ry='6.5' fill='%23EBD9A6'/%3E%3Cellipse cx='32' cy='18' rx='9' ry='6.5' fill='%23B9D0E2'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Music&display=swap" rel="stylesheet">
@@ -446,10 +446,207 @@ details.acc .steps{padding:4px 16px 20px}
 @media (min-width:960px){.sticky-cta{position:sticky;left:auto;right:auto;bottom:24px;padding:0;background:none;margin-top:24px}#app.full{padding-bottom:48px}}
 .aci{height:1.05em;width:auto;aspect-ratio:var(--ar,.3);display:inline-block;vertical-align:-.1em;overflow:visible;margin:0 .01em}
 .cif .aci,.choice.cif .aci,.bigcif .aci,.chord-card .hd .aci,.mist b .aci{height:.8em;vertical-align:.12em;margin-left:.03em}
+/* ===== v3: temas del examen ===== */
+:root{--r3:#7A5C4A}
+.wk.r3{color:var(--ink);background:linear-gradient(180deg,#E3D3C7,#F2E9E2 70%,#DCCABD)}.bk.r3{background:linear-gradient(180deg,#7A5C4A,#5A4132)}.dot.r3{background:var(--r3)}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mcard{position:relative;min-height:188px;border-radius:22px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;box-shadow:var(--sh1);overflow:hidden}
+.mcard .in{position:relative;z-index:2}
+.mcard small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,248,241,.78);margin-bottom:4px}
+.mcard h3{font-family:var(--fd);font-weight:500;font-size:19px;line-height:1.1;margin:0;color:#fff;letter-spacing:-.01em}
+.mcard p{margin:4px 0 0;font-size:12px;line-height:1.3;color:rgba(255,255,255,.84)}
+.mcard .pbar{margin-top:10px;height:4px}
+.pbar.light{background:rgba(255,255,255,.25)}.pbar.light>i{background:#FFF8F1}
+.mcard.wide{min-height:150px}
+.mcard .soon{position:absolute;top:12px;right:12px;z-index:3;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:99px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.a-temas{margin-top:8px}
+.mod-cols{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.lnum{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--rose-t);color:var(--rose-d);font-family:var(--fb,inherit);font-size:13px;font-weight:700;margin-right:10px;vertical-align:2px}
+.card-h h3{display:flex;align-items:center}
+.romans{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px}
+.romans span,.cpill{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:99px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);font-family:var(--fd);font-weight:500;font-size:15px}
+.src .end{margin-left:auto;color:var(--ink3);font-size:13px;font-weight:700;display:flex;align-items:center}.src .end svg{width:18px;height:18px}
+.src .ic.mini-ph{position:relative;overflow:hidden;flex:0 0 44px;width:44px;height:44px;border-radius:14px}
+.src .ic.mini-ph::after{display:none}
+.qq{font-family:var(--fd);font-weight:500;font-size:22px;line-height:1.25;margin:6px 0 4px;color:var(--ink);text-wrap:balance}
+.qhtml{margin-top:12px}
+.exam-tag{display:inline-flex;align-items:center;gap:6px;margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}.exam-tag svg{width:16px;height:16px}
+.earbtn{width:96px;height:96px;border-radius:50%;margin:14px auto 6px;display:grid;place-items:center;background:linear-gradient(145deg,#C98A92,#A9616B);color:#fff;box-shadow:0 14px 30px -12px rgba(169,97,107,.7),inset 0 1px 0 rgba(255,255,255,.3);transition:transform .2s var(--spring)}
+.earbtn:active{transform:scale(.94)}.earbtn svg{width:34px;height:34px;margin-left:5px}
+.choice.pic{flex-direction:column;gap:6px;min-height:120px;padding:10px 6px;font-size:13px}
+.choice.pic svg{max-width:100%}
+.symbox{display:flex;align-items:center;justify-content:center;min-height:70px;color:var(--ink)}
+.symbox svg{max-width:100%;height:auto}
+.symg{display:block;width:auto}
+.simgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.simt{background:var(--surface2);border-radius:18px;padding:12px;box-shadow:inset 0 0 0 1.5px var(--line);display:flex;flex-direction:column;gap:4px}
+.simt b{font-size:14px}.simt small{font-size:12.5px;line-height:1.35;color:var(--ink2)}
+.road{display:flex;flex-wrap:wrap;gap:0;justify-content:flex-start;margin:6px 0 4px;background:#FFFCF8;border-radius:16px;padding:6px 8px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.rb svg{display:block;width:clamp(72px,22vw,104px);height:auto}
+.qhead .road{margin-top:14px}
+.fmap{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:8px;text-align:left}
+.fmap .fb{background:#FFFCF8;border-radius:14px;padding:10px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.fmap small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.fmap b{font-family:var(--fd);font-weight:500;font-size:14px;line-height:1.3}
+.blues{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0 12px}
+.blues>div{background:#FFFCF8;border-radius:12px;padding:8px 6px 10px;box-shadow:inset 0 0 0 1.5px var(--line);text-align:center}
+.blues>div.on{box-shadow:inset 0 0 0 2px var(--rose);background:var(--rose-t)}
+.blues small{display:block;font-size:10px;font-weight:700;color:var(--ink3)}.blues b{font-family:var(--fd);font-weight:500;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.chips.col{flex-direction:column;align-items:stretch}
+.chip{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:32px;padding:4px 12px;border-radius:99px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);font-weight:600;font-size:14px}
+.chip em{font-style:normal;font-family:var(--fd);font-weight:500;color:var(--ink3)}
+.chip.big{min-width:40px;height:40px;font-family:var(--fd);font-size:19px;font-weight:500}
+.chip.bad{box-shadow:0 0 0 2px var(--bad);color:var(--bad);outline:2px dashed var(--bad);outline-offset:3px}
+.chip.ok{box-shadow:inset 0 0 0 1.5px rgba(79,127,163,.35);color:var(--ok)}
+.seqc .chip{min-width:34px}
+.seqrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;min-height:48px}
+.seqrow .arr{font-style:normal;color:var(--ink3)}
+.prow{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:none}
+.pcell{flex:1 0 auto;min-width:76px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 8px;border-radius:14px;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line)}
+.pcell b{font-family:var(--fd);font-weight:500;font-size:16px}.pcell span{font-size:12.5px;font-weight:700;color:var(--rose-d)}
+.pcell.act{box-shadow:inset 0 0 0 2px var(--rose);background:#fff}
+.ptxt{font-family:var(--fd);font-size:19px;font-weight:500;line-height:1.25;padding:10px 4px 6px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.ptxt span{font-family:var(--fb,inherit);font-size:14px}
+.cmp.txt .pane{display:flex;flex-direction:column;align-items:center}
+.nnrow{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;padding:8px 0}
+.nnrow span{min-width:34px;padding:4px 6px;border-radius:10px;background:#fff;font-weight:600;font-size:14px}
+.nnrow span.bad{color:var(--bad);outline:2px dashed var(--bad);outline-offset:1px}
+.nslot.sm{height:64px}.nslot.sm b{font-size:21px}
+.okpane .staff{margin:0 auto}
+.review .rv{padding:12px 0;border-top:1px solid var(--line);display:grid;gap:4px;font-size:14px}
+.review .rv:first-of-type{border-top:0}
+.review .rv small{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+@media (min-width:960px){
+ .mgrid{grid-template-columns:repeat(3,1fr);gap:16px}.mcard{min-height:220px;padding:18px}.mcard h3{font-size:22px}
+ .a-temas{grid-column:1/-1}
+ .mod-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+ .simgrid{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:960px){.home{grid-template-areas:"hero stats" "hero cont" "hero feats" "temas temas" "modes modes"}.a-temas{grid-area:temas;margin-top:24px}}
+.mcard.full{min-height:190px}.mcard.full h3{font-size:24px}
+</style><style>/* ===== Módulo Entonación (usa las variables de la app) ===== */
+.en .en-top{display:flex;align-items:center;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top)) 0 0}
+.en .en-hero{min-height:420px}
+.en .en-hero>img{object-position:50% 40%}
+.en .lrow .thumb{position:relative}
+.en .en-num{position:absolute;left:8px;bottom:6px;z-index:2;font-family:var(--fd);font-weight:500;font-size:22px;color:#FFF8F1;text-shadow:0 2px 10px rgba(0,0,0,.45)}
+.en .lrow .tx small{letter-spacing:.06em}
+.en .en-pill{font-size:12px;font-weight:600;padding:8px 12px;border-radius:99px;background:rgba(255,248,241,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,248,241,.3);color:#fff}
+.en .en-pat{display:flex;gap:6px;flex-wrap:wrap}
+.en .en-pat>span{flex:1;min-width:30px;height:40px;border-radius:12px;display:grid;place-items:center;font-family:var(--fd);font-weight:500;font-size:17px}
+.en .en-pat .t{background:var(--blue-t);color:var(--blue-d)}
+.en .en-pat .s{background:var(--rose-t);color:var(--rose-d)}
+.en .en-pat .x{background:var(--gold-t);color:#8A6A24;box-shadow:inset 0 0 0 1.5px var(--gold-l)}
+.en .en-legend{display:flex;gap:10px;font-size:12px;color:var(--ink3);font-weight:600;align-items:center}
+.en .en-legend i{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:-6px}
+.en .en-legend i.t{background:var(--blue-l)}.en .en-legend i.s{background:var(--rose-l)}.en .en-legend i.x{background:var(--gold-l)}
+.en .en-sub{font-size:13px;color:var(--ink3);margin:10px 0 0}
+.en .en-flag{font-size:10px;letter-spacing:.08em;background:var(--blue-t);color:var(--blue-d);padding:3px 8px;border-radius:99px;margin-left:6px}
+.en .en-staffwrap{background:var(--surface2);border-radius:var(--rad-s);padding:10px 8px 4px;box-shadow:inset 0 0 0 1px var(--line2);overflow-x:auto;scrollbar-width:none}
+.en .en-staffwrap::-webkit-scrollbar{display:none}
+.en .en-staff{width:100%}
+.en .en-n{cursor:pointer}
+.en .en-hl{fill:transparent;transition:fill .18s}
+.en .en-n.en-on .en-hl{fill:rgba(235,217,166,.55)}
+.en .en-n.en-on>path:last-of-type{filter:drop-shadow(0 0 4px rgba(184,146,63,.6))}
+.en .en-key{display:flex;gap:16px;font-size:12px;color:var(--ink3);font-weight:600;margin-top:10px}
+.en .en-key i{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:-1px}
+.en .en-tab{width:100%;border-collapse:collapse;font-size:14px}
+.en .en-tab th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);text-align:left;font-weight:600;padding:0 6px 8px}
+.en .en-tab td{padding:10px 6px;border-top:1px solid var(--line2);color:var(--ink2)}
+.en .en-tab td:first-child{font-family:var(--fd);font-style:italic;color:var(--mocha);width:44px}
+.en .en-tab tr.alt td{background:var(--rose-t)}.en .en-tab tr.alt b{color:var(--rose-d)}
+.en .en-int{display:inline-grid;place-items:center;min-width:30px;height:24px;border-radius:8px;background:var(--blue-t);color:var(--blue-d);font-weight:600;font-size:12px}
+.en .en-int.s{background:var(--rose-t);color:var(--rose-d)}.en .en-int.x{background:var(--gold-t);color:#8A6A24}
+.en .en-syl{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.en .en-syl>span{background:var(--surface2);border-radius:12px;padding:8px 2px;text-align:center;box-shadow:inset 0 0 0 1px var(--line2)}
+.en .en-syl b{display:block;font-family:var(--fd);font-weight:500;font-size:17px}
+.en .en-syl small{font-size:10.5px;color:var(--ink3);font-weight:600}
+.en .en-syl>span.alt{background:var(--rose-t);box-shadow:inset 0 0 0 1px var(--rose-l)}.en .en-syl>span.alt b{color:var(--rose-d)}
+.en .en-syl.dn>span.alt{background:var(--blue-t);box-shadow:inset 0 0 0 1px var(--blue-l)}.en .en-syl.dn>span.alt b{color:var(--blue-d)}
+.en .en-note{margin-top:16px;background:var(--gold-t);border-radius:var(--rad-s);padding:14px 16px;font-size:14px;line-height:1.55;color:var(--ink2)}
+.en .en-note.soft{background:var(--blue-t)}
+/* escenario canta conmigo */
+.en .en-stage{position:relative;border-radius:28px;overflow:hidden;color:#FFF8F1;box-shadow:var(--sh3);margin:16px 0;isolation:isolate}
+.en .en-stage>.ph{position:absolute;inset:0;z-index:-1}
+.en .en-stage>.ph::after{background:linear-gradient(180deg,rgba(51,36,29,.72),rgba(38,25,19,.92))}
+.en .en-stage .in{padding:24px 20px 20px;text-align:center}
+.en .en-st-k{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,248,241,.7)}
+.en .en-big{font-family:var(--fd);font-weight:400;font-size:76px;line-height:1;margin:18px 0 6px;letter-spacing:-.02em;color:#FFF8F1}
+.en .en-big.pop{animation:enPop .45s var(--spring)}
+@keyframes enPop{0%{transform:scale(.82);opacity:.4}100%{transform:none;opacity:1}}
+.en .en-bsub{font-size:16px;font-weight:600;color:#F3D2D0}
+.en .en-bsm{font-size:13px;color:rgba(255,248,241,.6);min-height:20px;margin-top:2px;font-style:italic;font-family:var(--fd)}
+.en .en-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin:16px 0 18px}
+.en .en-dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,248,241,.25);transition:all .2s var(--ease)}
+.en .en-dots i.alt{background:rgba(233,199,198,.55)}
+.en .en-dots i.turn{margin-left:8px}
+.en .en-dots i.en-on{background:var(--gold-l);transform:scale(1.5);box-shadow:0 0 10px rgba(235,217,166,.8)}
+.en .en-stage.live .en-big{text-shadow:0 0 30px rgba(243,210,208,.35)}
+.en .en-chips{display:flex;flex-wrap:wrap;gap:8px}
+.en .en-chips button{height:40px;padding:0 14px;border-radius:99px;background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--line);font-size:14px;font-weight:600;color:var(--ink2);transition:all .2s var(--ease)}
+.en .en-chips button.on{background:var(--ink);color:#FFF8F1;box-shadow:0 6px 14px -6px rgba(51,36,29,.6)}
+.en .en-notes{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+/* simulacro */
+.en .en-band{height:96px;border-radius:var(--rad-s);margin:-8px -8px 16px;display:flex;align-items:flex-end;padding:14px 16px;color:#fff}
+.en .en-band .in{position:relative;z-index:2;display:flex;gap:8px;align-items:center;font-weight:600;font-size:14px}
+.en .en-band svg{width:18px;height:18px}
+.en .en-steps{margin:0;padding-left:20px;color:var(--ink2);font-size:15px;line-height:1.55}
+.en .en-steps li{margin-bottom:6px}
+.en .en-prompt{position:relative;border-radius:28px;overflow:hidden;min-height:250px;display:flex;align-items:flex-end;color:#fff;box-shadow:var(--sh3);margin-bottom:16px;isolation:isolate}
+.en .en-prompt>.ph{position:absolute;inset:0;z-index:-1}
+.en .en-prompt>.ph::after{background:linear-gradient(180deg,rgba(51,36,29,.2),rgba(38,25,19,.88))}
+.en .en-prompt .in{padding:22px}
+.en .en-prompt small{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,248,241,.75)}
+.en .en-prompt h2{font-family:var(--fd);font-weight:400;font-size:30px;line-height:1.05;margin:6px 0 8px;color:#FFF8F1;letter-spacing:-.02em}
+.en .en-from{font-size:15px;color:rgba(255,248,241,.85)}
+.en .en-from b{font-family:var(--fd);font-weight:500;font-size:40px;color:#F3D2D0;margin-left:6px;vertical-align:-4px;color:#F3D2D0}
+.en .en-prompt p{margin:8px 0 0;color:rgba(255,248,241,.75);font-size:14px}
+.en .en-tries{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2);font-weight:500}
+.en .en-tries i{width:12px;height:12px;border-radius:50%;background:var(--gold-l);box-shadow:inset 0 0 0 1px var(--gold)}
+.en .en-tries i.used{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line)}
+.en .en-tries>span{margin-left:6px}
+.en .en-hist{display:flex;align-items:center;gap:12px;background:var(--surface);border-radius:16px;padding:12px 14px;box-shadow:var(--sh1);margin-bottom:8px;font-size:14px}
+.en .en-hist>span{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto}
+.en .en-hist>span svg{width:15px;height:15px}
+.en .en-hist.ok>span{background:var(--ok-t);color:var(--ok)}.en .en-hist.bad>span{background:var(--bad-t);color:var(--bad)}
+.en .en-hist b{font-weight:600;flex:1}.en .en-hist small{color:var(--ink3)}
+/* tríadas */
+.en .en-tri{display:grid;gap:12px;margin:16px 0}
+.en .en-tc{border-left:4px solid var(--c);margin:0}
+.en .en-tc h3{color:var(--c)}
+.en .en-f{font-family:var(--fd);font-style:italic;font-size:18px;color:var(--mocha)}
+.en .en-f>span{font-family:var(--fu);font-style:normal;font-size:13px;color:var(--ink3);font-weight:600;margin-left:10px}
+.en .en-c{margin:6px 0;font-size:14px;color:var(--ink2)}
+.en .en-tc ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink2);line-height:1.5}
+.en .icon-btn.sm{width:36px;height:36px}.en .icon-btn.sm svg{width:16px;height:16px}
+/* acordeón */
+.en .en-cmp dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0 0 12px;font-size:14px}
+.en .en-cmp dt{color:var(--ink3);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding-top:2px}
+.en .en-cmp dd{margin:0;color:var(--ink2)}.en .en-cmp dd.mono{font-family:var(--fd);font-style:italic;color:var(--mocha)}
+.en .en-line{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-top:6px}
+.en .en-line small{width:38px;font-size:11px;color:var(--ink3);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.en .en-line>span{padding:4px 7px;border-radius:8px;background:var(--surface2);font-size:13px;font-weight:600;box-shadow:inset 0 0 0 1px var(--line2)}
+.en .en-line>span.alt{background:var(--rose-t);color:var(--rose-d);box-shadow:inset 0 0 0 1px var(--rose-l)}
+.en .en-line>span.back{background:var(--blue-t);color:var(--blue-d);box-shadow:inset 0 0 0 1px var(--blue-l)}
+.en .alt-t{color:var(--rose-d);font-weight:700}
+/* tips */
+.en .en-tip{display:flex;gap:14px;align-items:flex-start}
+.en .en-tip .n{font-family:var(--fd);font-style:italic;font-size:22px;color:var(--rose);line-height:1;padding-top:2px}
+.en .en-tip h3{font-family:var(--fd);font-weight:500;font-size:18px;margin:0 0 4px}
+.en .en-tip p{margin:0;font-size:14.5px;color:var(--ink2);line-height:1.55}
+.en .en-tip .ic{flex:0 0 36px;height:36px;border-radius:12px;background:var(--gold-t);color:var(--gold);display:grid;place-items:center;margin-left:auto}
+.en .en-tip .ic svg{width:18px;height:18px}
+.en .en-tip>div{flex:1}
+.tabs:has(a:nth-child(6)){grid-template-columns:repeat(6,1fr)}.tabs:has(a:nth-child(6)) a{font-size:10px}
+.en .en-stage .btn.pri{background:#F3D2D0;color:var(--ink);box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}.en .en-stage .btn.rose{background:var(--rose);color:#fff}
 </style></head><body>
 <div class="shell"><aside id="nav"></aside><main id="app"></main></div>
 <div class="scrim" id="scrim"></div><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div><div class="toast" id="toast"></div><canvas id="fx"></canvas>
 <script>const GLY={"gClef": "M376 415l25 -145c3 -18 3 -18 29 -18c147 0 241 -113 241 -241c0 -113 -67 -198 -168 -238c-14 -6 -15 -5 -13 -17c11 -62 29 -157 29 -214c0 -170 -130 -200 -197 -200c-151 0 -190 98 -190 163c0 62 40 115 107 115c61 0 96 -47 96 -102c0 -58 -36 -85 -67 -94 c-23 -7 -32 -10 -32 -17c0 -13 26 -29 80 -29c59 0 159 18 159 166c0 47 -15 134 -27 201c-2 12 -4 11 -15 9c-20 -4 -46 -6 -69 -6c-245 0 -364 165 -364 339c0 202 153 345 297 464c12 10 11 12 9 24c-7 41 -14 106 -14 164c0 104 24 229 98 311c20 22 51 48 65 48 c11 0 37 -28 52 -50c41 -60 65 -146 65 -233c0 -153 -82 -280 -190 -381c-6 -6 -8 -7 -6 -19zM470 943c-61 0 -133 -96 -133 -252c0 -32 2 -66 6 -92c2 -13 6 -14 13 -8c79 69 174 159 174 270c0 55 -27 82 -60 82zM361 262l-21 128c-2 11 -4 12 -14 4 c-47 -38 -93 -75 -153 -142c-83 -94 -93 -173 -93 -232c0 -139 113 -236 288 -236c20 0 40 2 56 5c15 3 16 3 14 14l-50 298c-2 11 -4 12 -20 8c-61 -17 -100 -60 -100 -117c0 -46 30 -89 72 -107c7 -3 15 -6 15 -13c0 -6 -4 -11 -12 -11c-7 0 -19 3 -27 6 c-68 23 -115 87 -115 177c0 85 57 164 145 194c18 6 18 5 15 24zM430 103l49 -285c2 -12 4 -12 16 -6c56 28 94 79 94 142c0 88 -67 156 -148 163c-12 1 -13 -2 -11 -14z", "whole": "M216 125c93 0 206 -52 206 -123c0 -70 -52 -127 -216 -127c-149 0 -206 60 -206 127c0 68 83 123 216 123zM111 63c-2 -8 -3 -16 -3 -24c0 -32 15 -66 35 -89c21 -28 58 -52 94 -52c10 0 21 1 31 4c33 8 46 36 46 67c0 60 -55 134 -124 134c-31 0 -68 -5 -79 -40z", "flat": "M12 -170c-8 10 -12 581 -12 581c1 18 17 28 31 28c10 0 19 -6 19 -17c0 -20 -6 -260 -7 -282c0 -7 4 -14 11 -17c2 -1 3 -1 5 -1c5 0 16 9 22 14c14 9 38 17 55 17c46 -3 90 -39 90 -96c0 -46 -31 -107 -120 -169c-25 -17 -49 -44 -79 -61c0 0 -3 -2 -6 -2s-6 1 -9 5z M47 -81c0 -5 2 -15 11 -15c3 0 6 1 10 3c43 27 89 81 89 135c0 25 -12 58 -41 58c-23 0 -63 -29 -70 -49c-1 -4 -2 -16 -2 -32c0 -40 3 -100 3 -100z", "natural": "M141 181l15 5c1 1 3 1 4 1c4 0 8 -3 8 -8v-502c0 -7 -6 -12 -12 -12h-13c-7 0 -12 5 -12 12v149c0 8 -7 11 -17 11c-29 0 -85 -24 -99 -30c-1 -1 -3 -1 -4 -1l-2 -1c-6 0 -9 3 -9 9v515c0 7 5 12 12 12h13c6 0 12 -5 12 -12v-167c0 -4 4 -5 10 -5c26 0 90 23 90 23 c1 0 2 1 4 1zM37 39v-103c0 -4 5 -6 12 -6c25 0 82 23 82 41v103c0 4 -3 5 -9 5c-24 0 -85 -26 -85 -40z", "sharp": "M237 118l-26 -10c-8 -3 -13 -22 -13 -29v-93c0 -12 7 -18 13 -18l26 10c2 1 3 1 5 1c4 0 7 -3 7 -8v-71c0 -6 -5 -14 -12 -17c0 0 -21 -8 -28 -11s-11 -15 -11 -23v-142c0 -6 -6 -11 -17 -11c-7 0 -13 5 -13 11v125c0 6 -5 18 -14 18l-2 -1h-1l-61 -25 c-5 -2 -10 -9 -10 -22v-139c0 -6 -7 -11 -17 -11c-7 0 -13 5 -13 11v123c0 5 -5 16 -12 16c-1 0 -2 0 -3 -1c-9 -3 -23 -9 -24 -9l-2 -1c-6 0 -9 3 -9 9v71c0 6 5 14 12 16c0 0 21 9 27 11c6 3 11 12 11 23v99c0 8 -6 18 -14 18l-1 -1c-8 -4 -23 -10 -24 -10l-2 -1 c-6 0 -9 3 -9 9v71c0 6 5 14 12 16c0 0 20 8 26 11s12 13 12 27v135c0 6 6 11 16 11c7 0 14 -5 14 -11v-120c0 -8 3 -20 12 -20c17 4 51 18 63 25c9 6 12 19 13 29v130c0 6 6 11 16 11c8 0 14 -5 14 -11v-122c0 -8 7 -13 14 -13c5 1 25 9 25 9c2 1 3 1 5 1c4 0 7 -3 7 -8 v-71c0 -6 -5 -14 -12 -17zM168 -45c2 9 4 37 4 64s-2 52 -4 57c-2 4 -8 6 -15 6c-25 0 -71 -21 -73 -38c-2 -8 -3 -43 -3 -74c0 -24 1 -46 3 -50c1 -3 6 -5 12 -5c23 0 70 20 76 40z", "dsharp": "M190 -32h10c17 0 35 -2 40 -7c4 -5 7 -23 7 -40c0 -36 -7 -46 -45 -46c-17 0 -33 4 -40 10c-4 3 -5 20 -5 38c-4 14 -21 46 -34 46s-25 -28 -31 -42c-1 -1 -2 -3 -2 -4c0 -16 -2 -33 -8 -38c-6 -7 -22 -10 -37 -10c-17 0 -33 4 -40 10c-3 2 -5 20 -5 38s2 35 5 38 c6 5 25 7 43 7h10c14 5 46 21 46 34c0 7 -36 27 -47 33c-3 0 -6 -1 -10 -1c-17 0 -35 4 -42 10c-3 3 -5 21 -5 39s2 35 5 37c6 5 24 7 41 7c16 0 32 -2 36 -7c5 -4 8 -22 8 -39c4 -14 20 -47 34 -47c12 0 28 36 33 47c0 18 1 36 5 39c5 5 23 7 41 7c41 0 44 -6 44 -47 c0 -16 -2 -31 -7 -36c-10 -8 -29 -10 -41 -10l-6 1h-3c-14 -5 -47 -20 -47 -34c0 -7 36 -27 47 -33z", "dflat": "M314 151h6c47 -1 91 -38 91 -94c0 -46 -32 -107 -122 -170c-23 -16 -47 -44 -78 -60c0 0 -3 -2 -6 -2c-2 0 -5 1 -8 5c-3 3 -5 60 -7 135c-19 -24 -47 -51 -84 -77c-23 -17 -48 -45 -79 -61c0 0 -3 -2 -6 -2s-6 1 -9 5c-7 9 -12 581 -12 581c1 17 17 26 31 26 c10 0 19 -5 19 -16c0 -19 -7 -260 -7 -281c0 -8 4 -15 11 -17c2 -1 3 -1 5 -1c9 0 16 9 24 13c16 9 28 16 47 16h6c19 0 36 -6 51 -16c-2 139 -3 276 -3 276c2 17 18 26 31 26c10 0 19 -5 19 -16c0 -19 -6 -260 -6 -281c0 -8 3 -15 10 -17c1 -1 3 -1 5 -1c9 0 17 9 24 13 c16 9 29 16 47 16zM67 -93c45 28 90 78 90 134c0 25 -10 59 -40 59c-24 0 -65 -30 -71 -50c-1 -4 -2 -16 -2 -32c0 -39 3 -98 3 -98c0 -6 3 -16 11 -16c2 0 6 1 9 3zM251 -93c45 28 89 78 89 134c0 20 -6 37 -15 49c-6 7 -14 10 -24 10c-24 0 -66 -30 -72 -50 c-1 -3 -1 -12 -1 -23c0 -38 3 -107 3 -107c0 -6 3 -16 11 -16c2 0 5 1 9 3z"};
+
+Object.assign(GLY,{"segno": "M135 665h-6c-42 -7 -54 -35 -54 -62c0 -21 8 -42 14 -53c26 -45 177 -103 186 -106c4 -2 7 -3 10 -3c4 0 6 3 9 8c6 9 165 296 165 296c5 9 15 14 25 14c15 0 28 -12 28 -28c0 -5 -1 -9 -4 -14c0 0 -155 -279 -160 -287c-1 -2 -2 -4 -2 -6c0 -5 5 -9 17 -16 c12 -6 170 -95 185 -205c1 -10 2 -20 2 -29c0 -83 -53 -148 -133 -175c-15 -5 -29 -7 -42 -7c-59 0 -121 53 -121 114c0 40 34 56 71 65c4 1 8 2 12 2c28 0 53 -28 53 -66v-11c0 -31 17 -45 38 -45l3 1c34 5 58 31 58 70c0 95 -200 154 -215 157c-4 0 -12 -6 -12 -5 c-3 -6 -158 -286 -158 -286c-5 -9 -15 -15 -25 -15c-16 0 -28 13 -28 29c0 4 1 9 3 13c0 0 144 259 151 273c4 7 6 12 6 16s-2 6 -6 8c-8 3 -153 92 -185 165c-11 25 -16 50 -16 74c0 99 79 185 149 185c51 0 118 -17 134 -63c5 -16 8 -32 8 -47c0 -43 -28 -67 -69 -67 c-51 0 -66 59 -73 86l-2 7c-3 11 -10 13 -16 13zM415 466c0 32 26 57 57 57c32 0 57 -25 57 -57c0 -31 -25 -57 -57 -57c-31 0 -57 26 -57 57zM140 264c0 -32 -25 -57 -57 -57c-31 0 -57 25 -57 57c0 31 26 57 57 57c32 0 57 -26 57 -57z", "coda": "M937 400c14 0 18 -11 18 -24s-4 -24 -18 -24h-119c-10 -187 -150 -339 -312 -352v-140c0 -14 -11 -18 -24 -18s-24 4 -24 18v140c-162 13 -301 165 -312 352h-132c-14 0 -18 11 -18 24s4 24 18 24h132c11 189 150 339 312 352v129c0 13 11 17 24 17s24 -4 24 -17v-129 c162 -13 302 -164 312 -352h119zM653 400c0 162 -7 284 -147 296v-296h147zM458 696c-142 -12 -142 -134 -142 -296h142v296zM316 352c1 -154 13 -289 142 -304v304h-142zM506 48c125 15 144 151 147 304h-147v-304z", "fermata": "M302 221c-206 0 -251 -153 -263 -194c-1 -4 -2 -8 -3 -9c-6 -14 -11 -21 -20 -21c-8 0 -13 3 -13 13c0 3 0 7 1 11c61 306 268 308 300 308c29 0 238 -2 300 -308c1 -4 1 -7 1 -10c0 -10 -5 -14 -14 -14c-10 0 -14 7 -21 21c-1 1 -1 4 -2 7c-10 38 -53 196 -266 196z M358 52c0 -30 -25 -55 -55 -55c-29 0 -54 25 -54 55c0 29 25 54 54 54c30 0 55 -25 55 -54z"});
 </script><script>/* ===== Motor de teoría (ortografía por letras) ===== */
 const T = (function(){
 const LET=['C','D','E','F','G','A','B'];
@@ -548,6 +745,454 @@ function parseChord(s){
 return {LET,SOL,NAT,ACC,ACCW,INT,INTN,TYPES,POS,POSS,midi,step,pc,up,oct,name,letName,parseNote,key,same,tones,roles,voicing,cifrado,maxAcc,explainInterval,explainBuild,explainIdentify,ALLROOTS,TAREA,SLASH,parseChord,enhSimple,semisPhrase};
 })();
 if(typeof module!=='undefined')module.exports=T;
+</script><script>/* ===== Motor 2: séptimas, escalas, funciones, dominantes secundarias, drop 2, señalizaciones y formas ===== */
+const X=(function(){
+const {LET,NAT}=T;
+const ad=(n,ls,st)=>{let l=n.l+ls,o=(n.o??4)+Math.floor(l/7);l=((l%7)+7)%7;const a=T.midi({l:n.l,a:n.a,o:n.o??4})+st-(12*(o+1)+NAT[l]);return {l,a,o};};
+const midi=T.midi,step=T.step,pc=T.pc;
+// Tipos de acorde: intervalos [letras, semitonos] desde la fundamental
+const CT={
+ M:{suf:'',iv:[[2,4],[4,7]],ro:['F','3','5'],n:3,d:'tríada mayor',f:'3M + 3m'},
+ m:{suf:'m',iv:[[2,3],[4,7]],ro:['F','3','5'],n:3,d:'tríada menor',f:'3m + 3M'},
+ dism:{suf:'dism',iv:[[2,3],[4,6]],ro:['F','3','5'],n:3,d:'tríada disminuida',f:'3m + 3m'},
+ aum:{suf:'aum',iv:[[2,4],[4,8]],ro:['F','3','5'],n:3,d:'tríada aumentada',f:'3M + 3M'},
+ maj7:{suf:'maj7',iv:[[2,4],[4,7],[6,11]],ro:['F','3','5','7'],n:4,d:'tríada mayor + 7ª mayor',f:'3M + 3m + 3M'},
+ '7':{suf:'7',iv:[[2,4],[4,7],[6,10]],ro:['F','3','5','7'],n:4,d:'tríada mayor + 7ª menor',f:'3M + 3m + 3m'},
+ m7:{suf:'m7',iv:[[2,3],[4,7],[6,10]],ro:['F','3','5','7'],n:4,d:'tríada menor + 7ª menor',f:'3m + 3M + 3m'},
+ m7b5:{suf:'m7(♭5)',iv:[[2,3],[4,6],[6,10]],ro:['F','3','5','7'],n:4,d:'tríada disminuida + 7ª menor',f:'3m + 3m + 3M'},
+ dim7:{suf:'dim7',iv:[[2,3],[4,6],[6,9]],ro:['F','3','5','7'],n:4,d:'tríada disminuida + 7ª disminuida',f:'3m + 3m + 3m'},
+ mmaj7:{suf:'m(maj7)',iv:[[2,3],[4,7],[6,11]],ro:['F','3','5','7'],n:4,d:'tríada menor + 7ª mayor',f:'3m + 3M + 3M'},
+ maj7s5:{suf:'maj7(♯5)',iv:[[2,4],[4,8],[6,11]],ro:['F','3','5','7'],n:4,d:'tríada aumentada + 7ª mayor',f:'3M + 3M + 3m'},
+ '6':{suf:'6',iv:[[2,4],[4,7],[5,9]],ro:['F','3','5','6'],n:4,d:'tríada mayor + 6ª mayor',f:'3M + 3m + 2M'},
+ m6:{suf:'m6',iv:[[2,3],[4,7],[5,9]],ro:['F','3','5','6'],n:4,d:'tríada menor + 6ª mayor',f:'3m + 3M + 2M'}
+};
+const SEV=['maj7','7','m7','m7b5','dim7','mmaj7','maj7s5','6','m6'];
+const INTW={'2:3':'3ª menor','2:4':'3ª mayor','4:6':'5ª disminuida','4:7':'5ª justa','4:8':'5ª aumentada','6:9':'7ª disminuida','6:10':'7ª menor','6:11':'7ª mayor','5:9':'6ª mayor','1:1':'2ª menor (♭9)','1:2':'2ª mayor (9)','1:3':'2ª aumentada (♯9)','3:4':'4ª disminuida','3:5':'4ª justa','5:8':'6ª menor (♭13)'};
+const SEMW=n=>({1:'1 semitono',2:'2 semitonos (1 tono)',3:'3 semitonos (tono y medio)',4:'4 semitonos (2 tonos)',6:'6 semitonos',7:'7 semitonos',8:'8 semitonos',9:'9 semitonos',10:'10 semitonos',11:'11 semitonos'})[n]||n+' semitonos';
+function tones(root,type){const r={l:root.l,a:root.a,o:4};return [r,...CT[type].iv.map(([ls,st])=>ad(r,ls,st))];}
+const sym=(root,type)=>T.letName(root)+CT[type].suf;
+const maxAcc=(root,type)=>Math.max(...tones(root,type).map(n=>Math.abs(n.a)));
+// apilar notas hacia arriba (cada una por encima de la anterior)
+function stack(ns,o0=4){const out=[];ns.forEach((n,i)=>{let x={l:n.l,a:n.a,o:i?out[i-1].o:o0};if(i)while(midi(x)<=midi(out[i-1])||step(x)<=step(out[i-1]))x.o++;out.push(x);});return out;}
+const shiftO=(v,d)=>v.map(n=>({l:n.l,a:n.a,o:n.o+d}));
+function fit(v,lo,hi){while(step(v[0])>hi)v=shiftO(v,-1);while(step(v[0])<lo)v=shiftO(v,1);return v;}
+// posiciones: fund, inv1, inv2, inv3 (cerradas), abierta (tríadas), d2_fund... (drop 2)
+const POS4={fund:'cerrada',inv1:'1ª inv.',inv2:'2ª inv.',inv3:'3ª inv.',abierta:'abierta'};
+function close(root,type,inv=0){const tn=tones(root,type);const ord=tn.map((_,i)=>(i+inv)%tn.length);return {notes:fit(stack(ord.map(i=>tn[i])),28,34),roles:ord};}
+function drop2(root,type,inv=0){const c=close(root,type,inv);const n=c.notes.length;const k=n-2;// 2ª voz desde arriba
+ const notes=[{...c.notes[k],o:c.notes[k].o-1},...c.notes.filter((_,i)=>i!==k)];const roles=[c.roles[k],...c.roles.filter((_,i)=>i!==k)];return {notes:fit(notes,25,31),roles,from:c};}
+function openTriad(root,type){const tn=tones(root,type);return {notes:fit(stack([tn[0],tn[2],tn[1]]),28,34),roles:[0,2,1]};}
+function voicing(root,type,pos){if(pos==='abierta')return openTriad(root,type);if(pos.startsWith('d2'))return drop2(root,type,+pos.slice(2)||0);return close(root,type,{fund:0,inv1:1,inv2:2,inv3:3}[pos]);}
+function slash(root,type,pos){const v=voicing(root,type,pos);const b=v.notes[0];return v.roles[0]===0?sym(root,type):sym(root,type)+'/'+T.letName(b);}
+// ===== Escalas =====
+const SK={mayor:[0,2,4,5,7,9,11],natural:[0,2,3,5,7,8,10],armonica:[0,2,3,5,7,8,11],melodica:[0,2,3,5,7,9,11]};
+const SKN={mayor:'mayor',natural:'menor natural',armonica:'menor armónica',melodica:'menor melódica'};
+function scale(t,kind){const r={l:t.l,a:t.a,o:4};return SK[kind].map((st,i)=>ad(r,i,st));}
+function classify(ns){const r=ns[0];const s=ns.slice(1).map(n=>((midi(n)-midi(r))%12+12)%12).join(',');
+ return {'4,7':'M','3,7':'m','3,6':'dism','4,8':'aum','4,7,11':'maj7','4,7,10':'7','3,7,10':'m7','3,6,10':'m7b5','3,6,9':'dim7','3,7,11':'mmaj7','4,8,11':'maj7s5','4,7,9':'6','3,7,9':'m6'}[s];}
+const ROM=['I','II','III','IV','V','VI','VII'];
+const rsuf=t=>({M:'',m:'m',dism:'dism',aum:'aum'})[t]??CT[t].suf;
+function harmonize(t,kind,size=4){const s=scale(t,kind);return s.map((n,i)=>{const ns=[0,2,4,6].slice(0,size).map(k=>s[(i+k)%7]);const type=classify(ns);
+ const dm=((midi(n)-midi(s[0]))%12+12)%12-SK.mayor[i];const pre=dm<0?'♭':dm>0?'♯':'';return {root:{l:n.l,a:n.a},type,roman:pre+ROM[i]+rsuf(type),deg:i,sym:sym(n,type)};});}
+const MAJK=['C','G','D','A','E','B','F#','C#','F','Bb','Eb','Ab','Db','Gb','Cb'].map(T.parseNote);
+const MINK=['A','E','B','F#','C#','G#','D#','A#','D','G','C','F','Bb','Eb','Ab'].map(T.parseNote);
+const kname=(k,kind)=>T.letName(k)+(kind==='mayor'?' mayor':' menor');
+function relMinor(k){const s=scale(k,'mayor');return {l:s[5].l,a:s[5].a};}
+function relMajor(k){const s=scale(k,'natural');return {l:s[2].l,a:s[2].a};}
+// ===== Funciones tonales (mayor) =====
+const FUN=['T','SD','T','SD','D','T','D'];
+const FUNN={T:'tónica',SD:'subdominante',D:'dominante'};
+// ===== Dominantes secundarias =====
+// token: {d:grado 0-6, t:tipo} o {sec:'V'|'II', of:grado}
+function chordOf(k,tok){const h=harmonize(k,'mayor');
+ if(tok.sec==null){const c=h[tok.d];const type=tok.t||c.type;return {root:c.root,type,roman:ROM[tok.d]+rsuf(type),deg:tok.d};}
+ const tg=h[tok.of];const minorT=['m7','m7b5','m'].includes(tg.type)||tg.type==='m7';
+ if(tok.sec==='V'){const r=ad({...tg.root,o:4},4,7);return {root:{l:r.l,a:r.a},type:'7',roman:'V7/'+ROM[tok.of],target:tok.of};}
+ const r=ad({...tg.root,o:4},1,2);const type=minorT?'m7b5':'m7';return {root:{l:r.l,a:r.a},type,roman:'II'+rsuf(type)+'/'+ROM[tok.of],target:tok.of};}
+const PROGS=[
+ [{d:0},{sec:'V',of:5},{d:5},{d:1},{d:4},{d:0}],
+ [{d:0},{sec:'V',of:1},{d:1},{d:4},{d:0}],
+ [{d:0},{sec:'V',of:3},{d:3},{d:1},{d:4},{d:0}],
+ [{d:0},{sec:'V',of:4},{d:4},{d:0}],
+ [{sec:'II',of:5},{sec:'V',of:5},{d:5},{d:1},{d:4},{d:0}],
+ [{d:0},{sec:'II',of:3},{sec:'V',of:3},{d:3},{d:4},{d:0}],
+ [{d:0},{sec:'V',of:2},{d:2},{sec:'V',of:1},{d:1},{d:4},{d:0}],
+ [{d:0},{d:5},{sec:'II',of:1},{sec:'V',of:1},{d:1},{d:4},{d:0}],
+ [{d:2},{sec:'V',of:5},{d:5},{sec:'V',of:1},{d:1},{d:4},{d:0}],
+ [{d:0},{sec:'II',of:4},{sec:'V',of:4},{d:4},{d:0}]
+];
+function resolves(k,dom){// dónde resuelve un V7: una 5ª justa abajo = 4ª arriba
+ const r=ad({...dom.root,o:4},3,5);return {l:r.l,a:r.a};}
+// ===== Intercambio modal / tensiones =====
+function v7tensions(k,kind){// tensiones del V7 de k tomadas de k menor (armónica o melódica) o mayor
+ const s=scale(k,kind);const r=s[4];const iv=n=>{const ls=((n.l-r.l)%7+7)%7;const st=((midi(n)-midi(r))%12+12)%12;return [ls,st];};
+ const t9=s[5],t13=s[2];// 6º grado = 9ª del V, 3er grado = 13ª del V
+ const n9=iv(t9)[1]===1?'♭9':'9',n13=iv(t13)[1]===8?'♭13':'13';return {root:{l:r.l,a:r.a},nine:{l:t9.l,a:t9.a},thirteen:{l:t13.l,a:t13.a},n9,n13,label:T.letName(r)+'7('+n9+','+n13+')'};}
+function altChord(dom){// acorde alterado: 7º grado de la menor melódica medio tono arriba
+ const r={l:dom.l,a:dom.a,o:4};const mm=ad(r,1,1);const sc=scale(mm,'melodica');// sc[6] = dom
+ const chord=[{k:'F',n:r},{k:'3',n:ad(r,2,4)},{k:'♭5',n:ad(r,4,6)},{k:'♭7',n:ad(r,6,10)},{k:'♭9',n:ad(r,1,1)},{k:'♯9',n:ad(r,1,3)},{k:'♭13',n:ad(r,5,8)}];
+ return {mm:{l:mm.l,a:mm.a},scale:sc,chord,third:sc[2],sharp9:sc[1]};}
+// ===== Señalizaciones: intérprete del camino =====
+// secciones: {id, rs:inicio de repetición, re:fin de repetición, v:1|2 (casilla), segno, fine, toCoda, coda, jump:'DC'|'DS', to:'fine'|'coda'|null}
+function road(secs,log){// regla de clase: al volver con D.C./D.S. ya no se repite y se salta la 1ª casilla
+ const out=[],done=new Set();let i=0,jumped=false,jt=null,g=0;const L=log||[];
+ const repStart=j=>{for(let k=j;k>=0;k--)if(secs[k].rs)return k;return 0;};
+ const reAfter=j=>{for(let k=j;k<secs.length;k++)if(secs[k].re)return k;return -1;};
+ let run=[];const flush=()=>{if(run.length){L.push('Tocas <b>'+run.join(' → ')+'</b>.');run=[];}};
+ while(i<secs.length&&g++<100){const s=secs[i];
+  if(s.v===1&&(jumped||done.has(reAfter(i)))){flush();L.push(jumped?'Después del salto ya no se repite: te saltas la <b>1ª casilla</b> ('+s.id+').':'Segunda vez: te saltas la <b>1ª casilla</b> ('+s.id+') y vas directo a la <b>2ª</b>.');i++;continue;}
+  out.push(s.id);run.push(s.id);
+  if(jumped&&jt==='fine'&&s.fine){flush();L.push('Llegas a <b>Fine</b> en '+s.id+': ahí se termina.');break;}
+  if(jumped&&jt==='coda'&&s.toCoda){const c=secs.findIndex(x=>x.coda);flush();L.push('En '+s.id+' está el aviso <b>al Coda</b>: brincas a la <b>Coda</b> ('+secs[c].id+').');i=c;continue;}
+  if(s.re&&!jumped&&!done.has(i)){done.add(i);const r=repStart(i);flush();L.push('En la barra <b>:‖</b> de '+s.id+' regresas '+(secs[r].rs?'a la barra <b>‖:</b> ('+secs[r].id+')':'al principio ('+secs[r].id+')')+'.');i=r;continue;}
+  if(s.jump&&!jumped){jumped=true;jt=s.to;flush();const tgt=s.jump==='DC'?0:secs.findIndex(x=>x.segno);
+   L.push((s.jump==='DC'?'<b>D.C.</b> (da capo) = regresa al <b>principio</b>':'<b>D.S.</b> (dal segno) = regresa al <b>signo 𝄋</b>, que está en '+secs[tgt].id)+'; '+(jt==='fine'?'“al Fine”: vas a terminar donde diga <b>Fine</b>.':'“al Coda”: cuando veas el aviso, brincas a la <b>Coda</b>.')+' Ya no se repite.');i=tgt;continue;}
+  i++;
+  if(i<secs.length&&secs[i].coda&&!(jumped&&jt==='coda'))break;}
+ flush();return out;}
+const roadFix=road;
+const ROADS=[
+ ()=>[{id:'A'},{id:'B',rs:1},{id:'C',re:1},{id:'D'}],
+ ()=>[{id:'A',rs:1},{id:'B',v:1,re:1},{id:'C',v:2},{id:'D'}],
+ ()=>[{id:'A'},{id:'B'},{id:'C',fine:1},{id:'D',jump:'DC',to:'fine'}],
+ ()=>[{id:'A'},{id:'B',segno:1},{id:'C',fine:1},{id:'D',jump:'DS',to:'fine'}],
+ ()=>[{id:'A'},{id:'B',toCoda:1},{id:'C',jump:'DC',to:'coda'},{id:'D',coda:1}],
+ ()=>[{id:'A'},{id:'B',segno:1},{id:'C',toCoda:1},{id:'D',jump:'DS',to:'coda'},{id:'E',coda:1}],
+ ()=>[{id:'A',rs:1},{id:'B',re:1,fine:1},{id:'C',jump:'DC',to:'fine'}],
+ ()=>[{id:'A',rs:1},{id:'B',v:1,re:1},{id:'C',v:2,fine:1},{id:'D',jump:'DC',to:'fine'}],
+ ()=>[{id:'A'},{id:'B',segno:1,rs:1},{id:'C',re:1},{id:'D',toCoda:1},{id:'E',jump:'DS',to:'coda'},{id:'F',coda:1}],
+ ()=>[{id:'A',segno:1},{id:'B',toCoda:1},{id:'C',rs:1},{id:'D',re:1},{id:'E',jump:'DS',to:'coda'},{id:'F',coda:1}]
+];
+// ===== Formas =====
+const FORMS={
+ AB:{n:'AB (binaria)',d:'Dos secciones distintas: A y luego B.'},
+ ABA:{n:'ABA (ternaria)',d:'Tema A, contraste B y regresa A.'},
+ AABA:{n:'AABA (32 compases)',d:'Forma de muchos standards: A de 8, A de 8, B (puente) de 8 y A de 8 = 32 compases.'},
+ rondo:{n:'Rondó (ABACA)',d:'Un estribillo A que regresa entre episodios distintos: A B A C A.'},
+ vcp:{n:'Verso – coro – puente',d:'Canción popular: versos con letra nueva, un coro que se repite igual y un puente distinto antes del último coro.'},
+ blues:{n:'Blues de 12 compases',d:'I7 (4 compases) · IV7 (2) · I7 (2) · V7 · IV7 · I7 · I7 o V7.'}
+};
+function bluesBars(k){const h=harmonize(k,'mayor');const I=T.letName(h[0].root)+'7',IV=T.letName(h[3].root)+'7',V=T.letName(h[4].root)+'7';return [I,I,I,I,IV,IV,I,I,V,IV,I,V];}
+return {ad,CT,SEV,INTW,SEMW,tones,sym,maxAcc,stack,close,drop2,openTriad,voicing,slash,POS4,SK,SKN,scale,classify,harmonize,ROM,rsuf,MAJK,MINK,kname,relMinor,relMajor,FUN,FUNN,chordOf,PROGS,resolves,v7tensions,altChord,road:roadFix,ROADS,FORMS,bluesBars};
+})();
+if(typeof module!=='undefined')module.exports=X;
+</script><script>/* ===================================================================
+   Módulo ENTONACIÓN · Examen de lectura y entonación
+   Se monta dentro de la app de Tríadas. Rutas: #ent y #ent/<sub>
+   Depende de globals de app.js (se usan sólo en tiempo de ejecución):
+   S, save, I, P, ph, AU, GLY, gl, yOf, BOT, TOPL, SP, SC, HW, AGL, INK,
+   decorate, toast, confetti, rerenderKeep, $
+   =================================================================== */
+const ENT=(function(){
+'use strict';
+/* ---------- Teoría ---------- */
+const LET=['C','D','E','F','G','A','B'],SOLN=['Do','Re','Mi','Fa','Sol','La','Si'],NAT=[0,2,4,5,7,9,11];
+const ACC={'-2':'𝄫','-1':'♭','0':'','1':'♯','2':'𝄪'};
+const midi=n=>12*(n.o+1)+NAT[n.l]+n.a;
+const stp=n=>n.o*7+n.l;
+const nm=n=>((typeof S!=='undefined'&&S.sys==='let')?LET:SOLN)[n.l]+ACC[n.a];
+const MAJ=[0,2,4,5,7,9,11,12];
+function spell(t,semis){return semis.map((k,i)=>{const L=t.l+i,l=L%7,o=t.o+Math.floor(L/7);return {l,a:midi(t)+k-(12*(o+1)+NAT[l]),o};});}
+const SYL_UP=['Do','Di','Re','Ri','Mi','Fa','Fi','Sol','Si','La','Li','Ti','Do'];
+const SYL_DN=['Do','Ra','Re','Me','Mi','Fa','Se','Sol','Le','La','Te','Ti','Do'];
+const DEG=['Tónica','Supertónica','Mediante','Subdominante','Dominante','Superdominante','',''];
+const ROM=['I','II','III','IV','V','VI','VII','I'];
+function degName(i,k){if(i===6)return k===11?'Sensible':'Subtónica';if(i===7)return 'Tónica';return DEG[i];}
+const SCL={
+ mayor:{t:'Mayor',full:'Escala mayor',img:'ent-taza-azul',ov:'ov-gold',ref:{l:0,a:0,o:4},up:[0,2,4,5,7,9,11,12],
+   pat:['T','T','S','T','T','T','S'],alt:[],hint:'Los medios tonos van de Mi a Fa (3º–4º) y de Si a Do (7º–8º). Piensa en la sensible: Si “quiere” subir a Do.',
+   ref2:'Es la referencia de todas: las menores se comparan contra ella.'},
+ natural:{t:'Menor natural',full:'Escala menor natural',img:'ent-peonia-cafe',ov:'ov-cafe',ref:{l:5,a:0,o:4},up:[0,2,3,5,7,8,10,12],
+   pat:['T','S','T','T','S','T','T'],alt:[],hint:'Sin alteraciones en La menor. Los medios tonos caen entre 2º–3º (Si–Do) y 5º–6º (Mi–Fa). El 7º está a un tono de la tónica: es subtónica, no sensible.',
+   ref2:'Misma armadura que su relativa mayor (La menor ↔ Do mayor).'},
+ armonica:{t:'Menor armónica',full:'Escala menor armónica',img:'ent-rosa-libro',ov:'ov-rose',ref:{l:5,a:0,o:4},up:[0,2,3,5,7,8,11,12],
+   pat:['T','S','T','T','S','1½','S'],alt:[6],hint:'Sólo cambia el 7º: se eleva medio tono (Sol♯) y se vuelve sensible. Entre el 6º y el 7º (Fa–Sol♯) queda un tono y medio: es el salto “árabe” que la caracteriza. Sube y baja igual.',
+   ref2:'Se llama armónica porque da el acorde de dominante mayor (Mi–Sol♯–Si).'},
+ melodica:{t:'Menor melódica tradicional',full:'Menor melódica tradicional (clásica)',img:'ent-partitura-flores',ov:'ov-blue',ref:{l:5,a:0,o:4},up:[0,2,3,5,7,9,11,12],dn:[0,2,3,5,7,8,10,12],
+   pat:['T','S','T','T','T','T','S'],patDn:['T','T','S','T','T','S','T'],alt:[5,6],hint:'Sube con el 6º y el 7º elevados (Fa♯, Sol♯) para evitar el tono y medio; baja como menor natural (Sol♮, Fa♮). Al bajar, “quita” los sostenidos.',
+   ref2:'Nombre completo: menor melódica tradicional. Sube melódica, baja natural.'},
+ jazz:{t:'Menor melódica jazz',full:'Menor melódica jazz (jazz minor)',img:'ent-organo',ov:'ov-blue',ref:{l:5,a:0,o:4},up:[0,2,3,5,7,9,11,12],
+   pat:['T','S','T','T','T','T','S'],alt:[5,6],hint:'Sube y baja igual, siempre con el 6º y el 7º elevados. Truco: es una escala mayor con la 3ª bajada (La mayor con Do♮ en lugar de Do♯).',
+   ref2:'Le dicen “jazz minor” porque así se usa en jazz, en las dos direcciones.'},
+ cromatica:{t:'Cromática',full:'Escala cromática',img:'ent-diapasones',ov:'ov-cafe',ref:{l:0,a:0,o:4},chrom:true,
+   pat:Array(12).fill('S'),alt:[],hint:'Doce medios tonos. Sube con sostenidos (sílabas en “i”: Di, Ri, Fi, Si, Li) y baja con bemoles (sílabas en “e”: Te, Le, Se, Me, y Ra).',
+   ref2:'En la cromática, “Si” es Sol♯; por eso el 7º grado se canta “Ti”.'}
+};
+const SHORT={mayor:'Mayor',natural:'Natural',armonica:'Armónica',melodica:'Melódica',jazz:'Jazz',cromatica:'Cromática'};
+const CHIP={mayor:'Mayor',natural:'Menor natural',armonica:'Menor armónica',melodica:'Melódica tradicional',jazz:'Melódica jazz',cromatica:'Cromática'};
+const ORDER=['mayor','natural','armonica','melodica','jazz','cromatica'];
+// secuencia sube + baja, con datos para pintar y para cantar
+function seq(key,t){const s=SCL[key];t=t||s.ref;const out=[];
+ if(s.chrom){const T0=midi(t);const SH=[[0,0],[0,1],[1,0],[1,1],[2,0],[3,0],[3,1],[4,0],[4,1],[5,0],[5,1],[6,0]],FL=[[0,0],[1,-1],[1,0],[2,-1],[2,0],[3,0],[4,-1],[4,0],[5,-1],[5,0],[6,-1],[6,0]];
+  const at=(k,tb)=>{if(k%12===0)return {l:t.l,a:t.a,o:t.o+k/12};const m=T0+k,[l,a]=tb[((m%12)+12)%12];return {l,a,o:Math.round((m-NAT[l]-a)/12)-1};};
+  for(let k=0;k<=12;k++){const d=MAJ.indexOf(k);out.push({n:at(k,SH),k,syl:SYL_UP[k],dir:'up',deg:d>=0?d:null,alt:d<0});}
+  for(let k=11;k>=0;k--){const d=MAJ.indexOf(k);out.push({n:at(k,FL),k,syl:SYL_DN[k],dir:'dn',deg:d>=0?d:null,alt:d<0});}
+  return out;}
+ const U=spell(t,s.up);U.forEach((n,i)=>out.push({n,k:s.up[i],deg:i,dir:'up',alt:s.alt.includes(i)}));
+ const dn=s.dn||s.up;const D=spell(t,dn);
+ for(let i=6;i>=0;i--)out.push({n:D[i],k:dn[i],deg:i,dir:'dn',alt:s.dn?false:s.alt.includes(i),back:!!(s.dn&&s.alt.includes(i))});
+ return out;}
+/* ---------- Estado ---------- */
+const KEY='entonacionEli.v1';
+const E=Object.assign({bpm:60,voice:'sop',drone:true,guide:'piano',scale:'mayor',tonic:0,inc:['mayor','natural','armonica','melodica','jazz','cromatica'],
+  sim:{ok:0,n:0,streak:0,best:0,hist:[]},ear:{ok:0,n:0,streak:0,best:0}},JSON.parse(localStorage.getItem(KEY)||'{}'));
+const persist=()=>localStorage.setItem(KEY,JSON.stringify(E));
+let SIM=null,EAR=null,PLAY=null;
+/* tónicas (ortografía razonable para mayor y para menor) */
+const TON_M=[[0,0],[1,-1],[1,0],[2,-1],[2,0],[3,0],[3,1],[4,0],[5,-1],[5,0],[6,-1],[6,0]];
+const TON_m=[[0,0],[0,1],[1,0],[2,-1],[2,0],[3,0],[3,1],[4,0],[4,1],[5,0],[6,-1],[6,0]];
+const isMinor=k=>['natural','armonica','melodica','jazz'].includes(k);
+function tonicNote(pc,key,voice){const [l,a]=(isMinor(key)?TON_m:TON_M)[pc];const lo=voice==='alto'?55:60;let o=3;while(12*(o+1)+NAT[l]+a<lo)o++;return {l,a,o};}
+/* ---------- Audio ---------- */
+const A={timers:[],dr:null,
+ now(){const useS=AU.ready&&window.Tone&&Tone.context.state==='running';return {useS,t:useS?Tone.now():(AU.ctx?AU.ctx.currentTime:0)};},
+ note(m,at,dur,useS){if(useS)AU.smp.triggerAttackRelease(Tone.Frequency(m,'midi').toNote(),dur,at);else AU.synth(m,at,dur+.6);},
+ tick(at,hi){const c=AU.ctx;if(!c)return;const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=hi?1760:1320;o.connect(g).connect(AU.out);g.gain.setValueAtTime(0,at);g.gain.linearRampToValueAtTime(.12,at+.004);g.gain.exponentialRampToValueAtTime(.0008,at+.07);o.start(at);o.stop(at+.09);},
+ droneOn(m){this.droneOff();const c=AU.ctx;if(!c)return;const g=c.createGain(),lp=c.createBiquadFilter();lp.type='lowpass';lp.frequency.value=620;lp.Q.value=.4;lp.connect(g).connect(AU.out);
+  const os=[[m-12,'sawtooth',.5],[m-12,'sine',.9],[m-5,'sine',.35],[m-12+.08,'sawtooth',.3]].map(([mm,tp,v])=>{const o=c.createOscillator();o.type=tp;o.frequency.value=440*Math.pow(2,(mm-69)/12);const og=c.createGain();og.gain.value=v;o.connect(og).connect(lp);o.start();return o;});
+  g.gain.setValueAtTime(0,c.currentTime);g.gain.linearRampToValueAtTime(.055,c.currentTime+.8);this.dr={g,os};},
+ droneOff(){const d=this.dr;if(!d||!AU.ctx)return;const c=AU.ctx;d.g.gain.cancelScheduledValues(c.currentTime);d.g.gain.setValueAtTime(d.g.gain.value,c.currentTime);d.g.gain.linearRampToValueAtTime(0,c.currentTime+.4);d.os.forEach(o=>o.stop(c.currentTime+.5));this.dr=null;},
+ stop(){this.timers.forEach(clearTimeout);this.timers=[];this.droneOff();try{if(AU.smp&&AU.smp.releaseAll)AU.smp.releaseAll();}catch(e){}PLAY=null;document.querySelectorAll('.en-on').forEach(e=>e.classList.remove('en-on'));document.querySelectorAll('[data-ent="stop"]').forEach(b=>{b.dataset.ent=b.dataset.was||'';b.innerHTML=b.dataset.lbl||b.innerHTML;});},
+ at(ms,fn){this.timers.push(setTimeout(fn,ms));}
+};
+function soundOk(){if(typeof S!=='undefined'&&!S.sound){toast('El sonido está apagado · actívalo en Ajustes');return false;}AU.init();return true;}
+/* reproduce una secuencia: items[{m,beats?,i?}] ; opts {bpm,piano,drone,count,root,id,onStep,onEnd} */
+function run(items,o){A.stop();if(!soundOk())return;const beat=60/(o.bpm||E.bpm);const {useS,t}=A.now();const base=t+.12;let b=0;PLAY=o.id||'x';
+ const t0=performance.now()+120;
+ if(o.drone&&o.root!=null)A.droneOn(o.root);
+ if(o.lead){A.note(o.root,base,beat*1.8,useS);if(o.onStep)A.at(0,()=>o.onStep(-1,'tónica'));b+=2;}
+ if(o.count){for(let c=0;c<o.count;c++){A.tick(base+(b+c)*beat,c===0);const cc=o.count-c;A.at((b+c)*beat*1000,()=>o.onStep&&o.onStep(-2,cc));}b+=o.count;}
+ items.forEach((it,j)=>{const at=base+b*beat;if(o.piano!==false)A.note(it.m,at,beat*.95*(it.beats||1),useS);A.at((b*beat)*1000,()=>{mark(o.id,it.i??j);o.onStep&&o.onStep(j,it);});b+=it.beats||1;});
+ A.at(b*beat*1000+300,()=>{mark(o.id,-1);if(!o.keepDrone)A.droneOff();PLAY=null;o.onEnd&&o.onEnd();});}
+function mark(id,i){document.querySelectorAll(`[data-seq="${id}"] .en-on`).forEach(e=>e.classList.remove('en-on'));if(i<0)return;document.querySelectorAll(`[data-seq="${id}"] [data-i="${i}"]`).forEach(e=>e.classList.add('en-on'));}
+/* ---------- Pentagrama de escala ---------- */
+function scaleStaff(items,o={}){const id=o.id||'s';const n=items.length;const sp=o.sp||(n>9?38:n>8?30:40);const CL=46;
+ const turn=items.findIndex(x=>x.dir==='dn');const bars=o.split&&turn>0?[turn]:[];
+ const W=CL+n*sp+bars.length*14+12;const H=BOT+(o.labels?62:30);
+ const Y0=16;let s=`<svg class="staff en-staff" viewBox="0 ${Y0} ${W} ${H-Y0}" style="min-width:${n>9?Math.round(W*0.82):0}px" role="img" aria-label="pentagrama">`;
+ for(let i=0;i<5;i++){const y=BOT-i*SP;s+=`<line x1="2" x2="${W-2}" y1="${y}" y2="${y}" stroke="${INK}" stroke-width="1" opacity=".42"/>`;}
+ s+=`<line x1="2" x2="2" y1="${TOPL}" y2="${BOT}" stroke="${INK}" stroke-width="1.2" opacity=".6"/><line x1="${W-5}" x2="${W-5}" y1="${TOPL}" y2="${BOT}" stroke="${INK}" stroke-width="1" opacity=".6"/><line x1="${W-2}" x2="${W-2}" y1="${TOPL}" y2="${BOT}" stroke="${INK}" stroke-width="3" opacity=".7"/>`;
+ s+=gl('gClef',8,BOT-SP,INK);
+ let meas={},prev={},x=CL+sp/2;
+ items.forEach((it,j)=>{if(bars.includes(j)){const bx=x-sp/2+4;s+=`<line x1="${bx}" x2="${bx}" y1="${TOPL}" y2="${BOT}" stroke="${INK}" stroke-width="1" opacity=".45"/>`;x+=14;prev=meas;meas={};}
+  const n=it.n,st=stp(n),y=yOf(st),k=n.l+'_'+n.o;const col=it.alt?'var(--rose)':it.back?'var(--blue)':INK;
+  let showA=null;if(k in meas){if(meas[k]!==n.a)showA=n.a;}else if(n.a!==0)showA=n.a;else if(o.courtesy&&prev[k]!=null&&prev[k]!==0)showA=0;
+  meas[k]=n.a;
+  let g=`<g class="en-n" data-i="${o.base!=null?o.base+j:j}" data-ent="pn" data-m="${midi(n)}" style="color:${col}"><rect x="${x-sp/2+2}" y="${Y0+2}" width="${sp-4}" height="${H-Y0-4}" rx="9" class="en-hl"/>`;
+  const lx1=x-HW/2-4,lx2=x+HW/2+4;
+  for(let ls=28;ls>=st;ls-=2)g+=`<line x1="${lx1}" x2="${lx2}" y1="${yOf(ls)}" y2="${yOf(ls)}" stroke="${INK}" stroke-width="1.5"/>`;
+  for(let ls=40;ls<=st;ls+=2)g+=`<line x1="${lx1}" x2="${lx2}" y1="${yOf(ls)}" y2="${yOf(ls)}" stroke="${INK}" stroke-width="1.5"/>`;
+  if(showA!=null){const [gk,w]=AGL[showA];g+=gl(gk,x-HW/2-3-w*SC,y,'currentColor');}
+  g+=gl('whole',x-HW/2,y,'currentColor');
+  if(o.labels){const lab=o.labels(it,j);g+=`<text x="${x}" y="${BOT+34}" text-anchor="middle" font-family="DM Sans,system-ui,sans-serif" font-size="${n>8?11:12.5}" font-weight="600" fill="currentColor">${lab[0]}</text>`;
+   if(lab[1])g+=`<text x="${x}" y="${BOT+50}" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-style="italic" font-size="${n>8?10:11.5}" fill="#A0907F">${lab[1]}</text>`;}
+  s+=g+'</g>';x+=sp;});
+ return `<div class="en-staffwrap" data-seq="${id}">${s}</svg></div>`;}
+const labFixed=it=>[nm(it.n),it.syl?it.syl:(it.deg!=null?ROM[it.deg]:'')];
+/* ---------- Iconos extra ---------- */
+const ICONS={mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/>',
+ stop:'<rect x="6" y="6" width="12" height="12" rx="2.5"/>',fork:'<path d="M9 3v8a3 3 0 0 0 6 0V3M12 14v7"/>',
+ ear:'<path d="M7 9a5 5 0 0 1 10 0c0 3-3 4-3 7a3 3 0 0 1-5.5 1.6"/><path d="M10 10a2 2 0 0 1 4 0"/>',
+ table:'<rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 10h18M9 4v16"/>',
+ wave:'<path d="M3 12h2l2-6 3 12 3-9 2 5 2-2h4"/>',dice:'<rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="9" cy="9" r="1.2" fill="currentColor"/><circle cx="15" cy="15" r="1.2" fill="currentColor"/><circle cx="15" cy="9" r="1.2" fill="currentColor"/><circle cx="9" cy="15" r="1.2" fill="currentColor"/>'};
+let iconsIn=false;function ic(k,sw){if(!iconsIn){Object.assign(P,ICONS);iconsIn=true;}return I(k,sw);}
+/* ---------- piezas UI ---------- */
+const back=(to='ent',lbl='Entonación')=>`<div class="en-top"><a class="icon-btn" href="#${to}" aria-label="Volver">${ic('left',2)}</a><span class="eyebrow">${lbl}</span><span style="width:40px"></span></div>`;
+const tempoSeg=()=>`<div class="seg">${[[50,'Lento'],[66,'Medio'],[84,'Ágil']].map(([b,l])=>`<button class="${E.bpm===b?'on':''}" data-ent="bpm" data-k="${b}">${l} · ${b}</button>`).join('')}</div>`;
+const patChips=s=>s.chrom?`<div class="en-pat"><span class="s">S · medio tono × 12</span></div>`:`<div class="en-pat">${s.pat.map(p=>`<span class="${p==='S'?'s':p==='1½'?'x':'t'}">${p}</span>`).join('')}</div>`;
+function playBtn(id,act,extra='',lbl='Escuchar'){const on=PLAY===id;return `<button class="btn ${on?'rose':'pri'} sm" data-ent="${on?'stop':act}" data-was="${act}" data-lbl="${ic('play',2).replace(/"/g,'&quot;')} ${lbl}" data-id="${id}" ${extra}>${on?ic('stop',2)+' Parar':ic('play',2)+' '+lbl}</button>`;}
+/* ---------- Vistas ---------- */
+function vHub(){const st=E.sim;
+ return `<div class="view en"><div class="page-h"><span class="eyebrow">Próxima clase · examen</span><h1>Lectura y <em>entonación</em></h1><p>Escalas en el orden de clase, cromática con sus sílabas, tríadas de oído y un simulacro con nota al azar.</p></div>
+ <div class="stag">
+ <section><div class="ph hero ov-cafe en-hero">${ph('ent-tulipanes-partitura','', '50% 45%')}<div class="in"><span class="tag">${ic('mic',2)} Simulacro de examen</span><h2>Te doy una nota, <em>tú cantas</em></h2><p>Escala y nota de partida al azar, con 3 oportunidades para pedir la nota. Luego escuchas la respuesta.</p>
+  <a class="btn light" href="#ent/examen">Empezar simulacro ${ic('arrow',2)}</a></div></div></section>
+ <section><div class="stats"><div class="stat"><div class="ic" style="background:var(--rose-t);color:var(--rose-d)">${ic('flame',2)}</div><div class="v">${st.streak}</div><div class="t">racha</div></div>
+  <div class="stat"><div class="ic" style="background:var(--gold-t);color:var(--gold)">${ic('mic',2)}</div><div class="v">${st.n}</div><div class="t">escalas cantadas</div></div>
+  <div class="stat"><div class="ic" style="background:var(--blue-t);color:var(--blue)">${ic('ear',2)}</div><div class="v">${E.ear.n?Math.round(100*E.ear.ok/E.ear.n):0}<small>%</small></div><div class="t">tríadas de oído</div></div></div></section>
+ <section><div class="sec-h"><h2>El orden de clase</h2><span>6 escalas</span></div>
+  <div class="en-order">${ORDER.map((k,i)=>{const s=SCL[k];return `<a class="lrow tap" href="#ent/escala/${k}"><div class="ph thumb">${ph(s.img)}<b class="en-num">${i+1}</b></div><div class="tx"><small>${s.chrom?'12 medios tonos':s.pat.join(' · ')}</small><h3>${s.t}</h3><p>${s.ref2}</p></div><span class="end">${ic('right',2)}</span></a>`;}).join('')}</div></section>
+ <section><div class="sec-h"><h2>Practica</h2></div><div class="rail">
+  ${[['canta','Canta conmigo','Elige la nota: suena la tónica, el bordón y cada nota','ent-diapasones','ov-cafe','mic'],['triadas','Tríadas de oído','Mayor, menor, aumentada y disminuida','ent-himnario','ov-gold','ear'],['examen','Simulacro','Escala y nota al azar, como en el examen','ent-peonia-cafe','ov-rose','dice']].map(([r,t,d,im,ov,i])=>`<a class="ph mode ${ov} tap" href="#ent/${r}">${ph(im)}<div class="in"><div class="ico">${ic(i)}</div><h3>${t}</h3><p>${d}</p></div></a>`).join('')}</div></section>
+ <section><div class="two">
+  <a class="ph feat ov-blue tap" href="#ent/tabla">${ph('ent-partitura-flores')}<div class="in"><div><h3>Acordeón</h3><p>Las 4 menores lado a lado</p></div></div></a>
+  <a class="ph feat ov-cafe tap" href="#ent/tips">${ph('ent-latte-teclas')}<div class="in"><div><h3>Tips</h3><p>Respira, piensa grados</p></div></div></a></div></section>
+ </div><p class="verse">“Cantad alegres a Dios, habitantes de toda la tierra” · Salmo 100</p></div>`;}
+
+function vScale(key){const s=SCL[key];if(!s)return vHub();const it=seq(key);const i=ORDER.indexOf(key);const turn=it.findIndex(x=>x.dir==='dn');
+ const up=it.slice(0,turn),dn=it.slice(turn-1);const dnIt=it.slice(turn);
+ const dnStaff=scaleStaff([up[up.length-1],...dnIt].map((x,j)=>({...x})),{id:'sc',base:turn-1,labels:labFixed,courtesy:!!s.dn});
+ const rows=s.chrom?"":up.map((x,j)=>`<tr class="${x.alt?'alt':''}"><td>${ROM[x.deg]}</td><td><b>${nm(x.n)}</b></td><td>${degName(x.deg,x.k)}</td><td>${j<7?`<span class="en-int ${s.pat[j]==='S'?'s':s.pat[j]==='1½'?'x':''}">${s.pat[j]}</span>`:''}</td></tr>`).join('');
+ return `<div class="view en"><div class="ph cover ${s.ov}">${ph(s.img)}<div class="top"><a class="glass-btn" href="#ent" aria-label="Volver">${ic('left',2)}</a><span class="glass-pill en-pill">${i+1} de 6</span></div>
+  <div class="in"><span class="eyebrow" style="color:rgba(255,255,255,.8)">En clase: ${s.chrom?'desde Do':isMinor(key)?'La menor':'Do mayor'}</span><h1>${s.full}</h1><p>${s.ref2}</p></div></div>
+ <div class="lesson-body">
+ <div class="card"><div class="card-h"><h3>Patrón</h3>${s.chrom?'':`<span class="en-legend"><i class="t"></i>tono <i class="s"></i>semitono${key==='armonica'?' <i class="x"></i>1½':''}</span>`}</div>
+  ${patChips(s)}${s.patDn?`<div class="en-sub">Al bajar (desde la 8ª): ${s.patDn.join(' · ')} — igual que la natural</div>`:''}
+  <div class="field-l">Sube</div>${scaleStaff(up,{id:'sc',labels:labFixed})}
+  <div class="field-l">Baja ${s.dn?'<span class="en-flag">como natural</span>':''}</div>${dnStaff}
+  ${s.alt.length||s.chrom?`<div class="en-key"><span><i style="background:var(--rose)"></i>${s.chrom?'notas cromáticas':'grado alterado'}</span>${s.dn?'<span><i style="background:var(--blue)"></i>regresa a natural</span>':''}</div>`:''}
+  <div class="field-l">Tempo</div>${tempoSeg()}
+  <div class="btn-row" style="margin-top:16px">${playBtn('sc','playScale',`data-k="${key}"`,'Sube y baja')}<a class="btn soft sm" href="#ent/canta" data-ent="toCanta" data-k="${key}">${ic('mic',2)} Canta conmigo</a></div></div>
+ ${s.chrom?vChromSyl():`<div class="card"><div class="card-h"><h3>Grados y nomenclatura</h3></div><table class="en-tab"><thead><tr><th>Grado</th><th>Nota</th><th>Nombre</th><th>Al sig.</th></tr></thead><tbody>${rows}</tbody></table></div>`}
+ <div class="tip"><span class="i">${ic('bulb',2)}</span><div><b>Para entonarla:</b> ${s.hint}</div></div>
+ <div class="lnav">${i>0?`<a class="btn ghost" href="#ent/escala/${ORDER[i-1]}">${ic('left',2)} ${SHORT[ORDER[i-1]]}</a>`:''}${i<5?`<a class="btn pri" href="#ent/escala/${ORDER[i+1]}">${SHORT[ORDER[i+1]]} ${ic('arrow',2)}</a>`:`<a class="btn pri" href="#ent/triadas">Tríadas de oído ${ic('arrow',2)}</a>`}</div>
+ </div></div>`;}
+
+function vChromSyl(){const it=seq('cromatica');const up=it.slice(0,13),dn=it.slice(12);
+ const row=(arr,cls)=>`<div class="en-syl ${cls}">${arr.map(x=>`<span class="${x.alt?'alt':''}"><b>${x.syl}</b><small>${nm(x.n)}</small></span>`).join('')}</div>`;
+ return `<div class="card"><div class="card-h"><h3>Sílabas cromáticas</h3></div>
+ <div class="field-l">Sube · terminan en “i”</div>${row(up,'up')}
+ <div class="field-l">Baja · terminan en “e” (y Ra)</div>${row(dn.slice(0).reverse().reverse(),'dn')}
+ <div class="en-note"><b>Ojo con “Si” y “Ti”.</b> En solfeo cromático, la sílaba <b>Si</b> ya se usa para Sol♯ (Sol + i). Por eso el 7º grado, Si natural, se canta <b>Ti</b>. Ese cambio de Si a Ti lo hizo la maestra inglesa Sarah Glover en el siglo XIX, para que cada sílaba empezara con letra distinta. Al nombrar notas en clase sigues diciendo Do, Re, Mi… Si; el “Ti” es sólo para cantar la cromática.</div>
+ <div class="en-note soft">Estas sílabas son de <b>Do móvil</b>: Di siempre es “la tónica subida”. Si la maestra te da otra nota de partida, cantas las mismas sílabas desde esa nota.</div></div>`;}
+
+/* --- Canta conmigo --- */
+let CN={i:-3,info:null};
+function cantaItems(){const t=tonicNote(E.tonic,E.scale,E.voice);return {t,it:seq(E.scale,t)};}
+function vCanta(){const {t,it}=cantaItems();const s=SCL[E.scale];const names=(isMinor(E.scale)?TON_m:TON_M).map(([l,a])=>((typeof S!=='undefined'&&S.sys==='let')?LET:SOLN)[l]+ACC[a]);
+ const cur=CN.i>=0?it[CN.i]:null;
+ let big,sub,small;if(CN.i===-1){big=nm(t);sub='Tónica · escúchala';small='respira y piénsala';}else if(CN.i===-2){big=CN.info;sub='prepárate';small='';}
+ else if(cur){big=nm(cur.n);sub=cur.syl?`${cur.syl} · ${cur.dir==='up'?'subiendo':'bajando'}`:`${cur.deg+1}º · ${degName(cur.deg,cur.k)}`;small=cur.alt?(s.chrom?'nota cromática':'grado alterado'):cur.back?'regresa a natural':'';}
+ else{big=nm(t);sub=s.t;small='Toca Empezar';}
+ return `<div class="view en">${back()}<div class="page-h" style="padding-top:8px"><h1>Canta <em>conmigo</em></h1><p>Suena la tónica y un bordón suave; luego cada nota a tu tempo. En “Solo bordón” cantas tú sola, como en el examen.</p></div>
+ <div class="en-stage ${PLAY==='cn'?'live':''}"><div class="ph">${ph('ent-diapasones')}</div><div class="in">
+  <small class="en-st-k">${s.t} · desde ${nm(t)}</small><div class="en-big" id="cnBig">${big}</div><div class="en-bsub" id="cnSub">${sub}</div><div class="en-bsm" id="cnSm">${small}</div>
+  <div class="en-dots" data-seq="cn">${it.map((x,j)=>`<i data-i="${j}" class="${x.alt?'alt':''} ${j===it.findIndex(y=>y.dir==='dn')?'turn':''}"></i>`).join('')}</div>
+  <div class="btn-row">${playBtn('cn','canta','', 'Empezar')}<button class="btn light sm" data-ent="tonica">${ic('fork',2)} Tónica</button></div></div></div>
+ <div class="card"><div class="field-l">Escala</div><div class="en-chips">${ORDER.map(k=>`<button class="${E.scale===k?'on':''}" data-ent="cnScale" data-k="${k}">${CHIP[k]}</button>`).join('')}</div>
+  <div class="field-l">Nota de partida</div><div class="en-notes">${names.map((x,p)=>`<button class="choice sm ${E.tonic===p?'on':''}" data-ent="cnTon" data-k="${p}">${x}</button>`).join('')}</div>
+  <button class="btn ghost sm block" style="margin-top:8px" data-ent="cnRand">${ic('dice',2)} Nota al azar</button>
+  <div class="field-l">Tu voz</div><div class="seg"><button class="${E.voice==='sop'?'on':''}" data-ent="voice" data-k="sop">Soprano · aguda</button><button class="${E.voice==='alto'?'on':''}" data-ent="voice" data-k="alto">Contralto · grave</button></div>
+  <div class="field-l">Guía</div><div class="seg"><button class="${E.guide==='piano'?'on':''}" data-ent="guide" data-k="piano">Con piano</button><button class="${E.guide==='solo'?'on':''}" data-ent="guide" data-k="solo">Solo bordón</button></div>
+  <div class="field-l">Bordón (nota pedal)</div><div class="seg"><button class="${E.drone?'on':''}" data-ent="drone" data-k="1">Encendido</button><button class="${!E.drone?'on':''}" data-ent="drone" data-k="0">Apagado</button></div>
+  <div class="field-l">Tempo</div>${tempoSeg()}</div>
+ <div class="card tight"><div class="card-h" style="margin-bottom:8px"><h3>En el pentagrama</h3><span class="en-sub" style="margin:0">toca una nota</span></div>${scaleStaff(it,{id:'cn',labels:labFixed,split:true,courtesy:!!s.dn})}</div>
+ </div>`;}
+function cnPaint(){const {t,it}=cantaItems();const s=SCL[E.scale];const b=document.getElementById('cnBig');if(!b)return;const cur=CN.i>=0?it[CN.i]:null;
+ if(CN.i===-1){b.textContent=nm(t);cnS('Tónica · escúchala','respira y piénsala');}else if(CN.i===-2){b.textContent=CN.info;cnS('prepárate','');}
+ else if(cur){b.textContent=nm(cur.n);cnS(cur.syl?`${cur.syl} · ${cur.dir==='up'?'subiendo':'bajando'}`:`${cur.deg+1}º · ${degName(cur.deg,cur.k)}`,cur.alt?(s.chrom?'nota cromática':'grado alterado'):cur.back?'regresa a natural':'');}
+ b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');decorate(b);}
+function cnS(a,c){const x=document.getElementById('cnSub'),y=document.getElementById('cnSm');if(x)x.textContent=a;if(y)y.textContent=c;}
+
+/* --- Simulacro --- */
+function newSim(){const pool=E.inc.length?E.inc:ORDER;const key=pool[Math.floor(Math.random()*pool.length)];const pc=Math.floor(Math.random()*12);SIM={key,pc,t:tonicNote(pc,key,E.voice),tries:0,rev:false,done:false};}
+function vExam(){const st=E.sim;let body;
+ if(!SIM){body=`<div class="card en-intro"><div class="ph en-band ov-rose">${ph('ent-peonia-cafe')}<div class="in">${ic('dice',2)} Como en el examen</div></div>
+  <ol class="en-steps"><li>Te sale una escala y una nota de partida al azar.</li><li>Pide la nota (tienes 3 oportunidades) y escúchala.</li><li>Cántala subiendo y bajando, con su nomenclatura.</li><li>Toca “Escuchar la respuesta” y califícate con honestidad.</li></ol>
+  <div class="field-l">Escalas que entran</div><div class="en-chips">${ORDER.map(k=>`<button class="${E.inc.includes(k)?'on':''}" data-ent="inc" data-k="${k}">${CHIP[k]}</button>`).join('')}</div>
+  <div class="field-l">Tu voz</div><div class="seg"><button class="${E.voice==='sop'?'on':''}" data-ent="voice" data-k="sop">Soprano</button><button class="${E.voice==='alto'?'on':''}" data-ent="voice" data-k="alto">Contralto</button></div>
+  <button class="btn pri block" style="margin-top:24px" data-ent="simNew">Sacar mi primera escala ${ic('arrow',2)}</button></div>`;}
+ else{const s=SCL[SIM.key];const it=seq(SIM.key,SIM.t);const left=3-SIM.tries;
+  body=`<div class="en-prompt"><div class="ph">${ph(s.img)}</div><div class="in"><small>Canta</small><h2>${s.full}</h2><div class="en-from">desde <b>${nm(SIM.t)}</b></div><p>Sube y baja${SIM.key==='melodica'?' · al bajar, como natural':''}${s.chrom?' · sostenidos al subir, bemoles al bajar':''}</p></div></div>
+  <div class="card"><div class="en-tries">${[0,1,2].map(k=>`<i class="${k<SIM.tries?'used':''}"></i>`).join('')}<span>${left>0?left+' oportunidad'+(left===1?'':'es')+' para pedir la nota':'Ya no hay más notas: ¡confía en tu oído!'}</span></div>
+   <div class="btn-row" style="margin-top:12px"><button class="btn soft sm" data-ent="simNote" ${left>0?'':'disabled'}>${ic('fork',2)} Dame la nota</button><button class="btn soft sm" data-ent="simDrone">${ic('wave',2)} ${A.dr&&PLAY==='simd'?'Quitar bordón':'Bordón'}</button></div>
+   ${SIM.rev?`<div class="field-l">Respuesta</div>${scaleStaff(it,{id:'sim',labels:labFixed,split:true,courtesy:!!s.dn})}
+     <div class="btn-row" style="margin-top:12px">${playBtn('sim','simPlay','','Escuchar otra vez')}</div>
+     ${SIM.done?'':`<div class="field-l">¿Cómo te salió?</div><div class="grid2"><button class="opt" data-ent="simRate" data-k="0"><span>Me equivoqué</span></button><button class="opt" data-ent="simRate" data-k="1"><span>¡Me salió!</span></button></div>`}
+     <div class="tip"><span class="i">${ic('bulb',2)}</span><div><b>${s.chrom?'Desde Do':isMinor(SIM.key)?'Ejemplo en La menor':'Ejemplo en Do'}:</b> ${s.hint}</div></div>`
+   :`<button class="btn pri block" style="margin-top:16px" data-ent="simReveal">${ic('vol',2)} Ya canté · escuchar la respuesta</button>`}
+   ${SIM.done?`<button class="btn pri block" style="margin-top:16px" data-ent="simNew">Siguiente escala ${ic('arrow',2)}</button>`:''}</div>`;}
+ const hist=st.hist.slice(-6).reverse();
+ return `<div class="view en">${back()}<div class="page-h" style="padding-top:8px"><h1>Simulacro de <em>examen</em></h1><p>Escala y nota al azar. Tú cantas primero; después escuchas la respuesta.</p></div>
+ <div class="stats" style="margin:0 0 16px"><div class="stat"><div class="v">${st.n}</div><div class="t">cantadas</div></div><div class="stat"><div class="v">${st.n?Math.round(100*st.ok/st.n):0}<small>%</small></div><div class="t">te salieron</div></div><div class="stat"><div class="v">${st.best}</div><div class="t">mejor racha</div></div></div>
+ ${body}
+ ${hist.length?`<div class="sec-h"><h2>Últimas</h2>${SIM?`<a href="#ent/examen" data-ent="simCfg">Ajustar</a>`:''}</div>${hist.map(h=>`<div class="en-hist ${h.ok?'ok':'bad'}"><span>${h.ok?ic('check',2.4):ic('x',2.4)}</span><b>${SCL[h.k].t}</b><small>desde ${h.n}</small></div>`).join('')}`:''}
+ </div>`;}
+
+/* --- Tríadas de oído --- */
+const TRI={M:{t:'Mayor',f:'3M + 3m',iv:[4,7],ex:'Do · Mi · Sol',c:'luminosa, firme, “de fiesta”',
+   refs:['Himno Nacional Mexicano: “Me-xi-ca-nos” = Do–Mi–Sol','“Santo, Santo, Santo” (tono Nicea): Do Do–Mi Mi–Sol Sol'],col:'var(--gold)'},
+ m:{t:'Menor',f:'3m + 3M',iv:[3,7],ex:'Do · Mi♭ · Sol',c:'melancólica, íntima',
+   refs:['“Oh ven, oh ven, Emanuel”: las primeras notas suben por la tríada menor (Mi–Sol–Si en Mi menor)'],col:'var(--blue)'},
+ aum:{t:'Aumentada',f:'3M + 3M',iv:[4,8],ex:'Do · Mi · Sol♯',c:'flotante, de sueño o suspenso; “no se queda quieta”',
+   refs:['Truco: es una mayor con la 5ª estirada medio tono. Suena como si pidiera seguir subiendo.'],col:'var(--rose)'},
+ dism:{t:'Disminuida',f:'3m + 3m',iv:[3,6],ex:'Do · Mi♭ · Sol♭',c:'tensa, apretada, de alarma',
+   refs:['Truco: es la tríada del 7º grado de la mayor (Si–Re–Fa en Do). Suena a que algo tiene que resolver.'],col:'var(--mocha)'}};
+function newEar(){const ks=Object.keys(TRI);const k=ks[Math.floor(Math.random()*4)];const r=55+Math.floor(Math.random()*12);EAR={k,r,ans:null};}
+function earPlay(mode){const e=EAR;const iv=[0,...TRI[e.k].iv];playTri(iv.map(x=>e.r+x),mode);}
+function playTri(ms,mode){if(!soundOk())return;A.stop();const {useS,t}=A.now();const b=t+.08;
+ if(mode!=='block')ms.forEach((m,i)=>A.note(m,b+i*.5,.9,useS));if(mode!=='arp'){const o=mode==='both'?ms.length*.5+.3:0;ms.forEach(m=>A.note(m,b+o,1.8,useS));}}
+function vTri(){const st=E.ear;
+ return `<div class="view en">${back()}<div class="page-h" style="padding-top:8px"><h1>Tríadas <em>de oído</em></h1><p>Cuatro colores. Escúchalas, ponles una canción en la cabeza y luego adivina.</p></div>
+ <div class="en-tri">${Object.entries(TRI).map(([k,x])=>`<div class="card tight en-tc" style="--c:${x.col}"><div class="card-h" style="margin-bottom:6px"><h3>${x.t}</h3><button class="icon-btn sm" data-ent="triPlay" data-k="${k}" aria-label="Oír">${ic('play',2)}</button></div>
+  <div class="en-f">${x.f}<span>${x.ex}</span></div><p class="en-c">Suena ${x.c}.</p><ul>${x.refs.map(r=>`<li>${r}</li>`).join('')}</ul></div>`).join('')}</div>
+ <div class="card"><div class="card-h"><h3>¿Qué tríada suena?</h3><span class="stat-chip" style="color:var(--rose-d)">${ic('flame',2)}<span style="color:var(--ink)">${st.streak}</span></span></div>
+ ${EAR?`<div class="btn-row"><button class="btn pri sm" data-ent="earPlay" data-k="both">${ic('play',2)} Oír</button><button class="btn soft sm" data-ent="earPlay" data-k="arp">Arpegio</button><button class="btn soft sm" data-ent="earPlay" data-k="block">Junta</button></div>
+  <div class="grid2" style="margin-top:16px">${Object.entries(TRI).map(([k,x])=>`<button class="opt ${EAR.ans?k===EAR.k?'ok':k===EAR.ans?'bad':'':''}" data-ent="earAns" data-k="${k}" ${EAR.ans?'disabled':''}><span>${x.t}</span></button>`).join('')}</div>
+  ${EAR.ans?`<div class="answer ${EAR.ans===EAR.k?'ok':'bad'}"><b>${EAR.ans===EAR.k?'¡Exacto!':'Era '+TRI[EAR.k].t.toLowerCase()+'.'}</b> ${TRI[EAR.k].f}: suena ${TRI[EAR.k].c}. ${EAR.ans!==EAR.k?`La ${TRI[EAR.ans].t.toLowerCase()} es ${TRI[EAR.ans].f}; compáralas abajo.`:''}</div>
+   ${EAR.ans!==EAR.k?`<div class="btn-row" style="margin-top:12px"><button class="btn soft sm" data-ent="earCmp" data-k="${EAR.k}">Oír ${TRI[EAR.k].t.toLowerCase()}</button><button class="btn soft sm" data-ent="earCmp" data-k="${EAR.ans}">Oír ${TRI[EAR.ans].t.toLowerCase()}</button></div>`:''}
+   <button class="btn pri block" style="margin-top:16px" data-ent="earNew">Otra ${ic('arrow',2)}</button>`:''}`
+ :`<p class="en-sub">Suena una tríada desde una nota al azar. Puedes oírla en arpegio o junta las veces que quieras.</p><button class="btn pri block" data-ent="earNew">Empezar ${ic('arrow',2)}</button>`}</div>
+ <div class="tip"><span class="i">${ic('bulb',2)}</span><div>Escucha primero la 3ª: si es alegre o triste te dice mayor o menor. Luego la 5ª: si “se sale” hacia arriba es aumentada; si se encoge, disminuida.</div></div></div>`;}
+
+/* --- Acordeón --- */
+function vTabla(){const mk=k=>seq(k).filter(x=>x.dir==='up').map(x=>`<span class="${x.alt?'alt':''}">${nm(x.n)}</span>`).join('');
+ const dn=k=>seq(k).filter(x=>x.dir==='dn').map(x=>`<span class="${x.alt?'alt':x.back?'back':''}">${nm(x.n)}</span>`).join('');
+ const R=[['natural','Ninguno','T · S · T · T · S · T · T','Igual que sube'],['armonica','7º ↑ (sensible)','T · S · T · T · S · 1½ · S','Igual que sube'],['melodica','6º y 7º ↑ sólo al subir','T · S · T · T · T · T · S','Como natural'],['jazz','6º y 7º ↑ siempre','T · S · T · T · T · T · S','Igual que sube']];
+ return `<div class="view en">${back()}<div class="page-h" style="padding-top:8px"><h1>Acordeón de <em>menores</em></h1><p>Las cuatro en La menor. En rosa, lo que cambia respecto a la natural.</p></div>
+ ${R.map(([k,alt,pat,baj])=>`<div class="card tight en-cmp"><div class="card-h" style="margin-bottom:8px"><h3>${SCL[k].t}</h3><button class="icon-btn sm" data-ent="playScale" data-k="${k}" data-id="tb" aria-label="Oír">${ic('play',2)}</button></div>
+  <dl><dt>Altera</dt><dd>${alt}</dd><dt>Patrón</dt><dd class="mono">${pat}</dd><dt>Al bajar</dt><dd>${baj}</dd></dl>
+  <div class="en-line"><small>sube</small>${mk(k)}</div><div class="en-line"><small>baja</small>${dn(k)}</div></div>`).join('')}
+ <div class="card"><div class="card-h"><h3>Claves rápidas</h3></div><div class="formula">
+  <div><b>Tradicional vs jazz</b>La tradicional sube melódica y baja natural. La jazz sube y baja igual.</div>
+  <div><b>Melódica jazz = mayor con 3ª menor</b>La Si <span class="alt-t">Do</span> Re Mi Fa♯ Sol♯ La: respecto a La mayor sólo cambia el 3er grado.</div>
+  <div><b>Armónica</b>Sólo el 7º sube. El salto de 1½ tono (Fa–Sol♯) es su sello.</div>
+  <div><b>Cromática</b>Sube con ♯ (Di Ri Fi Si Li), baja con ♭ (Te Le Se Me Ra). El 7º se canta Ti.</div></div></div>
+ <div class="card"><div class="card-h"><h3>Nomenclatura de los grados</h3></div><table class="en-tab"><tbody>
+  ${[['I','Tónica'],['II','Supertónica'],['III','Mediante'],['IV','Subdominante'],['V','Dominante'],['VI','Superdominante (o submediante)'],['VII','Sensible si está a ½ tono de la tónica · Subtónica si está a 1 tono']].map(([a,b])=>`<tr><td>${a}</td><td>${b}</td></tr>`).join('')}</tbody></table></div></div>`;}
+
+/* --- Tips --- */
+function vTips(){const T=[['Respira antes de empezar','Inhala por la nariz, llenando la cintura y las costillas, no los hombros. Suelta el aire poco a poco: una escala completa (sube y baja) cabe en una o dos respiraciones a tempo lento.','wave'],
+ ['Fija la tónica','Cuando te den la nota, cántala por dentro antes de empezar. Si te pierdes a la mitad, regresa mentalmente a la tónica y cuenta grados desde ahí.','fork'],
+ ['Piensa en grados, no en teclas','Cada nota es un número con nombre: 3º mediante, 5º dominante, 7º sensible. Cantar “la sensible” te recuerda que va pegadita a la tónica.','music'],
+ ['Cuida los medios tonos','En la mayor, 3–4 y 7–8 son cortitos. Lo más común es abrir de más los medios tonos y quedarse corta en los tonos: piensa los medios tonos muy pegaditos y los tonos bien abiertos.','target'],
+ ['La sensible sube','El 7º elevado (Sol♯ en La menor) quiere resolver a la tónica: apúntalo un poquito alto, nunca calado.','arrow'],
+ ['Menor melódica: cambia al bajar','Al llegar arriba, “apaga” mentalmente los sostenidos: bajas Sol♮ y Fa♮. En la jazz no los apagas.','eye'],
+ ['Cromática: no corras','Medios tonos parejos. Apóyate en las notas de la escala mayor (Do, Re, Mi, Fa, Sol, La, Ti) como “escalones”; las cromáticas van en medio.','grid'],
+ ['Lectura: lee antes de cantar','Mira la armadura, la clave, el compás y la primera nota. Busca los saltos y las alteraciones antes de que empiece el ejercicio.','book'],
+ ['Graba y escúchate','Grabarte en el celular y compararte con el piano de esta app es la forma más rápida de oír si te vas calando.','mic']];
+ return `<div class="view en"><div class="ph cover ov-cafe">${ph('ent-latte-teclas')}<div class="top"><a class="glass-btn" href="#ent" aria-label="Volver">${ic('left',2)}</a></div><div class="in"><span class="eyebrow" style="color:rgba(255,255,255,.8)">Entonación</span><h1>Tips para el <em>examen</em></h1><p>Cosas pequeñas que hacen que todo suene afinado.</p></div></div>
+ <div class="lesson-body">${T.map(([t,d,i],k)=>`<div class="card tight en-tip"><span class="n">${String(k+1).padStart(2,'0')}</span><div><h3>${t}</h3><p>${d}</p></div><span class="ic">${ic(i,1.8)}</span></div>`).join('')}</div></div>`;}
+
+/* ---------- Router del módulo ---------- */
+function view(h){const p=h.split('/');if(p[1]==='escala')return vScale(p[2]);if(p[1]==='canta')return vCanta();if(p[1]==='examen')return vExam();if(p[1]==='triadas')return vTri();if(p[1]==='tabla')return vTabla();if(p[1]==='tips')return vTips();return vHub();}
+const full=h=>h.startsWith('ent/');
+function refresh(){if(typeof rerenderKeep==='function')rerenderKeep();}
+const ACTS={
+ pn:d=>{if(!soundOk())return;const {useS,t}=A.now();A.note(+d.m,t+.03,1.1,useS);},
+ bpm:d=>{E.bpm=+d.k;persist();A.stop();refresh();},
+ playScale:(d,el)=>{const id=d.id||'sc';const it=seq(d.k);const b=el;run(it.map((x,i)=>({m:midi(x.n),i})),{id,bpm:E.bpm,onEnd:()=>{if(location.hash.startsWith('#ent'))swapBtn(b,false);}});swapBtn(b,true);},
+ stop:()=>{A.stop();CN.i=-3;if(location.hash==='#ent/canta')refresh();},
+ toCanta:d=>{E.scale=d.k;E.tonic=SCL[d.k].ref.l===5?9:0;persist();},
+ cnScale:d=>{E.scale=d.k;persist();A.stop();CN.i=-3;refresh();},cnTon:d=>{E.tonic=+d.k;persist();A.stop();CN.i=-3;refresh();tonicNow();},
+ cnRand:()=>{E.tonic=Math.floor(Math.random()*12);persist();A.stop();CN.i=-3;refresh();tonicNow();},
+ voice:d=>{E.voice=d.k;persist();A.stop();if(SIM&&!SIM.rev)SIM.t=tonicNote(SIM.pc,SIM.key,E.voice);refresh();},
+ guide:d=>{E.guide=d.k;persist();refresh();},drone:d=>{E.drone=d.k==='1';persist();refresh();},
+ tonica:()=>tonicNow(),
+ canta:(d,el)=>{const {t,it}=cantaItems();CN.i=-3;run(it.map((x,i)=>({m:midi(x.n),i})),{id:'cn',bpm:E.bpm,piano:E.guide==='piano',drone:E.drone,root:midi(t),lead:true,count:4,
+   onStep:(j,info)=>{if(j===-1)CN.i=-1;else if(j===-2){CN.i=-2;CN.info=String(info);}else CN.i=j;cnPaint();},
+   onEnd:()=>{CN.i=-3;if(location.hash==='#ent/canta'){refresh();toast(E.guide==='solo'?'¿Llegaste a la tónica? Compruébalo “Con piano”':'¡Bien! Ahora intenta “Solo bordón”');}}});const st=document.querySelector('.en-stage');if(st)st.classList.add('live');swapBtn(el,true);},
+ simNew:()=>{A.stop();newSim();refresh();scrollTo({top:0,behavior:'smooth'});},
+ simCfg:()=>{A.stop();SIM=null;refresh();},
+ simNote:()=>{if(!SIM||SIM.tries>=3)return;SIM.tries++;if(!soundOk())return;const {useS,t}=A.now();A.note(midi(SIM.t),t+.05,2.2,useS);refresh();},
+ simDrone:()=>{if(!soundOk())return;if(A.dr&&PLAY==='simd'){A.stop();}else{A.stop();A.droneOn(midi(SIM.t));PLAY='simd';}refresh();},
+ simReveal:()=>{SIM.rev=true;refresh();setTimeout(()=>{const b=document.querySelector('[data-was="simPlay"]');ACTS.simPlay({},b);},250);},
+ simPlay:(d,el)=>{const it=seq(SIM.key,SIM.t);run(it.map((x,i)=>({m:midi(x.n),i})),{id:'sim',bpm:E.bpm,drone:false,root:midi(SIM.t),onEnd:()=>swapBtn(el,false)});swapBtn(el,true);},
+ simRate:d=>{const ok=d.k==='1';const st=E.sim;st.n++;if(ok){st.ok++;st.streak++;st.best=Math.max(st.best,st.streak);}else st.streak=0;
+   st.hist.push({k:SIM.key,n:nm(SIM.t),ok});st.hist=st.hist.slice(-30);SIM.done=true;persist();if(ok&&typeof confetti==='function')confetti(60);refresh();},
+ inc:d=>{const i=E.inc.indexOf(d.k);if(i>=0){if(E.inc.length>1)E.inc.splice(i,1);}else E.inc.push(d.k);persist();refresh();},
+ triPlay:d=>{const r=60;playTri([r,...TRI[d.k].iv.map(x=>r+x)],'both');},
+ earNew:()=>{newEar();refresh();setTimeout(()=>earPlay('both'),200);},earPlay:d=>earPlay(d.k),
+ earAns:d=>{if(!EAR||EAR.ans)return;EAR.ans=d.k;const ok=d.k===EAR.k;const st=E.ear;st.n++;if(ok){st.ok++;st.streak++;st.best=Math.max(st.best,st.streak);if(typeof confetti==='function')confetti(50);}else st.streak=0;persist();refresh();},
+ earCmp:d=>{playTri([EAR.r,...TRI[d.k].iv.map(x=>EAR.r+x)],'both');}
+};
+function tonicNow(){if(!soundOk())return;const {t}=cantaItems();const {useS,t:now}=A.now();A.note(midi(t),now+.05,1.8,useS);}
+function swapBtn(b,on){if(!b||!b.isConnected)return;if(on){b.dataset.lbl=b.innerHTML;b.dataset.ent='stop';b.classList.remove('pri');b.classList.add('rose');b.innerHTML=ic('stop',2)+' Parar';}else{b.dataset.ent=b.dataset.was;b.classList.remove('rose');b.classList.add('pri');if(b.dataset.lbl&&!b.dataset.lbl.includes('Parar'))b.innerHTML=b.dataset.lbl;}}
+document.addEventListener('click',e=>{const a=e.target.closest('[data-ent]');if(!a||a.disabled)return;const f=ACTS[a.dataset.ent];if(!f)return;if(a.tagName==='A'&&a.dataset.ent!=='toCanta')e.preventDefault();try{AU.init();}catch(_){}
+ f(a.dataset,a);},true);
+addEventListener('hashchange',()=>{A.stop();CN.i=-3;if(!location.hash.startsWith('#ent/examen'))SIM=SIM&&SIM.done?null:SIM;});
+return {view,full,stop:()=>A.stop(),ICONS,_t:{seq,spell,midi,nm,SCL,ORDER,tonicNote,degName}};
+})();
 </script><script>/* ===== Estado ===== */
 const KEY='triadasEli.v1';
 const S=Object.assign({sys:'sol',level:'basico',sound:true,points:0,streak:0,best:0,total:0,right:0,days:{},mistakes:[],lessons:{},byType:{},byPos:{},goal:20},JSON.parse(localStorage.getItem(KEY)||'{}'));
@@ -592,6 +1237,7 @@ shuffle:'<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>',notebook:
 music:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
 heal:'<path d="M12 21s-7.5-4.6-9.3-9.6C1.4 7.8 3.7 4 7.4 4c2 0 3.5 1 4.6 2.6C13.1 5 14.6 4 16.6 4c3.7 0 6 3.8 4.7 7.4C19.5 16.4 12 21 12 21z"/>',
 trophy:'<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>'};
+Object.assign(P,ENT.ICONS);
 const I=(k,sw=1.8)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[k]}</svg>`;
 /* ===== Audio: piano Salamander (Tone.js) con respaldo sintetizado ===== */
 const AU={ctx:null,smp:null,ready:false,
@@ -632,7 +1278,7 @@ function chordSVG(notes,cx,anim){if(!notes.length)return '';
   return s;}
 // slots: [{notes:[{n,c,ring}], label, sub, lc}]
 function staff(slots,o={}){const n=slots.length;const sw=o.sw||(n>=4?72:n===3?86:n===2?100:110);const CL=50;const W=CL+n*sw+(o.end?10:6);
-  const hasL=slots.some(x=>x.label),hasS=slots.some(x=>x.sub);const H=BOT+(hasS?66:hasL?50:34);
+  const hasL=slots.some(x=>x.label),hasS=slots.some(x=>x.sub);const lowSt=Math.min(30,...slots.flatMap(x=>x.notes.map(z=>T.step(z.n))));const EX=lowSt<27?(27-lowSt)*5+4:0;const H=BOT+EX+(hasS?66:hasL?50:34);
   let s=`<svg class="staff ${o.anim?'anim':''}" viewBox="0 0 ${W} ${H}" style="max-width:${Math.round(W*(o.scale||1.45))}px;margin:0 auto" role="img" aria-label="pentagrama">`;
   for(let i=0;i<5;i++){const y=BOT-i*SP;s+=`<line x1="2" x2="${W-2}" y1="${y}" y2="${y}" stroke="${INK}" stroke-width="1" opacity=".42"/>`;}
   s+=`<line x1="2" x2="2" y1="${TOPL}" y2="${BOT}" stroke="${INK}" stroke-width="1.2" opacity=".6"/><line x1="${W-2}" x2="${W-2}" y1="${TOPL}" y2="${BOT}" stroke="${INK}" stroke-width="${o.end?2.6:1.2}" opacity=".6"/>`;
@@ -642,8 +1288,8 @@ function staff(slots,o={}){const n=slots.length;const sw=o.sw||(n>=4?72:n===3?86
     const ms=sl.notes.map(z=>T.midi(z.n)).join(',');
     s+=`<g class="slot" ${ms?`data-act="play" data-m="${ms}"`:''}><rect class="hl" x="${x+4}" y="6" width="${sw-8}" height="${H-10}" rx="12" fill="rgba(181,111,120,.07)"/><rect x="${x}" y="0" width="${sw}" height="${H}" fill="transparent"/>`;
     s+=chordSVG(sl.notes,cx,o.anim);
-    if(sl.label)s+=`<text x="${cx}" y="${BOT+40}" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="500" fill="${sl.lc||INK}">${sl.label}</text>`;
-    if(sl.sub)s+=`<text x="${cx}" y="${BOT+58}" text-anchor="middle" font-family="DM Sans,system-ui,sans-serif" font-size="11" font-weight="600" letter-spacing=".3" fill="#A0907F">${sl.sub}</text>`;
+    if(sl.label)s+=`<text x="${cx}" y="${BOT+EX+40}" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="500" fill="${sl.lc||INK}">${sl.label}</text>`;
+    if(sl.sub)s+=`<text x="${cx}" y="${BOT+EX+58}" text-anchor="middle" font-family="DM Sans,system-ui,sans-serif" font-size="11" font-weight="600" letter-spacing=".3" fill="#A0907F">${sl.sub}</text>`;
     s+='</g>';});
   return s+'</svg>';}
 function accSVG(a){if(!a&&a!==0)return '';const [g,w]=AGL[a];const ww=w*SC*1.5+4;return `<svg class="ag" viewBox="0 0 ${ww} 40" width="${ww}" height="26" aria-hidden="true">${gl(g,2,24,'currentColor')}</svg>`;}
@@ -651,7 +1297,7 @@ const roleNotes=v=>v.notes.map((n,i)=>({n,c:ROLEC[v.roles[i]]}));
 const npills=(v,type)=>`<div class="notepills">${v.notes.map((n,i)=>`<span class="npill"><i style="background:${ROLEC[v.roles[i]]}">${roleShort(type,v.roles[i])}</i>${nm(n)}</span>`).join('')}</div>`;
 const legend=type=>`<div class="legend"><span><i style="background:${ROLEC[0]}"></i>fundamental</span><span><i style="background:${ROLEC[1]}"></i>${type==='sus4'?'4ª':'3ª'}</span><span><i style="background:${ROLEC[2]}"></i>5ª</span></div>`;
 /* ===== Piano ===== */
-const PLO=57,PHI=89,BLK=[1,3,6,8,10],WK=42;
+const PLO=53,PHI=89,BLK=[1,3,6,8,10],WK=42;
 function piano(marks={},o={}){let w='',b='',wi=0;
   const L=S.sys==='let'?['C','','D','','E','F','','G','','A','','B']:['Do','','Re','','Mi','Fa','','Sol','','La','','Si'];
   const BL=S.sys==='let'?{1:'C♯<br>D♭',3:'D♯<br>E♭',6:'F♯<br>G♭',8:'G♯<br>A♭',10:'A♯<br>B♭'}:{1:'Do♯<br>Re♭',3:'Re♯<br>Mi♭',6:'Fa♯<br>Sol♭',8:'Sol♯<br>La♭',10:'La♯<br>Si♭'};
@@ -723,9 +1369,9 @@ const MODES={build:{t:'Construir',d:'Toca las 3 notas en el piano',img:'teclas-d
 /* ===== Vistas ===== */
 function saludo(){const h=new Date().getHours();return h<12?'Buenos días':h<19?'Buenas tardes':'Buenas noches';}
 const acc=()=>S.total?Math.round(100*S.right/S.total):0;
-function navHTML(cur){const t=[['home','Inicio','home'],['learn','Aprender','book'],['prac','Practicar','target'],['lab','Explorar','compass'],['prog','Progreso','chart']];
- return `<div class="brandrail"><div class="lg"><svg width="26" height="26" viewBox="0 0 26 26"><ellipse cx="13" cy="20" rx="6" ry="4.3" fill="#E9C7C6"/><ellipse cx="13" cy="13" rx="6" ry="4.3" fill="#EBD9A6"/><ellipse cx="13" cy="6" rx="6" ry="4.3" fill="#BFD3E2"/></svg></div><div><b>Tríadas</b><small>el estudio de Eli</small></div></div>
- <nav class="tabs">${t.map(([k,l,ic])=>`<a href="#${k}" class="${cur===k?'on':''}" ${cur===k?'aria-current="page"':''}>${I(ic)}<span>${l}</span></a>`).join('')}</nav>
+function navHTML(cur){const t=[['home','Inicio','home'],['learn','Aprender','book'],['prac','Practicar','target'],['ent','Entonar','mic'],['prog','Progreso','chart']];
+ return `<div class="brandrail"><div class="lg"><svg width="26" height="26" viewBox="0 0 26 26"><ellipse cx="13" cy="20" rx="6" ry="4.3" fill="#E9C7C6"/><ellipse cx="13" cy="13" rx="6" ry="4.3" fill="#EBD9A6"/><ellipse cx="13" cy="6" rx="6" ry="4.3" fill="#BFD3E2"/></svg></div><div><b>Teoría</b><small>el estudio de Eli</small></div></div>
+ <nav class="tabs">${t.map(([k,l,ic,c])=>{const on=cur===(c||k);return `<a href="#${k}" class="${on?'on':''}" ${on?'aria-current="page"':''}>${I(ic)}<span>${l}</span></a>`;}).join('')}</nav>
  <div class="railfoot">“Canten al Señor un cántico nuevo”<br><small>Salmo 96</small></div>`;}
 function vHome(){const td=S.days[today()]||0,nmis=S.mistakes.length,ld=Object.keys(S.lessons).length;const nx=Math.min(ld,6);const L=LESSONS[LESSONS.findIndex((_,i)=>!S.lessons[i])>=0?LESSONS.findIndex((_,i)=>!S.lessons[i]):nx];const li=LESSONS.indexOf(L);
  return `<div class="view"><div class="topbar"><div class="hello"><small>${saludo()}</small><h1>Hola, <em>Eli</em></h1></div>
@@ -738,7 +1384,9 @@ function vHome(){const td=S.days[today()]||0,nmis=S.mistakes.length,ld=Object.ke
   <div class="stat"><div class="ic" style="background:var(--rose-t);color:var(--rose-d)">${I('flame',2)}</div><div class="v">${dayStreak()}</div><div class="t">días seguidos</div></div>
   <div class="stat"><div class="ic" style="background:var(--gold-t);color:var(--gold)">${I('star',2)}</div><div class="v">${S.points}</div><div class="t">puntos</div></div>
   <div class="stat"><div class="ic" style="background:var(--blue-t);color:var(--blue)">${I('target',2)}</div><div class="v">${acc()}<small>%</small></div><div class="t">aciertos</div></div></div></section>
- <section class="a-modes"><div class="sec-h"><h2>Modos de práctica</h2><a href="#prac">Configurar</a></div><div class="rail">
+ <section class="a-temas"><div class="sec-h"><h2>Temas del examen</h2><a href="#learn">Ver todo</a></div>${modGrid(MODS.filter(m=>!m.soon))}
+  <div style="margin-top:12px">${modCard(MOD.ent,'wide full')}</div></section>
+ <section class="a-modes"><div class="sec-h"><h2>Tríadas · modos</h2><a href="#prac">Configurar</a></div><div class="rail">
   ${['build','id','spell'].map(k=>{const m=MODES[k];return `<div class="ph mode ${m.ov} tap" data-start="${k}|tarea">${ph(m.img)}<div class="in"><div class="ico">${I(m.ic)}</div><h3>${m.t}</h3><p>${m.d}</p></div></div>`;}).join('')}</div></section>
  <section class="a-cont"><div class="sec-h"><h2>${ld>=7?'Repasa una lección':'Continúa aprendiendo'}</h2><span>${ld}/7</span></div>
   <div class="lrow tap" data-go="lesson/${li}"><div class="ph thumb">${ph(L.img)}</div><div class="tx"><small>Lección ${li+1} · ${L.min} min</small><h3>${L.t}</h3><div class="pbar" style="margin-top:8px"><i style="width:${Math.round(ld/7*100)}%"></i></div></div><span class="end">${I('right',2)}</span></div></section>
@@ -747,9 +1395,12 @@ function vHome(){const td=S.days[today()]||0,nmis=S.mistakes.length,ld=Object.ke
   <div class="ph feat ov-rose tap" ${nmis?'data-start="mix|errores"':'data-go="prog"'}>${ph('peonias-partitura')}<div class="in"><div><h3>Repasar errores</h3><p>${nmis?nmis+' por corregir':'Nada pendiente'}</p></div>${nmis?`<span class="badge">${nmis}</span>`:''}</div></div></div></section>
  </div><p class="verse">“Canten al Señor un cántico nuevo” · Salmo 96</p></div>`;}
 function vLearn(){const ld=Object.keys(S.lessons).length;
- return `<div class="view"><div class="page-h"><span class="eyebrow">Aprender</span><h1>Siete lecciones, <em>paso a paso</em></h1><p>Cortitas, con pentagrama y piano. Toca los acordes para escucharlos.</p></div>
- <div class="card flat prog-hero" style="margin-top:24px">${ring(ld,7,{size:72,sw:7,fs:20,txt:ld+'/7'})}<div class="tx"><h3>${ld===7?'¡Todas completas!':ld?'Vas muy bien':'Empieza por la primera'}</h3><p>Cada lección termina con un mini reto.</p></div></div>
- <div class="lesson-grid stag">${LESSONS.map((l,i)=>`<div class="lrow tap" data-go="lesson/${i}"><div class="ph thumb">${ph(l.img)}</div><div class="tx"><small>Lección ${i+1} · ${l.min} min</small><h3>${l.t}</h3><p>${l.s}</p></div><span class="end">${S.lessons[i]?`<span class="check-ok">${I('check',2.4)}</span>`:I('right',2)}</span></div>`).join('')}</div></div>`;}
+ return `<div class="view"><div class="page-h"><span class="eyebrow">Aprender</span><h1>Todo lo del examen, <em>paso a paso</em></h1><p>Lecciones cortitas, con pentagrama y piano. Toca los acordes para escucharlos.</p></div>
+ <div class="sec-h" style="margin-top:28px"><h2>Temas del examen</h2><span>${MODS.filter(m=>!m.exam&&!m.soon).length} temas</span></div>${modGrid()}
+ <div class="sec-h" style="margin-top:32px"><h2>Tríadas</h2><span>7 lecciones</span></div>
+ <div class="card flat prog-hero" style="margin-top:8px">${ring(ld,7,{size:72,sw:7,fs:20,txt:ld+'/7'})}<div class="tx"><h3>${ld===7?'¡Todas completas!':ld?'Vas muy bien':'Empieza por la primera'}</h3><p>Cada lección termina con un mini reto.</p></div></div>
+<div class="lesson-grid stag">${LESSONS.map((l,i)=>`<div class="lrow tap" data-go="lesson/${i}"><div class="ph thumb">${ph(l.img)}</div><div class="tx"><small>Lección ${i+1} · ${l.min} min</small><h3>${l.t}</h3><p>${l.s}</p></div><span class="end">${S.lessons[i]?`<span class="check-ok">${I('check',2.4)}</span>`:I('right',2)}</span></div>`).join('')}</div>
+ <a class="lrow tap" href="#lab" style="margin-top:8px"><div class="ph thumb">${ph('teclas-doradas')}</div><div class="tx"><small>Explorar</small><h3>Arma cualquier tríada</h3><p>Fundamental, tipo y posición</p></div><span class="end">${I('right',2)}</span></a></div>`;}
 function vLesson(i){const l=LESSONS[i];if(!l)return vLearn();const d=l.demo();const q=l.quiz;
  return `<div class="view"><div class="ph cover ${l.ov}">${ph(l.img)}<div class="top"><button class="glass-btn" data-go="learn" aria-label="Volver">${I('left',2)}</button><span class="glass-pill">${i+1} de 7</span></div>
  <div class="in"><span class="eyebrow" style="color:rgba(255,248,241,.8)">Lección ${i+1} · ${l.min} min</span><h1>${l.t}</h1><p>${l.s}</p></div></div>
@@ -763,7 +1414,9 @@ function vLesson(i){const l=LESSONS[i];if(!l)return vLearn();const d=l.demo();co
 const PM={mode:'mix',src:'tarea'};
 function vPrac(){const desc={build:'Te doy el cifrado y la posición; tú tocas las 3 notas en el piano, de abajo hacia arriba.',id:'Ves un acorde en el pentagrama (y lo puedes oír) y eliges su cifrado y su posición.',spell:'Escribes las 3 notas con su alteración correcta. Aquí sí importa si es C♭ o B.',mix:'Un poco de cada modo, para que se te quede de verdad.'};
  return `<div class="view"><div class="page-h"><span class="eyebrow">Practicar</span><h1>Rondas de 10, <em>con calma</em></h1><p>Si te equivocas, te enseño la corrección en el pentagrama, paso a paso.</p></div>
- <div class="field-l" style="margin-top:32px">Modo</div><div class="mtiles">${Object.entries(MODES).map(([k,m])=>`<button class="ph mtile ${m.ov} ${PM.mode===k?'on':''}" data-act="pm" data-k="${k}">${ph(m.img)}<span class="ck">${I('check',2.6)}</span><div class="in"><h3>${m.t}</h3><p>${m.d}</p></div></button>`).join('')}</div>
+ <div class="field-l" style="margin-top:32px">Por tema del examen</div><div class="src-list">${MODS.filter(m=>!m.soon).map(m=>`<button class="src" data-mq="${m.exam?'exam|all':m.id+'|mix'}"><span class="ic ph mini-ph">${ph(m.img)}</span><span><b>${m.t}</b><small>${m.exam?'20 preguntas con calificación':m.s}</small></span><span class="end">${modPct(m.id)!=null?modPct(m.id)+'%':I('right',2)}</span></button>`).join('')}</div>
+ <div class="sec-h" style="margin-top:36px"><h2>Tríadas</h2></div>
+ <div class="field-l">Modo</div><div class="mtiles">${Object.entries(MODES).map(([k,m])=>`<button class="ph mtile ${m.ov} ${PM.mode===k?'on':''}" data-act="pm" data-k="${k}">${ph(m.img)}<span class="ck">${I('check',2.6)}</span><div class="in"><h3>${m.t}</h3><p>${m.d}</p></div></button>`).join('')}</div>
  <div class="field-l">Acordes</div><div class="src-list">
   ${[['tarea','Mi tarea','19 acordes de clase con bajo y sin bajo','notebook','var(--rose-t)','var(--rose-d)'],['todas','Todas las tonalidades','Las 21 fundamentales × 5 tipos','grid','var(--blue-t)','var(--blue)'],['errores','Mis errores',S.mistakes.length?S.mistakes.length+' por repasar':'Aún no tienes errores guardados','heal','var(--gold-t)','var(--gold)']].map(([k,t,s,ic,bg,fg])=>`<button class="src ${PM.src===k?'on':''}" data-act="ps" data-k="${k}" ${k==='errores'&&!S.mistakes.length?'disabled':''}><span class="ic" style="background:${bg};color:${fg}">${I(ic)}</span><span><b>${t}</b><small>${s}</small></span><span class="rd"></span></button>`).join('')}</div>
  ${PM.src==='todas'?`<div class="field-l">Nivel</div><div class="seg"><button class="${S.level==='basico'?'on':''}" data-act="lvl" data-k="basico">Básico · ♯ y ♭</button><button class="${S.level==='pro'?'on':''}" data-act="lvl" data-k="pro">Pro · dobles alteraciones</button></div>`:''}
@@ -792,7 +1445,7 @@ function vProg(){const a=acc();
  return `<div class="view"><div class="page-h"><span class="eyebrow">Progreso</span><h1>Tu <em>avance</em></h1><p>Todo se guarda en este teléfono, sin cuentas ni contraseñas.</p></div>
  <div class="lesson-cols" style="margin-top:24px"><div><div class="card prog-hero">${ring(a,100,{size:96,sw:9,fs:26,txt:a+'%',sub:'aciertos'})}<div class="tx"><h3>${S.total?S.right+' de '+S.total+' bien':'Aún sin rondas'}</h3><p>${S.total?'Cada error corregido suma para tu racha.':'Haz tu primera ronda y aquí verás tu avance.'}</p></div></div>
  <div class="stats" style="margin:0 0 16px"><div class="stat"><div class="v">${S.points}</div><div class="t">puntos</div></div><div class="stat"><div class="v">${S.best}</div><div class="t">mejor racha</div></div><div class="stat"><div class="v">${dayStreak()}</div><div class="t">días seguidos</div></div></div>
- <div class="card"><div class="card-h"><h3>Por tipo</h3></div>${bars(S.byType,Object.keys(T.TYPES),k=>k==='M'?'Mayor':k==='m'?'Menor':T.TYPES[k].suf)}<div class="card-h" style="margin-top:24px"><h3>Por posición</h3></div>${bars(S.byPos,POSK,k=>T.POSS[k])}</div></div>
+ <div class="card"><div class="card-h"><h3>Por tipo</h3></div>${bars(S.byType,Object.keys(T.TYPES),k=>k==='M'?'Mayor':k==='m'?'Menor':T.TYPES[k].suf)}<div class="card-h" style="margin-top:24px"><h3>Por posición</h3></div>${bars(S.byPos,POSK,k=>T.POSS[k])}<div class="card-h" style="margin-top:24px"><h3>Por tema</h3></div>${bars(S.mods,MODS.filter(m=>!m.exam&&!m.soon).map(m=>m.id),k=>MOD[k].t)}${S.exam.n?`<div class="hbar"><span>Simulacro</span><div class="pbar"><i style="width:${S.exam.best*10}%"></i></div><em>${S.exam.best.toFixed(1)}</em></div>`:''}</div></div>
  <div><div class="card"><div class="card-h"><h3>Errores por repasar</h3><span class="badge" style="${S.mistakes.length?'':'background:var(--bg2);color:var(--ink3)'}">${S.mistakes.length}</span></div>
  ${S.mistakes.length?S.mistakes.slice().reverse().slice(0,30).map(m=>`<div class="mist"><b>${H(pretty(qLabel(m)))}</b><span><span class="tag-s ${({build:'tg-rose',id:'tg-blue',spell:'tg-gold'})[m.mode]}">${MODES[m.mode].t}</span> ${T.POSS[m.pos]}${m.n>1?' · '+m.n+'×':''}</span></div>`).join('')+`<button class="btn rose block" style="margin-top:16px" data-start="mix|errores">${I('heal',2)} Repasar errores</button>`:'<p class="prose" style="margin:0">Nada pendiente. Cuando te equivoques, el acorde se guarda aquí para repasarlo.</p>'}</div>
  <button class="btn ghost block" data-act="reset">Borrar mi progreso</button></div></div></div>`;}
@@ -907,12 +1560,14 @@ let lastHash=null;
 function render(keep){const h=(location.hash||'#home').slice(1);let cur='home',body,full=false;
  if(h==='learn'){cur='learn';body=vLearn();}else if(h.startsWith('lesson/')){cur='learn';body=vLesson(+h.split('/')[1]||0);}
  else if(h==='prac'||h==='quiz'){cur='prac';body=Q?vQuiz():vPrac();full=!!Q;}else if(h==='lab'){cur='lab';body=vLab();}else if(h==='prog'){cur='prog';body=vProg();}
- else if(h==='tarea'){cur='home';body=vTarea();}else body=vHome();
+ else if(h==='ent'||h.startsWith('ent/')){cur='ent';body=ENT.view(h);}
+ else if(h==='tarea'){cur='home';body=vTarea();}
+ else if(h==='m/ent'){cur='ent';body=ENT.view('ent');}else if(h.startsWith('m/')){cur='learn';body=vModule(h.slice(2));}else if(h==='mq'){cur='learn';body=Q2?vMQ():vLearn();full=!!Q2;}else body=vHome();
  document.body.classList.toggle('still',!!keep);
  $('#app').innerHTML=body;decorate($('#app'));$('#app').classList.toggle('full',full);
  const nav=$('#nav');nav.innerHTML=navHTML(cur);nav.classList.toggle('hide',full);
  if(!keep)requestAnimationFrame(()=>{const ms=[...document.querySelectorAll('.piano .dot')].map(e=>+e.parentElement.dataset.m);if(ms.length)scrollPiano(Math.min(...ms),Math.max(...ms));else scrollPiano(60,71);});}
-function rerenderKeep(){const y=scrollY;const sc=[...document.querySelectorAll('.piano-sc')].map(e=>e.scrollLeft);render(true);scrollTo(0,y);document.querySelectorAll('.piano-sc').forEach((e,i)=>{e.style.scrollBehavior='auto';e.scrollLeft=sc[i]||0;});if(Q)A.seen=1;}
+function rerenderKeep(){const y=scrollY;const sc=[...document.querySelectorAll('.piano-sc')].map(e=>e.scrollLeft);render(true);scrollTo(0,y);document.querySelectorAll('.piano-sc').forEach((e,i)=>{e.style.scrollBehavior='auto';e.scrollLeft=sc[i]||0;});if(Q)A.seen=1;if(Q2)A2.seen=1;}
 function start(mode,src){Q=buildSession(mode,src);A={};closeSheet();if(location.hash==='#quiz')render();else location.hash='#quiz';scrollTo(0,0);}
 const ACT={
  play:d=>AU.play(d.m.split(',').map(Number)),pm1:d=>AU.play(d.m.split(',').map(Number),'both'),
@@ -937,8 +1592,493 @@ const ACT={
 document.addEventListener('click',e=>{AU.init();const s=e.target.closest('[data-start]');if(s){const [m,src]=s.dataset.start.split('|');start(m,src);return;}
  const a=e.target.closest('[data-act]');if(a&&ACT[a.dataset.act]&&!a.disabled){ACT[a.dataset.act](a.dataset);return;}
  const g=e.target.closest('[data-go]');if(g){location.hash='#'+g.dataset.go;}});
-$('#scrim').addEventListener('click',()=>{if(Q&&A.done)return;closeSheet();});
-addEventListener('hashchange',()=>{if(location.hash!=='#quiz'&&Q){Q=null;A={};}closeSheet();render();scrollTo(0,0);});
-if(document.fonts)document.fonts.ready.then(()=>{if(!Q)render(true);});
+$('#scrim').addEventListener('click',()=>{if(Q&&A.done)return;if(Q2&&A2.done)return;closeSheet();});
+addEventListener('hashchange',()=>{if(location.hash!=='#quiz'&&Q){Q=null;A={};}if(location.hash!=='#mq'&&Q2){Q2=null;A2={};}closeSheet();render();scrollTo(0,0);});
+</script><script>/* ===== Temas del examen: motor de ejercicios genérico ===== */
+S.mods=S.mods||{};S.mmist=S.mmist||[];S.exam=S.exam||{best:null,last:null,n:0};
+const RC=['#B56F78','#B8923F','#5F87A6','#7A5C4A'];
+const LN=l=>S.sys==='let'?T.LET[l]:T.SOL[l];
+const sy=(r,t)=>X.sym(r,t);
+const ord=r=>r+'ª';
+const pro=()=>S.level==='pro';
+const BASICK=['C','G','D','A','E','B','F','Bb','Eb','Ab','Db'];
+const BASICm=['A','E','B','F#','C#','G#','D','G','C','F','Bb','Eb'];
+const keyMaj=()=>rnd(pro()?X.MAJK:BASICK.map(T.parseNote));
+const keyMin=()=>rnd(pro()?X.MINK:BASICm.map(T.parseNote));
+const okR=(r,ty)=>{const mx=X.maxAcc(r,ty);if(pro())return mx<=2;if(mx>1)return false;if((r.l===2||r.l===6)&&r.a===1)return false;if((r.l===3||r.l===0)&&r.a===-1)return false;return true;};
+const rootFor=ty=>{let r,g=0;do{r=rnd(T.ALLROOTS);}while(!okR(r,ty)&&g++<200);return {l:r.l,a:r.a};};
+const rn4=(v)=>v.notes.map((n,i)=>({n,c:RC[v.roles[i]]}));
+const mk4=(v,type)=>{const o={};v.notes.forEach((n,i)=>o[T.midi(n)]={c:'r'+v.roles[i],t:X.CT[type].ro[v.roles[i]]});return o;};
+const legend4=type=>`<div class="legend">${X.CT[type].ro.map((r,i)=>`<span><i style="background:${RC[i]}"></i>${i?ord(r):'fundamental'}</span>`).join('')}</div>`;
+const nl=ns=>ns.map(nm).join(' – ');
+const cpill=s=>`<span class="cpill">${pretty(s)}</span>`;
+const MSTR=ms=>ms.join(',');
+const seqPlay=(chords,gap=1.05)=>{chords.forEach((ms,i)=>setTimeout(()=>AU.play(ms,'block'),i*gap*1000));};
+// paso a paso: construir un acorde intervalo por intervalo
+function stepsChord(root,type){const r={l:root.l,a:root.a,o:4};const ct=X.CT[type];const out=[`Empieza en la fundamental: <b>${nm(r)}</b>.`];
+ ct.iv.forEach(([ls,st],i)=>{const n=X.ad(r,ls,st);const letters=[];for(let k=0;k<=ls;k++)letters.push(LN((r.l+k)%7));
+  const nat={l:n.l,a:0,o:n.o};const d=T.midi(nat)-T.midi(r);const role=ct.ro[i+1];const df=st-d;
+  let s=`La <b>${ord(role)}</b> es una <b>${X.INTW[ls+':'+st]}</b> (${X.SEMW(st)}). Cuenta ${ls+1} letras: ${letters.join(' → ')}.`;
+  s+=df===0?` ${letters[ls]} natural queda justo → <b>${nm(n)}</b>.`:` De ${nm(r)} a ${letters[ls]} natural hay ${d}; necesitas ${st}, así que ${df>0?'sube':'baja'} ${Math.abs(df)===1?'medio tono':'un tono'} → <b>${nm(n)}</b>.`;
+  out.push(s);});
+ out.push(`Listo: <b>${pretty(sy(root,type))}</b> = <b>${nl(X.tones(root,type))}</b> (${ct.f}).`);return out;}
+const POSD={fund:'la fundamental en el bajo',inv1:'la 3ª en el bajo',inv2:'la 5ª en el bajo',inv3:'la 7ª en el bajo'};
+function stepsPos(root,type,pos){const tn=X.tones(root,type);const v=X.voicing(root,type,pos);const ro=X.CT[type].ro;
+ const s=[`Notas de ${pretty(sy(root,type))} en terceras: <b>${nl(tn)}</b>.`];
+ if(pos.startsWith('d2')){const inv=+pos.slice(2)||0;const c=X.close(root,type,inv);
+  s.push(`Arma primero la <b>${X.POS4[['fund','inv1','inv2','inv3'][inv]]}</b> (lo más junta posible): <b>${nl(c.notes)}</b>.`);
+  s.push(`Cuenta las voces <b>desde arriba</b>: 1ª = ${nm(c.notes[3])}, <b>2ª = ${nm(c.notes[2])}</b>.`);
+  s.push(`<b>Drop 2</b>: esa 2ª voz baja una octava y queda en el bajo → <b>${nl(v.notes)}</b>.`);}
+ else s.push(`<b>${X.POS4[pos]}</b> = ${POSD[pos]} (${nm(tn[v.roles[0]])}) y las demás encima, lo más juntas posible → <b>${nl(v.notes)}</b>.`);
+ return s;}
+const posName=p=>p.startsWith('d2')?'Drop 2':X.POS4[p];
+/* ===== Generadores por tema ===== */
+const TIPOS7=['maj7','7','m7','m7b5','dim7','mmaj7','maj7s5','6','m6'];
+const POS7=['fund','inv1','inv2','inv3'];
+function chordOpts(root,type,pool){const out=[{root,type}];const seen=new Set([sy(root,type)]);
+ const add=(r,t)=>{if(out.length>=4||X.maxAcc(r,t)>2)return;const k=sy(r,t);if(seen.has(k))return;seen.add(k);out.push({root:{l:r.l,a:r.a},type:t});};
+ const near={maj7:['7','mmaj7','maj7s5','6'],'7':['maj7','m7','m7b5'],m7:['7','m7b5','m6','mmaj7'],m7b5:['dim7','m7','7'],dim7:['m7b5','m6','m7'],mmaj7:['m7','maj7','m6'],maj7s5:['maj7','7','mmaj7'],'6':['maj7','m6','7'],m6:['m7','6','m7b5']}[type]||pool;
+ shuffle(near).forEach(t=>add(root,t));let g=0;while(out.length<4&&g++<40)add(rootFor(type),rnd(pool));return shuffle(out);}
+const G7={
+ build7(){const type=rnd(TIPOS7.slice(0,7)),root=rootFor(type),pos=rnd(POS7);const v=X.voicing(root,type,pos);
+  return {kind:'keys',key:'b7|'+T.key(root)+type+pos,prompt:{k:'Tócalo en el piano, de abajo hacia arriba',h:sy(root,type),sub:X.POS4[pos]},target:v.notes,roles:v.roles,type,span:'close',steps:[...stepsChord(root,type).slice(0,-1),...stepsPos(root,type,pos).slice(1)]};},
+ id7(){const type=rnd(TIPOS7),root=rootFor(type),pos=rnd(type==='6'||type==='m6'?['fund']:POS7.slice(0,2).concat('fund'));const v=X.voicing(root,type,pos);
+  const os=chordOpts(root,type,TIPOS7);
+  return {kind:'choice',key:'i7|'+T.key(root)+type+pos,prompt:{k:'¿Qué acorde es?',staff:[{notes:v.notes.map(n=>({n}))}],play:v.notes.map(T.midi)},
+   opts:os.map(o=>{const vv=X.voicing(o.root,o.type,pos);return {h:sy(o.root,o.type),notes:vv.notes};}),ans:os.findIndex(o=>T.same(o.root,root)&&o.type===type),
+   steps:[`Lee de abajo hacia arriba: <b>${nl(v.notes)}</b>.`,`Acomódalas en terceras (letra sí, letra no): <b>${nl(X.tones(root,type))}</b>. La de abajo de esa torre es la fundamental: <b>${nm(root)}</b>.`,`Mide desde la fundamental: ${X.CT[type].iv.map(([ls,st],i)=>`${ord(X.CT[type].ro[i+1])} = ${X.INTW[ls+':'+st]}`).join(', ')} → <b>${pretty(sy(root,type))}</b> (${X.CT[type].d}).`,pos!=='fund'?`Está en <b>${X.POS4[pos]}</b>: ${POSD[pos]}.`:'Está en cerrada: la fundamental en el bajo.']};},
+ spell7(){const type=rnd(TIPOS7),root=rootFor(type);const tn=X.tones(root,type);
+  return {kind:'spell',key:'s7|'+T.key(root)+type,prompt:{k:'Escribe sus notas: fundamental, 3ª, 5ª y '+(X.CT[type].ro[3]==='6'?'6ª':'7ª'),h:sy(root,type)},slots:X.CT[type].ro.map((r,i)=>i?ord(r):'fund'),target:tn,steps:stepsChord(root,type)};},
+ armo(){const k=keyMaj();const h=X.harmonize(k,'mayor');const d=rnd([1,2,3,4,5,6]);const c=h[d];
+  if(Math.random()<.5){const os=shuffle([c,...shuffle(h.filter((_,i)=>i!==d)).slice(0,3)]);
+   return {kind:'choice',key:'ar|'+T.key(k)+d,prompt:{k:'Armonización con tétradas',h:`${X.ROM[d]}${X.rsuf(c.type)} de ${T.letName(k)}`,sub:'¿qué acorde es?'},opts:os.map(o=>({h:o.sym,notes:X.close(o.root,o.type,0).notes})),ans:os.indexOf(c),
+    steps:[`La escala de ${pretty(T.letName(k))} mayor: <b>${X.scale(k,'mayor').map(nm).join(' ')}</b>.`,`Cuenta hasta el grado ${X.ROM[d]}: <b>${nm(c.root)}</b>.`,`En mayor el patrón es siempre <b>Imaj7 · IIm7 · IIIm7 · IVmaj7 · V7 · VIm7 · VIIm7(♭5)</b>, así que el ${X.ROM[d]} es <b>${c.roman}</b>.`,`→ <b>${pretty(c.sym)}</b> = ${nl(X.tones(c.root,c.type))} (todas notas de la escala).`]};}
+  const os=shuffle([c.roman,...shuffle(h.filter((_,i)=>i!==d).map(x=>x.roman)).slice(0,3)]);
+  return {kind:'choice',key:'ar2|'+T.key(k)+d,prompt:{k:`En ${pretty(T.letName(k))} mayor`,h:c.sym,sub:'¿qué grado es?'},opts:os.map(o=>({h:o})),ans:os.indexOf(c.roman),
+   steps:[`Escala de ${pretty(T.letName(k))} mayor: <b>${X.scale(k,'mayor').map((n,i)=>X.ROM[i]+' '+nm(n)).join(' · ')}</b>.`,`${pretty(c.sym)} empieza en <b>${nm(c.root)}</b> = grado <b>${X.ROM[d]}</b>.`,`Su tipo es ${X.CT[c.type].suf} → <b>${c.roman}</b>.`]};}
+};
+const GF={
+ funcion(){const k=keyMaj();const h=X.harmonize(k,'mayor');const d=rnd([0,1,2,3,4,5,6]);const c=h[d];const f=X.FUN[d];const os=['T','SD','D'];
+  return {kind:'choice',key:'fn|'+T.key(k)+d,prompt:{k:`En ${pretty(T.letName(k))} mayor`,h:c.sym,sub:'¿a qué familia pertenece?'},opts:os.map(o=>({h:X.FUNN[o]})),ans:os.indexOf(f),
+   steps:[`Busca el grado: escala de ${pretty(T.letName(k))} = ${X.scale(k,'mayor').map((n,i)=>X.ROM[i]+' '+nm(n)).join(' · ')}. ${pretty(c.sym)} es el <b>${c.roman}</b>.`,`Tónica = <b>I, IIIm, VIm</b> (descanso). Subdominante = <b>IV, IIm</b> (se aleja). Dominante = <b>V7, VIIm7(♭5)</b> (tensión, quiere ir a la tónica).`,`→ ${c.roman} es <b>${X.FUNN[f]}</b>.`]};},
+ cadena(){const k=keyMaj();const h=X.harmonize(k,'mayor');const sd=rnd([1,3]);const chain=[h[sd],h[4],h[0]];const miss=rnd([0,1,2]);
+  const fam=[[1,3],[4,6],[0,2,5]][miss];const right=miss===0?h[sd]:chain[miss];
+  const others=shuffle(h.filter(x=>!(miss===0?[1,3]:fam).includes(x.deg))).slice(0,3);const os=shuffle([right,...others]);
+  const show=chain.map((c,i)=>i===miss?'?':c.sym).join(' → ');
+  return {kind:'choice',key:'cd|'+T.key(k)+sd+miss,prompt:{k:`SD → D → T en ${pretty(T.letName(k))} mayor`,h:show,sub:'¿qué acorde falta?'},opts:os.map(o=>({h:o.sym,notes:X.close(o.root,o.type,0).notes})),ans:os.indexOf(right),
+   steps:[`El camino clásico es <b>subdominante → dominante → tónica</b>.`,`En ${pretty(T.letName(k))}: SD = ${pretty(h[3].sym)} o ${pretty(h[1].sym)} · D = ${pretty(h[4].sym)} · T = ${pretty(h[0].sym)}.`,`Falta la <b>${['subdominante','dominante','tónica'][miss]}</b>${miss===0?' (IV o IIm; aquí va el que está en la lista)':''} → <b>${pretty(right.sym)}</b>.`,miss===0&&sd===1?`IIm7 → V7 → Imaj7 es el famoso <b>II–V–I</b>.`:`Escúchalo: la tensión del ${pretty(h[4].sym)} se resuelve en ${pretty(h[0].sym)}.`],play:null,prog:chain.map(c=>X.close(c.root,c.type,0).notes.map(T.midi))};},
+ iivi(){const k=keyMaj();const h=X.harmonize(k,'mayor');const ok=[h[1],h[4],h[0]].map(c=>c.sym).join(' – ');
+  const r2=h[1].root,r5=h[4].root,r1=h[0].root;
+  const bad=[[sy(r2,'7'),h[4].sym,h[0].sym],[h[1].sym,sy(r5,'m7'),h[0].sym],[h[1].sym,h[4].sym,sy(r1,'7')],[h[3].sym,h[4].sym,h[0].sym]].map(a=>a.join(' – '));
+  const os=shuffle([ok,...shuffle(bad).slice(0,3)]);
+  return {kind:'choice',key:'25|'+T.key(k),prompt:{k:'II – V – I',h:pretty(T.letName(k))+' mayor',sub:'elige la progresión correcta'},opts:os.map(o=>({h:o})),ans:os.indexOf(ok),
+   steps:[`II–V–I = <b>IIm7 – V7 – Imaj7</b>: subdominante → dominante → tónica.`,`Escala de ${pretty(T.letName(k))}: el II es ${nm(r2)}, el V es ${nm(r5)} y el I es ${nm(r1)}.`,`Con el patrón de la escala mayor (IIm7, V7, Imaj7) → <b>${pretty(ok)}</b>.`],prog:[h[1],h[4],h[0]].map(c=>X.close(c.root,c.type,0).notes.map(T.midi))};}
+};
+const GP={
+ drop2(){const type=rnd(['maj7','7','m7','m7b5','mmaj7','6','m6','dim7']),root=rootFor(type),inv=rnd([0,0,1,2,3]);const c=X.close(root,type,inv),d=X.drop2(root,type,inv);
+  return {kind:'keys',key:'d2|'+T.key(root)+type+inv,prompt:{k:'Esta es la cerrada. Tócala en Drop 2',h:sy(root,type),sub:'Drop 2',staff:[{notes:rn4(c),label:X.POS4[['fund','inv1','inv2','inv3'][inv]]}],play:c.notes.map(T.midi)},target:d.notes,roles:d.roles,type,span:'drop',steps:stepsPos(root,type,'d2'+inv)};},
+ posId(){const type=rnd(['maj7','7','m7','m7b5','mmaj7']),root=rootFor(type);const pos=rnd(['fund','inv1','inv2','inv3','d20','d21']);const v=X.voicing(root,type,pos);
+  const os=['cerrada','1ª inv.','2ª inv.','3ª inv.','Drop 2'];const right=posName(pos);
+  return {kind:'choice',key:'pi|'+T.key(root)+type+pos,prompt:{k:`${pretty(sy(root,type))} · ¿en qué posición está?`,staff:[{notes:v.notes.map(n=>({n}))}],play:v.notes.map(T.midi)},opts:os.map(o=>({h:o})),ans:os.indexOf(right),small:1,
+   steps:[`Lee de abajo hacia arriba: <b>${nl(v.notes)}</b>.`,T.midi(v.notes[3])-T.midi(v.notes[0])>12?`Abarca <b>más de una octava</b> (${T.midi(v.notes[3])-T.midi(v.notes[0])} semitonos): no es cerrada. Si regresas el bajo una octava arriba quedaría ${nl([...v.notes.slice(1,3),{...v.notes[0],o:v.notes[0].o+1},v.notes[3]])}, que es una cerrada con esa nota como 2ª voz desde arriba → <b>Drop 2</b>.`:`Todo cabe en una octava: es una posición <b>cerrada</b>.`,...(pos.startsWith('d2')?[]:[`El bajo es ${nm(v.notes[0])} = ${['la fundamental','la 3ª','la 5ª','la 7ª'][v.roles[0]]} → <b>${right}</b>.`])]};},
+ drop2spell(){const type=rnd(['maj7','7','m7','m7b5']),root=rootFor(type);const d=X.drop2(root,type,0);
+  return {kind:'spell',key:'d2s|'+T.key(root)+type,prompt:{k:'Escribe el Drop 2 (de la cerrada), de abajo hacia arriba',h:sy(root,type),sub:'Drop 2'},slots:['bajo','2','3','arriba'],target:d.notes,steps:[...stepsChord(root,type).slice(-1),...stepsPos(root,type,'d20')]};}
+};
+const GS={
+ secDom(){const k=keyMaj();const h=X.harmonize(k,'mayor');const of=rnd([1,2,3,4,5]);const d=X.chordOf(k,{sec:'V',of});const tg=h[of];
+  if(Math.random()<.5){const others=shuffle([1,2,3,4,5].filter(x=>x!==of)).slice(0,3).map(o=>X.chordOf(k,{sec:'V',of:o}));const os=shuffle([d,...others]);
+   return {kind:'choice',key:'sd1|'+T.key(k)+of,prompt:{k:`En ${pretty(T.letName(k))} mayor`,h:sy(d.root,d.type),sub:'¿qué dominante secundaria es?'},opts:os.map(o=>({h:o.roman})),ans:os.indexOf(d),
+    steps:[`Primero: ${pretty(sy(d.root,d.type))} es un acorde <b>7</b>, pero el V7 de ${pretty(T.letName(k))} es ${pretty(h[4].sym)} → es una <b>dominante secundaria</b>.`,`Un dominante resuelve <b>una 5ª justa abajo</b>: ${nm(d.root)} → <b>${nm(tg.root)}</b>. Su 3ª (${nm(X.tones(d.root,'7')[1])}) es la sensible de ${nm(tg.root)}.`,`${pretty(tg.sym)} es el <b>${tg.roman}</b> de ${pretty(T.letName(k))} → <b>${d.roman}</b>.`],prog:[d,tg].map(c=>X.close(c.root,c.type,0).notes.map(T.midi))};}
+  const cands=shuffle([1,2,3,4,5].filter(x=>x!==of)).slice(0,3).map(o=>X.chordOf(k,{sec:'V',of:o}));const os=shuffle([d,...cands]);
+  return {kind:'choice',key:'sd2|'+T.key(k)+of,prompt:{k:`En ${pretty(T.letName(k))} mayor`,h:d.roman,sub:'¿qué acorde es?'},opts:os.map(o=>({h:sy(o.root,o.type),notes:X.close(o.root,o.type,0).notes})),ans:os.indexOf(d),
+   steps:[`${d.roman} = el V7 <b>del</b> ${X.ROM[of]}. El ${X.ROM[of]} de ${pretty(T.letName(k))} es <b>${pretty(tg.sym)}</b>.`,`Sube una 5ª justa desde ${nm(tg.root)} (o baja una 4ª): <b>${nm(d.root)}</b>.`,`Hazlo acorde 7 (3M + 3m + 3m) → <b>${pretty(sy(d.root,d.type))}</b> = ${nl(X.tones(d.root,'7'))}.`]};},
+ resuelve(){const k=keyMaj();const h=X.harmonize(k,'mayor');const of=rnd([1,2,3,4,5]);const d=X.chordOf(k,{sec:'V',of});const tg=h[of];
+  const os=shuffle([tg,...shuffle(h.filter((_,i)=>i!==of)).slice(0,3)]);
+  return {kind:'choice',key:'rs|'+T.key(k)+of,prompt:{k:`En ${pretty(T.letName(k))} mayor`,h:sy(d.root,d.type)+' → ?',sub:'¿a dónde resuelve?'},opts:os.map(o=>({h:o.sym,notes:X.close(o.root,o.type,0).notes})),ans:os.indexOf(tg),
+   steps:[`Busca el dominante: ${pretty(sy(d.root,d.type))} es un 7 que no es el V7 de la tonalidad.`,`Resuelve <b>una 5ª justa abajo</b> (= 4ª arriba): ${nm(d.root)} → <b>${nm(tg.root)}</b>.`,`En ${pretty(T.letName(k))} mayor, sobre ${nm(tg.root)} está <b>${pretty(tg.sym)}</b> (${tg.roman}) → ${pretty(sy(d.root,d.type))} es <b>${d.roman}</b>.`],prog:[d,tg].map(c=>X.close(c.root,c.type,0).notes.map(T.midi))};},
+ analiza(){const k=keyMaj();const p=rnd(X.PROGS);const cs=p.map(t=>X.chordOf(k,t));const h=X.harmonize(k,'mayor');
+  const target=cs.map(c=>c.roman);const pal=new Set(target);const extra=['V7/II','V7/III','V7/IV','V7/V','V7/VI','IIm7','IIIm7','VIm7','IVmaj7','Imaj7','V7','IIm7(♭5)/VI','IIm7/IV'];
+  shuffle(extra).forEach(e=>{if(pal.size<8)pal.add(e);});
+  const steps=[`<b>Primero busca los dominantes</b> (acordes 7). En ${pretty(T.letName(k))} mayor el único V7 diatónico es ${pretty(h[4].sym)}.`];
+  cs.forEach((c,i)=>{const s=pretty(sy(c.root,c.type));if(c.target!=null&&c.type==='7')steps.push(`${s}: es 7 pero no es ${pretty(h[4].sym)} → secundaria. Resuelve una 5ª abajo a ${nm(h[c.target].root)} (${pretty(h[c.target].sym)} = ${h[c.target].roman}) → <b>${c.roman}</b>.`);
+   else if(c.target!=null)steps.push(`${s}: va justo antes de su dominante y está un tono arriba del destino → es su II. ${c.type==='m7b5'?'Es m7(♭5) porque el destino es menor':'Es m7 porque el destino es mayor'} → <b>${c.roman}</b>.`);
+   else steps.push(`${s}: es diatónico (grado ${X.ROM[c.deg]} de ${pretty(T.letName(k))}) → <b>${c.roman}</b>.`);});
+  return {kind:'multi',key:'an|'+T.key(k)+X.PROGS.indexOf(p),prompt:{k:`Analiza en ${pretty(T.letName(k))} mayor`,h:'',sub:'toca un acorde y elige su cifrado romano'},items:cs.map(c=>sy(c.root,c.type)),palette:shuffle([...pal]),target,steps,prog:cs.map(c=>X.close(c.root,c.type,0).notes.map(T.midi))};}
+};
+const KINDN={natural:'natural',armonica:'armónica',melodica:'melódica'};
+const GM={
+ escala(){const kind=rnd(['natural','armonica','melodica']);const k=keyMin();const s=X.scale(k,kind);
+  const st=[`Empieza con la <b>natural</b> (mismas notas que su relativa mayor, ${pretty(T.letName(X.relMajor(k)))}): <b>${X.scale(k,'natural').map(nm).join(' ')}</b>.`];
+  if(kind==='armonica')st.push(`<b>Armónica</b> = natural con la <b>7ª subida</b> medio tono: ${nm(X.scale(k,'natural')[6])} → <b>${nm(s[6])}</b> (la sensible).`);
+  if(kind==='melodica')st.push(`<b>Melódica</b> = natural con la <b>6ª y 7ª subidas</b>: ${nm(X.scale(k,'natural')[5])} → <b>${nm(s[5])}</b> y ${nm(X.scale(k,'natural')[6])} → <b>${nm(s[6])}</b>.`);
+  st.push(`Cada letra una sola vez, en orden → <b>${s.map(nm).join(' ')}</b>.`);
+  return {kind:'spell',key:'es|'+T.key(k)+kind,prompt:{k:'Escribe la escala, grado por grado',h:`${pretty(T.letName(k))} menor ${KINDN[kind]}`},slots:['1','2','3','4','5','6','7'],target:s,steps:st,scale:1};},
+ armoMenor(){const kind=rnd(['natural','armonica','melodica']);const k=keyMin();const h=X.harmonize(k,kind);const d=rnd([0,1,2,3,4,5,6]);const c=h[d];
+  const alts=['natural','armonica','melodica'].map(kk=>X.harmonize(k,kk)[d]).filter(x=>x.sym!==c.sym);const pool=[...alts,...shuffle(h.filter((_,i)=>i!==d))];const seen=new Set([c.sym]);const os=[c];
+  for(const x of pool){if(os.length>=4)break;if(!seen.has(x.sym)){seen.add(x.sym);os.push(x);}}const oo=shuffle(os);
+  return {kind:'choice',key:'am|'+T.key(k)+kind+d,prompt:{k:`${pretty(T.letName(k))} menor ${KINDN[kind]}`,h:`grado ${X.ROM[d]}`,sub:'¿qué tétrada sale?'},opts:oo.map(o=>({h:o.sym,notes:X.close(o.root,o.type,0).notes})),ans:oo.indexOf(c),
+   steps:[`Escala: <b>${X.scale(k,kind).map(nm).join(' ')}</b>.`,`Desde el grado ${X.ROM[d]} apila letra sí, letra no, usando solo notas de la escala: <b>${nl(X.tones(c.root,c.type))}</b>.`,`Mide: ${X.CT[c.type].f} → <b>${pretty(c.sym)}</b> (${c.roman}).`,`Patrón ${KINDN[kind]}: ${h.map(x=>pretty(x.roman)).join(' · ')}.`]};},
+ porque(){const k=keyMin();const n=X.harmonize(k,'natural'),a=X.harmonize(k,'armonica');const qs=[
+   {h:`En ${pretty(T.letName(k))} menor natural, el V es…`,o:[n[4].sym,a[4].sym,sy(n[4].root,'maj7'),sy(n[4].root,'m7b5')],a:0,st:[`Natural: ${X.scale(k,'natural').map(nm).join(' ')}. Sobre el V (${nm(n[4].root)}) sale <b>${pretty(n[4].sym)}</b>.`,`Su 3ª es ${nm(X.tones(n[4].root,n[4].type)[1])}, que está <b>un tono</b> abajo de ${nm(k)}: no hay sensible, por eso no es un dominante real.`]},
+   {h:`¿Qué cambia la armónica para tener V7 en ${pretty(T.letName(k))} menor?`,o:['sube la 7ª','sube la 6ª y la 7ª','baja la 3ª','sube la 5ª'],a:0,st:[`Sube la <b>7ª</b>: ${nm(X.scale(k,'natural')[6])} → ${nm(X.scale(k,'armonica')[6])}. Ahora el V es <b>${pretty(a[4].sym)}</b> y su 3ª es la sensible (medio tono abajo de ${nm(k)}).`]},
+   {h:'En la tradición clásica, la menor melódica…',o:['sube melódica y baja natural','es igual de subida y de bajada','sube natural y baja armónica','solo existe de bajada'],a:0,st:['Clásica: <b>sube</b> con 6ª y 7ª altas (melódica) y <b>baja</b> como la natural.','En el <b>jazz</b> la menor melódica (“jazz minor”) se usa <b>igual de subida y de bajada</b>.']},
+   {h:`La relativa menor de ${pretty(T.letName(X.relMajor(k)))} mayor es…`,o:[k,X.relMajor(k),X.scale(X.relMajor(k),'mayor')[1],X.scale(X.relMajor(k),'mayor')[2]].map(n=>pretty(T.letName(n))+' menor'),a:0,st:[`La relativa menor está en el <b>6º grado</b> de la mayor (o una 3ª menor abajo): ${pretty(T.letName(X.relMajor(k)))} → <b>${pretty(T.letName(k))}</b>. Mismas notas, misma armadura.`]}];
+  const q=rnd(qs);const opts=q.o.map((h,i)=>({h,i}));const sh=shuffle(opts);
+  return {kind:'choice',key:'pq|'+T.key(k)+qs.indexOf(q),prompt:{k:'Escalas menores',h:'',sub:q.h},opts:sh.map(o=>({h:o.h})),ans:sh.findIndex(o=>o.i===q.a),steps:q.st};}
+};
+function borrowed(k){const maj=new Set(X.harmonize(k,'mayor').map(c=>c.sym));const out=[];
+ ['natural','armonica','melodica'].forEach(kind=>X.harmonize(k,kind).forEach(c=>{if(!maj.has(c.sym)&&!out.some(o=>o.sym===c.sym))out.push({...c,from:kind});}));
+ return out.map(c=>({...c,kinds:['natural','armonica','melodica'].filter(kk=>X.harmonize(k,kk).some(x=>x.sym===c.sym))}));}
+const GI={
+ prestamo(){const k=keyMaj();const b=rnd(borrowed(k).filter(c=>X.maxAcc(c.root,c.type)<=2));const maj=X.harmonize(k,'mayor');const os=shuffle([b,...shuffle(maj).slice(0,3)]);
+  return {kind:'choice',key:'pr|'+T.key(k)+b.sym,prompt:{k:`En ${pretty(T.letName(k))} mayor`,h:'',sub:`¿cuál acorde es préstamo de ${pretty(T.letName(k))} menor?`},opts:os.map(o=>({h:o.sym,notes:X.close(o.root,o.type,0).notes})),ans:os.indexOf(b),
+   steps:[`${pretty(T.letName(k))} mayor y ${pretty(T.letName(k))} menor son <b>homónimas</b>: misma tónica, distinta escala.`,`Las tétradas de ${pretty(T.letName(k))} mayor son: ${maj.map(c=>pretty(c.sym)).join(', ')}.`,`<b>${pretty(b.sym)}</b> no está ahí; sale de ${pretty(T.letName(k))} menor ${b.kinds.map(x=>KINDN[x]).join(' / ')} (grado ${pretty(b.roman)}) → es <b>intercambio modal</b>.`]};},
+ tensiones(){const k=keyMaj();const kind=rnd(['armonica','melodica']);const t=X.v7tensions(k,kind);const r=t.root;
+  const labels=['♭9 y ♭13','9 y ♭13','9 y 13','♯9 y ♭13'];const right=t.n9+' y '+t.n13;
+  if(Math.random()<.5){return {kind:'choice',key:'tv|'+T.key(k)+kind,prompt:{k:`${pretty(T.letName(r))}7 en ${pretty(T.letName(k))} mayor`,h:'',sub:`¿qué tensiones le presta ${pretty(T.letName(k))} menor ${KINDN[kind]}?`},opts:labels.map(h=>({h})),ans:labels.indexOf(right),small:1,
+   steps:[`${pretty(T.letName(k))} menor ${KINDN[kind]}: <b>${X.scale(k,kind).map(nm).join(' ')}</b>.`,`Desde ${nm(r)} (el V), la 9ª es la nota de la escala una 2ª arriba: <b>${nm(t.nine)}</b> = ${t.n9}. La 13ª es una 6ª arriba: <b>${nm(t.thirteen)}</b> = ${t.n13}.`,`→ <b>${pretty(t.label)}</b>.${kind==='armonica'?' (La armónica tiene 6º grado bajo → ♭9.)':' (La melódica tiene 6º grado alto → 9 natural, pero 3er grado bajo → ♭13.)'}`]};}
+  const wrongs=[[t.nine,X.ad({...r,o:4},5,9)],[X.ad({...r,o:4},1,kind==='armonica'?2:1),t.thirteen],[{l:(t.nine.l+6)%7,a:0},t.thirteen]];
+  const pair=(a,b)=>nm(a)+' y '+nm(b);const ok=pair(t.nine,t.thirteen);const enh=T.enhSimple({...t.nine,o:4});
+  const opts=[ok,pair(...wrongs[0]),pair(...wrongs[1])];if(enh)opts.push(pair(enh,t.thirteen));const os=shuffle([...new Set(opts)]);
+  return {kind:'choice',key:'tn|'+T.key(k)+kind,prompt:{k:`${pretty(T.letName(r))}7 con tensiones de ${pretty(T.letName(k))} menor ${KINDN[kind]}`,h:pretty(t.label),sub:'¿cuáles son las notas de esas tensiones?'},opts:os.map(h=>({h})),ans:os.indexOf(ok),
+   steps:[`Escala: <b>${X.scale(k,kind).map(nm).join(' ')}</b>.`,`9ª de ${nm(r)}: la letra que sigue (${LN(t.nine.l)}), tomada de la escala → <b>${nm(t.nine)}</b> (${t.n9}).`,`13ª = 6ª de ${nm(r)}: letra ${LN(t.thirteen.l)} de la escala → <b>${nm(t.thirteen)}</b> (${t.n13}).`,`Ojo con la ortografía: una 9ª siempre usa la letra siguiente a la fundamental.`]};},
+ alterado(){const k=keyMaj();const dom=X.harmonize(k,'mayor')[4].root;const a=X.altChord(dom);const name=T.letName(dom)+'7alt';const v=rnd([0,1,2]);
+  if(v===0){const os=shuffle([a.mm,dom,k,X.ad({...dom,o:4},4,7)].map(n=>({l:n.l,a:n.a})));const right=os.findIndex(n=>T.same(n,a.mm));
+   return {kind:'choice',key:'al0|'+T.key(dom),prompt:{k:'Acorde alterado',h:name,sub:'¿de qué escala sale?'},opts:os.map(n=>({h:T.letName(n)+' menor melódica'})),ans:right,
+    steps:[`El acorde alterado sale del <b>7º grado de la menor melódica</b>.`,`Si ${nm(dom)} es el 7º grado, la escala empieza <b>medio tono arriba</b>: <b>${nm(a.mm)}</b>.`,`${pretty(T.letName(a.mm))} menor melódica = ${a.scale.map(nm).join(' ')} → desde ${nm(dom)}: ${[...a.scale.slice(6),...a.scale.slice(0,6)].map(nm).join(' ')}.`]};}
+  if(v===1){const os=['3ª mayor','4ª disminuida que se evita','♭13','♯11'];
+   return {kind:'choice',key:'al1|'+T.key(dom),prompt:{k:`${pretty(name)} (de ${pretty(T.letName(a.mm))} menor melódica)`,h:nm(a.third),sub:`la escala trae ${nm(a.third)}. ¿Qué es en el acorde?`},opts:os.map(h=>({h})),ans:0,small:1,
+    steps:[`Desde ${nm(dom)}, ${nm(a.third)} está a 4 letras: en la escala es una <b>4ª disminuida</b> (4 semitonos).`,`Pero 4 semitonos suenan igual que una <b>3ª mayor</b>: ${nm(a.third)} = <b>${nm(a.chord[1].n)}</b> (enarmónica).`,`Un dominante necesita su 3ª mayor, así que en el acorde la <b>reinterpretamos</b> y la escribimos ${nm(a.chord[1].n)}.`,`Igual con ${nm(a.sharp9)}: en el acorde es la <b>♯9</b> = ${nm(a.chord[5].n)}.`]};}
+  const ch=a.chord;const KL=k=>k==='F'?'fund.':k==='3'?'3ª':k;const right=ch.map(c=>KL(c.k)+' '+nm(c.n)).join(' · ');
+  const wrong1=ch.map(c=>c.k==='3'?'3ª '+nm(a.third):c.k==='♯9'?'♯9 '+nm(a.sharp9):KL(c.k)+' '+nm(c.n)).join(' · ');
+  const wrong2=ch.map(c=>c.k==='♭13'?'13 '+nm(X.ad({...dom,o:4},5,9)):KL(c.k)+' '+nm(c.n)).join(' · ');
+  const wrong3=ch.map(c=>c.k==='♭5'?'5 '+nm(X.ad({...dom,o:4},4,7)):KL(c.k)+' '+nm(c.n)).join(' · ');
+  const os=shuffle([right,wrong1,wrong2,wrong3]);
+  return {kind:'choice',key:'al2|'+T.key(dom),prompt:{k:'¿Cómo se escriben sus notas como acorde?',h:name},opts:os.map(h=>({h})),ans:os.indexOf(right),
+   steps:[`${pretty(name)} sale de <b>${pretty(T.letName(a.mm))} menor melódica</b>: ${a.scale.map(nm).join(' ')}.`,`Como acorde: F, <b>3</b>, ♭5, ♭7 y las tensiones ♭9, <b>♯9</b>, ♭13.`,`Reinterpretación enarmónica: ${nm(a.third)} → <b>${nm(ch[1].n)}</b> (3ª mayor) y ${nm(a.sharp9)} → <b>${nm(ch[5].n)}</b> (♯9).`,`→ <b>${right}</b>.`]};}
+};
+/* ===== Señalizaciones: dibujos ===== */
+const GBX={segno:[4,-27,546,786],coda:[-4,-158,959,1056],fermata:[3,-3,602,332]};
+function symG(k,h=34,col='currentColor'){const [x,y,w,hh]=GBX[k];const vb=`${x-30} ${-(y+hh)-30} ${w+60} ${hh+60}`;return `<svg class="symg" viewBox="${vb}" height="${h}" style="aspect-ratio:${((w+60)/(hh+60)).toFixed(3)}" aria-hidden="true"><path d="${GLY[k]}" transform="scale(1,-1)" fill="${col}"/></svg>`;}
+const symIn=(k,x,y,h)=>{const [gx,gy,w,hh]=GBX[k];const sc=h/hh;return `<g transform="translate(${x} ${y}) scale(${sc.toFixed(4)})"><path d="${GLY[k]}" transform="translate(${-gx} ${gy+hh}) scale(1,-1)" fill="${INK}"/></g>`;};
+function barSVG(o={}){const W=o.w||104,Hh=104,y0=44,sp=6;let s=`<svg viewBox="0 0 ${W} ${Hh}" width="${W}" height="${Hh}" aria-hidden="true">`;
+ for(let i=0;i<5;i++)s+=`<line x1="0" x2="${W}" y1="${y0+i*sp}" y2="${y0+i*sp}" stroke="${INK}" stroke-width=".8" opacity=".35"/>`;
+ const yb=y0+4*sp;const dots=(x)=>`<circle cx="${x}" cy="${y0+1.5*sp}" r="2.1" fill="${INK}"/><circle cx="${x}" cy="${y0+2.5*sp}" r="2.1" fill="${INK}"/>`;
+ if(o.rs)s+=`<rect x="1" y="${y0}" width="3.6" height="${4*sp}" fill="${INK}"/><line x1="8" x2="8" y1="${y0}" y2="${yb}" stroke="${INK}" stroke-width="1.1"/>${dots(13)}`;else s+=`<line x1="1" x2="1" y1="${y0}" y2="${yb}" stroke="${INK}" stroke-width="1.1" opacity=".7"/>`;
+ if(o.re)s+=`<rect x="${W-4.6}" y="${y0}" width="3.6" height="${4*sp}" fill="${INK}"/><line x1="${W-8}" x2="${W-8}" y1="${y0}" y2="${yb}" stroke="${INK}" stroke-width="1.1"/>${dots(W-13)}`;else s+=`<line x1="${W-1}" x2="${W-1}" y1="${y0}" y2="${yb}" stroke="${INK}" stroke-width="${o.last?2.6:1.1}" opacity=".7"/>`;
+ if(o.v)s+=`<path d="M3 34 V18 H${W-4}${o.v===1?' V34':''}" fill="none" stroke="${INK}" stroke-width="1.2"/><text x="8" y="31" font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="${INK}">${o.v}.</text>`;
+ if(o.segno)s+=symIn('segno',o.v?W-26:6,8,24);
+ if(o.coda)s+=symIn('coda',6,6,24)+`<text x="34" y="26" font-family="Fraunces,serif" font-style="italic" font-size="13" fill="${INK}">Coda</text>`;
+ if(o.toCoda)s+=`<text x="${W-30}" y="22" text-anchor="end" font-family="Fraunces,serif" font-style="italic" font-size="11.5" fill="${INK}">al Coda</text>`+symIn('coda',W-26,6,20);
+ if(o.fine)s+=`<text x="${W-5}" y="${yb+16}" text-anchor="end" font-family="Fraunces,serif" font-style="italic" font-weight="600" font-size="13" fill="${INK}">Fine</text>`;
+ if(o.jump)s+=`<text x="${W-5}" y="${yb+(o.fine?30:16)}" text-anchor="end" font-family="Fraunces,serif" font-style="italic" font-size="11.5" fill="${INK}">${o.jump==='DC'?'D.C.':'D.S.'} al ${o.to==='fine'?'Fine':'Coda'}</text>`;
+ if(o.fer)s+=symIn('fermata',W/2-12,22,14);
+ if(o.id)s+=`<text x="${W/2}" y="${y0+2*sp+6}" text-anchor="middle" font-family="Fraunces,serif" font-weight="500" font-size="19" fill="${INK}" paint-order="stroke" stroke="#FFFCF8" stroke-width="5">${o.id}</text>`;
+ if(o.txt)s+=`<text x="${W/2}" y="${y0+2*sp+5}" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-weight="600" font-size="17" fill="${INK}" paint-order="stroke" stroke="#FFFCF8" stroke-width="5">${o.txt}</text>`;
+ return s+'</svg>';}
+const roadHTML=secs=>`<div class="road">${secs.map((x,i)=>`<div class="rb">${barSVG({...x,last:i===secs.length-1})}</div>`).join('')}</div>`;
+const SIMB=[
+ {k:'rep',n:'Barras de repetición',d:'Lo que está entre ‖: y :‖ se toca dos veces. Si no hay ‖:, regresas al principio.',o:{rs:1,re:1,id:'A'}},
+ {k:'cas',n:'1ª y 2ª casilla',d:'La primera vez tocas la 1ª casilla; al repetir, te la saltas y tocas la 2ª.',o:{v:1,re:1}},
+ {k:'dc',n:'D.C. (da capo)',d:'Regresa al principio de la pieza.',o:{txt:'D.C.'}},
+ {k:'ds',n:'D.S. (dal segno)',d:'Regresa al signo 𝄋 (Segno).',o:{txt:'D.S.'}},
+ {k:'segno',n:'Segno',d:'El signo 𝄋 al que regresa el D.S.',g:'segno'},
+ {k:'fine',n:'Fine',d:'Aquí termina la pieza cuando vienes de un D.C. o D.S. “al Fine”.',o:{txt:'Fine'}},
+ {k:'alcoda',n:'al Coda',d:'Después del salto, al llegar a este aviso brincas a la Coda.',o:{toCoda:1}},
+ {k:'coda',n:'Coda',d:'La sección final de la pieza, marcada con ⊕.',g:'coda'},
+ {k:'fer',n:'Calderón (fermata)',d:'Sostén esa nota o silencio más tiempo de lo escrito.',g:'fermata'}];
+const simbPic=s=>s.g?`<div class="symbox">${symG(s.g,s.g==='fermata'?26:44,INK)}</div>`:`<div class="symbox">${barSVG({...s.o,w:96})}</div>`;
+const GSi={
+ camino(){const f=rnd(X.ROADS);const secs=f();const log=[];const target=X.road(secs,log);const ids=secs.map(s=>s.id);
+  return {kind:'seq',key:'cm|'+X.ROADS.indexOf(f),prompt:{k:'Sigue el camino',h:'',sub:'¿en qué orden se tocan las secciones?'},map:secs,bank:ids,target,steps:[...log,`Camino completo: <b>${target.join(' → ')}</b>.`]};},
+ simbolo(){const s=rnd(SIMB);const others=shuffle(SIMB.filter(x=>x!==s)).slice(0,3);const os=shuffle([s,...others]);
+  if(Math.random()<.55)return {kind:'choice',key:'sb|'+s.k,prompt:{k:'¿Qué significa este signo?',html:simbPic(s)},opts:os.map(o=>({h:o.n})),ans:os.indexOf(s),small:1,steps:[`<b>${s.n}</b>: ${s.d}`]};
+  return {kind:'choice',key:'sb2|'+s.k,prompt:{k:'¿Qué signo es?',h:'',sub:s.d.replace(/^[^.]*$/,m=>m)},opts:os.map(o=>({h:o.n,pic:simbPic(o)})),ans:os.indexOf(s),pics:1,steps:[`<b>${s.n}</b>: ${s.d}`]};}
+};
+/* ===== Formas ===== */
+function formMap(f,k){const h=X.harmonize(k,'mayor');const c=i=>pretty(h[i].sym);
+ const MAT={A:`${c(0)} ${c(5)} · ${c(1)} ${c(4)}`,B:`${c(2)} ${pretty(sy(X.chordOf(k,{sec:'V',of:1}).root,'7'))} · ${c(1)} ${c(4)}`,C:`${c(3)} ${pretty(sy(h[3].root,'m6'))} · ${c(2)} ${c(5)}`};
+ const blk=(L,n,extra)=>({L,n,mat:extra||MAT[L]});
+ return {AB:[blk('A',8),blk('B',8)],ABA:[blk('A',16),blk('B',16),blk('A',16)],AABA:[blk('A',8),blk('A',8),blk('B',8),blk('A',8)],rondo:[blk('A',8),blk('B',8),blk('A',8),blk('C',8),blk('A',8)],
+  vcp:[blk('V',8,'letra nueva'),blk('C',8,'“misma letra”'),blk('V',8,'letra nueva'),blk('C',8,'“misma letra”'),blk('P',8,'música y letra distintas'),blk('C',8,'“misma letra”')]}[f];}
+const formHTML=bl=>`<div class="fmap">${bl.map((b,i)=>`<div class="fb"><small>Sección ${i+1} · ${b.n} comp.</small><b>${b.mat}</b></div>`).join('')}</div>`;
+const bluesHTML=(bars,hl)=>`<div class="blues">${bars.map((c,i)=>`<div class="${hl===i?'on':''}"><small>${i+1}</small><b>${pretty(c)}</b></div>`).join('')}</div>`;
+const GO={
+ forma(){const k=keyMaj();const f=rnd(['AB','ABA','AABA','rondo','vcp','blues']);const keys=Object.keys(X.FORMS);const os=shuffle([f,...shuffle(keys.filter(x=>x!==f)).slice(0,3)]);
+  let html,st;
+  if(f==='blues'){const bars=X.bluesBars(k);html=bluesHTML(bars);st=[`Son <b>12 compases</b> y solo hay tres acordes 7: ${pretty(bars[0])} (I7), ${pretty(bars[4])} (IV7) y ${pretty(bars[8])} (V7).`,'Patrón: I7 ×4 · IV7 ×2 · I7 ×2 · V7 · IV7 · I7 · V7 (vuelta) → <b>blues de 12 compases</b>.'];}
+  else{const bl=formMap(f,k);html=formHTML(bl);const lab=f==='vcp'?bl.map(b=>({V:'verso',C:'coro',P:'puente'})[b.L]).join(' – '):bl.map(b=>b.L).join(' ');
+   st=[`Compara las secciones: las que tienen <b>el mismo material</b> llevan la misma letra.`,`Aquí queda: <b>${lab}</b>.`,`→ <b>${X.FORMS[f].n}</b>: ${X.FORMS[f].d}`];if(f==='AABA')st.push('4 secciones × 8 compases = <b>32 compases</b>. La B se llama <b>puente</b>.');}
+  return {kind:'choice',key:'fo|'+f,prompt:{k:'Mapa de la pieza',html,sub:'¿qué forma tiene?'},opts:os.map(o=>({h:X.FORMS[o].n})),ans:os.indexOf(f),small:1,steps:st};},
+ compas(){const k=keyMaj();const bars=X.bluesBars(k);const n=rnd([0,4,6,8,9,10,11]);const h=X.harmonize(k,'mayor');const I=bars[0],IV=bars[4],V=bars[8];const os=[I,IV,V];
+  if(Math.random()<.65)return {kind:'choice',key:'bl|'+T.key(k)+n,prompt:{k:`Blues de 12 compases en ${pretty(T.letName(k))}`,html:bluesHTML(bars.map((b,i)=>i===n?'?':b),n),sub:`¿qué acorde va en el compás ${n+1}?`},opts:os.map(h=>({h})),ans:os.indexOf(bars[n]),
+   steps:[`Los acordes del blues en ${pretty(T.letName(k))}: I7 = ${pretty(I)}, IV7 = ${pretty(IV)}, V7 = ${pretty(V)}.`,'Compases 1–4: I7 · 5–6: IV7 · 7–8: I7 · 9: V7 · 10: IV7 · 11: I7 · 12: V7 (o I7).',`Compás ${n+1} → <b>${pretty(bars[n])}</b>.`],prog:[bars[n]].map(()=>[])};
+  const qs=[['¿Cuántos compases tiene un AABA típico de standard?',['32','24','16','12'],'8 + 8 + 8 + 8 = <b>32</b>.'],['En AABA, ¿cómo se llama la sección B?',['puente','coro','coda','intro'],'La B del AABA es el <b>puente</b> (bridge): contraste antes de la última A.'],['En un rondó, ¿qué sección regresa entre episodios?',['A','B','C','la coda'],'Rondó = A B A C A: el estribillo <b>A</b> regresa cada vez.'],['¿Cuántos compases tiene el blues tradicional?',['12','8','16','32'],'El blues clásico tiene <b>12 compases</b>.']];
+  const q=rnd(qs);const sh=shuffle(q[1].map((h,i)=>({h,i})));
+  return {kind:'choice',key:'fq|'+qs.indexOf(q),prompt:{k:'Estructura',h:'',sub:q[0]},opts:sh.map(o=>({h:o.h})),ans:sh.findIndex(o=>o.i===0),small:1,steps:[q[2]]};}
+};
+/* ===== Oído ===== */
+const EART=['M','m','aum','dism','maj7','7','m7','m7b5','dim7'];
+const EARD={M:'brillante y estable',m:'más oscuro, melancólico',aum:'flotante, misterioso (dos 3M)',dism:'tenso y apretado (dos 3m)',maj7:'suave, soñador (la 7ª a medio tono de la fundamental)','7':'pide resolver: el sonido del blues y del V7',m7:'suave, cálido, muy jazz',m7b5:'oscuro y tenso, pero no tanto como el dim7',dim7:'muy tenso y simétrico (puras 3m)'};
+const earRoot=()=>rnd([0,1,2,3,4,5,6].map(l=>({l,a:0})).concat([{l:6,a:-1},{l:2,a:-1},{l:3,a:1}]));
+const GE={
+ tipo(){const type=rnd(EART);const root=earRoot();const os=shuffle([type,...shuffle(EART.filter(t=>t!==type&&(X.CT[t].n===X.CT[type].n||Math.random()<.3))).slice(0,3)]);const v=X.voicing(root,type,'fund');
+  return {kind:'choice',ear:1,key:'ot|'+type,prompt:{k:`Escucha · fundamental ${nm(root)}`,h:'',sub:'¿qué acorde suena?',play:v.notes.map(T.midi)},opts:os.map(t=>({h:sy(root,t),notes:X.voicing(root,t,'fund').notes})),ans:os.indexOf(type),
+   steps:[`Era <b>${pretty(sy(root,type))}</b>: ${EARD[type]}.`,`Escucha las dos de arriba otra vez: compara su color. Fórmula: ${X.CT[type].f}.`,X.CT[type].n===4?'Truco: primero decide si la tríada de abajo es mayor o menor; luego escucha la 7ª (mayor = muy cerquita de la fundamental de arriba; menor = un tono abajo).':'Truco: mayor = brillante; menor = triste; aum = flota; dism = aprieta.']};},
+ posicion(){const type=rnd(['M','m']);const root=earRoot();const pos=rnd(['fund','abierta']);const v=X.voicing(root,type,pos);const os=['cerrada','abierta'];
+  return {kind:'choice',ear:1,key:'op|'+pos,prompt:{k:`Escucha · ${pretty(sy(root,type))}`,h:'',sub:'¿cerrada o abierta?',play:v.notes.map(T.midi)},opts:[{h:'cerrada',notes:X.voicing(root,type,'fund').notes},{h:'abierta',notes:X.voicing(root,type,'abierta').notes}],ans:pos==='fund'?0:1,small:1,
+   steps:[pos==='fund'?'<b>Cerrada</b>: las 3 notas dentro de una octava; suena compacta, “en un puño”.':'<b>Abierta</b>: la nota de en medio subió una octava (fund – 5ª – 3ª); suena más amplia, con aire entre las voces.','Escucha la nota de arriba: en la abierta queda mucho más lejos del bajo.']};}
+};
+/* ===== Tríadas (para el simulacro) ===== */
+const GT={
+ triada(){const ty=rnd(['M','m','dism','aum']);const r=rootFor(ty);const pos=rnd(['fund','inv1','inv2','abierta']);const v=T.voicing(r,ty,pos);
+  return {kind:'keys',key:'tr|'+T.key(r)+ty+pos,prompt:{k:'Tócala en el piano, de abajo hacia arriba',h:T.cifrado(r,ty),sub:T.POSS[pos]},target:v.notes,roles:v.roles,type:ty,span:pos==='abierta'?'open':'close',steps:T.explainBuild(r,ty,pos,S.sys)};},
+ triadaId(){const ty=rnd(['M','m','dism','aum']);const r=rootFor(ty);const pos=rnd(['inv1','inv2']);const v=T.voicing(r,ty,pos);const lab=T.cifrado(r,ty,v.roles[0]);
+  const wr=[T.cifrado(r,ty),T.cifrado({l:v.notes[0].l,a:v.notes[0].a},ty),T.cifrado(r,ty,v.roles[0]===1?2:1)];const os=shuffle([...new Set([lab,...wr])]);
+  return {kind:'choice',key:'ti|'+T.key(r)+ty+pos,prompt:{k:'¿Qué acorde es? (con su bajo)',staff:[{notes:v.notes.map(n=>({n}))}],play:v.notes.map(T.midi)},opts:os.map(h=>({h})),ans:os.indexOf(lab),steps:T.explainIdentify(r,ty,pos,S.sys)};}
+};
+/* ===== Lecciones de cada tema ===== */
+const CN=T.parseNote('C'),GN=T.parseNote('G'),EN=T.parseNote('E'),FN=T.parseNote('F');
+const cl=(r,t,i=0)=>X.close(r,t,i);
+const slot=(v,label,sub,lc)=>({notes:rn4(v),label,sub,lc});
+const single=(ns,cols)=>X.stack(ns).map((n,i)=>({notes:[{n,c:cols&&cols[i]?cols[i]:INK}],label:'',sub:''}));
+const scaleSlots=(k,kind,hl)=>{const s=X.scale(k,kind);const ns=X.stack([...s,s[0]]);return ns.map((n,i)=>({notes:[{n,c:hl&&hl.includes(i)?RC[0]:INK}],sub:i<7?String(i+1):''}));};
+const fml=(rows)=>`<div class="formula">${rows.map(([a,b])=>`<div><b>${a}</b><span class="mono">${b}</span></div>`).join('')}</div>`;
+const tip=(h,c='',ic='bulb')=>`<div class="tip ${c}"><span class="i">${I(ic)}</span><div>${h}</div></div>`;
+const MODS=[
+{id:'sept',n:1,t:'Acordes de séptima',s:'maj7, 7, m7, m7(♭5), dim7 y más',img:'martillos-piano',ov:'ov-cafe',ic:'piano',
+ ex:{build7:['Construir','Tócalo en el piano, en cerrada o inversión','piano'],id7:['Identificar','Lee el pentagrama y elige el cifrado','eye'],spell7:['Deletrear','Escribe F, 3, 5 y 7 con su alteración','pen'],armo:['Armonizar','Tétradas de la escala mayor en cualquier tono','grid']},gens:G7,
+ lessons:[
+ {h:'Tríada + una 7ª',body:()=>`<p>Una <b>tétrada</b> es una tríada con una nota más, otra 3ª arriba: la <b>7ª</b>. Así se cifran sobre ${nm(CN)}:</p>${fml(['maj7','7','m7','m7b5','dim7'].map(t=>[`C${X.CT[t].suf} <span style="font-weight:500;color:var(--ink3);font-size:13px">· ${X.CT[t].f}</span>`,nl(X.tones(CN,t))]))}${tip('<b>maj7</b> = 7ª mayor (medio tono abajo de la fundamental). <b>7</b> = 7ª menor (un tono abajo). Eso es lo único que cambia entre Cmaj7 y C7.')}`,
+  demo:()=>({slots:['maj7','7','m7','m7b5','dim7'].map(t=>slot(cl(CN,t),'C'+X.CT[t].suf)),sw:84,v:cl(CN,'maj7'),type:'maj7'})},
+ {h:'Las otras cuatro',body:()=>`${fml(['mmaj7','maj7s5','6','m6'].map(t=>[`C${X.CT[t].suf} <span style="font-weight:500;color:var(--ink3);font-size:13px">· ${X.CT[t].d}</span>`,nl(X.tones(CN,t))]))}${tip('En <b>6</b> y <b>m6</b> la nota agregada es una <b>6ª mayor</b>, no una 7ª: C6 = C E G A.','rose','music')}`,
+  demo:()=>({slots:['mmaj7','maj7s5','6','m6'].map(t=>slot(cl(CN,t),'C'+X.CT[t].suf)),sw:92,v:cl(CN,'mmaj7'),type:'mmaj7'})},
+ {h:'Ortografía: la 7ª es la 7ª letra',body:()=>`<p>Siempre letra sí, letra no: <span class="mono" style="font-family:var(--fd);font-style:italic">${[0,2,4,6].map(l=>LN(l)).join(' – ')}</span>. Primero eliges la letra, luego la alteración.</p>${tip(`<b>Cdim7</b> = ${nl(X.tones(CN,'dim7'))}. Su 7ª disminuida (9 semitonos) suena como ${nm({l:5,a:0})}, pero tiene que ser una letra ${LN(6)}: <b>${nm({l:6,a:-2})}</b>.`)}`,
+  demo:()=>({slots:[slot(cl(CN,'dim7'),'Cdim7','bien escrito',OK),{notes:[{n:{l:0,a:0,o:4},c:INK},{n:{l:2,a:-1,o:4},c:INK},{n:{l:4,a:-1,o:4},c:INK},{n:{l:5,a:0,o:4},c:BAD,ring:1}],label:'Cdim7',lc:BAD,sub:'mal escrito'}],v:cl(CN,'dim7'),type:'dim7'})},
+ {h:'Armonización de la escala mayor',body:()=>`<p>Apila terceras sobre cada grado usando solo notas de la escala. En <b>cualquier</b> tonalidad mayor sale el mismo patrón:</p><div class="romans">${X.harmonize(CN,'mayor').map(c=>`<span>${pretty(c.roman)}</span>`).join('')}</div>${tip(`En G: ${X.harmonize(GN,'mayor').map(c=>pretty(c.sym)).join(' · ')}.`,'blue','grid')}`,
+  demo:()=>({slots:X.harmonize(CN,'mayor').map(c=>slot(cl(c.root,c.type),c.sym,c.roman)),sw:66,v:cl(CN,'maj7'),type:'maj7'})}
+ ]},
+{id:'func',n:2,t:'Funciones tonales',s:'Tónica, subdominante y dominante',img:'partitura-dorada',ov:'ov-gold',ic:'compass',
+ ex:{funcion:['¿Qué familia?','Tónica, subdominante o dominante','target'],cadena:['SD → D → T','Completa el camino','arrow'],iivi:['II – V – I','En cualquier tonalidad','music']},gens:GF,
+ lessons:[
+ {h:'Tres familias',body:()=>`<div class="formula"><div><b style="color:var(--blue)">Tónica · descanso</b><span class="mono">I · IIIm · VIm</span></div><div><b style="color:var(--gold)">Subdominante · se aleja</b><span class="mono">IV · IIm</span></div><div><b style="color:var(--rose-d)">Dominante · tensión</b><span class="mono">V7 · VIIm7(♭5)</span></div></div>${tip('Los acordes de una misma familia comparten notas y se pueden sustituir entre sí: Am7 puede tomar el lugar de Cmaj7.')}`,
+  demo:()=>{const h=X.harmonize(CN,'mayor');const o=[0,2,5,3,1,4,6];const fc={T:OK,SD:'#B8923F',D:'#B56F78'};return {slots:o.map(i=>({notes:cl(h[i].root,h[i].type).notes.map(n=>({n,c:fc[X.FUN[i]]})),label:h[i].sym,sub:X.FUN[i],lc:fc[X.FUN[i]]})),sw:66,v:cl(CN,'maj7'),type:'maj7'};}},
+ {h:'El camino SD → D → T y el II–V–I',body:()=>`<p>La música avanza <b>subdominante → dominante → tónica</b>. El más famoso: <b>IIm7 – V7 – Imaj7</b>. En C: <b>Dm7 – G7 – Cmaj7</b>.</p>${tip(`¿Por qué el V7 “jala”? Su 3ª y su 7ª (${nm({l:6,a:0})} y ${nm({l:3,a:0})}) forman un <b>tritono</b> que se resuelve por medio tono a ${nm({l:0,a:0})} y ${nm({l:2,a:0})}.`,'rose','music')}`,
+  demo:()=>{const h=X.harmonize(CN,'mayor');return {slots:[1,4,0].map(i=>slot(cl(h[i].root,h[i].type),h[i].sym,h[i].roman)),sw:90,v:cl(GN,'7'),type:'7',prog:[1,4,0].map(i=>cl(h[i].root,h[i].type).notes.map(T.midi))};}}
+ ]},
+{id:'pos',n:3,t:'Posiciones y Drop 2',s:'Cerrada, inversiones, abierta y Drop 2',img:'cuerdas-piano',ov:'ov-blue',ic:'grid',
+ ex:{drop2:['Cerrada → Drop 2','Te doy la cerrada, tú tocas el Drop 2','piano'],posId:['¿Qué posición?','Cerrada, inversión o Drop 2','eye'],drop2spell:['Escribir Drop 2','De abajo hacia arriba','pen']},gens:GP,
+ lessons:[
+ {h:'Cerrada e inversiones a 4 voces',body:()=>`<p>Con 4 notas hay una inversión más:</p><div class="formula"><div><b>Cerrada</b>la fundamental en el bajo</div><div><b>1ª inv.</b>la 3ª en el bajo</div><div><b>2ª inv.</b>la 5ª en el bajo</div><div><b>3ª inv.</b>la <b>7ª</b> en el bajo</div></div>${tip('Con diagonal: Cmaj7/E = 1ª inv. · Cmaj7/G = 2ª inv. · Cmaj7/B = 3ª inv.','blue','music')}`,
+  demo:()=>({slots:POS7.map(p=>slot(X.voicing(CN,'maj7',p),X.POS4[p],X.slash(CN,'maj7',p))),sw:80,v:cl(CN,'maj7'),type:'maj7'})},
+ {h:'Abierta y Drop 2',body:()=>`<p>En tríadas, <b>abierta</b> = la nota de en medio sube una octava (fund – 5ª – 3ª). En tétradas la abierta más usada es el <b>Drop 2</b>:</p><ol class="steps"><li>Arma la <b>cerrada</b>.</li><li>Cuenta las voces <b>desde arriba</b>.</li><li>La <b>2ª voz</b> baja una octava: queda en el bajo.</li></ol>${tip(`Cmaj7 cerrada ${nl(cl(CN,'maj7').notes)} → Drop 2 <b>${nl(X.drop2(CN,'maj7',0).notes)}</b>.`,'rose')}`,
+  demo:()=>({slots:[slot(X.openTriad(CN,'M'),'abierta','C'),slot(cl(CN,'maj7'),'cerrada','Cmaj7'),slot(X.drop2(CN,'maj7',0),'Drop 2','Cmaj7')],sw:96,v:X.drop2(CN,'maj7',0),type:'maj7'})}
+ ]},
+{id:'sec',n:4,t:'Dominantes secundarias',s:'V7/x y II–V secundarios',img:'trompeta-partitura',ov:'ov-gold',ic:'arrow',
+ ex:{secDom:['¿Cuál es?','V7/II, V7/III, V7/IV, V7/V, V7/VI','target'],resuelve:['¿A dónde va?','Encuentra su resolución','arrow'],analiza:['Analizar','Cifrado romano de una progresión','notebook']},gens:GS,
+ lessons:[
+ {h:'Primero busca los dominantes',body:()=>{const h=X.harmonize(GN,'mayor');return `<p>Un acorde <b>7</b> que no es el V7 de la tonalidad es una <b>dominante secundaria</b>: resuelve <b>una 5ª justa abajo</b> a otro acorde de la escala.</p><div class="formula">${[1,2,3,4,5].map(of=>{const d=X.chordOf(GN,{sec:'V',of});return `<div><b>${d.roman} = ${pretty(sy(d.root,d.type))}</b><span class="mono">→ ${pretty(h[of].sym)} (${h[of].roman})</span></div>`;}).join('')}</div>${tip(`En G mayor, <b>B7 = V7/VI</b> y resuelve a <b>Em7</b>. Su 3ª (${nm({l:3,a:1})}) es la sensible de ${nm({l:2,a:0})}. También lo verás escrito V7/VIm.`)}`;},
+  demo:()=>{const b=X.chordOf(GN,{sec:'V',of:5}),e=X.harmonize(GN,'mayor')[5];return {slots:[slot(cl(b.root,'7',1),'B7','V7/VI'),slot(cl(e.root,e.type),'Em7','VIm7')],sw:110,v:cl(b.root,'7',1),type:'7',prog:[cl(b.root,'7',1),cl(e.root,e.type)].map(v=>v.notes.map(T.midi))};}},
+ {h:'II–V secundarios',body:()=>`<p>A cada dominante secundaria le puedes poner su propio <b>II</b> antes. Si el destino es <b>menor</b>, el II es <b>m7(♭5)</b>; si es <b>mayor</b>, es <b>m7</b>.</p>${tip('En G: <b>F♯m7(♭5) – B7 – Em7</b> = IIm7(♭5)/VI – V7/VI – VIm7.<br>Y <b>Dm7 – G7 – Cmaj7</b> = IIm7/IV – V7/IV – IVmaj7.','blue','music')}`,
+  demo:()=>{const cs=[{sec:'II',of:5},{sec:'V',of:5},{d:5}].map(t=>X.chordOf(GN,t));const vs=[cl(cs[0].root,cs[0].type,0),cl(cs[1].root,'7',1),cl(cs[2].root,cs[2].type,0)];return {slots:cs.map((c,i)=>slot(vs[i],sy(c.root,c.type),c.roman)),sw:104,v:vs[1],type:'7',prog:vs.map(v=>v.notes.map(T.midi))};}}
+ ]},
+{id:'men',n:5,t:'Escalas menores',s:'Natural, armónica y melódica',img:'chelo-luz',ov:'ov-rose',ic:'music',
+ ex:{escala:['Escribir la escala','Natural, armónica o melódica','pen'],armoMenor:['Armonizar','Tétradas de cada menor','grid'],porque:['¿Por qué?','Dominante, sensible y relativas','bulb']},gens:GM,
+ lessons:[
+ {h:'Menor natural · Mi menor',body:()=>`<p><b>${nm(EN)} menor</b> es la relativa de <b>${nm(GN)} mayor</b>: mismas notas, empieza en el 6º grado.</p><div class="romans">${X.harmonize(EN,'natural').map(c=>`<span>${pretty(c.sym)}</span>`).join('')}</div>${tip(`Su V es <b>Bm7</b>: la 3ª (${nm({l:1,a:0})}) está <b>un tono</b> abajo de ${nm(EN)}. Sin sensible no hay dominante real.`)}`,
+  demo:()=>({slots:scaleSlots(EN,'natural'),sw:40,v:{notes:X.scale(EN,'natural').slice(0,1),roles:[0]},type:'m7',scale:1})},
+ {h:'Menor armónica',body:()=>`<p>Es la natural con la <b>7ª subida</b> medio tono: ${nm({l:1,a:0})} → <b>${nm({l:1,a:1})}</b>. Ahora sí hay sensible y <b>B7</b>.</p><div class="romans">${X.harmonize(EN,'armonica').map(c=>`<span>${pretty(c.sym)}</span>`).join('')}</div>${tip(`Entre ${nm({l:0,a:0})} y ${nm({l:1,a:1})} queda una <b>2ª aumentada</b> (3 semitonos): ese “salto” es su sonido típico.`,'rose','music')}`,
+  demo:()=>({slots:scaleSlots(EN,'armonica',[6]),sw:40,v:{notes:[],roles:[]},type:'m7',scale:1})},
+ {h:'Menor melódica · clásica y jazz',body:()=>`<p>Sube la <b>6ª y la 7ª</b>: ${nm({l:0,a:1})} y ${nm({l:1,a:1})}.</p><div class="romans">${X.harmonize(EN,'melodica').map(c=>`<span>${pretty(c.sym)}</span>`).join('')}</div><p style="margin-top:12px">En el I también se usa <b>Em6</b> (${nl(X.tones(EN,'m6'))}).</p>${tip('<b>Clásica:</b> sube melódica y baja natural.<br><b>Jazz</b> (“jazz minor”): igual de subida y de bajada.','blue','book')}`,
+  demo:()=>({slots:scaleSlots(EN,'melodica',[5,6]),sw:40,v:{notes:[],roles:[]},type:'m7',scale:1})}
+ ]},
+{id:'int',n:6,t:'Intercambio modal',s:'Préstamos de la menor y el 7alt',img:'cuerdas-calidas',ov:'ov-cafe',ic:'shuffle',
+ ex:{prestamo:['Préstamos','¿Cuál viene de la menor?','shuffle'],tensiones:['Tensiones del V7','♭9, 9 y ♭13 prestadas','star'],alterado:['Acorde alterado','7alt y su reinterpretación','bulb']},gens:GI,
+ lessons:[
+ {h:'Tonalidades homónimas',body:()=>`<p><b>C mayor</b> y <b>C menor</b> tienen la misma tónica. En C mayor puedes <b>tomar prestados</b> acordes de C menor (natural, armónica o melódica):</p>${fml([['IVm7','Fm7'],['♭VImaj7','A♭maj7'],['♭VII7','B♭7'],['♭IIImaj7','E♭maj7'],['IIm7(♭5)','Dm7(♭5)']])}${tip('Suenan “de otro color” pero siguen llevando a la misma tónica: Fmaj7 → <b>Fm7</b> → Cmaj7.')}`,
+  demo:()=>{const vs=[cl(FN,'maj7'),cl(FN,'m7'),cl(CN,'maj7',2)];return {slots:[slot(vs[0],'Fmaj7','IVmaj7'),slot(vs[1],'Fm7','IVm7'),slot(vs[2],'Cmaj7','Imaj7')],sw:96,v:vs[1],type:'m7',prog:vs.map(v=>v.notes.map(T.midi))};}},
+ {h:'Tensiones prestadas al G7',body:()=>{const h=X.v7tensions(CN,'armonica'),m=X.v7tensions(CN,'melodica');return `<p>El V7 puede tomar sus tensiones de la menor homónima:</p>${fml([[pretty(h.label)+' · C armónica',`♭9 = ${nm(h.nine)} · ♭13 = ${nm(h.thirteen)}`],[pretty(m.label)+' · C melódica',`9 = ${nm(m.nine)} · ♭13 = ${nm(m.thirteen)}`]])}${tip('La 9ª sale del 6º grado de la escala y la 13ª del 3er grado.','blue','music')}`;},
+  demo:()=>{const g=n=>({l:n[0],a:n[1],o:n[2]});const A=[[4,0,3],[3,0,4],[5,-1,4],[6,0,4],[2,-1,5]].map(g),B=[[4,0,3],[3,0,4],[5,0,4],[6,0,4],[2,-1,5]].map(g);const col=[RC[0],RC[3],BAD,RC[1],BAD];
+   return {slots:[{notes:A.map((n,i)=>({n,c:col[i]})),label:'G7(♭9,♭13)'},{notes:B.map((n,i)=>({n,c:col[i]})),label:'G7(9,♭13)'}],sw:120,v:{notes:A,roles:[0,3,1,1,2]},type:'7',mk:Object.fromEntries(A.map((n,i)=>[T.midi(n),{c:'r'+[0,3,0,1,2][i],t:['F','7','♭9','3','♭13'][i]}]))};}},
+ {h:'El acorde alterado (7alt)',body:()=>{const a=X.altChord(GN);return `<p>Sale del <b>7º grado de la menor melódica</b> que está medio tono arriba: G7alt ← <b>A♭ menor melódica</b> (${a.scale.map(nm).join(' ')}).</p>${fml(a.chord.map(c=>[c.k==='F'?'Fundamental':c.k==='3'?'3ª mayor':c.k,nm(c.n)+(c.k==='3'?` ← en la escala es ${nm(a.third)} (4ª dism.)`:c.k==='♯9'?` ← en la escala es ${nm(a.sharp9)}`:'')]))}${tip(`<b>Reinterpretación enarmónica:</b> ${nm(a.third)} y ${nm(a.chord[1].n)} suenan igual. En la escala es una 4ª disminuida, pero un dominante necesita su 3ª mayor, así que en el acorde la llamamos <b>${nm(a.chord[1].n)}</b>. Lo mismo ${nm(a.sharp9)} → <b>${nm(a.chord[5].n)}</b> (♯9).`,'rose')}`;},
+  demo:()=>{const g=n=>({l:n[0],a:n[1],o:n[2]});const sc=[[6,-1,4],[0,-1,5]].map(g),ch=[[5,1,4],[6,0,4]].map(g),alt=[[4,0,3],[6,0,3],[3,0,4],[5,1,4],[2,-1,5]].map(g);
+   return {slots:[{notes:sc.map(n=>({n,c:INK})),label:'escala',sub:'B♭ · C♭'},{notes:ch.map(n=>({n,c:BAD})),label:'acorde',sub:'A♯ · B'},{notes:alt.map((n,i)=>({n,c:[RC[0],RC[1],RC[3],BAD,BAD][i]})),label:'G7alt',sub:'F 3 7 ♯9 ♭13'}],sw:96,v:{notes:alt,roles:[0,1,3,2,2]},type:'7',mk:Object.fromEntries(alt.map((n,i)=>[T.midi(n),{c:'r'+[0,1,3,0,2][i],t:['F','3','7','♯9','♭13'][i]}]))};}}
+ ]},
+{id:'simb',n:7,t:'Simbología musical',s:'Repeticiones, D.C., D.S., Coda y Fine',img:'notacion-cerca',ov:'ov-blue',ic:'eye',
+ ex:{camino:['Sigue el camino','Ordena las secciones como se tocan','arrow'],simbolo:['¿Qué signo es?','Nombre y significado','eye']},gens:GSi,
+ lessons:[
+ {h:'Los signos',body:()=>`<div class="simgrid">${SIMB.map(s=>`<div class="simt">${simbPic(s)}<b>${s.n}</b><small>${s.d}</small></div>`).join('')}</div>`},
+ {h:'Cómo se lee el camino',body:()=>{const secs=X.ROADS[5]();const log=[];const r=X.road(secs,log);return `<ol class="steps"><li>Repetición: en <b>:‖</b> regresas a <b>‖:</b> (o al principio).</li><li>Casillas: la 2ª vez te saltas la <b>1ª</b> y tocas la <b>2ª</b>.</li><li><b>D.C.</b> regresa al principio; <b>D.S.</b> regresa al <b>𝄋</b>.</li><li>Después del salto <b>ya no se repite</b>. “al Fine” = terminas en Fine; “al Coda” = en el aviso brincas a la Coda.</li></ol>${roadHTML(secs)}<p class="hint" style="margin-top:10px">Se toca: <b>${r.join(' → ')}</b></p>`;}}
+ ]},
+{id:'est',n:8,t:'Estructura de piezas',s:'AB, ABA, AABA, rondó, blues',img:'partituras-rosa',ov:'ov-rose',ic:'book',
+ ex:{forma:['¿Qué forma es?','Lee el mapa de la pieza','eye'],compas:['Compases y blues','32 compases, puente, 12 compases','grid']},gens:GO,
+ lessons:[
+ {h:'Las formas más comunes',body:()=>`<div class="formula">${Object.values(X.FORMS).map(f=>`<div><b>${f.n}</b>${f.d}</div>`).join('')}</div>${tip('Para identificar la forma, compara las secciones: si el material (melodía y acordes) se repite, lleva la misma letra.')}`},
+ {h:'Blues de 12 compases',body:()=>`<p>En F:</p>${bluesHTML(X.bluesBars(FN))}${tip('I7 ×4 · IV7 ×2 · I7 ×2 · V7 · IV7 · I7 · V7. Los tres son acordes 7.','blue','music')}`}
+ ]},
+{id:'oido',n:9,t:'Oído',s:'Reconoce el tipo de acorde',img:'audifonos-madera',ov:'ov-cafe',ic:'vol',
+ ex:{tipo:['Tipo de acorde','9 colores: de mayor a dim7','vol'],posicion:['Cerrada o abierta','¿Compacta o amplia?','vol']},gens:GE,
+ lessons:[
+ {h:'Tríadas: el color de cada una',body:()=>`<div class="formula">${['M','m','aum','dism'].map(t=>`<div><b>C${X.CT[t].suf}</b>${EARD[t]}</div>`).join('')}</div>${tip('Toca cada acorde del pentagrama y compáralo con el de al lado.','blue','vol')}`,
+  demo:()=>({slots:['M','m','aum','dism'].map(t=>slot(X.voicing(CN,t,'fund'),'C'+X.CT[t].suf)),sw:92,v:X.voicing(CN,'M','fund'),type:'M'})},
+ {h:'Séptimas: el color de cada una',body:()=>`<div class="formula">${['maj7','7','m7','m7b5','dim7'].map(t=>`<div><b>C${X.CT[t].suf}</b>${EARD[t]}</div>`).join('')}</div>${tip('Primero escucha si la tríada de abajo es mayor o menor; luego, la 7ª.','rose','vol')}`,
+  demo:()=>({slots:['maj7','7','m7','m7b5','dim7'].map(t=>slot(X.voicing(CN,t,'fund'),'C'+X.CT[t].suf)),sw:84,v:cl(CN,'maj7'),type:'maj7'})},
+ {h:'Cerrada o abierta',body:()=>`<p><b>Cerrada</b> suena compacta; <b>abierta</b> tiene aire entre las voces porque la de en medio subió una octava.</p>`,
+  demo:()=>({slots:[slot(X.voicing(CN,'M','fund'),'cerrada','C'),slot(X.voicing(CN,'M','abierta'),'abierta','C')],sw:110,v:X.voicing(CN,'M','abierta'),type:'M'})}
+ ]},
+{id:'exam',n:10,t:'Simulacro de examen',s:'20 preguntas de todos los temas',img:'metronomo',ov:'ov-cafe',ic:'trophy',exam:1,lessons:[],ex:{}},
+{id:'ent',n:11,t:'Lectura y entonación',s:'Escalas, cromática, tríadas de oído y canta conmigo',img:'ent-tulipanes-partitura',ov:'ov-rose',ic:'mic',soon:1,lessons:[],ex:{}}
+];
+const MOD=Object.fromEntries(MODS.map(m=>[m.id,m]));
+/* ===== Vistas de los temas ===== */
+const modPct=id=>{const s=S.mods[id];return s&&s.t?Math.round(100*s.r/s.t):null;};
+function mband(M){return `<div class="ph band ${M.ov}">${ph(M.img)}<div class="in">${I(M.ic,2)} ${M.t}</div></div>`;}
+function modCard(M,cls=''){const p=modPct(M.id);return `<a class="ph mcard ${M.ov} tap ${cls}" href="${M.id==='ent'?'#ent':'#m/'+M.id}">${ph(M.img)}${M.id==='ent'?'<span class="soon">próximo examen</span>':''}<div class="in">${M.id==='ent'?'':`<small>${M.exam?'Examen':'Tema '+M.n}</small>`}<h3>${M.t}</h3><p>${M.s}</p>${p!=null?`<div class="pbar light"><i style="width:${p}%"></i></div>`:''}</div></a>`;}
+const modGrid=(list=MODS)=>`<div class="mgrid stag">${list.map(m=>modCard(m)).join('')}</div>`;
+function demoBlock(d){const ms=d.v&&d.v.notes.length?d.v.notes.map(T.midi):d.slots[0].notes.map(x=>T.midi(x.n));
+ const playBtn=d.prog?`<button class="btn soft sm" data-act="prog" data-p="${d.prog.map(MSTR).join('|')}">${I('play')} Oír</button>`:d.scale?`<button class="btn soft sm" data-act="scl" data-m="${d.slots.map(s=>T.midi(s.notes[0].n)).join(',')}">${I('play')} Oír</button>`:`<button class="btn soft sm" data-act="play" data-m="${ms.join(',')}">${I('play')} Oír</button>`;
+ const mk=d.mk||(d.v&&d.v.notes.length&&!d.scale?mk4(d.v,d.type):{});
+ return {playBtn,html:`<div class="staffbox">${staff(d.slots,{anim:true,sw:d.sw,bars:d.slots.length>1,end:1})}</div>${d.scale?'':legend4(d.type)}${d.scale?'':piano(mk)}<p class="hint" style="text-align:center;margin-top:12px">Toca cualquier ${d.scale?'nota':'acorde'} del pentagrama para oírlo</p>`};}
+function vModule(id){const M=MOD[id];if(!M)return vLearn();if(M.exam)return vExam();if(M.id==='ent')return vEnt();const i=MODS.indexOf(M);
+ const exs=Object.entries(M.ex);const nm_=MODS.filter(m=>!m.exam&&!m.soon);
+ return `<div class="view"><div class="ph cover ${M.ov}">${ph(M.img)}<div class="top"><button class="glass-btn" data-go="learn" aria-label="Volver">${I('left',2)}</button><span class="glass-pill">Tema ${M.n} de ${nm_.length}</span></div>
+ <div class="in"><span class="eyebrow" style="color:rgba(255,248,241,.8)">Tema ${M.n} · ${M.lessons.length} ${M.lessons.length===1?'lección':'lecciones'}</span><h1>${M.t}</h1><p>${M.s}</p></div></div>
+ <div class="lesson-body"><div class="mod-cols">${M.lessons.map((L,k)=>{const d=L.demo&&L.demo();const db=d?demoBlock(d):null;return `<div class="card"><div class="card-h"><h3><span class="lnum">${k+1}</span>${L.h}</h3>${db?db.playBtn:''}</div><div class="prose">${L.body()}</div>${db?db.html:''}</div>`;}).join('')}</div>
+ <div class="sec-h" style="margin-top:32px"><h2>Practica</h2>${modPct(id)!=null?`<span>${modPct(id)}% aciertos</span>`:''}</div>
+ <div class="src-list">${exs.map(([k,[t,d,ic]])=>`<button class="src" data-mq="${id}|${k}"><span class="ic" style="background:var(--rose-t);color:var(--rose-d)">${I(ic)}</span><span><b>${t}</b><small>${d}</small></span><span class="end">${I('right',2)}</span></button>`).join('')}</div>
+ <button class="btn pri block" style="margin-top:16px" data-mq="${id}|mix">Ronda de 10 del tema ${I('arrow',2)}</button>
+ ${S.mmist.some(q=>q.mod===id)?`<button class="btn soft block" style="margin-top:8px" data-mq="${id}|err">${I('heal',2)} Repasar mis errores (${S.mmist.filter(q=>q.mod===id).length})</button>`:''}
+ <div class="lnav">${i>0&&!MODS[i-1].exam?`<button class="btn ghost" data-go="m/${MODS[i-1].id}">${I('left',2)} Anterior</button>`:''}${MODS[i+1]?`<button class="btn pri" data-go="${MODS[i+1].id==='ent'?'ent':'m/'+MODS[i+1].id}">${MODS[i+1].exam?'Simulacro':'Siguiente tema'} ${I('right',2)}</button>`:''}</div></div></div>`;}
+function vExam(){const M=MOD.exam;const e=S.exam;
+ return `<div class="view"><div class="ph cover ${M.ov}">${ph(M.img)}<div class="top"><button class="glass-btn" data-go="learn" aria-label="Volver">${I('left',2)}</button><span class="glass-pill">20 preguntas</span></div>
+ <div class="in"><span class="eyebrow" style="color:rgba(255,248,241,.8)">Examen de teoría</span><h1>Simulacro</h1><p>De todo un poco, como en el examen.</p></div></div>
+ <div class="lesson-body"><div class="card prog-hero">${ring(e.last??0,10,{size:84,sw:8,fs:22,txt:e.last!=null?e.last.toFixed(1):'—',sub:'última'})}<div class="tx"><h3>${e.n?`Mejor calificación: ${e.best.toFixed(1)}`:'Aún no lo haces'}</h3><p>${e.n?e.n+' simulacro'+(e.n>1?'s':'')+' hecho'+(e.n>1?'s':''):'Te califico sobre 10 y al final repasamos cada error.'}</p></div></div>
+ <div class="card"><div class="card-h"><h3>Qué entra</h3></div><div class="chips">${MODS.filter(m=>!m.exam&&!m.soon).map(m=>`<span class="chip">${m.t}</span>`).join('')}<span class="chip">Tríadas</span></div></div>
+ <button class="btn rose block" data-mq="exam|all">Empezar simulacro ${I('arrow',2)}</button>${S.mmist.length?`<button class="btn soft block" style="margin-top:8px" data-mq="all|err">${I('heal',2)} Repasar todos mis errores (${S.mmist.length})</button>`:''}</div></div>`;}
+function vEnt(){return ENT.view('ent');}
+function vEntOld(){const M=MOD.ent;
+ return `<div class="view"><div class="ph cover ${M.ov}">${ph(M.img)}<div class="top"><button class="glass-btn" data-go="home" aria-label="Volver">${I('left',2)}</button><span class="glass-pill">pronto</span></div>
+ <div class="in"><span class="eyebrow" style="color:rgba(255,248,241,.8)">Tu siguiente examen</span><h1>Lectura y entonación</h1><p>Lo estoy preparando para ti.</p></div></div>
+ <div class="lesson-body"><div class="card"><div class="card-h"><h3>Lo que va a traer</h3></div><ol class="steps"><li>Escalas mayor y menores (natural, armónica, melódica clásica y jazz) y la cromática, con solfeo.</li><li>Tríadas por oído.</li><li><b>Canta conmigo</b>: escuchas, cantas y comparas.</li><li>Un simulacro de entonación.</li></ol></div>
+ ${tip('Mientras tanto, practica el oído en el tema 9.','blue','vol')}<button class="btn pri block" style="margin-top:16px" data-go="m/oido">Ir a Oído ${I('arrow',2)}</button></div></div>`;}
+/* ===== Sesión de ejercicios ===== */
+let Q2=null,A2={};
+function genQ(mod,ex){const M=MOD[mod];const k=ex==='mix'?rnd(Object.keys(M.ex)):ex;const q=M.gens[k]();q.mod=mod;q.ex=k;return q;}
+function examQs(){const ids=MODS.filter(m=>!m.exam&&!m.soon).map(m=>m.id);let qs=[];ids.forEach(id=>{const ks=shuffle(Object.keys(MOD[id].ex));qs.push(genQ(id,ks[0]),genQ(id,ks[1%ks.length]));});
+ qs.push({...GT.triada(),mod:'tri',ex:'triada'},{...GT.triadaId(),mod:'tri',ex:'triadaId'});return shuffle(qs);}
+function startMQ(mod,ex){let qs=[];
+ if(ex==='err'){qs=shuffle(S.mmist.filter(q=>mod==='all'||q.mod===mod)).slice(0,10).map(q=>JSON.parse(JSON.stringify(q)));if(!qs.length){toast('No hay errores por repasar');return;}}
+ else if(mod==='exam')qs=examQs();
+ else{const seen=new Set();let g=0;while(qs.length<10&&g++<80){const q=genQ(mod,ex);if(seen.has(q.key)&&g<60)continue;seen.add(q.key);qs.push(q);}}
+ Q=null;Q2={mod,ex,qs,i:0,right:0,log:[],exam:mod==='exam'};A2={};closeSheet();if(location.hash==='#mq')render();else location.hash='#mq';scrollTo(0,0);}
+const MODNAME=id=>id==='tri'?'Tríadas':MOD[id]?MOD[id].t:'';
+function mqBand(q){if(q.mod==='tri')return band('build');return mband(MOD[q.mod]);}
+function vMQ(){if(!Q2)return vLearn();const q=Q2.qs[Q2.i];const pct=Math.round(100*Q2.i/Q2.qs.length);
+ const top=`<div class="qbar"><button class="icon-btn" data-act="mqquit" aria-label="Salir">${I('x',2)}</button><div class="pbar"><i style="width:${pct}%"></i></div><span class="stat-chip" style="color:var(--rose-d);height:32px">${I('flame',2)}<span style="color:var(--ink)">${S.streak}</span></span><span class="cnt">${Q2.i+1}/${Q2.qs.length}</span></div>`;
+ const body={choice:mqChoice,keys:mqKeys,spell:mqSpell,seq:mqSeq,multi:mqMulti}[q.kind](q);
+ return `<div class="view" id="qv">${top}${Q2.exam?`<div class="exam-tag">${I('trophy',2)} Simulacro · ${MODNAME(q.mod)}</div>`:''}${mqHead(q)}${body}</div>`;}
+function mqHead(q){const p=q.prompt;const big=p.h?`<div class="cif">${pretty(p.h)}</div>`:'';
+ const sub=p.sub?(p.h?`<span class="pos-pill">${p.sub}</span>`:`<div class="qq">${p.sub}</div>`):'';
+ const st=p.staff&&!q.ear?`<div class="staffbox" style="margin-top:12px">${staff(p.staff,{anim:!A2.seen,sw:140,scale:1.3,end:1})}</div>`:'';
+ const play=q.ear?`<button class="earbtn" data-act="mqplay" aria-label="Escuchar">${I('play')}</button><div class="hint">Toca para escuchar ${A2.heard?'otra vez':''}</div>`:p.play?`<button class="btn soft sm" style="margin-top:14px" data-act="mqplay">${I('vol',2)} Escuchar</button>`:'';
+ const prog=q.prog&&q.prog.some(x=>x.length)&&!q.ear?`<button class="btn soft sm" style="margin-top:14px" data-act="mqprog">${I('play')} Oír la progresión</button>`:'';
+ return `<div class="qhead">${mqBand(q)}<div class="body"><div class="k">${p.k}</div>${big}${sub}${p.html?`<div class="qhtml">${p.html}</div>`:''}${q.kind==='seq'?roadHTML(q.map):''}${st}${play}${prog}</div></div>`;}
+const cta=(ok,txt='Comprobar')=>`<div class="sticky-cta"><button class="btn pri block" data-act="mqcheck" ${ok?'':'disabled'}>${txt}</button></div>`;
+function mqChoice(q){const c=A2.c;let h;
+ if(q.pics)h=`<div class="grid2">${q.opts.map((o,k)=>`<button class="choice pic ${c===k?'on':''}" data-act="mqc" data-k="${k}">${o.pic}<span>${o.h}</span></button>`).join('')}</div>`;
+ else if(q.opts.every(o=>o.h.length<=12)&&!q.small)h=`<div class="grid2">${q.opts.map((o,k)=>`<button class="choice cif ${c===k?'on':''}" data-act="mqc" data-k="${k}">${pretty(o.h)}</button>`).join('')}</div>`;
+ else h=`<div class="quiz-opts">${q.opts.map((o,k)=>`<button class="opt ${c===k?'on':''}" data-act="mqc" data-k="${k}"><span>${pretty(o.h)}</span></button>`).join('')}</div>`;
+ return `<div class="card tight">${h}</div>${cta(c!=null)}`;}
+function selSpell(m,q){const t=q.target.find(x=>T.pc(x)===m%12);let l,a;if(t){l=t.l;a=t.a;}else{const fl=q.target.some(x=>x.a<0);[l,a]=(fl?FLN:SHN)[m%12];}const o=Math.round((m-T.NAT[l]-a)/12)-1;return {l,a,o};}
+function mqKeys(q){const sel=A2.sel||[];const sp=[...sel].sort((a,b)=>a-b).map(m=>({n:selSpell(m,q),c:INK}));const mk={};sel.forEach(m=>mk[m]={c:'sel',t:''});const need=q.target.length;
+ return `<div class="card tight"><div class="staffbox">${staff([{notes:sp}],{sw:130,scale:1.15})}<div class="live-row"><span class="empty-staff">${sp.length?sp.map(x=>nm(x.n)).join(' · '):'Toca '+need+' teclas en el piano'}</span><span class="mini"><button class="icon-btn sm" data-act="mqclear" aria-label="Borrar" ${sel.length?'':'disabled'}>${I('refresh',2)}</button><button class="icon-btn sm" data-act="mqplaysel" aria-label="Oír" ${sel.length?'':'disabled'}>${I('play')}</button></span></div></div>${piano(mk,{blabels:1})}</div>
+ ${cta(sel.length===need,sel.length===need?'Comprobar':'Elige '+(need-sel.length)+' nota'+(need-sel.length===1?'':'s')+' más')}`;}
+function mqSpell(q){const n=q.target.length;const sl=A2.slots||(A2.slots=Array(n).fill(null));if(A2.act==null)A2.act=0;const names=S.sys==='let'?T.LET:T.SOL;const filled=sl.filter(Boolean);const cur=sl[A2.last??A2.act];
+ const cols=n<=4?n:4;const stv=q.scale?staff(X.stack(filled).map(x=>({notes:[{n:x,c:INK}]})),{sw:40,scale:1.2}):staff([{notes:X.stack(filled).map(x=>({n:x,c:INK}))}],{sw:130,scale:1.3});
+ return `<div class="card tight"><div class="slots" style="grid-template-columns:repeat(${cols},1fr)">${sl.map((x,i)=>`<div class="nslot ${A2.act===i?'act':''} ${n>4?'sm':''}" data-act="mqslot" data-k="${i}"><small>${q.slots[i]}</small><b>${x?nm(x):''}</b></div>`).join('')}</div>
+ <div class="staffbox" style="margin-top:12px">${filled.length?stv:staff([{notes:[]}],{sw:130,scale:1.3})}</div>
+ <div class="field-l">Letra</div><div class="grid7">${names.map((x,l)=>`<button class="choice sm" data-act="mqL" data-k="${l}">${x}</button>`).join('')}</div>
+ <div class="field-l">Alteración</div><div class="grid5">${[-2,-1,0,1,2].map(a=>`<button class="choice acc ${cur&&cur.a===a?'on':''}" data-act="mqA" data-k="${a}" aria-label="${T.ACCW[a]}">${accSVG(a)}</button>`).join('')}</div></div>${cta(filled.length===n)}`;}
+function mqSeq(q){const s=A2.seq||(A2.seq=[]);
+ return `<div class="card tight"><div class="field-l">Tu camino</div><div class="seqrow">${s.length?s.map((x,i)=>`<span class="chip big">${x}</span>${i<s.length-1?'<i class="arr">→</i>':''}`).join(''):'<span class="hint">Toca las secciones abajo, en orden</span>'}</div>
+ <div class="btn-row" style="margin:8px 0 4px"><button class="btn ghost sm" data-act="mqundo" ${s.length?'':'disabled'}>${I('left',2)} Quitar última</button><button class="btn ghost sm" data-act="mqseqclear" ${s.length?'':'disabled'}>${I('refresh',2)} Borrar</button></div>
+ <div class="field-l">Secciones</div><div class="grid5" style="grid-template-columns:repeat(${Math.min(q.bank.length,6)},1fr)">${q.bank.map(x=>`<button class="choice cif" data-act="mqadd" data-k="${x}">${x}</button>`).join('')}</div></div>${cta(s.length>=2)}`;}
+function mqMulti(q){const v=A2.mv||(A2.mv=Array(q.items.length).fill(null));if(A2.act==null)A2.act=0;
+ return `<div class="card tight"><div class="prow">${q.items.map((c,i)=>`<button class="pcell ${A2.act===i?'act':''}" data-act="mqcell" data-k="${i}"><b>${pretty(c)}</b><span>${v[i]?pretty(v[i]):'?'}</span></button>`).join('')}</div>
+ <div class="field-l">Cifrado romano para <b>${pretty(q.items[A2.act])}</b></div><div class="grid2">${q.palette.map(p=>`<button class="choice sm ${v[A2.act]===p?'on':''}" data-act="mqpal" data-k="${p}">${pretty(p)}</button>`).join('')}</div></div>${cta(v.every(Boolean))}`;}
+/* --- Comprobación genérica --- */
+const paneStaff=(ns,cols,rings)=>staff([{notes:ns.map((n,i)=>({n,c:cols[i]||INK,ring:rings&&rings[i]}))}],{anim:true,sw:96,scale:1.6});
+function mqEval(q){const R={ok:false,msgs:[],steps:q.steps||[]};
+ if(q.kind==='choice'){const o=q.opts[A2.c],c=q.opts[q.ans];R.ok=A2.c===q.ans;R.yourTxt=o.h;R.corrTxt=c.h;
+  if(o.notes&&c.notes){const rr=o.notes.map((n,i)=>!(c.notes[i]&&T.same(n,c.notes[i])&&n.o===c.notes[i].o));R.yN=o.notes;R.cN=c.notes;R.yHTML=paneStaff(o.notes,o.notes.map((_,i)=>rr[i]?BAD:INK),rr);R.cHTML=paneStaff(c.notes,c.notes.map(()=>OK));}
+  else if(o.pic){R.yHTML=`<div class="ptxt">${o.pic}<span>${o.h}</span></div>`;R.cHTML=`<div class="ptxt">${c.pic}<span>${c.h}</span></div>`;}
+  else{R.yHTML=`<div class="ptxt">${pretty(o.h)}</div>`;R.cHTML=`<div class="ptxt">${pretty(c.h)}</div>`;}
+  if(!R.ok)R.msgs.push(`Elegiste <b>${pretty(o.h)}</b>; la respuesta es <b>${pretty(c.h)}</b>.`);
+  if(q.ear&&!R.ok)R.msgs.push('Escucha las dos con los botones “Oír” y compara su color.');}
+ else if(q.kind==='keys'){const s=[...A2.sel].sort((a,b)=>a-b),tg=q.target,exp=tg.map(T.pc),set=new Set(exp);const bad=s.map((m,i)=>m%12!==exp[i]);const span=s[s.length-1]-s[0];let spanBad=false;
+  if(!bad.some(Boolean)){if(q.span==='close'&&span>=12){spanBad=true;bad[bad.length-1]=true;}if((q.span==='open'||q.span==='drop')&&span<=12){spanBad=true;bad[bad.length-1]=true;}}
+  R.ok=!bad.some(Boolean);const yn=s.map(m=>selSpell(m,q));R.yN=yn;R.cN=tg;R.yM=s;R.yourTxt=yn.map(nm).join(' · ');R.corrTxt=tg.map(nm).join(' · ');
+  R.yHTML=paneStaff(yn,bad.map(b=>b?BAD:INK),bad);R.cHTML=paneStaff(tg,(q.roles||[]).map(r=>RC[r]||OK));
+  const lab=pretty(q.prompt.h);const RN=['fundamental','3ª','5ª',X.CT[q.type]&&X.CT[q.type].ro[3]==='6'?'6ª':'7ª'];
+  if(!R.ok){if(spanBad)R.msgs.push(q.span==='close'?`Las notas y el orden están bien, pero quedaron separadas más de una octava. En ${q.prompt.sub} van lo más juntas posible.`:`Las notas están bien, pero en ${q.prompt.sub} deben abarcar <b>más de una octava</b>.`);
+   else if(s.every(m=>set.has(m%12))&&new Set(s.map(m=>m%12)).size===set.size)R.msgs.push(`Las notas sí son de ${lab}. Solo el <b>orden</b> no: en ${q.prompt.sub} el bajo es la ${RN[q.roles[0]]} (${nm(tg[0])}).`);
+   else s.forEach((m,i)=>{if(!bad[i])return;const n=yn[i];if(!set.has(m%12))R.msgs.push(`<b>${nm(n)}</b> no es parte de ${lab}. Sus notas son ${X.CT[q.type]?nl(X.tones({l:tg[q.roles.indexOf(0)].l,a:tg[q.roles.indexOf(0)].a},q.type)):nl(tg)}.`);else R.msgs.push(`<b>${nm(n)}</b> sí es del acorde, pero ahí (${i===0?'abajo':i===s.length-1?'arriba':'voz '+(i+1)}) va <b>${nm(tg[i])}</b>.`);});}}
+ else if(q.kind==='spell'){const sl=A2.slots,tg=q.target;const bad=sl.map((n,i)=>!T.same(n,tg[i]));R.ok=!bad.some(Boolean);const ys=X.stack(sl),cs=X.stack(tg);R.yN=ys;R.cN=cs;R.yourTxt=sl.map(nm).join(' '),R.corrTxt=tg.map(nm).join(' ');
+  if(q.scale){R.yHTML=`<div class="nnrow">${sl.map((n,i)=>`<span class="${bad[i]?'bad':''}">${nm(n)}</span>`).join('')}</div>`;R.cHTML=`<div class="nnrow">${tg.map(n=>`<span>${nm(n)}</span>`).join('')}</div>`;}
+  else{R.yHTML=paneStaff(ys,bad.map(b=>b?BAD:INK),bad);R.cHTML=paneStaff(cs,cs.map((_,i)=>RC[i]||OK));}
+  sl.forEach((n,i)=>{if(!bad[i])return;const c=tg[i];const pos=q.scale?`Grado ${i+1}`:`La ${q.slots[i]==='fund'?'fundamental':q.slots[i].length<3?q.slots[i]+(/\d$/.test(q.slots[i])?'ª':''):q.slots[i]}`;
+   if(T.pc({...n,o:4})===T.pc({...c,o:4}))R.msgs.push(`${pos}: <b>${nm(n)}</b> suena igual que <b>${nm(c)}</b>, pero se escribe ${nm(c)}: la letra tiene que ser ${LN(c.l)} (letra sí, letra no).`);
+   else if(n.l===c.l)R.msgs.push(`${pos}: la letra ${LN(c.l)} está bien, pero la alteración no: es <b>${nm(c)}</b>, no ${nm(n)}.`);
+   else R.msgs.push(`${pos}: va <b>${nm(c)}</b>, no ${nm(n)}.`);});}
+ else if(q.kind==='seq'){const s=A2.seq,t=q.target;const bad=s.map((x,i)=>x!==t[i]);R.ok=s.length===t.length&&!bad.some(Boolean);R.yourTxt=s.join(' → ');R.corrTxt=t.join(' → ');
+  R.yHTML=`<div class="chips seqc">${s.map((x,i)=>`<span class="chip ${bad[i]?'bad':''}">${x}</span>`).join('')}</div>`;R.cHTML=`<div class="chips seqc">${t.map(x=>`<span class="chip ok">${x}</span>`).join('')}</div>`;
+  const fi=bad.findIndex(Boolean);if(!R.ok){if(fi>=0)R.msgs.push(`${fi?`Vas bien en los primeros ${fi} pasos; `:''}en el paso ${fi+1} tocaste <b>${s[fi]}</b> y tocaba <b>${t[fi]}</b>.`);else if(s.length<t.length)R.msgs.push(`Te faltó el final: después de ${s.join(' → ')} sigue <b>${t.slice(s.length).join(' → ')}</b>.`);else R.msgs.push(`Te pasaste: el camino termina en <b>${t[t.length-1]}</b> (paso ${t.length}).`);}}
+ else if(q.kind==='multi'){const v=A2.mv,t=q.target;const bad=v.map((x,i)=>x!==t[i]);R.ok=!bad.some(Boolean);R.yourTxt=v.join(' · ');R.corrTxt=t.join(' · ');
+  R.yHTML=`<div class="chips col">${q.items.map((c,i)=>`<span class="chip ${bad[i]?'bad':''}"><em>${pretty(c)}</em> ${pretty(v[i])}</span>`).join('')}</div>`;R.cHTML=`<div class="chips col">${q.items.map((c,i)=>`<span class="chip ok"><em>${pretty(c)}</em> ${pretty(t[i])}</span>`).join('')}</div>`;
+  v.forEach((x,i)=>{if(bad[i])R.msgs.push(`<b>${pretty(q.items[i])}</b>: pusiste ${pretty(x)}; es <b>${pretty(t[i])}</b>.`);});}
+ return R;}
+function mqRecord(q,ok){const td=today();S.days[td]=(S.days[td]||0)+1;S.total++;const bm=S.mods[q.mod]||(S.mods[q.mod]={t:0,r:0});bm.t++;
+ const ix=S.mmist.findIndex(m=>m.key===q.key);
+ if(ok){S.right++;bm.r++;S.streak++;S.best=Math.max(S.best,S.streak);const pts=10+Math.min(S.streak,10);S.points+=pts;if(ix>=0)S.mmist.splice(ix,1);Q2.right++;save();return pts;}
+ S.streak=0;if(ix<0){S.mmist.push(JSON.parse(JSON.stringify(q)));if(S.mmist.length>40)S.mmist.shift();}save();return 0;}
+function mqCheck(){const q=Q2.qs[Q2.i];if(A2.done)return;const R=mqEval(q);const pts=mqRecord(q,R.ok);A2.done=true;A2.R=R;Q2.log.push({q,ok:R.ok,y:R.yourTxt,c:R.corrTxt});const last=Q2.i+1>=Q2.qs.length;let h;
+ const playC=R.cN?`<button class="play" data-act="pm1" data-m="${R.cN.map(T.midi).join(',')}">${I('play')} Oír</button>`:'';const playY=R.yN?`<button class="play" data-act="pm1" data-m="${(R.yM||R.yN.map(T.midi)).join(',')}">${I('play')} Oír</button>`:'';
+ const how=`<div class="how"><h4>Paso a paso, súper fácil</h4><ol class="steps">${R.steps.map(s=>`<li>${s}</li>`).join('')}</ol></div>`;
+ if(R.ok){h=`<div class="grab"></div><div class="fb-head ok"><div class="bub"><svg class="draw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div><div><h3>${rnd(['¡Exacto!','¡Perfecto!','¡Muy bien!','¡Así se hace!'])}</h3><p><span class="pts">+${pts}</span> &nbsp;racha de ${S.streak}</p></div></div>
+  <div class="card tight okpane" style="box-shadow:var(--sh1)">${R.cHTML}${R.cN?`<div class="nn" style="text-align:center">${R.cN.map(nm).join(' · ')}</div><div style="text-align:center;margin-top:6px">${playC}</div>`:''}</div>
+  <details class="acc"><summary>¿Por qué? Paso a paso ${I('down',2)}</summary><ol class="steps">${R.steps.map(s=>`<li>${s}</li>`).join('')}</ol></details>`;}
+ else h=`<div class="grab"></div><div class="fb-head bad"><div class="bub">${I('heal',2)}</div><div><h3>Casi. Lo corregimos juntas</h3><p>Compara la tuya con la correcta${R.cN?' y escúchalas':''}</p></div></div>
+  <div class="cmp ${R.cN?'':'txt'}"><div class="pane y"><div class="lab">${I('x',2.6)} La tuya</div>${R.yHTML}${R.yN&&!q.scale?`<div class="nn">${R.yN.map(nm).join(' · ')}</div>${playY}`:''}</div>
+  <div class="pane c"><div class="lab">${I('check',2.6)} Correcta</div>${R.cHTML}${R.cN&&!q.scale?`<div class="nn">${R.cN.map(nm).join(' · ')}</div>${playC}`:''}</div></div>
+  ${R.msgs.length?`<div class="why"><h4>${I('bulb',2).replace('<svg','<svg width="16" height="16"')} Qué pasó</h4><ul>${R.msgs.map(m=>`<li>${m}</li>`).join('')}</ul></div>`:''}${how}`;
+ h+=`<button class="btn ${R.ok?'blue':'pri'} block" style="margin-top:20px" data-act="mqnext">${last?'Ver resultado':R.ok?'Continuar':'Entendido, sigamos'} ${I('arrow',2)}</button>`;
+ openSheet(h);
+ if(R.ok){if(R.cN)AU.play(R.cN.map(T.midi),'block');confetti(S.streak&&S.streak%5===0?140:60);}else{$('#qv .qhead')?.classList.add('shake');if(R.cN)setTimeout(()=>AU.play(R.cN.map(T.midi),'both'),250);}}
+function mqNext(){closeSheet();Q2.i++;A2={};if(Q2.i>=Q2.qs.length){mqFinish();return;}render();scrollTo({top:0,behavior:'smooth'});}
+function mqFinish(){const r=Q2.right,n=Q2.qs.length,{mod,ex,exam,log}=Q2;Q2=null;const back=exam?'#m/exam':mod==='all'?'#m/exam':'#m/'+mod;location.hash=back;
+ const grade=Math.round(100*r/n)/10;if(exam){S.exam.n++;S.exam.last=grade;S.exam.best=Math.max(S.exam.best??0,grade);save();}
+ const wrong=log.filter(x=>!x.ok);
+ setTimeout(()=>{openSheet(`<div class="grab"></div><div class="res-c">${exam?ring(grade,10,{size:128,sw:10,fs:34,txt:grade.toFixed(1),sub:'de 10'}):ring(r,n,{size:120,sw:10,fs:32,txt:r+'/'+n,sub:'correctas'})}<h3>${r===n?'¡Perfecto!':r>=n*.8?'¡Muy bien, Eli!':r>=n*.6?'Vas muy bien':'Vas creciendo'}</h3><p>${exam?r+' de '+n+' bien · ':''}${S.points} puntos en total</p></div>
+ ${wrong.length?`<div class="card tight review"><div class="card-h"><h3>Repaso de errores</h3><span class="badge">${wrong.length}</span></div>${wrong.map(x=>`<div class="rv"><small>${MODNAME(x.q.mod)}</small><b>${x.q.prompt.k}${x.q.prompt.h?' · '+pretty(x.q.prompt.h):''}${x.q.prompt.sub&&!x.q.prompt.h?' · '+x.q.prompt.sub:''}</b><div><span class="tag-s tg-rose">tuya</span> ${pretty(x.y||'')}</div><div><span class="tag-s tg-blue">correcta</span> ${pretty(x.c||'')}</div></div>`).join('')}</div>`:''}
+ <div class="btn-row" style="margin-top:20px">${wrong.length?`<button class="btn soft" data-mq="${exam?'all':mod}|err">Repasar errores</button>`:''}<button class="btn pri" data-mq="${exam?'exam|all':mod==='all'?'all|err':mod+'|'+(ex==='err'?'mix':ex)}">${exam?'Otro simulacro':'Otra ronda'}</button></div><button class="btn ghost block" style="margin-top:8px" data-act="home">Ir al inicio</button>`);
+ if(r>=n*.7)confetti(r===n?180:90);},60);}
+Object.assign(ACT,{
+ mqc:d=>{A2.c=+d.k;rerenderKeep();},mqplay:()=>{const q=Q2.qs[Q2.i];A2.heard=1;AU.play(q.prompt.play,q.ear?'both':'both');if(q.ear)rerenderKeep();},
+ mqprog:()=>{const q=Q2.qs[Q2.i];seqPlay(q.prog.filter(x=>x.length));},
+ mqclear:()=>{A2.sel=[];rerenderKeep();},mqplaysel:()=>AU.play(A2.sel,'both'),
+ mqslot:d=>{A2.act=+d.k;A2.last=null;rerenderKeep();},
+ mqL:d=>{const i=A2.act??0;A2.slots[i]={l:+d.k,a:0,o:4};A2.last=i;const nx=A2.slots.findIndex((x,j)=>!x&&j>i);A2.act=nx>=0?nx:A2.slots.findIndex(x=>!x);if(A2.act<0)A2.act=i;rerenderKeep();AU.play([T.midi(A2.slots[i])],'block');},
+ mqA:d=>{const i=A2.last??A2.act;if(!A2.slots[i]){toast('Primero elige la letra');return;}A2.slots[i].a=+d.k;rerenderKeep();AU.play([T.midi(A2.slots[i])],'block');},
+ mqadd:d=>{(A2.seq=A2.seq||[]).push(d.k);if(A2.seq.length>16)A2.seq.pop();rerenderKeep();},mqundo:()=>{A2.seq.pop();rerenderKeep();},mqseqclear:()=>{A2.seq=[];rerenderKeep();},
+ mqcell:d=>{A2.act=+d.k;rerenderKeep();},mqpal:d=>{A2.mv[A2.act]=d.k;const nx=A2.mv.findIndex(x=>!x);if(nx>=0)A2.act=nx;rerenderKeep();},
+ mqcheck:()=>mqCheck(),mqnext:()=>mqNext(),mqquit:()=>{const m=Q2&&Q2.mod;Q2=null;A2={};closeSheet();location.hash=m&&MOD[m]?'#m/'+m:'#learn';},
+ prog:d=>seqPlay(d.p.split('|').map(x=>x.split(',').map(Number))),
+ scl:d=>{d.m.split(',').map(Number).forEach((m,i)=>setTimeout(()=>AU.play([m],'block'),i*380));}
+});
+// tecla del piano en ejercicios de temas
+const _key=ACT.key;ACT.key=d=>{const q=Q2&&Q2.qs[Q2.i];if(q&&q.kind==='keys'&&!A2.done&&location.hash==='#mq'){const m=+d.m;AU.play([m],'block');A2.sel=A2.sel||[];const i=A2.sel.indexOf(m);if(i>=0)A2.sel.splice(i,1);else if(A2.sel.length<q.target.length)A2.sel.push(m);else{toast('Ya tienes '+q.target.length+' notas · toca una para quitarla');return;}rerenderKeep();return;}_key(d);};
+document.addEventListener('click',e=>{const s=e.target.closest('[data-mq]');if(s){e.stopPropagation();AU.init();const [m,x]=s.dataset.mq.split('|');startMQ(m,x);}},true);
+/* ===== Arranque ===== */
+if(document.fonts)document.fonts.ready.then(()=>{if(!Q&&!Q2)render(true);});
 render();
 </script></body></html>
