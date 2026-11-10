@@ -768,7 +768,7 @@ const CT={
 };
 const SEV=['maj7','7','m7','m7b5','dim7','mmaj7','maj7s5','6','m6'];
 const INTW={'2:3':'3ª menor','2:4':'3ª mayor','4:6':'5ª disminuida','4:7':'5ª justa','4:8':'5ª aumentada','6:9':'7ª disminuida','6:10':'7ª menor','6:11':'7ª mayor','5:9':'6ª mayor','1:1':'2ª menor (♭9)','1:2':'2ª mayor (9)','1:3':'2ª aumentada (♯9)','3:4':'4ª disminuida','3:5':'4ª justa','5:8':'6ª menor (♭13)'};
-const SEMW=n=>({1:'1 semitono',2:'2 semitonos (1 tono)',3:'3 semitonos (tono y medio)',4:'4 semitonos (2 tonos)',6:'6 semitonos',7:'7 semitonos',8:'8 semitonos',9:'9 semitonos',10:'10 semitonos',11:'11 semitonos'})[n]||n+' semitonos';
+const SEMW=n=>({1:'1 semitono',2:'2 semitonos = 1 tono',3:'3 semitonos = tono y medio',4:'4 semitonos = 2 tonos',6:'6 semitonos',7:'7 semitonos',8:'8 semitonos',9:'9 semitonos',10:'10 semitonos',11:'11 semitonos'})[n]||n+' semitonos';
 function tones(root,type){const r={l:root.l,a:root.a,o:4};return [r,...CT[type].iv.map(([ls,st])=>ad(r,ls,st))];}
 const sym=(root,type)=>T.letName(root)+CT[type].suf;
 const maxAcc=(root,type)=>Math.max(...tones(root,type).map(n=>Math.abs(n.a)));
