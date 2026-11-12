@@ -114,6 +114,50 @@ body{color:var(--tx);font-weight:500}body:after{opacity:.035}
 #stuHint{color:#EFE6D4;font-family:Lora;font-size:13px}.tools{flex-wrap:wrap}.aa{display:flex;gap:4px;margin-left:auto}
 body.study .ln:not(.rev){text-shadow:0 0 12px rgba(245,239,227,.7)}
 #sTxt{font-family:Lora,serif;font-weight:600;color:#FFF8EA}#stage:before{background:rgba(10,4,5,.94)}
+
+.print-header{display:none}
+@media print{
+  @page{size:letter;margin:.6in}
+  html,body{background:#fff!important;color:#000!important;font-weight:500;padding:0!important;margin:0!important}
+  body:after,[style*="background:url(domo.jpg)"],.hero .bg,#sBg{display:none!important}
+  .hero,.intro,.bar,.fab,#stage,#toast,.scroll,.tools,.pr,.seg,.aa,.ck,button,.pill{display:none!important}
+  .print-header{display:block;text-align:center;border-bottom:1.5pt solid #000;padding:0 0 14pt;margin:0 0 16pt;color:#000;background:none}
+  .print-header h1{font-family:'Playfair Display',Georgia,serif;font-size:26pt;margin:4pt 0;color:#000;background:none;-webkit-text-fill-color:#000;text-shadow:none}
+  .print-header i,.hero h1{-webkit-text-fill-color:#000;color:#000;background:none}
+  .ph-kicker{font:700 9pt Inter,sans-serif;letter-spacing:3pt;text-transform:uppercase;margin:0}
+  .ph-sub,.ph-meta,.ph-voices{font:500 11pt Lora,Georgia,serif;margin:3pt 0;color:#000}
+  .intro,.quote,footer{color:#000!important;background:none!important}
+  .quote{border:1pt solid #000;padding:12pt;margin:12pt 0;border-radius:0}
+  .quote:before,.quote p,.quote small{color:#000!important;position:static;background:none}
+  .act{color:#000;letter-spacing:2pt;margin:16pt 0 8pt}
+  .act:before,.act:after{background:#000}
+  .card{opacity:1!important;transform:none!important;filter:none!important;background:#fff!important;border:1pt solid #222!important;box-shadow:none!important;break-inside:avoid;page-break-inside:avoid;backdrop-filter:none!important;margin:0 0 11pt;border-radius:0;min-height:0}
+  .card:before{display:none}
+  .card.done,.card.is-pend{opacity:1!important;filter:none!important}
+  .hd{padding:8pt 10pt 4pt;cursor:default}
+  .num{color:#000;-webkit-text-stroke:0;font-size:16pt;opacity:1}
+  .time,.ti h3,.note,.meta,.lead{color:#000!important}
+  .ti h3{font-size:14pt}
+  .bd{display:block!important;grid-template-rows:none!important;max-height:none!important;overflow:visible!important}
+  .bd>div{overflow:visible!important}
+  .ln{opacity:1!important;transform:none!important;color:#000!important;background:#fff!important;border:1pt solid #ddd!important;border-left-width:3.5pt!important;font-size:11pt!important;line-height:1.5!important;box-shadow:none;backdrop-filter:none;margin:0 8pt 8pt}
+  .ln.A{border-left-color:#1a4a8a!important}
+  .ln.E{border-left-color:#8a2048!important}
+  .ln.B{border:1.5pt solid #000!important;text-align:center;background:#fff!important;color:#000!important;font-style:italic;font-weight:700}
+  .ln b{color:#000!important;font-weight:700;font-style:normal;letter-spacing:1pt}
+  .ln.A b{color:#1a4a8a!important}
+  .ln.E b{color:#8a2048!important}
+  .ln.B b{color:#000!important}
+  body.study .ln:not(.rev),body.study .ln:not(.rev) b{color:#000!important;text-shadow:none!important;user-select:text}
+  body.study .ln:not(.rev):after{display:none!important}
+  .chip{border:1pt solid #000;background:#fff!important;color:#000!important;box-shadow:none}
+  .chip.ca{color:#1a4a8a!important;border-color:#1a4a8a}
+  .chip.ce{color:#8a2048!important;border-color:#8a2048}
+  .note{color:#222!important}
+  footer{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+  html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 </style></head><body>
 <div style="position:fixed;inset:-40px;z-index:-1;background:url(domo.jpg) center/cover;filter:blur(24px) brightness(.18) saturate(1.2)"></div><section class="hero"><div class="bg"></div>
 <div class="kick">✦ Guía de locución · 27·XI·2026</div>
@@ -124,8 +168,15 @@ body.study .ln:not(.rev){text-shadow:0 0 12px rgba(245,239,227,.7)}
 <div class="scroll"></div></section>
 <p class="intro">Toca cada momento para abrir tus líneas, márcalo al terminar y, en el teatro, activa el modo escenario para leer en grande, una línea a la vez.</p>
 <div class="bar"><div class="seg"><i id="pill"></i><button data-f="" class="on">Ambos</button><button data-f="E">Eli</button><button data-f="A">Aarón</button></div>
-<div class="pr"><span id="pt">0/0</span><div><i id="pg"></i></div><button id="rst" class="pill">↺ Reiniciar</button></div><div class="tools"><button id="stu" class="pill">📖 Modo estudio</button><span id="stuHint">Toca cada línea para revelarla</span><button id="revAll" class="pill">Mostrar todo</button><span class="aa"><button id="aM" class="pill" aria-label="Texto más chico">A−</button><button id="aP" class="pill" aria-label="Texto más grande">A+</button></span></div></div>
+<div class="pr"><span id="pt">0/0</span><div><i id="pg"></i></div><button id="rst" class="pill">↺ Reiniciar</button></div><div class="tools"><button id="prn" class="pill" type="button">🖨 Imprimir / PDF</button><button id="stu" class="pill">📖 Modo estudio</button><span id="stuHint">Toca cada línea para revelarla</span><button id="revAll" class="pill">Mostrar todo</button><span class="aa"><button id="aM" class="pill" aria-label="Texto más chico">A−</button><button id="aP" class="pill" aria-label="Texto más grande">A+</button></span></div></div>
 <div id="toast"><span>¿Borrar todas las marcas?</span><button id="tNo">Cancelar</button><button id="tYes">Reiniciar</button></div>
+<header class="print-header">
+  <p class="ph-kicker">Guía de locución</p>
+  <h1>100 Años de Gratitud</h1>
+  <p class="ph-sub">Concierto del Centenario · Presbiterio Sur Oriente del Valle de México</p>
+  <p class="ph-meta">Viernes 27 de noviembre de 2026 · Teatro de la Ciudad Esperanza Iris</p>
+  <p class="ph-voices">Aarón Mora · Eli Nogueron</p>
+</header>
 <main id="m"></main>
 <footer><h2>¡A Dios sea toda la gloria!</h2></footer>
 <button class="fab" id="go">🎙 Modo escenario</button>
@@ -173,6 +224,7 @@ btns.forEach(b=>b.onclick=()=>{F=b.dataset.f;document.body.classList.remove('fA'
 addEventListener('load',()=>pill(btns[0]));addEventListener('resize',()=>pill(btns.find(b=>b.classList.contains('on'))));
 rst.onclick=()=>toast.classList.add('on');tNo.onclick=()=>toast.classList.remove('on');
 tYes.onclick=()=>{done={};Object.keys(localStorage).filter(k=>k.startsWith('lcDone')).forEach(k=>localStorage.removeItem(k));toast.classList.remove('on');draw();rst.textContent='✓ Listo';setTimeout(()=>rst.textContent='↺ Reiniciar',1500)};
+prn.onclick=()=>window.print();
 stu.onclick=()=>{const on=document.body.classList.toggle('study');stu.textContent=on?'✕ Salir de estudio':'📖 Modo estudio';document.querySelectorAll('.ln.rev').forEach(l=>l.classList.remove('rev'));revAll.textContent='Mostrar todo'};
 revAll.onclick=()=>{const ls=[...document.querySelectorAll('.ln')],all=ls.every(l=>l.classList.contains('rev'));ls.forEach(l=>l.classList.toggle('rev',!all));revAll.textContent=all?'Mostrar todo':'Ocultar todo'};
 m.addEventListener('click',e=>{const l=e.target.closest('.ln');if(l&&document.body.classList.contains('study'))l.classList.toggle('rev')});
