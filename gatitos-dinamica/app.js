@@ -239,6 +239,11 @@ var sl=$('#sleepLoop'); if(sl) sl.onclick=function(){setLoop(!loopOn)};
 var plp=$('#pLoop'); if(plp) plp.onclick=function(){setLoop(!loopOn)};
 var bd=$('#btnDormirTodo');
 if(bd) bd.onclick=function(){useKind('sleep',sleepList,0,true,'all')};
+var versesList=[{id:'versiculos-de-corrido',title:'Todos los versículos de corrido',src:'audio/versiculos-de-corrido.mp3'}];
+function playVersosCorrido(){useKind('sleep',versesList,0,true,'all')}
+var bv=$('#btnVersosCorrido'); if(bv) bv.onclick=playVersosCorrido;
+var pv=$('#pVersos'); if(pv) pv.onclick=playVersosCorrido;
+
 
 (function(){
   var box=$('#sleepTopics');

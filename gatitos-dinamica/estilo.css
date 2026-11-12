@@ -368,3 +368,9 @@ article.tema{
 }
 .sleep-ctrls button.on{background:#c4a36a;color:#16120c}
 .sleep-ctrls .sub{font-size:.72rem;opacity:.85}
+
+.p-versos{
+  background:#3d5168;color:#f4efe4;border:0;border-radius:999px;
+  padding:0 .6rem;height:32px;cursor:pointer;font-weight:800;font-size:.72rem;width:auto;white-space:nowrap
+}
+.player.night .p-versos{background:#c4a36a;color:#16120c}
