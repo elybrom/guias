@@ -73,6 +73,24 @@ document.addEventListener('click',function(e){
 
 /* AUDIOBOOK + MODO DORMIR */
 var aud=$('#aud');
+if(aud){
+  aud.setAttribute('playsinline','');
+  aud.setAttribute('webkit-playsinline','');
+  aud.preload='metadata';
+}
+var AUDIO_BASE=(function(){
+  var s=document.querySelector('script[src*="app.js"]');
+  if(s&&s.src) return s.src.replace(/app\.js(?:\?.*)?$/,'');
+  var path=location.pathname||'/';
+  if(!/\/$/.test(path)) path=path.replace(/[^/]+$/,'');
+  if(path.slice(-1)!=='/') path+='/';
+  return (location.origin||'')+path;
+})();
+function resolveSrc(src){
+  if(!src) return src;
+  if(/^(https?:|data:|blob:)/i.test(src)) return src;
+  return AUDIO_BASE+String(src).replace(/^\.\//,'');
+}
 var studyList=[{id:'00-intro',title:'Bienvenida',src:'audio/00-intro.mp3'}].concat(TOPICS.map(function(t){return {id:t.id,title:t.titulo,src:'audio/'+t.id+'.mp3'}}));
 var sleepList=[{id:'dormir-todo',title:'Modo para dormir',src:'audio/dormir-todo.mp3'}];
 var sleepTopics=[{id:'intro',title:'Introducción',src:'audio/dormir/intro.mp3'}].concat(TOPICS.map(function(t){return {id:'d-'+t.id,title:t.titulo,src:'audio/dormir/'+t.id+'.mp3'}}));
@@ -108,11 +126,36 @@ function metaAlbum(){
   if(kind==='verse')return {artist:'Modo para dormir',album:'Versículo'};
   return {artist:'Gatitos · Dinámica de la iglesia',album:'Audiolibro'};
 }
+function applyRate(){
+  try{if(aud&&aud.readyState>=1) aud.playbackRate=rate;}catch(e){}
+}
+function playAud(){
+  if(!aud)return;
+  applyRate();
+  var p;
+  try{p=aud.play()}catch(e){p=null}
+  if(p&&p.catch) p.catch(function(err){
+    var name=err&&err.name||'';
+    if(name==='AbortError')return;
+    var retry=function(){
+      aud.removeEventListener('canplay',retry);
+      applyRate();
+      aud.play().catch(function(){});
+    };
+    aud.addEventListener('canplay',retry);
+  });
+}
 function load(i,play){
   if(i<0||i>=playlist.length)return;
   idx=i;var t=playlist[i];
   aud.volume=1;
-  aud.src=t.src;aud.playbackRate=rate;
+  var url=resolveSrc(t.src);
+  var same=aud.src===url;
+  if(!same && !aud.paused){try{aud.pause()}catch(e){}}
+  if(!same) aud.src=url;
+  else {try{aud.currentTime=0}catch(e){}}
+  if(aud.readyState>=1) applyRate();
+  else aud.addEventListener('loadedmetadata',function(){applyRate()},{once:true});
   $('#pTitle').textContent=t.title;
   $('#pSub').textContent=kind==='sleep'||kind==='verse'? (loopOn?'Se repite · ':'')+(kind==='verse'?'Versículo':'Modo para dormir') : ((i)+' / '+(playlist.length-1));
   var sn=$('#sleepNow');
@@ -121,7 +164,7 @@ function load(i,play){
   if('mediaSession' in navigator){
     try{navigator.mediaSession.metadata=new MediaMetadata({title:t.title,artist:metaAlbum().artist,album:metaAlbum().album});}catch(e){}
   }
-  if(play)aud.play().catch(function(){});
+  if(play)playAud();
   updatePlay();
 }
 function useKind(k, list, i, play, md){
@@ -131,14 +174,14 @@ function useKind(k, list, i, play, md){
   load(i,play);
 }
 function setRate(r){
-  rate=r; if(aud)aud.playbackRate=rate;
+  rate=r; applyRate();
   $$('.vel button[data-vel]').forEach(function(x){x.classList.toggle('on', +x.dataset.vel===r)});
   $$('#sleepVel button').forEach(function(x){x.classList.toggle('on', +x.dataset.svel===r)});
 }
 function updatePlay(){$('#pPlay').textContent=(!aud.paused)?'❚❚':'▶'}
 $('#pPlay').onclick=function(){
   if(idx<0){useKind('study',studyList,0,true,'all');return}
-  if(aud.paused)aud.play();else aud.pause();
+  if(aud.paused)playAud();else aud.pause();
 };
 $('#pPrev').onclick=function(){if(idx>0)load(idx-1,true); else if(loopOn)load(playlist.length-1,true)};
 $('#pNext').onclick=function(){if(idx<playlist.length-1)load(idx+1,true); else if(loopOn)load(0,true)};
@@ -179,7 +222,7 @@ document.addEventListener('click',function(e){
 });
 if('mediaSession' in navigator){
   try{
-    navigator.mediaSession.setActionHandler('play',function(){aud.play()});
+    navigator.mediaSession.setActionHandler('play',function(){playAud()});
     navigator.mediaSession.setActionHandler('pause',function(){aud.pause()});
     navigator.mediaSession.setActionHandler('previoustrack',function(){if(idx>0)load(idx-1,true); else if(loopOn)load(playlist.length-1,true)});
     navigator.mediaSession.setActionHandler('nexttrack',function(){if(idx<playlist.length-1)load(idx+1,true); else if(loopOn)load(0,true)});
@@ -258,22 +301,52 @@ var pv=$('#pVersos'); if(pv) pv.onclick=playVersosCorrido;
   });
 })();
 
+function playVerseButton(b){
+  if(!b)return;
+  var src=b.getAttribute('data-src')||verseSrc(b.getAttribute('data-verse')||b.dataset.verse||'');
+  var ref=b.getAttribute('data-verse')||b.dataset.verse||'Versículo';
+  if(!src)return;
+  useKind('verse', [{id:'v-'+slugRef(ref), title:ref, src:src}], 0, true, 'one');
+  $$('.flash-play.on, .verse-play.on').forEach(function(el){el.classList.remove('on');el.setAttribute('aria-pressed','false')});
+  b.classList.add('on'); b.setAttribute('aria-pressed','true');
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.flash-play, .verse-play');
+  if(!b)return;
+  e.preventDefault();
+  e.stopPropagation();
+  playVerseButton(b);
+}, true);
+
+$$('.verso').forEach(function(v){
+  if(v.querySelector('.verse-play'))return;
+  var cite=v.querySelector('cite');
+  if(!cite)return;
+  var ref=(cite.textContent||'').split('·')[0].trim();
+  if(!ref)return;
+  var row=document.createElement('div');
+  row.className='verso-top';
+  cite.parentNode.insertBefore(row, cite);
+  row.appendChild(cite);
+  var b=document.createElement('button');
+  b.type='button';
+  b.className='verse-play';
+  b.setAttribute('data-src', verseSrc(ref));
+  b.setAttribute('data-verse', ref);
+  b.setAttribute('aria-label', 'Escuchar '+ref);
+  b.setAttribute('title', 'Escuchar el versículo, despacio');
+  b.textContent='▶';
+  row.appendChild(b);
+});
+
 /* FLASHCARDS */
 (function(){
   var box=$('#flashBox');
   box.innerHTML=FLASH.map(function(f,i){
-    var slug=slugRef(f[0]);
-    return '<article class="flash" data-fi="'+i+'"><div class="flash-top"><cite>'+esc(f[0])+'</cite><button type="button" class="flash-play" data-verse="'+esc(f[0])+'" aria-label="Escuchar '+esc(f[0])+'" title="Escuchar el versículo, despacio">▶</button></div><p data-side="front">Toca para ver el versículo · '+esc(f[2])+'</p></article>';
+    return '<article class="flash" data-fi="'+i+'"><div class="flash-top"><cite>'+esc(f[0])+'</cite><button type="button" class="flash-play" data-verse="'+esc(f[0])+'" data-src="'+esc(verseSrc(f[0]))+'" aria-label="Escuchar '+esc(f[0])+'" title="Escuchar el versículo, despacio">▶</button></div><p data-side="front">Toca para ver el versículo · '+esc(f[2])+'</p></article>';
   }).join('');
   box.addEventListener('click',function(e){
-    var play=e.target.closest('.flash-play');
-    if(play){
-      e.stopPropagation();
-      var ref=play.dataset.verse;
-      useKind('verse', [{id:'v-'+slugRef(ref), title:ref, src:verseSrc(ref)}], 0, true, 'one');
-      play.classList.add('on'); play.setAttribute('aria-pressed','true');
-      return;
-    }
+    if(e.target.closest('.flash-play')){e.preventDefault();e.stopPropagation();return;}
     var c=e.target.closest('.flash');if(!c)return;
     var f=FLASH[+c.dataset.fi];
     var p=c.querySelector('p');

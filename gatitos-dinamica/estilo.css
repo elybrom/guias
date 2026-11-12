@@ -261,7 +261,8 @@ article.tema{
 /* sticky audiobook player */
 .player{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(40,55,74,.96);color:#f4efe4;box-shadow:0 -8px 24px rgba(0,0,0,.25);padding:.5rem .7rem calc(.5rem + env(safe-area-inset-bottom))}
 .player-in{max-width:980px;margin:auto;display:grid;grid-template-columns:auto 1fr auto;gap:.45rem .6rem;align-items:center;position:relative}
-#aud{position:absolute;width:0;height:0;opacity:0;pointer-events:none}
+#aud{position:absolute;left:0;bottom:0;width:1px;height:1px;margin:0;padding:0;border:0;opacity:.01;-webkit-transform:translateZ(0)}
+.pbtns button,.vel button,#fxToggle,.flash-play,.verse-play,.p-versos,.sleep-topics button,.btn{touch-action:manipulation;-webkit-tap-highlight-color:rgba(196,163,106,.35)}
 .pbtns{display:flex;gap:.25rem;align-items:center}
 .pbtns button,.vel button,#fxToggle{
   background:#3d5168;color:#f4efe4;border:0;border-radius:999px;width:40px;height:40px;cursor:pointer;font-weight:800
@@ -347,13 +348,15 @@ article.tema{
 .sleep-note{background:rgba(255,255,255,.06)!important;color:#d9d0c0!important;margin-top:.8rem}
 
 .flash{position:relative}
-.flash-top{display:flex;align-items:center;justify-content:space-between;gap:.4rem;margin-bottom:.3rem}
-.flash-top cite{margin:0}
-.flash-play{
-  flex:0 0 auto;width:36px;height:36px;border-radius:50%;
-  border:0;background:#28374A;color:#f4efe4;cursor:pointer;font-weight:800
+.verso-top,.flash-top{display:flex;align-items:center;justify-content:space-between;gap:.4rem;margin-bottom:.3rem}
+.verso-top cite,.flash-top cite{margin:0}
+.flash-play,.verse-play{
+  flex:0 0 auto;width:44px;height:44px;border-radius:50%;
+  border:0;background:#28374A;color:#f4efe4;cursor:pointer;font-weight:800;
+  position:relative;z-index:2;pointer-events:auto
 }
-.flash-play[aria-pressed="true"],.flash-play.on{background:#c4a36a;color:#16120c}
+.verse-play{background:#28374A}
+.flash-play[aria-pressed="true"],.flash-play.on,.verse-play.on{background:#c4a36a;color:#16120c}
 
 .player.night{background:rgba(10,16,26,.97)}
 .player.night #pPlay{background:#c4a36a;color:#16120c}
