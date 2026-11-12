@@ -80,3 +80,32 @@ La primera entrada (2026-11-12, Jueces 1) ya está escrita en este archivo como 
 - Marcar el devocional de hoy como leído alimenta la **racha** (`localStorage`) y, si el pasaje es un capítulo de un libro ya desplegado (p. ej. Jueces), también el progreso de ese capítulo.
 - El libro de **Jueces** está desarrollado entero, capítulo por capítulo, dentro de `index.html` (introducción, contexto, mapa, línea de tiempo, quizzes). El JSON diario no sustituye esa guía: es la lectura de cada día, en secuencia.
 - Tras un `git push`, GitHub Pages puede tardar un minuto. La app usa cache-busting para no quedar atrapada en un `diarios.json` viejo.
+
+## Fotos y créditos visuales
+
+Las imágenes viven en [`img/`](./img/), en WebP optimizado para teléfono. Los pies de foto describen lo que realmente se ve: un desierto de mesetas o un cañón no se presentan como Tierra Santa.
+
+### Wikimedia Commons
+
+- Mar de Galilea (vista satelital): Interiot, dominio público. *File:Sea of Galilee.jpg*.
+- Cesarea Marítima: Yulia Kuprina, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0). *File:Caesarea Maritima.jpg*.
+- Muro Occidental, Jerusalén: Onceinawhile, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0). *File:Western Wall Jerusalem.jpg*.
+- Masada y el mar Muerto: SuperJew, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0). *File:Masada and Dead Sea.jpg*.
+- Jerusalén desde el Monte de los Olivos (grabado, 1881–1883): John Douglas Woodward, grabado de Charles Cousen, dominio público.
+- Ciudad Vieja de Jerusalén: Yazan Jwailes, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0). *File:Old City of Jerusalem.jpg*.
+- Olivar: Birding In Spain, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0). *File:Olive grove.jpg*.
+- Olivo: Shadrack D Nantomah, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0). *File:Olive Trees.jpg*.
+- Getsemaní: AlexEleon, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0). *File:Gethsemane.jpg*.
+- Flores secas: Ore Liete, dominio público. *File:Dried flowers.jpg*.
+
+Las obras CC BY-SA se reutilizan con atribución. El recorte y la conversión a WebP, cuando aplica, se ofrecen bajo la misma licencia que el original.
+
+### Unsplash y Pexels
+
+Fotos bajo la [licencia Unsplash](https://unsplash.com/license) (atribución agradecida). Identificadores: `photo-1504052434569-70ad5836ab65` (biblia abierta), `photo-1507692049790-de58290a4334` (letras JESUS), `photo-1495474472287-4d71bcdd2085` (café), `photo-1447933601403-0c6688de566e` (granos), `photo-1509316785289-025f5b846b35` y `photo-1547234935-80c7145ec969` (desierto y roca; no son Israel), `photo-1487530811176-3780de880c2d` (ramo), `photo-1462275646964-a0e3386b89fa` (flores), `photo-1516414447565-b14be0adf13e` (libreta), `photo-1455390582262-044cdead277a` (pluma), `photo-1474044159687-1ee9f3a51722` (cañón; paisaje, no Tierra Santa), `photo-1474979266404-7eaacbcd87c5` (aceite de oliva).
+
+Cruz al atardecer: Pexels, foto 415571, licencia Pexels.
+
+Las texturas de lino, papel y mancha de café se generaron de forma procedimental para esta guía.
+
+Tipografías: Fraunces, Cormorant Garamond, Caveat y Outfit (Google Fonts). Movimiento: GSAP 3 (GreenSock) vía jsDelivr. Citas bíblicas: Reina-Valera 1960, verificadas; el texto completo se lee en Bible Gateway.
