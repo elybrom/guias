@@ -5,13 +5,13 @@
   --ok:#2E7A4F; --mal:#C0392B;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-bottom:calc(180px + env(safe-area-inset-bottom))}
 html,body{margin:0}
 body{
   font:400 16px/1.55 Montserrat,system-ui,sans-serif;
   color:var(--azul);
   background:#E9DFC8;
-  padding-bottom:108px;
+  padding-bottom:calc(180px + env(safe-area-inset-bottom));
 }
 body::before{
   content:"";position:fixed;inset:0;z-index:-2;
@@ -292,6 +292,8 @@ article.tema{
   .pbtns button,.vel button,#fxToggle{width:36px;height:36px}
   #pPlay{width:44px;height:44px}
   .vel button,#fxToggle{width:auto;height:30px}
+  body{padding-bottom:calc(210px + env(safe-area-inset-bottom))}
+  html{scroll-padding-bottom:calc(210px + env(safe-area-inset-bottom))}
 }
 @media print{
   .player,.quiz,.acciones,.top{display:none!important}
