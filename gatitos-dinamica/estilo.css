@@ -377,3 +377,16 @@ article.tema{
   padding:0 .6rem;height:32px;cursor:pointer;font-weight:800;font-size:.72rem;width:auto;white-space:nowrap
 }
 .player.night .p-versos{background:#c4a36a;color:#16120c}
+
+/* frase clave destacada */
+.clave{
+  margin:.5rem 0 .9rem;padding:.85rem 1rem;
+  background:#fffaf1;border:2.5px solid var(--terra);border-radius:16px;
+  box-shadow:0 3px 0 rgba(117,68,55,.22)
+}
+.clave .frase-clave{
+  font-family:Caveat,cursive;font-weight:700;
+  font-size:clamp(1.28rem,3.8vw,1.8rem);line-height:1.25;
+  color:var(--azul);margin:0 0 .5rem
+}
+.clave > cite{display:block;font-style:normal;font-weight:700;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--terra);margin:0 0 .2rem}
