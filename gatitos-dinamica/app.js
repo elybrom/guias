@@ -37,8 +37,8 @@ function beep(freq, dur, type, vol, slide){
   o.connect(g); g.connect(c.destination);
   o.start(); o.stop(c.currentTime+dur+0.02);
 }
-function pop(){beep(520,.07,'triangle',0.06,880); setTimeout(function(){beep(880,.05,'sine',0.04)},40)}
-function swoosh(){beep(420,.12,'sawtooth',0.03,180)}
+function pop(){if(window.__quiet)return;beep(520,.07,'triangle',0.06,880); setTimeout(function(){beep(880,.05,'sine',0.04)},40)}
+function swoosh(){if(window.__quiet)return;beep(420,.12,'sawtooth',0.03,180)}
 var fxBtn=$('#fxToggle');
 if(fxBtn){
   try{fxOn=localStorage.getItem('gatitos-fx')==='1'}catch(e){}
@@ -71,50 +71,93 @@ document.addEventListener('click',function(e){
   if(ok)pop(); else swoosh();
 });
 
-/* AUDIOBOOK */
+/* AUDIOBOOK + MODO DORMIR */
 var aud=$('#aud');
-var playlist=[{id:'00-intro',title:'Bienvenida',src:'audio/00-intro.mp3'}].concat(TOPICS.map(function(t){return {id:t.id,title:t.titulo,src:'audio/'+t.id+'.mp3'}}));
-var idx=-1, rate=1, mode='one';
+var studyList=[{id:'00-intro',title:'Bienvenida',src:'audio/00-intro.mp3'}].concat(TOPICS.map(function(t){return {id:t.id,title:t.titulo,src:'audio/'+t.id+'.mp3'}}));
+var sleepList=[{id:'dormir-todo',title:'Modo para dormir',src:'audio/dormir-todo.mp3'}];
+var sleepTopics=[{id:'intro',title:'Introducción',src:'audio/dormir/intro.mp3'}].concat(TOPICS.map(function(t){return {id:'d-'+t.id,title:t.titulo,src:'audio/dormir/'+t.id+'.mp3'}}));
+var playlist=studyList;
+var idx=-1, rate=1, mode='one', kind='study', loopOn=false;
+window.__quiet=false;
+function slugRef(ref){
+  return String(ref||'').toLowerCase().replace(/[–—]/g,'-')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+}
+function verseSrc(ref){return 'audio/dormir/verso-'+slugRef(ref)+'.mp3'}
+function setNight(on){
+  window.__quiet=!!on;
+  var pl=$('#player');
+  if(pl)pl.classList.toggle('night', !!on);
+  var sc=$('#sleepCtrls');
+  if(sc)sc.hidden=!on;
+}
 function highlight(id){
   $$('article.tema.playing').forEach(function(el){el.classList.remove('playing')});
-  if(!id||id==='00-intro')return;
-  var art=$('#t-'+id);
+  $$('.sleep-topics button.on').forEach(function(el){el.classList.remove('on')});
+  $$('.flash-play.on').forEach(function(el){el.classList.remove('on');el.setAttribute('aria-pressed','false')});
+  if(!id||id==='00-intro'||id==='dormir-todo'||id==='intro')return;
+  var tid=id.indexOf('d-')===0?id.slice(2):id;
+  var art=$('#t-'+tid);
   if(art){art.classList.add('playing','in-view');}
+  var tb=$('.sleep-topics button[data-sid="'+id+'"]');
+  if(tb)tb.classList.add('on');
+}
+function metaAlbum(){
+  if(kind==='sleep')return {artist:'Modo para dormir',album:'Apuntes y Palabra'};
+  if(kind==='verse')return {artist:'Modo para dormir',album:'Versículo'};
+  return {artist:'Gatitos · Dinámica de la iglesia',album:'Audiolibro'};
 }
 function load(i,play){
   if(i<0||i>=playlist.length)return;
   idx=i;var t=playlist[i];
+  aud.volume=1;
   aud.src=t.src;aud.playbackRate=rate;
   $('#pTitle').textContent=t.title;
-  $('#pSub').textContent=(i)+' / '+(playlist.length-1);
+  $('#pSub').textContent=kind==='sleep'||kind==='verse'? (loopOn?'Se repite · ':'')+(kind==='verse'?'Versículo':'Modo para dormir') : ((i)+' / '+(playlist.length-1));
+  var sn=$('#sleepNow');
+  if(sn)sn.textContent='Ahora: '+t.title;
   highlight(t.id);
   if('mediaSession' in navigator){
-    try{
-      navigator.mediaSession.metadata=new MediaMetadata({title:t.title,artist:'Gatitos · Dinámica de la iglesia',album:'Audiolibro'});
-    }catch(e){}
+    try{navigator.mediaSession.metadata=new MediaMetadata({title:t.title,artist:metaAlbum().artist,album:metaAlbum().album});}catch(e){}
   }
   if(play)aud.play().catch(function(){});
   updatePlay();
 }
+function useKind(k, list, i, play, md){
+  kind=k; playlist=list; mode=md||'all';
+  setNight(k==='sleep'||k==='verse');
+  if((k==='sleep'||k==='verse') && rate>1) setRate(1);
+  load(i,play);
+}
+function setRate(r){
+  rate=r; if(aud)aud.playbackRate=rate;
+  $$('.vel button[data-vel]').forEach(function(x){x.classList.toggle('on', +x.dataset.vel===r)});
+  $$('#sleepVel button').forEach(function(x){x.classList.toggle('on', +x.dataset.svel===r)});
+}
 function updatePlay(){$('#pPlay').textContent=(!aud.paused)?'❚❚':'▶'}
 $('#pPlay').onclick=function(){
-  if(idx<0){mode='all';load(0,true);return}
+  if(idx<0){useKind('study',studyList,0,true,'all');return}
   if(aud.paused)aud.play();else aud.pause();
 };
-$('#pPrev').onclick=function(){if(idx>0)load(idx-1,true)};
-$('#pNext').onclick=function(){if(idx<playlist.length-1)load(idx+1,true)};
+$('#pPrev').onclick=function(){if(idx>0)load(idx-1,true); else if(loopOn)load(playlist.length-1,true)};
+$('#pNext').onclick=function(){if(idx<playlist.length-1)load(idx+1,true); else if(loopOn)load(0,true)};
 aud.addEventListener('play',function(){updatePlay()});
 aud.addEventListener('pause',function(){updatePlay()});
 aud.addEventListener('timeupdate',function(){
   var p=aud.duration?aud.currentTime/aud.duration:0;
   $('#pFill').style.width=(p*100)+'%';
-  // reveal remate phrases toward the end
   var art=$('article.tema.playing');
   if(art && p>0.72) art.classList.add('in-view');
+  paintSleepLeft();
 });
 aud.addEventListener('ended',function(){
-  if(mode==='all'&&idx<playlist.length-1)load(idx+1,true);
-  else {updatePlay(); highlight(null)}
+  if((kind==='sleep'||kind==='verse') && loopOn){
+    load(idx<playlist.length-1?idx+1:0, true);
+    return;
+  }
+  if(mode==='all'&&idx<playlist.length-1){load(idx+1,true);return;}
+  updatePlay(); highlight(null);
 });
 $('#pBar').addEventListener('click',function(e){
   if(!aud.duration)return;
@@ -122,34 +165,110 @@ $('#pBar').addEventListener('click',function(e){
   aud.currentTime=((e.clientX-r.left)/r.width)*aud.duration;
 });
 $$('.vel button[data-vel]').forEach(function(b){
-  b.onclick=function(){
-    rate=+b.dataset.vel;aud.playbackRate=rate;
-    $$('.vel button[data-vel]').forEach(function(x){x.classList.toggle('on',x===b)});
-  };
+  b.onclick=function(){setRate(+b.dataset.vel)};
 });
-$('#btnTodo').onclick=function(){mode='all';load(0,true)};
+$$('#sleepVel button').forEach(function(b){
+  b.onclick=function(){setRate(+b.dataset.svel)};
+});
+$('#btnTodo').onclick=function(){useKind('study',studyList,0,true,'all')};
 document.addEventListener('click',function(e){
   var b=e.target.closest('[data-play]');if(!b)return;
   var id=b.dataset.play;
-  var i=playlist.findIndex(function(x){return x.id===id});
-  if(i>=0){mode='one';load(i,true)}
+  var i=studyList.findIndex(function(x){return x.id===id});
+  if(i>=0)useKind('study',studyList,i,true,'one');
 });
 if('mediaSession' in navigator){
   try{
     navigator.mediaSession.setActionHandler('play',function(){aud.play()});
     navigator.mediaSession.setActionHandler('pause',function(){aud.pause()});
-    navigator.mediaSession.setActionHandler('previoustrack',function(){if(idx>0)load(idx-1,true)});
-    navigator.mediaSession.setActionHandler('nexttrack',function(){if(idx<playlist.length-1)load(idx+1,true)});
+    navigator.mediaSession.setActionHandler('previoustrack',function(){if(idx>0)load(idx-1,true); else if(loopOn)load(playlist.length-1,true)});
+    navigator.mediaSession.setActionHandler('nexttrack',function(){if(idx<playlist.length-1)load(idx+1,true); else if(loopOn)load(0,true)});
   }catch(e){}
 }
+
+/* sleep timer + loop */
+var sleepMins=0, sleepUntil=0, sleepT=null, fadeT=null;
+function armSleep(mins){
+  sleepMins=+mins||0;
+  clearTimeout(sleepT); clearInterval(fadeT);
+  aud.volume=1;
+  sleepUntil=sleepMins? Date.now()+sleepMins*60*1000 : 0;
+  if(sleepMins){
+    var wait=Math.max(0, sleepMins*60*1000-15000);
+    sleepT=setTimeout(startFade, wait);
+  }
+  paintTimer();
+}
+function startFade(){
+  var start=Date.now(), dur=15000;
+  fadeT=setInterval(function(){
+    var t=(Date.now()-start)/dur;
+    if(t>=1){
+      clearInterval(fadeT); aud.volume=0; aud.pause(); aud.volume=1;
+      updatePlay(); armSleep(0);
+      var sn=$('#sleepNow'); if(sn)sn.textContent='El temporizador terminó. Descansa.';
+      return;
+    }
+    aud.volume=Math.max(0, 1-t);
+  }, 250);
+}
+function paintTimer(){
+  $$('#sleepTimers button, #sleepCtrls button[data-sleep]').forEach(function(b){
+    b.classList.toggle('on', +b.dataset.sleep===sleepMins);
+  });
+  paintSleepLeft();
+}
+function paintSleepLeft(){
+  var el=$('#pSleepLeft');
+  if(!el)return;
+  if(!sleepUntil){el.textContent='';return;}
+  var s=Math.max(0, Math.round((sleepUntil-Date.now())/1000));
+  el.textContent=Math.floor(s/60)+':'+(s%60<10?'0':'')+(s%60);
+}
+function setLoop(on){
+  loopOn=!!on;
+  var a=$('#sleepLoop'), b=$('#pLoop');
+  if(a){a.textContent=loopOn?'↻ Repetir: sí':'↻ Repetir: no';a.classList.toggle('on',loopOn)}
+  if(b)b.classList.toggle('on',loopOn);
+}
+document.addEventListener('click',function(e){
+  var t=e.target.closest('[data-sleep]'); if(!t)return;
+  armSleep(+t.dataset.sleep);
+});
+var sl=$('#sleepLoop'); if(sl) sl.onclick=function(){setLoop(!loopOn)};
+var plp=$('#pLoop'); if(plp) plp.onclick=function(){setLoop(!loopOn)};
+var bd=$('#btnDormirTodo');
+if(bd) bd.onclick=function(){useKind('sleep',sleepList,0,true,'all')};
+
+(function(){
+  var box=$('#sleepTopics');
+  if(!box)return;
+  box.innerHTML=sleepTopics.map(function(t){
+    return '<button type="button" data-sid="'+t.id+'">'+esc(t.title)+'</button>';
+  }).join('');
+  box.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-sid]'); if(!b)return;
+    var i=sleepTopics.findIndex(function(x){return x.id===b.dataset.sid});
+    if(i>=0) useKind('sleep', sleepTopics, i, true, 'all');
+  });
+})();
 
 /* FLASHCARDS */
 (function(){
   var box=$('#flashBox');
   box.innerHTML=FLASH.map(function(f,i){
-    return '<article class="flash" data-fi="'+i+'"><cite>'+esc(f[0])+'</cite><p data-side="front">Toca para ver el versículo · '+esc(f[2])+'</p></article>';
+    var slug=slugRef(f[0]);
+    return '<article class="flash" data-fi="'+i+'"><div class="flash-top"><cite>'+esc(f[0])+'</cite><button type="button" class="flash-play" data-verse="'+esc(f[0])+'" aria-label="Escuchar '+esc(f[0])+'" title="Escuchar el versículo, despacio">▶</button></div><p data-side="front">Toca para ver el versículo · '+esc(f[2])+'</p></article>';
   }).join('');
   box.addEventListener('click',function(e){
+    var play=e.target.closest('.flash-play');
+    if(play){
+      e.stopPropagation();
+      var ref=play.dataset.verse;
+      useKind('verse', [{id:'v-'+slugRef(ref), title:ref, src:verseSrc(ref)}], 0, true, 'one');
+      play.classList.add('on'); play.setAttribute('aria-pressed','true');
+      return;
+    }
     var c=e.target.closest('.flash');if(!c)return;
     var f=FLASH[+c.dataset.fi];
     var p=c.querySelector('p');

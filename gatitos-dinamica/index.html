@@ -16,6 +16,7 @@
     <a href="#identidad">Identidad</a>
     <a href="#estructura">Estructura</a>
     <a href="#crecimiento">Crecimiento</a>
+    <a href="#dormir">Dormir</a>
     <a href="#flash">Versículos</a>
     <a href="#examen">Examen</a>
     <a href="#libreta">Mi libreta</a>
@@ -35,6 +36,7 @@
   <div class="acc">
     <button type="button" class="btn" id="btnTodo">▶ Escuchar todo</button>
     <a class="btn s" href="#estructura">Ir a Estructura</a>
+    <a class="btn s" href="#dormir">Modo para dormir 🌙</a>
     <a class="btn s" href="#flash">Tarjetas de versículos</a>
     <a class="btn s" href="../examen-dinamica/">Simulacro de examen</a>
   </div>
@@ -644,6 +646,34 @@
 <p class="nota-mini" data-qr></p></div>
 </article></section>
 
+
+<section class="bloque dormir" id="dormir">
+  <h2>Modo para dormir 🌙</h2>
+  <p>Para orar y reposar escuchando. Una voz suave lee, despacio, tu apunte y después el versículo en Reina-Valera 1960, dos veces, con la cita al principio y al final. Sin bromas ni efectos. Puedes dejar el teléfono con la pantalla bloqueada.</p>
+  <div class="sleep-panel">
+    <div class="sleep-main">
+      <button type="button" class="btn night" id="btnDormirTodo">▶ Escuchar toda la noche</button>
+      <button type="button" class="btn s night" id="sleepLoop">↻ Repetir: no</button>
+    </div>
+    <p class="sleep-label">Apagar poco a poco</p>
+    <div class="sleep-timers" id="sleepTimers">
+      <button type="button" data-sleep="0" class="on">Sin temporizador</button>
+      <button type="button" data-sleep="15">15 min</button>
+      <button type="button" data-sleep="30">30 min</button>
+      <button type="button" data-sleep="60">60 min</button>
+    </div>
+    <p class="sleep-label">Velocidad</p>
+    <div class="vel sleep-vel" id="sleepVel">
+      <button type="button" data-svel="0.75">0.75×</button>
+      <button type="button" data-svel="1" class="on">1×</button>
+    </div>
+    <p class="sleep-now" id="sleepNow">Listo para acompañarte al reposo.</p>
+  </div>
+  <p class="sleep-label">Por tema</p>
+  <div class="sleep-topics" id="sleepTopics"></div>
+  <p class="nota-mini sleep-note">También puedes pulsar ▶ en cada tarjeta de versículos para oír esa cita, despacio, dos veces.</p>
+</section>
+
 <section class="bloque" id="flash">
   <h2>Tarjetas de versículos</h2>
   <p>Toca la tarjeta para ver el texto. Todas las citas van en RVR1960, como en tu cuaderno.</p>
@@ -695,6 +725,13 @@
       <button type="button" id="fxToggle" title="Efectos de sonido (apagados al inicio)">SFX off</button>
     </div>
     <div class="prog"><div id="pBar"><div id="pFill"></div></div></div>
+    <div class="sleep-ctrls" id="sleepCtrls" hidden>
+      <button type="button" id="pLoop" title="Repetir">↻</button>
+      <button type="button" data-sleep="15">15m</button>
+      <button type="button" data-sleep="30">30m</button>
+      <button type="button" data-sleep="60">60m</button>
+      <span id="pSleepLeft" class="sub"></span>
+    </div>
     <audio id="aud" preload="none"></audio>
   </div>
 </div>

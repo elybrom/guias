@@ -292,8 +292,8 @@ article.tema{
   .pbtns button,.vel button,#fxToggle{width:36px;height:36px}
   #pPlay{width:44px;height:44px}
   .vel button,#fxToggle{width:auto;height:30px}
-  body{padding-bottom:calc(210px + env(safe-area-inset-bottom))}
-  html{scroll-padding-bottom:calc(210px + env(safe-area-inset-bottom))}
+  body{padding-bottom:calc(240px + env(safe-area-inset-bottom))}
+  html{scroll-padding-bottom:calc(240px + env(safe-area-inset-bottom))}
 }
 @media print{
   .player,.quiz,.acciones,.top{display:none!important}
@@ -306,3 +306,65 @@ article.tema{
   *{animation:none!important;transition:none!important}
   .caption span,.cap span{opacity:1;transform:none}
 }
+
+/* —— Modo para dormir —— */
+#dormir{
+  max-width:980px;margin:1.6rem auto 1.2rem;padding:1.25rem 1rem 1.35rem;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(200,180,120,.12), transparent 55%),
+    linear-gradient(180deg,#101826 0%,#1a2433 100%);
+  color:#e8e0d0;
+  border-radius:22px;
+  border:1px solid #2b3b52;
+  box-shadow:0 10px 0 rgba(8,12,20,.35);
+}
+#dormir h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(1.8rem,5vw,2.4rem);
+  color:#f3e6c4;margin:.1rem 0 .35rem;
+}
+#dormir>p{margin:.2rem 0 .9rem;font-size:.95rem;line-height:1.55;color:#d9d0c0}
+.sleep-panel{background:rgba(8,12,20,.35);border-radius:16px;padding:.9rem;margin:0 0 1rem}
+.sleep-main{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.7rem}
+.btn.night{background:#c4a36a;color:#16120c;box-shadow:0 3px 0 #7a6240}
+.btn.s.night{background:transparent;color:#f3e6c4;border:2px solid #c4a36a;box-shadow:none}
+.btn.s.night.on{background:#c4a36a;color:#16120c}
+.sleep-label{margin:.45rem 0 .3rem;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#c4a36a}
+.sleep-timers,.sleep-vel{display:flex;flex-wrap:wrap;gap:.35rem}
+.sleep-timers button{
+  background:#243044;color:#e8e0d0;border:0;border-radius:999px;
+  padding:.4rem .7rem;font-weight:700;cursor:pointer;font-size:.85rem
+}
+.sleep-timers button.on,.sleep-vel button.on{background:#c4a36a;color:#16120c}
+.sleep-vel button{background:#243044;color:#e8e0d0;border:0;border-radius:999px;padding:.35rem .65rem;height:auto;width:auto;font-weight:700;cursor:pointer}
+.sleep-now{margin:.75rem 0 0;font-weight:600;color:#f3e6c4}
+.sleep-topics{display:flex;flex-wrap:wrap;gap:.35rem}
+.sleep-topics button{
+  background:#243044;color:#e8e0d0;border:0;border-radius:999px;
+  padding:.4rem .7rem;font-weight:600;cursor:pointer;font-size:.82rem
+}
+.sleep-topics button:hover,.sleep-topics button.on{background:#c4a36a;color:#16120c}
+.sleep-note{background:rgba(255,255,255,.06)!important;color:#d9d0c0!important;margin-top:.8rem}
+
+.flash{position:relative}
+.flash-top{display:flex;align-items:center;justify-content:space-between;gap:.4rem;margin-bottom:.3rem}
+.flash-top cite{margin:0}
+.flash-play{
+  flex:0 0 auto;width:36px;height:36px;border-radius:50%;
+  border:0;background:#28374A;color:#f4efe4;cursor:pointer;font-weight:800
+}
+.flash-play[aria-pressed="true"],.flash-play.on{background:#c4a36a;color:#16120c}
+
+.player.night{background:rgba(10,16,26,.97)}
+.player.night #pPlay{background:#c4a36a;color:#16120c}
+.player.night #pFill{background:#c4a36a}
+.player.night .vel button[data-vel="1.25"],
+.player.night #fxToggle{display:none}
+.sleep-ctrls{display:none;align-items:center;gap:.3rem;flex-wrap:wrap;grid-column:1/-1}
+.player.night .sleep-ctrls{display:flex}
+.sleep-ctrls button{
+  background:#243044;color:#f4efe4;border:0;border-radius:999px;
+  padding:0 .55rem;height:32px;cursor:pointer;font-weight:800;font-size:.75rem;width:auto
+}
+.sleep-ctrls button.on{background:#c4a36a;color:#16120c}
+.sleep-ctrls .sub{font-size:.72rem;opacity:.85}
