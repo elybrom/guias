@@ -1,227 +1,343 @@
 <!DOCTYPE html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Guía de Derecho Constitucional (Tena Ramírez)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&family=Karla:wght@400;600;700&family=Caveat:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--ox:#6a0f1c;--ox2:#8e1b2a;--red:#b3202f;--cream:#f6eee1;--paper:#fbf6ec;--esp:#2e1b12;--esp2:#4a2c1e;--latte:#d9c2a3;--latte2:#ead9c0;--ink:#24140d;--ok:#3f6b3a;--no:#a3241f}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:'Karla',system-ui,sans-serif;color:var(--ink);line-height:1.6;background:var(--cream);background-image:radial-gradient(#6a0f1c0d 1px,transparent 1px);background-size:18px 18px}
-h1,h2,h3{font-family:'Playfair Display',Georgia,serif;margin:0}.mono{font-family:'Space Mono',monospace;letter-spacing:.06em;text-transform:uppercase}.hand{font-family:'Caveat',cursive}
-/* toldo */
-.awning{height:46px;background:repeating-linear-gradient(90deg,var(--red) 0 34px,var(--cream) 34px 68px);position:relative;box-shadow:0 6px 12px #0003}
-.awning:after{content:"";position:absolute;left:0;right:0;bottom:-16px;height:16px;background:radial-gradient(circle at 17px 0,var(--red) 16px,transparent 17px) 0 0/68px 16px,radial-gradient(circle at 51px 0,var(--cream) 16px,transparent 17px) 0 0/68px 16px}
-.sign{text-align:center;padding:30px 16px 8px}
-.badge{width:104px;height:104px;margin:0 auto 10px;border-radius:50%;background:var(--ox);color:var(--cream);display:grid;place-content:center;text-align:center;box-shadow:0 0 0 4px var(--cream),0 0 0 6px var(--ox),0 10px 24px #0004}
-.badge b{font:900 1.9rem 'Playfair Display';line-height:1}.badge small{font:700 .6rem 'Space Mono';letter-spacing:.15em}
-.sign h1{font-size:clamp(2rem,8.5vw,3.6rem);color:var(--ox);line-height:1;font-weight:900}.sign h1 i{font-weight:500}
-.sign .sub{margin:8px 0 0;color:var(--esp2)}.espresso{display:inline-block;margin-top:10px;background:var(--esp);color:var(--latte2);padding:4px 14px;border-radius:4px;font:700 .72rem 'Space Mono';letter-spacing:.3em}
-.count{display:flex;justify-content:center;gap:10px;margin:14px 0 4px;flex-wrap:wrap}.count div{background:var(--paper);border:1px solid var(--latte);border-radius:12px;padding:6px 12px;text-align:center;box-shadow:0 3px 0 var(--latte)}.count b{display:block;font:900 1.5rem 'Playfair Display';color:var(--ox)}.count span{font-size:.72rem;color:var(--esp2)}
-/* cassette progreso */
-.tapebar{position:sticky;top:0;z-index:30;background:var(--esp);color:var(--latte2);padding:8px 12px;box-shadow:0 4px 12px #0005}
-.tapebar .in{max-width:980px;margin:auto;display:flex;align-items:center;gap:10px;font:700 .72rem 'Space Mono'}
-.reel{width:26px;height:26px;border-radius:50%;border:3px solid var(--latte);background:repeating-conic-gradient(var(--esp) 0 30deg,var(--latte) 30deg 60deg);flex:none}.reel.spin{animation:rot 2s linear infinite}@keyframes rot{to{transform:rotate(360deg)}}
-.tape{flex:1;height:10px;border-radius:9px;background:#ffffff1f;overflow:hidden}.tape i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#e2584f);transition:width .5s}
-main{max-width:980px;margin:auto;padding:8px 14px 100px}
-/* categorías tipo menú */
-.cats{display:flex;gap:12px;overflow-x:auto;padding:14px 2px 6px;scroll-snap-type:x mandatory}
-.cat{flex:none;scroll-snap-align:start;width:118px;border:0;border-radius:18px;padding:12px 8px;background:var(--paper);box-shadow:0 4px 0 var(--latte),0 8px 18px #0001;cursor:pointer;text-align:center;font:700 .78rem 'Karla';color:var(--esp);transition:.2s}
-.cat .cup{width:62px;height:62px;margin:0 auto 6px;border-radius:50%;display:grid;place-items:center;font-size:1.6rem;background:radial-gradient(circle,var(--latte2) 0 44%,var(--esp2) 46% 58%,var(--cream) 60%);box-shadow:0 0 0 3px var(--ox) inset}
-.cat.on{background:var(--ox);color:var(--cream);transform:translateY(-3px)}.cat.on .cup{box-shadow:0 0 0 3px var(--cream) inset}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.chip{border:1px solid var(--ox);background:transparent;color:var(--ox);border-radius:99px;padding:6px 12px;font:700 .78rem 'Karla';cursor:pointer}.chip.on{background:var(--ox);color:var(--cream)}
-.sec-title{display:flex;align-items:baseline;gap:10px;margin:26px 0 6px}.sec-title h2{font-size:1.7rem;color:var(--ox)}.sec-title span{font-family:'Caveat';font-size:1.3rem;color:var(--esp2)}
-/* sesiones */
-.ses{margin:14px 0;background:var(--paper);border-radius:6px 22px 22px 6px;box-shadow:0 10px 26px #2e1b1222;border-left:10px solid var(--ox);overflow:hidden;animation:up .45s ease both}
-.ses>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px 16px}.ses>summary::-webkit-details-marker{display:none}
-.snum{width:52px;height:52px;border-radius:50%;background:var(--esp);color:var(--latte2);display:grid;place-content:center;text-align:center;font:700 .62rem 'Space Mono';line-height:1.1;box-shadow:0 0 0 3px var(--latte) inset}.snum b{font:900 1.2rem 'Playfair Display';color:var(--cream)}
-.ses h3{font-size:1.08rem;line-height:1.25}.meta{font-size:.74rem;color:var(--esp2);margin-top:2px}.meta .tag{display:inline-block;background:var(--latte2);border-radius:5px;padding:0 6px;margin-right:4px}.meta .soon{background:var(--red);color:#fff}
-.dots{display:flex;gap:4px}.dots i{width:10px;height:10px;border-radius:50%;border:2px solid var(--ox)}.dots i.y{background:var(--ox)}
-.sbody{padding:0 16px 18px}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.tabs button{border:0;border-radius:99px;padding:7px 12px;background:var(--latte2);color:var(--esp);font:700 .8rem 'Karla';cursor:pointer}.tabs button.on{background:var(--ox);color:var(--cream)}
-.pane{display:none}.pane.on{display:block;animation:fade .3s}@keyframes fade{from{opacity:0}}
-.note{background:var(--paper);background-image:repeating-linear-gradient(transparent 0 27px,#d9c2a366 27px 28px);border:1px solid var(--latte);border-radius:10px;padding:10px 14px 10px 30px;position:relative}.note:before{content:"";position:absolute;left:18px;top:0;bottom:0;width:2px;background:#e2584f66}
-.note ul{margin:0;padding-left:16px}.note li{margin:3px 0}
-.vig{background:#fff;border:2px solid var(--ox);border-radius:12px;padding:10px 14px;position:relative}.vig:before{content:"TEXTO VIGENTE";position:absolute;top:-10px;right:12px;background:var(--ox);color:var(--cream);font:700 .6rem 'Space Mono';padding:2px 8px;letter-spacing:.15em;border-radius:3px}
-.vig ul{margin:6px 0 0;padding-left:18px}.vig li{margin:4px 0}
-.lbl{font:700 .65rem 'Space Mono';letter-spacing:.15em;color:var(--esp2);margin:2px 0 6px}
-.clave{font:700 1.6rem 'Caveat';color:var(--ox);background:var(--latte2);border-radius:12px;padding:10px 14px;transform:rotate(-1deg);box-shadow:0 4px 0 var(--latte)}
-.rq{margin:8px 0;border:1px dashed var(--ox2);border-radius:12px;overflow:hidden;background:#fff}.rq button{all:unset;box-sizing:border-box;display:block;width:100%;padding:10px 12px;font-weight:700;cursor:pointer;color:var(--ox)}.rq div{display:none;padding:0 12px 10px}.rq.on div{display:block}
-textarea{width:100%;min-height:120px;border-radius:10px;border:1px solid var(--latte);padding:10px;font:inherit;background:var(--paper);background-image:repeating-linear-gradient(transparent 0 27px,#d9c2a366 27px 28px);line-height:28px}
-.checks{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.ck{display:flex;gap:6px;align-items:center;background:var(--latte2);border-radius:99px;padding:6px 12px;font-size:.82rem;font-weight:700;cursor:pointer}.ck input{accent-color:var(--ox);width:17px;height:17px}
-.back{display:inline-block;margin-top:10px;font-size:.82rem;color:var(--ox);font-weight:700}
-/* bloques */
-.blk{margin:22px 0;background:var(--paper);border-radius:22px;padding:18px;box-shadow:0 10px 26px #2e1b1222;position:relative;animation:up .45s ease both}
-.blk.dark{background:var(--esp);color:var(--latte2)}.blk.dark h2{color:var(--cream)}.blk.dark .sub{color:var(--latte)}
-.blk h2{font-size:1.55rem;color:var(--ox)}.sub{font-size:.88rem;color:var(--esp2);margin:2px 0 12px}
-.blk.board{background:#1f1612;color:#f3e7d6;border:10px solid #5a3a26;border-radius:10px;box-shadow:inset 0 0 40px #000a,0 10px 26px #0005}.blk.board h2{color:#f3e7d6;font-family:'Caveat';font-size:2.2rem}
-.tw{overflow-x:auto;margin:10px 0 18px;border-radius:12px;box-shadow:0 0 0 1px var(--latte)}
-table{border-collapse:collapse;width:100%;font-size:.86rem;background:#fff;min-width:520px}th{background:var(--ox);color:var(--cream);text-align:left;padding:9px;font-family:'Playfair Display'}td{padding:9px;border-top:1px solid var(--latte2);vertical-align:top}tr:nth-child(even) td{background:#fbf3e7}td:first-child{font-weight:700;color:var(--ox)}
-.tt{font-family:'Playfair Display';font-style:italic;font-size:1.1rem;color:var(--esp);margin-top:6px}
-.tlsel{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
-.tl{position:relative;padding-left:26px}.tl:before{content:"";position:absolute;left:9px;top:4px;bottom:4px;width:3px;background:repeating-linear-gradient(var(--ox) 0 8px,transparent 8px 14px)}
-.ev{position:relative;margin:8px 0;padding:8px 12px;background:#fff;border-radius:12px;border:1px solid var(--latte);cursor:pointer}.ev:before{content:"";position:absolute;left:-23px;top:13px;width:14px;height:14px;border-radius:50%;background:var(--cream);border:3px solid var(--ox)}
-.ev b{font:900 1.05rem 'Playfair Display';color:var(--ox);margin-right:6px}.ev p{display:none;margin:6px 0 0;font-size:.88rem}.ev.on p{display:block}.ev.on:before{background:var(--ox)}
-/* polaroids */
-.pols{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
-.pol{perspective:900px;height:200px;cursor:pointer}.pol .in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}.pol:nth-child(odd) .in{rotate:-2deg}.pol:nth-child(even) .in{rotate:1.5deg}
-.pol.f .in{transform:rotateY(180deg)}.pf,.pb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fff;padding:10px 10px 34px;box-shadow:0 8px 18px #0003;border-radius:3px}
-.pf .ph{height:100%;background:linear-gradient(135deg,var(--ox),var(--esp));color:var(--cream);display:grid;place-items:center;text-align:center;padding:8px;font:700 1rem 'Playfair Display'}.pf:after,.pb:after{content:attr(data-c);position:absolute;bottom:6px;left:0;right:0;text-align:center;font:600 1.1rem 'Caveat';color:var(--esp2)}
-.pb{transform:rotateY(180deg)}.pb .ph{height:100%;background:var(--latte2);display:grid;place-items:center;text-align:center;padding:8px;font-size:.84rem}
-/* juegos */
-.q{border:1px solid var(--latte);border-radius:14px;padding:12px;margin:10px 0;background:#fff}.q p{margin:0 0 8px;font-weight:700}
-.opt{display:block;width:100%;text-align:left;margin:5px 0;padding:10px;border-radius:10px;border:1px solid var(--latte);background:var(--paper);font:inherit;font-size:.92rem;cursor:pointer;color:var(--ink)}.opt.ok{background:#dfe9d3;border-color:var(--ok)}.opt.no{background:#f4d5cf;border-color:var(--no)}
-.fb{font-size:.86rem;margin-top:4px;line-height:1.45}.fb ol{margin:6px 0 0 1.2em;padding:0}
-.score{position:sticky;bottom:78px;z-index:5;margin-top:10px;background:var(--esp);color:var(--latte2);padding:10px;border-radius:99px;text-align:center;font:700 .82rem 'Space Mono';box-shadow:0 6px 16px #0005}
-.act{all:unset;cursor:pointer;display:inline-block;margin:8px 6px 0 0;padding:9px 16px;border-radius:99px;background:var(--ox);color:var(--cream);font-weight:700;font-size:.9rem}.act.alt{background:var(--esp2)}.act.lt{background:var(--latte2);color:var(--esp)}
-.mrow{display:grid;grid-template-columns:1fr 160px;gap:8px;align-items:center;padding:8px;margin:6px 0;border-radius:12px;background:#fff;border:1px solid var(--latte);font-size:.88rem}.mrow select{width:100%;padding:8px;border-radius:10px;border:1px solid var(--esp2);font:inherit;background:#fff}.mrow.g{background:#dfe9d3}.mrow.b{background:#f4d5cf}.mrow .cr{grid-column:1/-1;color:var(--ok);font-size:.84rem}
+:root{
+  --bg:#F3EEE6;--paper:#FAF7F1;--cream:#F3EEE6;--ink:#241612;--ink2:#5C463C;
+  --ox:#6B1A1F;--ox2:#8A2A30;--esp:#2A1812;--esp2:#1C100C;--latte:#C9B59A;--latte2:#E8DCCB;
+  --line:rgba(36,22,18,.14);--ok:#2C4A34;--no:#8A241C;
+  --serif:'Cormorant Garamond',Palatino,Georgia,serif;
+  --sans:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.65;font-size:16.5px;font-weight:400;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.15;margin:0;color:var(--esp);text-wrap:balance}
+h2{font-size:clamp(1.85rem,5vw,2.6rem)}
+h3{font-size:1.35rem}
+a{color:var(--ox)}
+img{max-width:100%;display:block}
+.kicker{font-family:var(--sans);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin:0 0 12px;color:var(--ink2)}
+.sub{font-size:.95rem;color:var(--ink2);margin:8px 0 18px;max-width:40rem}
+
+/* hero */
+.hero{position:relative;min-height:86svh;display:flex;align-items:flex-end;color:#FAF7F1;overflow:hidden;background:var(--esp)}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,24,18,.12) 0%,rgba(42,24,18,.25) 46%,rgba(42,24,18,.88) 100%)}
+.hero-copy{position:relative;z-index:1;padding:0 24px 56px;max-width:1120px;margin:0 auto;width:100%}
+.hero .kicker{color:#E8DCCB}
+.hero h1{font-size:clamp(3.1rem,15vw,7rem);color:#FAF7F1;font-weight:500;line-height:.9;margin:0 0 16px}
+.hero h1 em{font-style:italic;font-weight:500}
+.hero .lede{margin:0;max-width:26rem;font-size:1.02rem;color:#E8DCCB;line-height:1.55}
+.hero .prof{margin:14px 0 0;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#C9B59A}
+
+/* progress */
+.tapebar{position:sticky;top:0;z-index:40;background:rgba(243,238,230,.92);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+.tapebar .in{max-width:1120px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:14px}
+.tapebar .k,.tapebar #pt{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);font-weight:500}
+.reel{display:none}
+.tape{flex:1;height:1px;background:var(--line);position:relative}
+.tape i,#pb{display:block;height:2px;width:0;background:var(--ox);margin-top:-1px;transition:width .5s}
+
+/* meta row */
+.meta-row{max-width:1120px;margin:0 auto;padding:28px 24px 8px;display:grid;gap:28px}
+@media(min-width:800px){.meta-row{grid-template-columns:1fr 1fr;align-items:start;padding-top:40px}}
+.count{display:flex;flex-wrap:wrap;gap:10px 28px}
+.count div{background:none;border:0;box-shadow:none;padding:0;text-align:left;border-radius:0}
+.count b{display:block;font-family:var(--sans);font-size:2.4rem;font-weight:500;color:var(--ox);line-height:1;font-variant-numeric:lining-nums tabular-nums}
+.count span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.count .hi b{color:var(--ox)}
+.count .hi{padding-bottom:6px;border-bottom:1px solid var(--ox)}
+
+/* streak card */
+.loyalty{background:var(--paper);border:1px solid var(--line);border-radius:0;padding:20px 22px;box-shadow:none;max-width:none;margin:0}
+.loyalty .lh{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.cup-s{display:none}
+.loyalty .meta-r{flex:1}
+.loyalty .meta-r b{font-family:var(--serif);font-size:1.55rem;font-weight:500;color:var(--esp);display:block}
+.loyalty .meta-r span{font-size:.78rem;color:var(--ink2)}
+.stamps{display:flex;gap:8px;margin-top:16px;background:none;padding:0}
+.stamp{flex:1;text-align:center}
+.stamp i{display:block;width:36px;height:36px;margin:0 auto 6px;border:1px solid var(--latte);border-radius:50%;background:transparent;position:relative}
+.stamp i:after{content:"";position:absolute;inset:6px;border-radius:50%;background:transparent}
+.stamp.on i{border-color:var(--ox)}
+.stamp.on i:after{background:var(--ox)}
+.stamp.today i{border-color:var(--ox);box-shadow:0 0 0 3px rgba(107,26,31,.15)}
+.stamp small{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:500}
+.toast-rk{position:fixed;top:56px;left:50%;transform:translateX(-50%);z-index:80;background:var(--esp);color:var(--paper);padding:12px 22px;font-family:var(--serif);font-size:1.15rem;letter-spacing:.02em;white-space:nowrap;animation:up .35s}
+
+main{max-width:1120px;margin:0 auto;padding:12px 24px 120px}
+
+/* sections */
+.blk{margin:72px 0;background:none;border-radius:0;padding:0;box-shadow:none;animation:up .7s ease both}
+.blk.dark{background:var(--esp);color:#E8DCCB;padding:48px 28px;margin-left:-24px;margin-right:-24px}
+.blk.dark h2,.blk.board h2{color:#FAF7F1}
+.blk.dark .sub{color:#C9B59A}
+.blk.board{background:var(--esp);color:#E8DCCB;padding:48px 28px;margin-left:-24px;margin-right:-24px;border:0;border-radius:0;box-shadow:none}
+.blk.board h2{font-family:var(--serif);font-size:clamp(1.85rem,5vw,2.6rem)}
+.cram{border:0;background:none;padding:0}
+.cram-flag{display:inline-block;background:none;color:var(--ox);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;padding:0;margin-bottom:14px;font-weight:500}
+.cram-acts{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 28px}
+.cram-day{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:16px 0;margin:0}
+.cram-day.today{border-left:0;box-shadow:none;padding-left:0}
+.cram-day .d{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ox);font-weight:600;display:block;margin-bottom:4px}
+
+.act{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border:1px solid var(--ox);color:var(--ox);background:transparent;font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s}
+.act:hover{background:var(--ox);color:var(--paper)}
+.act.alt{background:var(--esp);border-color:var(--esp);color:var(--paper)}
+.act.lt{border-color:var(--line);color:var(--esp)}
+.act.lt:hover{background:var(--esp);color:var(--paper);border-color:var(--esp)}
+
+.cheat{background:var(--paper);border:1px solid var(--line);border-radius:0;padding:8px 28px 28px;font-size:.95rem}
+.cheat h3{font-family:var(--serif);font-size:1.35rem;color:var(--ox);margin:22px 0 8px;font-weight:500}
+.cheat ul{margin:0;padding-left:1.1rem}
+.cheat li{margin:6px 0}
+.esen{background:none;border:0;padding:4px 0 8px}
+.esen .frase{font-family:var(--serif);font-style:italic;font-size:1.45rem;font-weight:500;color:var(--esp);margin:0 0 16px;line-height:1.3}
+.esen .trap{background:transparent;border-top:1px solid var(--line);border-radius:0;padding:14px 0 0;margin-top:16px;font-size:.92rem}
+.lbl{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);margin:16px 0 8px;font-weight:600}
+
+/* filters / menu */
+.sec-title{display:flex;flex-direction:column;gap:6px;margin:80px 0 18px;padding-top:12px;border-top:1px solid var(--line)}
+.sec-title h2{font-size:clamp(1.85rem,5vw,2.6rem)}
+.sec-title span{font-family:var(--sans);font-size:.8rem;color:var(--ink2);letter-spacing:.04em}
+.cats{display:flex;flex-wrap:wrap;gap:4px 18px;padding:0 0 8px;overflow:visible}
+.cat{all:unset;cursor:pointer;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);padding:6px 0;border-bottom:1px solid transparent;font-weight:500}
+.cat .cup{display:none}
+.cat.on{color:var(--ox);border-bottom-color:var(--ox)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}
+.chip{all:unset;cursor:pointer;border:1px solid var(--line);padding:6px 12px;font-size:.75rem;letter-spacing:.06em;color:var(--ink2)}
+.chip.on{border-color:var(--ox);color:var(--ox)}
+
+/* sessions as menu */
+.ses{margin:0;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;overflow:visible;animation:none}
+.ses>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:3.1rem 1fr auto;gap:14px;align-items:baseline;padding:20px 2px}
+.ses>summary::-webkit-details-marker{display:none}
+.snum{width:auto;height:auto;border-radius:0;background:none;color:var(--ox);display:block;font-family:var(--sans);font-size:1.35rem;font-weight:500;box-shadow:none;letter-spacing:.04em;text-align:left;line-height:1;font-variant-numeric:lining-nums tabular-nums}
+.snum b{font:inherit;color:inherit}
+.ses h3{font-family:var(--serif);font-size:1.22rem;font-weight:500;line-height:1.25;color:var(--esp)}
+.meta{font-size:.75rem;color:var(--ink2);margin-top:4px;letter-spacing:.02em}
+.meta .tag{display:inline;background:none;border-radius:0;padding:0;margin-right:10px}
+.meta .soon{background:none;color:var(--ox);font-weight:600}
+.dots{display:flex;gap:5px;align-items:center}
+.dots i{width:6px;height:6px;border-radius:50%;border:1px solid var(--ox);background:transparent}
+.dots i.y{background:var(--ox)}
+.sbody{padding:4px 2px 32px}
+.tabs{display:flex;gap:18px;flex-wrap:wrap;margin:8px 0 18px;border-bottom:1px solid var(--line)}
+.tabs button{all:unset;cursor:pointer;padding:8px 0 10px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);font-weight:500;border-bottom:1px solid transparent;margin-bottom:-1px}
+.tabs button.on{color:var(--ox);border-bottom-color:var(--ox)}
+.pane{display:none}.pane.on{display:block;animation:fade .35s}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.note{background:transparent;background-image:none;border:0;border-radius:0;padding:0;position:static}
+.note:before{display:none}
+.note ul{margin:0;padding-left:1.15rem}.note li{margin:8px 0}
+.vig{background:var(--paper);border:0;border-top:2px solid var(--ox);border-radius:0;padding:22px 22px 8px;position:relative}
+.vig:before{content:"Texto vigente";top:-10px;right:auto;left:0;background:var(--bg);color:var(--ox);font:600 .66rem var(--sans);padding:0 8px 0 0;letter-spacing:.16em;text-transform:uppercase;border-radius:0}
+.vig ul{margin:10px 0 12px;padding-left:1.15rem}
+.clave{font-family:var(--serif);font-style:italic;font-size:1.55rem;font-weight:500;color:var(--esp);background:none;border-radius:0;padding:8px 0;transform:none;box-shadow:none;line-height:1.3}
+.rq{margin:0;border:0;border-top:1px solid var(--line);border-radius:0;background:none}
+.rq button{all:unset;box-sizing:border-box;display:block;width:100%;padding:14px 0;font-weight:500;cursor:pointer;color:var(--esp);font-family:var(--serif);font-size:1.12rem}
+.rq div{display:none;padding:0 0 16px;color:var(--ink2)}.rq.on div{display:block}
+textarea{width:100%;min-height:140px;border-radius:0;border:1px solid var(--line);padding:14px;font:inherit;background:var(--paper);background-image:none;line-height:1.6}
+.checks{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.ck{display:flex;gap:8px;align-items:center;background:none;border:1px solid var(--line);border-radius:0;padding:7px 12px;font-size:.82rem;font-weight:500;cursor:pointer}
+.ck input{accent-color:var(--ox);width:16px;height:16px}
+.back{display:inline-block;margin-top:16px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ox);font-weight:600;text-decoration:none}
+
+.tw{overflow-x:auto;margin:10px 0 28px;border-radius:0;box-shadow:none;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:.88rem;background:var(--paper);min-width:520px}
+th{background:var(--esp);color:var(--paper);text-align:left;padding:11px 12px;font-family:var(--serif);font-weight:500;font-size:1rem}
+td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:transparent}
+td:first-child{font-weight:600;color:var(--ox)}
+.tt{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--esp);margin:22px 0 8px;font-weight:500}
+.tlsel{display:flex;gap:18px;margin-bottom:12px;flex-wrap:wrap}
+.tl{position:relative;padding-left:28px}
+.tl:before{content:"";position:absolute;left:4px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.ev{position:relative;margin:0;padding:14px 0;background:none;border-radius:0;border:0;border-bottom:1px solid var(--line);cursor:pointer}
+.ev:before{content:"";position:absolute;left:-27px;top:20px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--ox)}
+.ev b{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--ox);margin-right:8px}
+.ev p{display:none;margin:8px 0 0;font-size:.92rem}.ev.on p{display:block}.ev.on:before{background:var(--ox)}
+
+.pols{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:22px}
+.pol{perspective:900px;height:210px;cursor:pointer}
+.pol .in{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.3,1.1,.4,1);transform-style:preserve-3d}
+.pol:nth-child(odd) .in,.pol:nth-child(even) .in{rotate:0}
+.pol.f .in{transform:rotateY(180deg)}
+.pf,.pb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--paper);padding:16px 16px 28px;box-shadow:none;border:1px solid var(--line);border-radius:0}
+.pf .ph{height:100%;background:var(--esp);color:var(--paper);display:grid;place-items:center;text-align:center;padding:12px;font-family:var(--serif);font-size:1.15rem;font-weight:500}
+.pf:after,.pb:after{content:attr(data-c);position:absolute;bottom:7px;left:0;right:0;text-align:center;font:500 .65rem var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.pb{transform:rotateY(180deg)}.pb .ph{height:100%;background:var(--paper);display:grid;place-items:center;text-align:center;padding:12px;font-size:.88rem}
+
+.q{border:0;border-top:1px solid var(--line);border-radius:0;padding:16px 0;margin:0;background:none}
+.q p{margin:0 0 10px;font-weight:500}
+.opt{display:block;width:100%;text-align:left;margin:5px 0;padding:10px 12px;border-radius:0;border:1px solid var(--line);background:var(--paper);font:inherit;font-size:.95rem;cursor:pointer;color:var(--ink)}
+.opt.ok{background:#E6EFE4;border-color:var(--ok)}.opt.no{background:#F6E4E1;border-color:var(--no)}
+.fb{font-size:.88rem;margin-top:6px;line-height:1.5}.fb ol{margin:6px 0 0 1.2em;padding:0}
+.score{position:sticky;bottom:72px;z-index:5;margin-top:14px;background:var(--esp);color:var(--latte2);padding:12px 16px;border-radius:0;text-align:center;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;box-shadow:none}
+.mrow{display:grid;grid-template-columns:1fr 160px;gap:8px;align-items:center;padding:10px 0;margin:0;border-radius:0;background:none;border:0;border-bottom:1px solid var(--line);font-size:.9rem}
+.mrow select{width:100%;padding:8px;border-radius:0;border:1px solid var(--esp);font:inherit;background:var(--paper)}
+.mrow.g{background:transparent}.mrow.b{background:transparent}
+.mrow .cr{grid-column:1/-1;color:var(--ok);font-size:.84rem}
 @media(max-width:540px){.mrow{grid-template-columns:1fr}}
 .ap{display:none}.ap.on{display:block}
-.olist{display:grid;gap:6px}.oitem{touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;padding:10px 12px;border-radius:12px;background:var(--ox);color:var(--cream);font-weight:700;display:flex;gap:10px}.oitem.sel{outline:3px solid var(--latte)}.oitem.g{background:var(--ok)}.oitem.x{background:#a3532f}
-.vfwrap{height:210px;display:grid;place-items:center;overflow:hidden}.vfcard{touch-action:none;user-select:none;width:min(330px,92%);min-height:160px;padding:18px;border-radius:6px;background:#fff;box-shadow:0 10px 24px #0004;display:grid;place-items:center;text-align:center;font:700 1.02rem 'Playfair Display';transition:transform .25s;border-top:14px solid var(--ox)}
-.hud{display:flex;justify-content:space-between;font-weight:700;color:var(--ox);margin-bottom:8px}
-.rcard{border-radius:16px;padding:16px;background:#fff;border:2px dashed var(--ox2);min-height:120px}
-.chk-row{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;margin:6px 0;border-radius:12px;background:#fff;border:1px solid var(--latte);font-size:.9rem;cursor:pointer}.chk-row input{margin-top:3px;accent-color:var(--ox);width:18px;height:18px;flex:none}.chk-row.y{background:#e8efdc;opacity:.8}.chk-row.y span{text-decoration:line-through}.chk-row .d{font:700 .7rem 'Space Mono';color:var(--ox);display:block}
-.dial{width:160px;height:160px;border-radius:50%;display:grid;place-content:center;text-align:center;background:radial-gradient(circle,var(--latte2) 0 52%,var(--esp) 54% 100%);box-shadow:0 0 0 6px var(--ox),0 10px 24px #0005}.dial span{font:900 2.2rem 'Playfair Display';color:var(--esp)}.dial small{font:700 .6rem 'Space Mono';color:var(--esp2)}.dial.run{animation:steam 2s ease-in-out infinite}@keyframes steam{50%{box-shadow:0 0 0 6px var(--red),0 0 28px #b3202f88}}
-.pomo{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-.rab{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:620px){.rab{grid-template-columns:1fr}}.book{background:#fff;border-radius:4px 14px 14px 4px;border-left:12px solid var(--esp);padding:14px;box-shadow:0 6px 16px #0002}.book h3{color:var(--ox);font-size:1.15rem}
-.src li{margin:4px 0;font-size:.88rem}.src a{color:var(--ox)}
-.fabs{position:fixed;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom));z-index:40;display:flex;justify-content:space-between;padding:0 12px;pointer-events:none}
-.fab{pointer-events:auto;display:flex;align-items:center;gap:6px;padding:12px 16px;min-height:48px;border-radius:99px;background:var(--ox);color:var(--cream);font:700 .9rem 'Playfair Display';text-decoration:none;box-shadow:0 8px 20px #0007;border:2px solid var(--cream)}.fab.f2{background:var(--esp)}
-#menu,#arcade,.ses,.blk{scroll-margin-top:52px}
+.olist{display:grid;gap:8px}
+.oitem{touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;padding:12px 14px;border-radius:0;background:var(--esp);color:var(--paper);font-weight:500;display:flex;gap:10px}
+.oitem.sel{outline:1px solid var(--latte);outline-offset:2px}
+.oitem.g{background:var(--ok)}.oitem.x{background:var(--no)}
+.vfwrap{height:220px;display:grid;place-items:center;overflow:hidden}
+.vfcard{touch-action:none;user-select:none;width:min(340px,92%);min-height:170px;padding:22px;border-radius:0;background:var(--paper);box-shadow:none;border:1px solid var(--line);display:grid;place-items:center;text-align:center;font-family:var(--serif);font-size:1.2rem;font-weight:500;transition:transform .25s;border-top:3px solid var(--ox);color:var(--ink)}
+.hud{display:flex;justify-content:space-between;font-weight:500;color:var(--ox);margin-bottom:10px;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+.rcard{border-radius:0;padding:18px;background:var(--paper);border:1px solid var(--line);min-height:120px}
+.chk-row{display:flex;gap:10px;align-items:flex-start;padding:10px 0;margin:0;border-radius:0;background:none;border:0;border-bottom:1px solid var(--line);font-size:.92rem;cursor:pointer}
+.chk-row input{margin-top:3px;accent-color:var(--ox);width:16px;height:16px;flex:none}
+.chk-row.y{background:none;opacity:.7}.chk-row.y span{text-decoration:line-through}.chk-row .d{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ox);display:block;font-weight:600}
+
+.dial{width:150px;height:150px;border-radius:50%;display:grid;place-content:center;text-align:center;background:var(--paper);border:1px solid var(--ox);box-shadow:none}
+.dial span{font-family:var(--serif);font-size:2.2rem;font-weight:500;color:var(--esp)}
+.dial small{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);font-weight:600}
+.dial.run{animation:steam 2s ease-in-out infinite}
+@keyframes steam{50%{border-color:var(--ox2)}}
+.pomo{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.rab{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:620px){.rab{grid-template-columns:1fr}}
+.book{background:none;border-radius:0;border:0;border-top:2px solid var(--ox);padding:16px 0;box-shadow:none}
+.book h3{color:var(--esp);font-size:1.3rem}
+.src li{margin:8px 0;font-size:.9rem;color:var(--ink2)}.src a{color:var(--ox)}
+
+.fabs{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;justify-content:center;gap:0;padding:0;pointer-events:none;background:rgba(243,238,230,.94);border-top:1px solid var(--line);backdrop-filter:blur(10px);padding-bottom:env(safe-area-inset-bottom)}
+.fab{pointer-events:auto;display:flex;align-items:center;justify-content:center;flex:1;gap:0;padding:14px 8px;min-height:48px;border-radius:0;background:transparent;color:var(--esp);font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;box-shadow:none;border:0}
+.fab.f2{background:transparent}
+.fab:hover{color:var(--ox)}
+#menu,#arcade,.ses,.blk,#examen,#sabado,#cheatsheet{scroll-margin-top:52px}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:60;width:100%;height:100%}
-footer{text-align:center;padding:10px 16px 90px;font-family:'Caveat';font-size:1.3rem;color:var(--esp2)}
-@keyframes up{from{opacity:0;transform:translateY(12px)}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+footer{text-align:center;padding:48px 24px 96px;font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--ink2);background:none}
 
-/* racha · tarjeta de sellos */
-.loyalty{max-width:440px;margin:16px auto 4px;background:var(--paper);border:2px solid var(--ox);border-radius:18px;padding:12px 14px 14px;box-shadow:0 6px 0 var(--latte),0 10px 22px #0001}
-.loyalty .lh{display:flex;align-items:center;gap:12px}
-.cup-s{width:52px;height:58px;position:relative;flex:none}
-.cup-s .cb{width:38px;height:42px;margin:8px 0 0 2px;border:3px solid var(--esp);border-radius:0 0 12px 12px;overflow:hidden;background:#fff;position:relative}
-.cup-s .cb i{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(#4a2c1e,#2e1b12);transition:height .5s}
-.cup-s .ch{position:absolute;right:0;top:16px;width:14px;height:18px;border:3px solid var(--esp);border-left:0;border-radius:0 10px 10px 0}
-.cup-s .steam{position:absolute;left:14px;top:-4px;font-size:.7rem;opacity:.6}
-.loyalty .meta-r{flex:1;line-height:1.3}
-.loyalty .meta-r b{display:block;font:900 1.35rem 'Playfair Display';color:var(--ox)}
-.loyalty .meta-r span{font-size:.78rem;color:var(--esp2)}
-.stamps{display:flex;gap:6px;margin-top:12px;position:relative;background:var(--paper);border-radius:12px;padding:6px 2px 2px}
-.stamp{flex:1;text-align:center}
-.stamp i{display:grid;place-items:center;width:42px;height:42px;margin:0 auto 3px;border-radius:50%;border:2px dashed var(--ox);background:var(--latte2);font-size:1.15rem;color:transparent}
-.stamp.on i{border-style:solid;background:var(--ox);color:var(--cream);box-shadow:0 0 0 3px var(--latte)}
-.stamp.today i{box-shadow:0 0 0 3px var(--red);border-color:var(--red)}
-.stamp small{font:700 .58rem 'Space Mono';color:var(--esp2);letter-spacing:.04em}
-.toast-rk{position:fixed;top:58px;left:50%;transform:translateX(-50%);z-index:80;background:var(--ox);color:var(--cream);padding:12px 20px;border-radius:99px;font:700 1.05rem 'Playfair Display';box-shadow:0 10px 28px #0006;white-space:nowrap;animation:up .35s}
-.count .hi{background:var(--ox);color:var(--cream);border-color:var(--ox);box-shadow:0 3px 0 var(--esp)}
-.count .hi b,.count .hi span{color:var(--cream)}
-/* modo sábado */
-.cram{border:3px solid var(--ox);background:linear-gradient(180deg,#fff8ee,var(--paper))}
-.cram-flag{display:inline-block;background:var(--red);color:#fff;font:700 .68rem 'Space Mono';letter-spacing:.14em;padding:4px 10px;border-radius:4px;margin-bottom:8px}
-.cram-acts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
-.cram-day{background:#fff;border:1px solid var(--latte);border-left:8px solid var(--ox);border-radius:10px;padding:10px 12px;margin:8px 0}
-.cram-day.today{border-left-color:var(--red);box-shadow:0 0 0 2px #b3202f33}
-.cram-day .d{font:700 .72rem 'Space Mono';color:var(--ox);display:block;margin-bottom:2px}
-.esen{background:#fff;border:1px solid var(--latte);border-radius:12px;padding:10px 14px}
-.esen .frase{font:700 1.45rem 'Caveat';color:var(--ox);margin:0 0 8px;line-height:1.25}
-.esen .trap{background:#fbe9e6;border-radius:10px;padding:8px 10px;margin-top:8px}
-.cheat{background:#fff;border:2px solid var(--ox);border-radius:14px;padding:6px 14px 14px;font-size:.9rem}
-.cheat h3{color:var(--ox);font-size:1.08rem;margin:14px 0 4px}
-.cheat ul{margin:0;padding-left:18px}
-.cheat li{margin:3px 0}
-/* examen real */
+/* exam */
 #examen{scroll-margin-top:52px}
-.exbar{position:sticky;top:42px;z-index:29;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;background:var(--esp);color:var(--latte2);padding:8px 12px;border-radius:12px;font:700 .78rem 'Space Mono'}
-.exq{background:#fff;color:var(--ink);border:1px solid var(--latte);border-radius:14px;padding:12px;margin:10px 0}
-.exq .n{font:700 .65rem 'Space Mono';color:var(--esp2);letter-spacing:.1em}
-.exq h4{margin:4px 0 8px;font-size:1.02rem;line-height:1.35}
-.exq .fact{background:var(--latte2);border-radius:10px;padding:8px 10px;margin:0 0 8px;font-size:.9rem}
-.exq textarea{min-height:90px;background:#fff}
-.grade-box{text-align:center;padding:10px 0}
-.grade-box .g{font:900 3.2rem 'Playfair Display';color:var(--ox);line-height:1}
-.brk{display:grid;gap:6px;margin:12px 0}
-.brk div{display:flex;justify-content:space-between;gap:8px;background:#fff;border-radius:10px;padding:8px 10px;font-size:.88rem;color:var(--ink)}
-.weak{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
-.rev{border-top:1px dashed var(--latte);margin-top:10px;padding-top:8px;font-size:.88rem;color:var(--ink)}
-.rev .ok{color:var(--ok);font-weight:700}.rev .no{color:var(--no);font-weight:700}
-.hist{font-size:.86rem;color:var(--latte2)}
-.hist li{margin:4px 0}
-#exov{display:none;position:fixed;inset:0;z-index:55;background:#2e1b12ee;color:var(--cream);place-items:center;text-align:center;padding:24px}
+#examen.blk.dark{background:var(--esp);padding:48px 24px 100px}
+.exbar{position:sticky;top:42px;z-index:29;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;background:var(--paper);color:var(--esp);padding:10px 14px;border-radius:0;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line)}
+#expaper{background:var(--paper);color:var(--ink);padding:8px 20px 28px;margin-top:-1px}
+#expaper h3{color:var(--ox);font-family:var(--serif);font-weight:500;font-size:1.35rem;margin:22px 0 4px}
+#expaper h3 small{font-family:var(--sans);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:500;margin-left:8px}
+#expaper .sub{color:var(--ink2)}
+.exq{background:transparent;color:var(--ink);border:0;border-bottom:1px solid var(--line);border-radius:0;padding:18px 0;margin:0}
+.exq .n{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);font-weight:600}
+.exq h4{margin:6px 0 10px;font-family:var(--serif);font-size:1.2rem;font-weight:500;line-height:1.35}
+.exq .fact{background:var(--latte2);border-radius:0;padding:10px 12px;margin:0 0 10px;font-size:.92rem}
+.exq textarea{min-height:100px;background:#fff}
+.grade-box{text-align:center;padding:12px 0 24px}
+.grade-box .g,#exgrade{font-family:var(--serif);font-size:4.2rem;font-weight:500;color:#FAF7F1;line-height:1}
+.brk{display:grid;gap:0;margin:12px 0}
+.brk div{display:flex;justify-content:space-between;gap:8px;background:none;border-radius:0;padding:10px 0;border-bottom:1px solid rgba(232,220,203,.2);font-size:.9rem;color:#E8DCCB}
+.weak{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 18px}
+.rev{border-top:1px solid var(--line);margin-top:10px;padding-top:10px;font-size:.9rem;color:var(--ink)}
+.rev .ok{color:var(--ok);font-weight:600}.rev .no{color:var(--no);font-weight:600}
+.hist{font-size:.88rem;color:#C9B59A}.hist li{margin:4px 0}
+#exov{display:none;position:fixed;inset:0;z-index:55;background:rgba(42,24,18,.92);color:var(--paper);place-items:center;text-align:center;padding:24px}
 #exov.on{display:grid}
-.fabs .fab{padding:10px 12px;font-size:.82rem}
-@media print{.loyalty,.cram-acts,.fabs,.exbar,#exov{display:none}#cheatsheet,.esen{break-inside:avoid}}
-@media print{.tapebar,.fabs,.score{display:none}}
 
-/* inspo: mood board */
-.sign{position:relative;isolation:isolate;overflow:hidden;padding:36px 16px 18px}
-.sign:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#2e1b12e0 0%,#6a0f1cbd 42%,#2e1b12f2 100%),url('awning.webp') center 38%/cover no-repeat;z-index:-1}
-.sign h1{color:var(--cream);text-shadow:0 2px 18px #0008}
-.sign .sub{color:var(--latte2)}
-.film{display:flex;height:96px;overflow:hidden;background:var(--esp)}
-.film img{flex:1;width:0;height:96px;object-fit:cover;filter:saturate(.95) contrast(1.05)}
-.loyalty{background-image:linear-gradient(90deg,#fbf6ecf2 55%,#fbf6eccc 75%,#fbf6ec99),url('cassette-sm.webp');background-repeat:no-repeat;background-position:right 6px top 6px;background-size:auto 64px}
-#sabado.cram{background-image:linear-gradient(90deg,#fff8eef7 58%,#fff8eecc 78%,#fff8ee88),url('gloves.webp');background-repeat:no-repeat;background-position:right top;background-size:auto 100%}
-#cheatsheet{background-image:linear-gradient(180deg,#fbf6ecf8,#fbf6ecee),url('oatmilk-sm.webp');background-repeat:no-repeat;background-position:right 12px top 12px;background-size:110px auto}
-#examen.blk.dark{background:linear-gradient(180deg,#2e1b12e6 0%,#2e1b12f0 100%),url('booths.webp') center 30%/cover}
-.band{height:110px;margin:8px -14px 4px;background-size:cover;background-position:center;position:relative;border-top:4px solid var(--ox);border-bottom:4px solid var(--ox)}
-.band:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#6a0f1c66,transparent 35%,#2e1b1266)}
-#flash.blk.dark{background:linear-gradient(#2e1b12e8,#2e1b12f2),url('fellini.webp') center 30%/cover}
-#metodo{background-image:linear-gradient(90deg,#fbf6ecf6 60%,#fbf6ecb0),url('bag-sm.webp');background-repeat:no-repeat;background-position:right top;background-size:auto 220px}
-footer{background:linear-gradient(#f6eeeecc,#f6eeeef2),url('shelves.webp') center 40%/cover;padding:28px 16px 100px}
-@media(max-width:540px){#sabado.cram,#metodo{background-size:auto 160px}#cheatsheet{background-size:80px auto}}
+/* photo bands */
+.band{height:220px;margin:48px -24px;background-size:cover;background-position:center;position:relative;border:0}
+.band:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(42,24,18,.35))}
+.photo-col{margin:40px -24px 48px;height:min(52vw,420px);background-size:cover;background-position:center;position:relative}
+.photo-col span{position:absolute;left:24px;bottom:16px;color:#FAF7F1;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase}
+
+#flash.blk.dark{background:var(--esp);padding:48px 24px}
+#metodo{background:none}
+#sabado.cram,#cheatsheet,#metodo{background-image:none}
+
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.tapebar,.fabs,.score{display:none}body{background:#fff}}
+
+@media(min-width:800px){
+  .hero{min-height:100vh}
+  .hero-img{object-position:center 18%}
+  .hero-copy{padding:0 48px 80px}
+  .fabs{display:none}
+  footer{padding-bottom:56px}
+  .tapebar .in,main,.meta-row{padding-left:48px;padding-right:48px}
+  .blk.dark,.blk.board,.band,.photo-col,#examen.blk.dark,#flash.blk.dark{margin-left:-48px;margin-right:-48px}
+  .photo-col span{left:48px}
+}
+
 </style></head><body>
-<div class="awning"></div>
-<header class="sign"><div class="badge"><small>EST. 1917</small><b>DC</b><small>TENA</small></div>
-<h1>Derecho <i>Constitucional</i></h1><p class="sub">Guía de estudio minucioso · Tena Ramírez + texto vigente · UNAM FD SUA · Prof. Rafael Estrada Michel · 2027-1</p>
-<span class="espresso">MODO EXAMEN · SÁBADO 21 NOV</span>
-<div class="count" id="count"></div>
-<div id="streak" class="loyalty"></div></header>
-<div class="film" aria-hidden="true"><img src="fellini-sm.webp" alt=""><img src="gloves-sm.webp" alt=""><img src="awning-sm.webp" alt=""><img src="booths-sm.webp" alt=""><img src="cassette-sm.webp" alt=""></div>
-<div class="tapebar"><div class="in"><span class="reel" id="r1"></span><span>LECTURAS</span><div class="tape"><i id="pb"></i></div><span id="pt">0/48</span><span class="reel" id="r2"></span></div></div>
+<header class="hero">
+  <img class="hero-img" src="awning.webp" alt="Toldo de una cafetería con el letrero Espresso">
+  <div class="hero-veil"></div>
+  <div class="hero-copy">
+    <p class="kicker">Facultad de Derecho · SUA · 2027-1</p>
+    <h1>Derecho <em>Constitucional</em></h1>
+    <p class="lede">Tena Ramírez y el texto vigente. Preparación para el examen del 21 de noviembre.</p>
+    <p class="prof">Profesor Rafael Estrada Michel</p>
+  </div>
+</header>
+<div class="tapebar"><div class="in"><span class="reel" id="r1"></span><span class="k">Lecturas</span><div class="tape"><i id="pb"></i></div><span id="pt">0/48</span><span class="reel" id="r2"></span></div></div>
+<div class="meta-row">
+  <div class="count" id="count"></div>
+  <div id="streak" class="loyalty"></div>
+</div>
 <main>
+<section class="photo-col" style="background-image:url('gloves.webp')"><span>Preparación · 17 al 21 de noviembre</span></section>
 <section class="blk cram" id="sabado">
-<div class="cram-flag">MODO EXAMEN · SÁBADO 21 DE NOVIEMBRE</div>
-<h2>Saca 10 sin abrir el libro</h2>
-<p class="sub">Esta guía sustituye la lectura. En cada sesión está <b>⭐ Lo esencial para el 10</b> (tesis, artículos, fechas y trampas Tena vs. hoy). Abajo: plan de 4 días, la hoja de lo que más preguntan y el examen real.</p>
-<div class="cram-acts"><a class="act" href="#examen">📝 Hacer el examen real</a><a class="act lt" href="#cheatsheet">📋 Lo que más preguntan</a><a class="act lt" href="#menu">☕ Ir a las sesiones</a></div>
+<p class="kicker">Examen · sábado 21 de noviembre</p>
+<h2>Sin abrir el libro</h2>
+<p class="sub">Cada sesión empieza por <b>Lo esencial</b>: tesis, artículos, fechas y el contraste entre Tena y el texto vigente. Aquí está el plan de estos días, la hoja de lo que más preguntan y el examen de práctica.</p>
+<div class="cram-acts"><a class="act" href="#examen">Hacer el examen</a><a class="act lt" href="#cheatsheet">Lo que más preguntan</a><a class="act lt" href="#menu">Ir a las sesiones</a></div>
 <div id="cramplan"></div>
 </section>
-<section class="blk" id="cheatsheet"><h2>Lo que más preguntan</h2><p class="sub">Hoja de un vistazo. Léela hoy y otra vez el sábado por la mañana. Todo sale del libro (con § y página) o del texto vigente.</p><div class="cheat" id="cheat"></div></section>
-<div class="sec-title" id="menu"><h2>El menú</h2><span>Empieza por ⭐ Lo esencial para el 10</span></div>
+<section class="photo-col" style="background-image:url('booths.webp')"><span></span></section>
+<section class="blk" id="cheatsheet">
+<p class="kicker">Hoja de repaso</p>
+<h2>Lo que más preguntan</h2>
+<p class="sub">Léela hoy y otra vez el sábado por la mañana. Todo sale del libro —con párrafo y página del PDF— o del texto vigente de la Constitución.</p>
+<div class="cheat" id="cheat"></div>
+</section>
+<div class="sec-title" id="menu">
+<p class="kicker" style="margin-bottom:0">Carta</p>
+<h2>Las dieciséis sesiones</h2>
+<span>Empieza por Lo esencial. El examen del sábado cubre las sesiones 1 a 14.</span>
+</div>
 <div class="cats" id="cats"></div>
-<div class="chips"><button class="chip" data-f="exam">📝 Del 1 al 14</button><button class="chip" data-f="soon">⭐ S14 (este sábado)</button><button class="chip" data-f="pend">☐ Pendientes</button><button class="chip" data-f="all">Ver todo</button></div>
-<p class="sub">Cada sesión abre en <b>⭐ Lo esencial para el 10</b> (bastante para el examen, sin abrir el libro). También están <b>📖 Tena</b> · <b>⚖️ Vigente</b> · <b>☕ Clave</b> · <b>❓ Control</b> · <b>✍️ Notas</b>. Marca las 3 casillas para avanzar el cassette y sellar tu racha del día.</p>
+<div class="chips"><button class="chip" data-f="exam">Sesiones 1 a 14</button><button class="chip" data-f="soon">Sesión 14</button><button class="chip" data-f="pend">Pendientes</button><button class="chip" data-f="all">Ver todo</button></div>
+<p class="sub">Marca las tres casillas de cada sesión para avanzar las lecturas y sellar la racha del día.</p>
 <div id="sessions"></div>
 <section class="blk dark" id="examen">
-<h2>Examen real · recapitulación</h2>
-<p class="sub">Simulacro de 90 minutos, con pausa, sobre las sesiones 1 a 14 (lo visto hasta el sábado 21). Hay opción múltiple, verdadero/falso con justificación, relacionar, casos prácticos y preguntas de desarrollo. <b>No hay retroalimentación hasta el final.</b> Luego sale tu calificación de 0 a 10, el desglose por sesión, la explicación con fuente (Tena o CPEUM) y ligas para repasar lo que fallaste. El orden y las preguntas se sortean: hay material para más de una versión. Se guarda el historial en tu celular.</p>
+<p class="kicker" style="color:#C9B59A">Simulacro · 90 minutos</p><h2>Examen de práctica</h2>
+<p class="sub">Sesiones 1 a 14. Sin pistas hasta entregar. Al final, calificación de 0 a 10, desglose por sesión y ligas para repasar.</p>
 <div id="exroot"></div>
 </section>
-<div id="exov"><div><h2>Examen en pausa</h2><p>El tiempo está detenido. Las preguntas quedan ocultas.</p><button class="act" id="exresume">▶ Reanudar</button></div></div>
+<div id="exov"><div><h2>Examen en pausa</h2><p>El tiempo está detenido. Las preguntas quedan ocultas.</p><button class="act" id="exresume">Reanudar</button></div></div>
 <div class="band" style="background-image:url('shelves.webp')"></div>
 <section class="blk" id="cuadros"><h2>Cuadros comparativos</h2><p class="sub">Desliza las tablas en el celular →</p><div id="tablas"></div></section>
 <section class="blk" id="lineas"><h2>Líneas del tiempo</h2><p class="sub">Toca cada fecha para ver el detalle.</p><div class="tlsel tabs" id="tlsel"><button data-t="cons" class="on">Constituciones y constituyentes</button><button data-t="amp">Evolución del amparo</button><button data-t="pjf">Reformas al PJF</button></div><div class="tl" id="tl"></div></section>
 <section class="blk" id="rabasa"><h2>Sesión complementaria · Emilio Rabasa</h2><p class="sub">Realismo constitucional. Fuera del libro de Tena: resumen de las tesis generalmente aceptadas de ambas obras; para citas textuales usa el libro.</p>
 <div class="rab"><div class="book"><h3>La Constitución y la dictadura (1912)</h3><ul><li>La Constitución de 1857 era <b>impracticable</b>: diseñaba un Congreso dominante y un Ejecutivo débil.</li><li>Por eso los presidentes (Juárez y Díaz) gobernaron <b>fuera</b> de ella, con facultades extraordinarias o con dictadura de hecho.</li><li>Propone una Constitución <b>realista</b>: fortalecer al Ejecutivo (veto), conservar el Senado como contrapeso y asegurar la independencia judicial.</li><li>Influyó en el diseño presidencial de 1917.</li></ul></div>
 <div class="book"><h3>El artículo 14 (1906)</h3><ul><li>Critica la garantía de <b>exacta aplicación de la ley</b> en materia civil (art. 14 de 1857).</li><li>Por esa vía, cualquier sentencia podía llevarse al amparo: el amparo se volvió un <b>recurso de casación</b> y saturó a la Corte (“amparo judicial” o de legalidad).</li><li>Tena retoma el problema en la evolución del amparo (S13): el amparo como control de la legalidad.</li></ul></div></div>
-<div class="rq"><button>❓ ¿Por qué se llama “realismo constitucional”?</button><div>Porque Rabasa juzga la Constitución por su funcionamiento real en la política mexicana y no sólo por sus principios: una norma impracticable genera dictadura.</div></div></section>
+<div class="rq"><button>¿Por qué se llama “realismo constitucional”?</button><div>Porque Rabasa juzga la Constitución por su funcionamiento real en la política mexicana y no sólo por sus principios: una norma impracticable genera dictadura.</div></div></section>
 
-<section class="blk dark" id="flash"><h2>Polaroids · tarjetas</h2><p class="sub">Toca una para voltearla. Abajo: modo Leitner (repetición espaciada).</p><div class="pols" id="pols"></div>
+<section class="blk dark" id="flash"><h2>Tarjetas de repaso</h2><p class="sub">Toca una tarjeta para ver el reverso. Más abajo, repetición espaciada (método Leitner).</p><div class="pols" id="pols"></div>
 <div class="rcard" style="margin-top:18px;background:var(--paper);color:var(--ink)"><div class="hud"><span>Leitner</span><span id="lbox"></span></div><p id="lf" style="font:900 1.25rem 'Playfair Display';color:var(--ox);text-align:center;margin:10px 0"></p><p id="lb" style="display:none;text-align:center"></p><div style="text-align:center"><button class="act" id="lflip">Voltear</button><span id="lbtn" style="display:none"><button class="act" style="background:var(--ok)" id="leasy">Fácil</button><button class="act" style="background:var(--no)" id="lhard">Difícil</button></span><button class="act lt" id="lreset">Reiniciar cajas</button></div></div></section>
 
-<section class="blk" id="quiz"><h2>Quiz · 34 preguntas</h2><p class="sub">Con retroalimentación inmediata. Mejor puntaje: <b id="best">—</b> <button class="act lt" style="padding:4px 12px" onclick="location.hash='quiz';location.reload()">Reiniciar</button></p><div id="qz"></div><div class="score" id="sc">PUNTAJE 0/34</div></section>
+<section class="blk" id="quiz"><h2>Cuestionario</h2><p class="sub">34 preguntas, con respuesta al momento. Mejor puntaje: <b id="best">—</b> <button class="act lt" style="padding:4px 12px" onclick="location.hash='quiz';location.reload()">Reiniciar</button></p><div id="qz"></div><div class="score" id="sc">PUNTAJE 0/34</div></section>
 
 <div class="band" style="background-image:url('latte.webp')"></div>
-<section class="blk dark" id="arcade"><h2>Arcade constitucional</h2><p class="sub">Cuatro juegos. <label><input type="checkbox" id="gsnd"> 🔈 sonidos</label></p>
-<div class="tabs" id="atabs"><button data-p="org" class="on">🏛️ ¿Qué órgano?</button><button data-p="ord">📜 Ordena las constituciones</button><button data-p="vf">⚖️ ¿Sigue vigente?</button><button data-p="rel">⚡ Relámpago</button></div>
+<section class="blk dark" id="arcade"><h2>Juegos</h2><p class="sub">Cuatro ejercicios de práctica. <label><input type="checkbox" id="gsnd"> Sonido</label></p>
+<div class="tabs" id="atabs"><button data-p="org" class="on">¿Qué órgano?</button><button data-p="ord">Ordena las constituciones</button><button data-p="vf">¿Sigue vigente?</button><button data-p="rel">Relámpago</button></div>
 <div class="ap on" id="a-org" style="color:var(--ink)"><div id="mm"></div><button class="act" id="mcheck">Calificar</button><button class="act lt" id="mreset">Revolver</button><p class="fb" id="mres" style="color:var(--latte2)"></p></div>
 <div class="ap" id="a-ord"><p class="sub">Arrastra o toca dos piezas para intercambiarlas, de la más antigua a la más reciente.</p><div class="olist" id="olist"></div><button class="act" id="ocheck">Calificar</button><button class="act lt" id="omix">Revolver</button><p class="fb" id="ores"></p></div>
 <div class="ap" id="a-vf"><p class="sub">Desliza a la <b>derecha = sigue vigente</b> y a la <b>izquierda = sólo era así en Tena / ya cambió</b> (o usa los botones).</p><div class="vfwrap"><div class="vfcard" id="vfc" style="color:var(--ink)"></div></div><div style="text-align:center"><button class="act" style="background:var(--no)" id="vff">← Ya cambió</button><button class="act" style="background:var(--ok)" id="vfv">Vigente →</button></div><p class="fb" id="vfres" style="text-align:center"></p></div>
-<div class="ap" id="a-rel"><div class="hud" style="color:var(--latte2)"><span>⏱ <b id="rtime">60</b>s</span><span><b id="rnum">0</b>/10</span><span>✔ <b id="rok">0</b></span></div><div class="rcard" id="rbox" style="color:var(--ink)"><p>10 preguntas al azar en 60 segundos.</p><button class="act" id="rgo">Empezar</button></div></div></section>
+<div class="ap" id="a-rel"><div class="hud" style="color:var(--latte2)"><span><b id="rtime">60</b>s</span><span><b id="rnum">0</b>/10</span><span>Aciertos <b id="rok">0</b></span></div><div class="rcard" id="rbox" style="color:var(--ink)"><p>10 preguntas al azar en 60 segundos.</p><button class="act" id="rgo">Empezar</button></div></div></section>
 
-<section class="blk" id="metodo"><h2>Método de estudio minucioso</h2><p class="sub">Plan del 17 de noviembre al 5 de diciembre (clases: sáb. 21 y 28 de nov.; recapitulación: sáb. 5 de dic.). Se guarda en tu celular.</p>
-<div class="tabs" id="mtabs"><button data-p="sab" class="on">⚡ Sábado 21</button><button data-p="plan">🗓️ Hasta el 5 dic</button><button data-p="pomo">☕ Pomodoro</button><button data-p="fey">✍️ Feynman</button><button data-p="lect">📖 Cómo usar la guía</button><button data-p="dia">📋 Día del 5 dic</button></div>
-<div class="ap on" id="m-sab"><p class="sub">El plan principal está arriba, en <a href="#sabado" style="color:var(--ox)">Modo examen sábado</a>. Aquí va el checklist de la mañana del 21.</p><div id="dia21"></div></div>
+<section class="blk" id="metodo"><h2>Método de estudio</h2><p class="sub">Plan del 17 de noviembre al 5 de diciembre (clases: sáb. 21 y 28 de nov.; recapitulación: sáb. 5 de dic.). Se guarda en tu celular.</p>
+<div class="tabs" id="mtabs"><button data-p="sab" class="on">Sábado 21</button><button data-p="plan">Hasta el 5 de diciembre</button><button data-p="pomo">Temporizador</button><button data-p="fey">Técnica de Feynman</button><button data-p="lect">Cómo usar la guía</button><button data-p="dia">Día del 5 de diciembre</button></div>
+<div class="ap on" id="m-sab"><p class="sub">El plan principal está arriba, en <a href="#sabado" style="color:var(--ox)">Modo examen sábado</a>. Aquí está la lista de la mañana del 21.</p><div id="dia21"></div></div>
 <div class="ap" id="m-plan"><p class="sub">Plan secundario, por si también presentas la recapitulación del 5 de diciembre (examen 50% + control de lecturas 50%).</p><div id="plan"></div></div>
-<div class="ap" id="m-pomo"><div class="pomo"><div class="dial" id="dial"><span id="ptime">25:00</span><small id="pmode">ENFOQUE</small></div><div><button class="act" id="pstart">▶ Iniciar</button><button class="act alt" id="preset">↺</button><button class="act lt" id="pskip">Cambiar</button><p class="sub">Pomodoros hoy: <b id="pcount">0</b> · <label><input type="checkbox" id="psnd"> aviso sonoro</label></p></div></div></div>
-<div class="ap" id="m-fey"><p class="sub">Elige una sesión y explícala con tus palabras sin ver el libro; luego compara con el resumen y palomea lo que sí dijiste.</p><select id="fsel" style="width:100%;padding:9px;border-radius:10px;border:1px solid var(--esp2);font:inherit;margin-bottom:8px"></select><textarea id="ftxt" placeholder="Explícalo como si dieras la clase…"></textarea><div id="fkp"></div><p class="fb" id="fres"></p></div>
-<div class="ap" id="m-lect"><div class="note"><ul><li>No necesitas abrir el libro: estudia <b>⭐ Lo esencial para el 10</b> de cada sesión (1 a 14) y la hoja de <b>lo que más preguntan</b>.</li><li>Memoriza la trampa <b>Tena vs. hoy</b> de cada tema: es lo que más sube la calificación.</li><li>Estructura de cada respuesta: <b>Tena dijo…</b> (con § si te lo piden) → <b>artículo vigente</b> → <b>reforma y fecha del DOF</b> → conclusión.</li><li>Haz al menos un <b>examen real</b> el viernes y repasa solo las sesiones que te marque en rojo.</li><li>El PDF es la 20.ª edición (texto de 1984); si algo del vigente te suena distinto, gana el texto de la Cámara (DOF 07-10-2026).</li></ul></div></div>
+<div class="ap" id="m-pomo"><div class="pomo"><div class="dial" id="dial"><span id="ptime">25:00</span><small id="pmode">ENFOQUE</small></div><div><button class="act" id="pstart">Iniciar</button><button class="act alt" id="preset">↺</button><button class="act lt" id="pskip">Cambiar</button><p class="sub">Pomodoros hoy: <b id="pcount">0</b> · <label><input type="checkbox" id="psnd"> aviso sonoro</label></p></div></div></div>
+<div class="ap" id="m-fey"><p class="sub">Elige una sesión y explícala con tus palabras sin ver el libro; luego compara con el resumen y palomea lo que sí dijiste.</p><select id="fsel" style="width:100%;padding:9px;border-radius:0;border:1px solid var(--line);font:inherit;margin-bottom:8px"></select><textarea id="ftxt" placeholder="Explícalo como si dieras la clase…"></textarea><div id="fkp"></div><p class="fb" id="fres"></p></div>
+<div class="ap" id="m-lect"><div class="note"><ul><li>No necesitas abrir el libro: estudia <b>Lo esencial</b> de cada sesión (1 a 14) y la hoja de <b>lo que más preguntan</b>.</li><li>Memoriza la trampa <b>Tena vs. hoy</b> de cada tema: es lo que más sube la calificación.</li><li>Estructura de cada respuesta: <b>Tena dijo…</b> (con § si te lo piden) → <b>artículo vigente</b> → <b>reforma y fecha del DOF</b> → conclusión.</li><li>Haz al menos un <b>examen de práctica</b> el viernes y repasa solo las sesiones que te marque en rojo.</li><li>El PDF es la 20.ª edición (texto de 1984); si algo del vigente te suena distinto, gana el texto de la Cámara (DOF 07-10-2026).</li></ul></div></div>
 <div class="ap" id="m-dia"><div id="dia"></div></div></section>
 
 <section class="blk board" id="pex"><h2>Preguntas probables · respuestas modelo</h2><p class="sub" style="color:#d9c2a3">Responde en voz alta o por escrito antes de abrir.</p><div id="pe"></div></section>
@@ -233,8 +349,8 @@ footer{background:linear-gradient(#f6eeeecc,#f6eeeef2),url('shelves.webp') cente
 <li>No se verificaron en esta guía, y conviene revisarlos antes de citarlos textualmente: el contenido detallado de la reforma judicial de DOF 11-03-2021, la versión vigente de la Ley de Amparo, los requisitos actuales del art. 82 y la redacción exacta de las tesis de la SCJN (Varios 912/2010, CT 293/2011). No hay citas textuales inventadas: lo que aparece entre comillas viene del libro o del texto constitucional.</li>
 <li>Rabasa no está en el PDF; su sección resume tesis generalmente aceptadas de sus obras.</li></ul></section>
 </main>
-<footer>☕ Hecho para Xime · ¡Éxito el 5 de diciembre!</footer>
-<div class="fabs"><a href="#menu" class="fab">☕ Menú</a><a href="#examen" class="fab">📝 Examen</a><a href="#arcade" class="fab f2">🎲 Juegos</a></div><canvas id="confetti"></canvas>
+<footer>Para Xime · Examen del 21 de noviembre</footer>
+<div class="fabs"><a href="#menu" class="fab">Menú</a><a href="#examen" class="fab">Examen</a><a href="#arcade" class="fab f2">Juegos</a></div><canvas id="confetti"></canvas>
 
 <script>
 const S=[
@@ -244,7 +360,7 @@ vig:["Arts. 39, 40, 41, 49, 133 y 135 siguen siendo la base textual de estas noc
 clave:"Constituyente ≠ constituidos: uno crea, los otros obedecen.",
 q:[["¿Por qué el poder constituyente es superior a los poderes constituidos?","Porque es la fuente de la que éstos derivan su competencia; los constituidos sólo pueden actuar dentro de lo que la Constitución les asigna."],["¿Qué significa que la Constitución sea rígida?","Que su reforma exige un procedimiento distinto y más difícil que el de las leyes ordinarias (art. 135)."]]},
 {n:2,b:"teo",t:"Poder revisor · Constituyente revolucionario",cap:"Caps. II–IV",pdf:"62–109",
-tena:["Límites del constituyente originario: inmanente (integrar un orden jurídico), históricos (la personalidad individual y la separación de poderes), políticos (los factores reales de poder) e internacionales (sumario cap. II y §8–11, p. 62–75). Tena precisa que, en lo jurídico, el autor de la Constitución “carece en su tarea de limitaciones jurídicas”, pero no en sentido absoluto (§8, p. 62).","El Constituyente de 1917 reprodujo en el art. 133 el texto de la Constitución anterior sobre la ley suprema y los tratados (§13, p. 75).","Una vez que el pueblo hizo su Constitución mediante una asamblea especial, surge la pregunta de si el órgano del art. 135 puede reformar cualquier precepto o “derogar de hecho” la Constitución (§14, p. 80–82).","Tesis de la limitación: Schmitt y, en México, Gaxiola, Murillo y Canudas sostienen que el órgano revisor es incompetente para modificar ciertos principios básicos. Tena señala que Emilio Rabasa había expuesto en 1912, aplicada a nuestro derecho, “exactamente la misma tesis”, antes que Schmitt y que Marbury (§15, p. 82–86). Tesis contraria: la doctrina francesa (Carré de Malberg) y Munro, para quien atar a las generaciones futuras sería “un gobierno de los cementerios” (§16, p. 86–89).","Su conclusión: una reforma sólo puede declararse inconstitucional “por haberse realizado por un órgano distinto” al del art. 135 o “por haberse omitido las formalidades”, y entonces cabría el amparo. Con la tesis de Schmitt el amparo no serviría, porque se apoya en un “supuesto subjetivo” (§17–18, p. 95).","Crítica del art. 135: los legisladores ordinarios se vuelven constituyentes por su sola voluntad, sin mandato del elector, y la facilidad del procedimiento explica la “prodigalidad de las reformas”. Propone un sistema análogo al de 1824, con dos Congresos sucesivos: uno examina la reforma y el siguiente la aprueba. Rechaza el referéndum y el plebiscito (§19, p. 95–97).","§19 bis: ante la proliferación de reformas, revisa su opinión anterior sobre si el amparo puede controlarlas y hace una exégesis literal del art. 135 (p. 97–99).","§20–21 (p. 100–102): si no se acepta la facultad ilimitada del revisor, la Constitución es inmodificable en cierto grado o sólo modificable saliéndose de ella. Revolución = “modificación violenta de los fundamentos constitucionales” (no un cuartelazo). El derecho a la revolución puede tener fundamentación moral, “nunca jurídica”. El art. 136 consagra esa tesis (inviolabilidad de la Constitución) y se opone a la Declaración francesa que llamaba a la insurrección “el derecho más sagrado”.","§22 (p. 103–106): la de 1917, al reemplazar a la de 1857, violó el art. 128 de ésta (idéntico al 136 vigente). Sobre Huerta: las formalidades de 1857 (renuncias y arts. 81–82) se observaron, así que “el gobierno de Huerta no fue de usurpación” desde el punto de vista formal, aunque Tena lo condena moralmente. La Comisión de Reclamaciones de 1926 lo llamó usurpación “fijando la atención en la sustancia más que en su forma”. Carranza desconoció los actos de Huerta (decretos de 24 de abril de 1913 y 14 de junio de 1915) y, por decreto de 11 de julio de 1916, autorizó la revalidación de actuaciones judiciales y notariales. Esas disposiciones, al convertirse en derecho positivo por el triunfo de la revolución, sirvieron de base para clasificar al régimen huertista como usurpador, “pero el derecho positivo no coincide en este punto con la teoría”.","Convalidación de 1917 (§23, p. 106–109). La actitud legalista de Carranza (invocó la de 1857 y en Querétaro propuso reformas, no una Constitución nueva) cedió ante la realidad: se expidió otra que dejó insubsistente la de 1857. Hasta entonces sólo había justificación moral y social. Expedir la Constitución no ingresó por sí sola a la revolución en la legalidad: el nuevo orden se dio “con ruptura del antiguo, por quien carecía de títulos legales y sin sumisión a los presupuestos de forma”. Fue un segundo hecho que reveló la decisión del poder de hecho de gobernar conforme a normas. Si el pueblo la aceptaba, llegaría a ser ley auténtica (cita de Schmitt sobre la legitimidad).","El modo normal de comprobar esa aceptación es el referéndum (“Constitución ratificada”). Las condiciones de 1917 lo impedían: la revolución se había dividido en facciones; la carrancista, que reunió al Constituyente, estaba en situación precaria y no iba a jugarse la victoria en los comicios; las ideas avanzadas pertenecían a una minoría y “una decisión democrática les hubiera sido desfavorable”. “Hay, pues, que convenir en que la Constitución de 17 fue en sus orígenes una Constitución impuesta.”","Después, “la paz se organizó de acuerdo con esa Constitución; su vigencia nadie la discute” y todos invocan sus preceptos. Quedó “ratificada tácitamente por el pueblo mexicano y reconocida como su ley suprema por los países extranjeros” (cita de Heller) (§23, p. 108–109).","§24 (p. 109): el derecho positivo no puede consignar el derecho a la revolución, “porque este derecho es la negación de aquél”. Por eso 1917, nacida del desconocimiento de 1857, repitió en el art. 136 la misma prohibición. “El derecho a la revolución no puede ser reconocido a priori en la ley positiva, sino sólo a posteriori… cuando es reconocido como tal por el pueblo, expresa o tácitamente.”"],
+tena:["Límites del constituyente originario: inmanente (integrar un orden jurídico), históricos (la personalidad individual y la separación de poderes), políticos (los factores reales de poder) e internacionales (sumario cap. II y §8–11, p. 62–75). Tena precisa que, en lo jurídico, el autor de la Constitución “carece en su tarea de limitaciones jurídicas”, pero no en sentido absoluto (§8, p. 62).","El Constituyente de 1917 reprodujo en el art. 133 el texto de la Constitución anterior sobre la ley suprema y los tratados (§13, p. 75).","Una vez que el pueblo hizo su Constitución mediante una asamblea especial, surge la pregunta de si el órgano del art. 135 puede reformar cualquier precepto o “derogar de hecho” la Constitución (§14, p. 80–82).","Tesis de la limitación: Schmitt y, en México, Gaxiola, Murillo y Canudas sostienen que el órgano revisor es incompetente para modificar ciertos principios básicos. Tena señala que Emilio Rabasa había expuesto en 1912, aplicada a nuestro derecho, “exactamente la misma tesis”, antes que Schmitt y que Marbury (§15, p. 82–86). Tesis contraria: la doctrina francesa (Carré de Malberg) y Munro, para quien atar a las generaciones futuras sería “un gobierno de los cementerios” (§16, p. 86–89).","Su conclusión: una reforma sólo puede declararse inconstitucional “por haberse realizado por un órgano distinto” al del art. 135 o “por haberse omitido las formalidades”, y entonces cabría el amparo. Con la tesis de Schmitt el amparo no serviría, porque se apoya en un “supuesto subjetivo” (§17–18, p. 95).","Crítica del art. 135: los legisladores ordinarios se vuelven constituyentes por su sola voluntad, sin mandato del elector, y la facilidad del procedimiento explica la “prodigalidad de las reformas”. Propone un sistema análogo al de 1824, con dos Congresos sucesivos: uno examina la reforma y el siguiente la aprueba. Rechaza el referéndum y el plebiscito (§19, p. 95–97).","§19 bis: ante la proliferación de reformas, revisa su opinión anterior sobre si el amparo puede controlarlas y hace una exégesis literal del art. 135 (p. 97–99).","§20–21 (p. 100–102): si no se acepta la facultad ilimitada del revisor, la Constitución es inmodificable en cierto grado o sólo modificable saliéndose de ella. Revolución = “modificación violenta de los fundamentos constitucionales” (no un cuartelazo). El derecho a la revolución puede tener fundamentación moral, “nunca jurídica”. El art. 136 consagra esa tesis (inviolabilidad de la Constitución) y se opone a la Declaración francesa que llamaba a la insurrección “el derecho más sagrado”.","§22 (p. 103–106): la de 1917, al reemplazar a la de 1857, violó el art. 128 de ésta (idéntico al 136 vigente). Sobre Huerta: las formalidades de 1857 (renuncias y arts. 81–82) se observaron, así que “el gobierno de Huerta no fue de usurpación” desde el punto de vista formal, aunque Tena lo condena moralmente. La Comisión de Reclamaciones de 1926 lo llamó usurpación “fijando la atención en la sustancia más que en su forma”. Carranza desconoció los actos de Huerta (decretos de 24 de abril de 1913 y 14 de junio de 1915) y, por decreto de 11 de julio de 1916, autorizó la revalidación de actuaciones judiciales y notariales. Esas disposiciones, al convertirse en derecho positivo por el triunfo de la revolución, sirvieron de base para clasificar al régimen huertista como usurpador, “pero el derecho positivo no coincide en este punto con la teoría”.","Convalidación de 1917 (§23, p. 106–109). La actitud legalista de Carranza (invocó la de 1857 y en Querétaro propuso reformas, no una Constitución nueva) cedió ante la realidad: se expidió otra que dejó insubsistente la de 1857. Hasta entonces sólo había justificación moral y social. El solo hecho de expedirla no hizo que la revolución ingresara en el cauce de la legalidad: el nuevo orden se dio “con ruptura del antiguo, por quien carecía de títulos legales y sin sumisión a los presupuestos de forma”. Fue un segundo hecho que reveló la decisión del poder de hecho de gobernar conforme a normas. Si el pueblo la aceptaba, llegaría a ser ley auténtica (cita de Schmitt sobre la legitimidad).","El modo normal de comprobar esa aceptación es el referéndum (“Constitución ratificada”). Las condiciones de 1917 lo impedían: la revolución se había dividido en facciones; la carrancista, que reunió al Constituyente, estaba en situación precaria y no iba a jugarse la victoria en los comicios; las ideas avanzadas pertenecían a una minoría y “una decisión democrática les hubiera sido desfavorable”. “Hay, pues, que convenir en que la Constitución de 17 fue en sus orígenes una Constitución impuesta.”","Después, “la paz se organizó de acuerdo con esa Constitución; su vigencia nadie la discute” y todos invocan sus preceptos. Quedó “ratificada tácitamente por el pueblo mexicano y reconocida como su ley suprema por los países extranjeros” (cita de Heller) (§23, p. 108–109).","§24 (p. 109): el derecho positivo no puede consignar el derecho a la revolución, “porque este derecho es la negación de aquél”. Por eso 1917, nacida del desconocimiento de 1857, repitió en el art. 136 la misma prohibición. “El derecho a la revolución no puede ser reconocido a priori en la ley positiva, sino sólo a posteriori… cuando es reconocido como tal por el pueblo, expresa o tácitamente.”"],
 vig:["Art. 135 vigente: 2/3 de los individuos presentes del Congreso y aprobación de la mayoría de las legislaturas <b>de los Estados y de la Ciudad de México</b> (reforma DOF 29-01-2016).","Art. 136 conserva su texto original de 1917.","Desde <b>DOF 31-10-2024</b> no proceden amparo, controversia ni acción de inconstitucionalidad contra reformas constitucionales (arts. 105 y 107): el texto acoge, por vía positiva, la tesis de Tena de que el contenido de la reforma no es justiciable. Que subsista la vía por vicios de procedimiento es un tema de debate doctrinal; no lo des por resuelto."],
 clave:"Para Tena, el revisor no tiene límites de contenido, sólo de órgano y procedimiento.",
 q:[["¿Cuándo, según Tena, puede impugnarse una reforma constitucional?","Sólo por haberla hecho un órgano distinto del previsto en el art. 135 o sin sus formalidades; no por su contenido."],["¿Qué fundamento tiene el derecho a la revolución para Tena?","Moral, no jurídico; ningún orden jurídico puede autorizar su propia ruptura (art. 136)."]]},
@@ -305,9 +421,9 @@ clave:"Fórmula Otero (efectos relativos) → 2011 declaratoria general → 2024
 q:[["¿Por qué Tena dice que el amparo no es control directo de constitucionalidad?","Porque sólo procede a instancia del agraviado y protege sus derechos en el caso concreto (efectos relativos), no anula la ley de manera general."],["¿Qué introdujo la reforma de 2011 al amparo?","El interés legítimo, la protección de derechos humanos de los tratados y la declaratoria general de inconstitucionalidad."]]},
 {n:14,b:"def",t:"Defensas subsidiarias: arts. 133, 128 y antiguo 97",cap:"Cap. XXIX del PDF (XXVIII del curso)",pdf:"570–593",date:"21/11/2026",
 tena:["“La supremacía de la Constitución federal es el principio angular de nuestro sistema de gobierno” (§167, p. 568). Cada poder puede corregir sus propios actos inconstitucionales; en el proceso opera la preclusión (§167, p. 568–573).","Defensa frente a actos ajenos (§168, p. 573–584).","Art. 133: los actos de autoridad se presumen constitucionales, y tratándose de actos ajenos sólo una sentencia del Poder Judicial Federal destruye esa presunción. Por eso el juez común “debe aplicar la ley, sin juzgar de su constitucionalidad” (p. 579–580).","Aun con la interpretación más liberal del 133, el juez que inaplica una ley sólo afecta su litigio, mientras que si el Ejecutivo se rehúsa a ejecutarla la paraliza por completo (§170, p. 584).","Art. 128: “consagra la defensa subsidiaria de la Constitución respecto a los actos propios, no así en cuanto a los actos de otros poderes o autoridades” (p. 585).","Art. 97, párrafo tercero: la Corte podía nombrar comisionados para averiguar violaciones de garantías o del voto público, de oficio o a petición de ciertos órganos. Tena lo examina “sólo por la importancia que en ciertas épocas se ha querido dar” al precepto, sobre todo en materia electoral (§171, p. 585–593)."],
-vig:["<b>Art. 133</b> vigente: “Los jueces de cada entidad federativa se arreglarán a dicha Constitución, leyes y tratados…”. Desde 2011 la SCJN admite el <b>control difuso ex officio</b> (Varios 912/2010) y la jurisprudencia de la contradicción de tesis 293/2011 sobre el parámetro de regularidad (derechos humanos de la Constitución y de los tratados). Es lo <b>contrario</b> de la tesis de Tena.","<b>Art. 128</b> sigue con su texto original.","<b>Antiguo 97</b>: la averiguación del voto público se suprimió en 2007 y la investigación de violaciones graves de garantías pasó a la <b>CNDH</b> con la reforma de DOF 10-06-2011 (art. 102 B). El art. 97 vigente regula ahora a magistrados de circuito y jueces de distrito."],
+vig:["<b>Art. 133</b> vigente: “Los jueces de cada entidad federativa se arreglarán a dicha Constitución, leyes y tratados…”. Desde 2011 la SCJN admite el <b>control difuso de oficio</b> (Varios 912/2010) y la jurisprudencia de la contradicción de tesis 293/2011 sobre el parámetro de regularidad (derechos humanos de la Constitución y de los tratados). Es lo <b>contrario</b> de la tesis de Tena.","<b>Art. 128</b> sigue con su texto original.","<b>Antiguo 97</b>: la averiguación del voto público se suprimió en 2007 y la investigación de violaciones graves de garantías pasó a la <b>CNDH</b> con la reforma de DOF 10-06-2011 (art. 102 B). El art. 97 vigente regula ahora a magistrados de circuito y jueces de distrito."],
 clave:"Tena: el juez local aplica la ley y no la juzga. Hoy: control difuso desde 2011.",
-q:[["¿Puede un juez local dejar de aplicar una ley inconstitucional? Tena vs. hoy.","Tena: no; debe aplicarla, porque sólo el PJF destruye la presunción de constitucionalidad. Hoy: sí, en ejercicio del control difuso ex officio (Varios 912/2010), con efectos sólo para el caso."],["¿Qué fue de la facultad de investigación del art. 97?","La del voto público se eliminó en 2007; la de violaciones graves pasó a la CNDH en 2011."]]},
+q:[["¿Puede un juez local dejar de aplicar una ley inconstitucional? Tena vs. hoy.","Tena: no; debe aplicarla, porque sólo el PJF destruye la presunción de constitucionalidad. Hoy: sí, en ejercicio del control difuso de oficio (Varios 912/2010), con efectos sólo para el caso."],["¿Qué fue de la facultad de investigación del art. 97?","La del voto público se eliminó en 2007; la de violaciones graves pasó a la CNDH en 2011."]]},
 {n:15,b:"def",t:"Responsabilidad de servidores públicos",cap:"Cap. XXX del PDF (XXIX del curso)",pdf:"594–615",date:"28/11/2026",
 tena:["La Constitución considera responsables a los funcionarios, pero protege a algunos durante el encargo. No es impunidad, sino “inmunidad durante el tiempo del encargo”, llamada fuero porque exime de la jurisdicción común. El fuero no alcanza los juicios civiles (art. 114) (§172, p. 593–595).","Desafuero: la privación del fuero para que “reaflore” la responsabilidad. Purgada la pena, nada impide al funcionario reasumir su función (§173, p. 595–598).","Delitos oficiales: en 1856 conocían el Congreso como jurado de acusación y la Corte como jurado de sentencia. La reforma de 1874 dio la acusación a Diputados (y la sentencia al Senado). No procede el indulto (art. 112) (§174, p. 598–601).","Licencia y fuero: lo decisivo es que la licencia impide al funcionario ejercer válidamente su competencia (§175, p. 601–604).","Art. 113 de su época: la responsabilidad oficial sólo se exige durante el encargo y dentro del año siguiente. Para un alto funcionario con licencia es indispensable el juicio político (§176, p. 604–606).","Funcionarios con fuero y fuero del Presidente: sobre el alcance de “durante el tiempo de su encargo”, Tena sostiene que una excepción tan importante como la impunidad merece un texto expreso, que en el caso no existe (§177–178, p. 606–612).","Destitución de funcionarios judiciales y “el desprestigio del fuero” (§179–180, p. 612–615).","Ojo: el capítulo usa la terminología anterior a la reforma del Título Cuarto de 1982."],
 vig:["<b>Título Cuarto</b> (reforma DOF 28-12-1982): “servidores públicos”. Responsabilidades: política (juicio político), penal, administrativa y civil (art. 109).","<b>Juicio político</b> (arts. 109 I y 110): por actos u omisiones que redunden en perjuicio de los intereses públicos fundamentales. Diputados acusa por mayoría absoluta; el Senado, como jurado, resuelve por 2/3 de los presentes. Sanción: destitución e inhabilitación. Sólo durante el encargo y un año después (art. 114).","<b>Declaratoria de procedencia</b> (art. 111): la Cámara de Diputados, por mayoría absoluta de los presentes, declara si ha lugar a proceder penalmente.","<b>Presidente</b> (DOF 19-02-2021): durante su encargo puede ser imputado y juzgado por traición a la patria, hechos de corrupción, delitos electorales y todos los delitos por los que podría serlo cualquier ciudadano (art. 108); se le acusa ante el Senado (art. 111).","<b>Sistema Nacional Anticorrupción</b> (DOF 27-05-2015, art. 113) y responsabilidades administrativas (art. 109 III)."],
@@ -335,7 +451,7 @@ const FC=[["Poder constituyente","Poder creador de la Constitución; actúa una 
 const Q=[["Para Tena, el poder constituyente…",["Es un poder constituido más","Crea la Constitución y desaparece","Es el Congreso de la Unión","Es el Senado"],1,"Actúa una vez y desaparece."],["¿Qué artículo regula la reforma constitucional?",["133","136","135","128"],2,"Art. 135."],["Según Tena, una reforma constitucional puede impugnarse…",["Por su contenido","Por vicios de órgano o procedimiento","Nunca, en ningún caso","Sólo ante el Senado"],1,"Sólo vicios de órgano o formalidades."],["El modelo de reforma que Tena propone se inspira en la Constitución de…",["1836","1857","1824","1843"],2,"Dos Congresos sucesivos."],["El fundamento del derecho a la revolución para Tena es…",["Jurídico","Moral","Internacional","Consuetudinario"],1,"Moral, no jurídico."],["Hoy, contra una reforma constitucional…",["Procede el amparo","No proceden amparo, controversia ni acción","Procede la acción de inconstitucionalidad","Procede el juicio político"],1,"DOF 31-10-2024."],["El art. 124 establece…",["Facultades concurrentes","Facultades residuales de los Estados (y CDMX)","El Congreso bicameral","La no reelección"],1,"Lo no concedido a la Federación se reserva."],["La CDMX sustituyó al D.F. en…",["2011","2014","2016","2024"],2,"DOF 29-01-2016."],["El refrendo está en el art.…",["89","92","72","49"],1,"Art. 92."],["Las excepciones del art. 49 son los arts.…",["29 y 131","89 y 92","73 y 74","133 y 135"],0,"Facultades extraordinarias."],["La Cámara de Diputados tiene…",["400","500","628","300"],1,"300 + 200."],["El Presupuesto de Egresos lo aprueba…",["El Congreso","El Senado","La Cámara de Diputados","La Permanente"],2,"Art. 74 IV."],["En el juicio político, el jurado de sentencia es…",["Diputados","La SCJN","El Senado","La Permanente"],2,"Art. 76 VII."],["La Comisión Permanente se integra por…",["37","29","40","24"],0,"19 + 18."],["Declara la guerra…",["El Presidente solo","El Congreso (art. 73 XII)","El Senado","La SCJN"],1,"El Presidente la declara previa ley."],["El Consejo de Salubridad General depende…",["Del Congreso","De la Secretaría de Salud","Directamente del Presidente","De los Estados"],2,"Art. 73 XVI."],["Ante la falta absoluta del Presidente asume provisionalmente…",["El presidente de la SCJN","El secretario de Gobernación","El presidente del Senado","El secretario de Hacienda"],1,"Art. 84."],["Para Tena la no reelección es, en su naturaleza…",["Democrática","Antidemocrática","Federalista","Parlamentaria"],1,"Así la califica en su sumario."],["La facultad reglamentaria está en el art.…",["89 I","92","73 XXXII","133"],0,"“Proveyendo en la esfera administrativa”."],["El reglamento es…",["Formal y materialmente legislativo","Formalmente administrativo y materialmente legislativo","Una ley del Congreso","Un acto jurisdiccional"],1,"Normas generales del Ejecutivo."],["La SCJN tras 2024 tiene…",["11 ministros","9 ministros","7 ministros","21 ministros"],1,"Art. 94."],["Sustituye al Consejo de la Judicatura en disciplina…",["El Senado","El Tribunal de Disciplina Judicial","La FGR","El INE"],1,"Art. 100."],["La acción de inconstitucionalidad es control…",["Concreto","Abstracto","Político","Difuso"],1,"Sin caso concreto."],["Plazo de la acción de inconstitucionalidad",["15 días","30 días naturales","90 días","1 año"],1,"Art. 105 II."],["El Supremo Poder Conservador fue control…",["Judicial","Político","Difuso","Internacional"],1,"Siete Leyes de 1836."],["Para Tena el amparo es…",["Control directo de constitucionalidad","Defensa de derechos individuales e invasión de esferas","Recurso político","Control abstracto"],1,"No es control directo."],["La declaratoria general de inconstitucionalidad se introdujo en…",["1994","2011","2013","2024"],1,"DOF 06-06-2011."],["Según Tena, ante una ley local inconstitucional el juez común…",["La inaplica","Debe aplicarla sin juzgar su constitucionalidad","Consulta al Senado","Suspende el juicio"],1,"Sólo el PJF destruye la presunción."],["El control difuso se admitió a partir de…",["Varios 912/2010","La reforma de 1994","La Ley de Amparo de 1936","2024"],0,"Caso Radilla."],["La investigación de violaciones graves de derechos humanos corresponde hoy a…",["La SCJN","La CNDH","El Senado","La FGR"],1,"Art. 102 B."],["La declaratoria de procedencia la emite…",["El Senado por 2/3","Diputados por mayoría absoluta de presentes","La SCJN","El Congreso en asamblea"],1,"Art. 111."],["El Título Cuarto se reformó integralmente en…",["1917","1982","2015","2021"],1,"DOF 28-12-1982."],["El SNA nace en…",["2011","2013","2015","2019"],2,"DOF 27-05-2015."],["Rabasa criticó del art. 14 que…",["Prohibía la retroactividad","Su “exacta aplicación” en materia civil convirtió al amparo en casación","Creaba el Senado","Suprimía el amparo"],1,"Saturación de la Corte."]];
 const VF=[["Las reformas constitucionales no pueden impugnarse por su contenido.",1,"Tena lo sostenía; desde 2024 el texto lo dice (arts. 105 y 107)."],["El juez local debe aplicar la ley sin juzgar su constitucionalidad.",0,"Es Tena; hoy existe control difuso."],["La SCJN tiene 9 ministros electos por voto popular.",1,"Vigente desde 2024."],["Al Presidente sólo se le puede acusar por traición a la patria y delitos graves del orden común.",0,"Es Tena; desde 2021 se amplió (art. 108)."],["La Corte puede investigar violaciones graves de garantías individuales (art. 97).",0,"Es Tena; desde 2011 lo hace la CNDH."],["El Distrito Federal es la sede de los Poderes y no es entidad federativa.",0,"Es Tena; desde 2016 la CDMX es entidad federativa."],["Ante la falta absoluta del Presidente, el secretario de Gobernación asume provisionalmente.",1,"Art. 84, 2012."],["El juicio político procede por “delitos oficiales”.",0,"Terminología de Tena, anterior a 1982."],["Existe un Consejo de la Judicatura Federal.",0,"Creado en 1994, suprimido en 2024."],["Las legislaturas de la Ciudad de México votan las reformas constitucionales.",1,"Art. 135, 2016."]];
 const MATCH=[["Presupuesto de Egresos","Diputados"],["Declaratoria de procedencia","Diputados"],["Cuenta Pública","Diputados"],["Tratados internacionales","Senado"],["Jurado de sentencia","Senado"],["Desaparición de poderes de un Estado","Senado"],["Convocar a sesiones extraordinarias","Permanente"],["Recibir la protesta presidencial en recesos","Permanente"],["Declarar la guerra (ley)","Congreso"],["Imponer contribuciones","Congreso"]];
-const PE=[["Distingue poder constituyente y Constituyente Permanente y expón la tesis de Tena sobre los límites del segundo.","El constituyente originario crea la Constitución y desaparece; el Permanente (art. 135) es un órgano constituido con función reformadora: Congreso por 2/3 de presentes más la mayoría de las legislaturas de los Estados y CDMX. Tena sostiene que no tiene límites de contenido (rechaza las decisiones fundamentales de Schmitt) y que una reforma sólo es inconstitucional por vicios de órgano o procedimiento. Desde DOF 31-10-2024, los arts. 105 y 107 declaran improcedentes los medios de control contra reformas."],["¿Fue válida la Constitución de 1917?","Tena: al reemplazar a la de 1857, la de 1917 violó el art. 128 de aquélla (idéntico al 136 vigente). Hasta su expedición sólo había justificación moral y social; expedirla no la ingresó por sí sola en la legalidad, porque el nuevo orden se dio con ruptura del antiguo, por quien carecía de títulos legales y sin las formalidades. En origen fue una “Constitución impuesta”: las condiciones de 1917 impidieron un referéndum (facciones; la carrancista era precaria; las ideas avanzadas eran de una minoría). Después, la paz se organizó conforme a ella, nadie discute su vigencia y todos la invocan: quedó “ratificada tácitamente por el pueblo mexicano y reconocida como su ley suprema por los países extranjeros” (§23, p. 106–109). El derecho a la revolución no puede reconocerse a priori en la ley positiva, sino sólo a posteriori, cuando el pueblo lo reconoce expresa o tácitamente (§24). Por eso 1917 repitió en el art. 136 la prohibición de 1857."],["Explica la forma de Estado y de gobierno de México.","Art. 40: república representativa, democrática, laica y federal, con Estados libres y soberanos en su régimen interior y la CDMX. Federalismo de facultades expresas (art. 124) con implícitas (73 XXXII) y concurrentes por leyes generales."],["Facultades exclusivas de las cámaras y de la Permanente.","Diputados (74): presupuesto, Cuenta Pública, declaratoria de procedencia, acusación en juicio político, Bando Solemne, ratificar a Hacienda, PND. Senado (76): política exterior y tratados, ratificaciones, tropas, desaparición de poderes, cuestiones políticas locales, jurado de sentencia, FGR. Permanente (78): 37 miembros, protesta presidencial, extraordinarias, licencias."],["El Ejecutivo: organización y facultad reglamentaria.","Unipersonal (80), sexenal desde el 1º de octubre y sin reelección (83), sucesión por el art. 84 (Gobernación provisional y el Congreso nombra). Art. 89 I: promulgar, ejecutar y reglamentar; el reglamento es formalmente administrativo y materialmente legislativo, subordinado a la ley (reserva de ley y subordinación jerárquica)."],["Reformas judiciales de 1994 y 2024.","1994: 11 ministros, CJF, acción de inconstitucionalidad, controversia ampliada. 2024: 9 ministros electos por voto popular por 12 años, Tribunal de Disciplina Judicial y órgano de administración, elección de magistrados y jueces; supremacía constitucional (31-10-2024). Ajustes en DOF 02-06-2026."],["Control abstracto vs. concreto.","Abstracto: la acción de inconstitucionalidad examina la norma sin caso, a instancia de órganos legitimados, en 30 días, con efectos generales por mayoría calificada. Concreto: el amparo, con agravio y efectos relativos (fórmula Otero), salvo la declaratoria general del art. 107 II. Control difuso desde Varios 912/2010."],["Evolución del amparo.","Rejón (Yucatán 1840–41), Otero (Acta de 1847), 1857, 1917 (amparo de legalidad por arts. 14 y 16, criticado por Rabasa), 1994, 2011 (interés legítimo, tratados, declaratoria general), Ley de Amparo 2013, 2024 (sin efectos generales; improcedente contra reformas)."],["Arts. 133, 128 y antiguo 97: Tena vs. hoy.","133: Tena niega que el juez local pueda inaplicar leyes; hoy hay control difuso ex officio. 128: la protesta no autoriza a desobedecer leyes. 97: investigación de la SCJN; la del voto público se suprime en 2007 y la de derechos humanos pasa a la CNDH en 2011."],["Juicio político vs. declaratoria de procedencia; fuero del Presidente.","Juicio político: responsabilidad política; Diputados acusa por mayoría absoluta de presentes, el Senado sentencia por 2/3; destitución e inhabilitación; durante el encargo y un año después. Declaratoria: Diputados decide por mayoría absoluta si se procede penalmente. Presidente: desde 2021 es imputable por traición, corrupción, delitos electorales y los de cualquier ciudadano, ante el Senado."],["Rabasa: tesis principales.","La Constitución y la dictadura (1912): la Constitución de 1857 era impracticable, debilitaba al Ejecutivo frente al Congreso y orilló a gobernar fuera de ella; propone equilibrar poderes (veto, Senado, Corte independiente). El artículo 14 (1906): la “exacta aplicación” en materia civil hizo del amparo un recurso de casación y saturó a la Corte."]];
+const PE=[["Distingue poder constituyente y Constituyente Permanente y expón la tesis de Tena sobre los límites del segundo.","El constituyente originario crea la Constitución y desaparece; el Permanente (art. 135) es un órgano constituido con función reformadora: Congreso por 2/3 de presentes más la mayoría de las legislaturas de los Estados y CDMX. Tena sostiene que no tiene límites de contenido (rechaza las decisiones fundamentales de Schmitt) y que una reforma sólo es inconstitucional por vicios de órgano o procedimiento. Desde DOF 31-10-2024, los arts. 105 y 107 declaran improcedentes los medios de control contra reformas."],["¿Fue válida la Constitución de 1917?","Tena: al reemplazar a la de 1857, la de 1917 violó el art. 128 de aquélla (idéntico al 136 vigente). Hasta su expedición sólo había justificación moral y social. El solo hecho de expedirla no hizo que la revolución ingresara en el cauce de la legalidad, porque el nuevo orden se dio con ruptura del antiguo, por quien carecía de títulos legales y sin las formalidades. En origen fue una “Constitución impuesta”: las condiciones de 1917 impidieron un referéndum (facciones; la carrancista era precaria; las ideas avanzadas eran de una minoría). Después, la paz se organizó conforme a ella, nadie discute su vigencia y todos la invocan: quedó “ratificada tácitamente por el pueblo mexicano y reconocida como su ley suprema por los países extranjeros” (§23, p. 106–109). El derecho a la revolución no puede reconocerse a priori en la ley positiva, sino sólo a posteriori, cuando el pueblo lo reconoce expresa o tácitamente (§24). Por eso 1917 repitió en el art. 136 la prohibición de 1857."],["Explica la forma de Estado y de gobierno de México.","Art. 40: república representativa, democrática, laica y federal, con Estados libres y soberanos en su régimen interior y la CDMX. Federalismo de facultades expresas (art. 124) con implícitas (73 XXXII) y concurrentes por leyes generales."],["Facultades exclusivas de las cámaras y de la Permanente.","Diputados (74): presupuesto, Cuenta Pública, declaratoria de procedencia, acusación en juicio político, Bando Solemne, ratificar a Hacienda, PND. Senado (76): política exterior y tratados, ratificaciones, tropas, desaparición de poderes, cuestiones políticas locales, jurado de sentencia, FGR. Permanente (78): 37 miembros, protesta presidencial, extraordinarias, licencias."],["El Ejecutivo: organización y facultad reglamentaria.","Unipersonal (80), sexenal desde el 1º de octubre y sin reelección (83), sucesión por el art. 84 (Gobernación provisional y el Congreso nombra). Art. 89 I: promulgar, ejecutar y reglamentar; el reglamento es formalmente administrativo y materialmente legislativo, subordinado a la ley (reserva de ley y subordinación jerárquica)."],["Reformas judiciales de 1994 y 2024.","1994: 11 ministros, CJF, acción de inconstitucionalidad, controversia ampliada. 2024: 9 ministros electos por voto popular por 12 años, Tribunal de Disciplina Judicial y órgano de administración, elección de magistrados y jueces; supremacía constitucional (31-10-2024). Ajustes en DOF 02-06-2026."],["Control abstracto vs. concreto.","Abstracto: la acción de inconstitucionalidad examina la norma sin caso, a instancia de órganos legitimados, en 30 días, con efectos generales por mayoría calificada. Concreto: el amparo, con agravio y efectos relativos (fórmula Otero), salvo la declaratoria general del art. 107 II. Control difuso desde Varios 912/2010."],["Evolución del amparo.","Rejón (Yucatán 1840–41), Otero (Acta de 1847), 1857, 1917 (amparo de legalidad por arts. 14 y 16, criticado por Rabasa), 1994, 2011 (interés legítimo, tratados, declaratoria general), Ley de Amparo 2013, 2024 (sin efectos generales; improcedente contra reformas)."],["Arts. 133, 128 y antiguo 97: Tena vs. hoy.","133: Tena niega que el juez local pueda inaplicar leyes; hoy hay control difuso de oficio. 128: la protesta no autoriza a desobedecer leyes. 97: investigación de la SCJN; la del voto público se suprime en 2007 y la de derechos humanos pasa a la CNDH en 2011."],["Juicio político vs. declaratoria de procedencia; fuero del Presidente.","Juicio político: responsabilidad política; Diputados acusa por mayoría absoluta de presentes, el Senado sentencia por 2/3; destitución e inhabilitación; durante el encargo y un año después. Declaratoria: Diputados decide por mayoría absoluta si se procede penalmente. Presidente: desde 2021 es imputable por traición, corrupción, delitos electorales y los de cualquier ciudadano, ante el Senado."],["Rabasa: tesis principales.","La Constitución y la dictadura (1912): la Constitución de 1857 era impracticable, debilitaba al Ejecutivo frente al Congreso y orilló a gobernar fuera de ella; propone equilibrar poderes (veto, Senado, Corte independiente). El artículo 14 (1906): la “exacta aplicación” en materia civil hizo del amparo un recurso de casación y saturó a la Corte."]];
 
 const ES=[
 `<p class="frase">El constituyente crea la Constitución y desaparece; los poderes constituidos sólo pueden actuar dentro de ella.</p>
@@ -539,7 +655,7 @@ const ES=[
 </ul>
 <div class="trap"><b>Trampa:</b> no digas que el amparo de hoy anula la ley erga omnes. En 2011 se abrió la declaratoria general por una vía especial; en 2024 el amparo volvió a quedar sin efectos generales.</div>`,
 
-`<p class="frase">Tena: el juez local aplica la ley y no la juzga. Hoy: hay control difuso ex officio desde 2011.</p>
+`<p class="frase">Tena: el juez local aplica la ley y no la juzga. Hoy: hay control difuso de oficio desde 2011.</p>
 <ul>
 <li>“La supremacía de la Constitución federal es el principio angular de nuestro sistema” (§167, p. 568). Cada poder puede corregir sus propios actos; en el proceso opera la preclusión.</li>
 <li><b>Art. 133:</b> los actos se presumen constitucionales; frente a actos ajenos, sólo una sentencia del PJF destruye esa presunción. El juez común “debe aplicar la ley, sin juzgar de su constitucionalidad” (p. 579–580). Aunque inaplique en su litigio, el efecto es limitado; si el Ejecutivo se niega a ejecutarla, la paraliza por completo (§170, p. 584).</li>
@@ -548,7 +664,7 @@ const ES=[
 </ul>
 <div class="lbl">TEXTO VIGENTE</div>
 <ul>
-<li>Art. <b>133</b>: los jueces de cada entidad “se arreglarán a dicha Constitución, leyes y tratados…”. Desde 2011 la SCJN admite el <b>control difuso ex officio</b> (Varios 912/2010, caso Radilla). Efectos sólo para el caso.</li>
+<li>Art. <b>133</b>: los jueces de cada entidad “se arreglarán a dicha Constitución, leyes y tratados…”. Desde 2011 la SCJN admite el <b>control difuso de oficio</b> (Varios 912/2010, caso Radilla). Efectos sólo para el caso.</li>
 <li>Art. <b>128</b>: sigue con su texto original.</li>
 <li>Del antiguo 97: la averiguación del <b>voto público se suprimió en 2007</b>; la de violaciones graves de garantías pasó a la <b>CNDH</b> (art. 102 B, DOF 10-06-2011). El 97 vigente regula hoy a magistrados de circuito y jueces de distrito.</li>
 </ul>
@@ -584,23 +700,23 @@ let ac;function tone(ok){if(!st.snd)return;try{ac=ac||new(window.AudioContext||w
 // cuenta regresiva
 (()=>{const now=new Date(),d=t=>Math.max(0,Math.ceil((new Date(t)-now)/864e5));$('count').innerHTML=[["2026-11-21T08:00","EXAMEN · sáb 21"],["2026-11-28T08:00","S15 · 28 nov"],["2026-12-05T08:00","Recap · 5 dic"]].map((x,i)=>`<div${i?'':' class="hi"'}><b>${d(x[0])}</b><span>días · ${x[1]}</span></div>`).join('')})();
 // categorías
-const CATS=[["all","☕","Todo"],["teo","📜","Teoría"],["est","🗺️","Estado"],["pod","🏛️","Legislativo"],["eje","🎩","Ejecutivo"],["jud","⚖️","Judicial"],["def","🛡️","Defensa y responsabilidad"],["rec","📝","Recap"]];
-$('cats').innerHTML=CATS.map((c,i)=>`<button class="cat${i?'':' on'}" data-b="${c[0]}"><div class="cup">${c[1]}</div>${c[2]}</button>`).join('');
+const CATS=[["all","","Todas"],["teo","","Teoría"],["est","","Estado"],["pod","","Legislativo"],["eje","","Ejecutivo"],["jud","","Judicial"],["def","","Defensa"],["rec","","Recapitulación"]];
+$('cats').innerHTML=CATS.map((c,i)=>`<button class="cat${i?'':' on'}" data-b="${c[0]}">${c[2]}</button>`).join('');
 let filt='all';function applyF(){document.querySelectorAll('.ses').forEach(d=>{const s=S[d.dataset.i];let v=filt=='all'||s.b==filt;if(filt=='exam')v=s.n>=1&&s.n<=14;if(filt=='soon')v=s.n==14||s.n==15;if(filt=='pend')v=!(st.c[s.n]||[]).every?true:!((st.c[s.n]||[]).filter(Boolean).length==3);d.style.display=v?'':'none'})}
 document.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{document.querySelectorAll('.cat,.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');filt=b.dataset.b;applyF()});
 document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{document.querySelectorAll('.cat,.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');filt=b.dataset.f;applyF()});
 const PH=['fellini','gloves','latte','bag','awning','booths','cassette','shelves','oatmilk'];
 // sesiones
 const CK=["Leí el capítulo","Hice mi resumen","Me autoevalué"];
-$('sessions').innerHTML=S.map((s,i)=>`<details class="ses" id="s${s.n}" data-i="${i}" data-ph="${PH[i%9]}"><summary><div class="snum" style="background-image:linear-gradient(#2e1b12a8,#2e1b12c9),url('${PH[i%9]}-sm.webp');background-size:cover;background-position:center">SES<b>${String(s.n).padStart(2,'0')}</b></div><div><h3>${s.t}</h3><div class="meta"><span class="tag">${s.cap}</span><span class="tag">PDF pp. ${s.pdf}</span>${s.date?`<span class="tag soon">${s.date}</span>`:''}</div></div><div class="dots" data-d="${s.n}"><i></i><i></i><i></i></div></summary><div class="sbody">
-<div class="tabs"><button class="on" data-p="e">⭐ Esencial</button><button data-p="t">📖 Tena</button><button data-p="v">⚖️ Vigente</button><button data-p="k">☕ Clave</button><button data-p="q">❓ Control</button><button data-p="n">✍️ Notas</button></div>
-<div class="pane on" data-p="e"><div class="lbl">LO ESENCIAL PARA EL 10</div><div class="esen">${ES[i]}</div></div>
+$('sessions').innerHTML=S.map((s,i)=>`<details class="ses" id="s${s.n}" data-i="${i}" data-ph="${PH[i%9]}"><summary><div class="snum">${String(s.n).padStart(2,'0')}</div><div><h3>${s.t}</h3><div class="meta"><span class="tag">${s.cap}</span><span class="tag">PDF pp. ${s.pdf}</span>${s.date?`<span class="tag soon">${s.date}</span>`:''}</div></div><div class="dots" data-d="${s.n}"><i></i><i></i><i></i></div></summary><div class="sbody">
+<div class="tabs"><button class="on" data-p="e">Esencial</button><button data-p="t">Tena</button><button data-p="v">Vigente</button><button data-p="k">Clave</button><button data-p="q">Control</button><button data-p="n">Notas</button></div>
+<div class="pane on" data-p="e"><div class="lbl">Lo esencial</div><div class="esen">${ES[i]}</div></div>
 <div class="pane" data-p="t"><div class="lbl">LO QUE DICE TENA</div><div class="note"><ul>${s.tena.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>
 <div class="pane" data-p="v"><div class="vig"><ul>${s.vig.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>
 <div class="pane" data-p="k"><div class="clave">${s.clave}</div></div>
-<div class="pane" data-p="q">${s.q.map(q=>`<div class="rq"><button>❓ ${q[0]}</button><div>${q[1]}</div></div>`).join('')}</div>
+<div class="pane" data-p="q">${s.q.map(q=>`<div class="rq"><button>${q[0]}</button><div>${q[1]}</div></div>`).join('')}</div>
 <div class="pane" data-p="n"><textarea data-n="${s.n}" placeholder="Tus notas con número de página del PDF…"></textarea></div>
-<div class="checks">${CK.map((c,j)=>`<label class="ck"><input type="checkbox" data-s="${s.n}" data-j="${j}">${c}</label>`).join('')}</div><a class="back" href="#menu">☕ Volver al menú</a></div></details>`).join('');
+<div class="checks">${CK.map((c,j)=>`<label class="ck"><input type="checkbox" data-s="${s.n}" data-j="${j}">${c}</label>`).join('')}</div><a class="back" href="#menu">Volver al menú</a></div></details>`).join('');
 document.querySelectorAll('.ses').forEach(d=>{d.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{d.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');d.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.dataset.p==b.dataset.p))})});
 document.querySelectorAll('.rq button').forEach(b=>b.onclick=()=>b.parentNode.classList.toggle('on'));
 document.querySelectorAll('textarea[data-n]').forEach(t=>{t.value=st.n[t.dataset.n]||'';t.oninput=()=>{st.n[t.dataset.n]=t.value;sv()}});
@@ -647,18 +763,18 @@ function fin(){clearInterval(rt);st.rb=Math.max(st.rb||0,okc);sv();$('rbox').inn
 function show(){if(k>=10)return fin();const q=Q[qs[k]];$('rnum').textContent=k+1;$('rbox').innerHTML=`<p style="font-weight:700">${q[0]}</p>${q[1].map((o,j)=>`<button class="opt" data-j="${j}">${o}</button>`).join('')}`;$('rbox').querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const g=+b.dataset.j===q[2];b.classList.add(g?'ok':'no');if(g){okc++;$('rok').textContent=okc}tone(g);k++;setTimeout(show,350)})}show()}$('rgo').onclick=rgo;
 // plan
 function checklist(el,key,items){st[key]=st[key]||{};$(el).innerHTML=items.map((t,i)=>`<label class="chk-row${st[key][i]?' y':''}"><input type="checkbox" data-i="${i}"${st[key][i]?' checked':''}><span>${t}</span></label>`).join('');$(el).querySelectorAll('input').forEach(c=>c.onchange=()=>{st[key][c.dataset.i]=c.checked;c.parentNode.classList.toggle('y',c.checked);sv()})}
-const PLAN=[["Mar 17 nov","S1 y S2: “Lo esencial para el 10” (constituyente, revisor, 1917). Hoja de lo que más preguntan."],["Mié 18 nov","S3 a S8: esenciales (124, división, Congreso, facultades). Juego “¿Qué órgano?”."],["Jue 19 nov","S9 a S13: Ejecutivo, PJF 1994/2024, control y amparo. “¿Sigue vigente?”."],["Vie 20 nov","S14 a fondo (133, 128, 97). Examen real completo y repaso de lo débil."],["Sáb 21 nov","EXAMEN. Mañana: hoja de repaso, claves 1–14, estructura Tena → artículo → DOF. Sin temas nuevos."],["Dom 22 nov","S6 y S7: caps. XV–XX (hacienda, comercio, guerra, salubridad)."],["Lun 23 nov","S8: facultades exclusivas y Permanente. Juego “¿Qué órgano?”."],["Mar 24 nov","S9 y S10: Ejecutivo (arts. 80–89) y facultad reglamentaria."],["Mié 25 nov","S11: PJF; tabla SCJN Tena → 1994 → 2024 y línea de reformas."],["Jue 26 nov","S12: defensa judicial; tabla de control abstracto vs. concreto."],["Vie 27 nov","Prepara la clase S15: cap. XXX (PDF 594–615) + tabla de juicio político vs. declaratoria."],["Sáb 28 nov","Clase S15. Tarde: notas de S15 + polaroids."],["Dom 29 nov","S13: evolución del amparo + Rabasa (sesión complementaria)."],["Lun 30 nov","Los 6 cuadros comparativos y las 3 líneas del tiempo de memoria (escríbelos)."],["Mar 1 dic","Quiz completo; repasa las sesiones donde fallaste."],["Mié 2 dic","Preguntas probables: responde por escrito y compara con la respuesta modelo."],["Jue 3 dic","Leitner hasta vaciar la caja 1 + juego “¿Sigue vigente?”."],["Vie 4 dic","Simulacro: 3 rondas de Relámpago + repaso ligero de las claves ☕. Duerme bien."],["Sáb 5 dic","RECAPITULACIÓN (examen 50% + control de lecturas 50%). Mira la pestaña Día del examen."]];
+const PLAN=[["Mar 17 nov","S1 y S2: “Lo esencial para el 10” (constituyente, revisor, 1917). Hoja de lo que más preguntan."],["Mié 18 nov","S3 a S8: esenciales (124, división, Congreso, facultades). Juego “¿Qué órgano?”."],["Jue 19 nov","S9 a S13: Ejecutivo, PJF 1994/2024, control y amparo. “¿Sigue vigente?”."],["Vie 20 nov","S14 a fondo (133, 128, 97). Examen de práctica completo y repaso de lo débil."],["Sáb 21 nov","EXAMEN. Mañana: hoja de repaso, claves 1–14, estructura Tena → artículo → DOF. Sin temas nuevos."],["Dom 22 nov","S6 y S7: caps. XV–XX (hacienda, comercio, guerra, salubridad)."],["Lun 23 nov","S8: facultades exclusivas y Permanente. Juego “¿Qué órgano?”."],["Mar 24 nov","S9 y S10: Ejecutivo (arts. 80–89) y facultad reglamentaria."],["Mié 25 nov","S11: PJF; tabla SCJN Tena → 1994 → 2024 y línea de reformas."],["Jue 26 nov","S12: defensa judicial; tabla de control abstracto vs. concreto."],["Vie 27 nov","Prepara la clase S15: cap. XXX (PDF 594–615) + tabla de juicio político vs. declaratoria."],["Sáb 28 nov","Clase S15. Tarde: notas de S15 y las tarjetas de repaso."],["Dom 29 nov","S13: evolución del amparo + Rabasa (sesión complementaria)."],["Lun 30 nov","Los 6 cuadros comparativos y las 3 líneas del tiempo de memoria (escríbelos)."],["Mar 1 dic","Cuestionario completo; repasa las sesiones donde fallaste."],["Mié 2 dic","Preguntas probables: responde por escrito y compara con la respuesta modelo."],["Jue 3 dic","Leitner hasta vaciar la caja 1 + juego “¿Sigue vigente?”."],["Vie 4 dic","Simulacro: 3 rondas de Relámpago + repaso ligero de las claves. Duerme bien."],["Sáb 5 dic","RECAPITULACIÓN (examen 50% + control de lecturas 50%). Mira la pestaña Día del examen."]];
 checklist('plan','plan',PLAN.map(p=>`<span class="d">${p[0]}</span>${p[1]}`));
-checklist('dia','dia',["Lee las 16 claves ☕ (5 min).","Repasa los 6 cuadros comparativos (5 min).","Recita las fechas: 1994 · 2011 · 2013 · 2015 · 2016 · 2021 · 2024 (sep. y oct.).","Estructura de cada respuesta: Tena → artículo → reforma (DOF) → conclusión.","Lleva tu PDF o tus notas si el control de lecturas lo permite (pregunta al profesor)."]);
+checklist('dia','dia',["Lee las 16 claves (5 min).","Repasa los 6 cuadros comparativos (5 min).","Recita las fechas: 1994 · 2011 · 2013 · 2015 · 2016 · 2021 · 2024 (sep. y oct.).","Estructura de cada respuesta: Tena → artículo → reforma (DOF) → conclusión.","Lleva tu PDF o tus notas si el control de lecturas lo permite (pregunta al profesor)."]);
 // pomodoro
 let mode='f',left=1500,tmr=null;st.pd=st.pd===new Date().toDateString()?st.pd:(st.pc=0,new Date().toDateString());$('pcount').textContent=st.pc||0;
 const draw=()=>{$('ptime').textContent=String(Math.floor(left/60)).padStart(2,'0')+':'+String(left%60).padStart(2,'0');$('pmode').textContent=mode=='f'?'ENFOQUE':'DESCANSO'};
-function stop(){clearInterval(tmr);tmr=null;$('pstart').textContent='▶ Iniciar';$('dial').classList.remove('run')}
-$('pstart').onclick=()=>{if(tmr)return stop();const end=Date.now()+left*1000;$('pstart').textContent='⏸ Pausa';$('dial').classList.add('run');tmr=setInterval(()=>{left=Math.max(0,Math.round((end-Date.now())/1000));draw();if(!left){stop();if($('psnd').checked){const o=st.snd;st.snd=1;tone(true);st.snd=o}if(navigator.vibrate)navigator.vibrate([200,100,200]);if(mode=='f'){st.pc=(st.pc||0)+1;$('pcount').textContent=st.pc;sv();if(window.markAct)markAct()}mode=mode=='f'?'b':'f';left=mode=='f'?1500:300;draw()}},500)};
+function stop(){clearInterval(tmr);tmr=null;$('pstart').textContent='Iniciar';$('dial').classList.remove('run')}
+$('pstart').onclick=()=>{if(tmr)return stop();const end=Date.now()+left*1000;$('pstart').textContent='Pausa';$('dial').classList.add('run');tmr=setInterval(()=>{left=Math.max(0,Math.round((end-Date.now())/1000));draw();if(!left){stop();if($('psnd').checked){const o=st.snd;st.snd=1;tone(true);st.snd=o}if(navigator.vibrate)navigator.vibrate([200,100,200]);if(mode=='f'){st.pc=(st.pc||0)+1;$('pcount').textContent=st.pc;sv();if(window.markAct)markAct()}mode=mode=='f'?'b':'f';left=mode=='f'?1500:300;draw()}},500)};
 $('preset').onclick=()=>{stop();left=mode=='f'?1500:300;draw()};$('pskip').onclick=()=>{stop();mode=mode=='f'?'b':'f';left=mode=='f'?1500:300;draw()};draw();
 // feynman
 st.fk=st.fk||{};st.ft=st.ft||{};$('fsel').innerHTML=S.map((s,i)=>`<option value="${i}">S${s.n} · ${s.t}</option>`).join('');
-function fdraw(){const i=$('fsel').value,s=S[i];$('ftxt').value=st.ft[i]||'';st.fk[i]=st.fk[i]||{};const pts=s.tena.map(x=>x.replace(/<[^>]+>/g,'').split(/[:;.(]/)[0].slice(0,90));$('fkp').innerHTML=pts.map((k,j)=>`<label class="chk-row${st.fk[i][j]?' y':''}"><input type="checkbox" data-j="${j}"${st.fk[i][j]?' checked':''}><span>${k}</span></label>`).join('');const up=()=>{const n=Object.values(st.fk[i]).filter(Boolean).length;$('fres').textContent=`Mencionaste ${n}/${pts.length} ideas de Tena`+(n==pts.length?' 🎉':'')};$('fkp').querySelectorAll('input').forEach(c=>c.onchange=()=>{st.fk[i][c.dataset.j]=c.checked;c.parentNode.classList.toggle('y',c.checked);sv();up()});up()}
+function fdraw(){const i=$('fsel').value,s=S[i];$('ftxt').value=st.ft[i]||'';st.fk[i]=st.fk[i]||{};const pts=s.tena.map(x=>x.replace(/<[^>]+>/g,'').split(/[:;.(]/)[0].slice(0,90));$('fkp').innerHTML=pts.map((k,j)=>`<label class="chk-row${st.fk[i][j]?' y':''}"><input type="checkbox" data-j="${j}"${st.fk[i][j]?' checked':''}><span>${k}</span></label>`).join('');const up=()=>{const n=Object.values(st.fk[i]).filter(Boolean).length;$('fres').textContent=`Mencionaste ${n}/${pts.length} ideas de Tena`+(n==pts.length?' · todas':'')};$('fkp').querySelectorAll('input').forEach(c=>c.onchange=()=>{st.fk[i][c.dataset.j]=c.checked;c.parentNode.classList.toggle('y',c.checked);sv();up()});up()}
 $('fsel').onchange=fdraw;$('ftxt').oninput=()=>{st.ft[$('fsel').value]=$('ftxt').value;sv()};fdraw();
 // preguntas probables
 $('pe').innerHTML=PE.map((p,i)=>`<div class="rq" style="background:#2a1e18;border-color:#d9c2a3"><button style="color:#f3e7d6">${i+1}. ${p[0]}</button><div style="color:#ead9c0">${p[1]}</div></div>`).join('');
@@ -693,7 +809,7 @@ function celebrateRacha(){
   const n=st.rk.cur;
   const t=document.createElement('div');
   t.className='toast-rk';
-  t.textContent=n===1?'¡Primer sello del día! ☕':`¡Racha de ${n} día${n>1?'s':''}! ☕`;
+  t.textContent=n===1?'Primer sello del día':`Racha de ${n} día${n>1?'s':''}`;
   document.body.appendChild(t);
   setTimeout(()=>t.remove(),2800);
 }
@@ -704,11 +820,11 @@ function renderStreak(){
   const cur=st.rk.cur||0, best=st.rk.best||0;
   const fill=Math.min(100,cur/5*100);
   el.innerHTML=`<div class="lh">
-    <div class="cup-s"><span class="steam">☁</span><div class="cb"><i style="height:${fill}%"></i></div><div class="ch"></div></div>
+    <div class="cup-s"><div class="cb"><i style="height:${fill}%"></i></div><div class="ch"></div></div>
     <div class="meta-r"><b>${cur?`Racha de ${cur} día${cur===1?'':'s'}`:'Aún no hay racha'}</b>
     <span>Mejor: ${best||0} · Sellos ${RK_DAYS.filter(d=>st.rk.days[d]).length}/5 · 17–21 nov</span></div>
   </div>
-  <div class="stamps">${RK_DAYS.map((d,i)=>`<div class="stamp${st.rk.days[d]?' on':''}${d===t?' today':''}"><i>☕</i><small>${RK_LAB[i]}</small></div>`).join('')}</div>`;
+  <div class="stamps">${RK_DAYS.map((d,i)=>`<div class="stamp${st.rk.days[d]?' on':''}${d===t?' today':''}"><i></i><small>${RK_LAB[i]}</small></div>`).join('')}</div>`;
 }
 renderStreak();
 
@@ -717,15 +833,15 @@ const CRAM=[
   ['Mar 17 · esta noche','S1 y S2: “Lo esencial para el 10” (constituyente, revisor, convalidación de 1917, arts. 135 y 136). Lee también la hoja de lo que más preguntan.','#s1'],
   ['Mié 18','S3 a S8: federalismo (124 y CDMX), división de poderes, Congreso, facultades exclusivas, Hacienda y Permanente. Haz el juego “¿Qué órgano?” y recorre los cuadros comparativos.','#s3'],
   ['Jue 19','S9 a S13: Ejecutivo y facultad reglamentaria, PJF 1994/2024, control abstracto vs. concreto y amparo (Tena vs. hoy). Juego “¿Sigue vigente?”.','#s9'],
-  ['Vie 20','S14 a fondo (arts. 133, 128 y 97, Tena vs. hoy). Haz el <a href="#examen">examen real</a> completo y repasa solo las sesiones que te marque en rojo.','#s14'],
-  ['Sáb 21 · mañana del examen','Checklist: hoja de repaso (10 min), las 14 claves, estructura Tena → artículo → DOF. No estudies temas nuevos. El examen es hoy.','#cheatsheet']
+  ['Vie 20','S14 a fondo (arts. 133, 128 y 97, Tena vs. hoy). Haz el <a href="#examen">examen de práctica</a> completo y repasa solo las sesiones que te marque en rojo.','#s14'],
+  ['Sáb 21 · mañana del examen','Lista: hoja de repaso (10 min), las 14 claves, estructura Tena → artículo → DOF. No estudies temas nuevos. El examen es hoy.','#cheatsheet']
 ];
 const CRAM_DATES=['2026-11-17','2026-11-18','2026-11-19','2026-11-20','2026-11-21'];
 function renderCram(){
   const t=todayMX();
   const box=$('cramplan'); if(!box)return;
-  box.innerHTML=CRAM.map((c,i)=>`<div class="cram-day${CRAM_DATES[i]===t?' today':''}"><span class="d">${c[0]}${CRAM_DATES[i]===t?' · HOY':''}</span>${c[1]} <a class="back" href="${c[2]}">Ir →</a></div>`).join('');
-  if($('dia21')) checklist('dia21','d21',["Leer “Lo que más preguntan” (10 min).","Recitar las claves ☕ de las sesiones 1 a 14.","Fechas de memoria: 1994 (PJF y acción de inconstitucionalidad) · 2011 (derechos humanos, declaratoria general, control difuso, CNDH) · 2012 (art. 84; laica en el 40) · 2016 (CDMX) · 2021 (fuero del Presidente) · 2024 (9 ministros electos, Tribunal de Disciplina, supremacía constitucional).","Estructura de cada respuesta: Tena dijo… → artículo vigente → reforma y fecha del DOF → conclusión.","No estudies temas nuevos esta mañana.","Llega con tiempo. Si permiten consultar, lleva esta guía en el celular."]);
+  box.innerHTML=CRAM.map((c,i)=>`<div class="cram-day${CRAM_DATES[i]===t?' today':''}"><span class="d">${c[0]}${CRAM_DATES[i]===t?' · Hoy':''}</span>${c[1]} <a class="back" href="${c[2]}">Ir →</a></div>`).join('');
+  if($('dia21')) checklist('dia21','d21',["Leer “Lo que más preguntan” (10 min).","Recitar las claves de las sesiones 1 a 14.","Fechas de memoria: 1994 (PJF y acción de inconstitucionalidad) · 2011 (derechos humanos, declaratoria general, control difuso, CNDH) · 2012 (art. 84; laica en el 40) · 2016 (CDMX) · 2021 (fuero del Presidente) · 2024 (9 ministros electos, Tribunal de Disciplina, supremacía constitucional).","Estructura de cada respuesta: Tena dijo… → artículo vigente → reforma y fecha del DOF → conclusión.","No estudies temas nuevos esta mañana.","Llega con tiempo. Si permiten consultar, lleva esta guía en el celular."]);
 }
 renderCram();
 
@@ -768,7 +884,7 @@ $('cheat').innerHTML=`
 <li><b>1994:</b> 11 ministros, Consejo de la Judicatura, acción de inconstitucionalidad. <b>2024:</b> 9 electos por 12 años, Tribunal de Disciplina Judicial y órgano de administración. El Consejo ya no existe.</li>
 <li>Abstracto = acción de inconstitucionalidad (105 II, 30 días, sin caso). Concreto = amparo (agravio). Controversia = 105 I.</li>
 <li>Tena: el amparo <b>no es control directo</b> de la constitucionalidad (§163); riesgo de “legislador negativo” (§162). Fórmula Otero (efectos relativos) → declaratoria general <b>2011</b> → <b>2024</b> sin efectos generales en el amparo y no procede contra reformas.</li>
-<li><b>Art. 133:</b> Tena, el juez local “debe aplicar la ley, sin juzgar de su constitucionalidad” (p. 579–580). Hoy: control difuso ex officio, Varios 912/2010 (2011), sólo para el caso.</li>
+<li><b>Art. 133:</b> Tena, el juez local “debe aplicar la ley, sin juzgar de su constitucionalidad” (p. 579–580). Hoy: control difuso de oficio, Varios 912/2010 (2011), sólo para el caso.</li>
 <li><b>Art. 128:</b> la protesta no autoriza a desobedecer leyes de otros poderes (p. 585).</li>
 <li><b>Antiguo 97:</b> voto público se suprimió en 2007; violaciones graves pasaron a la CNDH en 2011 (art. 102 B). Hoy el 97 no es esa facultad.</li>
 </ul>
@@ -821,13 +937,13 @@ const XMC=[
 {s:13,q:'Para Tena, el juicio de amparo…',o:['Es el control directo de la constitucionalidad, con efectos generales','No es control directo de la constitucionalidad: defiende los derechos del individuo y las invasiones de jurisdicción','Es un recurso político ante el Senado','Es equivalente a la acción de inconstitucionalidad'],a:1,exp:'Por eso tiene rasgos de recurso (suspensión, sobreseimiento). El riesgo de un control más amplio es que el juez se erija en “legislador negativo”.',ref:'Tena §162–165, p. 542–561'},
 {s:13,q:'La declaratoria general de inconstitucionalidad en el amparo se introdujo en…',o:['1994','2011','2013','2024'],a:1,exp:'DOF 06-06-2011, art. 107 II (también interés legítimo y derechos de tratados). En 2024 las sentencias de amparo sobre normas generales ya no fijan efectos generales.',ref:'Art. 107 II, DOF 06-06-2011 y reformas de 2024'},
 {s:14,q:'Ante una ley local que estima inconstitucional, el juez común, según Tena…',o:['La inaplica de oficio','Debe aplicarla, sin juzgar de su constitucionalidad','Consulta al Senado','Suspende el juicio y pide una controversia'],a:1,exp:'Los actos se presumen constitucionales; sólo una sentencia del PJF destruye esa presunción frente a actos ajenos.',ref:'Tena, p. 579–580 (art. 133)'},
-{s:14,q:'Hoy, un juez local puede inaplicar una norma inconstitucional…',o:['Nunca, porque sigue vigente la tesis de Tena','Sí, en ejercicio del control difuso ex officio (Varios 912/2010), con efectos sólo para el caso','Sí, con efectos generales erga omnes','Sólo si lo autoriza la Permanente'],a:1,exp:'El control difuso se admite a partir de 2011 (caso Radilla). No lo atribuyas a 1994 ni a 2024.',ref:'Art. 133; Varios 912/2010'},
+{s:14,q:'Hoy, un juez local puede inaplicar una norma inconstitucional…',o:['Nunca, porque sigue vigente la tesis de Tena','Sí, en ejercicio del control difuso de oficio (Varios 912/2010), con efectos sólo para el caso','Sí, con efectos generales erga omnes','Sólo si lo autoriza la Permanente'],a:1,exp:'El control difuso se admite a partir de 2011 (caso Radilla). No lo atribuyas a 1994 ni a 2024.',ref:'Art. 133; Varios 912/2010'},
 {s:14,q:'La investigación de violaciones graves de derechos humanos, que Tena estudia en el antiguo art. 97, corresponde hoy a…',o:['La SCJN, de oficio','La CNDH (art. 102 B, desde 2011)','El Senado','La FGR, en todos los casos'],a:1,exp:'La averiguación del voto público se suprimió en 2007; la de violaciones graves pasó a la CNDH con el DOF 10-06-2011. El art. 97 vigente ya no consagra esa facultad.',ref:'Art. 102 B, DOF 10-06-2011; Tena §171, p. 585–593'}
 ];
 
 const XVF=[
 {s:2,q:'Las reformas constitucionales no pueden impugnarse por su contenido.',a:1,just:'Es la tesis de Tena (§17–18) y, desde el DOF 31-10-2024, lo dicen los arts. 105 y 107: no proceden amparo, controversia ni acción contra reformas.',ref:'Tena §17–18, p. 95; arts. 105 y 107, DOF 31-10-2024'},
-{s:14,q:'El juez local debe aplicar la ley sin juzgar su constitucionalidad.',a:0,just:'Eso es Tena (p. 579–580). Hoy existe control difuso ex officio desde el Varios 912/2010 (2011), con efectos sólo para el caso.',ref:'Tena, p. 579–580; art. 133; Varios 912/2010'},
+{s:14,q:'El juez local debe aplicar la ley sin juzgar su constitucionalidad.',a:0,just:'Eso es Tena (p. 579–580). Hoy existe control difuso de oficio desde el Varios 912/2010 (2011), con efectos sólo para el caso.',ref:'Tena, p. 579–580; art. 133; Varios 912/2010'},
 {s:2,q:'La Constitución de 1917 nació ya ratificada por un referéndum.',a:0,just:'Tena sostiene que en origen fue una Constitución impuesta: las condiciones de 1917 impidieron el referéndum. La ratificación fue posterior y tácita.',ref:'Tena §23, p. 106–109'},
 {s:4,q:'El refrendo hace de México un sistema parlamentario.',a:0,just:'Tena: el matiz no desnaturaliza el presidencialismo, porque el Presidente nombra y remueve libremente a los secretarios (art. 89 II). El refrendo está en el art. 92.',ref:'Tena §77, p. 290–295; arts. 89 II y 92'},
 {s:2,q:'Para Tena, el gobierno de Huerta fue, en lo formal, una usurpación.',a:0,just:'Al contrario: “el gobierno de Huerta no fue de usurpación” desde el punto de vista formal, porque se observaron las formalidades de 1857. Tena lo condena en lo moral.',ref:'Tena §22, p. 103–106'},
@@ -853,9 +969,9 @@ const XCS=[
 
 const XES=[
 {s:2,q:'Distingue poder constituyente y Constituyente Permanente y expón la tesis de Tena sobre los límites del segundo. ¿Qué dice hoy el texto vigente?',model:'El constituyente originario crea la Constitución y desaparece. El Permanente (art. 135) es un órgano constituido con función reformadora: 2/3 de los presentes del Congreso más la mayoría de las legislaturas de los Estados y de la CDMX (desde 2016). Tena sostiene que no tiene límites de contenido (rechaza las decisiones fundamentales de Schmitt; narra que Rabasa expuso esa tesis en 1912, pero no la adopta) y que una reforma sólo es inconstitucional por vicios de órgano o procedimiento (§17–18, p. 95). Propone un sistema análogo al de 1824 (§19). Desde el DOF 31-10-2024, los arts. 105 y 107 declaran improcedentes amparo, controversia y acción contra reformas.',rub:[['Distingue originario vs. Permanente (art. 135 y su integración vigente, con CDMX)',3],['Expone la tesis de Tena: sin límites de contenido; sólo órgano o formalidades (y, si acaso, Rabasa/Schmitt bien situados)',3],['Menciona el DOF 31-10-2024 (improcedencia de medios de control)',2]],ref:'Tena §17–19, p. 95–97; art. 135; DOF 31-10-2024'},
-{s:2,q:'¿Fue válida la Constitución de 1917? Explica la convalidación según Tena.',model:'Al reemplazar a la de 1857, violó el art. 128 de aquélla (idéntico al 136 vigente). Hasta su expedición sólo había justificación moral y social; expedirla no la ingresó por sí sola en la legalidad (ruptura del orden anterior, sin títulos ni formalidades). En origen fue una “Constitución impuesta”: no hubo referéndum (facciones; la carrancista era precaria; las ideas avanzadas eran de una minoría). Después, la paz se organizó conforme a ella y quedó “ratificada tácitamente por el pueblo mexicano y reconocida como su ley suprema por los países extranjeros” (§23, p. 106–109). El derecho a la revolución no se reconoce a priori, sino a posteriori (§24). Por eso 1917 repitió en el 136 la prohibición de 1857.',rub:[['Explica la invalidez original respecto de 1857 (art. 128/136)',2],['Usa las categorías de Tena: Constitución impuesta y ratificación tácita posterior (§23)',4],['Cierra con el §24 (reconocimiento a posteriori) o con el art. 136',2]],ref:'Tena §23–24, p. 106–109; art. 136'},
+{s:2,q:'¿Fue válida la Constitución de 1917? Explica la convalidación según Tena.',model:'Al reemplazar a la de 1857, violó el art. 128 de aquélla (idéntico al 136 vigente). Hasta su expedición sólo había justificación moral y social; el solo hecho de expedirla no hizo que la revolución ingresara en el cauce de la legalidad (ruptura del orden anterior, sin títulos ni formalidades). En origen fue una “Constitución impuesta”: no hubo referéndum (facciones; la carrancista era precaria; las ideas avanzadas eran de una minoría). Después, la paz se organizó conforme a ella y quedó “ratificada tácitamente por el pueblo mexicano y reconocida como su ley suprema por los países extranjeros” (§23, p. 106–109). El derecho a la revolución no se reconoce a priori, sino a posteriori (§24). Por eso 1917 repitió en el 136 la prohibición de 1857.',rub:[['Explica la invalidez original respecto de 1857 (art. 128/136)',2],['Usa las categorías de Tena: Constitución impuesta y ratificación tácita posterior (§23)',4],['Cierra con el §24 (reconocimiento a posteriori) o con el art. 136',2]],ref:'Tena §23–24, p. 106–109; art. 136'},
 {s:12,q:'Explica la diferencia entre control abstracto y concreto, y la tesis de Tena sobre el amparo.',model:'El control abstracto es la acción de inconstitucionalidad (art. 105 II): se impugna la norma en sí, sin caso, en 30 días, por órganos legitimados, con efectos generales (votación calificada). El concreto es el amparo (arts. 103 y 107): exige agravio y, en principio, tiene efectos relativos (fórmula Otero). Tena sostiene que el amparo no es control directo de la constitucionalidad (§163): defiende al individuo y las invasiones de jurisdicción; un control más amplio corre el riesgo de que el juez se erija en “legislador negativo” (§162). En 2011 se abrió la declaratoria general (art. 107 II); en 2024 el amparo quedó otra vez sin efectos generales y no procede contra reformas. Hay además control difuso desde 2011 (Varios 912/2010).',rub:[['Define abstracto (105 II, 30 días, sin caso) vs. concreto (amparo, agravio)',3],['Tesis de Tena: el amparo no es control directo; “legislador negativo”',3],['Trae al menos un cambio vigente (2011 y/o 2024)',2]],ref:'Tena §162–165; arts. 103, 105 II y 107'},
-{s:14,q:'Compara lo que dice Tena sobre el art. 133 con el régimen vigente. Menciona también el 128 y el antiguo 97.',model:'Tena: los actos se presumen constitucionales y, frente a actos ajenos, sólo una sentencia del PJF destruye esa presunción; el juez común “debe aplicar la ley, sin juzgar de su constitucionalidad” (p. 579–580). Hoy el 133 se lee con el control difuso ex officio (Varios 912/2010, 2011), con efectos sólo para el caso. El art. 128, que conserva su texto, consagra la defensa subsidiaria respecto de los actos propios, no de los ajenos: la protesta no autoriza a desobedecer leyes (p. 585). Del antiguo 97 (investigación de garantías o del voto público), el voto público se suprimió en 2007 y las violaciones graves pasaron a la CNDH en 2011 (art. 102 B).',rub:[['Contrasta Tena vs. control difuso 2011 en el 133',4],['Explica el 128 (actos propios / protesta)',2],['Ubica el destino del antiguo 97 (2007 y 2011)',2]],ref:'Tena, p. 579–585 y §171; art. 133; Varios 912/2010; art. 102 B'},
+{s:14,q:'Compara lo que dice Tena sobre el art. 133 con el régimen vigente. Menciona también el 128 y el antiguo 97.',model:'Tena: los actos se presumen constitucionales y, frente a actos ajenos, sólo una sentencia del PJF destruye esa presunción; el juez común “debe aplicar la ley, sin juzgar de su constitucionalidad” (p. 579–580). Hoy el 133 se lee con el control difuso de oficio (Varios 912/2010, 2011), con efectos sólo para el caso. El art. 128, que conserva su texto, consagra la defensa subsidiaria respecto de los actos propios, no de los ajenos: la protesta no autoriza a desobedecer leyes (p. 585). Del antiguo 97 (investigación de garantías o del voto público), el voto público se suprimió en 2007 y las violaciones graves pasaron a la CNDH en 2011 (art. 102 B).',rub:[['Contrasta Tena vs. control difuso 2011 en el 133',4],['Explica el 128 (actos propios / protesta)',2],['Ubica el destino del antiguo 97 (2007 y 2011)',2]],ref:'Tena, p. 579–585 y §171; art. 133; Varios 912/2010; art. 102 B'},
 {s:10,q:'Explica la naturaleza de la facultad reglamentaria según Tena y su anclaje vigente.',model:'Se localiza en el art. 89 I: “proveyendo en la esfera administrativa a su exacta observancia”. El reglamento es materialmente legislativo (norma general) y formalmente administrativo (lo expide el Ejecutivo). Es excepción a la separación de poderes, pero está subordinado a la ley: no puede excederla ni contrariarla. “El reglamento es a la ley lo que la ley es a la Constitución.” Tena prefería la fórmula de 1843, que prohibía alterar las leyes. Hoy se expresa con los principios de reserva de ley y subordinación jerárquica. No se confunde con la promulgación (que no altera la voluntad legislativa) ni con el veto (que sí puede oponerse a ella).',rub:[['Ancla la facultad en el 89 I (“proveyendo…”)',2],['Naturaleza dual (materialmente legislativo, formalmente administrativo) y subordinación a la ley',4],['Distingue, si puede, promulgación vs. veto, o cita la fórmula “el reglamento es a la ley…”',2]],ref:'Tena §145–147, p. 495–504; art. 89 I'}
 ];
 
@@ -886,7 +1002,7 @@ function exIntro(){
   $('exroot').innerHTML=`<div class="exq">
     <p>Simulacro de <b>90 minutos</b> (puedes pausar). Cubre las sesiones <b>1 a 14</b>. Hay 16 opción múltiple, 4 verdadero/falso con justificación, 1 ejercicio de relacionar, 2 casos y 2 preguntas de desarrollo. <b>No se muestran respuestas hasta que termines</b>.</p>
     <p>Al final verás una calificación de <b>0 a 10</b>, el desglose por sesión, la explicación con fuente y ligas para <b>repasar</b> lo débil. Las de desarrollo y la justificación del V/F se autoevalúan con una rúbrica.</p>
-    <button class="act" id="exstart">▶ Empezar examen</button>
+    <button class="act" id="exstart">Empezar el examen</button>
     ${st.exRun&&st.exRun.pack?`<button class="act alt" id="excont">Continuar el examen en curso (${exFmt(st.exRun.left)})</button>`:''}
     ${hist.length?`<div class="hist"><b>Intentos anteriores</b><ul>${hist.map(h=>`<li>${h.cuando} · <b>${h.grade}</b>/10 ${h.auto?'(automático '+h.auto+'/10, pendiente rúbrica)':''}</li>`).join('')}</ul></div>`:''}
   </div>`;
@@ -926,17 +1042,17 @@ function exCollect(){
 
 function exRender(){
   const P=ex, pts=exPts(P);
-  let n=0, html=`<div class="exbar"><span>⏱ <b id="extime">${exFmt(exLeft)}</b></span><span>Sesiones 1–14</span><span><button class="act lt" id="expause" style="margin:0;padding:6px 12px">⏸ Pausa</button> <button class="act" id="exend" style="margin:0;padding:6px 12px">Entregar</button></span></div><div id="expaper">`;
-  html+=`<h3 style="color:var(--cream)">I. Opción múltiple <small>(${P.mc.length} × 3 = ${pts.mc} pts)</small></h3>`;
+  let n=0, html=`<div class="exbar"><span><b id="extime">${exFmt(exLeft)}</b></span><span>Sesiones 1–14</span><span><button class="act lt" id="expause" style="margin:0;padding:6px 12px">Pausa</button> <button class="act" id="exend" style="margin:0;padding:6px 12px">Entregar</button></span></div><div id="expaper">`;
+  html+=`<h3 >I. Opción múltiple <small>(${P.mc.length} × 3 = ${pts.mc} pts)</small></h3>`;
   P.mc.forEach((q,i)=>{n++;html+=exMC('mc'+i,n,q,exAns['mc'+i])});
-  html+=`<h3 style="color:var(--cream)">II. Verdadero o falso, con justificación <small>(${P.vf.length} × 4 = ${pts.vf} pts)</small></h3>
+  html+=`<h3 >II. Verdadero o falso, con justificación <small>(${P.vf.length} × 4 = ${pts.vf} pts)</small></h3>
     <p class="sub">Marca V o F y justifica en una o dos frases. La justificación se autoevalúa al final.</p>`;
   P.vf.forEach((q,i)=>{n++;html+=exVF('vf'+i,n,q,exAns['vf'+i],exAns['vfj'+i])});
-  html+=`<h3 style="color:var(--cream)">III. Relaciona <small>(${pts.mt} pts)</small></h3>`;
+  html+=`<h3 >III. Relaciona <small>(${pts.mt} pts)</small></h3>`;
   n++; html+=exMatch('mt',n,P.mt);
-  html+=`<h3 style="color:var(--cream)">IV. Casos prácticos <small>(${P.cs.length} × 6 = ${pts.cs} pts)</small></h3>`;
+  html+=`<h3 >IV. Casos prácticos <small>(${P.cs.length} × 6 = ${pts.cs} pts)</small></h3>`;
   P.cs.forEach((q,i)=>{n++;html+=exMC('cs'+i,n,q,exAns['cs'+i],true)});
-  html+=`<h3 style="color:var(--cream)">V. Desarrollo <small>(${P.es.length} × 8 = ${pts.es} pts)</small></h3>
+  html+=`<h3 >V. Desarrollo <small>(${P.es.length} × 8 = ${pts.es} pts)</small></h3>
     <p class="sub">Escribe tu respuesta. Al final verás el modelo y una rúbrica para autoevaluarte.</p>`;
   P.es.forEach((q,i)=>{n++;html+=`<div class="exq"><div class="n">PREGUNTA ${n} · S${q.s}</div><h4>${q.q}</h4><textarea data-k="es${i}" placeholder="Responde aquí…">${exAns['es'+i]||''}</textarea></div>`});
   html+=`</div><p style="text-align:center"><button class="act" id="exend2">Entregar examen</button></p>`;
@@ -1012,15 +1128,15 @@ function exShow(P,pts,auto,auto10,by,detail,weak,timeout,cuando){
     <p>sobre 10 · parte automática ${auto}/${pts.tot-16} pts (las rúbricas de V/F y desarrollo pueden subir hasta 2.0 más)</p>
     ${timeout?'<p>Se entregó porque se acabó el tiempo.</p>':''}
     <p class="sub">Intento del ${cuando}</p></div>
-    <h3 style="color:var(--cream)">Desglose por sesión</h3><div class="brk">`;
+    <h3 >Desglose por sesión</h3><div class="brk">`;
   Object.keys(by).map(Number).sort((a,b)=>a-b).forEach(s=>{
     const x=by[s], pct=Math.round(x.g/x.m*100);
     html+=`<div><span>S${s} · ${S[s-1].t}</span><b>${x.g}/${x.m} (${pct}%)</b></div>`;
   });
-  html+=`</div><h3 style="color:var(--cream)">Repasar esto</h3><div class="weak">`;
+  html+=`</div><h3 >Repasar esto</h3><div class="weak">`;
   if(!weak.length)html+=`<span style="color:var(--latte2)">No hay sesiones debajo de 70% en la parte automática. Aun así, autoevalúa el desarrollo.</span>`;
   else weak.forEach(s=>html+=`<a class="act" href="#s${s}">S${s} · ${S[s-1].t}</a>`);
-  html+=`</div><h3 style="color:var(--cream)">Tus respuestas</h3><div id="exrev">`;
+  html+=`</div><h3 >Tus respuestas</h3><div id="exrev">`;
   let num=0;
   detail.forEach(d=>{
     if(d.t==='mc'||d.t==='cs'){
