@@ -452,6 +452,152 @@ html.reading,body.reading{overflow:hidden;height:100%;overscroll-behavior:none}
 .exbar .act,.exbar button{min-height:40px!important;padding:8px 14px!important;border-radius:999px;font-size:14px;letter-spacing:.04em}
 .exbar .act.lt{border-color:var(--line)}
 
+/* ===== iPhone / contraste / desborde ===== */
+html,body{max-width:100%;overflow-x:hidden}
+img,svg,table,button,.act,.pill,.opt,.scard,.intro-card,.viz,.viz-photo,.cram-acts{max-width:100%}
+.act,.pill,.chip,.cat,.scard,.ck,button.opt,#resume,.r-top button{
+  box-sizing:border-box!important;
+}
+.act.big,#resume,.intro-card .act{width:100%;max-width:100%}
+.cram-acts{display:flex;flex-direction:column;align-items:stretch;gap:10px;width:100%;max-width:100%}
+.cram-acts .act{width:100%;max-width:100%;display:flex}
+
+/* animation: visible by default; no fill-mode that can stick at opacity 0 on iOS */
+.blk{animation:none;opacity:1;transform:none}
+@media (prefers-reduced-motion: no-preference){
+  @keyframes up-soft{from{transform:translateY(10px)}to{transform:none}}
+  .blk{animation:up-soft .55s ease}
+}
+
+/* Dark sections: cream text; intro/exam cards on paper */
+.blk.dark,.blk.board,#examen.blk.dark,#flash.blk.dark,#arcade.blk.dark{
+  color:#F3EEE6;
+}
+.blk.dark h2,.blk.board h2{color:#FAF7F1}
+.blk.dark .sub,.blk.board .sub,.blk.dark p,.blk.dark li,.blk.dark label{color:#F0E6D8}
+.blk.dark a{color:#F3C1C6}
+.blk.dark .act{
+  background:#FAF7F1;color:#2A1812;border:2px solid #FAF7F1;
+}
+.blk.dark .act.big{
+  background:#C31C32;color:#fff;border-color:#C31C32;
+}
+.blk.dark .act.lt,.blk.dark .act.alt{
+  background:transparent;color:#FAF7F1;border:2px solid #E8DCCB;
+}
+.intro-card{
+  background:#FAF7F1;color:#241612;border-radius:18px;padding:20px 18px;
+  box-sizing:border-box;width:100%;max-width:100%;overflow:hidden;
+}
+.intro-card p{color:#241612!important;margin:0 0 12px;font-size:1rem;line-height:1.55}
+.intro-card .act{margin:0}
+#exroot{max-width:100%;overflow-x:hidden}
+#examen,#flash,#arcade,#pex{overflow-x:hidden}
+
+/* Highlights: yellow=definición, pink=artículo/fecha, blue=trampa Tena vs. vigente */
+.hl-leg{display:flex;flex-wrap:wrap;gap:8px 14px;margin:8px 0 14px;font-size:.88rem}
+.hl-leg i{font-style:normal;padding:0 .15em;border-radius:2px}
+.hl-def,.hi-chip.cite{background:linear-gradient(transparent 58%, #FFE566 58% 95%, transparent 95%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hl-art,.hi-chip.art,.hi-chip.date{background:linear-gradient(transparent 58%, #F5A3C0 58% 95%, transparent 95%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hl-trap{background:linear-gradient(transparent 58%, #8EC8F0 58% 95%, transparent 95%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hi-chip{background:none;padding:0;border-radius:0;white-space:normal}
+.esen .frase{background:linear-gradient(transparent 58%, #FFE566 58% 95%, transparent 95%)}
+.trap{background:linear-gradient(#E3F2FC, #E3F2FC);border-left:4px solid #3A86C8;border-top:0;padding:12px 14px;border-radius:0 12px 12px 0;color:#1A3344}
+.mark-user{background:linear-gradient(transparent 58%, #FFE566 58% 95%, transparent 95%);cursor:pointer}
+.mark-user.pink{background:linear-gradient(transparent 58%, #F5A3C0 58% 95%, transparent 95%)}
+.mark-user.blue{background:linear-gradient(transparent 58%, #8EC8F0 58% 95%, transparent 95%)}
+#hlbar{display:none;gap:6px;align-items:center;flex-wrap:wrap;padding:0 16px 8px;background:var(--paper)}
+#hlbar.on{display:flex}
+#hlbar button{min-height:40px;padding:6px 10px;font-size:13px}
+body.hl-on{cursor:text}
+body.hl-on .r-body{user-select:text;-webkit-user-select:text}
+
+/* cloze, micro vf, facil, mini quiz, sorter, tips */
+.cloze{all:unset;box-sizing:border-box;cursor:pointer;display:inline;padding:0 .2em;border-bottom:3px dotted var(--cherry);background:linear-gradient(transparent 70%, rgba(195,28,50,.12) 70%);font-weight:700;color:var(--ox)}
+.cloze.on{border-bottom-color:var(--ok);background:linear-gradient(transparent 58%, #C8E6C9 58% 95%, transparent 95%);color:var(--esp);font-weight:600}
+.micro{margin:18px 0;padding:14px;background:var(--paper);border-radius:16px;color:var(--ink)}
+.micro h4{font-size:1.05rem;margin:0 0 8px}
+.micro .vfq{margin:10px 0;padding:10px 0;border-top:1px solid var(--line)}
+.micro .vfq p{margin:0 0 8px;color:var(--ink)!important}
+.micro .vb{display:flex;gap:8px}
+.micro .vb button{flex:1;min-height:44px}
+.facil-btn{width:100%;margin:8px 0 12px}
+.facil{display:none;background:#FFF6D6;border-radius:16px;padding:14px 16px;color:#3A2A00;margin:0 0 16px}
+.facil.on{display:block}
+.facil b{color:#5C3B00}
+.mini{margin:22px 0 8px;padding:16px;background:var(--paper);border-radius:16px;color:var(--ink)}
+.mini h4{margin:0 0 10px}
+.mini .opt{color:var(--ink)}
+.sicon-row{display:flex;gap:10px;margin:0 0 14px;flex-wrap:wrap}
+.sicon{flex:1 1 90px;min-width:90px;background:var(--soft,#FAF7F1);border-radius:14px;padding:10px 8px;text-align:center;font-size:.75rem;font-weight:600;color:var(--tone,var(--ox))}
+.sicon svg{width:36px;height:36px;display:block;margin:0 auto 6px;stroke:currentColor;fill:none;stroke-width:1.6}
+.fstep{cursor:pointer;position:relative}
+.fstep .ftip{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed rgba(42,24,18,.2);font-size:.95rem}
+.fstep.open .ftip{display:block}
+.sorter{display:flex;flex-direction:column;gap:8px;margin:8px 0 12px}
+.sorter .oitem{background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;min-height:48px;cursor:grab;color:var(--ink)}
+.sorter .oitem.g{background:var(--ok-bg);border-color:var(--ok)}
+.sorter .oitem.x{background:var(--no-bg);border-color:var(--no)}
+.stamp-mini{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--cherry);vertical-align:middle;margin-left:6px}
+.scard.stamped:after{content:"";position:absolute;right:40px;top:12px;width:10px;height:10px;border-radius:50%;background:var(--mustard)}
+.ex-viz{margin:0 0 10px}
+.ex-viz img{width:100%;max-height:140px;object-fit:cover;border-radius:12px}
+#flash .dcard .ico{width:40px;height:40px;margin:0 auto 10px}
+
+/* Photos side by side; captions; exam thumbs */
+.photo-duo{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 16px}
+@media(min-width:620px){.photo-duo{grid-template-columns:1fr 1fr}}
+.photo-duo .viz-photo{margin:0}
+.viz-photo{margin:0 0 16px}
+.viz-photo img,.ex-viz img{width:100%;height:auto;max-height:280px;object-fit:cover;border-radius:14px;display:block;background:#E8DCCB}
+.viz-photo figcaption,.ex-viz figcaption{font-size:.78rem;color:var(--ink2);margin-top:6px;line-height:1.4}
+.reader .viz-photo figcaption{color:#5C463C}
+.ex-viz{margin:8px 0 12px}
+.ex-viz img{max-height:160px}
+.sicon-row{margin:0 0 16px}
+.dcard{flex-direction:column}
+.dcard .ico{color:currentColor}
+.dcard .ico svg{width:40px;height:40px;stroke:currentColor;fill:none;stroke-width:1.6;display:block;margin:0 auto}
+
+/* Intro card buttons on the dark exam section */
+.blk.dark .intro-card p,.intro-card p{color:#241612!important}
+.blk.dark .intro-card .act,
+.intro-card .act{
+  background:#2A1812;color:#FAF7F1;border:2px solid #2A1812;
+}
+.blk.dark .intro-card .act.big,
+.intro-card .act.big{
+  background:#C31C32;color:#fff;border-color:#C31C32;
+}
+.blk.dark .intro-card .act.alt,
+.intro-card .act.alt{
+  background:#FAF7F1;color:#2A1812;border:2px solid #FAF7F1;
+}
+
+/* Exam bar and paper sit on cream: don't inherit dark-button colors */
+.blk.dark .exbar .act,
+.blk.dark #expaper .act,
+.blk.dark .exbar .act.lt,
+.blk.dark #expaper .act.lt{
+  background:#FAF7F1;color:#2A1812;border:2px solid #6B1A1F;
+}
+.blk.dark .exbar .act:not(.lt),
+.blk.dark #expaper .act.big{
+  background:#C31C32;color:#fff;border-color:#C31C32;
+}
+.blk.dark .exprog{color:#F0E6D8}
+
+/* Arcade / flash panels that use paper shouldn't lose contrast */
+#flash .rcard .act{background:#FAF7F1;color:#2A1812;border:2px solid #6B1A1F}
+#arcade .ap{background:#FAF7F1;color:#241612;border-radius:16px;padding:14px;max-width:100%;overflow-x:hidden}
+#arcade .ap .fb{color:#241612}
+
+/* Reader highlight bar */
+#hlbar{background:var(--paper);border-bottom:1px solid var(--line)}
+#hlbar .pill.on{outline:2px solid var(--ox)}
+.r-body, #rbody{overflow-wrap:anywhere;word-break:break-word;max-width:100%}
+.reader{overflow-x:hidden}
+
 </style></head><body>
 <header class="hero" id="inicio">
   <img class="hero-img" src="awning.webp" alt="Toldo de una cafetería con el letrero Espresso">
@@ -566,6 +712,8 @@ html.reading,body.reading{overflow:hidden;height:100%;overscroll-behavior:none}
 <canvas id="confetti"></canvas>
 
 <script>
+
+/* === data.js === */
 const S=[
 {n:1,b:"teo",t:"Teoría de la Constitución · Poder Constituyente",cap:"Cap. I",pdf:"38–61",
 tena:["La soberanía no puede ignorarse: sobre ella “se erige nuestra organización constitucional” (§1, p. 38–39). Es un producto histórico y un concepto polémico, como dice Jellinek (§2, p. 39).","Dos problemas le interesan: quién es el titular de la soberanía y cómo se ejerce jurídicamente. Concluye que entre nosotros “ningún poder ni gobernante alguno es soberano, pues todos encuentran sus fronteras en la Constitución” (§3, p. 42–47).","La supremacía de la Constitución presupone dos condiciones: que el poder constituyente sea distinto de los poderes constituidos y que la Constitución sea rígida y escrita (§5, p. 47).","Los órganos reciben su investidura de una fuente superior, la Constitución, así que el autor de ésta debe ser distinto y estar por encima de ellos. Fuera de la ley suprema, los actos de autoridad resultan inválidos (§5, p. 47–56).","Concepto de Constitución: Schmitt distingue nueve significados de “ley fundamental”. Tena separa la Constitución en sentido material y en sentido formal, y sus partes (§7, p. 56–60; sumario)."],
@@ -649,6 +797,7 @@ clave:"Tena + vigente + ejemplo = respuesta completa.",
 q:[["¿Cómo estructurar una respuesta de recapitulación?","1) Concepto según Tena, 2) fundamento constitucional, 3) cambio en el texto vigente con su reforma (DOF), 4) crítica o conclusión propia."]]}];
 const B={teo:"Teoría",est:"Estado",pod:"Legislativo",eje:"Ejecutivo",jud:"Judicial",def:"Defensa",rec:"Recap"};
 
+/* === extra.js === */
 const TABLAS=[
 ["Poder constituyente vs. poder revisor (Constituyente Permanente)",["","Constituyente originario","Revisor / Permanente (art. 135)"],[["Naturaleza","Poder creador, expresión de la soberanía","Órgano constituido con función constituyente"],["Integración","Asamblea ad hoc (Querétaro 1916–1917)","Congreso de la Unión (2/3 de presentes) + mayoría de legislaturas de los Estados y CDMX"],["Duración","Actúa una vez y desaparece","Permanente: puede actuar siempre"],["Límites según Tena","Inmanentes, históricos, políticos e internacionales","Sin límites de contenido; sólo de órgano y procedimiento"],["Hoy","—","Reformas no impugnables por amparo, controversia ni acción (DOF 31-10-2024)"]]],
 ["Juicio político vs. declaratoria de procedencia",["","Juicio político","Declaratoria de procedencia"],[["Fundamento","Arts. 109 I, 110 y 114","Arts. 111 y 74 V"],["Naturaleza","Responsabilidad política","Requisito de procedibilidad penal (remueve el fuero)"],["Causa","Actos u omisiones contra intereses públicos fundamentales","Probable comisión de delitos durante el encargo"],["Órganos","Diputados acusa (mayoría absoluta de presentes) → Senado jurado (2/3 de presentes)","Sólo Cámara de Diputados (mayoría absoluta de presentes)"],["Resultado","Destitución e inhabilitación","Separación del cargo y sujeción a los tribunales penales; no prejuzga culpabilidad"],["Plazo","Durante el encargo y hasta un año después","Prescripción conforme a la ley penal (art. 114)"],["Tena (texto pre-1982)","Juicio político por “delitos oficiales”","Desafuero por delitos comunes"]]],
@@ -666,6 +815,7 @@ const VF=[["Las reformas constitucionales no pueden impugnarse por su contenido.
 const MATCH=[["Presupuesto de Egresos","Diputados"],["Declaratoria de procedencia","Diputados"],["Cuenta Pública","Diputados"],["Tratados internacionales","Senado"],["Jurado de sentencia","Senado"],["Desaparición de poderes de un Estado","Senado"],["Convocar a sesiones extraordinarias","Permanente"],["Recibir la protesta presidencial en recesos","Permanente"],["Declarar la guerra (ley)","Congreso"],["Imponer contribuciones","Congreso"]];
 const PE=[["Distingue poder constituyente y Constituyente Permanente y expón la tesis de Tena sobre los límites del segundo.","El constituyente originario crea la Constitución y desaparece; el Permanente (art. 135) es un órgano constituido con función reformadora: Congreso por 2/3 de presentes más la mayoría de las legislaturas de los Estados y CDMX. Tena sostiene que no tiene límites de contenido (rechaza las decisiones fundamentales de Schmitt) y que una reforma sólo es inconstitucional por vicios de órgano o procedimiento. Desde DOF 31-10-2024, los arts. 105 y 107 declaran improcedentes los medios de control contra reformas."],["¿Fue válida la Constitución de 1917?","Tena: al reemplazar a la de 1857, la de 1917 violó el art. 128 de aquélla (idéntico al 136 vigente). Hasta su expedición sólo había justificación moral y social. El solo hecho de expedirla no hizo que la revolución ingresara en el cauce de la legalidad, porque el nuevo orden se dio con ruptura del antiguo, por quien carecía de títulos legales y sin las formalidades. En origen fue una “Constitución impuesta”: las condiciones de 1917 impidieron un referéndum (facciones; la carrancista era precaria; las ideas avanzadas eran de una minoría). Después, la paz se organizó conforme a ella, nadie discute su vigencia y todos la invocan: quedó “ratificada tácitamente por el pueblo mexicano y reconocida como su ley suprema por los países extranjeros” (§23, p. 106–109). El derecho a la revolución no puede reconocerse a priori en la ley positiva, sino sólo a posteriori, cuando el pueblo lo reconoce expresa o tácitamente (§24). Por eso 1917 repitió en el art. 136 la prohibición de 1857."],["Explica la forma de Estado y de gobierno de México.","Art. 40: república representativa, democrática, laica y federal, con Estados libres y soberanos en su régimen interior y la CDMX. Federalismo de facultades expresas (art. 124) con implícitas (73 XXXII) y concurrentes por leyes generales."],["Facultades exclusivas de las cámaras y de la Permanente.","Diputados (74): presupuesto, Cuenta Pública, declaratoria de procedencia, acusación en juicio político, Bando Solemne, ratificar a Hacienda, PND. Senado (76): política exterior y tratados, ratificaciones, tropas, desaparición de poderes, cuestiones políticas locales, jurado de sentencia, FGR. Permanente (78): 37 miembros, protesta presidencial, extraordinarias, licencias."],["El Ejecutivo: organización y facultad reglamentaria.","Unipersonal (80), sexenal desde el 1º de octubre y sin reelección (83), sucesión por el art. 84 (Gobernación provisional y el Congreso nombra). Art. 89 I: promulgar, ejecutar y reglamentar; el reglamento es formalmente administrativo y materialmente legislativo, subordinado a la ley (reserva de ley y subordinación jerárquica)."],["Reformas judiciales de 1994 y 2024.","1994: 11 ministros, CJF, acción de inconstitucionalidad, controversia ampliada. 2024: 9 ministros electos por voto popular por 12 años, Tribunal de Disciplina Judicial y órgano de administración, elección de magistrados y jueces; supremacía constitucional (31-10-2024). Ajustes en DOF 02-06-2026."],["Control abstracto vs. concreto.","Abstracto: la acción de inconstitucionalidad examina la norma sin caso, a instancia de órganos legitimados, en 30 días, con efectos generales por mayoría calificada. Concreto: el amparo, con agravio y efectos relativos (fórmula Otero), salvo la declaratoria general del art. 107 II. Control difuso desde Varios 912/2010."],["Evolución del amparo.","Rejón (Yucatán 1840–41), Otero (Acta de 1847), 1857, 1917 (amparo de legalidad por arts. 14 y 16, criticado por Rabasa), 1994, 2011 (interés legítimo, tratados, declaratoria general), Ley de Amparo 2013, 2024 (sin efectos generales; improcedente contra reformas)."],["Arts. 133, 128 y antiguo 97: Tena vs. hoy.","133: Tena niega que el juez local pueda inaplicar leyes; hoy hay control difuso de oficio. 128: la protesta no autoriza a desobedecer leyes. 97: investigación de la SCJN; la del voto público se suprime en 2007 y la de derechos humanos pasa a la CNDH en 2011."],["Juicio político vs. declaratoria de procedencia; fuero del Presidente.","Juicio político: responsabilidad política; Diputados acusa por mayoría absoluta de presentes, el Senado sentencia por 2/3; destitución e inhabilitación; durante el encargo y un año después. Declaratoria: Diputados decide por mayoría absoluta si se procede penalmente. Presidente: desde 2021 es imputable por traición, corrupción, delitos electorales y los de cualquier ciudadano, ante el Senado."],["Rabasa: tesis principales.","La Constitución y la dictadura (1912): la Constitución de 1857 era impracticable, debilitaba al Ejecutivo frente al Congreso y orilló a gobernar fuera de ella; propone equilibrar poderes (veto, Senado, Corte independiente). El artículo 14 (1906): la “exacta aplicación” en materia civil hizo del amparo un recurso de casación y saturó a la Corte."]];
 
+/* === esencial.js === */
 const ES=[
 `<p class="frase">El constituyente crea la Constitución y desaparece; los poderes constituidos sólo pueden actuar dentro de ella.</p>
 <ul>
@@ -907,9 +1057,11 @@ const ES=[
 </ul>`
 ];
 
+/* === visuals.js === */
 /* Diagramas e imágenes explicativas por sesión. Cifras cotejadas con la CPEUM vigente (Cámara, última reforma DOF 07-10-2026). */
 function fig(src, alt, cap){
-  return `<figure class="viz-photo"><img src="${src}" alt="${alt}" loading="lazy" width="1100" height="720"><figcaption>${cap}</figcaption></figure>`;
+  const sm=src.replace(/\.webp$/, '-sm.webp');
+  return `<figure class="viz-photo"><img src="${sm}" srcset="${sm} 800w, ${src} 1400w" sizes="(max-width:640px) 100vw, 720px" alt="${alt}" loading="lazy" width="1100" height="720"><figcaption>${cap}</figcaption></figure>`;
 }
 const FQ=fig('foto-constituyente.webp','El Congreso Constituyente de 1917, reunido en Querétaro','El Congreso Constituyente de 1917, reunido en Querétaro. Wikimedia Commons (dominio público).');
 const FCARR=fig('foto-carranza.webp','Retrato de Venustiano Carranza','Venustiano Carranza. Retrato de Harris y Ewing. Wikimedia Commons (dominio público).');
@@ -918,6 +1070,33 @@ const FSAN=fig('foto-sanlazaro.webp','Palacio Legislativo de San Lázaro, sede d
 const FSEN=fig('foto-senado.webp','Sede del Senado de la República en la Ciudad de México','Sede del Senado de la República, Ciudad de México. Foto: Isaacvp, Wikimedia Commons (CC BY-SA 4.0).');
 const FNAC=fig('foto-nacional.webp','Fachada del Palacio Nacional, sede del Poder Ejecutivo Federal','Palacio Nacional, sede del Poder Ejecutivo Federal. Foto: Luisalvaz, Wikimedia Commons (CC BY-SA 4.0).');
 const FSCJN=fig('foto-scjn.webp','Edificio de la Suprema Corte de Justicia de la Nación','Edificio de la Suprema Corte de Justicia de la Nación. Foto: ProtoplasmaKid, Wikimedia Commons (CC BY-SA 4.0).');
+const FTEA=fig('foto-teatro.webp','Teatro de la República, en Querétaro, sede del Congreso Constituyente de 1917','Teatro de la República, Querétaro, sede del Congreso Constituyente de 1917. Foto: ProtoplasmaKid, Wikimedia Commons (CC BY-SA 4.0).');
+const FPLUMA=fig('foto-pluma.webp','Tintero y pluma con los que Carranza promulgó la Constitución de 1917','Tintero y pluma con los que Carranza promulgó la Constitución de 1917. Foto: Saloca, Wikimedia Commons (CC BY-SA 3.0).');
+const FREJ=fig('foto-rejon.webp','Retrato de Manuel Crescencio Rejón','Manuel Crescencio Rejón, antecedente yucateco del juicio de amparo (1840-1841). Wikimedia Commons (CC BY-SA 4.0, Bekaeftende).');
+const FOTERO=fig('foto-otero.webp','Estatua de Mariano Otero en la Rotonda de los Jaliscienses Ilustres','Estatua de Mariano Otero, jurista, en la Rotonda de los Jaliscienses Ilustres. Foto: Elmerhomerochombo, Wikimedia Commons (CC BY-SA 4.0).');
+const FJUAR=fig('foto-juarez.webp','Retrato de Benito Juárez, óleo del siglo XIX','Retrato de Benito Juárez. Óleo de José Escudero y Espronceda (siglo XIX). Wikimedia Commons (dominio público).');
+const F1857=fig('foto-cpeum1857.webp','Portada original de la Constitución Federal de 1857','Portada original de la Constitución Federal de los Estados Unidos Mexicanos de 1857. Wikimedia Commons (dominio público).');
+const FJURAN=fig('foto-juran1857.webp','Diputados juran la Constitución de 1857, ilustración de Daniel Utrillo','Diputados juran la Constitución de 1857. Ilustración de Daniel Utrillo. Wikimedia Commons (dominio público).');
+const FDONC=fig('foto-donceles.webp','Fachada del Palacio Legislativo de Donceles, antigua sede de la Cámara de Diputados','Palacio Legislativo de Donceles, antigua sede de la Cámara de Diputados. Foto: Luis Alvaz, Wikimedia Commons (CC BY-SA 4.0).');
+
+function duo(a,b){return `<div class="photo-duo">${a}${b}</div>`}
+const I={
+ pueblo:`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="8.5" r="2.4"/><path d="M3 19c.2-3 2.6-5 6-5s5.8 2 6 5M15 14.2c2.6.2 5 1.8 5 4.3"/></svg>`,
+ ley:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h9l3 3v13H6z"/><path d="M14 4v4h4M8 12h8M8 16h6"/></svg>`,
+ balanza:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v16M7 21h10"/><path d="M12 6l-6 8h12z"/><path d="M6 14a2.5 2.5 0 1 0 0 0.01M18 14a2.5 2.5 0 1 0 0 0.01"/></svg>`,
+ palacio:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10l8-6 8 6v10"/><path d="M10 20v-6h4v6M4 20h16"/></svg>`,
+ gavel:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6-3 3-6-6z"/><path d="M8 13l3 3M4 20h10"/><path d="M7 16l-3 3"/></svg>`,
+ piramide:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l10 16H2z"/><path d="M7 16h10M9.5 12h5"/></svg>`,
+ escudo:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>`,
+ reloj:`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>`,
+ voto:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h16v9H4z"/><path d="M8 11V8l4-4 4 4v3"/><path d="M10 15.5l1.5 1.5 3-3"/></svg>`,
+ guerra:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l7-14 7 14"/><path d="M8.5 12h7"/></svg>`,
+ salud:`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg>`
+};
+function icons(items){
+  return `<div class="sicon-row">`+items.map(([k,l])=>`<div class="sicon">${I[k]||I.ley}<span>${l}</span></div>`).join('')+`</div>`;
+}
+
 
 function vk(t){return `<p class="viz-kicker">${t}</p>`}
 function vn(t){return `<p class="viz-note">${t}</p>`}
@@ -1159,29 +1338,30 @@ ${vk('Juicio político frente a declaratoria de procedencia')}
 </div>`}
 
 const VIZ={
-  1:()=>dConstituyente(),
-  2:()=>d135()+FQ+FCARR,
-  3:()=>dFederal(),
-  4:()=>dDivision(),
-  5:()=>dCongreso()+FSAN,
-  6:()=>dLegislativo(),
-  7:()=>`<div class="viz">${vk('Guerra y salubridad · quién actúa')}
+  1:()=>icons([['pueblo','Pueblo soberano'],['ley','Constitución'],['palacio','Poderes constituidos']])+dConstituyente()+duo(FTEA,FQ),
+  2:()=>icons([['ley','Art. 135'],['voto','2/3 presentes'],['pueblo','Legislaturas']])+d135()+duo(FPLUMA,FCARR),
+  3:()=>icons([['piramide','Art. 124'],['palacio','Federación'],['pueblo','Estados y CDMX']])+dFederal()+duo(F1857,FNAC),
+  4:()=>icons([['palacio','Ejecutivo'],['ley','Legislativo'],['gavel','Judicial']])+dDivision()+duo(FNAC,FSAN)+FSCJN,
+  5:()=>icons([['ley','Diputados 500'],['voto','Senado 128'],['reloj','Permanente 37']])+dCongreso()+duo(FSAN,FDONC),
+  6:()=>icons([['ley','Iniciativa'],['voto','Cámaras'],['palacio','Ejecutivo / veto']])+dLegislativo()+duo(FSAN,FNAC),
+  7:()=>icons([['guerra','Declarar la guerra'],['salud','Salubridad general'],['ley','Ley del Congreso']])+`<div class="viz">${vk('Guerra y salubridad · quién actúa')}
     <div class="split">
       <div class="fstep tone-cherry"><b>Declarar la guerra</b><span>El Congreso la declara, en vista de los datos que le presente el Ejecutivo (art. 73, fr. XII). La Presidencia la declara <b>previa ley</b> del Congreso (art. 89, fr. VIII).</span></div>
       <div class="fstep tone-caramel"><b>Salubridad general</b><span>El Congreso dicta las leyes sobre salubridad general de la República (art. 73, fr. XVI). El Consejo de Salubridad General depende directamente de la Presidencia, sin intervención de ninguna Secretaría, y sus disposiciones generales son obligatorias en el país (art. 73, fr. XVI, base 1a.).</span></div>
-    </div></div>`,
-  8:()=>dCongreso()+FSEN,
-  9:()=>dEjecutivo()+FNAC,
-  10:()=>d89(),
-  11:()=>dPJF()+FSCJN,
-  12:()=>dControl(),
-  13:()=>dAmparo(),
-  14:()=>d133(),
-  15:()=>dRespons(),
-  16:()=>dConstituyente()+d135()+dDivision()+dPJF()
+    </div></div>`+duo(FSAN,FNAC),
+  8:()=>icons([['ley','Facultades exclusivas'],['voto','Senado'],['reloj','Permanente']])+dCongreso()+duo(FSEN,FSAN),
+  9:()=>icons([['palacio','Unipersonal'],['reloj','1o. de octubre'],['pueblo','Sucesión art. 84']])+dEjecutivo()+duo(FNAC,FJUAR),
+  10:()=>icons([['ley','Art. 89, fr. I'],['escudo','Reglamento'],['palacio','Presidencia']])+d89()+FNAC,
+  11:()=>icons([['gavel','SCJN · 9'],['voto','Elección popular'],['balanza','Disciplina judicial']])+dPJF()+FSCJN,
+  12:()=>icons([['balanza','Control abstracto'],['escudo','Amparo'],['gavel','Control difuso']])+dControl()+FSCJN,
+  13:()=>icons([['escudo','Fórmula Otero'],['ley','Rejón 1840'],['gavel','2011 y 2024']])+dAmparo()+duo(FREJ,FOTERO)+FJURAN,
+  14:()=>icons([['piramide','Art. 133'],['ley','Protesta 128'],['gavel','Control difuso']])+d133()+duo(F1857,FJURAN)+FSCJN,
+  15:()=>icons([['balanza','Juicio político'],['gavel','Declaratoria'],['ley','Arts. 108 a 114']])+dRespons()+duo(FSAN,FSEN),
+  16:()=>icons([['ley','Tena dijo'],['piramide','Artículo vigente'],['reloj','Fecha del DOF']])+d135()+dDivision()+dPJF()+duo(FTEA,F1857)
 };
 const VIZ_RAB=()=>FRAB;
 
+/* === app.js === */
 const $=id=>document.getElementById(id);const K='dc-tena-v1';let st=JSON.parse(localStorage.getItem(K)||'{}');st.c=st.c||{};st.n=st.n||{};const sv=()=>localStorage.setItem(K,JSON.stringify(st));
 const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
 let ac;function tone(ok){if(!st.snd)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();(ok?[523,784]:[220,165]).forEach((f,k)=>{const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.connect(g);g.connect(ac.destination);const t=ac.currentTime+k*.12;g.gain.setValueAtTime(.15,t);g.gain.exponentialRampToValueAtTime(.001,t+.18);o.start(t);o.stop(t+.2)})}catch(e){}}
@@ -1223,7 +1403,7 @@ function colorize(root){
       }
       if(last<t.length)frag.appendChild(document.createTextNode(t.slice(last)));
       n.parentNode.replaceChild(frag,n);
-    }else if(n.nodeType===1 && n.tagName!=='SCRIPT' && n.tagName!=='TEXTAREA' && !n.classList.contains('hi-chip')){
+    }else if(n.nodeType===1 && n.tagName!=='SCRIPT' && n.tagName!=='TEXTAREA' && n.tagName!=='BUTTON' && n.tagName!=='SVG' && !['hi-chip','mark-user','cloze','hl-leg','sicon','viz-photo'].some(c=>n.classList.contains(c))){
       [...n.childNodes].forEach(walk);
     }
   };
@@ -1245,7 +1425,11 @@ function openReader(n,pane){
   $('rtabs').innerHTML=RTABS.map(([k,l])=>`<button type="button" data-p="${k}" class="${k===rP?'on':''}">${l}</button>`).join('');
   $('rtabs').onclick=e=>{const b=e.target.closest('button'); if(!b)return; rP=b.dataset.p; openReader(s.n,rP)};
   $('rbody').innerHTML=paneHTML(s,i,rP);
-  colorize($('rbody').querySelector('.esen')||$('rbody'));
+  if(rP==='e' && typeof enhanceReader==='function') enhanceReader();
+  else {
+    colorize($('rbody').querySelector('.esen')||$('rbody'));
+    if(typeof bindHl==='function'){bindHl($('rbody'),s.n); if(typeof applyMarks==='function')applyMarks($('rbody'),s.n); if(typeof ensureHlBar==='function')ensureHlBar()}
+  }
   $('rbody').querySelectorAll('.rq button').forEach(b=>b.onclick=()=>b.parentNode.classList.toggle('on'));
   const ta=$('rnotes'); if(ta)ta.oninput=()=>{st.n[s.n]=ta.value;sv()};
   const done=(st.c[s.n]||[]).filter(Boolean).length===3;
@@ -1410,10 +1594,25 @@ markTab();
 
 // mazo de tarjetas
 let fi=0,fflip=false;
+function fcIco(t){
+  const s=(t||'').toLowerCase();
+  let k='ley';
+  if(/135|reforma/.test(s))k='ley';
+  else if(/amparo|otero|rejón|rejon/.test(s))k='escudo';
+  else if(/133|supremac|pirámide|piramide/.test(s))k='piramide';
+  else if(/corte|ministros|judicial|consejo|disciplina/.test(s))k='gavel';
+  else if(/presidente|ejecutivo|89|reglament/.test(s))k='palacio';
+  else if(/senado|diputad|congreso|permanente/.test(s))k='voto';
+  else if(/federal|124|cdmx/.test(s))k='piramide';
+  else if(/división|division|poderes|veto|refrendo/.test(s))k='balanza';
+  else if(/juicio político|declaratoria|fuero|respons/.test(s))k='balanza';
+  const svg=(typeof I!=='undefined'&&I[k])?I[k]:'';
+  return svg?`<div class="ico" aria-hidden="true">${svg}</div>`:'';
+}
 function deckDraw(){
   if(!$('deck'))return;
   const f=FC[fi];
-  $('deck').innerHTML=`<div class="dcard${fflip?' flip':''}" id="dcard">${fflip?f[1]:f[0]}</div>`;
+  $('deck').innerHTML=`<div class="dcard${fflip?' flip':''}" id="dcard">${fcIco(f[0])}<div>${fflip?f[1]:f[0]}</div></div>`;
   $('dmeta').textContent=`${fi+1} / ${FC.length}`;
   $('dcard').onclick=()=>{fflip=!fflip;deckDraw()};
   saveGo('flash',{i:fi});
@@ -1435,6 +1634,7 @@ if($('viz-rabasa')&&typeof VIZ_RAB==='function')$('viz-rabasa').innerHTML=VIZ_RA
 if($('cheat'))colorize($('cheat'));
 document.querySelectorAll('#arcade button, #atabs').forEach(el=>el.addEventListener('click',()=>saveGo('games'),{passive:true}));
 
+/* === exam.js === */
 /* racha · cram · hoja · examen real */
 const MX={timeZone:'America/Mexico_City'};
 function todayMX(){return new Date().toLocaleDateString('en-CA',MX)}
@@ -1498,24 +1698,28 @@ function renderCram(){
 renderCram();
 
 $('cheat').innerHTML=`
+<div class="photo-duo">
+<figure class="viz-photo"><img src="foto-teatro-sm.webp" alt="Teatro de la República, Querétaro" width="800" height="450"><figcaption>Teatro de la República, sede del Constituyente de 1917. Foto: ProtoplasmaKid, Wikimedia Commons (CC BY-SA 4.0).</figcaption></figure>
+<figure class="viz-photo"><img src="foto-cpeum1857-sm.webp" alt="Portada de la Constitución Federal de 1857" width="560" height="814"><figcaption>Portada original de la Constitución Federal de 1857. Wikimedia Commons (dominio público).</figcaption></figure>
+</div>
 <h3>1. Constituyente y reforma</h3>
 <ul>
 <li>Originario crea y desaparece; el Permanente (art. 135) es un órgano constituido que reforma: 2/3 de presentes del Congreso + mayoría de legislaturas de los Estados y la CDMX (2016).</li>
-<li>Tena: el revisor <b>no tiene límites de contenido</b>, sólo de órgano y procedimiento (§17–18, p. 95). Rechaza a Schmitt. Propone el modelo de <b>1824</b> (dos Congresos) (§19, p. 95–97).</li>
+<li>Tena: el revisor <b class="hl-trap">no tiene límites de contenido</b>, sólo de órgano y procedimiento (§17–18, p. 95). Rechaza a Schmitt. Propone el modelo de <b>1824</b> (dos Congresos) (§19, p. 95–97).</li>
 <li>Rabasa (1912) expuso la tesis de los límites antes que Schmitt; Tena la narra, no la adopta (p. 85).</li>
 <li>Desde <b>DOF 31-10-2024</b> no proceden amparo, controversia ni acción contra reformas (arts. 105 y 107).</li>
 </ul>
 <h3>2. La de 1917 y el art. 136</h3>
 <ul>
-<li>Al reemplazar a la de 1857 violó el art. 128 de aquélla (= 136 vigente). En origen, <b>Constitución impuesta</b> (no hubo referéndum). Después, <b>ratificada tácitamente</b> por el pueblo (§23, p. 106–109).</li>
+<li>Al reemplazar a la de 1857 violó el art. 128 de aquélla (= 136 vigente). En origen, <b class="hl-trap">Constitución impuesta</b> (no hubo referéndum). Después, <b>ratificada tácitamente</b> por el pueblo (§23, p. 106–109).</li>
 <li>El derecho a la revolución es moral, nunca jurídico; no se reconoce a priori, sino a posteriori (§21 y §24). El 136 consagra la inviolabilidad.</li>
-<li>Huerta, para Tena, <b>no fue usurpador en lo formal</b> (§22, p. 103–106).</li>
+<li>Huerta, para Tena, <b class="hl-trap">no fue usurpador en lo formal</b> (§22, p. 103–106).</li>
 </ul>
 <h3>3. Federalismo y división de poderes</h3>
 <ul>
 <li>Art. 124: lo no concedido a la Federación se reserva a los Estados y a la CDMX. Facultades expresas = limitadas; hay implícitas (hoy 73 XXXII) (§38).</li>
 <li>CDMX y desaparición del D.F.: <b>DOF 29-01-2016</b> (arts. 40, 122, 124, 135). Laica en el 40: DOF 30-11-2012.</li>
-<li>División “flexible o atenuada”, coordinación, no dislocamiento (§66, p. 254). Presidencialismo con matices; el <b>refrendo no lo desnaturaliza</b> (art. 92; el Presidente remueve libremente, 89 II) (§77). El veto sí fortalece al Ejecutivo (§79). Excepciones del art. 49: <b>29 y 131</b>.</li>
+<li>División “flexible o atenuada”, coordinación, no dislocamiento (§66, p. 254). Presidencialismo con matices; el <b class="hl-trap">refrendo no lo desnaturaliza</b> (art. 92; el Presidente remueve libremente, 89 II) (§77). El veto sí fortalece al Ejecutivo (§79). Excepciones del art. 49: <b>29 y 131</b>.</li>
 </ul>
 <h3>4. Órganos que más preguntan</h3>
 <ul>
@@ -1533,11 +1737,11 @@ $('cheat').innerHTML=`
 </ul>
 <h3>6. PJF, amparo y defensas</h3>
 <ul>
-<li><b>1994:</b> 11 ministros, Consejo de la Judicatura, acción de inconstitucionalidad. <b>2024:</b> 9 electos por 12 años, Tribunal de Disciplina Judicial y órgano de administración. El Consejo ya no existe.</li>
+<li><b class="hl-trap">1994: 11 ministros, Consejo de la Judicatura</b>, acción de inconstitucionalidad. <b>2024:</b> 9 electos por 12 años, Tribunal de Disciplina Judicial y órgano de administración. El Consejo ya no existe.</li>
 <li>Abstracto = acción de inconstitucionalidad (105 II, 30 días, sin caso). Concreto = amparo (agravio). Controversia = 105 I.</li>
 <li>Tena: el amparo <b>no es control directo</b> de la constitucionalidad (§163); riesgo de “legislador negativo” (§162). Fórmula Otero (efectos relativos) → declaratoria general <b>2011</b> → <b>2024</b> sin efectos generales en el amparo y no procede contra reformas.</li>
-<li><b>Art. 133:</b> Tena, el juez local “debe aplicar la ley, sin juzgar de su constitucionalidad” (p. 579–580). Hoy: control difuso de oficio, Varios 912/2010 (2011), sólo para el caso.</li>
-<li><b>Art. 128:</b> la protesta no autoriza a desobedecer leyes de otros poderes (p. 585).</li>
+<li><b>Art. 133:</b> Tena, el juez local “<span class="hl-trap">debe aplicar la ley, sin juzgar de su constitucionalidad</span>” (p. 579–580). Hoy: control difuso de oficio, Varios 912/2010 (2011), sólo para el caso.</li>
+<li><b>Art. 128:</b> <span class="hl-trap">la protesta no autoriza a desobedecer</span> leyes de otros poderes (p. 585).</li>
 <li><b>Antiguo 97:</b> voto público se suprimió en 2007; violaciones graves pasaron a la CNDH en 2011 (art. 102 B). Hoy el 97 no es esa facultad.</li>
 </ul>
 <h3>7. Si cae juicio político (está en S8 y en el cuadro)</h3>
@@ -1663,13 +1867,13 @@ function exBuild(P){
 function exIntro(){
   const hist=(st.exHist||[]).slice().reverse();
   document.body.classList.remove('exam-on');
-  $('exroot').innerHTML=`<div class="exq">
+  $('exroot').innerHTML=`<div class="intro-card">
     <p>Hay dos formas de practicarlo, las dos con <b>una pregunta por pantalla</b> y botones grandes. Cubre las sesiones <b>1 a 14</b>: 16 de opción múltiple, 4 de verdadero o falso con justificación, 1 de relacionar, 2 casos y 2 de desarrollo.</p>
     <p><b>Modo estudio:</b> al tocar una respuesta ves en el momento si acertaste, con la explicación y la fuente. <b>Examen de 90 minutos:</b> puedes pausar; no hay pistas hasta entregar. Al final sale la calificación de 0 a 10, el desglose por sesión y las ligas para repasar.</p>
-    <div class="cram-acts" style="flex-direction:column">
-      <button class="act big" id="exstudy">Estudiar con pistas</button>
-      <button class="act" id="exstart">Empezar el examen de 90 minutos</button>
-      ${st.exRun&&st.exRun.pack?`<button class="act alt" id="excont">Continuar el examen en curso (${exFmt(st.exRun.left)})</button>`:''}
+    <div class="cram-acts">
+      <button type="button" class="act big" id="exstudy">Estudiar con pistas</button>
+      <button type="button" class="act" id="exstart">Empezar el examen de 90 minutos</button>
+      ${st.exRun&&st.exRun.pack?`<button type="button" class="act alt" id="excont">Continuar el examen en curso (${exFmt(st.exRun.left)})</button>`:''}
     </div>
     ${hist.length?`<div class="hist"><b>Intentos anteriores</b><ul>${hist.map(h=>`<li>${h.cuando} · <b>${h.grade}</b>/10 ${h.auto?'(automático '+h.auto+'/10, pendiente rúbrica)':''}</li>`).join('')}</ul></div>`:''}
   </div>`;
@@ -1716,18 +1920,39 @@ function exCollect(){
   document.querySelectorAll('#expaper input[type=radio]:checked').forEach(r=>{exAns[r.name]=r.value});
 }
 
+const EXFIG={
+  1:['foto-teatro-sm.webp','Teatro de la República, sede del Constituyente de 1917'],
+  2:['foto-pluma-sm.webp','Pluma con la que se promulgó la Constitución de 1917'],
+  3:['foto-cpeum1857-sm.webp','Portada de la Constitución Federal de 1857'],
+  4:['foto-nacional-sm.webp','Palacio Nacional, sede del Poder Ejecutivo'],
+  5:['foto-sanlazaro-sm.webp','Palacio Legislativo de San Lázaro'],
+  6:['foto-donceles-sm.webp','Antigua sede de la Cámara de Diputados, en Donceles'],
+  7:['foto-nacional-sm.webp','Palacio Nacional, sede del Poder Ejecutivo'],
+  8:['foto-senado-sm.webp','Sede del Senado de la República'],
+  9:['foto-nacional-sm.webp','Palacio Nacional, sede del Poder Ejecutivo'],
+  10:['foto-nacional-sm.webp','Palacio Nacional, sede del Poder Ejecutivo'],
+  11:['foto-scjn-sm.webp','Edificio de la Suprema Corte de Justicia de la Nación'],
+  12:['foto-scjn-sm.webp','Edificio de la Suprema Corte de Justicia de la Nación'],
+  13:['foto-otero-sm.webp','Estatua de Mariano Otero, fórmula de los efectos relativos'],
+  14:['foto-juran1857-sm.webp','Diputados juran la Constitución de 1857 (art. 128, la protesta)'],
+  15:['foto-senado-sm.webp','El Senado es el jurado de sentencia en el juicio político']
+};
+function exFig(s){
+  const f=EXFIG[s]; if(!f)return '';
+  return `<figure class="ex-viz"><img src="${f[0]}" alt="${f[1]}" width="640" height="360"><figcaption>${f[1]}</figcaption></figure>`;
+}
 function exQHTML(it){
   const n=`<div class="n">Pregunta ${it.n} de ${exItems.length} · ${it.sec} · S${it.kind==='mt'?it.m.s:it.q.s}${it.caso?' · Caso':''}</div>`;
   if(it.kind==='mc'){
     const q=it.q, sel=exAns[it.key], shown=exStudy&&sel!=null&&sel!=='';
-    return `<div class="exq">${n}<h4>${q.q}</h4>
+    return `<div class="exq">${n}<h4>${q.q}</h4>${exFig(q.s)}
       ${q.o.map((o,j)=>`<button type="button" class="opt${String(sel)===String(j)?' sel':''}${shown&&j===q.a?' ok':''}${shown&&String(sel)===String(j)&&j!==q.a?' no':''}" data-k="${it.key}" data-j="${j}">${o}</button>`).join('')}
       ${shown?`<div class="fb ${String(sel)===String(q.a)?'ok':'no'}">${String(sel)===String(q.a)?'Correcto. ':'Incorrecto. La respuesta correcta es: '+q.o[q.a]+'. '}${q.exp} <small>${q.ref}</small></div>`:''}
     </div>`;
   }
   if(it.kind==='vf'){
     const q=it.q, sel=exAns[it.key], just=exAns[it.key.replace('vf','vfj')]||'', shown=exStudy&&sel!=null&&sel!=='';
-    return `<div class="exq">${n}<h4>${q.q}</h4>
+    return `<div class="exq">${n}<h4>${q.q}</h4>${exFig(q.s)}
       <button type="button" class="opt${sel==='1'?' sel':''}${shown&&q.a===1?' ok':''}${shown&&sel==='1'&&q.a!==1?' no':''}" data-k="${it.key}" data-j="1">Verdadero</button>
       <button type="button" class="opt${sel==='0'?' sel':''}${shown&&q.a===0?' ok':''}${shown&&sel==='0'&&q.a!==0?' no':''}" data-k="${it.key}" data-j="0">Falso</button>
       <textarea data-k="${it.key.replace('vf','vfj')}" placeholder="Justifica tu respuesta en una o dos frases…">${just}</textarea>
@@ -1747,7 +1972,7 @@ function exQHTML(it){
     return `<div class="exq">${n}<h4>${m.q}</h4>${rows}</div>`;
   }
   const q=it.q, txt=exAns[it.key]||'';
-  return `<div class="exq">${n}<h4>${q.q}</h4>
+  return `<div class="exq">${n}<h4>${q.q}</h4>${exFig(q.s)}
     <textarea data-k="${it.key}" placeholder="Responde aquí…">${txt}</textarea>
     ${exStudy?`<p class="sub">En el modo estudio puedes mirar el modelo cuando quieras, y luego compararlo con lo que escribiste.</p><button type="button" class="pill" id="exmodel">Ver la respuesta modelo</button><div id="exmod" hidden><p><b>Respuesta modelo:</b></p><p>${q.model}</p><p><small>${q.ref||''}</small></p></div>`:''}
   </div>`;
@@ -1930,5 +2155,354 @@ function exShow(P,pts,auto,auto10,by,detail,weak,timeout,cuando){
 exIntro();
 if(typeof colorize==='function'&&$('cheat'))colorize($('cheat'));
 
-</script>
-</body></html>
+/* === interact.js === */
+/* Interacción: resaltar, clozes, V/F, mini cuestionarios, ordenar, explícamelo fácil. Texto cotejado con la CPEUM y con Tena. */
+function enhanceReader(){
+  const body=$('rbody'); if(!body)return;
+  const s=S[rI]; if(!s)return;
+  addLegend(body);
+  bindTips(body);
+  addSorter(body,s.n);
+  clozeify(body,s.n);
+  addFacil(body,s.n);
+  addMicro(body,s.n);
+  addMini(body,s.n);
+  applyMarks(body,s.n);
+  bindHl(body,s.n);
+  colorize(body);
+}
+
+function addLegend(body){
+  if(body.querySelector('.hl-leg'))return;
+  const d=document.createElement('div');
+  d.className='hl-leg';
+  d.innerHTML=`<span><i class="hl-def">definición</i></span><span><i class="hl-art">artículo o fecha</i></span><span><i class="hl-trap">trampa Tena vs. vigente</i></span>`;
+  const facilBtn=document.createElement('button');
+  facilBtn.type='button'; facilBtn.className='act lt facil-btn'; facilBtn.id='facilbtn';
+  facilBtn.textContent='Explícamelo fácil';
+  body.prepend(facilBtn);
+  body.prepend(d);
+}
+
+const FACIL={
+1:`La Constitución es la regla más alta. Quien la crea (el constituyente originario) aparece, la escribe y desaparece. Los poderes que quedan —Congreso, Presidencia y jueces— sólo pueden hacer lo que esa regla les permite. Para Tena, nadie es soberano por encima de la Constitución.`,
+2:`Para cambiar la Constitución no basta una ley ordinaria. El Congreso debe acordarla con <b>dos tercios de los presentes</b> y la debe aprobar la <b>mayoría de las legislaturas de los Estados y de la CDMX</b> (art. 135). Tena sostiene que ese órgano no tiene límites de contenido, sólo de procedimiento. Desde el DOF 31-10-2024, no cabe amparo, controversia ni acción contra una reforma ya hecha.`,
+3:`México es una república federal: la Federación sólo tiene las facultades que la Constitución le da. Lo demás queda para los Estados o para la Ciudad de México (art. 124). Los municipios son la base territorial de los Estados (art. 115). La CDMX es entidad federativa desde 2016.`,
+4:`Hay tres poderes y no pueden juntarse en una sola persona, salvo las excepciones del art. 49 (arts. 29 y 131). El Presidente puede devolver una ley (veto) y también puede iniciarla. El refrendo del art. 92, para Tena, no convierte al régimen en parlamentario.`,
+5:`La Cámara de Diputados tiene 500 asientos (300 de mayoría y 200 de representación proporcional). El Senado tiene 128. En los recesos trabaja la Comisión Permanente: 19 diputados y 18 senadores, 37 en total. El Presupuesto de Egresos lo aprueban sólo los diputados.`,
+6:`Una ley se inicia, se discute en las dos Cámaras y pasa al Ejecutivo. Si no hay observaciones, se publica. Si hay veto, hace falta que cada Cámara lo confirme con dos tercios para que de todos modos se promulgue (art. 72, inciso C).`,
+7:`Declarar la guerra es cosa de dos: el Congreso la declara por ley (art. 73, fr. XII) y la Presidencia la declara previa esa ley (art. 89, fr. VIII). La salubridad general la legisla el Congreso (art. 73, fr. XVI); el Consejo de Salubridad General depende de la Presidencia.`,
+8:`Cada cámara tiene facultades exclusivas: los diputados, el presupuesto y el juicio político en su fase de acusación; el Senado, los tratados, la política exterior y el jurado de sentencia. La Permanente no sustituye al Congreso en todo: convoca a extraordinarias, recibe la protesta presidencial y despacha lo que el 78 le encarga.`,
+9:`El Ejecutivo se deposita en una sola persona, que entra el 1o. de octubre y dura seis años, sin reelección. Si falta de modo absoluto, Gobernación asume de inmediato y el Congreso nombra interino o sustituto en no más de 60 días. En los dos primeros años hay elección para terminar el periodo; en los cuatro últimos, un sustituto lo concluye.`,
+10:`El art. 89, fracción I, le pide al Presidente promulgar y ejecutar las leyes, “proveyendo en la esfera administrativa a su exacta observancia”: de ahí sale la facultad reglamentaria. El reglamento no puede ir más allá de la ley.`,
+11:`No digas “11 ministros” ni “Consejo de la Judicatura” como si fueran el texto de hoy. En 1994 la Corte quedó en 11 y nació el Consejo. En 2024 quedó en 9 ministros electos por 12 años, y el Consejo se sustituyó por el Tribunal de Disciplina Judicial y el órgano de administración judicial.`,
+12:`El control abstracto (acción de inconstitucionalidad) examina la norma sin un caso, en 30 días. El concreto (amparo) exige un agravio. Tena veía el amparo como defensa del individuo, no como un control directo de la constitucionalidad. Hoy además hay control difuso de oficio.`,
+13:`El amparo nació en Yucatán con Rejón, se federalizó con Otero en 1847 y llegó a 1857 y 1917. En 2011 se abrió la declaratoria general; en 2024 el amparo volvió a quedar sin efectos generales y no procede contra reformas constitucionales.`,
+14:`El art. 133 pone arriba a la Constitución, luego a las leyes del Congreso que emanen de ella y a los tratados acordes con ella. Tena negaba que el juez local inaplicara una ley; desde 2011 existe el control difuso. La protesta del art. 128, para Tena, no autoriza a desobedecer una ley.`,
+15:`Hay cuatro vías de responsabilidad: política (juicio político: Diputados acusan y el Senado sentencia), penal (con declaratoria de procedencia de Diputados; la Presidencia se acusa ante el Senado), administrativa y civil (esta última no requiere declaratoria). El fuero es inmunidad temporal, no impunidad.`,
+16:`Para el sábado, lleva en la cabeza este orden de respuesta: lo que dijo Tena (con párrafo si te lo piden), el artículo vigente, la reforma y su fecha en el DOF, y una conclusión. La trampa casi siempre está en lo que cambió después de Tena.`
+};
+
+function addFacil(body,n){
+  if(body.querySelector('.facil'))return;
+  const box=document.createElement('div');
+  box.className='facil'; box.id='facilbox'; box.innerHTML=FACIL[n]||'';
+  const btn=$('facilbtn');
+  if(btn){
+    btn.onclick=()=>{box.classList.toggle('on'); btn.textContent=box.classList.contains('on')?'Ocultar la explicación fácil':'Explícamelo fácil'};
+    btn.after(box);
+  }else body.prepend(box);
+}
+
+const TIPS={
+'1. Iniciativa de reforma':'El art. 135 regula cómo se acuerda la reforma, no una lista cerrada de quién puede proponerla.',
+'2. Congreso de la Unión':'La mayoría calificada se cuenta sobre los individuos presentes, no sobre el total de la integración.',
+'3. Legislaturas':'Desde el DOF 29-01-2016 también cuentan las legislaturas de la Ciudad de México.',
+'4. Cómputo y declaración':'Lo hace el Congreso o, si está en receso, la Comisión Permanente.',
+'1. Iniciativa':'Pueden iniciarla la Presidencia, las y los legisladores federales, las legislaturas y la ciudadanía (0.13 % de la lista nominal).',
+'2. Cámara de origen':'Si aprueba el proyecto, lo envía a la otra Cámara (art. 72, inciso A).',
+'3. Cámara revisora':'Si también lo aprueba, el proyecto pasa al Ejecutivo.',
+'4. Ejecutivo':'Si no tiene observaciones, lo publica de inmediato. Tiene 30 días para devolverlo y 10 más para promulgarlo (inciso B).',
+'Si hay veto (inciso C)':'Para superar el veto se necesitan las dos terceras partes del número total de votos en cada Cámara.'
+};
+function bindTips(body){
+  body.querySelectorAll('.fstep').forEach(el=>{
+    const key=(el.querySelector('b')||el).textContent.trim();
+    if(!el.querySelector('.ftip') && TIPS[key]){
+      const t=document.createElement('div'); t.className='ftip'; t.innerHTML=TIPS[key]; el.appendChild(t);
+    }
+    el.setAttribute('role','button'); el.tabIndex=0;
+    el.onclick=e=>{if(e.target.closest('a,button,select,input'))return; el.classList.toggle('open')};
+  });
+}
+
+const SORTS={
+2:{title:'Pon en orden los pasos del artículo 135',
+   items:['Iniciativa de reforma','El Congreso acuerda con dos tercios de los presentes','La mayoría de las legislaturas de los Estados y de la CDMX aprueba','El Congreso o la Permanente hace el cómputo y la declaración'],
+   ok:[0,1,2,3]},
+6:{title:'Pon en orden el proceso de una ley (art. 72)',
+   items:['Iniciativa (art. 71)','Cámara de origen','Cámara revisora','Ejecutivo: publica o devuelve con observaciones'],
+   ok:[0,1,2,3]}
+};
+function addSorter(body,n){
+  const cfg=SORTS[n]; if(!cfg||body.querySelector('.sorter'))return;
+  const wrap=document.createElement('div');
+  wrap.className='viz';
+  wrap.innerHTML=`<p class="viz-kicker">${cfg.title}</p><div class="sorter" id="sorter"></div><button type="button" class="act" id="scheck">Calificar el orden</button><p class="fb" id="sres"></p>`;
+  const after=body.querySelector('.viz')||body.querySelector('.esen')||body;
+  (after.parentNode===body?after:body).after? after.after(wrap):body.appendChild(wrap);
+  const box=$('sorter');
+  const order=cfg.items.map((t,i)=>i).sort(()=>Math.random()-.5);
+  // don't leave in correct order
+  if(order.every((v,i)=>v===i))order.reverse();
+  box.innerHTML=order.map(i=>`<div class="oitem" data-k="${i}">⇅ ${cfg.items[i]}</div>`).join('');
+  let sel=null;
+  box.querySelectorAll('.oitem').forEach(it=>{
+    it.onclick=()=>{
+      if(!sel){sel=it;it.classList.add('sel')}
+      else if(sel===it){sel.classList.remove('sel');sel=null}
+      else{
+        const a=sel,b=it; sel.classList.remove('sel'); sel=null;
+        const tmp=document.createElement('div'); a.replaceWith(tmp); b.replaceWith(a); tmp.replaceWith(b);
+      }
+    };
+  });
+  $('scheck').onclick=()=>{
+    let nOk=0; const rs=[...box.querySelectorAll('.oitem')];
+    rs.forEach((el,i)=>{const g=+el.dataset.k===cfg.ok[i]; el.classList.toggle('g',g); el.classList.toggle('x',!g); if(g)nOk++});
+    $('sres').textContent=nOk===rs.length?'Orden correcto.':'Aún no: sigue el orden de la Constitución (o del esquema de arriba).';
+    if(nOk===rs.length&&typeof tone==='function')tone(true);
+  };
+}
+
+const CLOZE={
+1:[['poder constituyente','poder constituyente'],['poderes constituidos','poderes constituidos'],['rígida','rígida']],
+2:[['dos terceras partes','dos terceras partes'],['no tiene límites de contenido','no tiene límites de contenido'],['31-10-2024','31-10-2024']],
+3:[['art. 124','art. 124'],['Ciudad de México','Ciudad de México'],['29-01-2016','29-01-2016']],
+4:[['29 y 131','29 y 131'],['veto','veto'],['no lo desnaturaliza','no lo desnaturaliza']],
+5:[['500','500'],['128','128'],['74 IV','74 IV']],
+6:[['dos terceras partes','dos terceras partes'],['30 días','30 días']],
+7:[['73, fr. XII','73, fr. XII'],['89, fr. VIII','89, fr. VIII'],['73, fr. XVI','73, fr. XVI']],
+8:[['Comisión Permanente','Comisión Permanente'],['19','19'],['18','18']],
+9:[['1o. de octubre','1o. de octubre'],['60 días','60 días'],['Gobernación','Gobernación']],
+10:[['facultad reglamentaria','facultad reglamentaria'],['89, fracción I','89, fracción I']],
+11:[['11 ministros','11 ministros'],['9','9'],['Consejo de la Judicatura','Consejo de la Judicatura']],
+12:[['30 días','30 días'],['legislador negativo','legislador negativo'],['control difuso','control difuso']],
+13:[['fórmula Otero','fórmula Otero'],['2011','2011'],['31-10-2024','31-10-2024']],
+14:[['art. 133','art. 133'],['control difuso','control difuso'],['art. 128','art. 128']],
+15:[['mayoría absoluta','mayoría absoluta'],['dos terceras partes','dos terceras partes'],['no prejuzga','no prejuzga']],
+16:[['Tena','Tena'],['texto vigente','texto vigente'],['DOF','DOF']]
+};
+function clozeify(root,n){
+  const pairs=CLOZE[n]; if(!pairs)return;
+  const esen=root.querySelector('.esen')||root;
+  pairs.forEach(([needle,ans])=>{
+    const re=new RegExp(needle.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+    const walk=node=>{
+      if(node.nodeType===3){
+        const m=node.nodeValue.match(re); if(!m)return;
+        const i=m.index, frag=document.createDocumentFragment();
+        if(i>0)frag.appendChild(document.createTextNode(node.nodeValue.slice(0,i)));
+        const b=document.createElement('button'); b.type='button'; b.className='cloze'; b.dataset.a=ans; b.textContent='••••';
+        b.setAttribute('aria-label','Toca para revelar');
+        b.onclick=()=>{b.classList.add('on'); b.textContent=b.dataset.a};
+        frag.appendChild(b);
+        frag.appendChild(document.createTextNode(node.nodeValue.slice(i+m[0].length)));
+        node.parentNode.replaceChild(frag,node);
+        return 'stop';
+      }
+      if(node.nodeType===1 && node.classList.contains('cloze'))return;
+      if(node.nodeType===1){for(const c of [...node.childNodes]){if(walk(c)==='stop')return 'stop'}}
+    };
+    walk(esen);
+  });
+}
+
+const MICRO={
+1:[['El constituyente originario permanece junto a los poderes constituidos.','f','Actúa una vez, crea la Constitución y desaparece.'],['Para Tena, ningún poder es soberano fuera de la Constitución.','v','Ésa es la tesis del §3.']],
+2:[['El revisor, según Tena, tiene límites de contenido al estilo de Schmitt.','f','Tena rechaza esa tesis: sólo hay límites de órgano y procedimiento.'],['Desde 2024 no proceden amparo, controversia ni acción contra reformas constitucionales.','v','DOF 31-10-2024, arts. 105 y 107.']],
+3:[['Lo que no se concede a la Federación se reserva a los Estados o a la CDMX.','v','Es la cláusula residual del art. 124.'],['La CDMX dejó de ser entidad federativa en 2024.','f','Es entidad federativa desde el DOF 29-01-2016 (art. 122).']],
+4:[['Las excepciones del art. 49 son los arts. 29 y 131.','v','Facultades extraordinarias en esos dos casos.'],['El refrendo, para Tena, convierte al régimen en parlamentario.','f','Tena sostiene que no lo desnaturaliza, porque el Presidente remueve libremente (art. 89, fr. II).']],
+5:[['El Presupuesto de Egresos lo aprueban las dos Cámaras en igualdad.','f','Es facultad exclusiva de la Cámara de Diputados (art. 74, fr. IV).'],['La Cámara de Diputados se integra por 300 de mayoría y 200 de representación proporcional.','v','Art. 52: 500 en total.']],
+6:[['El Ejecutivo tiene 30 días naturales para devolver el proyecto con observaciones.','v','Art. 72, inciso B.'],['Para superar el veto basta la mayoría simple de cada Cámara.','f','Se necesitan las dos terceras partes del número total de votos en cada una (inciso C).']],
+7:[['El Congreso declara la guerra en vista de los datos que le presente el Ejecutivo.','v','Art. 73, fr. XII.'],['El Consejo de Salubridad General depende de la Secretaría de Salud.','f','Depende directamente de la Presidencia, sin intervención de ninguna Secretaría (art. 73, fr. XVI, base 1a.).']],
+8:[['La Comisión Permanente se integra por 19 diputados y 18 senadores.','v','37 personas en total, art. 78.'],['El Senado es el órgano de acusación en el juicio político.','f','Acusa la Cámara de Diputados; el Senado es jurado de sentencia (arts. 74 y 76).']],
+9:[['Ante una falta absoluta, Gobernación asume de forma provisional.','v','Y el Congreso nombra interino o sustituto en no más de 60 días (art. 84).'],['Si la falta ocurre en los cuatro últimos años, siempre hay elección para terminar el periodo.','f','En los cuatro últimos años el Congreso nombra un presidente substituto que concluye el periodo.']],
+10:[['La facultad reglamentaria se ancla en el art. 89, fracción I.','v','“Proveyendo en la esfera administrativa a su exacta observancia”.'],['El reglamento puede ir más allá de la ley si el Presidente lo estima conveniente.','f','Está subordinado a la ley: hay reserva de ley y jerarquía.']],
+11:[['Hoy la SCJN se integra por 11 ministros designados por el Senado.','f','Eso fue el modelo de 1994. Hoy son 9, electos por voto popular, por 12 años.'],['El Consejo de la Judicatura Federal se sustituyó en 2024 por el Tribunal de Disciplina Judicial y el órgano de administración judicial.','v','Artículos 94 y 100, reforma de 2024.']],
+12:[['La acción de inconstitucionalidad examina la norma sin un caso concreto.','v','Es control abstracto, art. 105, fr. II, en un plazo de 30 días.'],['Tena consideraba el amparo como un control directo de la constitucionalidad.','f','Sostenía lo contrario: el amparo defiende al individuo (§163).']],
+13:[['La fórmula Otero da, en principio, efectos relativos al amparo.','v','Nace en el Acta de Reformas de 1847.'],['Desde 2024 el amparo vuelve a tener efectos generales contra leyes y reformas.','f','Quedó sin efectos generales y es improcedente contra reformas constitucionales (DOF 31-10-2024).']],
+14:[['Para Tena, el juez local no inaplica una ley por inconstitucional.','v','Hoy, en cambio, hay control difuso de oficio (desde 2011).'],['La protesta del art. 128, según Tena, permite desobedecer una ley inconstitucional.','f','Tena sostiene que no autoriza a desobedecerla.']],
+15:[['En el juicio político, Diputados acusan y el Senado sentencia.','v','Mayoría absoluta de presentes para acusar; dos tercios de presentes para sancionar (art. 110).'],['La declaratoria de procedencia prejuzga el fondo de la imputación penal.','f','El propio art. 111 dice que no prejuzga.']],
+16:[['En el examen conviene separar lo que dijo Tena, el artículo vigente y la fecha del DOF.','v','Esa es la estructura que más puntos da.'],['Todo lo que afirma Tena coincide hoy con el texto constitucional.','f','Varias tesis (133, 97, integración de la Corte, entre otras) ya no coinciden con el vigente.']]
+};
+function addMicro(body,n){
+  const items=MICRO[n]; if(!items||body.querySelector('.micro'))return;
+  const d=document.createElement('div'); d.className='micro';
+  d.innerHTML='<h4>¿Verdadero o falso?</h4>'+items.map((it,i)=>`<div class="vfq" data-i="${i}"><p>${it[0]}</p><div class="vb"><button type="button" class="pill" data-v="v">Verdadero</button><button type="button" class="pill" data-v="f">Falso</button></div><p class="fb" hidden></p></div>`).join('');
+  body.appendChild(d);
+  d.querySelectorAll('.vfq').forEach(row=>{
+    row.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+      const it=items[+row.dataset.i], ok=b.dataset.v===it[1];
+      row.querySelectorAll('button').forEach(x=>x.classList.remove('ok','no'));
+      b.classList.add(ok?'ok':'no');
+      const fb=row.querySelector('.fb'); fb.hidden=false; fb.className='fb '+(ok?'ok':'no');
+      fb.textContent=(ok?'Correcto. ':'Incorrecto. ')+it[2];
+      if(typeof tone==='function')tone(ok);
+    });
+  });
+}
+
+const MINIQ={
+1:[{q:'¿Qué hace el constituyente originario después de crear la Constitución?',o:['Permanece como un poder de control','Actúa una vez y desaparece','Se convierte en el Congreso'],a:1,exp:'Los poderes que quedan son constituidos y están limitados por esa Constitución.'},
+   {q:'Una Constitución es rígida cuando…',o:['Sólo la puede reformar el Presidente','Se reforma por un procedimiento más agravado que el de las leyes (art. 135)','No se puede reformar nunca'],a:1,exp:'El art. 135 exige un procedimiento especial de reforma.'},
+   {q:'Para Tena, ¿quién es soberano por encima de la Constitución?',o:['El Presidente','El Congreso','Nadie: todos encuentran sus fronteras en ella'],a:2,exp:'Tesis del §3.'}],
+2:[{q:'El art. 135 exige, en el Congreso, el voto de…',o:['La mayoría simple de la integración','Las dos terceras partes de los individuos presentes','Las dos terceras partes de las dos Cámaras, por separado y en dos legislaturas'],a:1,exp:'Y, además, la mayoría de las legislaturas de los Estados y de la CDMX.'},
+   {q:'Según Tena, el órgano revisor…',o:['Tiene límites de contenido al estilo de Schmitt','No tiene límites de contenido; sólo de órgano y procedimiento','Sólo puede reformar los derechos humanos si hay referéndum'],a:1,exp:'§17–18, p. 95. Tena narra la tesis de Rabasa, pero no la adopta.'},
+   {q:'Desde el DOF 31-10-2024, contra una reforma constitucional…',o:['Procede el amparo con efectos generales','No proceden amparo, controversia ni acción de inconstitucionalidad','Sólo procede la controversia'],a:1,exp:'Arts. 105 y 107 vigentes.'}],
+3:[{q:'La cláusula residual del art. 124 reserva lo no concedido a la Federación…',o:['Al Presidente','A los municipios en todo caso','A los Estados o a la CDMX, en el ámbito de sus competencias'],a:2,exp:'Texto vigente, reforma DOF 29-01-2016.'},
+   {q:'La CDMX es entidad federativa desde…',o:['2011','2016','2024'],a:1,exp:'DOF 29-01-2016, arts. 40, 122, 124 y 135.'},
+   {q:'El art. 40 describe a México como una República…',o:['Representativa, democrática, laica y federal','Central, católica y vitalicia','Parlamentaria y confesional'],a:0,exp:'“Laica” se añadió en el DOF 30-11-2012.'}],
+4:[{q:'Las excepciones a la división de poderes del art. 49 son…',o:['Los arts. 29 y 131','Los arts. 89 y 92','Los arts. 133 y 136'],a:0,exp:'Facultades extraordinarias en esos dos supuestos.'},
+   {q:'Para superar un veto se necesitan…',o:['La mayoría simple de la Cámara de origen','Las dos terceras partes del número total de votos en cada Cámara','Un decreto del Presidente'],a:1,exp:'Art. 72, inciso C.'},
+   {q:'El refrendo del art. 92, para Tena…',o:['Convierte al régimen en parlamentario','No desnaturaliza el presidencialismo','Sustituye al veto'],a:1,exp:'Porque el Presidente remueve libremente a los secretarios (art. 89, fr. II).'}],
+5:[{q:'La Cámara de Diputados se integra por…',o:['400 legisladores de mayoría','300 de mayoría y 200 de representación proporcional','128 senadores'],a:1,exp:'Art. 52: 500 en total.'},
+   {q:'El Presupuesto de Egresos es facultad exclusiva de…',o:['El Senado','La Permanente','La Cámara de Diputados (art. 74, fr. IV)'],a:2,exp:'Los ingresos, en cambio, se aprueban por ley del Congreso.'},
+   {q:'El Senado se integra por 128 escaños. De ellos, por representación proporcional nacional hay…',o:['32','64','96'],a:0,exp:'Art. 56: 64 de mayoría, 32 de primera minoría y 32 de RP nacional.'}],
+6:[{q:'Pueden iniciar leyes, entre otros…',o:['Sólo el Presidente','La Presidencia, las y los legisladores federales, las legislaturas y la ciudadanía (0.13 %)','Únicamente las Cámaras'],a:1,exp:'Art. 71, con la fr. IV añadida en 2012.'},
+   {q:'Si el Ejecutivo no devuelve el proyecto en 30 días naturales…',o:['El proyecto se caduca','Se reputa aprobado y luego hay 10 días para promulgarlo y publicarlo','Pasa de inmediato a la Suprema Corte'],a:1,exp:'Art. 72, inciso B.'},
+   {q:'El refrendo, en el inciso B del art. 72, cuando se vencen los plazos…',o:['Siempre es indispensable','Puede no requerirse si la Cámara de origen ordena la publicación','Lo sustituye la Permanente'],a:1,exp:'El propio inciso B lo prevé.'}],
+7:[{q:'¿Quién declara la guerra?',o:['Sólo la Presidencia, sin ley','El Congreso, en vista de los datos del Ejecutivo; la Presidencia la declara previa ley','La SCJN'],a:1,exp:'Arts. 73, fr. XII, y 89, fr. VIII.'},
+   {q:'Las leyes sobre salubridad general de la República las dicta…',o:['Sólo la Secretaría de Salud','El Congreso (art. 73, fr. XVI)','La Comisión Permanente'],a:1,exp:'El Consejo de Salubridad General, eso sí, depende de la Presidencia.'},
+   {q:'El Consejo de Salubridad General depende…',o:['De la Secretaría de Salud','Directamente de la Presidencia, sin intervención de ninguna Secretaría','Del Consejo de Salubridad de cada Estado'],a:1,exp:'Art. 73, fr. XVI, base 1a.'}],
+8:[{q:'La Comisión Permanente se compone de…',o:['30 senadores','19 diputados y 18 senadores (37)','11 ministros'],a:1,exp:'Art. 78.'},
+   {q:'En el juicio político, el jurado de sentencia es…',o:['La Cámara de Diputados','El Senado','La SCJN'],a:1,exp:'Art. 76, fr. VII; Diputados acusan (art. 74).'},
+   {q:'La protesta presidencial, en receso, la recibe…',o:['La SCJN','La Comisión Permanente','El secretario de Gobernación'],a:1,exp:'Art. 78.'}],
+9:[{q:'La Presidencia entra a ejercer el…',o:['1o. de diciembre','1o. de octubre, y dura seis años','15 de septiembre'],a:1,exp:'Art. 83. No hay reelección, ni como interino, sustituto o provisional.'},
+   {q:'Ante la falta absoluta, de inmediato asume…',o:['El presidente de la Corte','La persona titular de Gobernación, de forma provisional','La Permanente, en todos los casos'],a:1,exp:'El Congreso nombra interino o sustituto en no más de 60 días (art. 84).'},
+   {q:'Si la falta ocurre en los dos primeros años del periodo, el Congreso nombra…',o:['Un substituto que concluye el periodo','Un interino y convoca a elección para terminar el periodo','De inmediato a un nuevo electo, en 30 días'],a:1,exp:'Debe mediar un plazo de entre 7 y 9 meses entre la convocatoria y la jornada.'}],
+10:[{q:'La facultad reglamentaria se localiza en…',o:['El art. 72, inciso C','El art. 89, fr. I','El art. 133'],a:1,exp:'“Proveyendo en la esfera administrativa a su exacta observancia”.'},
+   {q:'El reglamento es…',o:['Materialmente legislativo y formalmente administrativo','Una ley del Congreso','Un tratado internacional'],a:0,exp:'Y está subordinado a la ley.'},
+   {q:'Declarar la guerra, para la Presidencia, requiere…',o:['Sólo un acuerdo presidencial','La previa ley del Congreso','Un tratado aprobado por la Corte'],a:1,exp:'Art. 89, fr. VIII.'}],
+11:[{q:'La SCJN, en el texto vigente, se integra por…',o:['11 ministros designados por el Senado','9 ministras y ministros electos por voto popular, por 12 años','21 ministros inamovibles'],a:1,exp:'Arts. 94 y 96, reforma de 2024.'},
+   {q:'El Consejo de la Judicatura Federal…',o:['Sigue existiendo como en 1994','Se sustituyó en 2024 por el Tribunal de Disciplina Judicial y el órgano de administración judicial','Nunca existió'],a:1,exp:'Ésa es una trampa frecuente en el examen.'},
+   {q:'El Tribunal de Disciplina Judicial se integra por…',o:['11 ministros','Cinco personas electas, que duran seis años','Los 32 gobernadores'],a:1,exp:'Art. 100.'}],
+12:[{q:'La acción de inconstitucionalidad es un control…',o:['Concreto, porque hay quejoso','Abstracto: examina la norma sin caso, en 30 días','Sólo electoral'],a:1,exp:'Art. 105, fr. II.'},
+   {q:'Tena sostiene que el amparo…',o:['Es el control directo de la constitucionalidad','No es un control directo: defiende al individuo','Sustituye a la acción de inconstitucionalidad'],a:1,exp:'§163. Habla del riesgo de un “legislador negativo” (§162).'},
+   {q:'El control difuso de oficio en México se abre…',o:['En 1917, con el art. 133 según Tena','Desde 2011 (Varios 912/2010)','En 2024, con la elección de ministros'],a:1,exp:'Tena, en cambio, negaba que el juez local inaplicara la ley.'}],
+13:[{q:'La fórmula de efectos relativos del amparo se asocia a…',o:['Rejón, en 1917','Otero y el Acta de Reformas de 1847','La reforma de 2024'],a:1,exp:'Rejón es el antecedente yucateco de 1840-1841.'},
+   {q:'La declaratoria general en el amparo se abrió en…',o:['1994','2011 (art. 107, fr. II)','1847'],a:1,exp:'Y en 2024 el amparo quedó otra vez sin efectos generales.'},
+   {q:'Desde el DOF 31-10-2024, el amparo contra reformas constitucionales…',o:['Procede con efectos generales','Es improcedente','Sólo lo puede presentar la CNDH'],a:1,exp:'También son improcedentes la controversia y la acción.'}],
+14:[{q:'En la cúspide del art. 133 está…',o:['El tratado internacional, siempre','Esta Constitución','La ley del Congreso, aunque contradiga a la Constitución'],a:1,exp:'Luego, las leyes del Congreso que emanen de ella y los tratados acordes con ella.'},
+   {q:'Tena interpretaba el art. 133 en el sentido de que el juez local…',o:['Debe inaplicar la ley local inconstitucional','Aplica la ley y no juzga su constitucionalidad','Consulta siempre a la Corte antes de aplicar una ley'],a:1,exp:'Hoy hay control difuso de oficio, que es la trampa respecto de Tena.'},
+   {q:'La protesta del art. 128, para Tena…',o:['Autoriza a desobedecer una ley inconstitucional','No autoriza a desobedecer las leyes','Sustituye al juicio de amparo'],a:1,exp:'Es una defensa subsidiaria, no un permiso para la desobediencia.'}],
+15:[{q:'En el juicio político, para acusar se exige…',o:['Unanimidad del Senado','Mayoría absoluta de los miembros presentes de la Cámara de Diputados','Sólo el visto bueno de la SCJN'],a:1,exp:'El Senado, como jurado, aplica la sanción con dos tercios de los presentes (art. 110).'},
+   {q:'La declaratoria de procedencia…',o:['Prejuzga el fondo penal','La dicta la Cámara de Diputados y no prejuzga la imputación','Siempre la dicta el Senado, también contra diputados'],a:1,exp:'Art. 111. Si no ha lugar, el procedimiento se suspende, pero puede continuar al terminar el encargo.'},
+   {q:'Para proceder penalmente contra la Presidencia se le acusa…',o:['Ante la Cámara de Diputados, como a cualquier secretario','Ante la Cámara de Senadores, que resuelve con base en la legislación penal','Ante la SCJN, en única instancia'],a:1,exp:'Art. 111, reforma DOF 19-02-2021.'}],
+16:[{q:'La estructura más segura de una respuesta es…',o:['Sólo citar a Tena, porque el libro es la ley','Tena dijo… → artículo vigente → reforma y fecha del DOF → conclusión','Repetir el art. 133 y nada más'],a:1,exp:'La trampa casi siempre está en lo que cambió después del libro.'},
+   {q:'El examen del sábado cubre…',o:['Sólo las sesiones 15 y 16','Las sesiones 1 a 14','Únicamente el capítulo de Rabasa'],a:1,exp:'Las sesiones 15 y 16 quedan para después, con las clases del 28 de noviembre y del 5 de diciembre.'},
+   {q:'“11 ministros” y “Consejo de la Judicatura” describen…',o:['El texto vigente de 2024','El arreglo de 1994, ya superado','El sistema de 1917, sin cambios'],a:1,exp:'Hoy son 9 ministros electos, el Tribunal de Disciplina Judicial y el órgano de administración judicial.'}]
+};
+
+function addMini(body,n){
+  const qs=MINIQ[n]; if(!qs||body.querySelector('.mini'))return;
+  const d=document.createElement('div'); d.className='mini'; d.id='mini';
+  d.innerHTML=`<h4>Mini cuestionario de la sesión ${n}</h4><p class="sub" style="color:inherit">Tres preguntas. Si aciertas al menos dos, esta sesión queda sellada.</p><div id="minibox"></div><p class="fb" id="minires"></p>`;
+  body.appendChild(d);
+  let i=0, ok=0, locked=false;
+  const box=$('minibox');
+  const draw=()=>{
+    if(i>=qs.length){
+      const pass=ok>=2;
+      $('minires').className='fb '+(pass?'ok':'no');
+      $('minires').textContent=pass?`Sello ganado: ${ok}/3. Esta sesión queda marcada.`:`Llevas ${ok}/3. Repasa Lo esencial y vuelve a intentarlo.`;
+      if(pass){st.ss=st.ss||{}; st.ss[n]=1; st.c[n]=[true,true,true]; sv(); if(typeof prog==='function')prog(); if(typeof markAct==='function')markAct(); const card=document.querySelector('#s'+n); if(card)card.classList.add('stamped'); if(typeof tone==='function')tone(true); if(ok===3&&typeof confetti==='function')confetti()}
+      box.innerHTML=`<button type="button" class="act lt" id="minire">Reintentar</button>`;
+      $('minire').onclick=()=>{i=0;ok=0;locked=false;$('minires').textContent='';draw()};
+      return;
+    }
+    const q=qs[i];
+    box.innerHTML=`<p style="font-family:var(--serif);font-size:1.15rem">${i+1}. ${q.q}</p>${q.o.map((o,j)=>`<button type="button" class="opt" data-j="${j}">${o}</button>`).join('')}<div class="fb" id="mifb"></div><button type="button" class="act" id="minext" hidden>Siguiente</button>`;
+    box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      if(locked)return; locked=true;
+      const j=+b.dataset.j, good=j===q.a;
+      box.querySelectorAll('.opt').forEach((x,k)=>x.classList.add(k===q.a?'ok':(+x.dataset.j===j?'no':'')));
+      if(good)ok++;
+      const fb=$('mifb'); fb.className='fb '+(good?'ok':'no'); fb.textContent=(good?'Correcto. ':'Incorrecto. ')+q.exp;
+      $('minext').hidden=false;
+      if(typeof tone==='function')tone(good);
+    });
+    $('minext').onclick=()=>{i++;locked=false;draw()};
+  };
+  draw();
+}
+
+/* Resaltar */
+function ensureHlBar(){
+  if($('hlbar'))return;
+  const bar=document.createElement('div'); bar.id='hlbar';
+  bar.innerHTML=`<button type="button" class="pill" id="hlmode">Resaltar</button>
+    <button type="button" class="pill hl-def" data-c="yellow">Definición</button>
+    <button type="button" class="pill hl-art" data-c="pink">Artículo o fecha</button>
+    <button type="button" class="pill hl-trap" data-c="blue">Trampa</button>
+    <span style="font-size:.85rem;color:var(--ink2)">Selecciona un texto o tócalo.</span>`;
+  const tabs=$('rtabs'); if(tabs)tabs.after(bar);
+  else document.querySelector('.reader')?.insertBefore(bar, $('rbody'));
+  let col='yellow';
+  bar.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{col=b.dataset.c; bar.querySelectorAll('[data-c]').forEach(x=>x.classList.toggle('on',x===b))});
+  $('hlmode').onclick=()=>{
+    const on=document.body.classList.toggle('hl-on');
+    bar.classList.toggle('on',on||true);
+    $('hlmode').textContent=on?'Dejar de resaltar':'Resaltar';
+    $('hlmode').classList.toggle('on',on);
+  };
+  bar.classList.add('on');
+  window._hlCol=()=>col;
+}
+function bindHl(body,n){
+  ensureHlBar();
+  body.onmouseup=body.ontouchend=()=>{
+    if(!document.body.classList.contains('hl-on'))return;
+    const sel=window.getSelection(); if(!sel||sel.isCollapsed)return;
+    const t=sel.toString().trim(); if(t.length<2||t.length>180)return;
+    st.hl=st.hl||{}; st.hl[n]=st.hl[n]||[];
+    const c=window._hlCol?window._hlCol():'yellow';
+    if(!st.hl[n].some(x=>x.t===t&&x.c===c))st.hl[n].push({t,c});
+    sv(); sel.removeAllRanges(); applyMarks(body,n);
+  };
+}
+function applyMarks(root,n){
+  const list=(st.hl&&st.hl[n])||[]; if(!list.length)return;
+  list.forEach(({t,c})=>{
+    const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+    const walk=node=>{
+      if(node.nodeType===3){
+        const m=node.nodeValue.match(re); if(!m)return;
+        if(node.parentNode && node.parentNode.classList && node.parentNode.classList.contains('mark-user'))return;
+        const i=m.index, frag=document.createDocumentFragment();
+        if(i>0)frag.appendChild(document.createTextNode(node.nodeValue.slice(0,i)));
+        const mk=document.createElement('mark'); mk.className='mark-user '+(c==='pink'?'pink':c==='blue'?'blue':''); mk.textContent=m[0];
+        frag.appendChild(mk);
+        frag.appendChild(document.createTextNode(node.nodeValue.slice(i+m[0].length)));
+        node.parentNode.replaceChild(frag,node);
+        return 'stop';
+      }
+      if(node.nodeType===1 && (node.tagName==='TEXTAREA'||node.tagName==='SCRIPT'||node.classList.contains('mark-user')||node.classList.contains('cloze')))return;
+      if(node.nodeType===1){for(const ch of [...node.childNodes]){if(walk(ch)==='stop')return 'stop'}}
+    };
+    walk(root);
+  });
+}
+
+/* Cheat sheet highlights + stamps on cards */
+st.ss=st.ss||{};
+document.querySelectorAll('.scard').forEach(c=>{if(st.ss[c.dataset.n])c.classList.add('stamped')});
+if($('cheat')){
+  const leg=document.createElement('div');
+  leg.className='hl-leg';
+  leg.innerHTML=`<span><i class="hl-def">definición</i></span><span><i class="hl-art">artículo o fecha</i></span><span><i class="hl-trap">trampa Tena vs. vigente</i></span>`;
+  $('cheat').prepend(leg);
+  $('cheat').querySelectorAll('li b, .cheat h3').forEach(el=>el.classList.add('hl-def'));
+}
+
+</script></body></html>
