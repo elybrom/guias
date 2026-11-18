@@ -11,7 +11,7 @@
   --sans:'Figtree',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:56px;scroll-padding-bottom:100px}
 body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.65;font-size:16.5px;font-weight:400;-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.15;margin:0;color:var(--esp);text-wrap:balance}
 h2{font-size:clamp(1.85rem,5vw,2.6rem)}
@@ -22,7 +22,7 @@ img{max-width:100%;display:block}
 .sub{font-size:.95rem;color:var(--ink2);margin:8px 0 18px;max-width:40rem}
 
 /* hero */
-.hero{position:relative;min-height:86svh;display:flex;align-items:flex-end;color:#FAF7F1;overflow:hidden;background:var(--esp)}
+.hero{position:relative;min-height:calc(100svh - 64px);display:flex;align-items:flex-end;color:#FAF7F1;overflow:hidden;background:var(--esp)}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%}
 .hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,24,18,.12) 0%,rgba(42,24,18,.25) 46%,rgba(42,24,18,.88) 100%)}
 .hero-copy{position:relative;z-index:1;padding:0 24px 56px;max-width:1120px;margin:0 auto;width:100%}
@@ -263,8 +263,197 @@ footer{text-align:center;padding:48px 24px 96px;font-family:var(--serif);font-st
   .photo-col span{left:48px}
 }
 
+/* ===== Color + interacción + visuales ===== */
+:root{
+  --cherry:#C31C32;--cherry2:#F8D4D8;
+  --caramel:#C4843C;--caramel2:#F3E2C8;
+  --blush:#D47286;--blush2:#F8E0E6;
+  --mustard:#C99612;--mustard2:#F8E9B0;
+  --ok:#2F6B45;--ok-bg:#E3F0E6;
+  --no:#B3261E;--no-bg:#F8E2DF;
+  --ox-soft:#F3E0E1;
+}
+body{font-size:17px;padding-bottom:84px}
+.act,.pill,button.opt,.chip,.ck,.tabbar a,#resume{
+  min-height:48px;border-radius:999px;font-size:16px;letter-spacing:.04em;padding:12px 20px
+}
+.act{font-size:.82rem;letter-spacing:.1em}
+.act.big,#resume{width:100%;background:var(--cherry);border-color:var(--cherry);color:#fff;font-weight:600}
+.act.big:hover,#resume:hover{background:var(--ox);color:#fff}
+
+/* tones */
+.tone-ox{--tone:var(--ox);--soft:var(--ox-soft)}
+.tone-cherry{--tone:var(--cherry);--soft:var(--cherry2)}
+.tone-caramel{--tone:var(--caramel);--soft:var(--caramel2)}
+.tone-blush{--tone:var(--blush);--soft:var(--blush2)}
+.tone-mustard{--tone:var(--mustard);--soft:var(--mustard2)}
+.tone-esp{--tone:var(--esp);--soft:#EDE4DA;color:#fff}
+.tone-esp span,.tone-esp .viz-list{color:#F3EEE6}
+
+/* session cards */
+#sessions{display:flex;flex-direction:column;gap:12px}
+.scard{all:unset;box-sizing:border-box;display:grid;grid-template-columns:3.2rem 1fr auto;gap:12px;align-items:center;width:100%;background:var(--soft,#FAF7F1);border-radius:18px;padding:16px 16px 16px 14px;min-height:72px;cursor:pointer;position:relative;box-shadow:0 6px 18px rgba(42,24,18,.07);border:1px solid transparent;text-align:left}
+.scard:before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:6px;border-radius:6px;background:var(--tone,var(--ox))}
+.scard .snum{color:var(--tone,var(--ox));padding-left:8px}
+.scard h3{font-size:1.12rem;margin:0}
+.scard.tone-esp{background:#2A1812;color:#F3EEE6}
+.scard.tone-esp h3,.scard.tone-esp .meta{color:#F3EEE6}
+.scard.tone-rec{background:repeating-linear-gradient(90deg,#C31C32 0 10px,#FAF7F1 10px 20px);background-size:100% 10px;background-repeat:no-repeat;background-color:#FAF7F1}
+.ses{border:0;background:none}
+
+/* cats as pills */
+.cats,.chips,.tabs,div.tabs,#tlsel,#atabs,#mtabs,#rtabs{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:0;padding:4px 0 12px;margin:0 0 12px}
+.cats::-webkit-scrollbar,.chips::-webkit-scrollbar,.tabs::-webkit-scrollbar{display:none}
+.cat,.chip,.tabs button,#tlsel button,#rtabs button{
+  all:unset;cursor:pointer;flex:0 0 auto;min-height:44px;padding:10px 16px;border-radius:999px;
+  background:var(--paper);border:1px solid var(--line);color:var(--ink);font-size:15px;font-weight:600;letter-spacing:.02em;text-transform:none
+}
+.cat.on,.chip.on,.tabs button.on,#tlsel button.on,#rtabs button.on{background:var(--cherry);border-color:var(--cherry);color:#fff}
+
+/* continue */
+.resume-wrap{max-width:1120px;margin:0 auto;padding:8px 24px 0}
+#resume{display:none}
+#resume.show{display:flex}
+
+/* stamp colors */
+.stamp i{width:40px;height:40px;border-width:2px}
+.stamp:nth-child(1) i{border-color:var(--cherry)}
+.stamp:nth-child(2) i{border-color:var(--caramel)}
+.stamp:nth-child(3) i{border-color:var(--blush)}
+.stamp:nth-child(4) i{border-color:var(--mustard)}
+.stamp:nth-child(5) i{border-color:var(--ox)}
+.stamp:nth-child(1).on i:after{background:var(--cherry)}
+.stamp:nth-child(2).on i:after{background:var(--caramel)}
+.stamp:nth-child(3).on i:after{background:var(--blush)}
+.stamp:nth-child(4).on i:after{background:var(--mustard)}
+.stamp:nth-child(5).on i:after{background:var(--ox)}
+.count div:nth-child(1) b{color:var(--cherry)}
+.count div:nth-child(2) b{color:var(--caramel)}
+.count div:nth-child(3) b{color:var(--ox)}
+
+/* photo tints */
+.photo-col{position:relative}
+.photo-col:after{content:"";position:absolute;inset:0;pointer-events:none}
+.tint-blush:after{background:linear-gradient(180deg,rgba(212,114,134,.2),rgba(42,24,18,.35))}
+.tint-cherry:after{background:linear-gradient(180deg,rgba(195,28,50,.25),rgba(42,24,18,.4))}
+.tint-caramel:after{background:linear-gradient(180deg,rgba(196,132,60,.25),rgba(42,24,18,.4))}
+.tint-mustard:after{background:linear-gradient(180deg,rgba(201,150,18,.22),rgba(42,24,18,.4))}
+.tint-ox:after{background:linear-gradient(180deg,rgba(107,26,31,.3),rgba(42,24,18,.45))}
+.photo-col span{z-index:1}
+
+/* highlight chips */
+.hi-chip{display:inline;border-radius:6px;padding:0 .25em;font-weight:600;white-space:nowrap}
+.hi-chip.art{background:var(--cherry2);color:var(--ox)}
+.hi-chip.date{background:var(--mustard2);color:#5C3B00}
+.hi-chip.cite{background:var(--caramel2);color:#5C3A12}
+
+/* tables color */
+.tw:nth-of-type(3n+1) th{background:var(--ox)}
+.tw:nth-of-type(3n+2) th{background:var(--cherry)}
+.tw:nth-of-type(3n+3) th{background:var(--esp)}
+.tw:nth-of-type(3n+1) td:first-child{color:var(--ox)}
+.tw:nth-of-type(3n+2) td:first-child{color:var(--cherry)}
+.tw:nth-of-type(3n+3) td:first-child{color:var(--esp)}
+tr:nth-child(even) td{background:rgba(107,26,31,.04)}
+
+/* tab bar */
+.fabs{display:none!important}
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:90;pointer-events:auto;display:flex;background:rgba(250,247,241,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:4px 6px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -8px 24px rgba(42,24,18,.08)}
+.tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;padding:6px 4px;color:var(--ink2);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:14px}
+.tabbar a svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8}
+.tabbar a.on,.tabbar a:active{color:var(--cherry);background:var(--cherry2)}
+body.reading .tabbar,body.exam-on .tabbar{display:none}
+
+/* full-screen reader */
+.reader{position:fixed;inset:0;z-index:80;background:var(--bg);display:none;flex-direction:column}
+.reader.on{display:flex}
+.r-top{display:flex;align-items:flex-start;gap:10px;padding:14px 16px 12px;padding-top:calc(16px + env(safe-area-inset-top));background:var(--tone,var(--ox));color:#fff;min-height:68px;overflow:visible}
+.r-top button{all:unset;cursor:pointer;min-height:44px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.18);font-weight:600}
+.r-top .r-ttl{flex:1;font-family:var(--serif);font-size:1.15rem;line-height:1.2}
+.r-top .r-num{font-weight:700;opacity:.85}
+#rtabs{padding:10px 16px 0;flex:0 0 auto}
+.r-body{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:8px 20px 24px}
+.r-foot{display:flex;gap:8px;padding:10px 16px calc(12px + env(safe-area-inset-bottom));background:var(--paper);border-top:1px solid var(--line)}
+.r-foot button{flex:1;min-height:48px;border-radius:999px;border:1px solid var(--line);background:var(--bg);font:inherit;font-weight:600;cursor:pointer}
+.r-foot #rmark{flex:1.4;background:var(--cherry);color:#fff;border-color:var(--cherry)}
+.r-foot #rmark.on{background:var(--ok);border-color:var(--ok)}
+html.reading,body.reading{overflow:hidden;height:100%;overscroll-behavior:none}
+
+/* diagrams */
+.viz{margin:8px 0 22px;padding:0}
+.viz-kicker{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ox);font-weight:700;margin:18px 0 10px}
+.viz-note{font-size:.95rem;color:var(--ink2);margin:10px 0 0;max-width:40rem}
+.viz-list{margin:8px 0 0;padding-left:1.15rem}
+.viz-list li{margin:6px 0}
+.fstep{background:var(--soft,#FAF7F1);border-radius:16px;padding:14px 16px;border-left:6px solid var(--tone,var(--ox));margin:0}
+.fstep b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--tone,var(--esp));margin-bottom:4px}
+.tone-esp.fstep b{color:#F3EEE6}
+.farrow{text-align:center;color:var(--ox);font-size:1.2rem;line-height:1.4;font-weight:700}
+.flow{display:flex;flex-direction:column;gap:0}
+.fed-top{border-radius:16px;padding:16px;background:var(--soft);border-left:6px solid var(--tone);margin-bottom:10px}
+.fed-row,.split,.org3,.tri{display:grid;gap:10px;margin:10px 0}
+@media(min-width:700px){
+  .fed-row,.tri,.split{grid-template-columns:1fr 1fr 1fr}
+  .split{grid-template-columns:1fr 1fr}
+  .org3{grid-template-columns:1fr 1fr 1fr}
+  .fed-row{grid-template-columns:1fr 1fr 1fr}
+}
+.pyramid{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.pyramid li{text-align:center;padding:12px 10px;border-radius:12px;font-weight:600;color:#fff;line-height:1.3}
+.pyramid li:nth-child(1){width:42%;background:var(--ox)}
+.pyramid li:nth-child(2){width:62%;background:var(--cherry)}
+.pyramid li:nth-child(3){width:80%;background:var(--caramel)}
+.pyramid li:nth-child(4){width:96%;background:var(--esp)}
+.tl-viz{list-style:none;margin:0;padding:0 0 0 18px;border-left:3px solid var(--cherry)}
+.tl-viz li{margin:0 0 14px;padding:0 0 0 14px;position:relative}
+.tl-viz li:before{content:"";position:absolute;left:-22px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--cherry)}
+.tl-viz li b{display:block;color:var(--ox)}
+
+/* photos of explanation */
+.viz-photo{margin:16px 0 22px;background:var(--paper);border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(42,24,18,.1)}
+.viz-photo img{width:100%;height:auto;display:block;object-fit:cover;max-height:420px}
+.viz-photo figcaption{font-size:.85rem;color:var(--ink2);padding:10px 14px 14px;line-height:1.45}
+
+/* exam / quiz one screen */
+.qprog,.exprog{display:flex;align-items:center;gap:10px;margin:0 0 14px}
+.qprog .bar,.exprog .bar,.exprog i, .qprog i{flex:1;height:8px;background:var(--latte2);border-radius:99px;overflow:hidden;display:block;position:relative}
+.qprog .bar i,.exprog .bar i{height:8px;background:var(--cherry);width:0;transition:width .3s;position:absolute;left:0;top:0}
+.opt{display:flex!important;align-items:center;width:100%;min-height:52px;margin:8px 0;padding:12px 16px;border-radius:16px!important;border:1.5px solid var(--line);background:var(--paper);text-align:left;font:inherit;cursor:pointer;gap:10px}
+.opt.ok,.opt.g{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.opt.no,.opt.b{background:var(--no-bg);border-color:var(--no);color:var(--no)}
+.opt.sel{border-color:var(--cherry);box-shadow:0 0 0 3px rgba(195,28,50,.15)}
+.rev .ok,.fb.ok{background:var(--ok-bg);color:var(--ok);border-radius:10px;padding:8px 12px;display:block}
+.rev .no,.fb.no{background:var(--no-bg);color:var(--no);border-radius:10px;padding:8px 12px;display:block}
+.exnav{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.exnav button{flex:1;min-height:48px}
+
+/* flash deck */
+.deck-wrap{max-width:440px;margin:0 auto}
+.deck{min-height:240px;perspective:900px}
+.dcard{background:var(--paper);border-radius:20px;min-height:240px;padding:28px 22px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--serif);font-size:1.45rem;line-height:1.3;box-shadow:0 12px 32px rgba(42,24,18,.15);cursor:pointer;color:var(--esp);transition:transform .35s}
+.dcard.flip{background:var(--ox);color:#FAF7F1}
+.deck-nav{display:flex;gap:8px;align-items:center;margin-top:14px}
+.deck-nav button{flex:1}
+#dmeta{flex:0 0 auto;font-weight:600;color:var(--ink2)}
+#pols{display:none}
+
+/* exam results color */
+#expaper{border-radius:0 0 16px 16px}
+.grade-box .g{color:var(--mustard)}
+.cram-day.today{background:var(--mustard2);border-radius:14px;padding:14px 16px}
+
+@media(min-width:800px){
+  .resume-wrap{padding-left:48px;padding-right:48px}
+  .tabbar{max-width:560px;left:50%;transform:translateX(-50%);border-radius:20px 20px 0 0}
+  .reader{left:50%;right:auto;width:min(720px,100%);box-shadow:0 0 0 100vw rgba(42,24,18,.4)}
+}
+
+.exbar{gap:10px}
+.exbar .act,.exbar button{min-height:40px!important;padding:8px 14px!important;border-radius:999px;font-size:14px;letter-spacing:.04em}
+.exbar .act.lt{border-color:var(--line)}
+
 </style></head><body>
-<header class="hero">
+<header class="hero" id="inicio">
   <img class="hero-img" src="awning.webp" alt="Toldo de una cafetería con el letrero Espresso">
   <div class="hero-veil"></div>
   <div class="hero-copy">
@@ -279,8 +468,9 @@ footer{text-align:center;padding:48px 24px 96px;font-family:var(--serif);font-st
   <div class="count" id="count"></div>
   <div id="streak" class="loyalty"></div>
 </div>
+<div class="resume-wrap"><button type="button" class="act big" id="resume">Continúa donde te quedaste</button></div>
 <main>
-<section class="photo-col" style="background-image:url('gloves.webp')"><span>Preparación · 17 al 21 de noviembre</span></section>
+<section class="photo-col tint-blush" style="background-image:url('gloves.webp')"><span>Preparación · 17 al 21 de noviembre</span></section>
 <section class="blk cram" id="sabado">
 <p class="kicker">Examen · sábado 21 de noviembre</p>
 <h2>Sin abrir el libro</h2>
@@ -288,7 +478,7 @@ footer{text-align:center;padding:48px 24px 96px;font-family:var(--serif);font-st
 <div class="cram-acts"><a class="act" href="#examen">Hacer el examen</a><a class="act lt" href="#cheatsheet">Lo que más preguntan</a><a class="act lt" href="#menu">Ir a las sesiones</a></div>
 <div id="cramplan"></div>
 </section>
-<section class="photo-col" style="background-image:url('booths.webp')"><span></span></section>
+<section class="photo-col tint-cherry" style="background-image:url('booths.webp')"><span></span></section>
 <section class="blk" id="cheatsheet">
 <p class="kicker">Hoja de repaso</p>
 <h2>Lo que más preguntan</h2>
@@ -302,28 +492,31 @@ footer{text-align:center;padding:48px 24px 96px;font-family:var(--serif);font-st
 </div>
 <div class="cats" id="cats"></div>
 <div class="chips"><button class="chip" data-f="exam">Sesiones 1 a 14</button><button class="chip" data-f="soon">Sesión 14</button><button class="chip" data-f="pend">Pendientes</button><button class="chip" data-f="all">Ver todo</button></div>
-<p class="sub">Marca las tres casillas de cada sesión para avanzar las lecturas y sellar la racha del día.</p>
+<p class="sub">Marca cada sesión como leída para avanzar las lecturas y sellar la racha del día.</p>
 <div id="sessions"></div>
 <section class="blk dark" id="examen">
 <p class="kicker" style="color:#C9B59A">Simulacro · 90 minutos</p><h2>Examen de práctica</h2>
-<p class="sub">Sesiones 1 a 14. Sin pistas hasta entregar. Al final, calificación de 0 a 10, desglose por sesión y ligas para repasar.</p>
+<p class="sub">Sesiones 1 a 14. En el modo estudio ves si acertaste al momento. En el examen de 90 minutos no hay pistas hasta entregar.</p>
 <div id="exroot"></div>
 </section>
 <div id="exov"><div><h2>Examen en pausa</h2><p>El tiempo está detenido. Las preguntas quedan ocultas.</p><button class="act" id="exresume">Reanudar</button></div></div>
-<div class="band" style="background-image:url('shelves.webp')"></div>
+<div class="band tint-caramel" style="background-image:url('shelves.webp')"></div>
 <section class="blk" id="cuadros"><h2>Cuadros comparativos</h2><p class="sub">Desliza las tablas en el celular →</p><div id="tablas"></div></section>
 <section class="blk" id="lineas"><h2>Líneas del tiempo</h2><p class="sub">Toca cada fecha para ver el detalle.</p><div class="tlsel tabs" id="tlsel"><button data-t="cons" class="on">Constituciones y constituyentes</button><button data-t="amp">Evolución del amparo</button><button data-t="pjf">Reformas al PJF</button></div><div class="tl" id="tl"></div></section>
 <section class="blk" id="rabasa"><h2>Sesión complementaria · Emilio Rabasa</h2><p class="sub">Realismo constitucional. Fuera del libro de Tena: resumen de las tesis generalmente aceptadas de ambas obras; para citas textuales usa el libro.</p>
+<div id="viz-rabasa"></div>
 <div class="rab"><div class="book"><h3>La Constitución y la dictadura (1912)</h3><ul><li>La Constitución de 1857 era <b>impracticable</b>: diseñaba un Congreso dominante y un Ejecutivo débil.</li><li>Por eso los presidentes (Juárez y Díaz) gobernaron <b>fuera</b> de ella, con facultades extraordinarias o con dictadura de hecho.</li><li>Propone una Constitución <b>realista</b>: fortalecer al Ejecutivo (veto), conservar el Senado como contrapeso y asegurar la independencia judicial.</li><li>Influyó en el diseño presidencial de 1917.</li></ul></div>
 <div class="book"><h3>El artículo 14 (1906)</h3><ul><li>Critica la garantía de <b>exacta aplicación de la ley</b> en materia civil (art. 14 de 1857).</li><li>Por esa vía, cualquier sentencia podía llevarse al amparo: el amparo se volvió un <b>recurso de casación</b> y saturó a la Corte (“amparo judicial” o de legalidad).</li><li>Tena retoma el problema en la evolución del amparo (S13): el amparo como control de la legalidad.</li></ul></div></div>
 <div class="rq"><button>¿Por qué se llama “realismo constitucional”?</button><div>Porque Rabasa juzga la Constitución por su funcionamiento real en la política mexicana y no sólo por sus principios: una norma impracticable genera dictadura.</div></div></section>
 
-<section class="blk dark" id="flash"><h2>Tarjetas de repaso</h2><p class="sub">Toca una tarjeta para ver el reverso. Más abajo, repetición espaciada (método Leitner).</p><div class="pols" id="pols"></div>
+<section class="blk dark" id="flash"><h2>Tarjetas de repaso</h2><p class="sub">Toca la tarjeta para voltearla. Desliza o usa los botones para cambiar. Más abajo está la repetición espaciada (método Leitner).</p>
+<div class="deck-wrap"><div class="deck" id="deck"></div><div class="deck-nav"><button type="button" class="pill" id="dprev">Anterior</button><span id="dmeta"></span><button type="button" class="pill" id="dnext">Siguiente</button></div></div>
+<div class="pols" id="pols"></div>
 <div class="rcard" style="margin-top:18px;background:var(--paper);color:var(--ink)"><div class="hud"><span>Leitner</span><span id="lbox"></span></div><p id="lf" style="font:900 1.25rem 'Playfair Display';color:var(--ox);text-align:center;margin:10px 0"></p><p id="lb" style="display:none;text-align:center"></p><div style="text-align:center"><button class="act" id="lflip">Voltear</button><span id="lbtn" style="display:none"><button class="act" style="background:var(--ok)" id="leasy">Fácil</button><button class="act" style="background:var(--no)" id="lhard">Difícil</button></span><button class="act lt" id="lreset">Reiniciar cajas</button></div></div></section>
 
-<section class="blk" id="quiz"><h2>Cuestionario</h2><p class="sub">34 preguntas, con respuesta al momento. Mejor puntaje: <b id="best">—</b> <button class="act lt" style="padding:4px 12px" onclick="location.hash='quiz';location.reload()">Reiniciar</button></p><div id="qz"></div><div class="score" id="sc">PUNTAJE 0/34</div></section>
+<section class="blk" id="quiz"><h2>Cuestionario</h2><p class="sub">Una pregunta por pantalla, con respuesta al momento. Mejor puntaje: <b id="best">—</b> <button class="act lt" style="padding:4px 12px" onclick="location.hash='quiz';location.reload()">Reiniciar</button></p><div id="qz"></div><div class="score" id="sc">PUNTAJE 0/34</div></section>
 
-<div class="band" style="background-image:url('latte.webp')"></div>
+<div class="band tint-mustard" style="background-image:url('latte.webp')"></div>
 <section class="blk dark" id="arcade"><h2>Juegos</h2><p class="sub">Cuatro ejercicios de práctica. <label><input type="checkbox" id="gsnd"> Sonido</label></p>
 <div class="tabs" id="atabs"><button data-p="org" class="on">¿Qué órgano?</button><button data-p="ord">Ordena las constituciones</button><button data-p="vf">¿Sigue vigente?</button><button data-p="rel">Relámpago</button></div>
 <div class="ap on" id="a-org" style="color:var(--ink)"><div id="mm"></div><button class="act" id="mcheck">Calificar</button><button class="act lt" id="mreset">Revolver</button><p class="fb" id="mres" style="color:var(--latte2)"></p></div>
@@ -342,15 +535,35 @@ footer{text-align:center;padding:48px 24px 96px;font-family:var(--serif);font-st
 
 <section class="blk board" id="pex"><h2>Preguntas probables · respuestas modelo</h2><p class="sub" style="color:#d9c2a3">Responde en voz alta o por escrito antes de abrir.</p><div id="pe"></div></section>
 
-<div class="band" style="background-image:url('bag.webp')"></div>
+<div class="band tint-ox" style="background-image:url('bag.webp')"></div>
 <section class="blk" id="fuentes"><h2>Fuentes y advertencias</h2><ul class="src">
 <li>Libro: Felipe Tena Ramírez, <i>Derecho Constitucional Mexicano</i> (PDF de la planeación). Escaneo sin texto: lo pasé por OCR; las páginas citadas son del <b>PDF</b>. Los números de capítulo del PDF van uno arriba del curso a partir del capítulo de Facultades exclusivas de cada cámara; esta guía indica ambos.</li>
 <li>El texto vigente se cotejó con la <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/CPEUM.pdf" target="_blank" rel="noopener">CPEUM, Cámara de Diputados (última reforma DOF 07-10-2026)</a>.</li>
 <li>No se verificaron en esta guía, y conviene revisarlos antes de citarlos textualmente: el contenido detallado de la reforma judicial de DOF 11-03-2021, la versión vigente de la Ley de Amparo, los requisitos actuales del art. 82 y la redacción exacta de las tesis de la SCJN (Varios 912/2010, CT 293/2011). No hay citas textuales inventadas: lo que aparece entre comillas viene del libro o del texto constitucional.</li>
-<li>Rabasa no está en el PDF; su sección resume tesis generalmente aceptadas de sus obras.</li></ul></section>
+<li>Rabasa no está en el PDF; su sección resume tesis generalmente aceptadas de sus obras.</li>
+<li>Las fotografías de edificios y retratos vienen de Wikimedia Commons (dominio público o CC BY-SA 4.0) y se acreditan al pie de cada imagen. Los diagramas fueron elaborados para esta guía con base en la CPEUM vigente.</li></ul></section>
 </main>
 <footer>Para Xime · Examen del 21 de noviembre</footer>
-<div class="fabs"><a href="#menu" class="fab">Menú</a><a href="#examen" class="fab">Examen</a><a href="#arcade" class="fab f2">Juegos</a></div><canvas id="confetti"></canvas>
+
+<div id="reader" class="reader" aria-hidden="true">
+  <div class="r-top" id="rtop"><button type="button" id="rback">Volver</button><span class="r-num" id="rnum"></span><div class="r-ttl" id="rtt"></div></div>
+  <div id="rtabs" class="tabs"></div>
+  <div class="r-body" id="rbody"></div>
+  <div class="r-foot">
+    <button type="button" id="rprev">Anterior</button>
+    <button type="button" id="rmark">Marcar como leído</button>
+    <button type="button" id="rnext">Siguiente</button>
+  </div>
+</div>
+<nav class="tabbar" id="tabbar">
+  <a href="#inicio" data-tab="inicio"><svg viewBox="0 0 24 24"><path d="M4 11.5 12 4l8 7.5V20H15V14H9v6H4z"/></svg>Inicio</a>
+  <a href="#menu" data-tab="menu"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h10"/></svg>Sesiones</a>
+  <a href="#examen" data-tab="examen"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>Examen</a>
+  <a href="#flash" data-tab="flash"><svg viewBox="0 0 24 24"><rect x="5" y="6" width="11" height="14" rx="1.5"/><rect x="8" y="3.5" width="11" height="14" rx="1.5"/></svg>Tarjetas</a>
+  <a href="#arcade" data-tab="arcade"><svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="9" rx="3"/><path d="M8 14.5h2M9 13v3M15 13.5h.01M17 15.5h.01"/></svg>Juegos</a>
+</nav>
+
+<canvas id="confetti"></canvas>
 
 <script>
 const S=[
@@ -694,6 +907,281 @@ const ES=[
 </ul>`
 ];
 
+/* Diagramas e imágenes explicativas por sesión. Cifras cotejadas con la CPEUM vigente (Cámara, última reforma DOF 07-10-2026). */
+function fig(src, alt, cap){
+  return `<figure class="viz-photo"><img src="${src}" alt="${alt}" loading="lazy" width="1100" height="720"><figcaption>${cap}</figcaption></figure>`;
+}
+const FQ=fig('foto-constituyente.webp','El Congreso Constituyente de 1917, reunido en Querétaro','El Congreso Constituyente de 1917, reunido en Querétaro. Wikimedia Commons (dominio público).');
+const FCARR=fig('foto-carranza.webp','Retrato de Venustiano Carranza','Venustiano Carranza. Retrato de Harris y Ewing. Wikimedia Commons (dominio público).');
+const FRAB=fig('foto-rabasa.webp','Retrato de Emilio Rabasa','Emilio Rabasa. Bain News Service. Wikimedia Commons (dominio público).');
+const FSAN=fig('foto-sanlazaro.webp','Palacio Legislativo de San Lázaro, sede de la Cámara de Diputados','Palacio Legislativo de San Lázaro, sede de la Cámara de Diputados. Foto: ProtoplasmaKid, Wikimedia Commons (CC BY-SA 4.0).');
+const FSEN=fig('foto-senado.webp','Sede del Senado de la República en la Ciudad de México','Sede del Senado de la República, Ciudad de México. Foto: Isaacvp, Wikimedia Commons (CC BY-SA 4.0).');
+const FNAC=fig('foto-nacional.webp','Fachada del Palacio Nacional, sede del Poder Ejecutivo Federal','Palacio Nacional, sede del Poder Ejecutivo Federal. Foto: Luisalvaz, Wikimedia Commons (CC BY-SA 4.0).');
+const FSCJN=fig('foto-scjn.webp','Edificio de la Suprema Corte de Justicia de la Nación','Edificio de la Suprema Corte de Justicia de la Nación. Foto: ProtoplasmaKid, Wikimedia Commons (CC BY-SA 4.0).');
+
+function vk(t){return `<p class="viz-kicker">${t}</p>`}
+function vn(t){return `<p class="viz-note">${t}</p>`}
+
+function dConstituyente(){return `<div class="viz" aria-label="Poder constituyente y poderes constituidos">
+${vk('Poder constituyente y poderes constituidos')}
+<div class="flow">
+  <div class="fstep tone-ox"><b>1. Pueblo soberano</b><span>Titular de la soberanía. Para Tena, ningún poder es soberano fuera de la Constitución.</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-cherry"><b>2. Constituyente originario</b><span>Crea la Constitución, actúa una vez y desaparece.</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-caramel"><b>3. Constitución</b><span>Norma suprema que organiza y limita a los poderes.</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-esp"><b>4. Poderes constituidos</b><span>Legislativo, Ejecutivo y Judicial: sólo actúan dentro de su competencia.</span></div>
+</div>
+${vn('Tesis de Tena: la soberanía se ejerce conforme a la Constitución; nadie está por encima de ella (§3).')}</div>`}
+
+function d135(){return `<div class="viz" aria-label="Procedimiento de reforma del artículo 135">
+${vk('Artículo 135 · Cómo se reforma la Constitución')}
+<div class="flow">
+  <div class="fstep tone-ox"><b>1. Iniciativa de reforma</b><span>Se presenta una adición o reforma a la Constitución.</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-cherry"><b>2. Congreso de la Unión</b><span>El voto de las <b>dos terceras partes de los individuos presentes</b> acuerda las reformas.</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-caramel"><b>3. Legislaturas</b><span>Las aprueba la <b>mayoría de las legislaturas de los Estados y de la Ciudad de México</b>.</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-mustard"><b>4. Cómputo y declaración</b><span>El Congreso o, en su caso, la Comisión Permanente hace el cómputo de los votos y declara aprobadas las reformas.</span></div>
+</div>
+${vn('Texto vigente (la CDMX entra en el art. 135 desde el DOF 29-01-2016). Tena: el revisor no tiene límites de contenido, sólo de órgano y procedimiento. Desde el DOF 31-10-2024 no proceden amparo, controversia ni acción contra reformas constitucionales.')}</div>`}
+
+function dFederal(){return `<div class="viz" aria-label="Forma federal del Estado mexicano">
+${vk('Artículos 40, 115, 122 y 124 · Forma de Estado')}
+<div class="fed">
+  <div class="fed-top tone-ox"><b>Federación</b><span>Facultades <b>expresas</b> en la Constitución. Hay implícitas (art. 73, fr. XXXII) y concurrentes por leyes generales.</span></div>
+  <div class="fed-row">
+    <div class="fstep tone-cherry"><b>Estados</b><span>Libres y soberanos en su régimen interior (art. 40).</span></div>
+    <div class="fstep tone-blush"><b>Ciudad de México</b><span>Entidad federativa (art. 122). Desde el DOF 29-01-2016.</span></div>
+    <div class="fstep tone-caramel"><b>Municipios</b><span>Base de la división territorial de los Estados (art. 115).</span></div>
+  </div>
+  <div class="fstep tone-mustard"><b>Cláusula residual · art. 124</b><span>Lo que no está expresamente concedido a los funcionarios federales se entiende reservado a los Estados o a la Ciudad de México, en el ámbito de sus competencias.</span></div>
+</div>
+${vn('Art. 40: República representativa, democrática, laica y federal. Lo de “laica” se añadió en el DOF 30-11-2012.')}</div>`}
+
+function dDivision(){return `<div class="viz" aria-label="División de poderes y contrapesos">
+${vk('Artículo 49 · División de poderes')}
+<div class="tri">
+  <div class="fstep tone-cherry"><b>Legislativo</b><span>Congreso de la Unión: Cámara de Diputados y Cámara de Senadores (art. 50).</span></div>
+  <div class="fstep tone-esp"><b>Ejecutivo</b><span>Se deposita en una sola persona: la titular de la Presidencia (art. 80).</span></div>
+  <div class="fstep tone-mustard"><b>Judicial</b><span>Poder Judicial de la Federación (art. 94).</span></div>
+</div>
+<ul class="viz-list">
+<li><b>No pueden reunirse</b> dos o más de estos poderes en una sola persona, salvo las excepciones del propio art. 49: facultades extraordinarias del art. <b>29</b> y lo dispuesto en el segundo párrafo del art. <b>131</b>.</li>
+<li><b>Veto:</b> el Ejecutivo puede devolver el proyecto con observaciones; para superarlo se necesitan las dos terceras partes en cada Cámara (art. 72, inciso C).</li>
+<li><b>Iniciativa:</b> el Presidente también puede iniciar leyes (art. 71, fr. I).</li>
+<li><b>Refrendo</b> (art. 92): los reglamentos, decretos, acuerdos y órdenes del Presidente van firmados por el secretario del ramo. Para Tena, eso no convierte al régimen en parlamentario, porque el Presidente remueve libremente (art. 89, fr. II).</li>
+</ul>
+${vn('Tena llama a la división mexicana “flexible o atenuada”: hay coordinación, no un dislocamiento absoluto (§66).')}</div>`}
+
+function dCongreso(){return `<div class="viz" aria-label="Integración del Congreso de la Unión">
+${vk('Artículos 52, 56 y 78 · Cómo se integra el Congreso')}
+<div class="split">
+  <div class="fstep tone-cherry"><b>Cámara de Diputados · 500</b>
+    <ul class="viz-list">
+      <li><b>300</b> por mayoría relativa, en distritos uninominales.</li>
+      <li><b>200</b> por representación proporcional, en cinco circunscripciones (art. 52).</li>
+      <li>Se eligen en su totalidad cada tres años (art. 51).</li>
+    </ul>
+  </div>
+  <div class="fstep tone-ox"><b>Cámara de Senadores · 128</b>
+    <ul class="viz-list">
+      <li>En cada Estado y en la CDMX: <b>dos</b> por mayoría relativa y <b>uno</b> de primera minoría (96 en total).</li>
+      <li>Las <b>32</b> senadurías restantes, por representación proporcional en una circunscripción nacional (art. 56).</li>
+    </ul>
+  </div>
+</div>
+<div class="fstep tone-caramel"><b>Comisión Permanente · 37</b><span><b>19</b> de la Cámara de Diputados y <b>18</b> de la de Senadores, nombrados la víspera de la clausura. Para cada titular hay una persona sustituta (art. 78, reforma de redacción del DOF 15-10-2025).</span></div>
+${vn('Ingresos (ley de ingresos): el Congreso. Egresos (Presupuesto): sólo la Cámara de Diputados (art. 74, fr. IV).')}</div>`}
+
+function dLegislativo(){return `<div class="viz" aria-label="Proceso de formación de la ley">
+${vk('Artículos 71 y 72 · De la iniciativa a la promulgación')}
+<div class="flow">
+  <div class="fstep tone-ox"><b>1. Iniciativa</b><span>Pueden iniciarla: la Presidencia; diputadas, diputados, senadoras y senadores; las legislaturas de los Estados y de la CDMX; y la ciudadanía (al menos el 0.13 % de la lista nominal) (art. 71).</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-cherry"><b>2. Cámara de origen</b><span>Discute y, si aprueba, envía el proyecto a la otra Cámara (art. 72, inciso A).</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-blush"><b>3. Cámara revisora</b><span>Si también lo aprueba, el proyecto pasa al Ejecutivo.</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-esp"><b>4. Ejecutivo</b><span>Si no tiene observaciones, lo <b>publica inmediatamente</b> (art. 72, inciso A). Tiene 30 días naturales para devolverlo con observaciones y, si no lo hace, se reputa aprobado; luego tiene 10 días para promulgar y publicar (inciso B).</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-mustard"><b>Si hay veto (inciso C)</b><span>Vuelve a la Cámara de origen. Si lo confirman las <b>dos terceras partes</b> del número total de votos en cada Cámara, el Ejecutivo debe promulgarlo.</span></div>
+</div>
+${vn('El refrendo (art. 92) acompaña la promulgación, pero el inciso B prevé un caso en que, vencidos los plazos, la Cámara de origen ordena la publicación sin que se requiera refrendo.')}</div>`}
+
+function dEjecutivo(){return `<div class="viz" aria-label="Organización del Ejecutivo y sucesión por falta absoluta">
+${vk('Artículos 80 a 84 · El Ejecutivo unipersonal y la falta absoluta')}
+<div class="fstep tone-esp"><b>Depósito del poder (art. 80)</b><span>El Supremo Poder Ejecutivo de la Unión se deposita en una sola persona: la titular de la Presidencia.</span></div>
+<div class="split">
+  <div class="fstep tone-cherry"><b>Encargo (art. 83)</b><span>Entra el <b>1o. de octubre</b> y dura <b>seis años</b>. Quien lo haya desempeñado —electo, interino, sustituto o provisional— no puede volver a ocuparlo.</span></div>
+  <div class="fstep tone-ox"><b>Requisitos (art. 82, reforma DOF 07-10-2026)</b>
+    <ul class="viz-list">
+      <li>Ciudadanía mexicana por nacimiento, de padre o madre mexicanos; no tener ni adquirir otra nacionalidad (o renunciar a ella antes del registro) y haber residido en el país al menos veinte años.</li>
+      <li>Tener 35 años cumplidos al tiempo de la elección.</li>
+      <li>Haber residido en el país todo el año anterior (una ausencia de hasta 30 días no interrumpe la residencia).</li>
+      <li>No pertenecer al estado eclesiástico ni ser ministro de un culto.</li>
+      <li>Si pertenece a las fuerzas armadas o a la Guardia Nacional, no estar en servicio activo seis meses antes de la elección.</li>
+      <li>No ser titular de una Secretaría, Subsecretaría, de la FGR o del Ejecutivo de una entidad, a menos de separarse seis meses antes (fr. VI, DOF 01-04-2025).</li>
+      <li>No tener, en los últimos tres años, matrimonio, concubinato, unión de hecho o parentesco con quien ejerce la Presidencia, en los grados que señala la fr. VIII (DOF 01-04-2025).</li>
+    </ul>
+  </div>
+</div>
+${vk('Artículo 84 · Falta absoluta')}
+<div class="flow">
+  <div class="fstep tone-caramel"><b>De inmediato</b><span>El o la titular de <b>Gobernación</b> asume de forma provisional. El Congreso nombra interino o sustituto en un plazo no mayor a <b>60 días</b>.</span></div>
+  <div class="farrow">↓</div>
+  <div class="split">
+    <div class="fstep tone-cherry"><b>En los dos primeros años del periodo</b><span>El Congreso, en Colegio Electoral (dos tercios de cada Cámara, mayoría absoluta, escrutinio secreto), nombra <b>presidente interino</b> y convoca a elección para concluir el periodo (entre 7 y 9 meses después de la convocatoria).</span></div>
+    <div class="fstep tone-mustard"><b>En los cuatro últimos años</b><span>El Congreso nombra <b>presidente substituto</b>, que concluye el periodo. Si no está en sesiones, la Permanente lo convoca a extraordinarias.</span></div>
+  </div>
+</div>
+${vn('Quien ocupa la Presidencia de forma provisional no puede remover ni designar secretarios sin autorización previa del Senado, y entrega un informe de labores en un plazo no mayor a diez días al terminar el encargo (art. 84).')}</div>`}
+
+function d89(){return `<div class="viz" aria-label="Facultad reglamentaria y artículo 89">
+${vk('Artículo 89, fracción I · Promulgar, ejecutar y reglamentar')}
+<div class="flow">
+  <div class="fstep tone-ox"><b>Ley del Congreso</b><span>Reserva de ley: el reglamento no puede ir más allá de la ley ni contradecirla.</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-cherry"><b>Art. 89, fr. I</b><span>Promulgar y ejecutar las leyes que expida el Congreso, “proveyendo en la esfera administrativa a su exacta observancia”: esa es la base de la <b>facultad reglamentaria</b>.</span></div>
+  <div class="farrow">↓</div>
+  <div class="fstep tone-caramel"><b>Reglamento</b><span>Materialmente legislativo (crea normas generales) y formalmente administrativo (lo expide el Ejecutivo). Va refrendado (art. 92).</span></div>
+</div>
+${vn('Otras fracciones que suelen preguntar: iniciar leyes (relacionada con el 71); nombramientos; declarar la guerra previa ley del Congreso (fr. VIII; el Congreso la declara por el art. 73, fr. XII).')}</div>`}
+
+function dPJF(){return `<div class="viz" aria-label="El Poder Judicial de la Federación: Tena, 1994 y 2024">
+${vk('Artículo 94 · Tres momentos de la Corte')}
+<div class="org3">
+  <div class="fstep tone-ox"><b>Tena (texto de 1984)</b>
+    <ul class="viz-list">
+      <li>Describe la Corte <b>anterior a 1994</b>.</li>
+      <li>Critica que la publicidad de las sesiones consume tiempo y abona el rezago (§151).</li>
+      <li>La remuneración no puede disminuirse (§153).</li>
+      <li>Inamovilidad respetada para los ministros desde 1944, tras las Cortes de Cárdenas y Ávila Camacho (§154).</li>
+    </ul>
+  </div>
+  <div class="fstep tone-caramel"><b>Reforma de 1994</b>
+    <ul class="viz-list">
+      <li>SCJN de <b>11</b> ministros, designados por el Senado a propuesta presidencial.</li>
+      <li>Se crea el <b>Consejo de la Judicatura Federal</b>.</li>
+      <li>Se amplía la controversia y nace la <b>acción de inconstitucionalidad</b> (art. 105). DOF 31-12-1994.</li>
+    </ul>
+  </div>
+  <div class="fstep tone-cherry"><b>Texto vigente (2024, con ajustes de 2026)</b>
+    <ul class="viz-list">
+      <li>SCJN de <b>9</b> ministras y ministros, electos por voto popular (art. 96) por <b>12 años</b>. Funciona en Pleno; puede hacerlo en dos secciones.</li>
+      <li>Presidencia rotatoria cada dos años, según la votación (art. 94, DOF 15-09-2024 y 02-06-2026).</li>
+      <li>Desaparece el Consejo. Nacen el <b>Tribunal de Disciplina Judicial</b> (art. 100: cinco personas electas, duran seis años) y el <b>órgano de administración judicial</b>.</li>
+      <li>El PJF se deposita también en el Tribunal Electoral, plenos regionales, tribunales colegiados de circuito y de apelación, y juzgados de distrito (art. 94).</li>
+    </ul>
+  </div>
+</div>
+${vn('Trampa frecuente: no digas “11 ministros” ni “Consejo de la Judicatura” como si fueran el texto actual.')}</div>`}
+
+function dControl(){return `<div class="viz" aria-label="Control abstracto y control concreto">
+${vk('Artículos 103, 105 y 107 · Cómo se defiende la Constitución')}
+<div class="split">
+  <div class="fstep tone-ox"><b>Control abstracto</b>
+    <ul class="viz-list">
+      <li><b>Acción de inconstitucionalidad</b> (art. 105, fr. II): se examina la norma en sí, <b>sin un caso</b> concreto.</li>
+      <li>La presentan órganos legitimados, en un plazo de <b>30 días</b>.</li>
+      <li>Efectos generales, con votación calificada.</li>
+    </ul>
+  </div>
+  <div class="fstep tone-cherry"><b>Control concreto</b>
+    <ul class="viz-list">
+      <li><b>Amparo</b> (arts. 103 y 107): hace falta un agravio.</li>
+      <li>En principio, efectos relativos (fórmula Otero). En 2011 se abrió la declaratoria general (art. 107, fr. II); en 2024 el amparo volvió a quedar sin efectos generales y no procede contra reformas constitucionales.</li>
+    </ul>
+  </div>
+</div>
+<div class="fstep tone-mustard"><b>Controversia constitucional (art. 105, fr. I)</b><span>Conflicto de competencias entre poderes u órganos. No es lo mismo que la acción (que ataca la norma en abstracto) ni que el amparo (que tutela a la persona agraviada).</span></div>
+${vn('Tena sostiene que el amparo no es un control directo de la constitucionalidad (§163): defiende al individuo. Un control más amplio, dice, corre el riesgo de que el juez se vuelva “legislador negativo” (§162). Desde 2011 existe, además, el control difuso de oficio (Varios 912/2010).')}</div>`}
+
+function dAmparo(){return `<div class="viz" aria-label="Línea del tiempo del juicio de amparo">
+${vk('Evolución del amparo')}
+<ol class="tl-viz">
+  <li><b>1840-1841 · Rejón</b> En Yucatán aparece un primer diseño del amparo.</li>
+  <li><b>1847 · Otero</b> El Acta de Reformas incorpora el amparo y la fórmula de efectos relativos.</li>
+  <li><b>1857</b> Queda en la Constitución federal.</li>
+  <li><b>1917</b> Se consolida, con el amparo de legalidad por los arts. 14 y 16 (Tena retoma la crítica de que satura a la Corte).</li>
+  <li><b>1994</b> Ajustes al sistema de control, junto con la nueva acción de inconstitucionalidad.</li>
+  <li><b>2011</b> Interés legítimo, tratados de derechos humanos y declaratoria general (art. 107, fr. II).</li>
+  <li><b>2013</b> Nueva Ley de Amparo.</li>
+  <li><b>2024</b> El amparo queda otra vez sin efectos generales y es improcedente contra reformas constitucionales (arts. 105 y 107, DOF 31-10-2024).</li>
+</ol>
+${vn('La sección de Rabasa, más abajo, explica su crítica al amparo de legalidad en El artículo 14 (1906). Esa obra no está en el libro de Tena.')}</div>`}
+
+function d133(){return `<div class="viz" aria-label="Pirámide de la supremacía constitucional y defensas subsidiarias">
+${vk('Artículo 133 · Ley Suprema de toda la Unión')}
+<ol class="pyramid">
+  <li>Esta Constitución</li>
+  <li>Leyes del Congreso de la Unión que emanen de ella</li>
+  <li>Tratados acordes con la Constitución, celebrados por el Presidente con aprobación del Senado</li>
+  <li>Constituciones y leyes de las entidades federativas</li>
+</ol>
+${vn('Los jueces de cada entidad “se arreglarán a dicha Constitución, leyes y tratados, a pesar de las disposiciones en contrario” de las normas locales (art. 133).')}
+${vk('Defensas subsidiarias · arts. 133, 128 y el antiguo 97')}
+<div class="org3">
+  <div class="fstep tone-ox"><b>Art. 133</b><span>Tena niega que el juez local pueda inaplicar una ley por inconstitucional. Hoy existe el <b>control difuso de oficio</b> (desde 2011, Varios 912/2010).</span></div>
+  <div class="fstep tone-cherry"><b>Art. 128 · la protesta</b><span>Todo funcionario, antes de tomar posesión, protesta guardar la Constitución y las leyes que de ella emanen. Para Tena, esa protesta <b>no autoriza a desobedecer</b> una ley por considerarla inconstitucional.</span></div>
+  <div class="fstep tone-mustard"><b>Antiguo art. 97</b><span>Facultad de investigación de la SCJN. La del voto público se suprimió en 2007; la de derechos humanos pasó a la CNDH en 2011 (art. 102, apartado B).</span></div>
+</div>
+</div>`}
+
+function dRespons(){return `<div class="viz" aria-label="Responsabilidades de las personas servidoras públicas">
+${vk('Título Cuarto · arts. 108 a 114 · Cuatro vías')}
+<div class="org3">
+  <div class="fstep tone-cherry"><b>Política</b><span><b>Juicio político</b> (arts. 109, fr. I, y 110). Sanciones: destitución e inhabilitación. No procede por la mera expresión de ideas.</span></div>
+  <div class="fstep tone-ox"><b>Penal</b><span>Delitos (art. 109, fr. II). Para proceder contra ciertas personas se necesita la <b>declaratoria de procedencia</b> de la Cámara de Diputados (art. 111).</span></div>
+  <div class="fstep tone-caramel"><b>Administrativa</b><span>Actos u omisiones que afecten la legalidad, honradez, lealtad, imparcialidad y eficiencia (art. 109, fr. III): amonestación, suspensión, destitución, inhabilitación y sanciones económicas.</span></div>
+</div>
+<div class="fstep tone-blush"><b>Civil</b><span>En las demandas del orden civil contra cualquier persona servidora pública <b>no se requiere</b> declaratoria de procedencia (art. 111).</span></div>
+${vk('Juicio político frente a declaratoria de procedencia')}
+<div class="split">
+  <div class="fstep tone-cherry"><b>Juicio político (art. 110)</b>
+    <ol class="viz-list">
+      <li>La Cámara de Diputados acusa, por <b>mayoría absoluta de los miembros presentes</b>, con audiencia de la persona inculpada.</li>
+      <li>El Senado, erigido en jurado de sentencia, aplica la sanción con el voto de las <b>dos terceras partes de los miembros presentes</b>.</li>
+      <li>Las declaraciones de ambas Cámaras son inatacables.</li>
+    </ol>
+  </div>
+  <div class="fstep tone-ox"><b>Declaratoria de procedencia (art. 111)</b>
+    <ol class="viz-list">
+      <li>La Cámara de Diputados declara, por <b>mayoría absoluta de los miembros presentes</b>, si ha o no lugar a proceder penalmente.</li>
+      <li>Si dice que no, se suspende el procedimiento, pero la imputación puede continuar cuando termine el encargo: <b>no prejuzga</b>.</li>
+      <li>Si dice que sí, la persona queda a disposición de la autoridad competente.</li>
+      <li>Para proceder penalmente contra la Presidencia, sólo cabe acusarla ante el <b>Senado</b>, que resuelve con base en la legislación penal (reforma DOF 19-02-2021).</li>
+    </ol>
+  </div>
+</div>
+</div>`}
+
+const VIZ={
+  1:()=>dConstituyente(),
+  2:()=>d135()+FQ+FCARR,
+  3:()=>dFederal(),
+  4:()=>dDivision(),
+  5:()=>dCongreso()+FSAN,
+  6:()=>dLegislativo(),
+  7:()=>`<div class="viz">${vk('Guerra y salubridad · quién actúa')}
+    <div class="split">
+      <div class="fstep tone-cherry"><b>Declarar la guerra</b><span>El Congreso la declara, en vista de los datos que le presente el Ejecutivo (art. 73, fr. XII). La Presidencia la declara <b>previa ley</b> del Congreso (art. 89, fr. VIII).</span></div>
+      <div class="fstep tone-caramel"><b>Salubridad general</b><span>El Congreso dicta las leyes sobre salubridad general de la República (art. 73, fr. XVI). El Consejo de Salubridad General depende directamente de la Presidencia, sin intervención de ninguna Secretaría, y sus disposiciones generales son obligatorias en el país (art. 73, fr. XVI, base 1a.).</span></div>
+    </div></div>`,
+  8:()=>dCongreso()+FSEN,
+  9:()=>dEjecutivo()+FNAC,
+  10:()=>d89(),
+  11:()=>dPJF()+FSCJN,
+  12:()=>dControl(),
+  13:()=>dAmparo(),
+  14:()=>d133(),
+  15:()=>dRespons(),
+  16:()=>dConstituyente()+d135()+dDivision()+dPJF()
+};
+const VIZ_RAB=()=>FRAB;
+
 const $=id=>document.getElementById(id);const K='dc-tena-v1';let st=JSON.parse(localStorage.getItem(K)||'{}');st.c=st.c||{};st.n=st.n||{};const sv=()=>localStorage.setItem(K,JSON.stringify(st));
 const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
 let ac;function tone(ok){if(!st.snd)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();(ok?[523,784]:[220,165]).forEach((f,k)=>{const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.connect(g);g.connect(ac.destination);const t=ac.currentTime+k*.12;g.gain.setValueAtTime(.15,t);g.gain.exponentialRampToValueAtTime(.001,t+.18);o.start(t);o.stop(t+.2)})}catch(e){}}
@@ -706,22 +1194,94 @@ let filt='all';function applyF(){document.querySelectorAll('.ses').forEach(d=>{c
 document.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{document.querySelectorAll('.cat,.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');filt=b.dataset.b;applyF()});
 document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{document.querySelectorAll('.cat,.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');filt=b.dataset.f;applyF()});
 const PH=['fellini','gloves','latte','bag','awning','booths','cassette','shelves','oatmilk'];
-// sesiones
-const CK=["Leí el capítulo","Hice mi resumen","Me autoevalué"];
-$('sessions').innerHTML=S.map((s,i)=>`<details class="ses" id="s${s.n}" data-i="${i}" data-ph="${PH[i%9]}"><summary><div class="snum">${String(s.n).padStart(2,'0')}</div><div><h3>${s.t}</h3><div class="meta"><span class="tag">${s.cap}</span><span class="tag">PDF pp. ${s.pdf}</span>${s.date?`<span class="tag soon">${s.date}</span>`:''}</div></div><div class="dots" data-d="${s.n}"><i></i><i></i><i></i></div></summary><div class="sbody">
-<div class="tabs"><button class="on" data-p="e">Esencial</button><button data-p="t">Tena</button><button data-p="v">Vigente</button><button data-p="k">Clave</button><button data-p="q">Control</button><button data-p="n">Notas</button></div>
-<div class="pane on" data-p="e"><div class="lbl">Lo esencial</div><div class="esen">${ES[i]}</div></div>
-<div class="pane" data-p="t"><div class="lbl">LO QUE DICE TENA</div><div class="note"><ul>${s.tena.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>
-<div class="pane" data-p="v"><div class="vig"><ul>${s.vig.map(x=>`<li>${x}</li>`).join('')}</ul></div></div>
-<div class="pane" data-p="k"><div class="clave">${s.clave}</div></div>
-<div class="pane" data-p="q">${s.q.map(q=>`<div class="rq"><button>${q[0]}</button><div>${q[1]}</div></div>`).join('')}</div>
-<div class="pane" data-p="n"><textarea data-n="${s.n}" placeholder="Tus notas con número de página del PDF…"></textarea></div>
-<div class="checks">${CK.map((c,j)=>`<label class="ck"><input type="checkbox" data-s="${s.n}" data-j="${j}">${c}</label>`).join('')}</div><a class="back" href="#menu">Volver al menú</a></div></details>`).join('');
-document.querySelectorAll('.ses').forEach(d=>{d.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{d.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');d.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.dataset.p==b.dataset.p))})});
-document.querySelectorAll('.rq button').forEach(b=>b.onclick=()=>b.parentNode.classList.toggle('on'));
-document.querySelectorAll('textarea[data-n]').forEach(t=>{t.value=st.n[t.dataset.n]||'';t.oninput=()=>{st.n[t.dataset.n]=t.value;sv()}});
-document.querySelectorAll('.ck input').forEach(c=>{const a=st.c[c.dataset.s]||[];c.checked=!!a[c.dataset.j];c.onchange=()=>{st.c[c.dataset.s]=st.c[c.dataset.s]||[];st.c[c.dataset.s][c.dataset.j]=c.checked;sv();prog();if(c.checked&&window.markAct)markAct()}});
-function prog(){let n=0;S.forEach(s=>{const a=st.c[s.n]||[];const k=[0,1,2].filter(j=>a[j]).length;n+=k;const d=document.querySelector(`.dots[data-d="${s.n}"]`);d.querySelectorAll('i').forEach((x,j)=>x.classList.toggle('y',j<k))});$('pb').style.width=(n/48*100)+'%';$('pt').textContent=n+'/48';['r1','r2'].forEach(r=>$(r).classList.toggle('spin',n>0&&n<48))}
+// sesiones (tarjetas; el contenido se abre en el lector)
+const TONE={teo:'ox',est:'caramel',pod:'cherry',eje:'esp',jud:'blush',def:'mustard',rec:'rec'};
+const RTABS=[['e','Esencial'],['t','Tena'],['v','Vigente'],['k','Clave'],['q','Control'],['n','Notas']];
+let rI=0,rP='e';
+$('sessions').innerHTML=S.map((s,i)=>`<button type="button" class="ses scard tone-${TONE[s.b]||'ox'}" id="s${s.n}" data-i="${i}" data-n="${s.n}" data-b="${s.b}"><div class="snum">${String(s.n).padStart(2,'0')}</div><div><h3>${s.t}</h3><div class="meta"><span class="tag">${s.cap}</span><span class="tag">PDF pp. ${s.pdf}</span>${s.date?`<span class="tag soon">${s.date}</span>`:''}</div></div><div class="dots" data-d="${s.n}"><i></i><i></i><i></i></div></button>`).join('');
+$('sessions').addEventListener('click',e=>{const b=e.target.closest('.scard');if(b)openReader(+b.dataset.n)});
+function paneHTML(s,i,p){
+  if(p==='e'){const viz=(typeof VIZ!=='undefined'&&VIZ[s.n])?VIZ[s.n]():'';return `<div class="lbl">Lo esencial</div>${viz}<div class="esen">${ES[i]}</div>`}
+  if(p==='t')return `<div class="lbl">Lo que dice Tena</div><div class="note"><ul>${s.tena.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;
+  if(p==='v')return `<div class="vig"><ul>${s.vig.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;
+  if(p==='k')return `<div class="clave">${s.clave}</div>`;
+  if(p==='q')return s.q.map(q=>`<div class="rq"><button type="button">${q[0]}</button><div>${q[1]}</div></div>`).join('');
+  return `<textarea id="rnotes" placeholder="Tus notas con número de página del PDF…">${st.n[s.n]||''}</textarea>`;
+}
+function colorize(root){
+  if(!root)return;
+  const re=/\b(arts?\.\s*\d+[A-Z]?(?:\s*,\s*(?:fr\.\s*)?[IVXLCDM0-9]+)?|DOF\s+\d{2}-\d{2}-\d{4}|§+\s*\d+[^\s,)]{0,8}|pp?\.\s*\d+[\u2013\-]\d+|\b(?:18|19|20)\d{2}\b)/gi;
+  const walk=n=>{
+    if(n.nodeType===3){
+      const t=n.nodeValue; re.lastIndex=0; if(!re.test(t)){re.lastIndex=0;return} re.lastIndex=0;
+      const frag=document.createDocumentFragment(); let last=0,m;
+      while((m=re.exec(t))){
+        if(m.index>last)frag.appendChild(document.createTextNode(t.slice(last,m.index)));
+        const s=document.createElement('span'); const v=m[0];
+        s.className='hi-chip '+( /^art/i.test(v)?'art':(/DOF|^(18|19|20)\d{2}$/.test(v)?'date':'cite'));
+        s.textContent=v; frag.appendChild(s); last=m.index+v.length;
+      }
+      if(last<t.length)frag.appendChild(document.createTextNode(t.slice(last)));
+      n.parentNode.replaceChild(frag,n);
+    }else if(n.nodeType===1 && n.tagName!=='SCRIPT' && n.tagName!=='TEXTAREA' && !n.classList.contains('hi-chip')){
+      [...n.childNodes].forEach(walk);
+    }
+  };
+  walk(root);
+}
+function openReader(n,pane){
+  const i=S.findIndex(s=>s.n===n); if(i<0)return; rI=i; rP=pane||rP||'e';
+  const s=S[i];
+  if(!document.body.classList.contains('reading')){
+    st._sy=window.scrollY||window.pageYOffset||0;
+    window.scrollTo(0,0);
+  }
+  document.documentElement.classList.add('reading');
+  document.body.classList.add('reading');
+  const r=$('reader'); r.classList.add('on'); r.setAttribute('aria-hidden','false');
+  r.className='reader on tone-'+(TONE[s.b]||'ox');
+  $('rnum').textContent=String(s.n).padStart(2,'0');
+  $('rtt').textContent=s.t;
+  $('rtabs').innerHTML=RTABS.map(([k,l])=>`<button type="button" data-p="${k}" class="${k===rP?'on':''}">${l}</button>`).join('');
+  $('rtabs').onclick=e=>{const b=e.target.closest('button'); if(!b)return; rP=b.dataset.p; openReader(s.n,rP)};
+  $('rbody').innerHTML=paneHTML(s,i,rP);
+  colorize($('rbody').querySelector('.esen')||$('rbody'));
+  $('rbody').querySelectorAll('.rq button').forEach(b=>b.onclick=()=>b.parentNode.classList.toggle('on'));
+  const ta=$('rnotes'); if(ta)ta.oninput=()=>{st.n[s.n]=ta.value;sv()};
+  const done=(st.c[s.n]||[]).filter(Boolean).length===3;
+  $('rmark').textContent=done?'Leído':'Marcar como leído';
+  $('rmark').classList.toggle('on',done);
+  $('rprev').disabled=i===0; $('rnext').disabled=i===S.length-1;
+  saveGo('ses',{n:s.n,p:rP});
+  if(location.hash!=='#s'+s.n)history.replaceState(null,'','#s'+s.n);
+}
+function closeReader(){
+  document.documentElement.classList.remove('reading');
+  document.body.classList.remove('reading');
+  const r=$('reader'); if(!r)return;
+  r.classList.remove('on'); r.setAttribute('aria-hidden','true');
+  if(/^#s\d+$/.test(location.hash))history.replaceState(null,'','#menu');
+  const y=st._sy||0; requestAnimationFrame(()=>window.scrollTo(0,y));
+}
+$('rback').onclick=()=>{closeReader(); const el=$('menu'); if(el)el.scrollIntoView({behavior:'smooth',block:'start'})};
+$('rprev').onclick=()=>{if(rI>0)openReader(S[rI-1].n,rP)};
+$('rnext').onclick=()=>{if(rI<S.length-1)openReader(S[rI+1].n,rP)};
+$('rmark').onclick=()=>{
+  const n=S[rI].n; const all=(st.c[n]||[]).filter(Boolean).length===3;
+  st.c[n]=all?[false,false,false]:[true,true,true]; sv(); prog();
+  if(!all&&window.markAct)markAct();
+  openReader(n,rP);
+};
+(function(){
+  const body=$('rbody'); let x0=null;
+  body.addEventListener('pointerdown',e=>{x0=e.clientX});
+  body.addEventListener('pointerup',e=>{
+    if(x0==null)return; const d=e.clientX-x0; x0=null;
+    if(d>70){if(rI>0)openReader(S[rI-1].n,rP)}
+    else if(d<-70){if(rI<S.length-1)openReader(S[rI+1].n,rP)}
+  });
+})();
+function prog(){let n=0;S.forEach(s=>{const a=st.c[s.n]||[];const k=[0,1,2].filter(j=>a[j]).length;n+=k;const d=document.querySelector(`.dots[data-d="${s.n}"]`);if(d)d.querySelectorAll('i').forEach((x,j)=>x.classList.toggle('y',j<k))});$('pb').style.width=(n/48*100)+'%';$('pt').textContent=n+'/48';['r1','r2'].forEach(r=>$(r)&&$(r).classList.toggle('spin',n>0&&n<48))}
 prog();
 // tablas
 $('tablas').innerHTML=TABLAS.map(t=>`<div class="tt">${t[0]}</div><div class="tw"><table><tr>${t[1].map(h=>`<th>${h}</th>`).join('')}</tr>${t[2].map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</table></div>`).join('');
@@ -735,10 +1295,35 @@ document.querySelectorAll('.pol').forEach(p=>p.onclick=()=>p.classList.toggle('f
 st.lb=st.lb||{};st.lt=st.lt||0;let li=0;const bx=i=>st.lb[i]||1;
 function lnext(){st.lt++;const due=FC.map((f,i)=>i).filter(i=>bx(i)==1||(bx(i)==2&&st.lt%3==0)||(bx(i)==3&&st.lt%7==0));const pool=due.length?due:FC.map((f,i)=>i);let c;do{c=pool[Math.floor(Math.random()*pool.length)]}while(pool.length>1&&c===li);li=c;$('lf').textContent=FC[li][0];$('lb').textContent=FC[li][1];$('lb').style.display='none';$('lbtn').style.display='none';$('lflip').style.display='';$('lbox').textContent=[1,2,3].map(b=>`Caja ${b}: ${FC.filter((f,i)=>bx(i)==b).length}`).join(' · ');sv()}
 $('lflip').onclick=()=>{$('lb').style.display='';$('lflip').style.display='none';$('lbtn').style.display=''};function lmark(){st.lr=(st.lr||0)+1;if(st.lr%5===0&&window.markAct)markAct()}$('leasy').onclick=()=>{st.lb[li]=Math.min(3,bx(li)+1);lmark();lnext()};$('lhard').onclick=()=>{st.lb[li]=1;lmark();lnext()};$('lreset').onclick=()=>{st.lb={};lnext()};lnext();
-// quiz
-let pts=0,done=0;$('best').textContent=st.best!=null?st.best+'/'+Q.length:'—';
-$('qz').innerHTML=Q.map((q,i)=>`<div class="q" data-i="${i}"><p>${i+1}. ${q[0]}</p>${q[1].map((o,j)=>`<button class="opt" data-j="${j}">${o}</button>`).join('')}<div class="fb"></div></div>`).join('');
-document.querySelectorAll('#qz .q').forEach(d=>d.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{if(d.dataset.d)return;d.dataset.d=1;const q=Q[d.dataset.i],j=+b.dataset.j,bs=d.querySelectorAll('.opt');bs[q[2]].classList.add('ok');if(j!==q[2])b.classList.add('no');else pts++;done++;tone(j===q[2]);d.querySelector('.fb').innerHTML=(j===q[2]?'✅ ':'❌ ')+q[3];$('sc').textContent=`PUNTAJE ${pts}/${Q.length} · ${done} RESPONDIDAS`;if(done==Q.length){st.best=Math.max(st.best||0,pts);sv();$('best').textContent=st.best+'/'+Q.length;if(pts>=Q.length*.8)confetti();if(window.markAct)markAct()}}));
+// quiz · una pregunta por pantalla
+st.qzA=st.qzA||{};
+let qzI=0;
+$('best').textContent=st.best!=null?st.best+'/'+Q.length:'—';
+function qzScore(){let p=0,d=0;Q.forEach((q,i)=>{if(st.qzA[i]!=null){d++;if(+st.qzA[i]===q[2])p++}});return[p,d]}
+function qzDraw(){
+  const q=Q[qzI], ans=st.qzA[qzI], locked=ans!=null;
+  const [pts,done]=qzScore();
+  $('qz').innerHTML=`<div class="qprog"><span>${qzI+1} / ${Q.length}</span><div class="bar"><i style="width:${((qzI)/Q.length*100)}%"></i></div></div>
+    <div class="qcard"><p style="font-family:var(--serif);font-size:1.25rem;margin:0 0 12px">${q[0]}</p>
+    ${q[1].map((o,j)=>`<button type="button" class="opt${locked&&j===q[2]?' ok':''}${locked&&+ans===j&&j!==q[2]?' no':''}${locked&&+ans===j?' sel':''}" data-j="${j}">${o}</button>`).join('')}
+    <div class="fb${locked?(+ans===q[2]?' ok':' no'):''}" id="qfb">${locked?((+ans===q[2]?'Correcto. ':'Incorrecto. ')+q[3]):''}</div></div>
+    <div class="exnav"><button type="button" class="pill" id="qzprev"${qzI===0?' disabled':''}>Anterior</button>
+    <button type="button" class="pill act" id="qznxt">${qzI===Q.length-1?'Ver puntaje':'Siguiente'}</button></div>`;
+  $('sc').textContent=`Puntaje ${pts}/${Q.length} · ${done} respondidas`;
+  if(!locked){
+    $('qz').querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      const j=+b.dataset.j; st.qzA[qzI]=j; sv();
+      const ok=j===q[2]; if(ok){} tone(ok);
+      const [p,d]=qzScore();
+      if(d===Q.length){st.best=Math.max(st.best||0,p);sv();$('best').textContent=st.best+'/'+Q.length;if(p>=Q.length*.8)confetti();if(window.markAct)markAct()}
+      qzDraw();
+    });
+  }
+  $('qzprev').onclick=()=>{if(qzI>0){qzI--;saveGo('quiz',{i:qzI});qzDraw()}};
+  $('qznxt').onclick=()=>{if(qzI<Q.length-1){qzI++;saveGo('quiz',{i:qzI});qzDraw()}else $('quiz').scrollIntoView({behavior:'smooth'})};
+  saveGo('quiz',{i:qzI});
+}
+qzDraw();
 // arcade
 $('gsnd').checked=!!st.snd;$('gsnd').onchange=()=>{st.snd=$('gsnd').checked;sv()};
 function tabs(sel,pre){document.querySelectorAll(sel+' button').forEach(b=>b.onclick=()=>{document.querySelectorAll(sel+' button').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.querySelectorAll('[id^="'+pre+'"]').forEach(p=>p.classList.remove('on'));$(pre+b.dataset.p).classList.add('on')})}
@@ -782,6 +1367,73 @@ $('pe').querySelectorAll('.rq button').forEach(b=>b.onclick=()=>b.parentNode.cla
 document.querySelectorAll('#rabasa .rq button').forEach(b=>b.onclick=()=>b.parentNode.classList.toggle('on'));
 // confeti
 function confetti(){const c=$('confetti'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const col=['#6a0f1c','#b3202f','#f6eee1','#2e1b12','#d9c2a3'];const P=Array.from({length:120},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.3,v:2+Math.random()*4,r:Math.random()*6.28,s:5+Math.random()*6,c:col[Math.floor(Math.random()*5)]}));let f=0;(function a(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.y+=p.v;p.x+=Math.sin(p.r+=.1)*1.5;x.fillStyle=p.c;x.fillRect(p.x,p.y,p.s,p.s*.6)});if(++f<150)requestAnimationFrame(a);else x.clearRect(0,0,c.width,c.height)})()}
+
+
+// continuar, barra, mazo y rutas
+function saveGo(t,ex){st.go=Object.assign({t,at:Date.now()},ex||{});sv();renderGo()}
+function renderGo(){
+  const b=$('resume'); if(!b)return;
+  const g=st.go; if(!g||!g.t){b.classList.remove('show');return}
+  const lab={ses:g.n?`Continúa donde te quedaste · Sesión ${g.n}`:null, exam:'Continúa el examen de práctica', study:'Continúa el modo estudio', quiz:'Continúa el cuestionario', flash:'Continúa las tarjetas', games:'Continúa los juegos', cheat:'Continúa la hoja de repaso'}[g.t];
+  if(!lab){b.classList.remove('show');return}
+  b.textContent=lab; b.classList.add('show');
+}
+function goResume(){
+  const g=st.go||{};
+  if(g.t==='ses'&&g.n)openReader(g.n,g.p||'e');
+  else if(g.t==='exam'||g.t==='study'){closeReader(); location.hash='examen'; const el=$('examen'); if(el)el.scrollIntoView({behavior:'smooth'})}
+  else if(g.t==='quiz'){closeReader(); location.hash='quiz'; $('quiz').scrollIntoView({behavior:'smooth'})}
+  else if(g.t==='flash'){closeReader(); location.hash='flash'; $('flash').scrollIntoView({behavior:'smooth'})}
+  else if(g.t==='games'){closeReader(); location.hash='arcade'; $('arcade').scrollIntoView({behavior:'smooth'})}
+  else if(g.t==='cheat'){closeReader(); location.hash='cheatsheet'; $('cheatsheet').scrollIntoView({behavior:'smooth'})}
+}
+if($('resume')){$('resume').onclick=goResume; renderGo()}
+
+function markTab(){
+  const h=(location.hash||'#inicio').slice(1).split('?')[0];
+  let t='inicio';
+  if(/^s\d+$/.test(h)||h==='menu'||h==='cuadros'||h==='lineas')t='menu';
+  else if(h==='examen'||h==='quiz'||h==='pex')t='examen';
+  else if(h==='flash')t='flash';
+  else if(h==='arcade'||h==='metodo')t='arcade';
+  document.querySelectorAll('.tabbar a').forEach(a=>a.classList.toggle('on',a.dataset.tab===t));
+}
+window.addEventListener('hashchange',()=>{
+  const h=location.hash.replace('#','');
+  if(/^s\d+$/.test(h))openReader(+h.slice(1));
+  else closeReader();
+  markTab();
+});
+document.querySelectorAll('.tabbar a').forEach(a=>a.addEventListener('click',()=>setTimeout(markTab,10)));
+if(/^#s\d+$/.test(location.hash))openReader(+location.hash.slice(2));
+markTab();
+
+// mazo de tarjetas
+let fi=0,fflip=false;
+function deckDraw(){
+  if(!$('deck'))return;
+  const f=FC[fi];
+  $('deck').innerHTML=`<div class="dcard${fflip?' flip':''}" id="dcard">${fflip?f[1]:f[0]}</div>`;
+  $('dmeta').textContent=`${fi+1} / ${FC.length}`;
+  $('dcard').onclick=()=>{fflip=!fflip;deckDraw()};
+  saveGo('flash',{i:fi});
+}
+if($('dprev')){
+  $('dprev').onclick=()=>{if(fi>0){fi--;fflip=false;deckDraw()}};
+  $('dnext').onclick=()=>{if(fi<FC.length-1){fi++;fflip=false;deckDraw()}};
+  let dx=null;
+  $('deck').addEventListener('pointerdown',e=>{dx=e.clientX});
+  $('deck').addEventListener('pointerup',e=>{
+    if(dx==null)return; const d=e.clientX-dx; dx=null;
+    if(d>60&&fi>0){fi--;fflip=false;deckDraw()}
+    else if(d<-60&&fi<FC.length-1){fi++;fflip=false;deckDraw()}
+  });
+  deckDraw();
+}
+
+if($('viz-rabasa')&&typeof VIZ_RAB==='function')$('viz-rabasa').innerHTML=VIZ_RAB();
+if($('cheat'))colorize($('cheat'));
+document.querySelectorAll('#arcade button, #atabs').forEach(el=>el.addEventListener('click',()=>saveGo('games'),{passive:true}));
 
 /* racha · cram · hoja · examen real */
 const MX={timeZone:'America/Mexico_City'};
@@ -991,39 +1643,63 @@ function exPts(P){
           tot:P.mc.length*3+P.vf.length*4+P.mt.pairs.length+P.cs.length*6+P.es.length*8};
 }
 
-let ex=null, exTmr=null, exLeft=EX_MIN*60, exAns={};
+let ex=null, exTmr=null, exLeft=EX_MIN*60, exAns={}, exI=0, exStudy=false, exItems=[];
 
 function exFmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
-function exSave(){st.exRun={left:exLeft,ans:exAns,pack:ex&&{mc:ex.mc,vf:ex.vf,mt:ex.mt,cs:ex.cs,es:ex.es},t0:st.exRun&&st.exRun.t0||Date.now()};sv()}
+function exSave(){if(exStudy)return;st.exRun={left:exLeft,ans:exAns,i:exI,pack:ex&&{mc:ex.mc,vf:ex.vf,mt:ex.mt,cs:ex.cs,es:ex.es},t0:st.exRun&&st.exRun.t0||Date.now()};sv()}
 function exClearRun(){delete st.exRun;sv()}
+
+function exBuild(P){
+  const L=[];
+  P.mc.forEach((q,i)=>L.push({kind:'mc',key:'mc'+i,sec:'Opción múltiple',q,caso:false}));
+  P.vf.forEach((q,i)=>L.push({kind:'vf',key:'vf'+i,sec:'Verdadero o falso',q}));
+  L.push({kind:'mt',key:'mt',sec:'Relaciona',m:P.mt});
+  P.cs.forEach((q,i)=>L.push({kind:'mc',key:'cs'+i,sec:'Caso práctico',q,caso:true}));
+  P.es.forEach((q,i)=>L.push({kind:'es',key:'es'+i,sec:'Desarrollo',q}));
+  L.forEach((x,i)=>x.n=i+1);
+  return L;
+}
 
 function exIntro(){
   const hist=(st.exHist||[]).slice().reverse();
+  document.body.classList.remove('exam-on');
   $('exroot').innerHTML=`<div class="exq">
-    <p>Simulacro de <b>90 minutos</b> (puedes pausar). Cubre las sesiones <b>1 a 14</b>. Hay 16 opción múltiple, 4 verdadero/falso con justificación, 1 ejercicio de relacionar, 2 casos y 2 preguntas de desarrollo. <b>No se muestran respuestas hasta que termines</b>.</p>
-    <p>Al final verás una calificación de <b>0 a 10</b>, el desglose por sesión, la explicación con fuente y ligas para <b>repasar</b> lo débil. Las de desarrollo y la justificación del V/F se autoevalúan con una rúbrica.</p>
-    <button class="act" id="exstart">Empezar el examen</button>
-    ${st.exRun&&st.exRun.pack?`<button class="act alt" id="excont">Continuar el examen en curso (${exFmt(st.exRun.left)})</button>`:''}
+    <p>Hay dos formas de practicarlo, las dos con <b>una pregunta por pantalla</b> y botones grandes. Cubre las sesiones <b>1 a 14</b>: 16 de opción múltiple, 4 de verdadero o falso con justificación, 1 de relacionar, 2 casos y 2 de desarrollo.</p>
+    <p><b>Modo estudio:</b> al tocar una respuesta ves en el momento si acertaste, con la explicación y la fuente. <b>Examen de 90 minutos:</b> puedes pausar; no hay pistas hasta entregar. Al final sale la calificación de 0 a 10, el desglose por sesión y las ligas para repasar.</p>
+    <div class="cram-acts" style="flex-direction:column">
+      <button class="act big" id="exstudy">Estudiar con pistas</button>
+      <button class="act" id="exstart">Empezar el examen de 90 minutos</button>
+      ${st.exRun&&st.exRun.pack?`<button class="act alt" id="excont">Continuar el examen en curso (${exFmt(st.exRun.left)})</button>`:''}
+    </div>
     ${hist.length?`<div class="hist"><b>Intentos anteriores</b><ul>${hist.map(h=>`<li>${h.cuando} · <b>${h.grade}</b>/10 ${h.auto?'(automático '+h.auto+'/10, pendiente rúbrica)':''}</li>`).join('')}</ul></div>`:''}
   </div>`;
-  $('exstart').onclick=()=>exBegin(false);
-  const c=$('excont'); if(c)c.onclick=()=>exBegin(true);
+  $('exstart').onclick=()=>exBegin(false,false);
+  const s=$('exstudy'); if(s)s.onclick=()=>exBegin(false,true);
+  const c=$('excont'); if(c)c.onclick=()=>exBegin(true,false);
 }
 
-function exBegin(resume){
+function exBegin(resume,study){
+  exStudy=!!study;
   if(resume&&st.exRun&&st.exRun.pack){
-    ex=st.exRun.pack; exAns=st.exRun.ans||{}; exLeft=st.exRun.left||EX_MIN*60;
+    ex=st.exRun.pack; exAns=st.exRun.ans||{}; exLeft=st.exRun.left||EX_MIN*60; exI=st.exRun.i||0;
   }else{
-    ex=exPick(); exAns={}; exLeft=EX_MIN*60; st.exRun={t0:Date.now()}; exSave();
+    ex=exPick(); exAns={}; exI=0;
+    if(exStudy){exLeft=0; exClearRun()}
+    else{exLeft=EX_MIN*60; st.exRun={t0:Date.now()}; exSave()}
   }
-  exRender(); exTick(true);
+  exItems=exBuild(ex);
+  if(exI>=exItems.length)exI=0;
+  document.body.classList.add('exam-on');
+  exRender();
+  if(!exStudy)exTick(true);
+  if(typeof saveGo==='function')saveGo(exStudy?'study':'exam',{i:exI});
 }
 
 function exTick(run){
   clearInterval(exTmr);
   const bar=()=>{const el=$('extime'); if(el)el.textContent=exFmt(exLeft)};
   bar();
-  if(!run)return;
+  if(!run||exStudy)return;
   exTmr=setInterval(()=>{
     exLeft=Math.max(0,exLeft-1); bar();
     if(exLeft%5===0)exSave();
@@ -1040,48 +1716,109 @@ function exCollect(){
   document.querySelectorAll('#expaper input[type=radio]:checked').forEach(r=>{exAns[r.name]=r.value});
 }
 
+function exQHTML(it){
+  const n=`<div class="n">Pregunta ${it.n} de ${exItems.length} · ${it.sec} · S${it.kind==='mt'?it.m.s:it.q.s}${it.caso?' · Caso':''}</div>`;
+  if(it.kind==='mc'){
+    const q=it.q, sel=exAns[it.key], shown=exStudy&&sel!=null&&sel!=='';
+    return `<div class="exq">${n}<h4>${q.q}</h4>
+      ${q.o.map((o,j)=>`<button type="button" class="opt${String(sel)===String(j)?' sel':''}${shown&&j===q.a?' ok':''}${shown&&String(sel)===String(j)&&j!==q.a?' no':''}" data-k="${it.key}" data-j="${j}">${o}</button>`).join('')}
+      ${shown?`<div class="fb ${String(sel)===String(q.a)?'ok':'no'}">${String(sel)===String(q.a)?'Correcto. ':'Incorrecto. La respuesta correcta es: '+q.o[q.a]+'. '}${q.exp} <small>${q.ref}</small></div>`:''}
+    </div>`;
+  }
+  if(it.kind==='vf'){
+    const q=it.q, sel=exAns[it.key], just=exAns[it.key.replace('vf','vfj')]||'', shown=exStudy&&sel!=null&&sel!=='';
+    return `<div class="exq">${n}<h4>${q.q}</h4>
+      <button type="button" class="opt${sel==='1'?' sel':''}${shown&&q.a===1?' ok':''}${shown&&sel==='1'&&q.a!==1?' no':''}" data-k="${it.key}" data-j="1">Verdadero</button>
+      <button type="button" class="opt${sel==='0'?' sel':''}${shown&&q.a===0?' ok':''}${shown&&sel==='0'&&q.a!==0?' no':''}" data-k="${it.key}" data-j="0">Falso</button>
+      <textarea data-k="${it.key.replace('vf','vfj')}" placeholder="Justifica tu respuesta en una o dos frases…">${just}</textarea>
+      ${shown?`<div class="fb ${String(sel)===String(q.a)?'ok':'no'}">${String(sel)===String(q.a)?'Correcto. ':'Incorrecto. '}La opción correcta es ${q.a===1?'verdadero':'falso'}. ${q.just||''} <small>${q.ref||''}</small></div>`:''}
+    </div>`;
+  }
+  if(it.kind==='mt'){
+    const m=it.m;
+    const left=sh(m.pairs.map((p,i)=>({i,l:p[0],r:p[1]})));
+    const opts=['',...m.opts];
+    const rows=left.map(p=>{
+      const sel=exAns['mt'+p.i]||'';
+      const ok=exStudy&&sel&&sel===p.r;
+      const bad=exStudy&&sel&&sel!==p.r;
+      return `<div class="mrow${ok?' g':''}${bad?' b':''}"><span>${p.l}</span><select data-k="mt${p.i}">${opts.map(o=>`<option${o===sel?' selected':''}>${o}</option>`).join('')}</select>${bad?`<div class="cr">Correcto: <b>${p.r}</b></div>`:''}</div>`;
+    }).join('');
+    return `<div class="exq">${n}<h4>${m.q}</h4>${rows}</div>`;
+  }
+  const q=it.q, txt=exAns[it.key]||'';
+  return `<div class="exq">${n}<h4>${q.q}</h4>
+    <textarea data-k="${it.key}" placeholder="Responde aquí…">${txt}</textarea>
+    ${exStudy?`<p class="sub">En el modo estudio puedes mirar el modelo cuando quieras, y luego compararlo con lo que escribiste.</p><button type="button" class="pill" id="exmodel">Ver la respuesta modelo</button><div id="exmod" hidden><p><b>Respuesta modelo:</b></p><p>${q.model}</p><p><small>${q.ref||''}</small></p></div>`:''}
+  </div>`;
+}
+
+function exBind(){
+  document.querySelectorAll('#expaper button.opt[data-k]').forEach(b=>b.onclick=()=>{
+    exCollect();
+    exAns[b.dataset.k]=b.dataset.j;
+    if(typeof saveGo==='function')saveGo(exStudy?'study':'exam',{i:exI});
+    exSave(); exRender();
+  });
+  document.querySelectorAll('#expaper [data-k]').forEach(el=>{
+    if(el.tagName==='TEXTAREA'||el.tagName==='SELECT')el.addEventListener('change',()=>{exCollect();exSave()});
+    if(el.tagName==='TEXTAREA')el.addEventListener('input',()=>{exAns[el.dataset.k]=el.value});
+  });
+  const md=$('exmodel'); if(md)md.onclick=()=>$('exmod').hidden=false;
+}
+
 function exRender(){
-  const P=ex, pts=exPts(P);
-  let n=0, html=`<div class="exbar"><span><b id="extime">${exFmt(exLeft)}</b></span><span>Sesiones 1–14</span><span><button class="act lt" id="expause" style="margin:0;padding:6px 12px">Pausa</button> <button class="act" id="exend" style="margin:0;padding:6px 12px">Entregar</button></span></div><div id="expaper">`;
-  html+=`<h3 >I. Opción múltiple <small>(${P.mc.length} × 3 = ${pts.mc} pts)</small></h3>`;
-  P.mc.forEach((q,i)=>{n++;html+=exMC('mc'+i,n,q,exAns['mc'+i])});
-  html+=`<h3 >II. Verdadero o falso, con justificación <small>(${P.vf.length} × 4 = ${pts.vf} pts)</small></h3>
-    <p class="sub">Marca V o F y justifica en una o dos frases. La justificación se autoevalúa al final.</p>`;
-  P.vf.forEach((q,i)=>{n++;html+=exVF('vf'+i,n,q,exAns['vf'+i],exAns['vfj'+i])});
-  html+=`<h3 >III. Relaciona <small>(${pts.mt} pts)</small></h3>`;
-  n++; html+=exMatch('mt',n,P.mt);
-  html+=`<h3 >IV. Casos prácticos <small>(${P.cs.length} × 6 = ${pts.cs} pts)</small></h3>`;
-  P.cs.forEach((q,i)=>{n++;html+=exMC('cs'+i,n,q,exAns['cs'+i],true)});
-  html+=`<h3 >V. Desarrollo <small>(${P.es.length} × 8 = ${pts.es} pts)</small></h3>
-    <p class="sub">Escribe tu respuesta. Al final verás el modelo y una rúbrica para autoevaluarte.</p>`;
-  P.es.forEach((q,i)=>{n++;html+=`<div class="exq"><div class="n">PREGUNTA ${n} · S${q.s}</div><h4>${q.q}</h4><textarea data-k="es${i}" placeholder="Responde aquí…">${exAns['es'+i]||''}</textarea></div>`});
-  html+=`</div><p style="text-align:center"><button class="act" id="exend2">Entregar examen</button></p>`;
+  const P=ex, total=exItems.length, it=exItems[exI];
+  const pct=Math.round((exI)/total*100);
+  const html=`<div class="exbar"><span>${exStudy?'Modo estudio':`<b id="extime">${exFmt(exLeft)}</b>`}</span><span>${it.sec}</span><span>
+    ${exStudy?'':`<button class="act lt" id="expause" type="button">Pausa</button>`}
+    <button class="act lt" id="exsalir" type="button">${exStudy?'Salir':'Salir'}</button>
+    ${exStudy?'':`<button class="act" id="exend" type="button">Entregar</button>`}
+  </span></div>
+  <div class="exprog"><span>${exI+1} / ${total}</span><div class="bar"><i style="width:${pct}%"></i></div></div>
+  <div id="expaper">${exQHTML(it)}</div>
+  <div class="exnav">
+    <button type="button" class="pill" id="exprev"${exI===0?' disabled':''}>Anterior</button>
+    <button type="button" class="pill act" id="exnext">${exI===total-1?(exStudy?'Terminar':'Ir a entregar'):'Siguiente'}</button>
+  </div>`;
   $('exroot').innerHTML=html;
-  $('expause').onclick=exPause;
-  const end=()=>{if(confirm('¿Entregar el examen? Ya no podrás cambiar las respuestas.'))exFinish(false)};
-  $('exend').onclick=end; $('exend2').onclick=end;
+  if($('expause'))$('expause').onclick=exPause;
+  if($('exend'))$('exend').onclick=()=>{if(confirm('¿Entregar el examen? Ya no podrás cambiar las respuestas.'))exFinish(false)};
+  $('exsalir').onclick=()=>{
+    exCollect();
+    if(exStudy){document.body.classList.remove('exam-on');ex=null;exIntro();return}
+    exSave();
+    if(confirm('¿Salir del examen? Se guarda el avance para continuarlo después.')){clearInterval(exTmr);document.body.classList.remove('exam-on');exIntro()}
+  };
+  $('exprev').onclick=()=>{exCollect();exSave();if(exI>0){exI--;exRender()}};
+  $('exnext').onclick=()=>{
+    exCollect(); exSave();
+    if(exI<total-1){exI++;exRender()}
+    else if(exStudy){document.body.classList.remove('exam-on');/* puntaje ligero */ exFinishStudy()}
+    else if(confirm('¿Entregar el examen? Ya no podrás cambiar las respuestas.'))exFinish(false);
+  };
+  exBind();
+  if(typeof saveGo==='function')saveGo(exStudy?'study':'exam',{i:exI});
   window.scrollTo({top:$('examen').offsetTop-48,behavior:'smooth'});
 }
 
-function exMC(k,n,q,sel,caso){
-  return `<div class="exq"><div class="n">PREGUNTA ${n} · S${q.s}${caso?' · CASO':''}</div>
-    ${caso&&q.q?``:''}<h4>${q.q}</h4>
-    ${q.o.map((o,j)=>`<label class="opt" style="display:block;cursor:pointer"><input type="radio" name="${k}" value="${j}" ${String(sel)===String(j)?'checked':''}> ${o}</label>`).join('')}
-  </div>`;
-}
-function exVF(k,n,q,sel,just){
-  return `<div class="exq"><div class="n">PREGUNTA ${n} · S${q.s}</div><h4>${q.q}</h4>
-    <label class="opt" style="display:inline-block;width:auto;margin-right:8px"><input type="radio" name="${k}" value="1" ${sel==='1'?'checked':''}> Verdadero</label>
-    <label class="opt" style="display:inline-block;width:auto"><input type="radio" name="${k}" value="0" ${sel==='0'?'checked':''}> Falso</label>
-    <textarea data-k="${k.replace('vf','vfj')}" placeholder="Justifica tu respuesta…">${just||''}</textarea>
-  </div>`;
-}
-function exMatch(k,n,m){
-  const left=sh(m.pairs.map((p,i)=>({i,l:p[0],r:p[1]})));
-  const opts=['',...m.opts];
-  return `<div class="exq"><div class="n">PREGUNTA ${n} · S${m.s}</div><h4>${m.q}</h4>
-    ${left.map((p,j)=>{const sel=exAns['mt'+p.i]||'';return `<div class="mrow"><span>${p.l}</span><select data-k="mt${p.i}">${opts.map(o=>`<option${o===sel?' selected':''}>${o}</option>`).join('')}</select></div>`}).join('')}
-  </div>`;
+function exFinishStudy(){
+  // no historial oficial; muestra un recuento suave
+  const P=ex, pts=exPts(P);
+  let auto=0,tot=0;
+  P.mc.forEach((q,i)=>{tot+=3;if(String(exAns['mc'+i])===String(q.a))auto+=3});
+  P.vf.forEach((q,i)=>{tot+=2;if(String(exAns['vf'+i])===String(q.a))auto+=2});
+  P.mt.pairs.forEach((p,i)=>{tot+=1;if(exAns['mt'+i]===p[1])auto+=1});
+  P.cs.forEach((q,i)=>{tot+=6;if(String(exAns['cs'+i])===String(q.a))auto+=6});
+  const g=(auto/tot*10);
+  $('exroot').innerHTML=`<div class="grade-box"><div class="g">${g.toFixed(1)}</div>
+    <p>sobre 10 · modo estudio (parte automática ${auto}/${tot} pts; el desarrollo se autoevalúa con el modelo).</p>
+    <p class="sub">Esto no se guarda como examen oficial. Si quieres una calificación formal, haz el examen de 90 minutos.</p></div>
+    <p style="text-align:center"><button class="act big" id="exagain">Seguir estudiando</button> <button class="act" id="exoff">Hacer el examen de 90 minutos</button></p>`;
+  if(window.markAct)markAct();
+  if(g>=8)confetti();
+  $('exagain').onclick=()=>exBegin(false,true);
+  $('exoff').onclick=()=>exBegin(false,false);
 }
 
 function exPause(){
@@ -1142,13 +1879,13 @@ function exShow(P,pts,auto,auto10,by,detail,weak,timeout,cuando){
     if(d.t==='mc'||d.t==='cs'){
       num++; const q=d.q, ya=d.a==null||d.a===''?'(sin responder)':q.o[+d.a];
       html+=`<div class="exq"><div class="n">PREGUNTA ${num} · S${q.s}</div><h4>${q.q}</h4>
-        <div class="rev"><span class="${d.ok?'ok':'no'}">${d.ok?'✅':'❌'} Tu respuesta: ${ya}</span>
+        <div class="rev"><span class="${d.ok?'ok':'no'}">${d.ok?'Correcto. ':'Incorrecto. '}Tu respuesta: ${ya}</span>
         ${d.ok?'':`<div>Correcta: <b>${q.o[q.a]}</b></div>`}
         <p>${q.exp}</p><p><small>${q.ref} · <a href="#s${q.s}">Ir a S${q.s}</a></small></p></div></div>`;
     }else if(d.t==='vf'){
       num++; const q=d.q, labs=['Falso','Verdadero']; const ya=d.a==='0'||d.a==='1'?labs[+d.a]:'(sin responder)';
       html+=`<div class="exq"><div class="n">PREGUNTA ${num} · S${q.s}</div><h4>${q.q}</h4>
-        <div class="rev"><span class="${d.ok?'ok':'no'}">${d.ok?'✅':'❌'} Marcaste: ${ya} (correcto: ${labs[q.a]})</span>
+        <div class="rev"><span class="${d.ok?'ok':'no'}">${d.ok?'Correcto. ':'Incorrecto. '}Marcaste: ${ya} (correcto: ${labs[q.a]})</span>
         <p>${q.just}</p>
         <p><b>Tu justificación:</b> ${d.just||'<i>(no escribiste)</i>'}</p>
         <p>Autoevalúa la justificación (hasta 2 pts):</p>
@@ -1156,7 +1893,7 @@ function exShow(P,pts,auto,auto10,by,detail,weak,timeout,cuando){
         <p><small>${q.ref} · <a href="#s${q.s}">Ir a S${q.s}</a></small></p></div></div>`;
     }else if(d.t==='mt'){
       num++; html+=`<div class="exq"><div class="n">PAR ${num} · relacionar</div><h4>${d.pair[0]}</h4>
-        <div class="rev"><span class="${d.ok?'ok':'no'}">${d.ok?'✅':'❌'} Tu respuesta: ${d.a||'—'}</span>
+        <div class="rev"><span class="${d.ok?'ok':'no'}">${d.ok?'Correcto. ':'Incorrecto. '}Tu respuesta: ${d.a||'—'}</span>
         ${d.ok?'':`<div>Correcto: <b>${d.pair[1]}</b></div>`}</div></div>`;
     }else if(d.t==='es'){
       num++; const q=d.q;
@@ -1191,6 +1928,7 @@ function exShow(P,pts,auto,auto10,by,detail,weak,timeout,cuando){
 }
 
 exIntro();
+if(typeof colorize==='function'&&$('cheat'))colorize($('cheat'));
 
 </script>
 </body></html>
