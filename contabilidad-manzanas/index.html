@@ -4,196 +4,151 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Guía de Contabilidad con manzanas (NIF)</title>
-<meta name="description" content="Contabilidad de partida doble y NIF del CINIF, explicada con manzanas, más el ejercicio resuelto de Distribuidora del Valle, S.A. de C.V.">
+<meta name="description" content="Contabilidad de partida doble y NIF del CINIF, explicada con cifras en pesos, más el ejercicio resuelto de Distribuidora del Valle, S.A. de C.V.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;550;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --studio:#D8D3CC;
-  --bg:#F3EEE6;--paper:#FAF7F1;--cream:#F3EEE6;--ink:#241612;--ink2:#4E3B32;
+  --studio:#D8D3CC;--bg:#F3EEE6;--paper:#FAF7F1;--cream:#F3EEE6;--ink:#241612;--ink2:#4E3B32;
   --ox:#6B1A1F;--cherry:#C31C32;--esp:#2A1812;--latte:#C9B59A;--latte2:#E8DCCB;
   --line:rgba(36,22,18,.14);--ok:#2C4A34;--okbg:#E4F0E6;--no:#8A241C;--nobg:#F8E4E2;
   --pink:#F5A3C0;--pink2:#FDE8F0;--blue:#7EB8DC;--blue2:#E3F2FC;--yel:#F3D35E;--yel2:#FFF6D6;
-  --green:#3D6B4F;--green2:#E7F3EA;--leaf:#2C4A34;
+  --green:#3D6B4F;--green2:#E7F3EA;
   --serif:'Cormorant Garamond',Palatino,Georgia,serif;
   --sans:'Figtree',system-ui,sans-serif;
-  --magh:54px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--magh) + 8px);scroll-padding-bottom:108px;max-width:100%;overflow-x:hidden}
-body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--studio);line-height:1.65;font-size:16.5px;font-weight:400;-webkit-font-smoothing:antialiased;max-width:100%;overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:12px;scroll-padding-bottom:108px;max-width:100%;overflow-x:clip}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.65;font-size:17px;font-weight:400;-webkit-font-smoothing:antialiased;max-width:100%;overflow-x:clip}
 img,svg,table,button,.act,input,select,figure{max-width:100%}
 img{display:block;height:auto}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.15;margin:0;color:var(--esp);text-wrap:balance}
-h2{font-size:clamp(1.85rem,5.4vw,2.75rem);margin:0 0 10px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.2;margin:0;color:var(--esp);text-wrap:balance}
+h2{font-size:clamp(1.7rem,5.2vw,2.4rem);margin:0 0 10px}
 h3{font-size:1.35rem;margin:0 0 8px}
+h4{font-size:1.15rem;margin:16px 0 8px;color:var(--ox)}
 p{margin:0 0 12px}
 a{color:var(--ox)}
 button,input,select{font:inherit}
-ul{margin:0 0 12px;padding-left:1.15em}
+ul,ol{margin:0 0 12px;padding-left:1.2em}
+.wrap{width:min(740px,100%);margin:0 auto;padding:0 16px 120px;max-width:100%}
 
-/* Magazine chrome */
-.magbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:8px;height:var(--magh);padding:0 10px;background:rgba(250,247,241,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);max-width:100%}
-.magbar button{appearance:none;-webkit-appearance:none;flex:0 0 44px;height:40px;border:1.5px solid var(--esp);background:var(--paper);color:var(--esp);border-radius:999px;font-size:1.25rem;line-height:1;cursor:pointer}
-.magbar button:disabled{opacity:.35;cursor:not-allowed}
-.magbar .mid{flex:1;min-width:0;text-align:center}
-.magbar .mid b{display:block;font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--esp);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.magbar .mid span{display:block;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ox);font-weight:650}
-
-.book{width:min(1120px,100%);margin:0 auto;padding:12px 12px 120px;max-width:100%}
-
-/* Hardcover cover */
-.cover-spread{padding:8px 8px 28px;display:flex;flex-direction:column;align-items:center}
-.hardcover{position:relative;width:min(440px,100%);aspect-ratio:3/4.18;background:var(--esp);color:#FAF7F1;border-radius:3px 10px 10px 3px;overflow:hidden;box-shadow:0 22px 50px rgba(42,24,18,.32), 0 2px 0 rgba(255,255,255,.2) inset, 10px 0 18px -12px rgba(0,0,0,.45) inset}
-.hardcover .spine{position:absolute;left:0;top:0;bottom:0;width:16px;background:linear-gradient(90deg,#1A0E0A,#3A2018 55%,#2A1812);z-index:3;pointer-events:none}
+/* Decorative cover — not a carousel */
+.hero{background:var(--studio);padding:16px 16px 8px}
+.hardcover{position:relative;width:min(420px,100%);margin:0 auto;aspect-ratio:4/3.15;background:var(--esp);color:#FAF7F1;border-radius:3px 10px 10px 3px;overflow:hidden;box-shadow:0 16px 36px rgba(42,24,18,.28),10px 0 18px -12px rgba(0,0,0,.45) inset}
+.hardcover .spine{position:absolute;left:0;top:0;bottom:0;width:14px;background:linear-gradient(90deg,#1A0E0A,#3A2018 55%,#2A1812);z-index:3;pointer-events:none}
 .hardcover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;z-index:1}
-.hardcover .plate{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0;min-height:0;background:transparent}
-.hardcover .plate .fade{height:72px;background:linear-gradient(180deg,transparent,#6B1A1F);pointer-events:none}
-.hardcover .plate .ink{background:var(--ox);padding:4px 22px 24px 32px}
+.hardcover .plate{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0}
+.hardcover .fade{height:48px;background:linear-gradient(180deg,transparent,#6B1A1F)}
+.hardcover .ink{background:var(--ox);padding:4px 18px 18px 28px}
 .hardcover .kicker{color:#F3EEE6}
-.hardcover h1{font-size:clamp(2.15rem,9.4vw,3.35rem);color:#FAF7F1;margin:0 0 8px;letter-spacing:-.03em}
-.hardcover .lead{font-size:.92rem;color:#F3EEE6;margin:0 0 10px;max-width:26em;line-height:1.5}
-.hardcover .cover-folio{margin:0;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;font-weight:650;color:#E8DCCB}
-.cover-hint{margin:14px 0 0;font-family:var(--serif);font-style:italic;color:#4E3B32;font-size:.95rem;text-align:center}
+.hardcover h1{font-size:clamp(1.85rem,7.4vw,2.6rem);color:#FAF7F1;margin:0 0 6px}
+.hardcover .lead{font-size:.95rem;color:#F3EEE6;margin:0;line-height:1.45}
+.hero-note{width:min(740px,100%);margin:12px auto 0;padding:0 0 8px;font-size:.95rem;color:var(--ink2);text-align:center}
 
-/* Open spreads */
-.spread{display:grid;grid-template-columns:1fr;margin:0 0 22px;max-width:100%;background:transparent}
-.leaf{background:var(--paper);position:relative;min-width:0;max-width:100%;overflow:hidden}
-.leaf.bleed{padding:0;background:#2A1812;display:flex;flex-direction:column}
-.leaf.bleed img.full{width:100%;height:220px;object-fit:cover;flex:0 0 auto}
-.leaf.bleed .caption,.leaf .caption{margin:0;padding:10px 14px 14px;font-family:var(--serif);font-style:italic;font-size:.78rem;line-height:1.4;color:#3A2A22;background:var(--cream)}
-.leaf.paper{padding:18px 18px 48px;background:var(--paper)}
-.leaf.solid{padding:28px 22px 48px;display:flex;flex-direction:column;justify-content:flex-end;min-height:240px}
-.leaf.solid.ox{background:var(--ox);color:#FAF7F1}
-.leaf.solid.esp{background:var(--esp);color:#FAF7F1}
-.leaf.solid.pink{background:#F8D5E3;color:var(--esp)}
-.leaf.solid.blue{background:#D7EAF7;color:var(--esp)}
-.leaf.solid.yel{background:#F8E59A;color:var(--esp)}
-.leaf.solid.green{background:#D5E8DA;color:var(--esp)}
-.leaf.solid h2,.leaf.solid h3{color:inherit}
-.leaf.solid .kicker{color:inherit;opacity:.92}
-.leaf.solid p,.leaf.solid .sub{color:inherit}
-.leaf.solid.ox .kicker,.leaf.solid.esp .kicker,.leaf.solid.ox .sub,.leaf.solid.esp .sub,.leaf.solid.ox p,.leaf.solid.esp p{color:#F3EEE6}
-.leaf.solid .num{font-family:var(--serif);font-size:clamp(4.2rem,18vw,7rem);line-height:.8;letter-spacing:-.06em;margin:0 0 18px;font-weight:500}
-.leaf.solid .inset{width:min(180px,46%);margin:0 0 18px;box-shadow:0 10px 24px rgba(42,24,18,.22)}
-.leaf.solid .inset img{width:100%;height:120px;object-fit:cover}
-
-.folio{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 18px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:650;color:var(--ox)}
-.folio span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.pageno{position:absolute;bottom:14px;font-family:var(--serif);font-variant-numeric:oldstyle-nums;font-size:.95rem;color:var(--ink2);letter-spacing:.04em}
-.leaf.paper .pageno,.leaf.solid .pageno{right:18px}
-.leaf.bleed .pageno{display:none}
-.leaf.solid.ox .pageno,.leaf.solid.esp .pageno{color:#E8DCCB}
-
-.secband{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 -18px 18px;padding:10px 18px;font-family:var(--serif);font-size:1.15rem;color:#FAF7F1;background:var(--ox)}
+.chap{margin:36px 0 0;max-width:100%}
+.secband{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 -16px 16px;padding:10px 16px;font-family:var(--serif);font-size:1.2rem;color:#FAF7F1;background:var(--ox)}
 .secband.esp{background:var(--esp)}
+.secband.green{background:#D5E8DA;color:var(--esp)}
 .secband.pink{background:#F8D5E3;color:var(--esp)}
 .secband.blue{background:#D7EAF7;color:var(--esp)}
 .secband.yel{background:#F8E59A;color:var(--esp)}
-.secband.green{background:#D5E8DA;color:var(--esp)}
-.secband .n{font-size:1.35rem;letter-spacing:.04em}
-
-.pullq{font-family:var(--serif);font-size:clamp(1.4rem,5vw,2rem);line-height:1.2;color:var(--ox);margin:6px 0 20px;font-style:italic;font-weight:500;padding-left:14px;border-left:3px solid var(--yel)}
-.leaf.solid .pullq{color:inherit;border-left-color:currentColor;margin-top:auto}
-.leaf.solid.ox .pullq,.leaf.solid.esp .pullq{color:#FAF7F1;border-left-color:#F3D35E}
-
-.kicker{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;margin:0 0 10px;color:var(--ox)}
+.secband .n{font-size:1.4rem}
+.photo{margin:0 -16px 18px;background:#2A1812}
+.photo img{width:100%;height:180px;object-fit:cover}
+.photo .caption{margin:0;padding:8px 16px 12px;font-family:var(--serif);font-style:italic;font-size:.85rem;line-height:1.4;color:#3A2A22;background:var(--cream)}
+.kicker{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:650;margin:0 0 8px;color:var(--ox)}
 .sub{color:var(--ink2);margin:0 0 16px}
-.sidenote{font-size:.88rem;color:var(--ink2)}
+.sidenote{font-size:.95rem;color:var(--ink2)}
 
-/* Cards and components (kept) */
 .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 14px;margin:0 0 14px;max-width:100%;overflow:hidden}
-.leaf.paper .card{background:#FFFcf7}
-.leaf.paper .card.yel{background:var(--yel2)}
-.leaf.paper .card.pink{background:var(--pink2)}
-.leaf.paper .card.blue{background:var(--blue2)}
-.leaf.paper .card.green{background:var(--green2)}
-.leaf.paper .card.dark{background:var(--esp)}
 .card.yel{background:var(--yel2);border-color:#E6C84A}
 .card.pink{background:var(--pink2);border-color:#E89BB4}
 .card.blue{background:var(--blue2);border-color:#8EC8F0}
 .card.green{background:var(--green2);border-color:#8FBF9A}
 .card.dark{background:var(--esp);color:#F3EEE6;border:0}
 .card.dark h3,.card.dark h2{color:#FAF7F1}
-.card.dark p,.card.dark li,.card.dark .sub,.card.dark .kicker{color:#F0E6D8}
+.card.dark p,.card.dark li,.card.dark .sub,.card.dark .kicker,.card.dark .inst{color:#F0E6D8}
 .card.dark .kicker{color:#E8DCCB}
-.act{appearance:none;-webkit-appearance:none;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;min-height:48px;border:2px solid var(--ox);color:var(--ox);background:transparent;font-family:var(--sans);font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:999px;width:auto;max-width:100%;text-align:center}
+
+.opcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 14px;margin:0 0 22px;max-width:100%}
+.opcard.warnop{border-color:#C45A52;box-shadow:inset 4px 0 0 var(--no)}
+.calc{background:var(--yel2);border-radius:12px;padding:12px 14px;margin:0 0 14px;color:#3A2A00}
+.calc .math{margin:0 0 6px;font-size:1.05rem;font-weight:550}
+.calc .math:last-child{margin:0}
+.check{background:var(--okbg);color:var(--ok);border-radius:12px;padding:10px 12px;margin:0 0 10px}
+.check b{font-weight:700}
+.ojo-mini{background:#F8E4E2;color:var(--no);border-radius:10px;padding:10px 12px;margin:8px 0 0;font-weight:550}
+.run{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 12px;min-width:0}
+@media(max-width:400px){.run{grid-template-columns:1fr}}
+.tgrid{display:grid;grid-template-columns:1fr;gap:12px;margin:0 0 12px}
+@media(min-width:640px){.tgrid{grid-template-columns:1fr 1fr}}
+
+.act{appearance:none;-webkit-appearance:none;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;min-height:48px;border:2px solid var(--ox);color:var(--ox);background:transparent;font-family:var(--sans);font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:999px;width:auto;max-width:100%;text-align:center}
 .act.big{width:100%;background:var(--cherry);border-color:var(--cherry);color:#fff}
 .act.esp{width:100%;background:var(--esp);border-color:var(--esp);color:#FAF7F1}
 .act.lt{border-color:var(--latte);color:var(--esp);background:var(--paper)}
 .act:disabled{opacity:.45;cursor:not-allowed}
 .row{display:flex;flex-direction:column;gap:10px;width:100%}
-.hl-leg{display:flex;flex-wrap:wrap;gap:8px 14px;margin:8px 0 16px;font-size:.88rem}
+.inst{font-size:1rem;color:var(--ink2);margin:0 0 12px}
+.qline{font-family:var(--serif);font-size:1.25rem;line-height:1.35;color:var(--esp);margin:0 0 12px}
+.hl-leg{display:flex;flex-wrap:wrap;gap:8px 14px;margin:8px 0 16px;font-size:.95rem}
 .hl-leg i{font-style:normal;padding:0 .12em}
 .hl-def{background:linear-gradient(transparent 58%, #FFE566 58% 95%, transparent 95%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .hl-art{background:linear-gradient(transparent 58%, #F5A3C0 58% 95%, transparent 95%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .hl-trap{background:linear-gradient(transparent 58%, #8EC8F0 58% 95%, transparent 95%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.eq{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:6px;align-items:center;margin:16px 0;font-family:var(--serif);font-size:clamp(1.25rem,5.4vw,2.2rem);text-align:center}
-.eq b{display:block;background:var(--paper);border-radius:16px;padding:14px 8px;border:1.5px solid var(--line)}
-.eq .a{background:var(--pink2);border-color:#E89BB4}
-.eq .p{background:var(--blue2);border-color:#8EC8F0}
-.eq .c{background:var(--yel2);border-color:#E6C84A}
-.eq small{display:block;font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-top:4px}
-.tacc{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper);margin:10px 0 14px}
+
+.tacc{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper);margin:0}
 .tacc .hd{grid-column:1/-1;text-align:center;font-family:var(--serif);font-size:1.15rem;padding:8px;background:var(--latte2);border-bottom:1.5px solid var(--line)}
-.tacc .col{padding:8px 10px;min-height:88px}
+.tacc .col{padding:8px 10px;min-height:72px}
 .tacc .col:first-of-type{border-right:1.5px solid var(--line)}
-.tacc .lab{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
-.tacc .ln{display:flex;justify-content:space-between;gap:8px;font-variant-numeric:tabular-nums;font-size:.92rem;margin:3px 0}
-.tacc .sal{grid-column:1/-1;display:flex;justify-content:space-between;padding:8px 10px;background:var(--yel2);font-weight:650;font-variant-numeric:tabular-nums}
-.asiento{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:.95rem;margin:8px 0 12px}
-.asiento th,.asiento td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}
-.asiento th{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);font-weight:650}
-.asiento .num{text-align:right;white-space:nowrap}
-.asiento .cta{padding-left:22px}
-.asiento tfoot td{font-weight:650;border-bottom:0}
+.tacc .lab{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px;font-weight:650}
+.tacc .ln{display:flex;justify-content:space-between;gap:8px;font-variant-numeric:tabular-nums;font-size:1rem;margin:3px 0}
+.tacc .sal{grid-column:1/-1;display:flex;justify-content:space-between;gap:8px;padding:8px 10px;background:var(--yel2);font-weight:650;font-variant-numeric:tabular-nums}
+.tacc .sal.warn,.pot.warn{background:#F8E4E2;color:var(--no)}
+.muted{color:var(--ink2)}
+
+.asiento,.grid{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:16px}
+.asiento th,.asiento td,table.grid th,table.grid td{border-bottom:1px solid var(--line);padding:9px 6px;text-align:left;vertical-align:top}
+.asiento th,table.grid th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:650}
+.asiento .num,table.grid .num,table.grid td.r{text-align:right;white-space:nowrap}
+.asiento .cta,table.grid .cta{padding-left:18px}
+.asiento tfoot td,table.grid tfoot th,table.grid tfoot td{font-weight:700;border-bottom:0}
 .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0 16px;max-width:100%}
-table.grid{width:100%;border-collapse:collapse;font-size:.82rem;font-variant-numeric:tabular-nums}
-table.grid th,table.grid td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}
-table.grid th{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
-table.grid .num,table.grid td:last-child,table.grid td.r{text-align:right;white-space:nowrap}
-table.grid .warn{color:var(--no);font-weight:650}
+table.grid .warn, .warn{color:var(--no);font-weight:650}
+
 .pill{appearance:none;box-sizing:border-box;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:10px 14px;min-height:44px;cursor:pointer;font-weight:600}
-.pill.on,.pill.ok{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
-.pill.no{background:var(--nobg);border-color:var(--no);color:var(--no)}
 .bins{display:grid;grid-template-columns:1fr;gap:10px}
 @media(min-width:700px){.bins{grid-template-columns:1fr 1fr}}
-.bin{min-height:120px;border:2px dashed var(--line);border-radius:16px;padding:10px;background:rgba(250,247,241,.6)}
-.bin h4{font-size:.95rem;margin:0 0 8px}
+.bin{min-height:100px;border:2px dashed var(--line);border-radius:14px;padding:10px;background:rgba(250,247,241,.6)}
+.bin h4{font-size:1rem;margin:0 0 8px}
 .bin.a{background:var(--pink2);border-color:#E89BB4}
 .bin.p{background:var(--blue2);border-color:#8EC8F0}
 .bin.c{background:var(--yel2);border-color:#E6C84A}
 .bin.i{background:#F3E9FF;border-color:#C9A6E8}
 .bin.g{background:var(--green2);border-color:#8FBF9A}
-.chip{display:inline-flex;align-items:center;margin:0 6px 6px 0;padding:8px 12px;background:var(--paper);border:1.5px solid var(--ox);border-radius:999px;cursor:grab;font-weight:650;font-size:.9rem;touch-action:none;user-select:none}
+.chip{display:inline-flex;align-items:center;margin:0 6px 6px 0;padding:8px 12px;background:var(--paper);border:1.5px solid var(--ox);border-radius:999px;cursor:pointer;font-weight:650;font-size:.95rem;user-select:none}
 .chip.sel{outline:3px solid var(--cherry);background:var(--pink2)}
 .pool{min-height:56px;margin:0 0 12px}
-.stepper{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 12px;flex-wrap:wrap}
 .fb{margin:8px 0;padding:10px 12px;border-radius:12px;display:none}
 .fb.show{display:block}
 .fb.ok{background:var(--okbg);color:var(--ok)}
 .fb.no{background:var(--nobg);color:var(--no)}
-.ojo{background:#F8E4E2;border-left:5px solid var(--no);border-radius:0 16px 16px 0;padding:16px 16px 16px 18px;margin:16px 0}
+.ojo{background:#F8E4E2;border-left:5px solid var(--no);border-radius:0 14px 14px 0;padding:16px 16px 16px 18px;margin:16px 0}
 .ojo h3{color:var(--no)}
-.facil{display:none;background:var(--yel2);border-radius:16px;padding:14px 16px;margin:0 0 14px;color:#3A2A00}
-.facil.on{display:block}
 .cloze{all:unset;box-sizing:border-box;cursor:pointer;display:inline;padding:0 .15em;border-bottom:3px dotted var(--cherry);font-weight:700;color:var(--ox)}
-.cloze.on{border-bottom-color:var(--ok);background:linear-gradient(transparent 58%, #C8E6C9 58% 95%, transparent 95%);color:var(--esp);font-weight:600}
-.stage{background:var(--paper);border-radius:16px;padding:14px;border:1px solid var(--line);margin:0 0 14px}
-.pots{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-@media(min-width:520px){.pots{grid-template-columns:repeat(3,1fr)}}
-.pot{background:var(--cream);border-radius:14px;padding:10px 8px;text-align:center;font-size:.78rem;border:1px solid var(--line)}
-.pot b{display:block;font-family:var(--serif);font-size:1.15rem;font-variant-numeric:tabular-nums}
-.pot.warn b{color:var(--no)}
+
+.pot{background:var(--cream);border-radius:14px;padding:10px 8px;text-align:center;font-size:.85rem;border:1px solid var(--line)}
+.pot{min-width:0}
+.pot b{display:block;font-family:var(--serif);font-size:1.15rem;font-variant-numeric:tabular-nums;white-space:normal}
 .pot .nm{color:var(--ink2);font-weight:650}
-.dcard{background:var(--paper);border-radius:20px;min-height:220px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:var(--serif);font-size:1.45rem;line-height:1.3;box-shadow:0 12px 32px rgba(42,24,18,.12);cursor:pointer;color:var(--esp)}
+.dcard{background:var(--paper);border:0;border-radius:16px;min-height:200px;padding:24px 18px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--serif);font-size:1.3rem;line-height:1.35;box-shadow:0 10px 28px rgba(42,24,18,.12);cursor:pointer;color:var(--esp);width:100%}
 .dcard.flip{background:var(--ox);color:#FAF7F1}
 .deck-nav{display:flex;gap:8px;align-items:center;margin-top:12px}
 .deck-nav button{flex:1}
 #dmeta{flex:0 0 auto;font-weight:650;color:var(--ink2)}
 .card.dark #dmeta{color:#E8DCCB}
-.opt{display:block;width:100%;text-align:left;box-sizing:border-box;margin:0 0 8px;padding:14px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;font-weight:550;min-height:48px}
+.opt{display:block;width:100%;text-align:left;box-sizing:border-box;margin:0 0 8px;padding:14px;border-radius:14px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;font-weight:550;min-height:48px}
 .opt.ok{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
 .opt.no{background:var(--nobg);border-color:var(--no);color:var(--no)}
 .progress{height:8px;background:var(--latte2);border-radius:99px;overflow:hidden;margin:8px 0 16px}
@@ -205,63 +160,27 @@ table.grid .warn{color:var(--no);font-weight:650}
 .tabbar a{flex:1;text-align:center;text-decoration:none;color:var(--ink2);font-size:.68rem;font-weight:650;letter-spacing:.04em;text-transform:uppercase;padding:6px 2px;border-radius:12px}
 .tabbar a svg{width:22px;height:22px;display:block;margin:0 auto 2px;stroke:currentColor;fill:none;stroke-width:1.7}
 .tabbar a.on{color:var(--ox);background:var(--pink2)}
-.icons{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}
-.ic{flex:1 1 90px;min-width:90px;background:var(--paper);border-radius:16px;padding:12px 8px;text-align:center;font-size:.75rem;font-weight:650;color:var(--ox);border:1px solid var(--line)}
-.ic svg{width:40px;height:40px;display:block;margin:0 auto 6px}
-.nif{border-left:5px solid var(--ox);padding-left:12px;margin:0 0 16px}
+.nif{border-left:5px solid var(--ox);padding-left:12px;margin:0 0 18px}
 .grade{font-family:var(--serif);font-size:4rem;color:var(--ox);text-align:center;line-height:1;margin:8px 0}
-.muted{color:var(--ink2)}
-.warnc{color:var(--no);font-weight:650}
 .okc{color:var(--ok);font-weight:650}
-.build .line{display:grid;grid-template-columns:1fr 1fr 90px;gap:6px;margin:0 0 8px}
-.build select,.build input{box-sizing:border-box;width:100%;min-height:44px;border:1.5px solid var(--line);border-radius:10px;padding:8px;background:#fff;color:var(--ink)}
+.build .line{display:grid;grid-template-columns:1fr 1fr minmax(90px,28%);gap:6px;margin:0 0 8px}
+.build select,.build input{box-sizing:border-box;width:100%;min-height:44px;border:1.5px solid var(--line);border-radius:10px;padding:8px;background:#fff;color:var(--ink);font-size:16px}
 #resume{width:100%;margin:12px 0}
-.flow{display:flex;flex-direction:column;gap:0;margin:8px 0 16px}
-.fstep{background:var(--paper);border-radius:14px;padding:12px 14px;border:1.5px solid var(--line);cursor:pointer}
-.fstep + .farrow{text-align:center;color:var(--ox);font-weight:700;padding:2px}
-.fstep .ftip{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:.95rem}
-.fstep.open .ftip{display:block}
+.nat{margin:0 0 16px}
 .credits li{margin:0 0 8px}
+.opcard,.card,.chap{animation:none;opacity:1;transform:none}
+@media(min-width:800px){.tabbar{max-width:560px;left:50%;transform:translateX(-50%);border-radius:20px 20px 0 0}}
 
-.leaf,.card,.stage,.spread{animation:none;opacity:1;transform:none}
-
-/* Desktop / tablet: open two-page spread */
-@media(min-width:820px){
-  .book{padding:28px 20px 80px}
-  .cover-spread{padding:28px 20px 40px}
-  .hardcover{width:min(460px,86vw)}
-  .spread{grid-template-columns:1fr 1fr;margin:0 auto 36px;box-shadow:0 18px 40px rgba(42,24,18,.16)}
-  .spread.rtl .leaf:first-child{order:2}
-  .spread.rtl .leaf:last-child{order:1}
-  .leaf.bleed img.full{height:100%;min-height:520px;flex:1}
-  .leaf.paper{padding:32px 36px 56px}
-  .leaf.solid{min-height:520px;padding:40px 36px 56px}
-  .leaf:first-child{box-shadow:inset -16px 0 20px -14px rgba(42,24,18,.18)}
-  .leaf:last-child{box-shadow:inset 16px 0 20px -14px rgba(42,24,18,.16)}
-  .secband{margin:0 -36px 22px;padding:12px 36px}
-  .pageno{bottom:18px}
-  .leaf.paper .pageno,.leaf.solid .pageno{right:28px}
-  .spread.rtl .leaf.paper .pageno,.spread.rtl .leaf.solid .pageno{right:auto;left:28px}
-  .tabbar{max-width:560px;left:50%;transform:translateX(-50%);border-radius:20px 20px 0 0}
-}
-
-@media (prefers-reduced-motion: no-preference){
-  @keyframes up-soft{from{transform:translateY(8px)}to{transform:none}}
-  .spread{animation:up-soft .5s ease}
-}
+.moves{margin:0 0 14px}
+.move{border-bottom:1px solid var(--line);padding:10px 0}
+.move:last-child{border-bottom:0}
+.move p{margin:0 0 4px}
+.move-h{font-size:1.02rem}
 
 </style>
 </head>
 <body>
-<nav class="magbar" aria-label="Páginas de la guía">
-  <button type="button" id="sp-prev" aria-label="Pliego anterior">‹</button>
-  <div class="mid"><b id="sp-label">Portada</b><span><i id="sp-cur">01</i> / <i id="sp-tot">12</i></span></div>
-  <button type="button" id="sp-next" aria-label="Pliego siguiente">›</button>
-</nav>
-
-<div class="book">
-
-<article class="spread cover-spread" id="inicio" data-title="Portada">
+<header class="hero" id="inicio">
   <div class="hardcover">
     <span class="spine" aria-hidden="true"></span>
     <img src="foto-manzanas.webp" alt="Selección de manzanas en un puesto de mercado">
@@ -270,325 +189,229 @@ table.grid .warn{color:var(--no);font-weight:650}
       <div class="ink">
         <p class="kicker">Guía de estudio · partida doble y normas del CINIF</p>
         <h1>Contabilidad con manzanas</h1>
-        <p class="lead">Qué es un cargo, qué es un abono y cómo se lee una NIF, explicado como si armaras el cuaderno de un puesto de fruta. Luego resolvemos, paso a paso, el ejercicio de Distribuidora del Valle, S.A. de C.V.</p>
-        <p class="cover-folio">Tomo I · NIF 2026</p>
+        <p class="lead">Cada idea se explica con cifras completas, en pesos: $1,000.00. Primero un puesto de manzanas, de la operación 1 a la 7. Luego el ejercicio de Distribuidora del Valle, S.A. de C.V.</p>
       </div>
     </div>
   </div>
-  <p class="cover-hint">Desliza o usa las flechas para pasar los pliegos. Portada: mercado de Stroud, BazzaDaRambler, CC BY 2.0.</p>
-</article>
+  <p class="hero-note">Baja con el dedo, de arriba hacia abajo. Portada: mercado de Stroud, BazzaDaRambler, CC BY 2.0.</p>
+</header>
 
-<article class="spread" id="arranque" data-title="La racha">
-  <div class="leaf bleed">
-    <img class="full" src="foto-puesto.webp" alt="Puesto de fruta en un mercado de Barcelona">
-    <p class="caption">Puesto de fruta en un mercado de Barcelona. Foto de Daderot, Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</p>
+<div class="wrap">
+
+<section class="chap" id="arranque">
+  <div class="secband green"><span class="n">01</span><span>Cómo usar esta guía</span></div>
+  <div class="card green">
+    <p class="kicker" style="color:var(--green)">Tu racha</p>
+    <h3>Sellos de manzana</h3>
+    <p id="streakn" class="sub">Aún no hay sello. Cualquier práctica de hoy cuenta.</p>
+    <div class="stamps" id="stamps"></div>
+    <p class="sidenote">Se guarda en este teléfono. Un sello por día, si marcas una sección, armas un asiento, volteas una tarjeta o contestas el mini examen.</p>
   </div>
-  <div class="leaf paper">
-    <p class="folio"><span>Contabilidad con manzanas</span><span>01 · La racha</span></p>
-    <div class="secband green"><span class="n">01</span><span>Sellos de manzana</span></div>
-    <div class="card green">
-      <p class="kicker" style="color:var(--green)">Tu racha</p>
-      <h3>Sellos de manzana</h3>
-      <p id="streakn" class="sub">Aún no hay sello. Cualquier práctica de hoy cuenta.</p>
-      <div class="stamps" id="stamps"></div>
-      <p class="sidenote">Se guarda en este teléfono. Un sello por día, si marcas una sección, armas un asiento, volteas una tarjeta o contestas el mini examen.</p>
+  <div class="card">
+    <p>Avance <b data-pt>0 %</b></p>
+    <div class="progress" aria-hidden="true"><i></i></div>
+    <button type="button" class="act big" id="resume">Continuar donde me quedé</button>
+  </div>
+  <div class="card">
+    <h3>El orden de esta guía</h3>
+    <ol>
+      <li>Las reglas, con un ejemplo en pesos.</li>
+      <li>Un puesto de manzanas, de la operación 1 a la 7, con diario, mayor, balanza y estados que cuadran.</li>
+      <li>Las NIF, una por una, ligadas a una cuenta de esos ejemplos.</li>
+      <li>El ejercicio de Distribuidora del Valle, las 15 operaciones, con Caja y Bancos después de cada una.</li>
+      <li>Práctica: armar asientos, cargo o abono, tarjetas y un mini examen.</li>
+    </ol>
+  </div>
+  <div class="hl-leg"><span><i class="hl-def">definición</i></span><span><i class="hl-art">NIF, importe o fecha</i></span><span><i class="hl-trap">trampa o error</i></span></div>
+</section>
+
+<section class="chap" id="manzanas">
+  <figure class="photo">
+    <img src="foto-puesto.webp" alt="Puesto de fruta en un mercado de Barcelona">
+    <figcaption class="caption">Puesto de fruta en un mercado de Barcelona. Foto de Daderot, Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</figcaption>
+  </figure>
+  <div class="secband"><span class="n">02</span><span>Las reglas, con cifras</span></div>
+  <h2>Qué es la contabilidad</h2>
+  <p>Es el sistema con el que una entidad <span class="hl-def">identifica, valúa, reconoce y presenta</span> sus transacciones para preparar estados financieros útiles.</p>
+  <p>En pesos: si compras 100 manzanas a $10.00 cada una, no basta con decir “hay fruta”. Hay que anotar que el inventario subió <span class="hl-art">$1,000.00</span> y que el banco bajó <span class="hl-art">$1,000.00</span>.</p>
+
+  <article class="card pink">
+    <h3>La ecuación: Activo = Pasivo + Capital</h3>
+    <p>Todo lo que el puesto tiene (activo) se explica por lo que debe (pasivo) más lo que es de las socias (capital).</p>
+    <p>Ejemplo, al abrir el puesto:</p>
+    <div class="calc">
+      <p class="math">Caja $8,000.00 + Bancos $12,000.00 = activo $20,000.00.</p>
+      <p class="math">Pasivo $0.00 + capital social $20,000.00 = $20,000.00.</p>
+      <p class="math">Por eso $20,000.00 = $0.00 + $20,000.00.</p>
     </div>
-    <div class="card">
-      <p>Avance <b data-pt>0 %</b></p>
-      <div class="progress" aria-hidden="true"><i></i></div>
-      <button type="button" class="act big" id="resume">Continuar donde me quedé</button>
+    <p>Si más adelante hay deudas o utilidad, los dos lados siguen sumando lo mismo.</p>
+  </article>
+
+  <article class="card">
+    <h3>Partida doble</h3>
+    <p>Todo hecho se anota en <span class="hl-def">por lo menos dos cuentas</span>, y la suma de cargos es igual a la suma de abonos.</p>
+    <p>Ejemplo: 100 manzanas × $10.00 = $1,000.00, pagadas del banco.</p>
+    <div class="tw"><table class="asiento">
+      <thead><tr><th>Cuenta</th><th>Cargo</th><th>Abono</th></tr></thead>
+      <tbody>
+        <tr><td>Inventarios</td><td class="num">$1,000.00</td><td class="num"></td></tr>
+        <tr><td class="cta">a) Bancos</td><td class="num"></td><td class="num">$1,000.00</td></tr>
+      </tbody>
+      <tfoot><tr><td>Sumas iguales</td><td class="num">$1,000.00</td><td class="num">$1,000.00</td></tr></tfoot>
+    </table></div>
+  </article>
+
+  <article class="card">
+    <h3>Cargo y abono</h3>
+    <p>La <span class="hl-def">cuenta T</span> tiene dos lados. El izquierdo es el <span class="hl-art">cargo</span> (debe). El derecho es el <span class="hl-art">abono</span> (haber).</p>
+    <div class="tw nat"><table class="grid">
+      <thead><tr><th>Clase</th><th>Aumenta con</th><th>Disminuye con</th><th>Saldo normal</th></tr></thead>
+      <tbody>
+        <tr><td>Activo</td><td>Cargo</td><td>Abono</td><td>Deudor</td></tr>
+        <tr><td>Pasivo</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr>
+        <tr><td>Capital</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr>
+        <tr><td>Ingresos</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr>
+        <tr><td>Gastos</td><td>Cargo</td><td>Abono</td><td>Deudor</td></tr>
+      </tbody>
+    </table></div>
+    <p>Regla corta: lo que el puesto <b>tiene</b> y lo que <b>gasta</b> crece a la izquierda. Lo que <b>debe</b>, lo que es <b>suyo</b> y lo que <b>gana</b> crece a la derecha.</p>
+  </article>
+
+  <figure class="photo">
+    <img src="foto-manzana.webp" alt="Dos manzanas rojas">
+    <figcaption class="caption">Dos manzanas rojas. Foto de Paolo Neo, dominio público, vía Wikimedia Commons. Conversión a WebP.</figcaption>
+  </figure>
+  <div class="secband esp"><span class="n">03</span><span>El puesto de manzanas, operación por operación</span></div>
+  <h2>Siete operaciones, con todas las cifras</h2>
+  <p class="sub">Es un ejemplo didáctico, no el ejercicio del documento. Cada manzana se valúa a $10.00 al comprar. Las socias aportan $20,000.00. Luego se compra, se vende con su costo, se paga renta, se pide un préstamo y se paga al proveedor. Todas las sumas se volvieron a calcular y cuadran.</p>
+  <div id="standbox"></div>
+  <article class="card" id="standestados"></article>
+  <button type="button" class="act lt" data-mark="m1">Marcar esta sección como lista</button>
+</section>
+
+<section class="chap" id="nif">
+  <figure class="photo">
+    <img src="foto-diario.webp" alt="Páginas abiertas de un libro de cuentas manuscrito">
+    <figcaption class="caption">Libro de cuentas, páginas 64 y 65. Fotografía de Donald S. Erdman, Biodiversity Heritage Library, vía Wikimedia Commons. Sin restricciones de uso. Recorte y conversión a WebP.</figcaption>
+  </figure>
+  <div class="secband yel"><span class="n">04</span><span>Las NIF que sí aplican aquí</span></div>
+  <h2>Normas del CINIF</h2>
+  <p class="sub">Solo se citan normas con título oficial comprobado en fuentes del CINIF y en el índice de la edición NIF 2026 (vigentes al 1.º de enero de 2026). No se inventan números de párrafo. Cada una se explica en una frase, ligada a una cuenta de los ejemplos. El CINIF es el Consejo Mexicano de Normas de Información Financiera y de Sostenibilidad, A.C., responsable de emitir las NIF en México.</p>
+  <div id="niflist"></div>
+  <article class="card">
+    <h3>Cada cuenta, con su NIF</h3>
+    <div id="nifmap"></div>
+    <p class="sidenote">Fuentes de los títulos: CINIF, <em>Listado de normas promulgadas a 2024</em> (cinif.org.mx); CINIF, Libro electrónico NIF 2026; índice de la edición profesional NIF 2026 del IMCP y de Contenido Fiscal.</p>
+    <button type="button" class="act lt" data-mark="nif">Marcar las NIF como listas</button>
+  </article>
+</section>
+
+<section class="chap" id="ejercicio">
+  <figure class="photo">
+    <img src="foto-cajas.webp" alt="Puesto de mercado con manzanas, canastos, caja y báscula">
+    <figcaption class="caption">Puesto de mercado con fruta, canastos y caja. Foto de Fortepan, donante Konok Tamás, vía Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</figcaption>
+  </figure>
+  <div class="secband esp"><span class="n">05</span><span>Distribuidora del Valle, S.A. de C.V.</span></div>
+  <h2>El ejercicio, asiento por asiento</h2>
+  <p class="sub">Quince operaciones del documento. Aquí se copian con ortografía cuidada y con importes en formato $50,000.00. Después de cada asiento verás el saldo de Caja y de Bancos. Las cifras se volvieron a sumar.</p>
+  <label class="card" style="display:flex;gap:10px;align-items:flex-start;cursor:pointer">
+    <input type="checkbox" id="fixdep" style="margin-top:6px;width:20px;height:20px">
+    <span><b>Ver la corrección de la operación 2</b> (depositar $50,000.00, que es lo que había en Caja, en lugar de $60,000.00). El resto de las operaciones no se toca. Es un “qué pasaría si el enunciado tiene un error de cifra”, no un dato del documento.</span>
+  </label>
+  <div id="vallebox"></div>
+
+  <div class="ojo" id="errores">
+    <h3>Ojo: errores y omisiones del ejercicio</h3>
+    <p>El libro cuadra, y aun así hay tres puntos que conviene mirar con calma. No son un reproche al planteamiento: son trampas típicas de examen y de la práctica.</p>
+    <ol>
+      <li><b>La operación 2 deja la Caja en saldo acreedor.</b> Después de la operación 1 hay $50,000.00 en Caja. El asiento deposita $60,000.00. Caja queda en −$10,000.00 en ese momento y cierra el ejercicio en <span class="hl-trap">−$5,200.00 (saldo acreedor)</span>. Un saldo acreedor en efectivo no es razonable: no se puede “deber” dinero en el cajón. Lo más probable es un error de cifra (por ejemplo, que el depósito debiera ser de $50,000.00). Si se corriera el depósito a $50,000.00, Caja cerraría en $4,800.00 deudor y Bancos en $114,000.00 − $10,000.00 = $104,000.00 deudor. El total de activo no cambiaría, porque solo se mueve efectivo de un lado a otro.</li>
+      <li><b>La venta de la operación 9 no da de baja el inventario.</b> El ejercicio usa la cuenta <span class="hl-art">Inventarios</span>, propia de un sistema perpetuo, pero solo registra <em>Caja por $18,000.00 / Ventas por $18,000.00</em>. Falta, cuando se conoce el costo, el asiento <em>Costo de ventas / Inventarios</em> (NIF C-4 y, en su caso, NIF D-2). Como el costo no se indica, <span class="hl-trap">la utilidad de $15,800.00 está sobreestimada</span> y el inventario se queda en $25,000.00 como si no se hubiera vendido nada.</li>
+      <li><b>No hay IVA.</b> En un primer curso es una simplificación aceptable. En la operación real de una S.A. de C.V. habría que analizar el IVA trasladado en ventas y servicios y el IVA acreditable en compras y gastos, cuando proceda. Aquí no se inventan esas cuotas.</li>
+    </ol>
+  </div>
+
+  <article class="card" id="estados">
+    <h3>Cuentas T del mayor</h3>
+    <div id="taccs"></div>
+    <h3>Balanza de comprobación</h3>
+    <p class="sub">Debe sumar <span class="hl-art">$167,200.00</span> en cada columna, si no se activa la corrección de la operación 2.</p>
+    <div id="balanza"></div>
+    <h3>Estado de resultado integral</h3>
+    <p class="sub">Ingresos $18,000.00 + $6,000.00 = $24,000.00. Gastos $3,000.00 + $2,000.00 + $1,500.00 + $700.00 + $1,000.00 = $8,200.00. Utilidad $15,800.00, sin costo de ventas.</p>
+    <div id="eri"></div>
+    <h3>Estado de situación financiera</h3>
+    <p class="sub">Activo $153,800.00 = pasivo $38,000.00 + capital $115,800.00 (capital social $100,000.00 + utilidad $15,800.00).</p>
+    <div id="esf"></div>
+    <button type="button" class="act lt" data-mark="ej">Marcar el ejercicio como listo</button>
+  </article>
+</section>
+
+<section class="chap" id="practica">
+  <figure class="photo">
+    <img src="foto-calculadora.webp" alt="Calculadora de bolsillo">
+    <figcaption class="caption">Calculadora de bolsillo. Foto de Dimljacic, Wikimedia Commons. Licencia CC BY-SA 4.0. Recorte y conversión a WebP.</figcaption>
+  </figure>
+  <div class="secband"><span class="n">06</span><span>A practicar</span></div>
+  <h2>Asientos, tarjetas y un mini examen</h2>
+  <article class="card">
+    <h3>Arma el asiento</h3>
+    <p class="sub">Son las siete operaciones del puesto de manzanas, con las mismas cifras. Elige cuentas, lado e importe. Luego toca Calificar.</p>
+    <div id="buildbox"></div>
+  </article>
+  <article class="card" id="cabgame">
+    <h3>Juego: ¿cargo o abono?</h3>
+    <p class="sub">Ocho preguntas con cifras del puesto. Toca el lado correcto.</p>
+    <div id="cabbox"></div>
+  </article>
+  <article class="card">
+    <h3>Pon cada cuenta en su cajón</h3>
+    <p class="inst">Toca una ficha y luego el cajón (Activo, Pasivo, Capital, Ingreso o Gasto). En el celular es más firme que arrastrar.</p>
+    <div class="pool" id="clpool"></div>
+    <div class="bins five" id="clbins"></div>
+    <p class="fb" id="clres"></p>
+  </article>
+  <article class="card dark">
+    <h3>Tarjetas de repaso</h3>
+    <p class="inst">Toca la tarjeta para voltearla. Usa Anterior y Siguiente para cambiar de ficha.</p>
+    <div class="deck-wrap"><div id="deck"></div><div class="deck-nav"><button type="button" class="act lt" id="dprev">Anterior</button><span id="dmeta"></span><button type="button" class="act lt" id="dnext">Siguiente</button></div></div>
+  </article>
+  <article class="card" id="examen">
+    <h3>Mini examen</h3>
+    <p class="inst">Quince preguntas, una por pantalla. Al final sale una calificación sobre 10. En “Estudiar con explicación” ves el porqué al responder. En “Hacer el examen” solo ves si acertaste, y al final la calificación.</p>
+    <div class="row">
+      <button type="button" class="act big" id="qestudio">Estudiar con explicación</button>
+      <button type="button" class="act esp" id="qexamen">Hacer el examen</button>
     </div>
-    <div class="hl-leg"><span><i class="hl-def">definición</i></span><span><i class="hl-art">NIF, importe o fecha</i></span><span><i class="hl-trap">trampa o error</i></span></div>
-    <span class="pageno">004</span>
-  </div>
-</article>
+    <div id="qzbox"></div>
+  </article>
+  <button type="button" class="act lt" data-mark="prac">Marcar la práctica como lista</button>
+</section>
 
-<article class="spread rtl" id="manzanas" data-title="Los cimientos">
-  <div class="leaf solid esp">
-    <p class="kicker">Los cimientos</p>
-    <p class="num">02</p>
-    <img class="inset" src="foto-manzana.webp" alt="Dos manzanas rojas">
-    <h2>Explícamelo con manzanas</h2>
-    <p class="pullq">La contabilidad es el cuaderno que impide que confundas “se vendió” con “se movió la fruta de un cajón a otro”.</p>
-    <span class="pageno">005</span>
-  </div>
-  <div class="leaf paper">
-    <p class="folio"><span>02 · Los cimientos</span><span>Contabilidad con manzanas</span></p>
-    <p class="sub">Imagina que abres un puesto de manzanas. La contabilidad es el cuaderno que impide que confundas “se vendió” con “se movió la fruta de un cajón a otro”.</p>
-    <div class="icons">
-      <div class="ic"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="38" rx="18" ry="20" fill="#C31C32"/><path d="M32 18c6 8 14 6 15 3" fill="none" stroke="#2C4A34" stroke-width="2"/><ellipse cx="40" cy="16" rx="8" ry="4.5" fill="#3D6B4F" transform="rotate(-25 40 16)"/><ellipse cx="24" cy="32" rx="5" ry="9" fill="#fff" opacity=".28"/></svg>El puesto</div>
-      <div class="ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="22" width="44" height="28" rx="4" fill="#6B1A1F"/><rect x="14" y="26" width="16" height="20" fill="#FAF7F1"/><rect x="34" y="26" width="16" height="20" fill="#FAF7F1"/><path d="M32 26v20" stroke="#C9B59A" stroke-width="2"/></svg>La cuenta T</div>
-      <div class="ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="44" rx="3" fill="#FAF7F1" stroke="#6B1A1F" stroke-width="2"/><path d="M20 22h24M20 30h24M20 38h16" stroke="#C9B59A" stroke-width="2"/></svg>El diario</div>
-      <div class="ic"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="28" r="10" fill="#F5A3C0"/><circle cx="40" cy="28" r="10" fill="#7EB8DC"/><circle cx="30" cy="42" r="10" fill="#F3D35E"/></svg>A = P + C</div>
-    </div>
-    <article class="card">
-      <h3>Qué es la contabilidad</h3>
-      <p>Es el sistema con el que una entidad <span class="hl-def">identifica, valúa, reconoce y presenta</span> sus transacciones para preparar estados financieros útiles. Con manzanas: no basta con “ver el cajón”. Hay que saber de quién es la fruta, cuánto costó, qué ya se vendió y qué se debe.</p>
-      <button type="button" class="act lt" data-f="f1">Explícamelo con manzanas</button>
-      <div class="facil" id="f1">Si una amiga te guarda 20 manzanas y tú vendes 5 de las tuyas, el cajón puede verse “lleno” y aun así tú no hayas ganado. El cuaderno separa lo que es tuyo, lo que es de ella y lo que ya salió como venta.</div>
-    </article>
-    <p class="caption" style="padding:0">Dos manzanas rojas. Foto de Paolo Neo, dominio público, vía Wikimedia Commons. Conversión a WebP.</p>
-    <span class="pageno">006</span>
-  </div>
-</article>
-
-<article class="spread" id="ecuacion" data-title="La ecuación">
-  <div class="leaf bleed">
-    <img class="full" src="foto-precios.webp" alt="Puesto de fruta con precios visibles en un mercado de Londres">
-    <p class="caption">Puesto de fruta con precios, Kingsway, Londres, 15 de junio de 2023. Foto de Canadian2006, Wikimedia Commons. Licencia CC BY-SA 4.0. Recorte y conversión a WebP.</p>
-  </div>
-  <div class="leaf paper">
-    <p class="folio"><span>Contabilidad con manzanas</span><span>03 · La ecuación</span></p>
-    <div class="secband pink"><span class="n">03</span><span>Activo = Pasivo + Capital</span></div>
-    <h2>La ecuación: Activo = Pasivo + Capital</h2>
-    <div id="eqdemo"></div>
-    <p class="pullq">Los dos lados del cuaderno siempre pesan igual.</p>
-    <button type="button" class="act lt" data-f="f2">Explícamelo con manzanas</button>
-    <div class="facil" id="f2">Las manzanas que hay en el puesto (activo) no salieron de la nada. O te las prestaron (pasivo), o las pusieron las socias, o se ganaron vendiendo (capital). Por eso los dos lados del cuaderno siempre pesan igual.</div>
-    <p>Toca cada paso:</p>
-    <div class="flow">
-      <div class="fstep"><b>1. Activo</b><span> Recursos que la entidad controla y de los que espera beneficios. Caja, bancos, inventarios, mobiliario, equipo.</span><div class="ftip">En el puesto: las manzanas, el dinero y la mesa.</div></div>
-      <div class="farrow">↓</div>
-      <div class="fstep"><b>2. Pasivo</b><span> Obligaciones presentes. Proveedores, acreedores diversos, acreedores bancarios.</span><div class="ftip">En el puesto: lo que le debes al mayoreo o al banco.</div></div>
-      <div class="farrow">↓</div>
-      <div class="fstep"><b>3. Capital contable</b><span> El residual: activo menos pasivo. Capital social y utilidad del periodo.</span><div class="ftip">Lo que, una vez pagadas las deudas, es de las socias.</div></div>
-    </div>
-    <span class="pageno">008</span>
-  </div>
-</article>
-
-<article class="spread rtl" id="cargo" data-title="Cargo y abono">
-  <div class="leaf bleed">
-    <img class="full" src="foto-diario.webp" alt="Páginas abiertas de un libro de cuentas manuscrito">
-    <p class="caption">Libro de cuentas, páginas 64 y 65. Fotografía de Donald S. Erdman, Biodiversity Heritage Library, vía Wikimedia Commons. Sin restricciones de uso. Recorte y conversión a WebP.</p>
-  </div>
-  <div class="leaf paper">
-    <p class="folio"><span>04 · Cargo y abono</span><span>Contabilidad con manzanas</span></p>
-    <div class="secband ox"><span class="n">04</span><span>Partida doble</span></div>
-    <article class="card">
-      <h3>Partida doble</h3>
-      <p>Todo hecho se anota en <span class="hl-def">por lo menos dos cuentas</span>, y <button type="button" class="cloze" data-cloze="la suma de cargos es igual a la suma de abonos">••••</button>. Si compras manzanas y pagas de contado, entra mercancía y sale dinero. Nunca “aparece” fruta sin que algo más se mueva.</p>
-    </article>
-    <article class="card pink">
-      <h3>Cargo y abono</h3>
-      <p>La <span class="hl-def">cuenta T</span> tiene dos lados. El izquierdo es el <span class="hl-art">cargo</span> (o debe). El derecho es el <span class="hl-art">abono</span> (o haber).</p>
-      <div class="tacc">
-        <div class="hd">Forma de una cuenta T</div>
-        <div class="col"><div class="lab">Cargo · Debe · izquierda</div><div class="ln"><span>Aumenta activo y gasto</span></div></div>
-        <div class="col"><div class="lab">Abono · Haber · derecha</div><div class="ln"><span>Aumenta pasivo, capital e ingreso</span></div></div>
-      </div>
-      <p>Regla para no trabarte: lo que el puesto <b>tiene</b> y lo que <b>gasta</b> crece a la izquierda. Lo que <b>debe</b>, lo que es <b>suyo</b> y lo que <b>gana</b> crece a la derecha.</p>
-      <button type="button" class="act lt" data-f="f3">Explícamelo con manzanas</button>
-      <div class="facil" id="f3">Pon un cajón partido a la mitad. Si llegan manzanas al inventario, las anotas a la izquierda de “Inventarios”. Si pagas con el banco, las “sacas” por la derecha de “Bancos”. Dos lados, un solo hecho, el cajón sigue en equilibrio.</div>
-    </article>
-    <span class="pageno">010</span>
-  </div>
-</article>
-
-<article class="spread" id="cabgame" data-title="Juegos">
-  <div class="leaf bleed">
-    <img class="full" src="foto-calculadora.webp" alt="Calculadora de bolsillo">
-    <p class="caption">Calculadora de bolsillo. Foto de Dimljacic, Wikimedia Commons. Licencia CC BY-SA 4.0. Recorte y conversión a WebP.</p>
-  </div>
-  <div class="leaf paper">
-    <p class="folio"><span>Contabilidad con manzanas</span><span>05 · Juegos</span></p>
-    <div class="secband blue"><span class="n">05</span><span>Práctica de lados</span></div>
-    <article class="card">
-      <h3>Juego: ¿cargo o abono?</h3>
-      <p class="sub">Ocho situaciones del puesto. Toca el lado correcto.</p>
-      <div id="cabbox"></div>
-    </article>
-    <article class="card">
-      <h3>Naturaleza de las cuentas</h3>
-      <div class="tw"><table class="grid">
-        <thead><tr><th>Clase</th><th>Aumenta con</th><th>Disminuye con</th><th>Saldo normal</th></tr></thead>
-        <tbody>
-          <tr><td>Activo</td><td>Cargo</td><td>Abono</td><td>Deudor</td></tr>
-          <tr><td>Pasivo</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr>
-          <tr><td>Capital</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr>
-          <tr><td>Ingresos</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr>
-          <tr><td>Gastos</td><td>Cargo</td><td>Abono</td><td>Deudor</td></tr>
-        </tbody>
-      </table></div>
-      <h3>Pon cada cuenta en su cajón</h3>
-      <p class="sub">Toca una ficha y luego el cajón. En el celular es más firme que arrastrar.</p>
-      <div class="pool" id="clpool"></div>
-      <div class="bins five" id="clbins"></div>
-      <p class="fb" id="clres"></p>
-    </article>
-    <span class="pageno">012</span>
-  </div>
-</article>
-
-<article class="spread rtl" id="flujo" data-title="Del diario a los estados">
-  <div class="leaf solid ox">
-    <p class="kicker">El recorrido</p>
-    <p class="num">06</p>
-    <h2>Del diario a los estados</h2>
-    <p class="pullq">Si la balanza cuadra, aún puede haber un error de sentido, como una Caja acreedora.</p>
-    <span class="pageno">013</span>
-  </div>
-  <div class="leaf paper">
-    <p class="folio"><span>06 · El recorrido</span><span>Contabilidad con manzanas</span></p>
-    <article class="card blue">
-      <h3>Del diario a los estados</h3>
-      <div class="flow">
-        <div class="fstep"><b>Libro diario</b><span>Asientos en orden: fecha, cuentas, cargos y abonos, y una breve explicación.</span><div class="ftip">Es la bitácora del día en el puesto.</div></div>
-        <div class="farrow">↓</div>
-        <div class="fstep"><b>Libro mayor (cuentas T)</b><span>Se pasa cada movimiento a su cuenta. Ahí se ve el saldo.</span><div class="ftip">Un cajón por cuenta: Caja, Bancos, Inventarios…</div></div>
-        <div class="farrow">↓</div>
-        <div class="fstep"><b>Balanza de comprobación</b><span>Lista de saldos. La suma deudora debe ser igual a la suma acreedora.</span><div class="ftip">Si no cuadra, hay un error de suma o de lado. Si cuadra, aún puede haber un error de sentido, como una Caja acreedora.</div></div>
-        <div class="farrow">↓</div>
-        <div class="fstep"><b>Estado de resultado integral</b><span>Ingresos, costos, gastos y utilidad o pérdida del periodo. Lo regula la <span class="hl-art">NIF B-3</span>.</span><div class="ftip">¿El puesto ganó este periodo?</div></div>
-        <div class="farrow">↓</div>
-        <div class="fstep"><b>Estado de situación financiera</b><span>Activo, pasivo y capital en una fecha. Lo regula la <span class="hl-art">NIF B-6</span>. Debe cumplir A = P + C.</span><div class="ftip">La foto del puesto al cierre.</div></div>
-      </div>
-      <button type="button" class="act lt" data-mark="m1">Marcar esta sección como lista</button>
-    </article>
-    <span class="pageno">014</span>
-  </div>
-</article>
-
-<article class="spread" id="nif" data-title="Las NIF">
-  <div class="leaf solid yel">
-    <p class="kicker">Normas del CINIF</p>
-    <p class="num">07</p>
-    <h2>Las NIF que sí aplican aquí</h2>
-    <p>Solo se citan normas con título oficial comprobado. No se inventan números de párrafo.</p>
-    <span class="pageno">015</span>
-  </div>
-  <div class="leaf paper">
-    <p class="folio"><span>Contabilidad con manzanas</span><span>07 · Las NIF</span></p>
-    <p class="sub">Solo se citan normas con título oficial comprobado en fuentes del CINIF y en el índice de la edición NIF 2026 (vigentes al 1.º de enero de 2026). No se inventan números de párrafo. El CINIF es el Consejo Mexicano de Normas de Información Financiera y de Sostenibilidad, A.C., responsable de emitir las NIF en México.</p>
-    <div id="niflist"></div>
-    <article class="card">
-      <h3>Cada cuenta del ejercicio, con su NIF</h3>
-      <div id="nifmap"></div>
-      <p class="sidenote">Fuentes de los títulos: CINIF, <em>Listado de normas promulgadas a 2024</em> (cinif.org.mx); CINIF, Libro electrónico NIF 2026; índice de la edición profesional NIF 2026 del IMCP y de Contenido Fiscal.</p>
-      <button type="button" class="act lt" data-mark="nif">Marcar las NIF como listas</button>
-    </article>
-    <span class="pageno">016</span>
-  </div>
-</article>
-
-<article class="spread" id="ejercicio" data-title="El ejercicio">
-  <div class="leaf bleed">
-    <img class="full" src="foto-cajas.webp" alt="Puesto de mercado con manzanas, canastos, caja y báscula">
-    <p class="caption">Puesto de mercado con fruta, canastos y caja. Foto de Fortepan, donante Konok Tamás, vía Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</p>
-  </div>
-  <div class="leaf paper">
-    <p class="folio"><span>Contabilidad con manzanas</span><span>08 · El ejercicio</span></p>
-    <div class="secband esp"><span class="n">08</span><span>Distribuidora del Valle</span></div>
-    <p class="kicker">Distribuidora del Valle, S.A. de C.V.</p>
-    <h2>El ejercicio, asiento por asiento</h2>
-    <p class="sub">Quince operaciones. El libro diario del documento ya viene resuelto; aquí se copia con ortografía cuidada, se anima el “puesto” y se explica cada movimiento. Las cifras las volvimos a sumar.</p>
-    <label class="card" style="display:flex;gap:10px;align-items:flex-start;cursor:pointer">
-      <input type="checkbox" id="fixdep" style="margin-top:6px;width:20px;height:20px">
-      <span><b>Ver la corrección de la operación 2</b> (depositar $50,000, que es lo que había en Caja, en lugar de $60,000). El resto de las operaciones no se toca. Es un “qué pasaría si el enunciado tiene un error de cifra”, no un dato del documento.</span>
-    </label>
-    <div id="opbox" class="card"></div>
-    <span class="pageno">018</span>
-  </div>
-</article>
-
-<article class="spread rtl" id="errores" data-title="Errores y estados">
-  <div class="leaf solid yel">
-    <p class="kicker">Ojo</p>
-    <p class="num">09</p>
-    <h2>Errores y omisiones del ejercicio</h2>
-    <p class="pullq">Un saldo acreedor en efectivo no es razonable: no se puede “deber” dinero en el cajón.</p>
-    <span class="pageno">019</span>
-  </div>
-  <div class="leaf paper">
-    <p class="folio"><span>09 · Errores y estados</span><span>Contabilidad con manzanas</span></p>
-    <div class="ojo" id="errores-box">
-      <h3>Ojo: errores y omisiones del ejercicio</h3>
-      <p>El libro cuadra, y aun así hay tres puntos que conviene mirar con calma. No son un reproche al planteamiento: son trampas típicas de examen y de la práctica.</p>
-      <ol>
-        <li><b>La operación 2 deja la Caja en saldo acreedor.</b> Después de la operación 1 hay $50,000 en Caja. El asiento deposita $60,000. Caja queda en $10,000 acreedor en ese momento y cierra el ejercicio en <span class="hl-trap">$5,200 acreedor</span>. Un saldo acreedor en efectivo no es razonable: no se puede “deber” dinero en el cajón. Lo más probable es un error de cifra (por ejemplo, que el depósito debiera ser de $50,000 o de otro importe que no rebase el efectivo disponible). Si se corriera el depósito a $50,000, Caja cerraría en $4,800 deudor y Bancos en $114,000 − $10,000 = $104,000 deudor. El total de activo no cambiaría, porque solo se mueve efectivo de un lado a otro.</li>
-        <li><b>La venta de la operación 9 no da de baja el inventario.</b> El ejercicio usa la cuenta <span class="hl-art">Inventarios</span>, propia de un sistema perpetuo, pero solo registra <em>Caja por $18,000 / Ventas por $18,000</em>. Falta, cuando se conoce el costo, el asiento <em>Costo de ventas / Inventarios</em> (NIF C-4 y, en su caso, NIF D-2). Como el costo no se indica, <span class="hl-trap">la utilidad de $15,800 está sobreestimada</span> y el inventario se queda en $25,000 como si no se hubiera vendido nada.</li>
-        <li><b>No hay IVA.</b> En un primer curso es una simplificación aceptable. En la operación real de una S.A. de C.V. habría que analizar el IVA trasladado en ventas y servicios y el IVA acreditable en compras y gastos, cuando proceda. Aquí no se inventan esas cuotas.</li>
-      </ol>
-    </div>
-    <article class="card" id="estados">
-      <h3>Cuentas T del mayor</h3>
-      <div id="taccs"></div>
-      <h3>Balanza de comprobación</h3>
-      <div id="balanza"></div>
-      <h3>Estado de resultado integral</h3>
-      <div id="eri"></div>
-      <h3>Estado de situación financiera</h3>
-      <div id="esf"></div>
-    </article>
-    <span class="pageno">020</span>
-  </div>
-</article>
-
-<article class="spread" id="practica" data-title="Práctica">
-  <div class="leaf solid ox">
-    <p class="kicker">A practicar</p>
-    <p class="num">10</p>
-    <h2>Asientos, tarjetas y un mini examen</h2>
-    <p class="pullq">Elige cuentas, lado e importe. La calificación es inmediata.</p>
-    <span class="pageno">021</span>
-  </div>
-  <div class="leaf paper">
-    <p class="folio"><span>Contabilidad con manzanas</span><span>10 · Práctica</span></p>
-    <article class="card">
-      <h3>Arma el asiento</h3>
-      <p class="sub">Elige cuentas, lado e importe. La calificación es inmediata.</p>
-      <div id="buildbox"></div>
-    </article>
-    <article class="card dark">
-      <h3>Tarjetas de repaso</h3>
-      <p class="sub">Toca la tarjeta para voltearla.</p>
-      <div class="deck-wrap"><div id="deck"></div><div class="deck-nav"><button type="button" class="act lt" id="dprev">Anterior</button><span id="dmeta"></span><button type="button" class="act lt" id="dnext">Siguiente</button></div></div>
-    </article>
-    <article class="card" id="examen">
-      <h3>Mini examen</h3>
-      <p class="sub">Quince preguntas, una por pantalla. Al final sale una calificación sobre 10. En el modo de estudio ves la explicación al responder.</p>
-      <div id="qzbox"></div>
-    </article>
-    <span class="pageno">022</span>
-  </div>
-</article>
-
-<article class="spread rtl" id="fuentes" data-title="Fuentes">
-  <div class="leaf solid esp">
-    <p class="kicker">Colofón</p>
-    <p class="num">11</p>
-    <h2>Fuentes y créditos</h2>
-    <p>Títulos de las NIF según el CINIF. Las fotos son de archivo libre, con su crédito en esta página.</p>
-    <span class="pageno">023</span>
-  </div>
-  <div class="leaf paper">
-    <p class="folio"><span>11 · Fuentes</span><span>Contabilidad con manzanas</span></p>
-    <article class="card">
-      <h3>Fuentes</h3>
-      <ul>
-        <li>CINIF. <em>Listado de normas promulgadas a 2024</em>. <a href="https://cinif.org.mx/files/NORMAS_2024.pdf">cinif.org.mx/files/NORMAS_2024.pdf</a></li>
-        <li>CINIF. Libro electrónico NIF 2026, vigentes al 1.º de enero de 2026. <a href="https://www.cinif.org.mx/normatividad_NIF2026.php">cinif.org.mx/normatividad_NIF2026.php</a></li>
-        <li>CINIF. Sitio institucional. <a href="https://www.cinif.org.mx/">cinif.org.mx</a></li>
-        <li>IMCP. NIF 2026, edición profesional (índice y nota sobre las NIF B-1 y B-3 con vigencia en 2028). <a href="https://tienda.imcp.org.mx/nif_2026_profesional_9786075633480">tienda.imcp.org.mx</a></li>
-        <li>Contenido Fiscal. Índice de la edición NIF 2026, versión profesional.</li>
-        <li>El planteamiento y el libro diario resuelto proceden del ejercicio “Distribuidora del Valle, S.A. de C.V.” (quince operaciones). Las sumas se volvieron a calcular aquí.</li>
-      </ul>
-    </article>
-    <article class="card">
-      <h3>Créditos de las fotografías</h3>
-      <ul class="credits">
-        <li>Portada: selección de manzanas en el mercado de Stroud. Foto de BazzaDaRambler, vía Wikimedia Commons. Licencia CC BY 2.0. Recorte y conversión a WebP.</li>
-        <li>Puesto de fruta en un mercado de Barcelona. Foto de Daderot, vía Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</li>
-        <li>Dos manzanas rojas. Foto de Paolo Neo, dominio público, vía Wikimedia Commons. Conversión a WebP.</li>
-        <li>Puesto de fruta con precios en Kingsway, Londres (15 de junio de 2023). Foto de Canadian2006, vía Wikimedia Commons. Licencia CC BY-SA 4.0. Recorte y conversión a WebP.</li>
-        <li>Libro de cuentas, páginas 64 y 65. Fotografía de Donald S. Erdman, Biodiversity Heritage Library, vía Wikimedia Commons. Sin restricciones de uso. Recorte y conversión a WebP.</li>
-        <li>Calculadora de bolsillo. Foto de Dimljacic, vía Wikimedia Commons. Licencia CC BY-SA 4.0. Recorte y conversión a WebP.</li>
-        <li>Puesto de mercado con fruta, canastos y caja. Foto de Fortepan, donante Konok Tamás, vía Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</li>
-      </ul>
-    </article>
-    <span class="pageno">024</span>
-  </div>
-</article>
+<section class="chap" id="fuentes">
+  <div class="secband esp"><span class="n">07</span><span>Fuentes y créditos</span></div>
+  <article class="card">
+    <h3>Fuentes</h3>
+    <ul>
+      <li>CINIF. <em>Listado de normas promulgadas a 2024</em>. <a href="https://cinif.org.mx/files/NORMAS_2024.pdf">cinif.org.mx/files/NORMAS_2024.pdf</a></li>
+      <li>CINIF. Libro electrónico NIF 2026, vigentes al 1.º de enero de 2026. <a href="https://www.cinif.org.mx/normatividad_NIF2026.php">cinif.org.mx/normatividad_NIF2026.php</a></li>
+      <li>CINIF. Sitio institucional. <a href="https://www.cinif.org.mx/">cinif.org.mx</a></li>
+      <li>IMCP. NIF 2026, edición profesional (índice y nota sobre las NIF B-1 y B-3 con vigencia en 2028). <a href="https://tienda.imcp.org.mx/nif_2026_profesional_9786075633480">tienda.imcp.org.mx</a></li>
+      <li>Contenido Fiscal. Índice de la edición NIF 2026, versión profesional.</li>
+      <li>El planteamiento y el libro diario resuelto de las quince operaciones proceden del ejercicio “Distribuidora del Valle, S.A. de C.V.”. Las sumas se volvieron a calcular aquí. El puesto de manzanas es un ejemplo didáctico, con cifras propias, para aprender el método antes del ejercicio.</li>
+    </ul>
+  </article>
+  <article class="card">
+    <h3>Créditos de las fotografías</h3>
+    <ul class="credits">
+      <li>Portada: selección de manzanas en el mercado de Stroud. Foto de BazzaDaRambler, vía Wikimedia Commons. Licencia CC BY 2.0. Recorte y conversión a WebP.</li>
+      <li>Puesto de fruta en un mercado de Barcelona. Foto de Daderot, vía Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</li>
+      <li>Dos manzanas rojas. Foto de Paolo Neo, dominio público, vía Wikimedia Commons. Conversión a WebP.</li>
+      <li>Libro de cuentas, páginas 64 y 65. Fotografía de Donald S. Erdman, Biodiversity Heritage Library, vía Wikimedia Commons. Sin restricciones de uso. Recorte y conversión a WebP.</li>
+      <li>Puesto de mercado con fruta, canastos y caja. Foto de Fortepan, donante Konok Tamás, vía Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</li>
+      <li>Calculadora de bolsillo. Foto de Dimljacic, vía Wikimedia Commons. Licencia CC BY-SA 4.0. Recorte y conversión a WebP.</li>
+    </ul>
+  </article>
+</section>
 
 </div>
 
@@ -601,58 +424,14 @@ table.grid .warn{color:var(--no);font-weight:650}
 </nav>
 
 <script>
-const LS='cm-v1';
-const fmt=n=>Number(n).toLocaleString('es-MX',{minimumFractionDigits:0,maximumFractionDigits:0});
-const money=n=>(n<0?'−':'')+'$'+fmt(Math.abs(n));
+const LS='cm-v2';
+const money=n=>{
+  const v=Number(n);
+  const s=Math.abs(v).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  return (v<0?'−':'')+'$'+s;
+};
 
-const OPS=[
-{n:1,t:'Los socios aportan $50,000 en efectivo y $50,000 por transferencia bancaria para iniciar operaciones.',manz:'Dos socias abren el puesto de manzanas. Cada una “pone fruta en la canasta”: $50,000 quedan en la caja del puesto y $50,000 se van al banco. El puesto ahora tiene $100,000, y ese dinero es de ellas (capital social). No se debe nada a nadie.',
- e:[['Caja',50000,'d'],['Bancos',50000,'d'],['Capital social',100000,'a']],
- nif:'La aportación de los socios aumenta el efectivo (NIF C-1) y el capital contable (NIF C-11).'},
-{n:2,t:'Se depositan $60,000 del efectivo en una cuenta bancaria de la empresa.',manz:'Quieren guardar las monedas del cajón en el banco. El problema: en el cajón solo hay $50,000 (la operación 1). Si depositan $60,000, el cajón queda “en negativo”. Eso no puede pasar con dinero en efectivo. Lo más probable es un error de cifra en el enunciado.',
- e:[['Bancos',60000,'d'],['Caja',60000,'a']],
- nif:'Sigue siendo efectivo y equivalentes: solo cambia de Caja a Bancos (NIF C-1).',warn:true},
-{n:3,t:'Se compran mercancías por $15,000 y se pagan con transferencia bancaria.',manz:'El puesto compra $15,000 de manzanas para vender. Paga con el banco. Entran manzanas al inventario y sale dinero de Bancos. Como usa la cuenta Inventarios (y no “Compras”), está trabajando con inventario perpetuo.',
- e:[['Inventarios',15000,'d'],['Bancos',15000,'a']],
- nif:'Las mercancías se reconocen como inventarios (NIF C-4). La salida es de efectivo (NIF C-1).'},
-{n:4,t:'Se compraron escritorios y sillas de oficina por $8,000, pagados en efectivo.',manz:'No son manzanas para vender: son la mesa y las sillas del puesto. Son herramientas que duran varios periodos (propiedades, planta y equipo), no mercancía.',
- e:[['Mobiliario y equipo de oficina',8000,'d'],['Caja',8000,'a']],
- nif:'Escritorios y sillas son propiedades, planta y equipo (NIF C-6), no inventarios (NIF C-4).'},
-{n:5,t:'Se adquiere equipo de cómputo por $12,000 a crédito.',manz:'Compran una computadora y todavía no la pagan. El puesto ya tiene el equipo (activo) y le debe $12,000 a quien se lo vendió (pasivo). Como no es el proveedor de las manzanas, el ejercicio lo llama acreedores diversos.',
- e:[['Equipo de cómputo',12000,'d'],['Acreedores diversos',12000,'a']],
- nif:'El equipo de cómputo es propiedades, planta y equipo (NIF C-6). La deuda es un instrumento financiero por pagar (NIF C-19).'},
-{n:6,t:'Se compran mercancías por $10,000 a crédito con un proveedor.',manz:'Llegan más manzanas, ahora a crédito. El inventario crece y aparece una deuda con el proveedor de la mercancía.',
- e:[['Inventarios',10000,'d'],['Proveedores',10000,'a']],
- nif:'Inventarios (NIF C-4) y la cuenta por pagar al proveedor (NIF C-19).'},
-{n:7,t:'Se pagan $4,000 por transferencia bancaria para disminuir la deuda con el proveedor de mercancías.',manz:'Le pagan una parte al proveedor de las manzanas. Baja la deuda y baja el banco. No se compran más manzanas: solo se liquida una parte de lo que ya se debía.',
- e:[['Proveedores',4000,'d'],['Bancos',4000,'a']],
- nif:'Se disminuye un instrumento financiero por pagar (NIF C-19) con efectivo (NIF C-1).'},
-{n:8,t:'Se obtiene un préstamo bancario por $20,000, que se deposita en la cuenta de la empresa.',manz:'El banco les presta $20,000. Entra dinero al puesto, pero no es ganancia: es una deuda. Más manzanas en la caja del banco, y una promesa de devolverlas.',
- e:[['Bancos',20000,'d'],['Acreedores bancarios',20000,'a']],
- nif:'Entra efectivo (NIF C-1) y nace un pasivo financiero (NIF C-19). No es un ingreso (NIF D-1).'},
-{n:9,t:'Se vende mercancía por $18,000 y el cliente paga en efectivo.',manz:'Venden manzanas por $18,000 y el cliente paga al momento. Entra dinero a Caja y se reconoce un ingreso por ventas. Ojo: si el inventario es perpetuo, también debería salir el costo de esas manzanas del inventario. El ejercicio no da el costo, así que ese segundo asiento no se puede registrar.',
- e:[['Caja',18000,'d'],['Ventas',18000,'a']],
- nif:'El ingreso por la venta de mercancías se trata en la NIF D-1. El costo de lo vendido, si se conociera, se trataría con la NIF C-4 y la NIF D-2.',warn:true},
-{n:10,t:'Se prestan servicios administrativos a un cliente por $6,000, quien paga con transferencia bancaria.',manz:'Además de vender manzanas, el puesto ayuda a otro negocio con un servicio y cobra $6,000. No sale inventario: se vende un servicio, no fruta.',
- e:[['Bancos',6000,'d'],['Ingresos por servicios',6000,'a']],
- nif:'Es un ingreso por un contrato con un cliente (NIF D-1).'},
-{n:11,t:'Se pagan $3,000 en efectivo por concepto de renta del local.',manz:'Pagan la renta del lugar donde está el puesto. Sale dinero de Caja y nace un gasto. No es un adelanto de muchos meses ni se analiza aquí el contrato completo de arrendamiento: el ejercicio lo trata como gasto del periodo.',
- e:[['Gastos de administración: renta',3000,'d'],['Caja',3000,'a']],
- nif:'En este ejercicio se registra como gasto del periodo, que se presenta en el estado de resultado integral (NIF B-3). Si hubiera un contrato de arrendamiento, su análisis completo corresponde a la NIF D-5.'},
-{n:12,t:'Se pagan $2,000 por transferencia bancaria por concepto de sueldos.',manz:'Les pagan a quienes atienden el puesto. Sale dinero del banco y se reconoce un gasto de sueldos.',
- e:[['Gastos de administración: sueldos',2000,'d'],['Bancos',2000,'a']],
- nif:'Los sueldos son beneficios a los empleados (NIF D-3).'},
-{n:13,t:'Se pagan $1,500 en efectivo por concepto de publicidad.',manz:'Pagan un anuncio para que la gente se acerque al puesto. Es un gasto de venta: está ligado a vender, no a la oficina.',
- e:[['Gastos de venta: publicidad',1500,'d'],['Caja',1500,'a']],
- nif:'Es un gasto del periodo. Se presenta en el estado de resultado integral (NIF B-3). No hay una NIF particular solo para publicidad.'},
-{n:14,t:'Se compraron artículos de papelería por $700 en efectivo.',manz:'Compran papel, plumas y notas para la operación diaria. El ejercicio lo manda de una vez al gasto de administración, como material que se consume en el periodo.',
- e:[['Gastos de administración: papelería',700,'d'],['Caja',700,'a']],
- nif:'El ejercicio lo trata como gasto del periodo (NIF B-3, presentación). No se inventa aquí otra clasificación.'},
-{n:15,t:'Se pagan $1,000 mediante transferencia por concepto de luz.',manz:'Llega el recibo de la luz del local y lo pagan por transferencia. Otro gasto de administración.',
- e:[['Gastos de administración: luz',1000,'d'],['Bancos',1000,'a']],
- nif:'Gasto del periodo, que se presenta en el estado de resultado integral (NIF B-3).'}
-];
-
+/* Catálogo de cuentas: tipo a=activo p=pasivo c=capital i=ingreso g=gasto */
 const CUENTAS={
 'Caja':{tipo:'a',nif:'NIF C-1',nat:'deudor'},
 'Bancos':{tipo:'a',nif:'NIF C-1',nat:'deudor'},
@@ -665,6 +444,7 @@ const CUENTAS={
 'Capital social':{tipo:'c',nif:'NIF C-11',nat:'acreedor'},
 'Ventas':{tipo:'i',nif:'NIF D-1',nat:'acreedor'},
 'Ingresos por servicios':{tipo:'i',nif:'NIF D-1',nat:'acreedor'},
+'Costo de ventas':{tipo:'g',nif:'NIF C-4 y NIF D-2',nat:'deudor'},
 'Gastos de administración: renta':{tipo:'g',nif:'NIF B-3 / NIF D-5',nat:'deudor'},
 'Gastos de administración: sueldos':{tipo:'g',nif:'NIF D-3',nat:'deudor'},
 'Gastos de venta: publicidad':{tipo:'g',nif:'NIF B-3',nat:'deudor'},
@@ -672,75 +452,211 @@ const CUENTAS={
 'Gastos de administración: luz':{tipo:'g',nif:'NIF B-3',nat:'deudor'}
 };
 
+/* Ejemplo didáctico: puesto de manzanas. Todas las cifras se verificaron con un script. */
+const STAND=[
+{n:1,tit:'Aportación de las socias',
+ t:'Dos socias abren un puesto de manzanas. Una aporta $8,000.00 en efectivo, que entra a la caja. La otra aporta $12,000.00 por transferencia a la cuenta del banco.',
+ calc:['Efectivo que entra a Caja: $8,000.00.','Efectivo que entra a Bancos: $12,000.00.','Capital social: $8,000.00 + $12,000.00 = $20,000.00.'],
+ moves:[
+  ['Caja','Sube $8,000.00','Cargo','Es un activo de naturaleza deudora. Al entrar dinero, aumenta con un cargo.'],
+  ['Bancos','Sube $12,000.00','Cargo','También es un activo (NIF C-1). Al entrar el depósito, aumenta con un cargo.'],
+  ['Capital social','Sube $20,000.00','Abono','Es capital de naturaleza acreedora. La aportación de las socias aumenta con un abono.']
+ ],
+ e:[['Caja',8000,'d'],['Bancos',12000,'d'],['Capital social',20000,'a']],
+ nif:'La aportación aumenta el efectivo (NIF C-1) y el capital contable (NIF C-11).'},
+{n:2,tit:'Compra de manzanas al contado',
+ t:'El puesto compra 100 manzanas a $10.00 cada una y paga con la cuenta del banco.',
+ calc:['100 manzanas × $10.00 = $1,000.00.','Ese $1,000.00 entra al inventario y sale de Bancos.'],
+ moves:[
+  ['Inventarios','Sube $1,000.00','Cargo','Es un activo de naturaleza deudora (NIF C-4). Al comprar mercancía, aumenta con un cargo.'],
+  ['Bancos','Baja $1,000.00','Abono','Es un activo. Al salir dinero, disminuye con un abono.']
+ ],
+ e:[['Inventarios',1000,'d'],['Bancos',1000,'a']],
+ nif:'Las manzanas para vender se reconocen como inventarios (NIF C-4). La salida es de efectivo (NIF C-1).'},
+{n:3,tit:'Compra de manzanas a crédito',
+ t:'El puesto compra 200 manzanas a $10.00 cada una, a crédito, con un proveedor.',
+ calc:['200 manzanas × $10.00 = $2,000.00.','Inventario después de esta compra: 100 + 200 = 300 manzanas × $10.00 = $3,000.00.','Aún no se paga: nace una deuda con el proveedor por $2,000.00.'],
+ moves:[
+  ['Inventarios','Sube $2,000.00','Cargo','El activo Inventarios aumenta con un cargo.'],
+  ['Proveedores','Sube $2,000.00','Abono','Es un pasivo de naturaleza acreedora (NIF C-19). Al nacer la deuda, aumenta con un abono.']
+ ],
+ e:[['Inventarios',2000,'d'],['Proveedores',2000,'a']],
+ nif:'Inventarios (NIF C-4) y la cuenta por pagar al proveedor (NIF C-19).'},
+{n:4,tit:'Venta de manzanas, con su costo',
+ t:'El puesto vende 150 manzanas a $16.00 cada una. El cliente paga en efectivo. Cada manzana costó $10.00, así que también se da de baja el inventario.',
+ calc:['Venta: 150 manzanas × $16.00 = $2,400.00. Ese dinero entra a Caja.','Costo de lo vendido: 150 manzanas × $10.00 = $1,500.00. Esa cantidad sale de Inventarios.','Manzanas que quedan: 300 − 150 = 150, valuadas a $10.00 = $1,500.00.','Utilidad bruta de esta venta: $2,400.00 − $1,500.00 = $900.00.'],
+ moves:[
+  ['Caja','Sube $2,400.00','Cargo','Entra efectivo: el activo Caja aumenta con un cargo.'],
+  ['Ventas','Sube $2,400.00','Abono','Es un ingreso de naturaleza acreedora (NIF D-1). Aumenta con un abono.'],
+  ['Costo de ventas','Sube $1,500.00','Cargo','Es un gasto (costo) de naturaleza deudora. Aumenta con un cargo.'],
+  ['Inventarios','Baja $1,500.00','Abono','Sale mercancía: el activo Inventarios disminuye con un abono.']
+ ],
+ e:[['Caja',2400,'d'],['Ventas',2400,'a'],['Costo de ventas',1500,'d'],['Inventarios',1500,'a']],
+ two:true,
+ nif:'El ingreso se trata en la NIF D-1. El costo de lo vendido se trata con la NIF C-4 y, en su caso, la NIF D-2.'},
+{n:5,tit:'Pago de la renta',
+ t:'El puesto paga $300.00 de renta del local, en efectivo, por caja.',
+ calc:['Renta del periodo: $300.00.','Caja después del pago: $10,400.00 − $300.00 = $10,100.00.'],
+ moves:[
+  ['Gastos de administración: renta','Sube $300.00','Cargo','El gasto aumenta con un cargo. Se presenta en el estado de resultado integral (NIF B-3).'],
+  ['Caja','Baja $300.00','Abono','Sale efectivo: el activo Caja disminuye con un abono.']
+ ],
+ e:[['Gastos de administración: renta',300,'d'],['Caja',300,'a']],
+ nif:'En este ejemplo la renta se registra como gasto del periodo (NIF B-3). Si hubiera un contrato de arrendamiento, su análisis completo corresponde a la NIF D-5.'},
+{n:6,tit:'Préstamo bancario',
+ t:'El banco presta $3,000.00 al puesto y deposita esa cantidad en la cuenta.',
+ calc:['Entra a Bancos: $3,000.00.','Nace una deuda (Acreedores bancarios) por $3,000.00.','No es una venta ni una ganancia: es un pasivo.'],
+ moves:[
+  ['Bancos','Sube $3,000.00','Cargo','Entra efectivo: el activo Bancos aumenta con un cargo.'],
+  ['Acreedores bancarios','Sube $3,000.00','Abono','Es un pasivo de naturaleza acreedora (NIF C-19). La deuda aumenta con un abono.']
+ ],
+ e:[['Bancos',3000,'d'],['Acreedores bancarios',3000,'a']],
+ nif:'Entra efectivo (NIF C-1) y nace un pasivo financiero (NIF C-19). No es un ingreso (NIF D-1).'},
+{n:7,tit:'Pago al proveedor',
+ t:'El puesto paga $1,500.00 al proveedor, por transferencia bancaria. No compra más manzanas: solo liquida una parte de la deuda de $2,000.00.',
+ calc:['Pago: $1,500.00.','Deuda que queda con el proveedor: $2,000.00 − $1,500.00 = $500.00.','Bancos después del pago: $14,000.00 − $1,500.00 = $12,500.00.'],
+ moves:[
+  ['Proveedores','Baja $1,500.00','Cargo','El pasivo disminuye con un cargo.'],
+  ['Bancos','Baja $1,500.00','Abono','Sale efectivo: el activo Bancos disminuye con un abono.']
+ ],
+ e:[['Proveedores',1500,'d'],['Bancos',1500,'a']],
+ nif:'Se disminuye un instrumento financiero por pagar (NIF C-19) con efectivo (NIF C-1).'}
+];
+
+/* Ejercicio: Distribuidora del Valle, S.A. de C.V. Cifras del documento, escritas en formato $X,XXX.00. */
+const OPS=[
+{n:1,t:'Los socios aportan $50,000.00 en efectivo y $50,000.00 por transferencia bancaria para iniciar operaciones.',
+ calc:['Caja recibe $50,000.00.','Bancos recibe $50,000.00.','Capital social: $50,000.00 + $50,000.00 = $100,000.00.'],
+ e:[['Caja',50000,'d'],['Bancos',50000,'d'],['Capital social',100000,'a']],
+ nif:'La aportación de los socios aumenta el efectivo (NIF C-1) y el capital contable (NIF C-11).'},
+{n:2,t:'Se depositan $60,000.00 del efectivo en una cuenta bancaria de la empresa.',
+ calc:['El asiento mueve $60,000.00 de Caja a Bancos.','Después de la operación 1, Caja solo tenía $50,000.00.','Cálculo: $50,000.00 menos $60,000.00 = −$10,000.00.','Caja queda acreedora. Eso no es razonable en efectivo.'],
+ e:[['Bancos',60000,'d'],['Caja',60000,'a']],
+ nif:'Sigue siendo efectivo y equivalentes: solo cambia de Caja a Bancos (NIF C-1).',warn:true},
+{n:3,t:'Se compran mercancías por $15,000.00 y se pagan con transferencia bancaria.',
+ calc:['Inventarios sube $15,000.00.','Bancos baja $15,000.00.'],
+ e:[['Inventarios',15000,'d'],['Bancos',15000,'a']],
+ nif:'Las mercancías se reconocen como inventarios (NIF C-4). La salida es de efectivo (NIF C-1).'},
+{n:4,t:'Se compraron escritorios y sillas de oficina por $8,000.00, pagados en efectivo.',
+ calc:['Mobiliario y equipo de oficina sube $8,000.00.','Caja baja $8,000.00. No es mercancía para vender.'],
+ e:[['Mobiliario y equipo de oficina',8000,'d'],['Caja',8000,'a']],
+ nif:'Escritorios y sillas son propiedades, planta y equipo (NIF C-6), no inventarios (NIF C-4).'},
+{n:5,t:'Se adquiere equipo de cómputo por $12,000.00 a crédito.',
+ calc:['Equipo de cómputo sube $12,000.00.','Acreedores diversos sube $12,000.00. Todavía no se paga.'],
+ e:[['Equipo de cómputo',12000,'d'],['Acreedores diversos',12000,'a']],
+ nif:'El equipo de cómputo es propiedades, planta y equipo (NIF C-6). La deuda es un instrumento financiero por pagar (NIF C-19).'},
+{n:6,t:'Se compran mercancías por $10,000.00 a crédito con un proveedor.',
+ calc:['Inventarios sube $10,000.00.','Proveedores sube $10,000.00.'],
+ e:[['Inventarios',10000,'d'],['Proveedores',10000,'a']],
+ nif:'Inventarios (NIF C-4) y la cuenta por pagar al proveedor (NIF C-19).'},
+{n:7,t:'Se pagan $4,000.00 por transferencia bancaria para disminuir la deuda con el proveedor de mercancías.',
+ calc:['Proveedores baja $4,000.00: $10,000.00 − $4,000.00 = $6,000.00 que siguen debiendo.','Bancos baja $4,000.00.'],
+ e:[['Proveedores',4000,'d'],['Bancos',4000,'a']],
+ nif:'Se disminuye un instrumento financiero por pagar (NIF C-19) con efectivo (NIF C-1).'},
+{n:8,t:'Se obtiene un préstamo bancario por $20,000.00, que se deposita en la cuenta de la empresa.',
+ calc:['Bancos sube $20,000.00.','Acreedores bancarios sube $20,000.00. No es un ingreso.'],
+ e:[['Bancos',20000,'d'],['Acreedores bancarios',20000,'a']],
+ nif:'Entra efectivo (NIF C-1) y nace un pasivo financiero (NIF C-19). No es un ingreso (NIF D-1).'},
+{n:9,t:'Se vende mercancía por $18,000.00 y el cliente paga en efectivo.',
+ calc:['Caja sube $18,000.00.','Ventas sube $18,000.00.','El ejercicio no indica el costo de esa mercancía, así que no se puede registrar Costo de ventas ni dar de baja el inventario.'],
+ e:[['Caja',18000,'d'],['Ventas',18000,'a']],
+ nif:'El ingreso por la venta de mercancías se trata en la NIF D-1. El costo de lo vendido, si se conociera, se trataría con la NIF C-4 y la NIF D-2.',warn:true},
+{n:10,t:'Se prestan servicios administrativos a un cliente por $6,000.00, quien paga con transferencia bancaria.',
+ calc:['Bancos sube $6,000.00.','Ingresos por servicios sube $6,000.00. No sale inventario: se vende un servicio, no mercancía.'],
+ e:[['Bancos',6000,'d'],['Ingresos por servicios',6000,'a']],
+ nif:'Es un ingreso por un contrato con un cliente (NIF D-1).'},
+{n:11,t:'Se pagan $3,000.00 en efectivo por concepto de renta del local.',
+ calc:['Gastos de administración: renta sube $3,000.00.','Caja baja $3,000.00.'],
+ e:[['Gastos de administración: renta',3000,'d'],['Caja',3000,'a']],
+ nif:'En este ejercicio se registra como gasto del periodo, que se presenta en el estado de resultado integral (NIF B-3). Si hubiera un contrato de arrendamiento, su análisis completo corresponde a la NIF D-5.'},
+{n:12,t:'Se pagan $2,000.00 por transferencia bancaria por concepto de sueldos.',
+ calc:['Gastos de administración: sueldos sube $2,000.00.','Bancos baja $2,000.00.'],
+ e:[['Gastos de administración: sueldos',2000,'d'],['Bancos',2000,'a']],
+ nif:'Los sueldos son beneficios a los empleados (NIF D-3).'},
+{n:13,t:'Se pagan $1,500.00 en efectivo por concepto de publicidad.',
+ calc:['Gastos de venta: publicidad sube $1,500.00.','Caja baja $1,500.00.'],
+ e:[['Gastos de venta: publicidad',1500,'d'],['Caja',1500,'a']],
+ nif:'Es un gasto del periodo. Se presenta en el estado de resultado integral (NIF B-3). No hay una NIF particular solo para publicidad.'},
+{n:14,t:'Se compraron artículos de papelería por $700.00 en efectivo.',
+ calc:['Gastos de administración: papelería sube $700.00.','Caja baja $700.00. El ejercicio lo manda de una vez al gasto del periodo.'],
+ e:[['Gastos de administración: papelería',700,'d'],['Caja',700,'a']],
+ nif:'El ejercicio lo trata como gasto del periodo (NIF B-3, presentación). No se inventa aquí otra clasificación.'},
+{n:15,t:'Se pagan $1,000.00 mediante transferencia por concepto de luz.',
+ calc:['Gastos de administración: luz sube $1,000.00.','Bancos baja $1,000.00.'],
+ e:[['Gastos de administración: luz',1000,'d'],['Bancos',1000,'a']],
+ nif:'Gasto del periodo, que se presenta en el estado de resultado integral (NIF B-3).'}
+];
+
 const NIFS=[
-{id:'A-1',t:'NIF A-1, Marco Conceptual de las Normas de Información Financiera',uso:'Es el mapa mayor. Define qué son los estados financieros y los elementos: activo, pasivo, capital contable, ingresos y gastos. La ecuación A = P + C y la partida doble se entienden desde aquí.',src:'CINIF, Listado de normas promulgadas a 2024; índice de la edición NIF 2026 (vigentes al 1.º de enero de 2026).'},
-{id:'B-3',t:'NIF B-3, Estado de resultado integral',uso:'Dice cómo se presenta el desempeño del periodo: ingresos, costos, gastos y el resultado (utilidad o pérdida). Aquí armamos el de Distribuidora del Valle.',src:'CINIF, listado 2024 (vigente desde enero de 2013). La edición NIF 2026 del IMCP y de Contenido Fiscal incluye esta norma entre las vigentes al 1.º de enero de 2026. Esas mismas fuentes anuncian una nueva NIF B-3, con el mismo nombre, vigente a partir del 1 de enero de 2028, con opción de aplicación anticipada en 2027.',nota:'En 2026 sigue aplicando la NIF B-3 vigente. La nueva norma de 2028 no se usa en este ejercicio.'},
-{id:'B-6',t:'NIF B-6, Estado de situación financiera',uso:'Es la “foto” del puesto en una fecha: qué tiene (activo), qué debe (pasivo) y qué es de los socios (capital). Debe cumplir A = P + C.',src:'CINIF, listado 2024 (vigente desde enero de 2013); índice NIF 2026.'},
-{id:'C-1',t:'NIF C-1, Efectivo y equivalentes de efectivo',uso:'Cubre Caja y Bancos. El efectivo no puede quedar con saldo acreedor: eso señala un error en los registros.',src:'CINIF, listado 2024 (vigente desde enero de 2010); índice NIF 2026.'},
-{id:'C-4',t:'NIF C-4, Inventarios',uso:'Cubre las mercancías (las manzanas para vender). En inventario perpetuo, la cuenta Inventarios se actualiza en cada compra y, al vender, debería disminuirse por el costo de lo vendido.',src:'CINIF, listado 2024 (vigente desde enero de 2011); índice NIF 2026.'},
-{id:'C-6',t:'NIF C-6, Propiedades, planta y equipo',uso:'Cubre el mobiliario y el equipo de cómputo: bienes que se usan, no que se venden como mercancía.',src:'CINIF, listado 2024 (vigente desde enero de 2011); índice NIF 2026.'},
-{id:'C-11',t:'NIF C-11, Capital contable',uso:'Cubre el capital social y, después, la utilidad del periodo que se incorpora al capital.',src:'CINIF, listado 2024 (vigente desde enero de 2014); índice NIF 2026.'},
-{id:'C-19',t:'NIF C-19, Instrumentos financieros por pagar',uso:'Cubre las deudas del ejercicio: proveedores, acreedores diversos y acreedores bancarios.',src:'CINIF, listado 2024 (vigente desde enero de 2018); índice NIF 2026.'},
-{id:'D-1',t:'NIF D-1, Ingresos por contratos con clientes',uso:'Cubre las ventas de mercancías y los ingresos por servicios administrativos, cuando hay un contrato con un cliente.',src:'CINIF, listado 2024 y solicitud de información posterior a la implementación (vigente desde enero de 2018); índice NIF 2026.'},
-{id:'D-2',t:'NIF D-2, Costos por contratos con clientes',uso:'Se menciona porque, al vender mercancías, el costo de lo vendido debería reconocerse. El ejercicio no da ese costo.',src:'CINIF, listado 2024 (vigente desde enero de 2018); índice NIF 2026.'},
-{id:'D-3',t:'NIF D-3, Beneficios a los empleados',uso:'Cubre los sueldos del ejercicio.',src:'CINIF, listado 2024 (vigente desde enero de 2016); índice NIF 2026.'},
-{id:'D-5',t:'NIF D-5, Arrendamientos',uso:'Se menciona solo como referencia: un contrato de arrendamiento se analiza con esta norma. El ejercicio registra la renta como un gasto del periodo, sin datos del contrato.',src:'CINIF, listado 2024 (vigente desde enero de 2019); índice NIF 2026. El propio CINIF ofrece cursos sobre esta norma.'}
+{id:'A-1',t:'NIF A-1, Marco Conceptual de las Normas de Información Financiera',uso:'Es el marco general: define activo, pasivo, capital, ingresos y gastos, que es justo lo que usamos en la ecuación. En el puesto de manzanas, al cierre, $24,100.00 = $3,500.00 + $20,600.00.',src:'CINIF, Listado de normas promulgadas a 2024; índice de la edición NIF 2026 (vigentes al 1.º de enero de 2026).'},
+{id:'B-3',t:'NIF B-3, Estado de resultado integral',uso:'Dice cómo se presenta el desempeño del periodo. En el puesto: ventas $2,400.00 menos costo $1,500.00 menos renta $300.00 = utilidad de $600.00.',src:'CINIF, listado 2024 (vigente desde enero de 2013). La edición NIF 2026 del IMCP y de Contenido Fiscal incluye esta norma entre las vigentes al 1.º de enero de 2026. Esas mismas fuentes anuncian una nueva NIF B-3, con el mismo nombre, vigente a partir del 1 de enero de 2028, con opción de aplicación anticipada en 2027.',nota:'En 2026 sigue aplicando la NIF B-3 vigente. La nueva norma de 2028 no se usa en este ejercicio.'},
+{id:'B-6',t:'NIF B-6, Estado de situación financiera',uso:'Es la foto en una fecha: qué se tiene, qué se debe y qué es de las socias. En el puesto, el activo de $24,100.00 es igual al pasivo de $3,500.00 más el capital de $20,600.00.',src:'CINIF, listado 2024 (vigente desde enero de 2013); índice NIF 2026.'},
+{id:'C-1',t:'NIF C-1, Efectivo y equivalentes de efectivo',uso:'Cubre Caja y Bancos. En el puesto, al cierre, Caja tiene $10,100.00 y Bancos $12,500.00. En Distribuidora del Valle, Caja termina en $5,200.00 acreedor, y eso no es razonable.',src:'CINIF, listado 2024 (vigente desde enero de 2010); índice NIF 2026.'},
+{id:'C-4',t:'NIF C-4, Inventarios',uso:'Cubre las manzanas para vender. En el puesto se compraron 300 a $10.00 y se vendieron 150; quedan 150 × $10.00 = $1,500.00 en Inventarios.',src:'CINIF, listado 2024 (vigente desde enero de 2011); índice NIF 2026.'},
+{id:'C-6',t:'NIF C-6, Propiedades, planta y equipo',uso:'Cubre bienes que se usan, no que se venden como mercancía. En Distribuidora del Valle aparecen el mobiliario de $8,000.00 y el equipo de cómputo de $12,000.00.',src:'CINIF, listado 2024 (vigente desde enero de 2011); índice NIF 2026.'},
+{id:'C-11',t:'NIF C-11, Capital contable',uso:'Cubre el capital social y la utilidad del periodo. En el puesto: capital social $20,000.00 + utilidad $600.00 = $20,600.00.',src:'CINIF, listado 2024 (vigente desde enero de 2014); índice NIF 2026.'},
+{id:'C-19',t:'NIF C-19, Instrumentos financieros por pagar',uso:'Cubre las deudas. En el puesto, al cierre, se debe $500.00 al proveedor y $3,000.00 al banco.',src:'CINIF, listado 2024 (vigente desde enero de 2018); índice NIF 2026.'},
+{id:'D-1',t:'NIF D-1, Ingresos por contratos con clientes',uso:'Cubre las ventas y los servicios. En el puesto, la venta de 150 manzanas se reconoció por $2,400.00 en Ventas.',src:'CINIF, listado 2024 y solicitud de información posterior a la implementación (vigente desde enero de 2018); índice NIF 2026.'},
+{id:'D-2',t:'NIF D-2, Costos por contratos con clientes',uso:'Se menciona porque, al vender, hay que reconocer el costo. En el puesto sí se registró: 150 × $10.00 = $1,500.00. En la operación 9 de Distribuidora del Valle ese costo no viene.',src:'CINIF, listado 2024 (vigente desde enero de 2018); índice NIF 2026.'},
+{id:'D-3',t:'NIF D-3, Beneficios a los empleados',uso:'Cubre los sueldos. En Distribuidora del Valle se pagaron $2,000.00 de sueldos (operación 12).',src:'CINIF, listado 2024 (vigente desde enero de 2016); índice NIF 2026.'},
+{id:'D-5',t:'NIF D-5, Arrendamientos',uso:'Un contrato de arrendamiento se analiza con esta norma. En el puesto y en el ejercicio, la renta se registra como gasto del periodo ($300.00 y $3,000.00), porque no vienen datos del contrato.',src:'CINIF, listado 2024 (vigente desde enero de 2019); índice NIF 2026. El propio CINIF ofrece cursos sobre esta norma.'}
 ];
 
 const FLASH=[
-['¿Qué es la contabilidad, con manzanas?','Es el cuaderno del puesto: anota lo que entra, lo que sale y lo que se debe, para saber si de verdad se ganó o solo se movieron manzanas de un lado a otro.'],
-['Ecuación contable','Activo = Pasivo + Capital. Todo lo que el puesto tiene se financia con deudas o con lo que es de los socios.'],
-['Partida doble','Cada hecho se registra en por lo menos dos cuentas, y la suma de cargos es igual a la suma de abonos. Las manzanas no aparecen de la nada.'],
+['¿Cuál es la ecuación contable?','Activo = Pasivo + Capital. En el puesto, al cierre: $24,100.00 = $3,500.00 + $20,600.00.'],
+['Partida doble, con un número','Cada hecho se anota en por lo menos dos cuentas, y la suma de cargos es igual a la suma de abonos. Ejemplo: Inventarios $1,000.00 (cargo) y Bancos $1,000.00 (abono).'],
 ['¿Qué es un cargo?','Es la anotación del lado izquierdo de la cuenta T. En cuentas de activo y de gasto, el cargo aumenta el saldo.'],
 ['¿Qué es un abono?','Es la anotación del lado derecho. En cuentas de pasivo, capital e ingreso, el abono aumenta el saldo.'],
-['Saldo normal del activo','Deudor (más cargos que abonos). Caja o Inventarios “a la izquierda”.'],
-['Saldo normal del pasivo y del capital','Acreedor (más abonos que cargos).'],
-['Libro diario','Es la lista cronológica de los asientos: qué pasó, en qué cuentas y por cuánto.'],
-['Libro mayor','Reúne, cuenta por cuenta (en cuentas T), todos los movimientos del diario.'],
-['Balanza de comprobación','Lista de saldos del mayor. La suma de deudores debe ser igual a la suma de acreedores.'],
-['Estado de resultado integral','Presenta el desempeño del periodo. Lo regula la NIF B-3.'],
-['Estado de situación financiera','Presenta el activo, el pasivo y el capital en una fecha. Lo regula la NIF B-6. Debe cumplir A = P + C.'],
+['Compra de 100 manzanas a $10.00','100 × $10.00 = $1,000.00. Asiento: cargo a Inventarios $1,000.00 y abono a Bancos $1,000.00.'],
+['Saldo normal del activo','Deudor (más cargos que abonos). Ejemplo: Bancos, al cierre del puesto, $12,500.00 deudor.'],
+['Saldo normal del pasivo y del capital','Acreedor (más abonos que cargos). Ejemplo: Capital social $20,000.00 acreedor.'],
+['Venta con su costo, en cifras','150 manzanas × $16.00 = $2,400.00 de ventas. Costo: 150 × $10.00 = $1,500.00. Utilidad bruta: $900.00.'],
+['Libro diario','Es la lista cronológica de los asientos: qué pasó, en qué cuentas y por cuánto, en pesos.'],
+['Libro mayor','Reúne, cuenta por cuenta (en cuentas T), todos los movimientos del diario, y muestra el saldo.'],
+['Balanza de comprobación','Lista de saldos del mayor. En el puesto suma $25,900.00 en cada columna. En Distribuidora del Valle, $167,200.00 = $167,200.00.'],
+['Estado de resultado integral','Presenta ingresos, costos, gastos y el resultado. Lo regula la NIF B-3. En el puesto la utilidad es $600.00.'],
+['Estado de situación financiera','Presenta activo, pasivo y capital en una fecha. Lo regula la NIF B-6. Debe cumplir A = P + C.'],
 ['Caja y Bancos, ¿qué NIF?','NIF C-1, Efectivo y equivalentes de efectivo.'],
 ['Inventarios, ¿qué NIF?','NIF C-4, Inventarios.'],
 ['Mobiliario y equipo de cómputo, ¿qué NIF?','NIF C-6, Propiedades, planta y equipo.'],
 ['Proveedores y préstamos, ¿qué NIF?','NIF C-19, Instrumentos financieros por pagar.'],
 ['Ventas e ingresos por servicios, ¿qué NIF?','NIF D-1, Ingresos por contratos con clientes.'],
 ['Sueldos, ¿qué NIF?','NIF D-3, Beneficios a los empleados.'],
-['¿Por qué Caja no puede quedar acreedora?','El efectivo no se debe “de más”: un saldo acreedor en Caja indica un error, aquí el depósito de $60,000 cuando solo había $50,000.'],
-['¿Qué falta en la venta (operación 9)?','Con inventario perpetuo debería haber un segundo asiento: cargo a Costo de ventas y abono a Inventarios. El costo no viene en el ejercicio, así que la utilidad queda sobreestimada.']
+['¿Por qué Caja no puede quedar acreedora?','El efectivo no se “debe de más”. En la operación 2 de Distribuidora del Valle se depositan $60,000.00 y solo había $50,000.00: Caja queda en −$10,000.00.'],
+['¿Qué falta en la venta (operación 9)?','Un segundo asiento: cargo a Costo de ventas y abono a Inventarios. El costo no viene en el ejercicio, así que la utilidad de $15,800.00 queda sobreestimada.']
 ];
 
 const QUIZ=[
 {q:'La ecuación contable es…',o:['Activo = Pasivo − Capital','Activo = Pasivo + Capital','Activo + Pasivo = Capital','Activo = Ingresos − Gastos'],a:1,e:'Todo lo que se tiene se financia con deudas (pasivo) o con el capital de los socios.'},
 {q:'En una cuenta de activo, un cargo…',o:['Disminuye el saldo','Aumenta el saldo','Siempre es un error','Solo se usa al cierre'],a:1,e:'El activo tiene naturaleza deudora: crece del lado izquierdo (cargo).'},
-{q:'Al obtener un préstamo bancario que se deposita en la cuenta, el asiento es…',o:['Cargo a Acreedores bancarios y abono a Bancos','Cargo a Bancos y abono a Ventas','Cargo a Bancos y abono a Acreedores bancarios','Cargo a Capital social y abono a Bancos'],a:2,e:'Entra efectivo (cargo a Bancos) y nace una deuda (abono a Acreedores bancarios). No es un ingreso.'},
+{q:'Compras 100 manzanas a $10.00 cada una y pagas del banco. El asiento es…',o:['Cargo a Bancos $1,000.00 y abono a Inventarios $1,000.00','Cargo a Inventarios $1,000.00 y abono a Bancos $1,000.00','Cargo a Ventas $1,000.00 y abono a Bancos $1,000.00','Cargo a Inventarios $10.00 y abono a Bancos $10.00'],a:1,e:'100 × $10.00 = $1,000.00. Entra mercancía (cargo a Inventarios) y sale dinero (abono a Bancos).'},
+{q:'Al obtener un préstamo bancario de $3,000.00 que se deposita en la cuenta, el asiento es…',o:['Cargo a Acreedores bancarios y abono a Bancos','Cargo a Bancos y abono a Ventas','Cargo a Bancos $3,000.00 y abono a Acreedores bancarios $3,000.00','Cargo a Capital social y abono a Bancos'],a:2,e:'Entra efectivo (cargo a Bancos) y nace una deuda (abono a Acreedores bancarios). No es un ingreso.'},
+{q:'En el puesto de manzanas, la utilidad del periodo es…',o:['$2,400.00','$900.00','$600.00','$1,500.00'],a:2,e:'Ventas $2,400.00 − costo $1,500.00 − renta $300.00 = $600.00.'},
 {q:'Caja y Bancos se rigen por la…',o:['NIF C-4','NIF C-6','NIF C-1, Efectivo y equivalentes de efectivo','NIF D-1'],a:2,e:'Título oficial de la NIF C-1, según el listado del CINIF y el índice NIF 2026.'},
 {q:'Las mercancías para vender se reconocen con la…',o:['NIF C-4, Inventarios','NIF C-6, Propiedades, planta y equipo','NIF C-11','NIF A-2'],a:0,e:'No confundir con el mobiliario o el equipo de cómputo, que van en la NIF C-6.'},
-{q:'En el ejercicio, después de la operación 2, Caja queda en…',o:['$50,000 deudor','$10,000 deudor','$10,000 acreedor (imposible en efectivo)','Cero'],a:2,e:'Se depositan $60,000 y solo había $50,000 en Caja: 50,000 − 60,000 = 10,000 acreedor.'},
-{q:'El saldo final de Bancos, según el libro del ejercicio, es…',o:['$104,000 deudor','$114,000 deudor','$111,000 deudor','$50,000 deudor'],a:1,e:'50 + 60 − 15 − 4 + 20 + 6 − 2 − 1 = 114 (miles de pesos).'},
-{q:'La utilidad del ejercicio, tal como está registrado (sin costo de ventas), es…',o:['$24,000','$8,200','$15,800','$18,000'],a:2,e:'Ingresos 18,000 + 6,000 = 24,000, menos gastos 8,200 = 15,800. Está sobreestimada porque falta el costo de lo vendido.'},
-{q:'A = P + C, con los saldos del libro, queda…',o:['153,800 = 38,000 + 115,800','167,200 = 38,000 + 129,200','153,800 = 43,200 + 110,600','114,000 = 38,000 + 76,000'],a:0,e:'El activo incluye la Caja acreedora de 5,200, que reduce el total. El capital es 100,000 + utilidad 15,800.'},
+{q:'En el ejercicio, después de la operación 2, Caja queda en…',o:['$50,000.00 deudor','$10,000.00 deudor','−$10,000.00 (saldo acreedor, imposible en efectivo)','$0.00'],a:2,e:'Se depositan $60,000.00 y solo había $50,000.00 en Caja: $50,000.00 − $60,000.00 = −$10,000.00.'},
+{q:'El saldo final de Bancos, según el libro del ejercicio, es…',o:['$104,000.00 deudor','$114,000.00 deudor','$111,000.00 deudor','$50,000.00 deudor'],a:1,e:'$50,000.00 + $60,000.00 − $15,000.00 − $4,000.00 + $20,000.00 + $6,000.00 − $2,000.00 − $1,000.00 = $114,000.00.'},
+{q:'La utilidad del ejercicio, tal como está registrado (sin costo de ventas), es…',o:['$24,000.00','$8,200.00','$15,800.00','$18,000.00'],a:2,e:'Ingresos $18,000.00 + $6,000.00 = $24,000.00, menos gastos $8,200.00 = $15,800.00. Está sobreestimada porque falta el costo de lo vendido.'},
+{q:'A = P + C, con los saldos del libro, queda…',o:['$153,800.00 = $38,000.00 + $115,800.00','$167,200.00 = $38,000.00 + $129,200.00','$153,800.00 = $43,200.00 + $110,600.00','$114,000.00 = $38,000.00 + $76,000.00'],a:0,e:'El activo incluye la Caja acreedora de $5,200.00, que reduce el total. El capital es $100,000.00 + utilidad $15,800.00.'},
 {q:'¿Qué NIF cubre los sueldos?',o:['NIF D-1','NIF D-3, Beneficios a los empleados','NIF C-19','NIF B-6'],a:1,e:'Título oficial de la NIF D-3, según el CINIF.'},
-{q:'La venta de la operación 9, con inventario perpetuo, está incompleta porque…',o:['Falta el IVA en todos los casos','Falta cargo a Costo de ventas y abono a Inventarios, y no se da el costo','Debió abonarse a Capital social','Debió cargarse a Proveedores'],a:1,e:'El ejercicio reconoce el ingreso, pero no da de baja el costo de las mercancías vendidas.'},
-{q:'El estado de situación financiera lo regula la…',o:['NIF B-3','NIF B-6, Estado de situación financiera','NIF C-1','NIF D-5'],a:1,e:'Título oficial de la NIF B-6.'},
 {q:'El estado de resultado integral lo regula la…',o:['NIF B-3, Estado de resultado integral','NIF B-2','NIF C-11','NIF A-2'],a:0,e:'Título oficial de la NIF B-3, vigente en 2026.'},
 {q:'Un abono a Ventas…',o:['Disminuye el ingreso','Aumenta el ingreso','Aumenta el gasto','Aumenta el inventario'],a:1,e:'Las cuentas de ingreso tienen naturaleza acreedora: crecen del lado derecho.'},
 {q:'¿Por qué el ejercicio puede omitir el IVA en un primer curso?',o:['Porque en México no existe el IVA en ventas','Porque es un ejercicio introductorio de registro básico; en la práctica sí habría IVA','Porque la NIF D-1 prohíbe registrar el IVA','Porque el IVA solo aplica a préstamos'],a:1,e:'La omisión es didáctica. En la operación real de una S.A. de C.V. habría que analizar el IVA trasladado y acreditable.'}
 ];
 
 const CABQ=[
-{q:'Compras mercancías de contado. ¿Qué le haces a Inventarios?',a:'c',e:'Inventarios es un activo: al comprar, aumenta con un cargo.'},
-{q:'En esa misma compra de contado, ¿qué le haces a Bancos?',a:'a',e:'Sale dinero: el activo Bancos disminuye con un abono.'},
-{q:'Pides un préstamo que te depositan. ¿Qué le haces a Acreedores bancarios?',a:'a',e:'Nace o crece una deuda: el pasivo aumenta con un abono.'},
-{q:'Los socios aportan efectivo. ¿Qué le haces a Capital social?',a:'a',e:'El capital aumenta con un abono.'},
-{q:'Vendes mercancías al contado. ¿Qué le haces a Ventas?',a:'a',e:'El ingreso aumenta con un abono.'},
-{q:'Pagas sueldos por transferencia. ¿Qué le haces a Gastos de administración: sueldos?',a:'c',e:'El gasto aumenta con un cargo.'},
-{q:'Pagas parte de lo que debes al proveedor. ¿Qué le haces a Proveedores?',a:'c',e:'La deuda baja: el pasivo disminuye con un cargo.'},
-{q:'Compras un escritorio en efectivo. ¿Qué le haces a Mobiliario y equipo de oficina?',a:'c',e:'Es un activo (NIF C-6): aumenta con un cargo. No va a Inventarios.'}
+{q:'Compras 100 manzanas a $10.00 = $1,000.00, al contado. ¿Qué le haces a Inventarios?',a:'c',e:'Inventarios es un activo: al comprar, aumenta con un cargo de $1,000.00.'},
+{q:'En esa misma compra, ¿qué le haces a Bancos?',a:'a',e:'Sale $1,000.00: el activo Bancos disminuye con un abono.'},
+{q:'El banco te presta $3,000.00 y los deposita. ¿Qué le haces a Acreedores bancarios?',a:'a',e:'Nace una deuda de $3,000.00: el pasivo aumenta con un abono.'},
+{q:'Las socias aportan $20,000.00. ¿Qué le haces a Capital social?',a:'a',e:'El capital aumenta con un abono de $20,000.00.'},
+{q:'Vendes 150 manzanas por $2,400.00. ¿Qué le haces a Ventas?',a:'a',e:'El ingreso aumenta con un abono de $2,400.00.'},
+{q:'El costo de esas 150 manzanas es $1,500.00. ¿Qué le haces a Costo de ventas?',a:'c',e:'El costo (gasto) aumenta con un cargo de $1,500.00.'},
+{q:'Pagas $1,500.00 al proveedor. ¿Qué le haces a Proveedores?',a:'c',e:'La deuda baja: el pasivo disminuye con un cargo de $1,500.00.'},
+{q:'Pagas $300.00 de renta en efectivo. ¿Qué le haces a Gastos de administración: renta?',a:'c',e:'El gasto aumenta con un cargo de $300.00.'}
 ];
 
 const $ = id => document.getElementById(id);
-let st = {rk:[], read:{}, quiz:null, best:null, last:null, hl:1};
+let st = {rk:[], read:{}, quiz:null, best:null, last:null};
 try{ const r=JSON.parse(localStorage.getItem(LS)||'{}'); st={...st,...r}; }catch(e){}
 const sv=()=>{ try{ localStorage.setItem(LS, JSON.stringify(st)); }catch(e){} };
 
@@ -751,7 +667,6 @@ function markDay(){
 }
 function drawStamps(){
   const box=$('stamps'); if(!box)return;
-  const t=today();
   box.innerHTML=Array.from({length:7},(_,i)=>{
     const d=new Date(); d.setDate(d.getDate()-(6-i));
     const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
@@ -759,402 +674,419 @@ function drawStamps(){
     return `<div class="stamp${on?' on':''}" title="${k}">${on?'🍎':'·'}</div>`;
   }).join('');
   const n=st.rk.length;
-  if($('streakn'))$('streakn').textContent=n===1?'1 día con sello':n+' días con sello';
+  if($('streakn'))$('streakn').textContent=n===0?'Aún no hay sello. Cualquier práctica de hoy cuenta.':(n===1?'1 día con sello.':n+' días con sello.');
 }
-
 function progress(){
-  const keys=['m1','m2','m3','nif','ej','prac'];
+  const keys=['m1','nif','ej','prac'];
   let n=0; keys.forEach(k=>{ if(st.read[k]) n++; });
   if(st.best!=null) n++;
-  const pct=Math.round(n/7*100);
+  const pct=Math.round(n/5*100);
   document.querySelectorAll('.progress i').forEach(el=>el.style.width=pct+'%');
   document.querySelectorAll('[data-pt]').forEach(el=>el.textContent=pct+' %');
 }
-
 function markRead(k){ st.read[k]=1; sv(); progress(); markDay(); }
 
-/* ---------- equation apples ---------- */
-function renderEq(){
-  const el=$('eqdemo'); if(!el)return;
-  el.innerHTML=`<div class="eq" aria-label="Activo igual a pasivo más capital">
-    <b class="a">Activo<small>lo que tiene</small></b>
-    <span>=</span>
-    <b class="p">Pasivo<small>lo que debe</small></b>
-    <span>+</span>
-    <b class="c">Capital<small>lo que es suyo</small></b>
-  </div>
-  <p>Si el puesto tiene manzanas, una mesa y dinero por <span class="hl-def">$153,800</span> (según el libro), eso se explica así: les debe <span class="hl-art">$38,000</span> a terceros y el resto, <span class="hl-art">$115,800</span>, es de los socios (capital social más la utilidad del periodo).</p>`;
+function applyEnts(bal, ents){
+  const n={...bal};
+  ents.forEach(([c,a,s])=>{ n[c]=(n[c]||0)+(s==='d'?a:-a); });
+  return n;
 }
-
-/* ---------- cargo / abono game ---------- */
-let cabI=0, cabOk=0, cabLock=false;
-function cabDraw(){
-  const q=CABQ[cabI], box=$('cabbox'); if(!box)return;
-  box.innerHTML=`<p style="font-family:var(--serif);font-size:1.25rem">${cabI+1}. ${q.q}</p>
-    <div class="row"><button type="button" class="act big" data-v="c">Cargo (izquierda)</button>
-    <button type="button" class="act esp" data-v="a">Abono (derecha)</button></div>
-    <p class="fb" id="cabfb"></p>
-    <button type="button" class="act lt" id="cabnext" hidden>Siguiente</button>`;
-  box.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{
-    if(cabLock)return; cabLock=true;
-    const ok=b.dataset.v===q.a;
-    if(ok)cabOk++;
-    const fb=$('cabfb'); fb.className='fb show '+(ok?'ok':'no');
-    fb.textContent=(ok?'Correcto. ':'Todavía no. ')+q.e;
-    $('cabnext').hidden=false;
-    markDay();
+function caps(bal){
+  let A=0,P=0,Cap=0,Ing=0,Gas=0;
+  Object.keys(bal).forEach(k=>{
+    const t=(CUENTAS[k]||{}).tipo, v=bal[k]||0;
+    if(t==='a') A+=v; else if(t==='p') P+=-v; else if(t==='c') Cap+=-v;
+    else if(t==='i') Ing+=-v; else if(t==='g') Gas+=v;
   });
-  $('cabnext').onclick=()=>{
-    cabLock=false; cabI++;
-    if(cabI>=CABQ.length){
-      box.innerHTML=`<p class="fb show ok">Terminaste: ${cabOk} de ${CABQ.length}. ${cabOk>=6?'Ya se nota el pulso.':'Repasa la naturaleza de las cuentas y vuelve a intentarlo.'}</p>
-        <button type="button" class="act lt" id="cabre">Reintentar</button>`;
-      $('cabre').onclick=()=>{cabI=0;cabOk=0;cabDraw()};
-      markRead('m2'); return;
-    }
-    cabDraw();
-  };
+  const util=Ing-Gas;
+  return {A,P,Cap,Ing,Gas,util,C:Cap+util};
+}
+function trial(bal){
+  let D=0,Cr=0;
+  Object.values(bal).forEach(v=>{ if(v>0)D+=v; else Cr+=-v; });
+  return {D,Cr};
+}
+function saldoTxt(v){
+  if(v===0) return money(0);
+  if(v>0) return money(v)+' deudor';
+  return money(-v)+' acreedor';
 }
 
-/* ---------- classify accounts ---------- */
-const TIPO_L={a:'Activo',p:'Pasivo',c:'Capital',i:'Ingreso',g:'Gasto'};
-function classifyInit(){
-  const pool=$('clpool'), bins=$('clbins'); if(!pool)return;
-  const names=Object.keys(CUENTAS).sort(()=>Math.random()-.5);
-  pool.innerHTML=names.map(n=>`<button type="button" class="chip" draggable="false" data-c="${n}">${n}</button>`).join('');
-  bins.innerHTML=['a','p','c','i','g'].map(t=>`<div class="bin ${t}" data-bin="${t}"><h4>${TIPO_L[t]}</h4><div class="drop"></div></div>`).join('');
-  let sel=null;
-  const place=(chip,bin)=>{
-    const t=CUENTAS[chip.dataset.c].tipo;
-    const ok=t===bin.dataset.bin;
-    chip.classList.toggle('ok',ok);
-    chip.style.outline=ok?'2px solid var(--ok)':'2px solid var(--no)';
-    bin.querySelector('.drop').appendChild(chip);
-    sel=null; document.querySelectorAll('.chip.sel').forEach(x=>x.classList.remove('sel'));
-    const left=pool.querySelectorAll('.chip').length;
-    if(!left){
-      const good=[...bins.querySelectorAll('.chip')].filter(c=>CUENTAS[c.dataset.c].tipo===c.parentElement.parentElement.dataset.bin).length;
-      $('clres').className='fb show '+(good===names.length?'ok':'no');
-      $('clres').textContent=good===names.length?'Todas en su cajón. Eso es naturaleza de cuentas.':`Van ${good} de ${names.length} en el cajón correcto. Toca una ficha y luego el cajón para corregir.`;
-      if(good===names.length) markRead('m3');
-      markDay();
+function asientoHTML(ents){
+  const cargos=ents.filter(e=>e[2]==='d');
+  const abonos=ents.filter(e=>e[2]==='a');
+  const rows=[];
+  cargos.forEach(([c,a])=>rows.push(`<tr><td>${c}</td><td class="num">${money(a)}</td><td class="num"></td></tr>`));
+  abonos.forEach(([c,a])=>rows.push(`<tr><td class="cta">a) ${c}</td><td class="num"></td><td class="num">${money(a)}</td></tr>`));
+  const sd=cargos.reduce((s,e)=>s+e[1],0), sa=abonos.reduce((s,e)=>s+e[1],0);
+  return `<div class="tw"><table class="asiento" aria-label="Asiento de diario">
+    <thead><tr><th>Cuenta</th><th>Cargo</th><th>Abono</th></tr></thead>
+    <tbody>${rows.join('')}</tbody>
+    <tfoot><tr><td>Sumas iguales</td><td class="num">${money(sd)}</td><td class="num">${money(sa)}</td></tr></tfoot>
+  </table></div>`;
+}
+
+function tBox(name, before, after, ents){
+  const deb=ents.filter(e=>e[0]===name && e[2]==='d');
+  const hab=ents.filter(e=>e[0]===name && e[2]==='a');
+  const ld=deb.map(e=>`<div class="ln"><span>Mov.</span><span class="num">${money(e[1])}</span></div>`).join('')
+    +(before>0?`<div class="ln muted"><span>Saldo ant.</span><span class="num">${money(before)}</span></div>`:'');
+  const lh=hab.map(e=>`<div class="ln"><span>Mov.</span><span class="num">${money(e[1])}</span></div>`).join('')
+    +(before<0?`<div class="ln muted"><span>Saldo ant.</span><span class="num">${money(-before)}</span></div>`:'');
+  const wrn=name==='Caja' && after<0;
+  return `<div class="tacc">
+    <div class="hd">${name}</div>
+    <div class="col"><div class="lab">Cargo · Debe</div>${ld||'<div class="ln muted">—</div>'}</div>
+    <div class="col"><div class="lab">Abono · Haber</div>${lh||'<div class="ln muted">—</div>'}</div>
+    <div class="sal${wrn?' warn':''}"><span>Saldo después</span><span class="num">${saldoTxt(after)}</span></div>
+  </div>`;
+}
+
+function eqLine(lab, s){
+  return `<p class="check"><b>${lab}</b> Activo ${money(s.A)} = Pasivo ${money(s.P)} + Capital ${money(s.C)}${s.A===s.P+s.C?' · Cuadra.':' · No cuadra.'}</p>`;
+}
+
+function cashBar(bal){
+  const c=bal['Caja']||0, b=bal['Bancos']||0;
+  return `<div class="run" aria-label="Saldos de efectivo">
+    <div class="pot${c<0?' warn':''}"><span class="nm">Caja, después</span><b>${c<0?money(c)+' (acreedor)':saldoTxt(c)}</b></div>
+    <div class="pot${b<0?' warn':''}"><span class="nm">Bancos, después</span><b>${b<0?money(b)+' (acreedor)':saldoTxt(b)}</b></div>
+  </div>`;
+}
+
+function movesTable(moves){
+  return `<div class="moves">${moves.map(m=>`<div class="move">
+    <p class="move-h"><b>${m[0]}</b> · ${m[1]} · <span class="hl-art">${m[2]}</span></p>
+    <p>${m[3]}</p>
+  </div>`).join('')}</div>`;
+}
+
+function opCard(op, before, after, opts){
+  const moved=[...new Set(op.e.map(x=>x[0]))];
+  let body=`<article class="opcard${op.warn?' warnop':''}" id="${opts.id||''}">
+    <p class="kicker">${opts.kicker}</p>
+    <h3>${op.n}. ${op.tit||'Operación '+op.n}</h3>
+    <p>${op.t}</p>`;
+  if(op.calc&&op.calc.length){
+    body+=`<div class="calc"><p class="kicker" style="color:var(--esp)">Cuentas, paso a paso</p>${op.calc.map(l=>`<p class="math">${l}</p>`).join('')}</div>`;
+  }
+  if(op.two){
+    body+=`<h4>Primer asiento: la venta</h4>`+asientoHTML(op.e.slice(0,2));
+    body+=`<h4>Segundo asiento: el costo de lo vendido</h4>`+asientoHTML(op.e.slice(2));
+  }else{
+    body+=`<h4>Asiento de diario</h4>`+asientoHTML(op.e);
+  }
+  if(op.moves) body+=`<h4>Qué cuenta se mueve y por qué</h4>`+movesTable(op.moves);
+  body+=`<h4>Cuentas T: antes y después</h4><div class="tgrid">`+moved.map(n=>tBox(n, before[n]||0, after[n]||0, op.e)).join('')+`</div>`;
+  body+=eqLine('Antes:', caps(before))+eqLine('Después:', caps(after));
+  body+=cashBar(after);
+  if(op.nif) body+=`<p class="sidenote">${op.nif}</p>`;
+  if(op.warn) body+=`<p class="ojo-mini">Ojo: esta operación tiene un problema. Se explica al final del ejercicio.</p>`;
+  body+=`</article>`;
+  return body;
+}
+
+function diarioHTML(ops){
+  return `<div class="tw"><table class="grid">
+    <thead><tr><th>Op.</th><th>Cuenta</th><th>Cargo</th><th>Abono</th></tr></thead>
+    <tbody>${ops.map(op=>op.e.map((e,i)=>`<tr>
+      <td>${i===0?op.n:''}</td>
+      <td class="${e[2]==='a'?'cta':''}">${e[2]==='a'?'a) ':''}${e[0]}</td>
+      <td class="num">${e[2]==='d'?money(e[1]):''}</td>
+      <td class="num">${e[2]==='a'?money(e[1]):''}</td>
+    </tr>`).join('')).join('')}</tbody>
+  </table></div>`;
+}
+
+function tAccounts(ops){
+  const names=[];
+  ops.forEach(op=>op.e.forEach(e=>{ if(!names.includes(e[0])) names.push(e[0]); }));
+  return `<div class="tgrid">${names.map(n=>{
+    const deb=[], hab=[];
+    ops.forEach(op=>op.e.forEach(e=>{
+      if(e[0]!==n)return;
+      if(e[2]==='d') deb.push(e[1]); else hab.push(e[1]);
+    }));
+    const raw=deb.reduce((s,x)=>s+x,0)-hab.reduce((s,x)=>s+x,0);
+    const wrn=n==='Caja'&&raw<0;
+    return `<div class="tacc">
+      <div class="hd">${n}</div>
+      <div class="col"><div class="lab">Cargo · Debe</div>${deb.map(v=>`<div class="ln"><span></span><span class="num">${money(v)}</span></div>`).join('')||'<div class="ln muted">—</div>'}</div>
+      <div class="col"><div class="lab">Abono · Haber</div>${hab.map(v=>`<div class="ln"><span></span><span class="num">${money(v)}</span></div>`).join('')||'<div class="ln muted">—</div>'}</div>
+      <div class="sal${wrn?' warn':''}"><span>Saldo</span><span class="num">${saldoTxt(raw)}</span></div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+function trialHTML(bal){
+  const rows=Object.keys(bal).filter(k=>bal[k]!==0).sort((a,b)=>Math.abs(bal[b])-Math.abs(bal[a]));
+  const {D,Cr}=trial(bal);
+  return `<div class="tw"><table class="grid">
+    <thead><tr><th>Cuenta</th><th>Deudor</th><th>Acreedor</th></tr></thead>
+    <tbody>${rows.map(k=>`<tr>
+      <td>${k}${k==='Caja'&&bal[k]<0?' <span class="warn">saldo acreedor</span>':''}</td>
+      <td class="num">${bal[k]>0?money(bal[k]):''}</td>
+      <td class="num ${k==='Caja'&&bal[k]<0?'warn':''}">${bal[k]<0?money(-bal[k]):''}</td>
+    </tr>`).join('')}</tbody>
+    <tfoot><tr><th>Sumas iguales</th><th class="num">${money(D)}</th><th class="num">${money(Cr)}</th></tr></tfoot>
+  </table></div>
+  <p class="check">${D===Cr?'La balanza cuadra: ':'La balanza no cuadra: '}<b>${money(D)} = ${money(Cr)}</b>.</p>`;
+}
+
+function eriHTML(bal){
+  const s=caps(bal);
+  const rows=[];
+  Object.keys(bal).forEach(k=>{ if((CUENTAS[k]||{}).tipo==='i' && bal[k]) rows.push(['i',k,-bal[k]]); });
+  Object.keys(bal).forEach(k=>{ if((CUENTAS[k]||{}).tipo==='g' && bal[k]) rows.push(['g',k,bal[k]]); });
+  return `<div class="tw"><table class="grid">
+    <thead><tr><th>Concepto</th><th>Importe</th></tr></thead>
+    <tbody>
+      ${rows.filter(r=>r[0]==='i').map(r=>`<tr><td>${r[1]}</td><td class="num">${money(r[2])}</td></tr>`).join('')}
+      <tr><th>Total de ingresos</th><th class="num">${money(s.Ing)}</th></tr>
+      ${rows.filter(r=>r[0]==='g').map(r=>`<tr><td>(−) ${r[1]}</td><td class="num">${money(r[2])}</td></tr>`).join('')}
+      <tr><th>Total de costos y gastos</th><th class="num">${money(s.Gas)}</th></tr>
+      <tr><th>Utilidad del periodo</th><th class="num">${money(s.util)}</th></tr>
+    </tbody></table></div>`;
+}
+
+function esfHTML(bal){
+  const s=caps(bal);
+  const line=(k,v,w)=>`<tr><td>${k}${w?' <span class="warn">saldo acreedor</span>':''}</td><td class="num ${w?'warn':''}">${money(v)}</td></tr>`;
+  const acts=Object.keys(bal).filter(k=>(CUENTAS[k]||{}).tipo==='a');
+  const pas=Object.keys(bal).filter(k=>(CUENTAS[k]||{}).tipo==='p');
+  return `<div class="tw"><table class="grid">
+    <thead><tr><th>Concepto</th><th>Importe</th></tr></thead>
+    <tbody>
+      <tr><th colspan="2">Activo</th></tr>
+      ${acts.map(k=>line(k, bal[k], k==='Caja'&&bal[k]<0)).join('')}
+      <tr><th>Total de activo</th><th class="num">${money(s.A)}</th></tr>
+      <tr><th colspan="2">Pasivo</th></tr>
+      ${pas.map(k=>line(k, -bal[k], false)).join('')}
+      <tr><th>Total de pasivo</th><th class="num">${money(s.P)}</th></tr>
+      <tr><th colspan="2">Capital contable</th></tr>
+      <tr><td>Capital social</td><td class="num">${money(s.Cap)}</td></tr>
+      <tr><td>Utilidad del periodo</td><td class="num">${money(s.util)}</td></tr>
+      <tr><th>Total de capital</th><th class="num">${money(s.C)}</th></tr>
+      <tr><th>Pasivo más capital</th><th class="num">${money(s.P+s.C)}</th></tr>
+    </tbody></table></div>
+    ${eqLine('Comprobación:', s)}`;
+}
+
+function renderStand(){
+  const box=$('standbox'); if(!box)return;
+  let bal={}, html='';
+  STAND.forEach(op=>{
+    const before={...bal};
+    const after=applyEnts(bal, op.e);
+    html+=opCard(op, before, after, {kicker:'Ejemplo del puesto de manzanas · operación '+op.n+' de 7', id:'stand-'+op.n});
+    bal=after;
+  });
+  box.innerHTML=html;
+  const st=$('standestados'); if(!st)return;
+  const s=caps(bal), tr=trial(bal);
+  st.innerHTML=`
+    <h3>Libro diario del puesto</h3>
+    ${diarioHTML(STAND)}
+    <h3>Libro mayor (cuentas T) del puesto</h3>
+    ${tAccounts(STAND)}
+    <h3>Balanza de comprobación del puesto</h3>
+    ${trialHTML(bal)}
+    <h3>Estado de resultado integral del puesto</h3>
+    <p class="sub">Ventas $2,400.00 − costo de ventas $1,500.00 = utilidad bruta $900.00. Menos renta $300.00 = utilidad de $600.00.</p>
+    ${eriHTML(bal)}
+    <h3>Estado de situación financiera del puesto</h3>
+    ${esfHTML(bal)}
+    <p class="check okc">Cifras finales que deben cuadrar: balanza ${money(tr.D)} = ${money(tr.Cr)}. Activo ${money(s.A)} = pasivo ${money(s.P)} + capital ${money(s.C)}. Utilidad ${money(s.util)}.</p>`;
+}
+
+let opFix=false;
+function valleOps(){
+  return OPS.map(op=>{
+    if(opFix && op.n===2){
+      return {...op,
+        t:'Se depositan $50,000.00 del efectivo en una cuenta bancaria (corrección didáctica: se usa lo que había en Caja, no los $60,000.00 del enunciado).',
+        calc:['Caja tenía $50,000.00. Se depositan $50,000.00.','Caja queda en $0.00. Bancos sube $50,000.00.','Esto no está en el documento: es solo para ver qué pasaría si se corrigiera la cifra.'],
+        e:[['Bancos',50000,'d'],['Caja',50000,'a']],
+        warn:false
+      };
     }
-  };
-  pool.parentElement.addEventListener('click',e=>{
-    const chip=e.target.closest('.chip'); const bin=e.target.closest('.bin');
-    if(chip){ sel=chip; document.querySelectorAll('.chip.sel').forEach(x=>x.classList.remove('sel')); chip.classList.add('sel'); return; }
-    if(bin && sel) place(sel,bin);
+    return op;
+  });
+}
+function renderValle(){
+  const box=$('vallebox'); if(!box)return;
+  const ops=valleOps();
+  let bal={}, html='';
+  ops.forEach(op=>{
+    const before={...bal};
+    const after=applyEnts(bal, op.e);
+    const o={...op, tit: op.tit||('Operación '+op.n), moves: op.moves||autoMoves(op)};
+    html+=opCard(o, before, after, {kicker:'Distribuidora del Valle, S.A. de C.V. · '+op.n+' de 15', id:'valle-'+op.n});
+    bal=after;
+  });
+  box.innerHTML=html;
+  if($('taccs'))$('taccs').innerHTML=tAccounts(ops);
+  if($('balanza'))$('balanza').innerHTML=trialHTML(bal);
+  if($('eri'))$('eri').innerHTML=eriHTML(bal);
+  if($('esf'))$('esf').innerHTML=esfHTML(bal);
+}
+function autoMoves(op){
+  return op.e.map(([c,a,s])=>{
+    const info=CUENTAS[c]||{tipo:'a',nat:'deudor'};
+    const up=(info.nat==='deudor' && s==='d')||(info.nat==='acreedor' && s==='a');
+    const lado=s==='d'?'Cargo':'Abono';
+    const tipo={a:'activo',p:'pasivo',c:'capital',i:'ingreso',g:'gasto'}[info.tipo]||'cuenta';
+    return [c, (up?'Sube ':'Baja ')+money(a), lado, `Es un ${tipo}. Su saldo normal es ${info.nat}. ${up?'Aumenta':'Disminuye'} con un ${lado.toLowerCase()}.`];
   });
 }
 
-/* ---------- NIF list ---------- */
 function renderNif(){
   const box=$('niflist'); if(!box)return;
-  box.innerHTML=NIFS.map(n=>`<article class="card nif" id="nif-${n.id}">
-    <p class="kicker" style="color:var(--ox)">NIF ${n.id}</p>
+  box.innerHTML=NIFS.map(n=>`<article class="nif">
     <h3>${n.t}</h3>
     <p>${n.uso}</p>
     ${n.nota?`<p class="sidenote">${n.nota}</p>`:''}
     <p class="sidenote">Fuente: ${n.src}</p>
   </article>`).join('');
   const map=$('nifmap'); if(!map)return;
-  map.innerHTML=`<div class="tw"><table class="grid"><thead><tr><th>Cuenta del ejercicio</th><th>Clasificación</th><th>NIF</th></tr></thead><tbody>
-    ${Object.entries(CUENTAS).map(([c,v])=>`<tr><td>${c}</td><td>${TIPO_L[v.tipo]}</td><td class="hl-art">${v.nif}</td></tr>`).join('')}
-  </tbody></table></div>`;
+  const rows=Object.keys(CUENTAS).map(k=>`<tr><td>${k}</td><td>${CUENTAS[k].nif}</td><td>${CUENTAS[k].nat}</td></tr>`).join('');
+  map.innerHTML=`<div class="tw"><table class="grid"><thead><tr><th>Cuenta</th><th>NIF</th><th>Saldo normal</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
-/* ---------- balances from ops ---------- */
-function ledger(fix){
-  const bal={};
-  OPS.forEach(op=>{
-    const ents = (fix && op.n===2)?[['Bancos',50000,'d'],['Caja',50000,'a']]:op.e;
-    ents.forEach(([c,m,s])=>{ bal[c]=(bal[c]||0)+(s==='d'?m:-m); });
+/* ---- games ---- */
+let cabI=0, cabOk=0, cabLock=false;
+function cabDraw(){
+  const q=CABQ[cabI], box=$('cabbox'); if(!box)return;
+  box.innerHTML=`<p class="inst">Toca <b>Cargo</b> o <b>Abono</b>. Después verás si acertaste y por qué.</p>
+    <p class="qline">${cabI+1} de ${CABQ.length}. ${q.q}</p>
+    <div class="row"><button type="button" class="act big" data-v="c">Cargo (izquierda)</button>
+    <button type="button" class="act esp" data-v="a">Abono (derecha)</button></div>
+    <p class="fb" id="cabfb"></p>
+    <button type="button" class="act lt" id="cabnext" hidden>Siguiente pregunta</button>`;
+  box.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{
+    if(cabLock)return; cabLock=true;
+    const ok=b.dataset.v===q.a;
+    if(ok)cabOk++;
+    const fb=$('cabfb'); fb.className='fb show '+(ok?'ok':'no');
+    fb.textContent=(ok?'Correcto. ':'Todavía no. ')+q.e;
+    $('cabnext').hidden=false; markDay();
   });
-  return bal;
-}
-function afterOp(k,fix){
-  const bal={};
-  OPS.slice(0,k).forEach(op=>{
-    const ents=(fix && op.n===2)?[['Bancos',50000,'d'],['Caja',50000,'a']]:op.e;
-    ents.forEach(([c,m,s])=>{ bal[c]=(bal[c]||0)+(s==='d'?m:-m); });
-  });
-  return bal;
-}
-
-const POTS=['Caja','Bancos','Inventarios','Mobiliario y equipo de oficina','Equipo de cómputo','Proveedores','Acreedores diversos','Acreedores bancarios','Capital social'];
-function renderPots(bal){
-  return `<div class="pots">${POTS.map(c=>{
-    const v=bal[c]||0;
-    const warn=c==='Caja'&&v<0;
-    const typ=(CUENTAS[c]||{}).tipo;
-    const show=(typ==='p'||typ==='c'||typ==='i')?Math.abs(v):v;
-    return `<div class="pot${warn?' warn':''}"><span class="nm">${c}</span><b>${money(show)}</b>${warn?'<span class="warnc">Saldo acreedor</span>':''}</div>`;
-  }).join('')}</div>`;
-}
-function asientoHTML(ents){
-  const rows=ents.map(([c,m,s])=>`<tr><td${s==='a'?' class="cta"':''}>${s==='a'?'a) ':''}${c}</td><td class="num">${s==='d'?money(m):''}</td><td class="num">${s==='a'?money(m):''}</td></tr>`).join('');
-  const d=ents.filter(x=>x[2]==='d').reduce((s,x)=>s+x[1],0);
-  const a=ents.filter(x=>x[2]==='a').reduce((s,x)=>s+x[1],0);
-  return `<table class="asiento"><thead><tr><th>Cuenta</th><th class="num">Cargo</th><th class="num">Abono</th></tr></thead><tbody>${rows}</tbody><tfoot><tr><td>Sumas iguales</td><td class="num">${money(d)}</td><td class="num">${money(a)}</td></tr></tfoot></table>`;
-}
-
-let opI=0, opFix=false;
-function renderOp(){
-  const op=OPS[opI], box=$('opbox'); if(!box)return;
-  const ents=(opFix && op.n===2)?[['Bancos',50000,'d'],['Caja',50000,'a']]:op.e;
-  const bal=afterOp(opI+1,opFix);
-  box.innerHTML=`<p class="kicker">Operación ${op.n} de 15</p>
-    <h3>${op.t}</h3>
-    <button type="button" class="act lt facil-btn" data-f="opf">Explícamelo con manzanas</button>
-    <div class="facil" id="opf">${op.manz}</div>
-    ${asientoHTML(ents)}
-    <p class="sidenote">${op.nif}</p>
-    ${op.n===2?`<p class="sidenote">Puedes ver el asiento “como está en el libro” o corregir el depósito a $50,000, que es lo que había en Caja.</p>`:''}
-    <div class="stage"><p class="kicker" style="color:var(--ox)">El puesto, después de esta operación</p>${renderPots(bal)}</div>
-    <div class="row"><button type="button" class="act lt" id="opprev" ${opI===0?'disabled':''}>Anterior</button>
-    <button type="button" class="act big" id="opnext">${opI===OPS.length-1?'Ver estados financieros':'Siguiente operación'}</button></div>`;
-  const btn=box.querySelector('[data-f]');
-  btn.onclick=()=>$('opf').classList.toggle('on');
-  $('opprev').onclick=()=>{opI=Math.max(0,opI-1);renderOp();};
-  $('opnext').onclick=()=>{
-    if(opI===OPS.length-1){ markRead('ej'); $('estados').scrollIntoView({behavior:'smooth',block:'start'}); return; }
-    opI++; renderOp();
+  $('cabnext').onclick=()=>{
+    cabLock=false; cabI++;
+    if(cabI>=CABQ.length){
+      box.innerHTML=`<p class="fb show ok">Terminaste: ${cabOk} de ${CABQ.length}.</p>
+        <button type="button" class="act lt" id="cabre">Reintentar</button>`;
+      $('cabre').onclick=()=>{cabI=0;cabOk=0;cabDraw()};
+      markRead('prac'); return;
+    }
+    cabDraw();
   };
 }
 
-function tAccounts(bal){
-  return Object.keys(CUENTAS).map(c=>{
-    // rebuild movements
-    const mov=[];
-    OPS.forEach(op=>{
-      const ents=(opFix && op.n===2)? (op.n===2?[['Bancos',50000,'d'],['Caja',50000,'a']]:op.e) : op.e;
-      ents.forEach(([n,m,s])=>{ if(n===c) mov.push({op:op.n,m,s}); });
-    });
-    const d=mov.filter(x=>x.s==='d'); const a=mov.filter(x=>x.s==='a');
-    const s=bal[c]||0;
-    const lado=s>0?'Saldo deudor':(s<0?'Saldo acreedor':'Saldo cero');
-    return `<div class="tacc"><div class="hd">${c}</div>
-      <div class="col"><div class="lab">Cargo</div>${d.map(x=>`<div class="ln"><span>Op. ${x.op}</span><span>${money(x.m)}</span></div>`).join('')||'—'}</div>
-      <div class="col"><div class="lab">Abono</div>${a.map(x=>`<div class="ln"><span>Op. ${x.op}</span><span>${money(x.m)}</span></div>`).join('')||'—'}</div>
-      <div class="sal"><span>${lado}${c==='Caja'&&s<0?' · imposible en efectivo':''}</span><span>${money(Math.abs(s))}</span></div>
-    </div>`;
-  }).join('');
+const TIPO_L={a:'Activo',p:'Pasivo',c:'Capital',i:'Ingreso',g:'Gasto'};
+function classifyInit(){
+  const pool=$('clpool'), bins=$('clbins'); if(!pool)return;
+  const names=Object.keys(CUENTAS).sort(()=>Math.random()-.5);
+  pool.innerHTML=names.map(n=>`<button type="button" class="chip" data-c="${n}">${n}</button>`).join('');
+  bins.innerHTML=Object.keys(TIPO_L).map(k=>`<div class="bin ${k}" data-b="${k}"><h4>${TIPO_L[k]}</h4></div>`).join('');
+  let sel=null;
+  pool.addEventListener('click',e=>{
+    const c=e.target.closest('.chip'); if(!c)return;
+    pool.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));
+    c.classList.add('sel'); sel=c;
+  });
+  bins.addEventListener('click',e=>{
+    const bin=e.target.closest('.bin'); if(!bin||!sel)return;
+    const ok=CUENTAS[sel.dataset.c].tipo===bin.dataset.b;
+    const fb=$('clres');
+    if(ok){ bin.appendChild(sel); sel.classList.remove('sel'); sel=null;
+      fb.className='fb show ok'; fb.textContent='Bien. '+[...bins.querySelectorAll('.chip')].length+' de '+names.length+' colocadas.';
+      if(bins.querySelectorAll('.chip').length===names.length){ fb.textContent='Listo: las '+names.length+' cuentas están en su cajón.'; markRead('prac'); markDay(); }
+    }else{ fb.className='fb show no'; fb.textContent='Esa cuenta no va en '+TIPO_L[bin.dataset.b]+'. Mira su naturaleza.'; }
+  });
 }
 
-function trialHTML(bal){
-  let td=0,ta=0;
-  const rows=Object.keys(CUENTAS).map(c=>{
-    const s=bal[c]||0; const d=s>0?s:0, a=s<0?-s:0; td+=d; ta+=a;
-    const warn=c==='Caja'&&s<0;
-    return `<tr><td>${c}${warn?' <span class="warn">⚠</span>':''}</td><td class="num ${warn?'warn':''}">${d?money(d):''}</td><td class="num ${warn?'warn':''}">${a?money(a):''}</td></tr>`;
-  }).join('');
-  return `<div class="tw"><table class="grid"><thead><tr><th>Cuenta</th><th class="num">Deudor</th><th class="num">Acreedor</th></tr></thead><tbody>${rows}</tbody>
-    <tfoot><tr><th>Sumas iguales</th><th class="num">${money(td)}</th><th class="num">${money(ta)}</th></tr></tfoot></table></div>`;
-}
-
-function eriHTML(bal){
-  const vent=-(bal['Ventas']||0), serv=-(bal['Ingresos por servicios']||0), ing=vent+serv;
-  const ga=['renta','sueldos','papelería','luz'].reduce((s,k)=>s+(bal['Gastos de administración: '+k]||0),0);
-  const gv=bal['Gastos de venta: publicidad']||0;
-  const util=ing-ga-gv;
-  return `<div class="tw"><table class="grid">
-    <thead><tr><th colspan="2">Distribuidora del Valle, S.A. de C.V. · Estado de resultado integral (NIF B-3) · Del periodo de las 15 operaciones</th></tr></thead>
-    <tbody>
-      <tr><td>Ventas</td><td class="num">${money(vent)}</td></tr>
-      <tr><td>Ingresos por servicios</td><td class="num">${money(serv)}</td></tr>
-      <tr><th>Ingresos</th><th class="num">${money(ing)}</th></tr>
-      <tr><td>Gastos de administración</td><td class="num">${money(ga)}</td></tr>
-      <tr><td>Gastos de venta</td><td class="num">${money(gv)}</td></tr>
-      <tr><th>Utilidad del periodo (según el libro)</th><th class="num">${money(util)}</th></tr>
-    </tbody></table></div>
-    <p class="sidenote">Esta utilidad está <span class="hl-trap">sobreestimada</span>: no se reconoció el costo de las mercancías vendidas, porque el ejercicio no lo indica. Tampoco hay IVA ni impuestos a la utilidad.</p>`;
-}
-
-function esfHTML(bal){
-  const caja=bal['Caja']||0, ban=bal['Bancos']||0, inv=bal['Inventarios']||0;
-  const mob=bal['Mobiliario y equipo de oficina']||0, eq=bal['Equipo de cómputo']||0;
-  const act=caja+ban+inv+mob+eq;
-  const pr=-(bal['Proveedores']||0), ad=-(bal['Acreedores diversos']||0), ab=-(bal['Acreedores bancarios']||0);
-  const pas=pr+ad+ab;
-  const vent=-(bal['Ventas']||0), serv=-(bal['Ingresos por servicios']||0);
-  const ga=['renta','sueldos','papelería','luz'].reduce((s,k)=>s+(bal['Gastos de administración: '+k]||0),0);
-  const gv=bal['Gastos de venta: publicidad']||0;
-  const util=vent+serv-ga-gv;
-  const cap=-(bal['Capital social']||0)+util;
-  return `<div class="tw"><table class="grid">
-    <thead><tr><th colspan="2">Distribuidora del Valle, S.A. de C.V. · Estado de situación financiera (NIF B-6)</th></tr></thead>
-    <tbody>
-      <tr><th colspan="2">Activo</th></tr>
-      <tr><td>Caja${caja<0?' <span class="warn">saldo acreedor</span>':''}</td><td class="num ${caja<0?'warn':''}">${money(caja)}</td></tr>
-      <tr><td>Bancos</td><td class="num">${money(ban)}</td></tr>
-      <tr><td>Inventarios</td><td class="num">${money(inv)}</td></tr>
-      <tr><td>Mobiliario y equipo de oficina</td><td class="num">${money(mob)}</td></tr>
-      <tr><td>Equipo de cómputo</td><td class="num">${money(eq)}</td></tr>
-      <tr><th>Total de activo</th><th class="num">${money(act)}</th></tr>
-      <tr><th colspan="2">Pasivo</th></tr>
-      <tr><td>Proveedores</td><td class="num">${money(pr)}</td></tr>
-      <tr><td>Acreedores diversos</td><td class="num">${money(ad)}</td></tr>
-      <tr><td>Acreedores bancarios</td><td class="num">${money(ab)}</td></tr>
-      <tr><th>Total de pasivo</th><th class="num">${money(pas)}</th></tr>
-      <tr><th colspan="2">Capital contable</th></tr>
-      <tr><td>Capital social</td><td class="num">${money(-(bal['Capital social']||0))}</td></tr>
-      <tr><td>Utilidad del periodo</td><td class="num">${money(util)}</td></tr>
-      <tr><th>Total de capital</th><th class="num">${money(cap)}</th></tr>
-      <tr><th>Pasivo más capital</th><th class="num">${money(pas+cap)}</th></tr>
-    </tbody></table></div>
-    <p>La ecuación cuadra: <span class="hl-def">Activo ${money(act)} = Pasivo ${money(pas)} + Capital ${money(cap)}</span>. Cuadrar no significa que todos los saldos sean razonables: la Caja acreedora es un foco rojo.</p>`;
-}
-
-function renderEstados(){
-  const bal=ledger(opFix);
-  $('taccs').innerHTML=tAccounts(bal);
-  $('balanza').innerHTML=trialHTML(bal);
-  $('eri').innerHTML=eriHTML(bal);
-  $('esf').innerHTML=esfHTML(bal);
-}
-
-/* ---------- build asiento practice ---------- */
-const BUILD_SET=[0,2,4,6,8,10,11]; // ops index
-let bI=0;
+let bI=0, bOk=0;
 function buildDraw(){
   const box=$('buildbox'); if(!box)return;
-  const op=OPS[BUILD_SET[bI]];
-  const acc=['','Caja','Bancos','Inventarios','Mobiliario y equipo de oficina','Equipo de cómputo','Proveedores','Acreedores diversos','Acreedores bancarios','Capital social','Ventas','Ingresos por servicios','Gastos de administración: renta','Gastos de administración: sueldos','Gastos de venta: publicidad','Gastos de administración: papelería','Gastos de administración: luz'];
-  const opts=acc.map(a=>`<option${a?'':' value=""'}>${a||'Cuenta…'}</option>`).join('');
-  box.innerHTML=`<p class="kicker">Arma el asiento ${bI+1} de ${BUILD_SET.length}</p>
-    <h3>${op.t}</h3>
-    <div class="build">
-      <div class="line"><select id="b1c">${opts}</select><select id="b1s"><option value="d">Cargo</option><option value="a">Abono</option></select><input id="b1m" inputmode="numeric" placeholder="Importe"></div>
-      <div class="line"><select id="b2c">${opts}</select><select id="b2s"><option value="a">Abono</option><option value="d">Cargo</option></select><input id="b2m" inputmode="numeric" placeholder="Importe"></div>
-      <div class="line" id="b3wrap"><select id="b3c">${opts}</select><select id="b3s"><option value="d">Cargo</option><option value="a">Abono</option></select><input id="b3m" inputmode="numeric" placeholder="Importe (si hace falta)"></div>
-    </div>
-    <div class="row"><button type="button" class="act big" id="bcheck">Calificar</button></div>
-    <p class="fb" id="bres"></p>`;
-  $('bcheck').onclick=()=>{
-    const lines=[{c:$('b1c').value,s:$('b1s').value,m:+String($('b1m').value).replace(/[^\d]/g,'')},
-                 {c:$('b2c').value,s:$('b2s').value,m:+String($('b2m').value).replace(/[^\d]/g,'')},
-                 {c:$('b3c').value,s:$('b3s').value,m:+String($('b3m').value).replace(/[^\d]/g,'')}].filter(x=>x.c&&x.m);
-    const want=op.e.map(([c,m,s])=>c+'|'+s+'|'+m).sort().join(';');
-    const got=lines.map(x=>x.c+'|'+x.s+'|'+x.m).sort().join(';');
-    const sumd=lines.filter(x=>x.s==='d').reduce((s,x)=>s+x.m,0);
-    const suma=lines.filter(x=>x.s==='a').reduce((s,x)=>s+x.m,0);
-    const ok=want===got && sumd===suma;
-    const fb=$('bres'); fb.className='fb show '+(ok?'ok':'no');
-    if(ok){ fb.textContent='Asiento correcto. Las sumas cuadran.'; markDay(); }
-    else{
-      const modelo=op.e.map(([c,m,s])=>(s==='d'?'Cargo':'Abono')+' a '+c+' por '+money(m)).join('; ');
-      fb.textContent='Aún no. Revisa cuentas, lado e importe. Modelo: '+modelo+'.';
-    }
-    if(!box.querySelector('#bnext')){
-      const b=document.createElement('button'); b.type='button'; b.className='act lt'; b.id='bnext'; b.textContent='Siguiente';
-      b.onclick=()=>{ bI++; if(bI>=BUILD_SET.length){ box.innerHTML=`<p class="fb show ok">Cerraste la ronda de asientos.</p><button type="button" class="act lt" id="bre">Otra vez</button>`; $('bre').onclick=()=>{bI=0;buildDraw()}; markRead('prac'); return;} buildDraw(); };
+  const op=STAND[bI];
+  const cts=Object.keys(CUENTAS);
+  const line=()=>`<div class="line">
+    <select aria-label="Cuenta"><option value="">Cuenta…</option>${cts.map(c=>`<option>${c}</option>`).join('')}</select>
+    <select aria-label="Lado"><option value="">Cargo o abono…</option><option value="d">Cargo</option><option value="a">Abono</option></select>
+    <input type="text" inputmode="decimal" placeholder="$0.00" aria-label="Importe">
+  </div>`;
+  box.innerHTML=`<p class="inst">Arma el asiento de la operación ${op.n} de 7. Elige la cuenta, si va al cargo o al abono, y escribe el importe (puedes poner 2400 o 2,400.00). Debes cubrir todas las líneas del asiento. Luego toca Calificar.</p>
+    <p class="qline">${op.tit}. ${op.t}</p>
+    ${op.calc?`<div class="calc">${op.calc.map(l=>`<p class="math">${l}</p>`).join('')}</div>`:''}
+    <div class="build" id="blines">${line()}${line()}${line()}${op.two?line():''}</div>
+    <button type="button" class="act lt" id="addline">Agregar una línea</button>
+    <button type="button" class="act big" id="gradeb">Calificar este asiento</button>
+    <p class="fb" id="bfb"></p>`;
+  $('addline').onclick=()=>{ $('blines').insertAdjacentHTML('beforeend', line()); };
+  $('gradeb').onclick=()=>{
+    const got=[...$('blines').querySelectorAll('.line')].map(l=>{
+      const [c,s,inp]=l.querySelectorAll('select,select,input');
+      const raw=(inp.value||'').replace(/[$,\s]/g,'').replace(',','.');
+      const amt=Number(raw);
+      return [c.value, amt, s.value];
+    }).filter(x=>x[0]&&x[2]&&x[1]>0);
+    const need=op.e.map(e=>e[0]+'|'+e[2]+'|'+e[1]).sort();
+    const have=got.map(e=>e[0]+'|'+e[2]+'|'+e[1]).sort();
+    const ok=need.length===have.length && need.every((x,i)=>x===have[i]);
+    const fb=$('bfb'); fb.className='fb show '+(ok?'ok':'no');
+    if(ok){ bOk++; fb.textContent='Correcto. Las sumas y las cuentas coinciden.'; }
+    else fb.textContent='Aún no. Revisa cuentas, lado e importe. El asiento correcto aparece abajo al tocar “Ver solución”.';
+    if(!$('solb')){
+      const b=document.createElement('button'); b.type='button'; b.className='act lt'; b.id='solb'; b.textContent='Ver solución';
+      b.onclick=()=>{ fb.insertAdjacentHTML('afterend', asientoHTML(op.e)); b.disabled=true; };
       box.appendChild(b);
+      const n=document.createElement('button'); n.type='button'; n.className='act esp'; n.id='bnext'; n.textContent=bI===STAND.length-1?'Terminar':'Siguiente asiento';
+      n.onclick=()=>{ bI++; if(bI>=STAND.length){ box.innerHTML=`<p class="fb show ok">Terminaste. Asientos bien armados en el primer intento o revisados: ${bOk} de ${STAND.length}.</p><button type="button" class="act lt" id="bre">Reintentar</button>`; $('bre').onclick=()=>{bI=0;bOk=0;buildDraw()}; markRead('prac'); } else buildDraw(); };
+      box.appendChild(n);
     }
+    markDay();
   };
 }
 
-/* ---------- flash + quiz ---------- */
 let fi=0, flip=false;
 function deckDraw(){
-  const f=FLASH[fi], el=$('deck'); if(!el)return;
-  el.innerHTML=`<div class="dcard${flip?' flip':''}" id="dcard">${flip?f[1]:f[0]}</div>`;
-  $('dmeta').textContent=(fi+1)+' / '+FLASH.length;
-  $('dcard').onclick=()=>{flip=!flip;deckDraw()};
+  const box=$('deck'); if(!box)return;
+  const [q,a]=FLASH[fi];
+  box.innerHTML=`<button type="button" class="dcard${flip?' flip':''}" id="dcard">${flip?a:q}</button>`;
+  $('dcard').onclick=()=>{ flip=!flip; deckDraw(); markDay(); };
+  if($('dmeta'))$('dmeta').textContent=(fi+1)+' / '+FLASH.length;
 }
+let qI=0, qOk=0, qMode='estudio', qLock=false;
 function quizDraw(){
   const box=$('qzbox'); if(!box)return;
-  if(!st.quiz) st.quiz={i:0,a:{},done:false};
-  const i=st.quiz.i, q=QUIZ[i];
-  if(st.quiz.done || i>=QUIZ.length){ quizResult(); return; }
-  const locked=st.quiz.a[i]!=null;
-  box.innerHTML=`<p class="kicker">Pregunta ${i+1} de ${QUIZ.length}</p>
-    <h3>${q.q}</h3>
-    ${q.o.map((o,j)=>`<button type="button" class="opt${locked?(j===q.a?' ok':(j===st.quiz.a[i]&&j!==q.a?' no':'')):''}" data-j="${j}">${o}</button>`).join('')}
-    <p class="fb${locked?' show '+(st.quiz.a[i]===q.a?'ok':'no'):''}" id="qfb">${locked?((st.quiz.a[i]===q.a?'Correcto. ':'Incorrecto. ')+q.e):''}</p>
-    <div class="row"><button type="button" class="act lt" id="qprev" ${i===0?'disabled':''}>Anterior</button>
-    <button type="button" class="act big" id="qnext" ${locked?'':'hidden'}>${i===QUIZ.length-1?'Ver calificación':'Siguiente'}</button></div>`;
+  if(!QUIZ[qI]){ quizResult(); return; }
+  const q=QUIZ[qI];
+  box.innerHTML=`<p class="inst">${qMode==='estudio'?'Modo de estudio: al responder verás la explicación.':'Examen: 15 preguntas, una por pantalla. Al final sale la calificación sobre 10.'} Pregunta ${qI+1} de ${QUIZ.length}.</p>
+    <p class="qline">${q.q}</p>
+    <div>${q.o.map((o,i)=>`<button type="button" class="opt" data-i="${i}">${o}</button>`).join('')}</div>
+    <p class="fb" id="qfb"></p>`;
   box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
-    if(st.quiz.a[i]!=null)return;
-    st.quiz.a[i]=+b.dataset.j; sv(); markDay(); quizDraw();
+    if(qLock)return; qLock=true;
+    const i=+b.dataset.i, ok=i===q.a;
+    if(ok)qOk++;
+    box.querySelectorAll('.opt').forEach((x,j)=>{ if(j===q.a)x.classList.add('ok'); else if(j===i&&!ok)x.classList.add('no'); });
+    const fb=$('qfb'); fb.className='fb show '+(ok?'ok':'no');
+    fb.textContent=(ok?'Correcto. ':'Todavía no. ')+(qMode==='estudio'?q.e:'');
+    const n=document.createElement('button'); n.type='button'; n.className='act big'; n.textContent=qI===QUIZ.length-1?'Ver calificación':'Siguiente pregunta';
+    n.onclick=()=>{ qI++; qLock=false; quizDraw(); };
+    box.appendChild(n); markDay();
   });
-  $('qprev').onclick=()=>{st.quiz.i=Math.max(0,i-1);sv();quizDraw()};
-  $('qnext').onclick=()=>{
-    if(i===QUIZ.length-1){ st.quiz.done=true; sv(); quizResult(); return; }
-    st.quiz.i=i+1; sv(); quizDraw();
-  };
 }
 function quizResult(){
-  let ok=0; QUIZ.forEach((q,i)=>{ if(st.quiz.a[i]===q.a) ok++; });
-  const grade=Math.round((ok/QUIZ.length)*100)/10; // 0-10 with one decimal? 15 q -> ok/15*10
-  const g=Math.round((ok/QUIZ.length)*100)/10;
-  const g1=(ok/QUIZ.length*10);
-  const gshow=Math.round(g1*10)/10;
-  if(st.best==null || gshow>st.best) st.best=gshow;
-  st.quiz.done=true; sv(); progress(); markDay();
-  $('qzbox').innerHTML=`<p class="kicker">Mini examen</p>
-    <div class="grade">${gshow.toFixed(1)}</div>
-    <p style="text-align:center">de 10 · ${ok} aciertos de ${QUIZ.length}. Mejor: ${st.best.toFixed(1)}</p>
-    <p>${gshow>=9?'Eso ya es nivel 10: naturaleza, NIF y los errores del ejercicio están claros.':gshow>=7?'Vas bien. Repasa las trampas de Caja y del costo de ventas.':'Vuelve a las manzanas y a la sección NIF, y reintenta.'}</p>
-    <button type="button" class="act big" id="qre">Intentar otra vez</button>`;
-  $('qre').onclick=()=>{st.quiz={i:0,a:{},done:false};sv();quizDraw()};
-}
-
-/* ---------- cloze + facil + tips ---------- */
-function wireFacil(){
-  document.querySelectorAll('[data-f]').forEach(b=>{
-    b.addEventListener('click',()=>{ const el=$(b.dataset.f); if(el) el.classList.toggle('on'); });
-  });
-  document.querySelectorAll('.fstep').forEach(el=>{
-    el.addEventListener('click',()=>el.classList.toggle('open'));
-  });
-  document.querySelectorAll('[data-cloze]').forEach(b=>{
-    b.addEventListener('click',()=>{ b.classList.add('on'); b.textContent=b.dataset.cloze; });
-  });
-}
-
-
-function wireSpreads(){
-  const list=[...document.querySelectorAll('.spread')];
-  const lab=$('sp-label'), prev=$('sp-prev'), next=$('sp-next'), cur=$('sp-cur'), tot=$('sp-tot');
-  if(!list.length) return;
-  if(tot) tot.textContent=String(list.length).padStart(2,'0');
-  function barH(){ const b=document.querySelector('.magbar'); return (b?b.offsetHeight:0)+4; }
-  function current(){
-    const y=window.scrollY+barH()+24;
-    let i=0;
-    list.forEach((s,k)=>{ if(s.offsetTop<=y) i=k; });
-    return i;
-  }
-  function update(){
-    const i=current();
-    if(lab) lab.textContent=list[i].dataset.title||'';
-    if(cur) cur.textContent=String(i+1).padStart(2,'0');
-    if(prev) prev.disabled=i<=0;
-    if(next) next.disabled=i>=list.length-1;
-  }
-  function go(d){
-    const i=Math.max(0,Math.min(list.length-1, current()+d));
-    const top=list[i].getBoundingClientRect().top + window.scrollY - barH();
-    window.scrollTo(0, Math.max(0,top));
-    setTimeout(update, 50);
-  }
-  if(prev) prev.onclick=()=>go(-1);
-  if(next) next.onclick=()=>go(1);
-  window.addEventListener('scroll', update, {passive:true});
-  update();
-  let x0=0,y0=0,armed=false;
-  document.addEventListener('touchstart', e=>{
-    if(e.touches.length!==1){ armed=false; return; }
-    if(e.target.closest('input,textarea,select,button,a,.chip,.dcard,.tw,.opt,.magbar,.tabbar,.pool,.bins')){ armed=false; return; }
-    x0=e.touches[0].clientX; y0=e.touches[0].clientY; armed=true;
-  }, {passive:true});
-  document.addEventListener('touchend', e=>{
-    if(!armed || !e.changedTouches.length) return;
-    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
-    armed=false;
-    if(Math.abs(dx)<70 || Math.abs(dx)<Math.abs(dy)*1.35) return;
-    if(dx<0) go(1); else go(-1);
-  }, {passive:true});
+  const box=$('qzbox'); if(!box)return;
+  const grade=Math.round((qOk/QUIZ.length)*100)/10;
+  if(st.best==null||grade>st.best) st.best=grade;
+  st.last=grade; sv(); markRead('prac');
+  box.innerHTML=`<p class="grade">${grade.toFixed(1)}</p>
+    <p class="sub" style="text-align:center">Acertaste ${qOk} de ${QUIZ.length}. Mejor calificación en este teléfono: ${Number(st.best).toFixed(1)}.</p>
+    <button type="button" class="act big" id="qretry">Volver a intentar</button>`;
+  $('qretry').onclick=()=>{ qI=0; qOk=0; qLock=false; quizDraw(); };
 }
 
 function tabFromHash(){
@@ -1164,13 +1096,15 @@ function tabFromHash(){
 
 window.addEventListener('hashchange', tabFromHash);
 document.addEventListener('DOMContentLoaded',()=>{
-  drawStamps(); progress(); renderEq(); cabDraw(); classifyInit(); renderNif();
+  drawStamps(); progress(); renderStand(); renderNif();
   if($('fixdep')){
-    $('fixdep').onchange=()=>{ opFix=$('fixdep').checked; renderOp(); renderEstados(); };
+    $('fixdep').onchange=()=>{ opFix=$('fixdep').checked; renderValle(); };
   }
-  renderOp(); renderEstados(); buildDraw(); deckDraw();
+  renderValle(); cabDraw(); classifyInit(); buildDraw(); deckDraw();
   if($('dprev')){ $('dprev').onclick=()=>{if(fi>0){fi--;flip=false;deckDraw()}}; $('dnext').onclick=()=>{if(fi<FLASH.length-1){fi++;flip=false;deckDraw()}}; }
-  quizDraw(); wireFacil(); tabFromHash(); wireSpreads();
+  if($('qestudio')) $('qestudio').onclick=()=>{ qMode='estudio'; qI=0; qOk=0; qLock=false; quizDraw(); };
+  if($('qexamen')) $('qexamen').onclick=()=>{ qMode='examen'; qI=0; qOk=0; qLock=false; quizDraw(); };
+  quizDraw(); tabFromHash();
   if($('resume')){
     $('resume').onclick=()=>{
       const map={m1:'#manzanas',nif:'#nif',ej:'#ejercicio',prac:'#practica'};
