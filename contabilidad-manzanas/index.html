@@ -10,38 +10,106 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;550;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F3EEE6;--paper:#FAF7F1;--cream:#F3EEE6;--ink:#241612;--ink2:#5C463C;
+  --studio:#D8D3CC;
+  --bg:#F3EEE6;--paper:#FAF7F1;--cream:#F3EEE6;--ink:#241612;--ink2:#4E3B32;
   --ox:#6B1A1F;--cherry:#C31C32;--esp:#2A1812;--latte:#C9B59A;--latte2:#E8DCCB;
   --line:rgba(36,22,18,.14);--ok:#2C4A34;--okbg:#E4F0E6;--no:#8A241C;--nobg:#F8E4E2;
   --pink:#F5A3C0;--pink2:#FDE8F0;--blue:#7EB8DC;--blue2:#E3F2FC;--yel:#F3D35E;--yel2:#FFF6D6;
   --green:#3D6B4F;--green2:#E7F3EA;--leaf:#2C4A34;
   --serif:'Cormorant Garamond',Palatino,Georgia,serif;
   --sans:'Figtree',system-ui,sans-serif;
+  --magh:54px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:56px;scroll-padding-bottom:108px;max-width:100%;overflow-x:hidden}
-body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.65;font-size:16.5px;font-weight:400;-webkit-font-smoothing:antialiased;max-width:100%;overflow-x:hidden}
-img,svg,table,button,.act,input,select{max-width:100%}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--magh) + 8px);scroll-padding-bottom:108px;max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--studio);line-height:1.65;font-size:16.5px;font-weight:400;-webkit-font-smoothing:antialiased;max-width:100%;overflow-x:hidden}
+img,svg,table,button,.act,input,select,figure{max-width:100%}
+img{display:block;height:auto}
 h1,h2,h3,h4{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.15;margin:0;color:var(--esp);text-wrap:balance}
-h2{font-size:clamp(1.85rem,5.4vw,2.7rem);margin:0 0 10px}
+h2{font-size:clamp(1.85rem,5.4vw,2.75rem);margin:0 0 10px}
 h3{font-size:1.35rem;margin:0 0 8px}
 p{margin:0 0 12px}
 a{color:var(--ox)}
 button,input,select{font:inherit}
-.wrap{width:min(720px,100%);margin:0 auto;padding:0 20px 120px}
-.hero{position:relative;min-height:86svh;display:flex;align-items:flex-end;color:#FAF7F1;background:#2A1812;overflow:hidden}
-.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,24,18,.15) 20%,rgba(42,24,18,.88) 78%)}
-.hero .inner{position:relative;padding:28px 22px 36px;width:min(720px,100%);margin:0 auto}
+ul{margin:0 0 12px;padding-left:1.15em}
+
+/* Magazine chrome */
+.magbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:8px;height:var(--magh);padding:0 10px;background:rgba(250,247,241,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);max-width:100%}
+.magbar button{appearance:none;-webkit-appearance:none;flex:0 0 44px;height:40px;border:1.5px solid var(--esp);background:var(--paper);color:var(--esp);border-radius:999px;font-size:1.25rem;line-height:1;cursor:pointer}
+.magbar button:disabled{opacity:.35;cursor:not-allowed}
+.magbar .mid{flex:1;min-width:0;text-align:center}
+.magbar .mid b{display:block;font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--esp);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.magbar .mid span{display:block;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ox);font-weight:650}
+
+.book{width:min(1120px,100%);margin:0 auto;padding:12px 12px 120px;max-width:100%}
+
+/* Hardcover cover */
+.cover-spread{padding:8px 8px 28px;display:flex;flex-direction:column;align-items:center}
+.hardcover{position:relative;width:min(440px,100%);aspect-ratio:3/4.18;background:var(--esp);color:#FAF7F1;border-radius:3px 10px 10px 3px;overflow:hidden;box-shadow:0 22px 50px rgba(42,24,18,.32), 0 2px 0 rgba(255,255,255,.2) inset, 10px 0 18px -12px rgba(0,0,0,.45) inset}
+.hardcover .spine{position:absolute;left:0;top:0;bottom:0;width:16px;background:linear-gradient(90deg,#1A0E0A,#3A2018 55%,#2A1812);z-index:3;pointer-events:none}
+.hardcover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;z-index:1}
+.hardcover .plate{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0;min-height:0;background:transparent}
+.hardcover .plate .fade{height:72px;background:linear-gradient(180deg,transparent,#6B1A1F);pointer-events:none}
+.hardcover .plate .ink{background:var(--ox);padding:4px 22px 24px 32px}
+.hardcover .kicker{color:#F3EEE6}
+.hardcover h1{font-size:clamp(2.15rem,9.4vw,3.35rem);color:#FAF7F1;margin:0 0 8px;letter-spacing:-.03em}
+.hardcover .lead{font-size:.92rem;color:#F3EEE6;margin:0 0 10px;max-width:26em;line-height:1.5}
+.hardcover .cover-folio{margin:0;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;font-weight:650;color:#E8DCCB}
+.cover-hint{margin:14px 0 0;font-family:var(--serif);font-style:italic;color:#4E3B32;font-size:.95rem;text-align:center}
+
+/* Open spreads */
+.spread{display:grid;grid-template-columns:1fr;margin:0 0 22px;max-width:100%;background:transparent}
+.leaf{background:var(--paper);position:relative;min-width:0;max-width:100%;overflow:hidden}
+.leaf.bleed{padding:0;background:#2A1812;display:flex;flex-direction:column}
+.leaf.bleed img.full{width:100%;height:220px;object-fit:cover;flex:0 0 auto}
+.leaf.bleed .caption,.leaf .caption{margin:0;padding:10px 14px 14px;font-family:var(--serif);font-style:italic;font-size:.78rem;line-height:1.4;color:#3A2A22;background:var(--cream)}
+.leaf.paper{padding:18px 18px 48px;background:var(--paper)}
+.leaf.solid{padding:28px 22px 48px;display:flex;flex-direction:column;justify-content:flex-end;min-height:240px}
+.leaf.solid.ox{background:var(--ox);color:#FAF7F1}
+.leaf.solid.esp{background:var(--esp);color:#FAF7F1}
+.leaf.solid.pink{background:#F8D5E3;color:var(--esp)}
+.leaf.solid.blue{background:#D7EAF7;color:var(--esp)}
+.leaf.solid.yel{background:#F8E59A;color:var(--esp)}
+.leaf.solid.green{background:#D5E8DA;color:var(--esp)}
+.leaf.solid h2,.leaf.solid h3{color:inherit}
+.leaf.solid .kicker{color:inherit;opacity:.92}
+.leaf.solid p,.leaf.solid .sub{color:inherit}
+.leaf.solid.ox .kicker,.leaf.solid.esp .kicker,.leaf.solid.ox .sub,.leaf.solid.esp .sub,.leaf.solid.ox p,.leaf.solid.esp p{color:#F3EEE6}
+.leaf.solid .num{font-family:var(--serif);font-size:clamp(4.2rem,18vw,7rem);line-height:.8;letter-spacing:-.06em;margin:0 0 18px;font-weight:500}
+.leaf.solid .inset{width:min(180px,46%);margin:0 0 18px;box-shadow:0 10px 24px rgba(42,24,18,.22)}
+.leaf.solid .inset img{width:100%;height:120px;object-fit:cover}
+
+.folio{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 18px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:650;color:var(--ox)}
+.folio span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.pageno{position:absolute;bottom:14px;font-family:var(--serif);font-variant-numeric:oldstyle-nums;font-size:.95rem;color:var(--ink2);letter-spacing:.04em}
+.leaf.paper .pageno,.leaf.solid .pageno{right:18px}
+.leaf.bleed .pageno{display:none}
+.leaf.solid.ox .pageno,.leaf.solid.esp .pageno{color:#E8DCCB}
+
+.secband{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 -18px 18px;padding:10px 18px;font-family:var(--serif);font-size:1.15rem;color:#FAF7F1;background:var(--ox)}
+.secband.esp{background:var(--esp)}
+.secband.pink{background:#F8D5E3;color:var(--esp)}
+.secband.blue{background:#D7EAF7;color:var(--esp)}
+.secband.yel{background:#F8E59A;color:var(--esp)}
+.secband.green{background:#D5E8DA;color:var(--esp)}
+.secband .n{font-size:1.35rem;letter-spacing:.04em}
+
+.pullq{font-family:var(--serif);font-size:clamp(1.4rem,5vw,2rem);line-height:1.2;color:var(--ox);margin:6px 0 20px;font-style:italic;font-weight:500;padding-left:14px;border-left:3px solid var(--yel)}
+.leaf.solid .pullq{color:inherit;border-left-color:currentColor;margin-top:auto}
+.leaf.solid.ox .pullq,.leaf.solid.esp .pullq{color:#FAF7F1;border-left-color:#F3D35E}
+
 .kicker{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;margin:0 0 10px;color:var(--ox)}
-.hero .kicker{color:#E8DCCB}
-.hero h1{font-size:clamp(2.4rem,10vw,4.1rem);color:#FAF7F1;margin:0 0 10px}
-.hero .lead{font-size:1.08rem;color:#F3EEE6;max-width:26em}
-.apple-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(250,247,241,.14);border:1px solid rgba(250,247,241,.3);border-radius:999px;padding:6px 12px;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin:0 0 14px}
-.stripe{height:14px;background:repeating-linear-gradient(90deg,#6B1A1F 0 16px,#FAF7F1 16px 32px)}
-.blk{margin:56px 0 0;max-width:100%}
 .sub{color:var(--ink2);margin:0 0 16px}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px 16px;margin:0 0 14px;max-width:100%;overflow:hidden}
+.sidenote{font-size:.88rem;color:var(--ink2)}
+
+/* Cards and components (kept) */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 14px;margin:0 0 14px;max-width:100%;overflow:hidden}
+.leaf.paper .card{background:#FFFcf7}
+.leaf.paper .card.yel{background:var(--yel2)}
+.leaf.paper .card.pink{background:var(--pink2)}
+.leaf.paper .card.blue{background:var(--blue2)}
+.leaf.paper .card.green{background:var(--green2)}
+.leaf.paper .card.dark{background:var(--esp)}
 .card.yel{background:var(--yel2);border-color:#E6C84A}
 .card.pink{background:var(--pink2);border-color:#E89BB4}
 .card.blue{background:var(--blue2);border-color:#8EC8F0}
@@ -61,7 +129,7 @@ button,input,select{font:inherit}
 .hl-def{background:linear-gradient(transparent 58%, #FFE566 58% 95%, transparent 95%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .hl-art{background:linear-gradient(transparent 58%, #F5A3C0 58% 95%, transparent 95%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .hl-trap{background:linear-gradient(transparent 58%, #8EC8F0 58% 95%, transparent 95%);box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.eq{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:6px;align-items:center;margin:16px 0;font-family:var(--serif);font-size:clamp(1.4rem,6vw,2.2rem);text-align:center}
+.eq{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:6px;align-items:center;margin:16px 0;font-family:var(--serif);font-size:clamp(1.25rem,5.4vw,2.2rem);text-align:center}
 .eq b{display:block;background:var(--paper);border-radius:16px;padding:14px 8px;border:1.5px solid var(--line)}
 .eq .a{background:var(--pink2);border-color:#E89BB4}
 .eq .p{background:var(--blue2);border-color:#8EC8F0}
@@ -90,7 +158,7 @@ table.grid .warn{color:var(--no);font-weight:650}
 .pill.on,.pill.ok{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
 .pill.no{background:var(--nobg);border-color:var(--no);color:var(--no)}
 .bins{display:grid;grid-template-columns:1fr;gap:10px}
-@media(min-width:640px){.bins{grid-template-columns:1fr 1fr 1fr}.bins.five{grid-template-columns:repeat(5,1fr)}}
+@media(min-width:700px){.bins{grid-template-columns:1fr 1fr}}
 .bin{min-height:120px;border:2px dashed var(--line);border-radius:16px;padding:10px;background:rgba(250,247,241,.6)}
 .bin h4{font-size:.95rem;margin:0 0 8px}
 .bin.a{background:var(--pink2);border-color:#E89BB4}
@@ -112,7 +180,7 @@ table.grid .warn{color:var(--no);font-weight:650}
 .facil.on{display:block}
 .cloze{all:unset;box-sizing:border-box;cursor:pointer;display:inline;padding:0 .15em;border-bottom:3px dotted var(--cherry);font-weight:700;color:var(--ox)}
 .cloze.on{border-bottom-color:var(--ok);background:linear-gradient(transparent 58%, #C8E6C9 58% 95%, transparent 95%);color:var(--esp);font-weight:600}
-.stage{background:var(--paper);border-radius:20px;padding:14px;border:1px solid var(--line);margin:0 0 14px}
+.stage{background:var(--paper);border-radius:16px;padding:14px;border:1px solid var(--line);margin:0 0 14px}
 .pots{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 @media(min-width:520px){.pots{grid-template-columns:repeat(3,1fr)}}
 .pot{background:var(--cream);border-radius:14px;padding:10px 8px;text-align:center;font-size:.78rem;border:1px solid var(--line)}
@@ -124,6 +192,7 @@ table.grid .warn{color:var(--no);font-weight:650}
 .deck-nav{display:flex;gap:8px;align-items:center;margin-top:12px}
 .deck-nav button{flex:1}
 #dmeta{flex:0 0 auto;font-weight:650;color:var(--ink2)}
+.card.dark #dmeta{color:#E8DCCB}
 .opt{display:block;width:100%;text-align:left;box-sizing:border-box;margin:0 0 8px;padding:14px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;font-weight:550;min-height:48px}
 .opt.ok{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
 .opt.no{background:var(--nobg);border-color:var(--no);color:var(--no)}
@@ -136,14 +205,10 @@ table.grid .warn{color:var(--no);font-weight:650}
 .tabbar a{flex:1;text-align:center;text-decoration:none;color:var(--ink2);font-size:.68rem;font-weight:650;letter-spacing:.04em;text-transform:uppercase;padding:6px 2px;border-radius:12px}
 .tabbar a svg{width:22px;height:22px;display:block;margin:0 auto 2px;stroke:currentColor;fill:none;stroke-width:1.7}
 .tabbar a.on{color:var(--ox);background:var(--pink2)}
-.polaroid{background:#fff;padding:10px 10px 28px;border-radius:4px;box-shadow:0 10px 28px rgba(42,24,18,.12);margin:0 0 16px;transform:rotate(-1.2deg)}
-.polaroid img{width:100%;height:180px;object-fit:cover;display:block;border-radius:2px}
-.polaroid figcaption{font-size:.8rem;color:var(--ink2);margin-top:8px;text-align:center;font-family:var(--serif);font-style:italic}
 .icons{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}
 .ic{flex:1 1 90px;min-width:90px;background:var(--paper);border-radius:16px;padding:12px 8px;text-align:center;font-size:.75rem;font-weight:650;color:var(--ox);border:1px solid var(--line)}
 .ic svg{width:40px;height:40px;display:block;margin:0 auto 6px}
 .nif{border-left:5px solid var(--ox);padding-left:12px;margin:0 0 16px}
-.sidenote{font-size:.88rem;color:var(--ink2)}
 .grade{font-family:var(--serif);font-size:4rem;color:var(--ox);text-align:center;line-height:1;margin:8px 0}
 .muted{color:var(--ink2)}
 .warnc{color:var(--no);font-weight:650}
@@ -156,31 +221,71 @@ table.grid .warn{color:var(--no);font-weight:650}
 .fstep + .farrow{text-align:center;color:var(--ox);font-weight:700;padding:2px}
 .fstep .ftip{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:.95rem}
 .fstep.open .ftip{display:block}
-.band{height:120px;background-size:cover;background-position:center;margin:36px -20px;border-radius:0}
-@media(min-width:800px){.tabbar{max-width:560px;left:50%;transform:translateX(-50%);border-radius:20px 20px 0 0}}
-.blk,.card,.stage,.wrap{animation:none;opacity:1;transform:none}
+.credits li{margin:0 0 8px}
+
+.leaf,.card,.stage,.spread{animation:none;opacity:1;transform:none}
+
+/* Desktop / tablet: open two-page spread */
+@media(min-width:820px){
+  .book{padding:28px 20px 80px}
+  .cover-spread{padding:28px 20px 40px}
+  .hardcover{width:min(460px,86vw)}
+  .spread{grid-template-columns:1fr 1fr;margin:0 auto 36px;box-shadow:0 18px 40px rgba(42,24,18,.16)}
+  .spread.rtl .leaf:first-child{order:2}
+  .spread.rtl .leaf:last-child{order:1}
+  .leaf.bleed img.full{height:100%;min-height:520px;flex:1}
+  .leaf.paper{padding:32px 36px 56px}
+  .leaf.solid{min-height:520px;padding:40px 36px 56px}
+  .leaf:first-child{box-shadow:inset -16px 0 20px -14px rgba(42,24,18,.18)}
+  .leaf:last-child{box-shadow:inset 16px 0 20px -14px rgba(42,24,18,.16)}
+  .secband{margin:0 -36px 22px;padding:12px 36px}
+  .pageno{bottom:18px}
+  .leaf.paper .pageno,.leaf.solid .pageno{right:28px}
+  .spread.rtl .leaf.paper .pageno,.spread.rtl .leaf.solid .pageno{right:auto;left:28px}
+  .tabbar{max-width:560px;left:50%;transform:translateX(-50%);border-radius:20px 20px 0 0}
+}
+
 @media (prefers-reduced-motion: no-preference){
-  @keyframes up-soft{from{transform:translateY(10px)}to{transform:none}}
-  .blk{animation:up-soft .5s ease}
+  @keyframes up-soft{from{transform:translateY(8px)}to{transform:none}}
+  .spread{animation:up-soft .5s ease}
 }
 
 </style>
 </head>
 <body>
-<div class="hero" id="inicio">
-  <img class="bg" src="awning.webp" alt="Toldo de cafetería a rayas burdeos y crema">
-  <div class="veil"></div>
-  <div class="inner">
-    <p class="apple-badge">Contabilidad · NIF · con manzanas</p>
-    <p class="kicker">Guía de estudio · partida doble y normas del CINIF</p>
-    <h1>Contabilidad con manzanas</h1>
-    <p class="lead">Qué es un cargo, qué es un abono y cómo se lee una NIF, explicado como si armaras el cuaderno de un puesto de fruta. Luego resolvemos, paso a paso, el ejercicio de Distribuidora del Valle, S.A. de C.V.</p>
-  </div>
-</div>
-<div class="stripe" aria-hidden="true"></div>
+<nav class="magbar" aria-label="Páginas de la guía">
+  <button type="button" id="sp-prev" aria-label="Pliego anterior">‹</button>
+  <div class="mid"><b id="sp-label">Portada</b><span><i id="sp-cur">01</i> / <i id="sp-tot">12</i></span></div>
+  <button type="button" id="sp-next" aria-label="Pliego siguiente">›</button>
+</nav>
 
-<div class="wrap">
-  <section class="blk" id="arranque">
+<div class="book">
+
+<article class="spread cover-spread" id="inicio" data-title="Portada">
+  <div class="hardcover">
+    <span class="spine" aria-hidden="true"></span>
+    <img src="foto-manzanas.webp" alt="Selección de manzanas en un puesto de mercado">
+    <div class="plate">
+      <div class="fade" aria-hidden="true"></div>
+      <div class="ink">
+        <p class="kicker">Guía de estudio · partida doble y normas del CINIF</p>
+        <h1>Contabilidad con manzanas</h1>
+        <p class="lead">Qué es un cargo, qué es un abono y cómo se lee una NIF, explicado como si armaras el cuaderno de un puesto de fruta. Luego resolvemos, paso a paso, el ejercicio de Distribuidora del Valle, S.A. de C.V.</p>
+        <p class="cover-folio">Tomo I · NIF 2026</p>
+      </div>
+    </div>
+  </div>
+  <p class="cover-hint">Desliza o usa las flechas para pasar los pliegos. Portada: mercado de Stroud, BazzaDaRambler, CC BY 2.0.</p>
+</article>
+
+<article class="spread" id="arranque" data-title="La racha">
+  <div class="leaf bleed">
+    <img class="full" src="foto-puesto.webp" alt="Puesto de fruta en un mercado de Barcelona">
+    <p class="caption">Puesto de fruta en un mercado de Barcelona. Foto de Daderot, Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</p>
+  </div>
+  <div class="leaf paper">
+    <p class="folio"><span>Contabilidad con manzanas</span><span>01 · La racha</span></p>
+    <div class="secband green"><span class="n">01</span><span>Sellos de manzana</span></div>
     <div class="card green">
       <p class="kicker" style="color:var(--green)">Tu racha</p>
       <h3>Sellos de manzana</h3>
@@ -194,47 +299,76 @@ table.grid .warn{color:var(--no);font-weight:650}
       <button type="button" class="act big" id="resume">Continuar donde me quedé</button>
     </div>
     <div class="hl-leg"><span><i class="hl-def">definición</i></span><span><i class="hl-art">NIF, importe o fecha</i></span><span><i class="hl-trap">trampa o error</i></span></div>
-  </section>
+    <span class="pageno">004</span>
+  </div>
+</article>
 
-  <section class="blk" id="manzanas">
+<article class="spread rtl" id="manzanas" data-title="Los cimientos">
+  <div class="leaf solid esp">
     <p class="kicker">Los cimientos</p>
+    <p class="num">02</p>
+    <img class="inset" src="foto-manzana.webp" alt="Dos manzanas rojas">
     <h2>Explícamelo con manzanas</h2>
+    <p class="pullq">La contabilidad es el cuaderno que impide que confundas “se vendió” con “se movió la fruta de un cajón a otro”.</p>
+    <span class="pageno">005</span>
+  </div>
+  <div class="leaf paper">
+    <p class="folio"><span>02 · Los cimientos</span><span>Contabilidad con manzanas</span></p>
     <p class="sub">Imagina que abres un puesto de manzanas. La contabilidad es el cuaderno que impide que confundas “se vendió” con “se movió la fruta de un cajón a otro”.</p>
-
     <div class="icons">
       <div class="ic"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="38" rx="18" ry="20" fill="#C31C32"/><path d="M32 18c6 8 14 6 15 3" fill="none" stroke="#2C4A34" stroke-width="2"/><ellipse cx="40" cy="16" rx="8" ry="4.5" fill="#3D6B4F" transform="rotate(-25 40 16)"/><ellipse cx="24" cy="32" rx="5" ry="9" fill="#fff" opacity=".28"/></svg>El puesto</div>
       <div class="ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="22" width="44" height="28" rx="4" fill="#6B1A1F"/><rect x="14" y="26" width="16" height="20" fill="#FAF7F1"/><rect x="34" y="26" width="16" height="20" fill="#FAF7F1"/><path d="M32 26v20" stroke="#C9B59A" stroke-width="2"/></svg>La cuenta T</div>
       <div class="ic"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="44" rx="3" fill="#FAF7F1" stroke="#6B1A1F" stroke-width="2"/><path d="M20 22h24M20 30h24M20 38h16" stroke="#C9B59A" stroke-width="2"/></svg>El diario</div>
       <div class="ic"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="28" r="10" fill="#F5A3C0"/><circle cx="40" cy="28" r="10" fill="#7EB8DC"/><circle cx="30" cy="42" r="10" fill="#F3D35E"/></svg>A = P + C</div>
     </div>
-
     <article class="card">
       <h3>Qué es la contabilidad</h3>
       <p>Es el sistema con el que una entidad <span class="hl-def">identifica, valúa, reconoce y presenta</span> sus transacciones para preparar estados financieros útiles. Con manzanas: no basta con “ver el cajón”. Hay que saber de quién es la fruta, cuánto costó, qué ya se vendió y qué se debe.</p>
       <button type="button" class="act lt" data-f="f1">Explícamelo con manzanas</button>
       <div class="facil" id="f1">Si una amiga te guarda 20 manzanas y tú vendes 5 de las tuyas, el cajón puede verse “lleno” y aun así tú no hayas ganado. El cuaderno separa lo que es tuyo, lo que es de ella y lo que ya salió como venta.</div>
     </article>
+    <p class="caption" style="padding:0">Dos manzanas rojas. Foto de Paolo Neo, dominio público, vía Wikimedia Commons. Conversión a WebP.</p>
+    <span class="pageno">006</span>
+  </div>
+</article>
 
-    <article class="card">
-      <h3>La ecuación: Activo = Pasivo + Capital</h3>
-      <div id="eqdemo"></div>
-      <button type="button" class="act lt" data-f="f2">Explícamelo con manzanas</button>
-      <div class="facil" id="f2">Las manzanas que hay en el puesto (activo) no salieron de la nada. O te las prestaron (pasivo), o las pusieron las socias, o se ganaron vendiendo (capital). Por eso los dos lados del cuaderno siempre pesan igual.</div>
-      <p>Toca cada paso:</p>
-      <div class="flow">
-        <div class="fstep"><b>1. Activo</b><span> Recursos que la entidad controla y de los que espera beneficios. Caja, bancos, inventarios, mobiliario, equipo.</span><div class="ftip">En el puesto: las manzanas, el dinero y la mesa.</div></div>
-        <div class="farrow">↓</div>
-        <div class="fstep"><b>2. Pasivo</b><span> Obligaciones presentes. Proveedores, acreedores diversos, acreedores bancarios.</span><div class="ftip">En el puesto: lo que le debes al mayoreo o al banco.</div></div>
-        <div class="farrow">↓</div>
-        <div class="fstep"><b>3. Capital contable</b><span> El residual: activo menos pasivo. Capital social y utilidad del periodo.</span><div class="ftip">Lo que, una vez pagadas las deudas, es de las socias.</div></div>
-      </div>
-    </article>
+<article class="spread" id="ecuacion" data-title="La ecuación">
+  <div class="leaf bleed">
+    <img class="full" src="foto-precios.webp" alt="Puesto de fruta con precios visibles en un mercado de Londres">
+    <p class="caption">Puesto de fruta con precios, Kingsway, Londres, 15 de junio de 2023. Foto de Canadian2006, Wikimedia Commons. Licencia CC BY-SA 4.0. Recorte y conversión a WebP.</p>
+  </div>
+  <div class="leaf paper">
+    <p class="folio"><span>Contabilidad con manzanas</span><span>03 · La ecuación</span></p>
+    <div class="secband pink"><span class="n">03</span><span>Activo = Pasivo + Capital</span></div>
+    <h2>La ecuación: Activo = Pasivo + Capital</h2>
+    <div id="eqdemo"></div>
+    <p class="pullq">Los dos lados del cuaderno siempre pesan igual.</p>
+    <button type="button" class="act lt" data-f="f2">Explícamelo con manzanas</button>
+    <div class="facil" id="f2">Las manzanas que hay en el puesto (activo) no salieron de la nada. O te las prestaron (pasivo), o las pusieron las socias, o se ganaron vendiendo (capital). Por eso los dos lados del cuaderno siempre pesan igual.</div>
+    <p>Toca cada paso:</p>
+    <div class="flow">
+      <div class="fstep"><b>1. Activo</b><span> Recursos que la entidad controla y de los que espera beneficios. Caja, bancos, inventarios, mobiliario, equipo.</span><div class="ftip">En el puesto: las manzanas, el dinero y la mesa.</div></div>
+      <div class="farrow">↓</div>
+      <div class="fstep"><b>2. Pasivo</b><span> Obligaciones presentes. Proveedores, acreedores diversos, acreedores bancarios.</span><div class="ftip">En el puesto: lo que le debes al mayoreo o al banco.</div></div>
+      <div class="farrow">↓</div>
+      <div class="fstep"><b>3. Capital contable</b><span> El residual: activo menos pasivo. Capital social y utilidad del periodo.</span><div class="ftip">Lo que, una vez pagadas las deudas, es de las socias.</div></div>
+    </div>
+    <span class="pageno">008</span>
+  </div>
+</article>
 
+<article class="spread rtl" id="cargo" data-title="Cargo y abono">
+  <div class="leaf bleed">
+    <img class="full" src="foto-diario.webp" alt="Páginas abiertas de un libro de cuentas manuscrito">
+    <p class="caption">Libro de cuentas, páginas 64 y 65. Fotografía de Donald S. Erdman, Biodiversity Heritage Library, vía Wikimedia Commons. Sin restricciones de uso. Recorte y conversión a WebP.</p>
+  </div>
+  <div class="leaf paper">
+    <p class="folio"><span>04 · Cargo y abono</span><span>Contabilidad con manzanas</span></p>
+    <div class="secband ox"><span class="n">04</span><span>Partida doble</span></div>
     <article class="card">
       <h3>Partida doble</h3>
       <p>Todo hecho se anota en <span class="hl-def">por lo menos dos cuentas</span>, y <button type="button" class="cloze" data-cloze="la suma de cargos es igual a la suma de abonos">••••</button>. Si compras manzanas y pagas de contado, entra mercancía y sale dinero. Nunca “aparece” fruta sin que algo más se mueva.</p>
     </article>
-
     <article class="card pink">
       <h3>Cargo y abono</h3>
       <p>La <span class="hl-def">cuenta T</span> tiene dos lados. El izquierdo es el <span class="hl-art">cargo</span> (o debe). El derecho es el <span class="hl-art">abono</span> (o haber).</p>
@@ -247,13 +381,23 @@ table.grid .warn{color:var(--no);font-weight:650}
       <button type="button" class="act lt" data-f="f3">Explícamelo con manzanas</button>
       <div class="facil" id="f3">Pon un cajón partido a la mitad. Si llegan manzanas al inventario, las anotas a la izquierda de “Inventarios”. Si pagas con el banco, las “sacas” por la derecha de “Bancos”. Dos lados, un solo hecho, el cajón sigue en equilibrio.</div>
     </article>
+    <span class="pageno">010</span>
+  </div>
+</article>
 
-    <article class="card" id="cabgame">
+<article class="spread" id="cabgame" data-title="Juegos">
+  <div class="leaf bleed">
+    <img class="full" src="foto-calculadora.webp" alt="Calculadora de bolsillo">
+    <p class="caption">Calculadora de bolsillo. Foto de Dimljacic, Wikimedia Commons. Licencia CC BY-SA 4.0. Recorte y conversión a WebP.</p>
+  </div>
+  <div class="leaf paper">
+    <p class="folio"><span>Contabilidad con manzanas</span><span>05 · Juegos</span></p>
+    <div class="secband blue"><span class="n">05</span><span>Práctica de lados</span></div>
+    <article class="card">
       <h3>Juego: ¿cargo o abono?</h3>
       <p class="sub">Ocho situaciones del puesto. Toca el lado correcto.</p>
       <div id="cabbox"></div>
     </article>
-
     <article class="card">
       <h3>Naturaleza de las cuentas</h3>
       <div class="tw"><table class="grid">
@@ -272,7 +416,20 @@ table.grid .warn{color:var(--no);font-weight:650}
       <div class="bins five" id="clbins"></div>
       <p class="fb" id="clres"></p>
     </article>
+    <span class="pageno">012</span>
+  </div>
+</article>
 
+<article class="spread rtl" id="flujo" data-title="Del diario a los estados">
+  <div class="leaf solid ox">
+    <p class="kicker">El recorrido</p>
+    <p class="num">06</p>
+    <h2>Del diario a los estados</h2>
+    <p class="pullq">Si la balanza cuadra, aún puede haber un error de sentido, como una Caja acreedora.</p>
+    <span class="pageno">013</span>
+  </div>
+  <div class="leaf paper">
+    <p class="folio"><span>06 · El recorrido</span><span>Contabilidad con manzanas</span></p>
     <article class="card blue">
       <h3>Del diario a los estados</h3>
       <div class="flow">
@@ -288,13 +445,20 @@ table.grid .warn{color:var(--no);font-weight:650}
       </div>
       <button type="button" class="act lt" data-mark="m1">Marcar esta sección como lista</button>
     </article>
-  </section>
+    <span class="pageno">014</span>
+  </div>
+</article>
 
-  <div class="band" style="background-image:url('latte.webp')" role="img" aria-label="Taza de café con arte latte"></div>
-
-  <section class="blk" id="nif">
+<article class="spread" id="nif" data-title="Las NIF">
+  <div class="leaf solid yel">
     <p class="kicker">Normas del CINIF</p>
+    <p class="num">07</p>
     <h2>Las NIF que sí aplican aquí</h2>
+    <p>Solo se citan normas con título oficial comprobado. No se inventan números de párrafo.</p>
+    <span class="pageno">015</span>
+  </div>
+  <div class="leaf paper">
+    <p class="folio"><span>Contabilidad con manzanas</span><span>07 · Las NIF</span></p>
     <p class="sub">Solo se citan normas con título oficial comprobado en fuentes del CINIF y en el índice de la edición NIF 2026 (vigentes al 1.º de enero de 2026). No se inventan números de párrafo. El CINIF es el Consejo Mexicano de Normas de Información Financiera y de Sostenibilidad, A.C., responsable de emitir las NIF en México.</p>
     <div id="niflist"></div>
     <article class="card">
@@ -303,11 +467,18 @@ table.grid .warn{color:var(--no);font-weight:650}
       <p class="sidenote">Fuentes de los títulos: CINIF, <em>Listado de normas promulgadas a 2024</em> (cinif.org.mx); CINIF, Libro electrónico NIF 2026; índice de la edición profesional NIF 2026 del IMCP y de Contenido Fiscal.</p>
       <button type="button" class="act lt" data-mark="nif">Marcar las NIF como listas</button>
     </article>
-  </section>
+    <span class="pageno">016</span>
+  </div>
+</article>
 
-  <div class="band" style="background-image:url('booths.webp')" role="img" aria-label="Sillones de piel roja en una cafetería"></div>
-
-  <section class="blk" id="ejercicio">
+<article class="spread" id="ejercicio" data-title="El ejercicio">
+  <div class="leaf bleed">
+    <img class="full" src="foto-cajas.webp" alt="Puesto de mercado con manzanas, canastos, caja y báscula">
+    <p class="caption">Puesto de mercado con fruta, canastos y caja. Foto de Fortepan, donante Konok Tamás, vía Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</p>
+  </div>
+  <div class="leaf paper">
+    <p class="folio"><span>Contabilidad con manzanas</span><span>08 · El ejercicio</span></p>
+    <div class="secband esp"><span class="n">08</span><span>Distribuidora del Valle</span></div>
     <p class="kicker">Distribuidora del Valle, S.A. de C.V.</p>
     <h2>El ejercicio, asiento por asiento</h2>
     <p class="sub">Quince operaciones. El libro diario del documento ya viene resuelto; aquí se copia con ortografía cuidada, se anima el “puesto” y se explica cada movimiento. Las cifras las volvimos a sumar.</p>
@@ -316,8 +487,21 @@ table.grid .warn{color:var(--no);font-weight:650}
       <span><b>Ver la corrección de la operación 2</b> (depositar $50,000, que es lo que había en Caja, en lugar de $60,000). El resto de las operaciones no se toca. Es un “qué pasaría si el enunciado tiene un error de cifra”, no un dato del documento.</span>
     </label>
     <div id="opbox" class="card"></div>
+    <span class="pageno">018</span>
+  </div>
+</article>
 
-    <div class="ojo" id="errores">
+<article class="spread rtl" id="errores" data-title="Errores y estados">
+  <div class="leaf solid yel">
+    <p class="kicker">Ojo</p>
+    <p class="num">09</p>
+    <h2>Errores y omisiones del ejercicio</h2>
+    <p class="pullq">Un saldo acreedor en efectivo no es razonable: no se puede “deber” dinero en el cajón.</p>
+    <span class="pageno">019</span>
+  </div>
+  <div class="leaf paper">
+    <p class="folio"><span>09 · Errores y estados</span><span>Contabilidad con manzanas</span></p>
+    <div class="ojo" id="errores-box">
       <h3>Ojo: errores y omisiones del ejercicio</h3>
       <p>El libro cuadra, y aun así hay tres puntos que conviene mirar con calma. No son un reproche al planteamiento: son trampas típicas de examen y de la práctica.</p>
       <ol>
@@ -326,7 +510,6 @@ table.grid .warn{color:var(--no);font-weight:650}
         <li><b>No hay IVA.</b> En un primer curso es una simplificación aceptable. En la operación real de una S.A. de C.V. habría que analizar el IVA trasladado en ventas y servicios y el IVA acreditable en compras y gastos, cuando proceda. Aquí no se inventan esas cuotas.</li>
       </ol>
     </div>
-
     <article class="card" id="estados">
       <h3>Cuentas T del mayor</h3>
       <div id="taccs"></div>
@@ -337,13 +520,20 @@ table.grid .warn{color:var(--no);font-weight:650}
       <h3>Estado de situación financiera</h3>
       <div id="esf"></div>
     </article>
-  </section>
+    <span class="pageno">020</span>
+  </div>
+</article>
 
-  <div class="band" style="background-image:url('fellini.webp')" role="img" aria-label="Taza de café sobre un plato"></div>
-
-  <section class="blk" id="practica">
+<article class="spread" id="practica" data-title="Práctica">
+  <div class="leaf solid ox">
     <p class="kicker">A practicar</p>
+    <p class="num">10</p>
     <h2>Asientos, tarjetas y un mini examen</h2>
+    <p class="pullq">Elige cuentas, lado e importe. La calificación es inmediata.</p>
+    <span class="pageno">021</span>
+  </div>
+  <div class="leaf paper">
+    <p class="folio"><span>Contabilidad con manzanas</span><span>10 · Práctica</span></p>
     <article class="card">
       <h3>Arma el asiento</h3>
       <p class="sub">Elige cuentas, lado e importe. La calificación es inmediata.</p>
@@ -359,9 +549,20 @@ table.grid .warn{color:var(--no);font-weight:650}
       <p class="sub">Quince preguntas, una por pantalla. Al final sale una calificación sobre 10. En el modo de estudio ves la explicación al responder.</p>
       <div id="qzbox"></div>
     </article>
-  </section>
+    <span class="pageno">022</span>
+  </div>
+</article>
 
-  <section class="blk">
+<article class="spread rtl" id="fuentes" data-title="Fuentes">
+  <div class="leaf solid esp">
+    <p class="kicker">Colofón</p>
+    <p class="num">11</p>
+    <h2>Fuentes y créditos</h2>
+    <p>Títulos de las NIF según el CINIF. Las fotos son de archivo libre, con su crédito en esta página.</p>
+    <span class="pageno">023</span>
+  </div>
+  <div class="leaf paper">
+    <p class="folio"><span>11 · Fuentes</span><span>Contabilidad con manzanas</span></p>
     <article class="card">
       <h3>Fuentes</h3>
       <ul>
@@ -373,7 +574,22 @@ table.grid .warn{color:var(--no);font-weight:650}
         <li>El planteamiento y el libro diario resuelto proceden del ejercicio “Distribuidora del Valle, S.A. de C.V.” (quince operaciones). Las sumas se volvieron a calcular aquí.</li>
       </ul>
     </article>
-  </section>
+    <article class="card">
+      <h3>Créditos de las fotografías</h3>
+      <ul class="credits">
+        <li>Portada: selección de manzanas en el mercado de Stroud. Foto de BazzaDaRambler, vía Wikimedia Commons. Licencia CC BY 2.0. Recorte y conversión a WebP.</li>
+        <li>Puesto de fruta en un mercado de Barcelona. Foto de Daderot, vía Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</li>
+        <li>Dos manzanas rojas. Foto de Paolo Neo, dominio público, vía Wikimedia Commons. Conversión a WebP.</li>
+        <li>Puesto de fruta con precios en Kingsway, Londres (15 de junio de 2023). Foto de Canadian2006, vía Wikimedia Commons. Licencia CC BY-SA 4.0. Recorte y conversión a WebP.</li>
+        <li>Libro de cuentas, páginas 64 y 65. Fotografía de Donald S. Erdman, Biodiversity Heritage Library, vía Wikimedia Commons. Sin restricciones de uso. Recorte y conversión a WebP.</li>
+        <li>Calculadora de bolsillo. Foto de Dimljacic, vía Wikimedia Commons. Licencia CC BY-SA 4.0. Recorte y conversión a WebP.</li>
+        <li>Puesto de mercado con fruta, canastos y caja. Foto de Fortepan, donante Konok Tamás, vía Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</li>
+      </ul>
+    </article>
+    <span class="pageno">024</span>
+  </div>
+</article>
+
 </div>
 
 <nav class="tabbar" aria-label="Secciones">
@@ -896,6 +1112,51 @@ function wireFacil(){
   });
 }
 
+
+function wireSpreads(){
+  const list=[...document.querySelectorAll('.spread')];
+  const lab=$('sp-label'), prev=$('sp-prev'), next=$('sp-next'), cur=$('sp-cur'), tot=$('sp-tot');
+  if(!list.length) return;
+  if(tot) tot.textContent=String(list.length).padStart(2,'0');
+  function barH(){ const b=document.querySelector('.magbar'); return (b?b.offsetHeight:0)+4; }
+  function current(){
+    const y=window.scrollY+barH()+24;
+    let i=0;
+    list.forEach((s,k)=>{ if(s.offsetTop<=y) i=k; });
+    return i;
+  }
+  function update(){
+    const i=current();
+    if(lab) lab.textContent=list[i].dataset.title||'';
+    if(cur) cur.textContent=String(i+1).padStart(2,'0');
+    if(prev) prev.disabled=i<=0;
+    if(next) next.disabled=i>=list.length-1;
+  }
+  function go(d){
+    const i=Math.max(0,Math.min(list.length-1, current()+d));
+    const top=list[i].getBoundingClientRect().top + window.scrollY - barH();
+    window.scrollTo(0, Math.max(0,top));
+    setTimeout(update, 50);
+  }
+  if(prev) prev.onclick=()=>go(-1);
+  if(next) next.onclick=()=>go(1);
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+  let x0=0,y0=0,armed=false;
+  document.addEventListener('touchstart', e=>{
+    if(e.touches.length!==1){ armed=false; return; }
+    if(e.target.closest('input,textarea,select,button,a,.chip,.dcard,.tw,.opt,.magbar,.tabbar,.pool,.bins')){ armed=false; return; }
+    x0=e.touches[0].clientX; y0=e.touches[0].clientY; armed=true;
+  }, {passive:true});
+  document.addEventListener('touchend', e=>{
+    if(!armed || !e.changedTouches.length) return;
+    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    armed=false;
+    if(Math.abs(dx)<70 || Math.abs(dx)<Math.abs(dy)*1.35) return;
+    if(dx<0) go(1); else go(-1);
+  }, {passive:true});
+}
+
 function tabFromHash(){
   const h=(location.hash||'#inicio').slice(1);
   document.querySelectorAll('.tabbar a').forEach(a=>a.classList.toggle('on', a.getAttribute('href')==='#'+h));
@@ -909,7 +1170,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   renderOp(); renderEstados(); buildDraw(); deckDraw();
   if($('dprev')){ $('dprev').onclick=()=>{if(fi>0){fi--;flip=false;deckDraw()}}; $('dnext').onclick=()=>{if(fi<FLASH.length-1){fi++;flip=false;deckDraw()}}; }
-  quizDraw(); wireFacil(); tabFromHash();
+  quizDraw(); wireFacil(); tabFromHash(); wireSpreads();
   if($('resume')){
     $('resume').onclick=()=>{
       const map={m1:'#manzanas',nif:'#nif',ej:'#ejercicio',prac:'#practica'};
