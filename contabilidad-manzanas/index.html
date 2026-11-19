@@ -278,6 +278,35 @@ table.grid .warn,.warn{color:var(--no);font-weight:650}
 
 .toggleiva[hidden],#ivatoggle[hidden]{display:none}
 
+/* Definiciones de activo, pasivo y capital */
+.deflist{margin:0 0 18px}
+.defcard{border-radius:14px;padding:14px 14px 12px;margin:0 0 12px;border:1.5px solid var(--line)}
+.defcard.a{background:var(--pink2);border-color:#E89BB4}
+.defcard.p{background:var(--blue2);border-color:#8EC8F0}
+.defcard.c{background:var(--yel2);border-color:#E6C84A}
+.defcard.i{background:#F3E9FF;border-color:#C9A6E8}
+.defcard.g{background:var(--green2);border-color:#8FBF9A}
+.defcard .tag{margin:0 0 4px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ox)}
+.defcard h3{margin:0 0 8px;font-size:1.55rem}
+.defcard p{margin:0 0 8px}
+.defcard p:last-child{margin:0}
+.defcard .ex{margin:8px 0 0;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.55)}
+.acctgrp{margin:0 0 14px}
+.acctgrp h4{margin:0 0 6px}
+.acctgrp ul{margin:0;padding-left:1.15em}
+.acctgrp li{margin:0 0 4px}
+.glosario{margin:0 0 14px}
+.glosario .gline{margin:0 0 10px;padding:10px 12px;border-radius:12px}
+.glosario .gline.a{background:var(--pink2)}
+.glosario .gline.p{background:var(--blue2)}
+.glosario .gline.c{background:var(--yel2)}
+.glosario .gline.i{background:#F3E9FF}
+.glosario .gline.g{background:var(--green2)}
+.glosario .gline b{display:block;font-family:var(--serif);font-size:1.2rem;margin:0 0 2px;color:var(--esp)}
+.glosario .gline p{margin:0}
+
+#defs-block,.deflist{scroll-margin-top:96px}
+
 </style>
 </head>
 <body>
@@ -331,6 +360,7 @@ table.grid .warn,.warn{color:var(--no);font-weight:650}
     <p>La versión de la clase registra el ejercicio <b>con IVA 16 %</b> (artículo 1 de la LIVA). Los importes del enunciado se toman como valor antes de IVA. En cualquier momento puedes ver el libro como viene el enunciado, sin IVA, con el selector.</p>
     <div class="hl-leg"><span><i class="hl-def">definición</i></span><span><i class="hl-art">importe, cuenta o NIF</i></span><span><i class="hl-trap">observación</i></span></div>
   </div>
+  <div id="glosario"></div>
   <nav class="card" aria-label="Índice de lecciones">
     <h3>Índice</h3>
     <ol class="lindex" id="lindex"></ol>
@@ -345,6 +375,7 @@ table.grid .warn,.warn{color:var(--no);font-weight:650}
   <p class="kicker" id="l-kicker">Lección 1 de 17</p>
   <h2 id="l-tit"></h2>
   <div class="obj" id="l-obj"></div>
+  <div id="l-defs"></div>
   <div class="block" id="l-exp"></div>
   <div class="block">
     <h3>Ejemplo con manzanas</h3>
@@ -886,12 +917,11 @@ const LESSONS=[
 {n:3, tit:'Activo, pasivo, capital, ingresos y gastos',
  obj:'Que distinga las cinco clases de cuenta y sepa en cuál cae cada cuenta del ejercicio.',
  exp:[
-  'Hay cinco clases. El <span class="hl-def">activo</span> es un recurso que la entidad controla y del que espera un beneficio: Caja, Bancos, Inventarios, mobiliario, equipo. El <span class="hl-def">pasivo</span> es una obligación presente: Proveedores, Acreedores Diversos, Acreedores bancarios.',
-  'El <span class="hl-def">capital</span> es el residual: lo que queda para los dueños después de restar el pasivo al activo. En este ejercicio, Capital social. Los <span class="hl-def">ingresos</span> aumentan el capital (Ventas, Ingresos por servicios). Los <span class="hl-def">gastos</span> lo disminuyen (renta, sueldos, publicidad, papelería, luz).',
+  'Abajo están, bien claras, las definiciones de las cinco clases. Léelas en este orden: <span class="hl-def">activo</span> (lo que la empresa tiene), <span class="hl-def">pasivo</span> (lo que debe), <span class="hl-def">capital</span> (lo que es de los dueños), y luego ingresos y gastos, que mueven el capital.',
   'Un préstamo no es un ingreso: entra dinero, pero nace una deuda. Una compra de escritorio no es un gasto del periodo si el bien se va a usar: es un activo.'
  ],
- manz:'En el puesto, las manzanas para vender son inventario (activo). La mesa del puesto es mobiliario (activo). Si el proveedor te fía una caja, esa deuda es pasivo. Lo que pusieron las socias es capital. Vender manzanas por $18,000.00 es un ingreso. Pagar $3,000.00 de renta es un gasto.',
- apl:'Clasifica, con ella, las cuentas de Distribuidora del Valle. Abajo está el juego: toca una cuenta y luego su clase. Son las cuentas que salen en el diario. En la versión con IVA se suman IVA acreditable, IVA pendiente de acreditar e IVA trasladado.',
+ manz:'Tu puesto tiene $1,000.00 en manzanas: eso es tu activo. Le debes $300.00 al huerto: eso es tu pasivo. Lo que de verdad es tuyo son $700.00: eso es tu capital. $1,000.00 = $300.00 + $700.00. La mesa del puesto también es activo. Vender manzanas por $18,000.00 es un ingreso. Pagar $3,000.00 de renta es un gasto.',
+ apl:'Abajo, después de las definiciones, está la tabla resumen y el listado de todas las cuentas del ejercicio, ya clasificadas. Luego viene el juego: toca una cuenta y después su clase. En la versión con IVA se suman las cuentas de IVA; el ISR aparece en el cierre con impuestos.',
  pregunta:{q:'En la operación 8, la empresa obtiene un préstamo bancario de $20,000.00. ¿Eso es un ingreso o un pasivo? ¿Por qué?',
   a:'Es un pasivo. Entran $20,000.00 a Bancos, que es un activo, y nace una deuda con Acreedores bancarios. No se ganó ese dinero: se debe. Un ingreso sería, por ejemplo, la venta de la operación 9 o el servicio de la operación 10.'},
  check:[
@@ -899,7 +929,8 @@ const LESSONS=[
   {q:'Los sueldos de $2,000.00 (operación 12) son…',o:['Un activo.','Un gasto, que disminuye el capital.','Un pasivo, porque se pagan al personal.'],a:1,e:'Al pagarlos, se reconoce un gasto. El gasto reduce el capital.'},
   {q:'Capital social, en la operación 1, queda en…',o:['$50,000.00','$100,000.00','$153,800.00'],a:1,e:'$50,000.00 en Caja + $50,000.00 en Bancos = $100,000.00 de capital social.'}
  ],
- guion:'Haz la lista en cinco columnas: activo, pasivo, capital, ingreso, gasto. Ve sacando cuentas del ejercicio y que ella las ponga. Detente en dos trampas: el préstamo de $20,000.00 no es ingreso, y los escritorios de $8,000.00 no son gasto ni mercancía. Cuando termine el juego de clasificar, revisen juntos las que haya fallado.',
+ guion:'Empieza por las cinco fichas, en voz alta: qué tiene, qué debe y qué es de los dueños. Luego el ejemplo de las manzanas: $1,000.00 = $300.00 + $700.00. Ve sacando cuentas del listado y que ella las ponga en la clase que les toca. Detente en dos trampas: el préstamo de $20,000.00 no es ingreso, y los escritorios de $8,000.00 no son gasto ni mercancía. Cuando termine el juego, revisen juntos las que haya fallado.',
+ defs:'full',
  game:'nat'
 },
 {n:4, tit:'La cuenta T, cargo y abono',
@@ -923,7 +954,7 @@ const LESSONS=[
 {n:5, tit:'Naturaleza de las cuentas',
  obj:'Que sepa si una cuenta es deudora o acreedora, con qué aumenta y con qué disminuye, y por qué.',
  exp:[
-  'La naturaleza sale de la ecuación. El activo está a la izquierda de A = P + C, así que su saldo normal es <span class="hl-def">deudor</span>: aumenta con cargo y disminuye con abono. El pasivo y el capital están a la derecha, así que su saldo normal es <span class="hl-def">acreedor</span>: aumentan con abono y disminuyen con cargo.',
+  'Arriba vuelven a estar las definiciones de activo, pasivo, capital, ingresos y gastos, las mismas de la lección 3. La naturaleza sale de la ecuación. El activo está a la izquierda de A = P + C, así que su saldo normal es <span class="hl-def">deudor</span>: aumenta con cargo y disminuye con abono. El pasivo y el capital están a la derecha, así que su saldo normal es <span class="hl-def">acreedor</span>: aumentan con abono y disminuyen con cargo.',
   'El ingreso aumenta el capital, por eso se comporta como el capital: naturaleza acreedora, aumenta con abono. El gasto disminuye el capital, por eso se comporta al revés: naturaleza deudora, aumenta con cargo.',
   'Una regla práctica: para aumentar una cuenta, anótala del lado de su saldo normal. Para disminuirla, del lado contrario.'
  ],
@@ -937,6 +968,7 @@ const LESSONS=[
   {q:'Ventas, al reconocer $18,000.00, se…',o:['Carga, porque entra efectivo.','Abona, porque el ingreso aumenta el capital.','Carga y se abona, por la misma cantidad.'],a:1,e:'El ingreso tiene naturaleza acreedora. En la operación 9, Ventas se abona $18,000.00. El efectivo que entra se carga en Caja.'}
  ],
  guion:'No le pidas que memorice la tabla en abstracto. Parte de una operación que ya conozca: “En la 1, Caja subió y se cargó. ¿Qué nos dice eso de los activos?”. Luego: “Capital social subió y se abonó. ¿De qué lado está el capital en la ecuación?”. Cierra con el gasto de la renta, que es donde más se confunden. La tabla de esta lección es la que pueden tener a la vista en el resto del curso.',
+ defs:'recap',
  tabla:'nat'
 },
 {n:6, tit:'Partida doble y tipos de asiento',
@@ -1772,6 +1804,135 @@ function renderExam(){
   return cabBox+`<h3>Mini examen</h3>`+mode+qs+foot;
 }
 
+
+function renderDefs(mode){
+  const recap=mode==='recap';
+  const head=recap?'<p class="sidenote">Estas son las mismas definiciones de la <a href="#l=3">lección 3</a>. Sirven para leer la naturaleza: qué es cada clase, de qué lado está y con qué aumenta.</p>':'<h3>Qué es activo, pasivo y capital</h3><p class="inst">Léelas despacio. El activo es lo que la empresa <b>tiene</b>. El pasivo es lo que <b>debe</b>. El capital es lo que de verdad es de los dueños.</p>';
+  const cards=`
+  <article class="defcard a">
+    <p class="tag">Lo que la empresa tiene</p>
+    <h3>Activo</h3>
+    <p>Todo lo que la empresa <b>tiene</b>: bienes y derechos. En este ejercicio: Caja, Bancos, mercancías (cuenta Inventarios), mobiliario, equipo de cómputo e, en la versión con IVA, IVA acreditable e IVA pendiente de acreditar.</p>
+    <p><b>Naturaleza deudora:</b> aumenta con cargo, disminuye con abono, saldo deudor.</p>
+    <p class="ex"><b>Ejemplo del ejercicio.</b> Los socios aportan $50,000.00 en efectivo → cargo a Caja.</p>
+  </article>
+  <article class="defcard p">
+    <p class="tag">Lo que la empresa debe</p>
+    <h3>Pasivo</h3>
+    <p>Todo lo que la empresa <b>debe</b>: obligaciones. En este ejercicio: Proveedores, Acreedores diversos, Acreedores bancarios e, en la versión con IVA, IVA trasladado e ISR por pagar (este último, en el cierre con impuestos).</p>
+    <p><b>Naturaleza acreedora:</b> aumenta con abono, disminuye con cargo, saldo acreedor.</p>
+    <p class="ex"><b>Ejemplo del ejercicio.</b> Compra de mercancías a crédito por $10,000.00 → abono a Proveedores. Al pagarle $4,000.00 (en el enunciado, sin IVA) → cargo a Proveedores. Con IVA 16 %, ese pago es de $4,640.00.</p>
+  </article>
+  <article class="defcard c">
+    <p class="tag">Lo que es de los dueños</p>
+    <h3>Capital</h3>
+    <p>Lo que realmente es de los dueños: lo que aportaron más lo que la empresa ha ganado. Se obtiene al restar lo que se debe de lo que se tiene: <span class="hl-art">C = A − P</span>. Es la misma relación que <span class="hl-def">A = P + C</span>.</p>
+    <p><b>Naturaleza acreedora:</b> aumenta con abono, disminuye con cargo, saldo acreedor.</p>
+    <p class="ex"><b>Ejemplo del ejercicio.</b> Aportación de $100,000.00 → abono a Capital social. La utilidad del ejercicio ( $15,800.00 antes del ISR) también entra al capital. Con el ISR didáctico, la utilidad neta es $11,060.00.</p>
+  </article>
+  <article class="defcard i">
+    <p class="tag">Aumentan el capital</p>
+    <h3>Ingresos</h3>
+    <p>Los ingresos aumentan el capital, por eso son de naturaleza <b>acreedora</b>: aumentan con abono y disminuyen con cargo.</p>
+    <p class="ex"><b>Ejemplo del ejercicio.</b> Ventas $18,000.00 (operación 9) e Ingresos por servicios $6,000.00 (operación 10): se abonan. El IVA trasladado no es un ingreso.</p>
+  </article>
+  <article class="defcard g">
+    <p class="tag">Disminuyen el capital</p>
+    <h3>Gastos</h3>
+    <p>Los gastos disminuyen el capital, por eso son de naturaleza <b>deudora</b>: aumentan con cargo y disminuyen con abono.</p>
+    <p class="ex"><b>Ejemplo del ejercicio.</b> Renta $3,000.00, sueldos $2,000.00, publicidad $1,500.00, papelería $700.00 y luz $1,000.00: se cargan. El IVA no es un gasto. El ISR del ejercicio, en el cierre de clase, también se carga, como gasto.</p>
+  </article>`;
+  const manz=`<div class="calc">
+    <p class="math">Con manzanas: tu puesto tiene $1,000.00 en manzanas (activo).</p>
+    <p class="math">Le debes $300.00 al huerto (pasivo).</p>
+    <p class="math">Lo que de verdad es tuyo son $700.00 (capital).</p>
+    <p class="math">$1,000.00 = $300.00 + $700.00.</p>
+  </div>`;
+  if(recap){
+    return `<div class="deflist" id="defs-block">${head}${cards}${manz}<p class="sidenote">La tabla resumen y el listado de todas las cuentas están en la <a href="#l=3">lección 3</a>.</p></div>`;
+  }
+  const table=`<h3>Tabla resumen</h3>
+  <p class="sidenote">En una pantalla chica, desliza la tabla hacia los lados.</p>
+  <div class="tw"><table class="grid natab" aria-label="Tabla resumen de las cinco clases">
+    <thead><tr><th>Tipo</th><th>Qué es</th><th>Ejemplos del ejercicio</th><th>Naturaleza</th><th>Aumenta con</th><th>Disminuye con</th><th>Saldo</th></tr></thead>
+    <tbody>
+      <tr><td>Activo</td><td>Lo que la empresa tiene (bienes y derechos)</td><td>Caja, Bancos, Inventarios, mobiliario, equipo de cómputo, IVA acreditable, IVA pendiente</td><td>Deudora</td><td>Cargo</td><td>Abono</td><td>Deudor</td></tr>
+      <tr><td>Pasivo</td><td>Lo que la empresa debe (obligaciones)</td><td>Proveedores, Acreedores diversos, Acreedores bancarios, IVA trasladado, ISR por pagar</td><td>Acreedora</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr>
+      <tr><td>Capital</td><td>Lo que es de los dueños: aportaciones más utilidades (C = A − P)</td><td>Capital social, utilidad del periodo</td><td>Acreedora</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr>
+      <tr><td>Ingresos</td><td>Aumentan el capital</td><td>Ventas, Ingresos por servicios</td><td>Acreedora</td><td>Abono</td><td>Cargo</td><td>Acreedor</td></tr>
+      <tr><td>Gastos</td><td>Disminuyen el capital</td><td>Renta, sueldos, publicidad, papelería, luz, ISR del ejercicio</td><td>Deudora</td><td>Cargo</td><td>Abono</td><td>Deudor</td></tr>
+    </tbody>
+  </table></div>`;
+  const list=`<h3>Todas las cuentas de este ejercicio</h3>
+  <p class="sidenote">Las cuentas de IVA aparecen en la versión con IVA 16 %. El ISR del ejercicio y el ISR por pagar aparecen en el cierre con impuestos. El ejercicio no indica el plazo del préstamo: Acreedores bancarios se presenta en pasivo a largo plazo.</p>
+  <div class="acctgrp"><h4>Activo a corto plazo (circulante) · naturaleza deudora</h4>
+    <ul>
+      <li>Caja — deudora</li>
+      <li>Bancos — deudora</li>
+      <li>Inventarios — deudora</li>
+      <li>IVA acreditable — deudora</li>
+      <li>IVA pendiente de acreditar — deudora</li>
+      <li>IVA a favor — deudora (sale en la determinación del IVA de este ejercicio)</li>
+    </ul>
+  </div>
+  <div class="acctgrp"><h4>Activo a largo plazo (no circulante) · naturaleza deudora</h4>
+    <ul>
+      <li>Mobiliario y Equipo de Oficina — deudora</li>
+      <li>Equipo de Cómputo — deudora</li>
+    </ul>
+  </div>
+  <div class="acctgrp"><h4>Pasivo a corto plazo · naturaleza acreedora</h4>
+    <ul>
+      <li>Proveedores — acreedora</li>
+      <li>Acreedores Diversos — acreedora</li>
+      <li>IVA trasladado — acreedora</li>
+      <li>ISR por pagar — acreedora</li>
+    </ul>
+  </div>
+  <div class="acctgrp"><h4>Pasivo a largo plazo · naturaleza acreedora</h4>
+    <ul>
+      <li>Acreedores bancarios — acreedora</li>
+    </ul>
+  </div>
+  <div class="acctgrp"><h4>Capital · naturaleza acreedora</h4>
+    <ul>
+      <li>Capital social — acreedora</li>
+      <li>Utilidad del periodo — acreedora</li>
+    </ul>
+  </div>
+  <div class="acctgrp"><h4>Ingresos · naturaleza acreedora</h4>
+    <ul>
+      <li>Ventas — acreedora</li>
+      <li>Ingresos por servicios — acreedora</li>
+    </ul>
+  </div>
+  <div class="acctgrp"><h4>Gastos · naturaleza deudora</h4>
+    <ul>
+      <li>Gastos de Admón: renta — deudora</li>
+      <li>Gastos de Admón: sueldos — deudora</li>
+      <li>Gastos de Venta: publicidad — deudora</li>
+      <li>Gastos de Admón: papelería — deudora</li>
+      <li>Gastos de Admón: luz — deudora</li>
+      <li>ISR del ejercicio — deudora</li>
+    </ul>
+  </div>
+  <p class="sidenote">Pérdidas y ganancias es una cuenta transitoria del cierre: reúne ingresos y gastos y se cierra contra la utilidad del periodo. No queda en el balance.</p>`;
+  return `<div class="deflist" id="defs-block">${head}${cards}${manz}${table}${list}</div>`;
+}
+function renderGlosario(){
+  return `<section class="card glosario" id="glosario-card">
+    <p class="kicker">Para tener a la mano</p>
+    <h3>Glosario: activo, pasivo, capital</h3>
+    <div class="gline a"><b>Activo</b><p>Todo lo que la empresa <b>tiene</b> (bienes y derechos). Naturaleza deudora: aumenta con cargo. Ejemplo: los socios aportan $50,000.00 en efectivo → cargo a Caja.</p></div>
+    <div class="gline p"><b>Pasivo</b><p>Todo lo que la empresa <b>debe</b> (obligaciones). Naturaleza acreedora: aumenta con abono. Ejemplo: mercancía a crédito $10,000.00 → abono a Proveedores.</p></div>
+    <div class="gline c"><b>Capital</b><p>Lo que realmente es de los dueños: lo que aportaron más lo que se ha ganado. <b>C = A − P</b>. Naturaleza acreedora. Ejemplo: aportación $100,000.00 → abono a Capital social.</p></div>
+    <div class="gline i"><b>Ingresos</b><p>Aumentan el capital, por eso son acreedores. Ejemplo: Ventas $18,000.00 se abonan.</p></div>
+    <div class="gline g"><b>Gastos</b><p>Disminuyen el capital, por eso son deudores. Ejemplo: renta $3,000.00 se carga.</p></div>
+    <div class="calc"><p class="math">Con manzanas: $1,000.00 en manzanas (activo) = $300.00 que debes al huerto (pasivo) + $700.00 que son tuyos (capital).</p></div>
+    <a class="act big" href="#l=3">Ver las definiciones completas en la lección 3</a>
+  </section>`;
+}
+
 function specialHTML(les){
   const k=les.special||les.game||les.catalogo||les.tabla;
   if(k==='reglas') return renderReglas();
@@ -1822,6 +1983,7 @@ function renderIndex(){
   $('vista-leccion').hidden=true;
   $('hero').hidden=false;
   $('creditos').hidden=false;
+  if($('glosario')) $('glosario').innerHTML=renderGlosario();
   const ul=$('lindex');
   ul.innerHTML=LESSONS.map(l=>`<li>
     <a href="#l=${l.n}">
@@ -1854,6 +2016,7 @@ function renderLesson(){
   $('l-kicker').textContent=`Lección ${les.n} de ${LESSONS.length}`;
   $('l-tit').textContent=les.tit;
   $('l-obj').innerHTML=`<p><b>Objetivo.</b> ${les.obj}</p>`;
+  if($('l-defs')) $('l-defs').innerHTML=les.defs?renderDefs(les.defs):'';
   $('l-exp').innerHTML=(les.exp||[]).map(p=>`<p>${p}</p>`).join('');
   $('l-manz').innerHTML=les.manz||'';
   $('l-apl').innerHTML=`<p>${les.apl||''}</p>`;
