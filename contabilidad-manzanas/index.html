@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Guía de Contabilidad con manzanas (NIF)</title>
-<meta name="description" content="Ejercicio resuelto de Distribuidora del Valle, S.A. de C.V.: simulador, diario, mayor, balanza, estados financieros y NIF del CINIF, con cifras en pesos.">
+<meta name="description" content="Curso de 17 lecciones: ecuación contable, reglas básicas, IVA, diario, mayor, balanza, estados financieros y cierre con impuestos, con el ejercicio de Distribuidora del Valle y NIF del CINIF.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;550;600;700&display=swap" rel="stylesheet">
@@ -210,19 +210,100 @@ table.grid .warn,.warn{color:var(--no);font-weight:650}
 .tipocard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 14px;margin:0 0 16px;max-width:100%}
 .mini{margin:10px 0}
 
+/* Course / lessons */
+.coursebar{position:sticky;top:0;z-index:30;background:var(--esp);color:#FAF7F1;padding:8px 16px;padding-top:calc(8px + env(safe-area-inset-top))}
+.coursebar .who{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;margin:0 0 2px;color:#E8DCCB}
+.coursebar h1{font-size:1.15rem;color:#FAF7F1;margin:0}
+.coursebar .meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
+.coursebar .prog{flex:1;height:6px;background:#3A2018;border-radius:99px;overflow:hidden}
+.coursebar .prog i{display:block;height:6px;background:var(--yel);border-radius:99px}
+.toggleiva{display:flex;gap:0;background:#3A2018;border-radius:999px;padding:3px}
+.toggleiva button{appearance:none;border:0;background:transparent;color:#E8DCCB;font:inherit;font-size:13px;font-weight:650;min-height:36px;padding:0 12px;border-radius:999px;cursor:pointer}
+.toggleiva button.on{background:var(--yel);color:var(--esp)}
+
+.lindex{list-style:none;margin:0;padding:0}
+.lindex li{border-bottom:1px solid var(--line)}
+.lindex a{display:flex;gap:12px;align-items:flex-start;padding:12px 4px;text-decoration:none;color:var(--ink)}
+.lindex .num{flex:0 0 2rem;font-family:var(--serif);font-size:1.35rem;color:var(--ox);font-weight:600}
+.lindex .tit{flex:1;font-weight:550}
+.lindex .done{color:var(--ok)}
+
+.lesson{max-width:100%}
+.obj{background:var(--yel2);border-left:5px solid #E6C84A;border-radius:0 12px 12px 0;padding:12px 14px;margin:0 0 16px}
+.obj p{margin:0}
+.block{margin:0 0 20px}
+.block h3{margin:0 0 8px}
+.guionbox{background:var(--latte2);border-radius:14px;padding:12px 14px;margin:0 0 18px}
+.guionbox summary{cursor:pointer;font-weight:650;color:var(--esp);min-height:44px;display:flex;align-items:center}
+.guionbox p{margin:10px 0 0}
+.ask{background:var(--blue2);border-radius:14px;padding:14px;margin:0 0 16px}
+.ask h3{margin:0 0 8px}
+.ask .ans{background:var(--paper);border-radius:10px;padding:10px 12px;margin:10px 0 0}
+.calc{background:var(--yel2);border-radius:12px;padding:12px 14px;margin:10px 0;color:#3A2A00}
+.calc .math{margin:0 0 6px;font-size:1.05rem;font-weight:550}
+.calc .math:last-child{margin:0}
+.rule{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 12px}
+.rule h3{font-size:1.15rem;margin:0 0 8px}
+.rule .ex{margin:8px 0 0;padding:8px 10px;border-radius:10px}
+.rule .ex.m{background:var(--pink2)}
+.rule .ex.e{background:var(--green2)}
+.lnav{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center;background:#FAF7F1;border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom));max-width:100%}
+.lnav .mid{text-align:center;font-weight:650;font-size:.85rem;color:var(--esp);text-decoration:none}
+.lnav .act{width:100%}
+@media(min-width:800px){.lnav{max-width:560px;left:50%;transform:translateX(-50%);border-radius:20px 20px 0 0}}
+.ivatable .si{color:var(--ok);font-weight:650}
+.ivatable .no{color:var(--ink2)}
+.sim-nav{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.modes{display:flex;gap:6px;background:var(--latte2);padding:4px;border-radius:999px;margin:0 0 10px}
+.modes button{flex:1;appearance:none;border:0;background:transparent;color:var(--ink2);font:inherit;font-size:15px;font-weight:650;min-height:40px;border-radius:999px;cursor:pointer}
+.modes button.on{background:var(--esp);color:#FAF7F1}
+.pasos{counter-reset:paso;margin:0 0 14px;padding:0;list-style:none}
+.pasos li{position:relative;padding:10px 10px 10px 48px;margin:0 0 8px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
+.pasos li::before{counter-increment:paso;content:counter(paso);position:absolute;left:10px;top:10px;width:28px;height:28px;border-radius:50%;background:var(--ox);color:#FAF7F1;display:grid;place-items:center;font-weight:700;font-size:.9rem}
+
+/* Course extras */
+.ivacard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 10px}
+.ivacard .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.ivacard .si,.ivatable .si{color:var(--ok);font-weight:700}
+.ivacard .no{color:var(--ink2);font-weight:700}
+.ivacard p{margin:6px 0 0}
+.whyrow{background:var(--blue2);border-radius:10px;padding:10px 12px;margin:6px 0}
+.natab td:first-child{font-weight:650}
+#l-exp p{margin:0 0 12px}
+#creditos{margin:24px 0 0}
+#topbar .toggleiva{margin-top:8px}
+#barpct{font-size:.8rem;font-weight:650;white-space:nowrap;color:#E8DCCB}
+.opnav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 10px}
+.opnav select{flex:1}
+
+.toggleiva[hidden],#ivatoggle[hidden]{display:none}
+
 </style>
 </head>
 <body>
-<header class="hero" id="inicio">
+<header class="coursebar" id="topbar">
+  <p class="who">Curso · Distribuidora del Valle, S.A. de C.V.</p>
+  <h1>Contabilidad con manzanas</h1>
+  <div class="meta">
+    <div class="prog" aria-hidden="true"><i id="barprog"></i></div>
+    <span id="barpct">0 %</span>
+  </div>
+  <div class="toggleiva" id="ivatoggle" hidden>
+    <button type="button" data-iva="1" class="on">Con IVA 16 %</button>
+    <button type="button" data-iva="0">Sin IVA (enunciado)</button>
+  </div>
+</header>
+
+<header class="hero" id="hero">
   <div class="hardcover">
     <span class="spine" aria-hidden="true"></span>
     <img src="foto-manzanas.webp" alt="Selección de manzanas en un puesto de mercado">
     <div class="plate">
       <div class="fade" aria-hidden="true"></div>
       <div class="ink">
-        <p class="kicker">Guía de estudio · partida doble y normas del CINIF</p>
+        <p class="kicker">Guía de estudio · 17 lecciones · NIF del CINIF</p>
         <h1>Contabilidad con manzanas</h1>
-        <p class="lead">Resuelve el ejercicio de Distribuidora del Valle, S.A. de C.V. en un simulador: vas operación por operación y ves cómo se arman el diario, el mayor, la balanza y los estados financieros, con cifras completas: $50,000.00.</p>
+        <p class="lead">Un curso en orden, para dar la clase: de la ecuación al cierre con impuestos, con el ejercicio de Distribuidora del Valle y un ejemplo de manzanas al lado. Cifras completas: $50,000.00.</p>
       </div>
     </div>
   </div>
@@ -231,263 +312,117 @@ table.grid .warn,.warn{color:var(--no);font-weight:650}
 
 <div class="wrap">
 
-<section class="chap" id="arranque">
-  <div class="secband green"><span class="n">01</span><span>Cómo usar esta guía</span></div>
+<section id="vista-index">
   <div class="card green">
     <p class="kicker" style="color:var(--green)">Tu racha</p>
     <h3>Sellos de manzana</h3>
-    <p id="streakn" class="sub">Aún no hay sello. Avanzar en el simulador o contestar una práctica de hoy cuenta.</p>
+    <p id="streakn" class="sub">Aún no hay sello. Entrar a una lección o contestar una práctica de hoy cuenta.</p>
     <div class="stamps" id="stamps"></div>
     <p class="sidenote">Se guarda en este teléfono. Un sello por día.</p>
   </div>
   <div class="card">
     <p>Avance <b data-pt>0 %</b></p>
     <div class="progress" aria-hidden="true"><i></i></div>
-    <button type="button" class="act big" id="resume">Ir al simulador</button>
+    <button type="button" class="act big" id="resume">Empezar el curso</button>
   </div>
   <div class="card">
-    <h3>El orden de esta guía</h3>
-    <ol>
-      <li>El ejercicio de Distribuidora del Valle, S.A. de C.V.: las 15 operaciones.</li>
-      <li>Un simulador paso a paso: tú armas el asiento y, al registrarlo, se actualizan el diario, las cuentas T, la balanza y los estados.</li>
-      <li>Los libros ya resueltos: diario, mayor, balanza de movimientos y saldos, estado de resultados, balance general y asientos de cierre.</li>
-      <li>La naturaleza de las cuentas y todos los tipos de asiento, sacados de estas mismas operaciones.</li>
-      <li>Las NIF del CINIF que tocan este ejercicio, y una práctica para comprobar.</li>
-    </ol>
+    <h3>Cómo está armado el curso</h3>
+    <p>Diecisiete lecciones, en este orden. Cada una trae un objetivo, la explicación, un ejemplo de manzanas con cifras, cómo se aplica al ejercicio, una pregunta para que Xime conteste y un repaso corto. También hay un guion para la maestra, que se puede abrir y cerrar.</p>
+    <p>La versión de la clase registra el ejercicio <b>con IVA 16 %</b> (artículo 1 de la LIVA). Los importes del enunciado se toman como valor antes de IVA. En cualquier momento puedes ver el libro como viene el enunciado, sin IVA, con el selector.</p>
+    <div class="hl-leg"><span><i class="hl-def">definición</i></span><span><i class="hl-art">importe, cuenta o NIF</i></span><span><i class="hl-trap">observación</i></span></div>
   </div>
-  <nav class="card toc" aria-label="Secciones">
-    <a href="#ejercicio">Las 15 operaciones</a>
-    <a href="#simulador">Simulador paso a paso</a>
-    <a href="#libros">Libros y estados resueltos</a>
-    <a href="#cuentas">Naturaleza de las cuentas</a>
-    <a href="#asientos">Tipos de asiento</a>
-    <a href="#nif">NIF del ejercicio</a>
-    <a href="#practica">Práctica</a>
+  <nav class="card" aria-label="Índice de lecciones">
+    <h3>Índice</h3>
+    <ol class="lindex" id="lindex"></ol>
   </nav>
-  <div class="hl-leg"><span><i class="hl-def">definición</i></span><span><i class="hl-art">importe, cuenta o NIF</i></span><span><i class="hl-trap">observación</i></span></div>
+  <figure class="photo">
+    <img src="foto-puesto.webp" alt="Puesto de mercado con manzanas y canastos">
+    <figcaption class="caption">Puesto de mercado. Daderot, CC BY-SA 3.0.</figcaption>
+  </figure>
 </section>
 
-<section class="chap" id="ejercicio">
-  <figure class="photo">
-    <img src="foto-cajas.webp" alt="Puesto de mercado con manzanas, canastos, caja y báscula">
-    <figcaption class="caption">Puesto de mercado con fruta, canastos y caja. Foto de Fortepan, donante Konok Tamás, vía Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</figcaption>
-  </figure>
-  <div class="secband"><span class="n">02</span><span>El ejercicio</span></div>
-  <h2>Distribuidora del Valle, S.A. de C.V.</h2>
-  <blockquote class="enun">
-    <p>Distribuidora del Valle, S.A. de C.V. inicia actividades comerciales y realiza las siguientes operaciones. Registre su libro de diario.</p>
-  </blockquote>
-  <p>El ejercicio no indica fecha, así que cada asiento se identifica por su número de operación. Abajo está la lista. El trabajo de fondo está en el <a href="#simulador">simulador</a> y, ya resuelto, en los <a href="#libros">libros</a>.</p>
-  <ol class="oplist" id="oplist"></ol>
-  <div class="ojo">
-    <h3>Ojo: tres observaciones</h3>
-    <ul>
-      <li>En la operación 2 se depositan <span class="hl-trap">$60,000.00</span> cuando Caja solo tenía <span class="hl-art">$50,000.00</span>. Caja queda acreedora. Si el depósito fuera de $50,000.00, Caja cerraría en $4,800.00 deudor y Bancos en $104,000.00 deudor. El total de activo no cambiaría.</li>
-      <li>La operación 9 no registra <span class="hl-trap">costo de ventas</span> ni da de baja el inventario. La utilidad de <span class="hl-art">$15,800.00</span> queda sobreestimada.</li>
-      <li>El ejercicio <span class="hl-trap">no trae IVA</span>.</li>
-    </ul>
+<section id="vista-leccion" hidden>
+  <p class="kicker" id="l-kicker">Lección 1 de 17</p>
+  <h2 id="l-tit"></h2>
+  <div class="obj" id="l-obj"></div>
+  <div class="block" id="l-exp"></div>
+  <div class="block">
+    <h3>Ejemplo con manzanas</h3>
+    <div class="manz" id="l-manz"></div>
   </div>
-</section>
-
-<section class="chap" id="simulador">
-  <div class="secband green"><span class="n">03</span><span>Simulador</span></div>
-  <h2>Registra las operaciones, una por una</h2>
-  <p>En <b>Practicar</b>, primero armas el asiento. Al calificar o ver la solución, se registra en los libros. En <b>Ver resuelto</b>, avanzas y ves cómo se construyen el diario, el mayor, la balanza y los estados. La nota de manzanas es solo un ejemplo breve, para aterrizar cada hecho.</p>
-  <div id="sim-app" class="sim"></div>
-  <p><a class="act lt" href="#libros" style="display:flex">Ver los libros ya completos</a></p>
-</section>
-
-<section class="chap" id="libros">
-  <figure class="photo">
-    <img src="foto-diario.webp" alt="Páginas abiertas de un libro de cuentas manuscrito">
-    <figcaption class="caption">Libro de cuentas, páginas 64 y 65. Fotografía de Donald S. Erdman, Biodiversity Heritage Library, vía Wikimedia Commons. Sin restricciones de uso. Recorte y conversión a WebP.</figcaption>
-  </figure>
-  <div class="secband esp"><span class="n">04</span><span>Libros resueltos</span></div>
-  <h2>Diario, mayor, balanza y estados</h2>
-  <p>Aquí está el ejercicio completo, ya registrado. Todas las cifras están en formato $50,000.00 y las sumas cuadran.</p>
-  <div class="card yel">
-    <label class="fixrow">
-      <input type="checkbox" id="fixdep">
-      <span>Ver el ejercicio como si en la operación 2 se depositaran $50,000.00 (corrección didáctica). Caja cierra en $4,800.00 deudor y Bancos en $104,000.00 deudor. El total de activo no cambia.</span>
-    </label>
+  <div class="block">
+    <h3>Aplicado al ejercicio</h3>
+    <div id="l-apl"></div>
   </div>
-
-  <h3 id="diario">Libro diario</h3>
-  <p>Las 15 operaciones, con concepto y sumas iguales en cada asiento.</p>
-  <div id="libro-diario"></div>
-
-  <h3 id="mayor">Esquemas de mayor</h3>
-  <p>Cada movimiento lleva el número de la operación. El saldo aparece al pie de la cuenta T.</p>
-  <div id="libro-mayor"></div>
-
-  <h3 id="balanza">Balanza de comprobación de movimientos y saldos</h3>
-  <p>Se arma con el mayor, después de las 15 operaciones y antes del cierre. Deben cuadrar tanto los movimientos como los saldos.</p>
-  <div id="libro-balanza"></div>
-
-  <h3 id="eri">Estado de resultado integral <span class="hl-art">NIF B-3</span></h3>
-  <p>Ingresos menos gastos. Como no se registró el costo de ventas, la utilidad de $15,800.00 está sobreestimada.</p>
-  <div id="libro-eri"></div>
-
-  <h3 id="esf">Estado de situación financiera <span class="hl-art">NIF B-6</span></h3>
-  <p>Activo = pasivo + capital. El capital incluye el capital social de $100,000.00 más la utilidad del ejercicio de $15,800.00.</p>
-  <div id="libro-esf"></div>
-
-  <h3 id="cierre">Asientos de cierre</h3>
-  <p>Se dejan en cero los ingresos y los gastos, y la utilidad pasa al capital.</p>
-  <div id="libro-cierre"></div>
-
-  <h3>Balanza después del cierre</h3>
-  <p>Ya no aparecen ingresos ni gastos. La utilidad del periodo queda en el capital.</p>
-  <div id="libro-post"></div>
-  <button type="button" class="act lt" data-mark="lib">Marcar los libros como vistos</button>
+  <div id="l-special"></div>
+  <div class="ask" id="l-ask"></div>
+  <div class="block" id="l-check"></div>
+  <details class="guionbox" id="l-guion">
+    <summary>Guion para la maestra</summary>
+    <p id="l-guion-p"></p>
+  </details>
 </section>
 
-<section class="chap" id="cuentas">
-  <figure class="photo">
-    <img src="foto-manzana.webp" alt="Dos manzanas rojas">
-    <figcaption class="caption">Dos manzanas rojas. Foto de Paolo Neo, dominio público, vía Wikimedia Commons. Conversión a WebP.</figcaption>
-  </figure>
-  <div class="secband pink"><span class="n">05</span><span>Naturaleza de las cuentas</span></div>
-  <h2>Las reglas salen del ejercicio</h2>
-  <p>El activo aumenta con <span class="hl-def">cargo</span> y disminuye con abono. El pasivo y el capital aumentan con <span class="hl-def">abono</span> y disminuyen con cargo. El ingreso se comporta como el capital (lo aumenta). El gasto se comporta al revés (lo disminuye).</p>
-  <div id="natbox"></div>
-  <div class="ojo mini">
-    <h3>El caso de Caja</h3>
-    <p>Caja es un activo, de naturaleza deudora. Su saldo normal es deudor. Después de la operación 2 el saldo se vuelve acreedor porque se abonaron $60,000.00 cuando solo había $50,000.00. Eso no cambia la naturaleza de la cuenta: avisa que el movimiento no es razonable para el efectivo.</p>
-  </div>
-  <h3>Clasifica las cuentas</h3>
-  <p>Toca una cuenta y luego la clase (activo, pasivo, capital, ingreso o gasto). En una pantalla grande también puedes arrastrarla.</p>
-  <div class="card" id="natgame"></div>
-  <button type="button" class="act lt" data-mark="nat">Marcar la naturaleza como vista</button>
-</section>
-
-<section class="chap" id="asientos">
-  <figure class="photo">
-    <img src="foto-calculadora.webp" alt="Calculadora de bolsillo">
-    <figcaption class="caption">Calculadora de bolsillo. Foto de Dimljacic, Wikimedia Commons. Licencia CC BY-SA 4.0. Recorte y conversión a WebP.</figcaption>
-  </figure>
-  <div class="secband blue"><span class="n">06</span><span>Tipos de asiento</span></div>
-  <h2>Qué asientos se pueden generar, y por qué</h2>
-  <p>De la ecuación <span class="hl-def">A = P + C</span> salen nueve combinaciones básicas entre activo, pasivo y capital, más las variantes de ingreso y de gasto. Si un tipo no aparece en el ejercicio, se muestra un ejemplo, claramente marcado.</p>
-  <article class="card">
-    <h3>Forma y clase</h3>
-    <ul>
-      <li><b>Simple:</b> dos cuentas. En este ejercicio, las operaciones 2 a 15.</li>
-      <li><b>Compuesto:</b> más de dos cuentas. La operación 1 (Caja, Bancos y Capital social).</li>
-      <li><b>De apertura:</b> el primer asiento, que abre los libros. Aquí, la operación 1.</li>
-      <li><b>De diario:</b> los hechos del periodo. Aquí, las operaciones 2 a 15.</li>
-      <li><b>De ajuste:</b> este ejercicio no trae ninguno, y no se inventa un importe.</li>
-      <li><b>De cierre:</b> al final, con la utilidad de $15,800.00.</li>
-    </ul>
-  </article>
-  <div id="tiposbox"></div>
-  <h3>Clasifica el tipo</h3>
-  <p>Lee cada operación y toca el tipo de asiento que le corresponde.</p>
-  <div class="card" id="clasbox"></div>
-  <button type="button" class="act lt" data-mark="asi">Marcar los tipos como vistos</button>
-</section>
-
-<section class="chap" id="nif">
-  <figure class="photo">
-    <img src="foto-puesto.webp" alt="Puesto de fruta en un mercado de Barcelona">
-    <figcaption class="caption">Puesto de fruta en un mercado de Barcelona. Foto de Daderot, Wikimedia Commons. Licencia CC BY-SA 3.0. Recorte y conversión a WebP.</figcaption>
-  </figure>
-  <div class="secband yel"><span class="n">07</span><span>NIF del ejercicio</span></div>
-  <h2>Normas que tocan estas cuentas</h2>
-  <p>Solo se citan títulos oficiales de normas del CINIF vigentes en 2026, ligadas a una cifra o a una cuenta de este ejercicio. No se transcriben párrafos de la norma.</p>
-  <div id="niflist"></div>
-  <h3>Cuenta, NIF y saldo normal</h3>
-  <div id="nifmap"></div>
-  <button type="button" class="act lt" data-mark="nif">Marcar las NIF como vistas</button>
-</section>
-
-<section class="chap" id="practica">
-  <div class="secband green"><span class="n">08</span><span>Práctica</span></div>
-  <h2>Para comprobar si ya salen los asientos</h2>
-  <p>Armar cada asiento está en el simulador. Aquí hay dos prácticas más, sobre el mismo ejercicio.</p>
-  <article class="card">
-    <h3>Cargo o abono</h3>
-    <div id="cabbox"></div>
-  </article>
-  <article class="card">
-    <h3>Preguntas del ejercicio</h3>
-    <div class="row" style="margin-bottom:12px">
-      <button type="button" class="act lt" id="qestudio">Modo de estudio</button>
-      <button type="button" class="act esp" id="qexamen">Mini examen</button>
-    </div>
-    <div id="qzbox"></div>
-  </article>
-</section>
-
-<section class="chap" id="creditos">
-  <div class="secband esp"><span class="n">09</span><span>Fuentes y créditos</span></div>
-  <h2>De dónde sale cada cifra</h2>
+<section class="chap" id="creditos" hidden>
+  <h3>Créditos de las fotos</h3>
   <ul class="credits">
-    <li>Enunciados, conceptos del diario, cuentas e importes: ejercicio de Distribuidora del Valle, S.A. de C.V.</li>
-    <li>Los asientos de cierre, la corrección didáctica del depósito y los ejemplos de tipos de asiento que no aparecen en el ejercicio están marcados como tales.</li>
-    <li>Títulos de NIF: CINIF, normas promulgadas, e índice de la edición NIF 2026 (vigentes al 1.º de enero de 2026). No se transcribe el texto de las normas.</li>
-    <li>Fotos: créditos en cada pie. Recorte y conversión a WebP para esta guía.</li>
+    <li>Manzanas de portada: mercado de Stroud, BazzaDaRambler, CC BY 2.0.</li>
+    <li>Puesto: Daderot, CC BY-SA 3.0.</li>
+    <li>Manzana: Paolo Neo, dominio público.</li>
+    <li>Libro: Donald S. Erdman, Biodiversity Heritage Library, vía Wikimedia, sin restricciones conocidas.</li>
+    <li>Cajas y báscula: Fortepan, donante Konok Tamás, CC BY-SA 3.0.</li>
+    <li>Calculadora: Dimljacic, CC BY-SA 4.0.</li>
   </ul>
-  <p class="sidenote">Esta página guarda la racha y el avance en el teléfono. No sustituye a las NIF completas.</p>
 </section>
 
 </div>
 
-<nav class="tabbar" aria-label="Secciones de la guía">
-  <a href="#inicio" class="on">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z"/></svg>
-    Inicio
-  </a>
-  <a href="#simulador">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h10"/><circle cx="18.5" cy="17" r="2.5"/></svg>
-    Simular
-  </a>
-  <a href="#libros">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h9l5 5v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M15 4v5h5"/><path d="M8 13h8M8 17h8"/></svg>
-    Libros
-  </a>
-  <a href="#cuentas">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h7v13H4zM13 6h7v7h-7zM13 15h7v4h-7z"/></svg>
-    Cuentas
-  </a>
-  <a href="#practica">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v4H8z"/><path d="M6 8h12v12H6z"/><path d="M9 13h6M9 17h4"/></svg>
-    Práctica
-  </a>
+<nav class="lnav" id="lnav" aria-label="Navegación de lecciones">
+  <button type="button" class="act lt" id="btn-prev">Anterior</button>
+  <a class="mid" href="#inicio" id="btn-ind">Índice</a>
+  <button type="button" class="act esp" id="btn-next">Siguiente</button>
 </nav>
 
 <script>
-const LS='cm-v4';
+const LS='cm-v5';
+const TASA_IVA=0.16; // artículo 1 de la LIVA
+const ISR_TASA=0.30; // artículo 9 de la LISR (estimado didáctico)
 const money=n=>{
   const v=Number(n);
   const s=Math.abs(v).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
   return (v<0?'−':'')+'$'+s;
 };
+/* Premisa de la versión con IVA: los importes del enunciado son el valor antes de IVA.
+   Alternativa: si ya lo incluyeran, se divide entre 1.16. */
 
 const CUENTAS={
 'Caja':{tipo:'a',nat:'deudor',nif:'NIF C-1',grupo:'ac'},
 'Bancos':{tipo:'a',nat:'deudor',nif:'NIF C-1',grupo:'ac'},
 'Inventarios':{tipo:'a',nat:'deudor',nif:'NIF C-4',grupo:'ac'},
+'IVA acreditable':{tipo:'a',nat:'deudor',nif:'LIVA',grupo:'ac'},
+'IVA pendiente de acreditar':{tipo:'a',nat:'deudor',nif:'LIVA',grupo:'ac'},
+'IVA a favor':{tipo:'a',nat:'deudor',nif:'LIVA',grupo:'ac'},
 'Mobiliario y Equipo de Oficina':{tipo:'a',nat:'deudor',nif:'NIF C-6',grupo:'anc'},
 'Equipo de Cómputo':{tipo:'a',nat:'deudor',nif:'NIF C-6',grupo:'anc'},
 'Proveedores':{tipo:'p',nat:'acreedor',nif:'NIF C-19',grupo:'pc'},
 'Acreedores Diversos':{tipo:'p',nat:'acreedor',nif:'NIF C-19',grupo:'pc'},
 'Acreedores bancarios':{tipo:'p',nat:'acreedor',nif:'NIF C-19',grupo:'pl'},
+'IVA trasladado':{tipo:'p',nat:'acreedor',nif:'LIVA',grupo:'pc'},
+'IVA por pagar':{tipo:'p',nat:'acreedor',nif:'LIVA',grupo:'pc'},
+'ISR por pagar':{tipo:'p',nat:'acreedor',nif:'LISR',grupo:'pc'},
 'Capital social':{tipo:'c',nat:'acreedor',nif:'NIF C-11',grupo:'cap'},
+'Utilidad del periodo':{tipo:'c',nat:'acreedor',nif:'NIF C-11',grupo:'cap'},
 'Ventas':{tipo:'i',nat:'acreedor',nif:'NIF D-1',grupo:'ing'},
 'Ingresos por servicios':{tipo:'i',nat:'acreedor',nif:'NIF D-1',grupo:'ing'},
 'Gastos de Admón: renta':{tipo:'g',nat:'deudor',nif:'NIF B-3',grupo:'gas'},
 'Gastos de Admón: sueldos':{tipo:'g',nat:'deudor',nif:'NIF D-3',grupo:'gas'},
 'Gastos de Venta: publicidad':{tipo:'g',nat:'deudor',nif:'NIF B-3',grupo:'gas'},
 'Gastos de Admón: papelería':{tipo:'g',nat:'deudor',nif:'NIF B-3',grupo:'gas'},
-'Gastos de Admón: luz':{tipo:'g',nat:'deudor',nif:'NIF B-3',grupo:'gas'}
+'Gastos de Admón: luz':{tipo:'g',nat:'deudor',nif:'NIF B-3',grupo:'gas'},
+'ISR del ejercicio':{tipo:'g',nat:'deudor',nif:'LISR',grupo:'gas'}
 };
 const TIPO_L={a:'Activo',p:'Pasivo',c:'Capital',i:'Ingreso',g:'Gasto'};
-const GRUPO_L={
-  ac:'Activo a corto plazo',anc:'Activo a largo plazo',
-  pc:'Pasivo a corto plazo',pl:'Pasivo a largo plazo',
-  cap:'Capital contable',ing:'Ingresos',gas:'Gastos'
-};
+
 
 const OPS=[
 {n:1, tipo:'ac', forma:'compuesto', clase:'apertura',
@@ -643,6 +578,7 @@ const OPS=[
  ]}
 ];
 
+
 const TIPOS=[
 {id:'aa', tit:'Aumento de un activo y disminución de otro activo',
  como:'Un activo entra o sube (cargo) y otro activo sale o baja (abono), por el mismo importe. El total de activo no cambia.',
@@ -695,62 +631,560 @@ const TIPOS=[
  ops:[11,12,13,14,15]}
 ];
 
-const CIERRE=[
+
+const IVA_ASIENTO={
+3:{paso:'Se compran mercancías por $15,000.00 más IVA acreditable de $2,400.00 (16 %). Se pagan $17,400.00 del banco. El IVA se acredita porque ya se pagó.',
+   manz:'Como comprar manzanas por $15,000.00 y pagar también $2,400.00 de IVA: del banco salen $17,400.00.',
+   e:[['Inventarios',15000,'d'],['IVA acreditable',2400,'d'],['Bancos',17400,'a']],
+   why:[['Inventarios','Sube $15,000.00','Cargo','El costo de la mercancía, sin IVA, es un activo (NIF C-4). Aumenta con cargo.'],
+        ['IVA acreditable','Sube $2,400.00','Cargo','El IVA ya se pagó (artículo 1 de la LIVA, tasa 16 %: $15,000.00 × 0.16 = $2,400.00). Es un activo: se podrá restar del IVA trasladado. Se carga.'],
+        ['Bancos','Baja $17,400.00','Abono','Sale el valor de la mercancía más el IVA: $15,000.00 + $2,400.00 = $17,400.00.']]},
+4:{paso:'Se compran escritorios y sillas por $8,000.00 más IVA acreditable de $1,280.00, pagados de Caja: salen $9,280.00. No es mercancía: es mobiliario.',
+   manz:'Como comprar la mesa del puesto por $8,000.00 más $1,280.00 de IVA, pagados en efectivo.',
+   e:[['Mobiliario y Equipo de Oficina',8000,'d'],['IVA acreditable',1280,'d'],['Caja',9280,'a']],
+   why:[['Mobiliario y Equipo de Oficina','Sube $8,000.00','Cargo','Es un activo de propiedades, planta y equipo (NIF C-6), sin IVA.'],
+        ['IVA acreditable','Sube $1,280.00','Cargo','El IVA de $8,000.00 × 0.16 = $1,280.00 ya se pagó: se carga a IVA acreditable.'],
+        ['Caja','Baja $9,280.00','Abono','Sale el efectivo total: $8,000.00 + $1,280.00 = $9,280.00.']]},
+5:{paso:'Se adquiere equipo de cómputo por $12,000.00 a crédito. No es mercancía, así que la deuda va a Acreedores diversos, no a Proveedores. Como aún no se paga, el IVA de $1,920.00 queda pendiente de acreditar. La deuda total es $13,920.00.',
+   manz:'Como comprar una computadora para el puesto y pagarla después: ya la tienes, debes $12,000.00 más $1,920.00 de IVA, y ese IVA todavía no lo puedes acreditar porque no lo has pagado.',
+   e:[['Equipo de Cómputo',12000,'d'],['IVA pendiente de acreditar',1920,'d'],['Acreedores Diversos',13920,'a']],
+   why:[['Equipo de Cómputo','Sube $12,000.00','Cargo','Es un activo no circulante (NIF C-6), distinto de la mercancía. El cargo es por el valor antes de IVA.'],
+        ['IVA pendiente de acreditar','Sube $1,920.00','Cargo','$12,000.00 × 0.16 = $1,920.00. Como la compra es a crédito, el IVA todavía no se paga: no va a IVA acreditable, sino a IVA pendiente de acreditar (IVA acreditable no pagado).'],
+        ['Acreedores Diversos','Sube $13,920.00','Abono','La deuda es por el bien más el IVA: $12,000.00 + $1,920.00 = $13,920.00. No se usa Proveedores, porque Proveedores es la cuenta de las mercancías (operación 6). Aquí el bien es equipo, no inventario.']]},
+6:{paso:'Se compran mercancías por $10,000.00 a crédito. El IVA de $1,600.00 queda pendiente de acreditar. La deuda con el proveedor es $11,600.00.',
+   manz:'Como recibir una caja de manzanas a crédito: las debes con su IVA, y el IVA se acredita cuando pagues.',
+   e:[['Inventarios',10000,'d'],['IVA pendiente de acreditar',1600,'d'],['Proveedores',11600,'a']],
+   why:[['Inventarios','Sube $10,000.00','Cargo','Mercancía para vender (NIF C-4). $15,000.00 + $10,000.00 = $25,000.00.'],
+        ['IVA pendiente de acreditar','Sube $1,600.00','Cargo','$10,000.00 × 0.16 = $1,600.00. A crédito: el IVA no se ha pagado, queda pendiente.'],
+        ['Proveedores','Sube $11,600.00','Abono','Aquí sí es Proveedores, porque son mercancías. $10,000.00 + $1,600.00 = $11,600.00.']]},
+7:{paso:'Se pagan $4,000.00 de mercancía más IVA de $640.00, en total $4,640.00, por transferencia. Además, esa parte del IVA deja de estar pendiente y pasa a IVA acreditable. (Premisa: los $4,000.00 del enunciado son la base, como el resto del ejercicio. Si los $4,000.00 ya incluyeran IVA, el IVA sería $551.72 y el pago, $4,000.00.)',
+   manz:'Como pagarle una parte al proveedor de las manzanas, con su IVA, y recién entonces poder acreditar esa parte del IVA.',
+   e:[['Proveedores',4640,'d'],['IVA acreditable',640,'d'],['Bancos',4640,'a'],['IVA pendiente de acreditar',640,'a']],
+   why:[['Proveedores','Baja $4,640.00','Cargo','Se liquida una parte de la deuda, incluida su IVA: $4,000.00 + $640.00 = $4,640.00. El pasivo disminuye con cargo. Quedan $11,600.00 − $4,640.00 = $6,960.00.'],
+        ['IVA acreditable','Sube $640.00','Cargo','Al pagar, esa porción del IVA ya se pagó: sale de pendiente y entra a acreditable. $4,000.00 × 0.16 = $640.00.'],
+        ['Bancos','Baja $4,640.00','Abono','Sale el efectivo total, base más IVA.'],
+        ['IVA pendiente de acreditar','Baja $640.00','Abono','Se traspasa al IVA acreditable. Antes del pago había $3,520.00 pendientes ($1,920.00 de la operación 5 + $1,600.00 de la 6). Se acreditan $640.00 y quedan $2,880.00 pendientes: $1,920.00 del equipo, que no se ha pagado, más $960.00 de la mercancía que sigue a deber.']]},
+8:{paso:'Entran $20,000.00 al banco y nace una deuda con acreedores bancarios. No lleva IVA: un préstamo no es enajenación ni servicio.',
+   manz:'Como pedir $20,000.00 prestados para el puesto: tienes más dinero y una deuda, sin IVA.',
+   e:[['Bancos',20000,'d'],['Acreedores bancarios',20000,'a']],
+   why:[['Bancos','Sube $20,000.00','Cargo','Entra efectivo: el activo aumenta y se carga.'],
+        ['Acreedores bancarios','Sube $20,000.00','Abono','Nace un pasivo. No se abona a Ventas. No hay IVA.']]},
+9:{paso:'Se vende mercancía por $18,000.00 más IVA trasladado de $2,880.00. El cliente paga en efectivo $20,880.00. El ejercicio no indica el costo de lo vendido, así que no se da de baja el inventario.',
+   manz:'Como vender manzanas por $18,000.00 y cobrar también $2,880.00 de IVA: a la caja entran $20,880.00. Ese IVA no es tuyo: lo tienes que enterar, menos lo que hayas acreditado.',
+   e:[['Caja',20880,'d'],['Ventas',18000,'a'],['IVA trasladado',2880,'a']],
+   why:[['Caja','Sube $20,880.00','Cargo','Entra el valor de la venta más el IVA: $18,000.00 + $2,880.00 = $20,880.00.'],
+        ['Ventas','Sube $18,000.00','Abono','El ingreso es por el valor antes de IVA (NIF D-1). El IVA no es un ingreso.'],
+        ['IVA trasladado','Sube $2,880.00','Abono','$18,000.00 × 0.16 = $2,880.00. Es un pasivo: el IVA cobrado al cliente se debe al fisco, una vez compensado con el acreditable.']]},
+10:{paso:'Se prestan servicios administrativos por $6,000.00 más IVA trasladado de $960.00. El cliente paga $6,960.00 por transferencia. No hay inventario que dar de baja.',
+   manz:'Como cobrar $6,000.00 por un servicio más $960.00 de IVA.',
+   e:[['Bancos',6960,'d'],['Ingresos por servicios',6000,'a'],['IVA trasladado',960,'a']],
+   why:[['Bancos','Sube $6,960.00','Cargo','Entra el servicio más el IVA: $6,000.00 + $960.00 = $6,960.00.'],
+        ['Ingresos por servicios','Sube $6,000.00','Abono','El ingreso es $6,000.00, sin IVA.'],
+        ['IVA trasladado','Sube $960.00','Abono','$6,000.00 × 0.16 = $960.00. Se suma al IVA trasladado de la venta: $2,880.00 + $960.00 = $3,840.00.']]},
+11:{paso:'Se paga la renta del local por $3,000.00 más IVA acreditable de $480.00, en efectivo: salen $3,480.00. En esta versión no se registran retenciones. Si el arrendador fuera persona física, habría que revisar una retención de ISR del 10 % y de dos tercios del IVA.',
+   manz:'Como pagar la renta del espacio del puesto más su IVA.',
+   e:[['Gastos de Admón: renta',3000,'d'],['IVA acreditable',480,'d'],['Caja',3480,'a']],
+   why:[['Gastos de Admón: renta','Sube $3,000.00','Cargo','El gasto es el valor antes de IVA. El IVA no es un gasto: se acredita.'],
+        ['IVA acreditable','Sube $480.00','Cargo','$3,000.00 × 0.16 = $480.00, ya pagado. El uso o goce temporal de bienes (la renta) lleva IVA.'],
+        ['Caja','Baja $3,480.00','Abono','Sale $3,000.00 + $480.00 = $3,480.00.']]},
+12:{paso:'Se pagan sueldos por $2,000.00 desde Bancos. No llevan IVA: el trabajo subordinado no es un servicio independiente. El enunciado no trae ISR retenido ni cuotas del IMSS, y no se inventan esas cifras.',
+   manz:'Como pagarle a quien te ayuda en el puesto: es sueldo, no un servicio facturado, y no lleva IVA.',
+   e:[['Gastos de Admón: sueldos',2000,'d'],['Bancos',2000,'a']],
+   why:[['Gastos de Admón: sueldos','Sube $2,000.00','Cargo','El gasto de sueldos (NIF D-3) aumenta con cargo. Sin IVA.'],
+        ['Bancos','Baja $2,000.00','Abono','Sale el efectivo, por $2,000.00.']]},
+13:{paso:'Se paga publicidad por $1,500.00 más IVA acreditable de $240.00, en efectivo: salen $1,740.00. Es un gasto de venta.',
+   manz:'Como pagar un letrero para el puesto, más su IVA.',
+   e:[['Gastos de Venta: publicidad',1500,'d'],['IVA acreditable',240,'d'],['Caja',1740,'a']],
+   why:[['Gastos de Venta: publicidad','Sube $1,500.00','Cargo','Es un gasto de venta, sin IVA.'],
+        ['IVA acreditable','Sube $240.00','Cargo','$1,500.00 × 0.16 = $240.00, ya pagado. La publicidad es un servicio independiente y lleva IVA.'],
+        ['Caja','Baja $1,740.00','Abono','Sale $1,500.00 + $240.00 = $1,740.00.']]},
+14:{paso:'Se compra papelería por $700.00 más IVA acreditable de $112.00, en efectivo: salen $812.00.',
+   manz:'Como comprar bolsas o un cuaderno para el puesto, más su IVA.',
+   e:[['Gastos de Admón: papelería',700,'d'],['IVA acreditable',112,'d'],['Caja',812,'a']],
+   why:[['Gastos de Admón: papelería','Sube $700.00','Cargo','Se registra como gasto del periodo, sin IVA.'],
+        ['IVA acreditable','Sube $112.00','Cargo','$700.00 × 0.16 = $112.00, ya pagado.'],
+        ['Caja','Baja $812.00','Abono','Sale $700.00 + $112.00 = $812.00.']]},
+15:{paso:'Se paga la luz de la empresa por $1,000.00 más IVA acreditable de $160.00, por transferencia: salen $1,160.00. En una empresa, la energía eléctrica se registra con IVA 16 %. El tratamiento de la luz doméstica es un caso especial: hay que verificar el caso concreto.',
+   manz:'Como pagar la luz del local del puesto, más su IVA.',
+   e:[['Gastos de Admón: luz',1000,'d'],['IVA acreditable',160,'d'],['Bancos',1160,'a']],
+   why:[['Gastos de Admón: luz','Sube $1,000.00','Cargo','El gasto es $1,000.00, sin IVA.'],
+        ['IVA acreditable','Sube $160.00','Cargo','$1,000.00 × 0.16 = $160.00, ya pagado.'],
+        ['Bancos','Baja $1,160.00','Abono','Sale $1,000.00 + $160.00 = $1,160.00.']]}
+};
+
+/* Tabla “¿lleva IVA?” de las 15 operaciones. Premisa: importes del enunciado = valor antes de IVA. */
+const IVA_TABLA=[
+{n:1,lleva:false,acto:'No es un acto gravado. Es una aportación de capital: el dinero pasa a ser de la empresa, no hay enajenación ni servicio.',cta:'—',imp:0,nota:''},
+{n:2,lleva:false,acto:'No es un acto gravado. Es un simple movimiento de dinero, de Caja a Bancos.',cta:'—',imp:0,nota:''},
+{n:3,lleva:true,acto:'Enajenación de bienes (mercancías), pagada. El IVA ya se pagó.',cta:'IVA acreditable',imp:2400,nota:'Se pagan $17,400.00.'},
+{n:4,lleva:true,acto:'Enajenación de bienes (mobiliario), pagada.',cta:'IVA acreditable',imp:1280,nota:'Se pagan $9,280.00.'},
+{n:5,lleva:true,acto:'Enajenación de bienes (equipo de cómputo), a crédito. El IVA aún no se paga.',cta:'IVA pendiente de acreditar',imp:1920,nota:'La deuda es $13,920.00, con Acreedores diversos (no es mercancía).'},
+{n:6,lleva:true,acto:'Enajenación de bienes (mercancías), a crédito. El IVA aún no se paga.',cta:'IVA pendiente de acreditar',imp:1600,nota:'La deuda es $11,600.00, con Proveedores.'},
+{n:7,lleva:true,acto:'No nace un acto gravado nuevo: se paga una parte de la compra de la operación 6 y se traspasa el IVA proporcional, de pendiente a acreditable.',cta:'IVA acreditable (traspaso)',imp:640,nota:'Base $4,000.00 + IVA $640.00 = pago $4,640.00. Si los $4,000.00 ya incluyeran IVA, el IVA sería $551.72.'},
+{n:8,lleva:false,acto:'No es un acto gravado. Es un préstamo: entra dinero y nace una deuda.',cta:'—',imp:0,nota:''},
+{n:9,lleva:true,acto:'Enajenación de bienes (venta de mercancías), cobrada.',cta:'IVA trasladado',imp:2880,nota:'Se cobran $20,880.00.'},
+{n:10,lleva:true,acto:'Prestación de servicios independientes, cobrada.',cta:'IVA trasladado',imp:960,nota:'Se cobran $6,960.00.'},
+{n:11,lleva:true,acto:'Uso o goce temporal de bienes (renta), pagada.',cta:'IVA acreditable',imp:480,nota:'Se pagan $3,480.00. Si el arrendador fuera persona física, habría que revisar retenciones de ISR y de IVA.'},
+{n:12,lleva:false,acto:'No lleva IVA. El sueldo es trabajo subordinado, no un servicio independiente.',cta:'—',imp:0,nota:'El enunciado no trae ISR retenido ni IMSS; no se inventan cifras.'},
+{n:13,lleva:true,acto:'Prestación de servicios independientes (publicidad), pagada.',cta:'IVA acreditable',imp:240,nota:'Se pagan $1,740.00.'},
+{n:14,lleva:true,acto:'Enajenación de bienes (papelería), pagada.',cta:'IVA acreditable',imp:112,nota:'Se pagan $812.00.'},
+{n:15,lleva:true,acto:'En una empresa, la energía eléctrica se registra con IVA 16 %. (La luz de casa habitación tiene un tratamiento especial: hay que verificar el caso concreto.)',cta:'IVA acreditable',imp:160,nota:'Se pagan $1,160.00.'}
+];
+
+const IVA_DET={n:'IVA', conc:'Determinación mensual del IVA: se cancelan IVA trasladado e IVA acreditable y se registra el saldo a favor.',
+ e:[['IVA trasladado',3840,'d'],['IVA a favor',1472,'d'],['IVA acreditable',5312,'a']],
+ nota:'IVA trasladado $2,880.00 + $960.00 = $3,840.00. IVA acreditable $2,400.00 + $1,280.00 + $640.00 + $480.00 + $240.00 + $112.00 + $160.00 = $5,312.00. Como el acreditable es mayor, hay IVA a favor por $5,312.00 − $3,840.00 = $1,472.00. El IVA pendiente de acreditar, $2,880.00, no entra en esta determinación: se queda hasta que se pague (el equipo de la operación 5 y el resto de la mercancía de la 6).'};
+const ISR_AS={n:'ISR', conc:'ISR del ejercicio, estimado didáctico al 30 % sobre la utilidad contable (artículo 9 de la LISR).',
+ e:[['ISR del ejercicio',4740,'d'],['ISR por pagar',4740,'a']],
+ nota:'$15,800.00 × 0.30 = $4,740.00. Es un estimado de clase: la utilidad contable no es el resultado fiscal. No se inventan pagos provisionales ni coeficiente de utilidad. La PTU del 10 % no se registra; solo se menciona.'};
+const CIERRE_SIN=[
 {n:'C1', conc:'Cierre de los ingresos del ejercicio a Pérdidas y ganancias.',
  e:[['Ventas',18000,'d'],['Ingresos por servicios',6000,'d'],['Pérdidas y ganancias',24000,'a']],
- nota:'Se cargan las cuentas de ingreso para dejarlas en cero y se abona Pérdidas y ganancias por $18,000.00 + $6,000.00 = $24,000.00.'},
+ nota:'Se cargan los ingresos para dejarlos en cero y se abona Pérdidas y ganancias por $18,000.00 + $6,000.00 = $24,000.00.'},
 {n:'C2', conc:'Cierre de los gastos del ejercicio a Pérdidas y ganancias.',
  e:[['Pérdidas y ganancias',8200,'d'],['Gastos de Admón: renta',3000,'a'],['Gastos de Admón: sueldos',2000,'a'],['Gastos de Venta: publicidad',1500,'a'],['Gastos de Admón: papelería',700,'a'],['Gastos de Admón: luz',1000,'a']],
- nota:'Se carga Pérdidas y ganancias por $3,000.00 + $2,000.00 + $1,500.00 + $700.00 + $1,000.00 = $8,200.00 y se abonan los gastos para dejarlos en cero.'},
+ nota:'Se carga Pérdidas y ganancias por $8,200.00 y se abonan los gastos.'},
 {n:'C3', conc:'Cierre de la utilidad del periodo al capital.',
  e:[['Pérdidas y ganancias',15800,'d'],['Utilidad del periodo',15800,'a']],
- nota:'Pérdidas y ganancias queda en $24,000.00 − $8,200.00 = $15,800.00 acreedor (utilidad). Se carga esa cuenta y se abona Utilidad del periodo, en el capital. $100,000.00 + $15,800.00 = $115,800.00.'}
+ nota:'$24,000.00 − $8,200.00 = $15,800.00 de utilidad. $100,000.00 + $15,800.00 = $115,800.00.'}
+];
+const CIERRE_CON=[
+{n:'C1', conc:'Cierre de los ingresos del ejercicio a Pérdidas y ganancias.',
+ e:[['Ventas',18000,'d'],['Ingresos por servicios',6000,'d'],['Pérdidas y ganancias',24000,'a']],
+ nota:'Se cargan los ingresos para dejarlos en cero y se abona Pérdidas y ganancias por $24,000.00.'},
+{n:'C2', conc:'Cierre de los gastos y del ISR del ejercicio a Pérdidas y ganancias.',
+ e:[['Pérdidas y ganancias',12940,'d'],['Gastos de Admón: renta',3000,'a'],['Gastos de Admón: sueldos',2000,'a'],['Gastos de Venta: publicidad',1500,'a'],['Gastos de Admón: papelería',700,'a'],['Gastos de Admón: luz',1000,'a'],['ISR del ejercicio',4740,'a']],
+ nota:'Se carga Pérdidas y ganancias por $8,200.00 + $4,740.00 = $12,940.00 y se abonan los gastos y el ISR del ejercicio.'},
+{n:'C3', conc:'Cierre de la utilidad neta al capital.',
+ e:[['Pérdidas y ganancias',11060,'d'],['Utilidad del periodo',11060,'a']],
+ nota:'$24,000.00 − $12,940.00 = utilidad neta de $11,060.00. $100,000.00 + $11,060.00 = $111,060.00.'}
 ];
 
 const NIFS=[
-{id:'A-1',t:'NIF A-1, Marco Conceptual de las Normas de Información Financiera',uso:'Define activo, pasivo, capital, ingresos y gastos, que es la base de A = P + C. En este ejercicio, al cierre, $153,800.00 = $38,000.00 + $115,800.00.',src:'CINIF, Listado de normas promulgadas a 2024; índice de la edición NIF 2026 (vigentes al 1.º de enero de 2026).'},
-{id:'B-3',t:'NIF B-3, Estado de resultado integral',uso:'Presenta ingresos, costos, gastos y el resultado del periodo. Aquí: $24,000.00 − $8,200.00 = utilidad de $15,800.00, sin costo de ventas.',src:'CINIF, listado 2024 (vigente desde enero de 2013). La edición NIF 2026 del IMCP y de Contenido Fiscal incluye esta norma entre las vigentes al 1.º de enero de 2026. Esas mismas fuentes anuncian una nueva NIF B-3, con el mismo nombre, vigente a partir del 1 de enero de 2028, con opción de aplicación anticipada en 2027.',nota:'En 2026 sigue aplicando la NIF B-3 vigente. La nueva norma de 2028 no se usa en este ejercicio.'},
-{id:'B-6',t:'NIF B-6, Estado de situación financiera',uso:'Presenta el activo, el pasivo y el capital en una fecha. En este ejercicio: activo $153,800.00 = pasivo $38,000.00 + capital $115,800.00.',src:'CINIF, listado 2024 (vigente desde enero de 2013); índice NIF 2026.'},
-{id:'C-1',t:'NIF C-1, Efectivo y equivalentes de efectivo',uso:'Cubre Caja y Bancos. Al cierre del libro, Bancos tiene $114,000.00 deudor y Caja $5,200.00 acreedor, un saldo que no es razonable en efectivo.',src:'CINIF, listado 2024 (vigente desde enero de 2010); índice NIF 2026.'},
+{id:'A-1',t:'NIF A-1, Marco Conceptual de las Normas de Información Financiera',uso:'Define activo, pasivo, capital, ingresos y gastos, que es la base de A = P + C. En la versión de clase, al cierre con IVA e ISR: $156,680.00 = $45,620.00 + $111,060.00. En el enunciado, sin IVA: $153,800.00 = $38,000.00 + $115,800.00.',src:'CINIF, Listado de normas promulgadas a 2024; índice de la edición NIF 2026 (vigentes al 1.º de enero de 2026).'},
+{id:'B-3',t:'NIF B-3, Estado de resultado integral',uso:'Presenta ingresos, costos, gastos y el resultado del periodo. Aquí: $24,000.00 − $8,200.00 = utilidad de $15,800.00, sin costo de ventas. Con el ISR didáctico, la utilidad neta es $11,060.00.',src:'CINIF, listado 2024 (vigente desde enero de 2013). La edición NIF 2026 del IMCP y de Contenido Fiscal incluye esta norma entre las vigentes al 1.º de enero de 2026. Esas mismas fuentes anuncian una nueva NIF B-3, con el mismo nombre, vigente a partir del 1 de enero de 2028, con opción de aplicación anticipada en 2027.',nota:'En 2026 sigue aplicando la NIF B-3 vigente. La nueva norma de 2028 no se usa en este ejercicio.'},
+{id:'B-6',t:'NIF B-6, Estado de situación financiera',uso:'Presenta el activo, el pasivo y el capital en una fecha. Con IVA, después de las 15 operaciones: $160,520.00 = $44,720.00 + $115,800.00. Al cierre con impuestos: $156,680.00 = $45,620.00 + $111,060.00.',src:'CINIF, listado 2024 (vigente desde enero de 2013); índice NIF 2026.'},
+{id:'C-1',t:'NIF C-1, Efectivo y equivalentes de efectivo',uso:'Cubre Caja y Bancos. Con IVA, Bancos tiene $111,760.00 deudor y Caja $4,432.00 acreedor, un saldo que no es razonable en efectivo. Sin IVA: Bancos $114,000.00 deudor y Caja $5,200.00 acreedor.',src:'CINIF, listado 2024 (vigente desde enero de 2010); índice NIF 2026.'},
 {id:'C-4',t:'NIF C-4, Inventarios',uso:'Cubre las mercancías. En las operaciones 3 y 6 el inventario sube $15,000.00 y $10,000.00; queda en $25,000.00 porque la operación 9 no lo da de baja.',src:'CINIF, listado 2024 (vigente desde enero de 2011); índice NIF 2026.'},
 {id:'C-6',t:'NIF C-6, Propiedades, planta y equipo',uso:'Cubre el mobiliario de $8,000.00 (operación 4) y el equipo de cómputo de $12,000.00 (operación 5): bienes que se usan, no que se venden como mercancía.',src:'CINIF, listado 2024 (vigente desde enero de 2011); índice NIF 2026.'},
-{id:'C-11',t:'NIF C-11, Capital contable',uso:'Cubre el capital social de $100,000.00 (operación 1) y la utilidad del periodo de $15,800.00 que se incorpora al capital.',src:'CINIF, listado 2024 (vigente desde enero de 2014); índice NIF 2026.'},
-{id:'C-19',t:'NIF C-19, Instrumentos financieros por pagar',uso:'Cubre las deudas del ejercicio: Proveedores $6,000.00, Acreedores Diversos $12,000.00 y Acreedores bancarios $20,000.00.',src:'CINIF, listado 2024 (vigente desde enero de 2018); índice NIF 2026.'},
+{id:'C-11',t:'NIF C-11, Capital contable',uso:'Cubre el capital social de $100,000.00 (operación 1) y la utilidad del periodo. Antes de impuestos es $15,800.00; con el ISR didáctico, la utilidad neta es $11,060.00.',src:'CINIF, listado 2024 (vigente desde enero de 2014); índice NIF 2026.'},
+{id:'C-19',t:'NIF C-19, Instrumentos financieros por pagar',uso:'Cubre las deudas del ejercicio. Con IVA: Proveedores $6,960.00, Acreedores Diversos $13,920.00 y Acreedores bancarios $20,000.00. Sin IVA: $6,000.00, $12,000.00 y $20,000.00.',src:'CINIF, listado 2024 (vigente desde enero de 2018); índice NIF 2026.'},
 {id:'D-1',t:'NIF D-1, Ingresos por contratos con clientes',uso:'Cubre las ventas de $18,000.00 (operación 9) y los ingresos por servicios de $6,000.00 (operación 10).',src:'CINIF, listado 2024 y solicitud de información posterior a la implementación (vigente desde enero de 2018); índice NIF 2026.'},
 {id:'D-2',t:'NIF D-2, Costos por contratos con clientes',uso:'Se cita porque, en una venta de mercancías con sistema de inventarios perpetuos, correspondería registrar el costo de ventas. El ejercicio no indica el costo, así que ese asiento no se puede armar.',src:'CINIF, listado 2024 (vigente desde enero de 2018); índice NIF 2026.'},
 {id:'D-3',t:'NIF D-3, Beneficios a los empleados',uso:'Cubre los sueldos de $2,000.00 pagados en la operación 12.',src:'CINIF, listado 2024 (vigente desde enero de 2016); índice NIF 2026.'},
 {id:'D-5',t:'NIF D-5, Arrendamientos',uso:'Se menciona solo como referencia. La renta de $3,000.00 de la operación 11 se registra como gasto del periodo. El ejercicio no da datos de un contrato de arrendamiento.',src:'CINIF, listado 2024 (vigente desde enero de 2019); índice NIF 2026.',nota:'No se aplica aquí un modelo de arrendamiento: no hay plazo, pagos futuros ni otros datos del contrato.'}
 ];
 
+
 const QUIZ=[
-{q:'En la operación 1, Capital social se abona por…',o:['$50,000.00','$100,000.00','$150,000.00','$60,000.00'],a:1,e:'$50,000.00 en Caja + $50,000.00 en Bancos = $100,000.00 de capital social.'},
-{q:'Caja es un activo. Si aumenta, el asiento lleva…',o:['Un abono a Caja','Un cargo a Caja','Un cargo a Capital social','Un abono a Inventarios'],a:1,e:'El activo tiene naturaleza deudora: aumenta con cargo. Así ocurre en las operaciones 1 y 9.'},
-{q:'En la operación 2, después del asiento, Caja queda en…',o:['$50,000.00 deudor','$10,000.00 deudor','−$10,000.00 (saldo acreedor)','$0.00'],a:2,e:'Había $50,000.00 y se abonan $60,000.00: $50,000.00 − $60,000.00 = −$10,000.00.'},
-{q:'La operación 5 (equipo de cómputo a crédito) es un asiento de…',o:['Aumento de activo y disminución de activo','Aumento de activo y aumento de pasivo','Aumento de gasto y disminución de activo','Aumento de capital y aumento de pasivo'],a:1,e:'Se carga Equipo de Cómputo $12,000.00 y se abona Acreedores Diversos $12,000.00.'},
-{q:'La operación 7 (pago al proveedor) es un asiento de…',o:['Aumento de pasivo y aumento de activo','Disminución de activo y disminución de pasivo','Aumento de gasto y aumento de pasivo','Aumento de capital y disminución de pasivo'],a:1,e:'Se carga Proveedores $4,000.00 (baja la deuda) y se abona Bancos $4,000.00 (sale efectivo).'},
-{q:'Un préstamo bancario depositado en la cuenta (operación 8) se registra…',o:['Cargo a Bancos y abono a Ventas','Cargo a Capital social y abono a Bancos','Cargo a Bancos $20,000.00 y abono a Acreedores bancarios $20,000.00','Cargo a Acreedores bancarios y abono a Bancos'],a:2,e:'Entra efectivo (cargo a Bancos) y nace un pasivo (abono a Acreedores bancarios). No es un ingreso.'},
-{q:'Mobiliario y Equipo de Oficina se rige por la…',o:['NIF C-4, Inventarios','NIF C-6, Propiedades, planta y equipo','NIF C-1','NIF D-1'],a:1,e:'Escritorios y sillas no son mercancía. Van en la NIF C-6, como en la operación 4.'},
-{q:'El saldo final de Bancos, según el diario del ejercicio, es…',o:['$104,000.00 deudor','$114,000.00 deudor','$111,000.00 deudor','$50,000.00 deudor'],a:1,e:'$50,000.00 + $60,000.00 − $15,000.00 − $4,000.00 + $20,000.00 + $6,000.00 − $2,000.00 − $1,000.00 = $114,000.00.'},
-{q:'La utilidad del ejercicio, tal como está en los libros (sin costo de ventas), es…',o:['$24,000.00','$8,200.00','$15,800.00','$18,000.00'],a:2,e:'Ingresos $18,000.00 + $6,000.00 = $24,000.00, menos gastos $8,200.00 = $15,800.00.'},
-{q:'Al cierre, A = P + C queda…',o:['$153,800.00 = $38,000.00 + $115,800.00','$167,200.00 = $38,000.00 + $129,200.00','$153,800.00 = $20,000.00 + $133,800.00','$114,000.00 = $38,000.00 + $76,000.00'],a:0,e:'Activo $153,800.00 = pasivo $38,000.00 + capital $115,800.00 ($100,000.00 + utilidad $15,800.00).'}
+{q:'En la operación 1, Capital social se abona por…',o:['$50,000.00','$100,000.00','$150,000.00','$60,000.00'],a:1,e:'$50,000.00 en Caja + $50,000.00 en Bancos = $100,000.00 de capital social. No lleva IVA.'},
+{q:'Caja es un activo. Si aumenta, el asiento lleva…',o:['Un abono a Caja','Un cargo a Caja','Un cargo a Capital social','Un abono a Inventarios'],a:1,e:'El activo tiene naturaleza deudora: aumenta con cargo.'},
+{q:'En la operación 5, con IVA 16 %, Acreedores diversos se abona por…',o:['$12,000.00','$13,920.00','$1,920.00','$12,000.00 más un cargo a Proveedores'],a:1,e:'$12,000.00 del equipo + $1,920.00 de IVA pendiente = $13,920.00. No es Proveedores, porque no es mercancía.'},
+{q:'El IVA de una compra a crédito (operaciones 5 y 6) se carga a…',o:['IVA acreditable, porque ya se puede restar.','IVA pendiente de acreditar, porque aún no se paga.','IVA trasladado.','Gastos.'],a:1,e:'Hasta que se pague, el IVA no se acredita. En la operación 7, al pagar, se traspasa de pendiente a acreditable.'},
+{q:'¿Qué operación no lleva IVA?',o:['La renta del local (operación 11).','Los sueldos (operación 12).','La publicidad (operación 13).','La luz de la empresa (operación 15).'],a:1,e:'El sueldo es trabajo subordinado, no un servicio independiente. La renta, la publicidad y la luz de la empresa sí llevan IVA 16 %.'},
+{q:'En la versión con IVA, el IVA trasladado total y el acreditable, al determinar el mes, dan…',o:['IVA a cargo de $1,472.00.','IVA a favor de $1,472.00.','IVA a favor de $3,840.00.','Cero, porque se compensan igual.'],a:1,e:'Trasladado $3,840.00 menos acreditable $5,312.00 = IVA a favor de $1,472.00. El pendiente, $2,880.00, no entra todavía.'},
+{q:'El ISR del ejercicio, en esta guía, es…',o:['El resultado fiscal definitivo.','Un estimado didáctico: $15,800.00 × 30 % = $4,740.00 (artículo 9 de la LISR).','$15,800.00.','El mismo IVA a favor.'],a:1,e:'La utilidad contable no es el resultado fiscal. Es un ejemplo de clase, no un cálculo fiscal completo.'},
+{q:'Con IVA e ISR, la utilidad neta y A = P + C al cierre quedan…',o:['Utilidad $15,800.00 y $153,800.00 = $38,000.00 + $115,800.00','Utilidad neta $11,060.00 y $156,680.00 = $45,620.00 + $111,060.00','Utilidad $11,060.00 y $160,520.00 = $44,720.00 + $115,800.00','Utilidad $15,800.00 y $156,680.00 = $40,880.00 + $115,800.00'],a:1,e:'$15,800.00 − $4,740.00 = $11,060.00. Activo $156,680.00 = pasivo $45,620.00 + capital $111,060.00.'},
+{q:'Mobiliario y Equipo de Oficina se rige por la…',o:['NIF C-4, Inventarios','NIF C-6, Propiedades, planta y equipo','NIF C-1','NIF D-1'],a:1,e:'Escritorios y sillas no son mercancía. Van en la NIF C-6.'},
+{q:'En el enunciado sin IVA, el saldo final de Bancos es $114,000.00 deudor. Con IVA 16 % queda…',o:['$114,000.00 deudor','$111,760.00 deudor','$101,760.00 deudor','$136,960.00 deudor'],a:1,e:'Salen más pagos (con IVA) y entran más cobros (con IVA). Bancos cierra en $111,760.00 deudor.'}
+];
+const CABQ=[
+{q:'Operación 1. Los socios aportan efectivo. ¿Qué le haces a Caja?',a:'c',e:'Caja es un activo: al entrar $50,000.00, aumenta con un cargo. No lleva IVA.'},
+{q:'Operación 1. ¿Qué le haces a Capital social?',a:'a',e:'El capital aumenta con un abono de $100,000.00.'},
+{q:'Operación 5, con IVA. ¿Qué le haces a IVA pendiente de acreditar?',a:'c',e:'El IVA de $1,920.00 aún no se paga: se carga a IVA pendiente de acreditar.'},
+{q:'Operación 5, con IVA. ¿Qué le haces a Acreedores diversos?',a:'a',e:'Nace una deuda de $13,920.00: el pasivo aumenta con un abono.'},
+{q:'Operación 9, con IVA. ¿Qué le haces a IVA trasladado?',a:'a',e:'El IVA cobrado, $2,880.00, es un pasivo: se abona a IVA trasladado. No es un ingreso.'},
+{q:'Operación 7. Al pagar al proveedor, ¿qué le haces a IVA pendiente de acreditar?',a:'a',e:'Esa parte ya se pagó: el IVA pendiente disminuye con un abono y pasa a IVA acreditable, que se carga.'},
+{q:'Operación 11. ¿Qué le haces a Gastos de Admón: renta?',a:'c',e:'El gasto (sin IVA) aumenta con un cargo de $3,000.00. El IVA se carga aparte, a IVA acreditable.'},
+{q:'Operación 12. Pagas $2,000.00 de sueldos. ¿Qué le haces a Gastos de Admón: sueldos?',a:'c',e:'El gasto aumenta con un cargo de $2,000.00. Los sueldos no llevan IVA.'}
 ];
 
-const CABQ=[
-{q:'Operación 1. Los socios aportan efectivo. ¿Qué le haces a Caja?',a:'c',e:'Caja es un activo: al entrar $50,000.00, aumenta con un cargo.'},
-{q:'Operación 1. ¿Qué le haces a Capital social?',a:'a',e:'El capital aumenta con un abono de $100,000.00.'},
-{q:'Operación 3. Compras mercancías y pagas del banco. ¿Qué le haces a Inventarios?',a:'c',e:'Inventarios es un activo: al comprar $15,000.00, aumenta con un cargo.'},
-{q:'En esa misma compra, ¿qué le haces a Bancos?',a:'a',e:'Sale $15,000.00: el activo Bancos disminuye con un abono.'},
-{q:'Operación 5. Equipo de cómputo a crédito. ¿Qué le haces a Acreedores Diversos?',a:'a',e:'Nace una deuda de $12,000.00: el pasivo aumenta con un abono.'},
-{q:'Operación 7. Pagas $4,000.00 al proveedor. ¿Qué le haces a Proveedores?',a:'c',e:'La deuda baja: el pasivo disminuye con un cargo.'},
-{q:'Operación 9. Vendes mercancía por $18,000.00. ¿Qué le haces a Ventas?',a:'a',e:'El ingreso aumenta con un abono de $18,000.00.'},
-{q:'Operación 11. Pagas $3,000.00 de renta en efectivo. ¿Qué le haces a Gastos de Admón: renta?',a:'c',e:'El gasto aumenta con un cargo de $3,000.00.'}
+const REGLAS=[
+{t:'Partida doble: no hay deudor sin acreedor',
+ d:'Todo hecho se anota en por lo menos dos cuentas. No existe un cargo sin su abono.',
+ m:'Las socias ponen $8,000.00 en la caja: se carga Caja $8,000.00 (quien recibe) y se abona Capital $8,000.00 (quien entrega).',
+ e:'Operación 1: se cargan Caja $50,000.00 y Bancos $50,000.00, y se abona Capital social $100,000.00.'},
+{t:'La suma de cargos es igual a la suma de abonos',
+ d:'En cada asiento, las dos columnas cierran en el mismo importe.',
+ m:'Compra de manzanas por $1,000.00 pagadas del banco: Inventarios $1,000.00 al debe y Bancos $1,000.00 al haber.',
+ e:'En la operación 5, con IVA, el debe es $12,000.00 + $1,920.00 = $13,920.00 y el haber es $13,920.00.'},
+{t:'A = P + C siempre se cumple',
+ d:'Lo que la entidad tiene es igual a lo que debe más lo que es de los dueños. Si un lado se mueve, el otro se mueve en la misma cantidad, o se mueven dos partidas del mismo lado en sentido contrario.',
+ m:'Al abrir el puesto: $20,000.00 = $0.00 + $20,000.00. Si piden $5,000.00 prestados, $25,000.00 = $5,000.00 + $20,000.00.',
+ e:'Operación 1: $100,000.00 = $0.00 + $100,000.00. Al cierre, con IVA e ISR: $156,680.00 = $45,620.00 + $111,060.00.'},
+{t:'Naturaleza: cómo aumenta cada cuenta',
+ d:'El activo y los gastos aumentan con cargo. El pasivo, el capital y los ingresos aumentan con abono. Para disminuir, se usa el lado contrario.',
+ m:'Entra efectivo al puesto: Caja se carga. Se reconoce una venta: Ventas se abona. Se paga renta: el gasto se carga y Caja se abona.',
+ e:'Operación 9, con IVA: Caja se carga $20,880.00; Ventas se abona $18,000.00 e IVA trasladado se abona $2,880.00.'},
+{t:'El que recibe es deudor y el que entrega es acreedor',
+ d:'Es la regla clásica para orientar el cargo y el abono. Quien recibe el bien, el servicio o el efectivo se carga. Quien lo entrega se abona.',
+ m:'El puesto recibe $8,000.00 en caja (Caja deudora, se carga). Las socias entregan esa aportación (Capital acreedor, se abona).',
+ e:'Operación 3: la empresa recibe mercancías (Inventarios se carga) y entrega dinero del banco (Bancos se abona), más el IVA acreditable.'},
+{t:'Saldo deudor y saldo acreedor',
+ d:'Si el debe es mayor, el saldo es deudor. Si el haber es mayor, el saldo es acreedor. El saldo normal de una cuenta coincide con su naturaleza, salvo un aviso (como Caja acreedora en este ejercicio).',
+ m:'Caja con cargo de $8,000.00 y abono de $3,000.00 queda en $5,000.00 deudor.',
+ e:'Bancos, con IVA, cierra en $111,760.00 deudor. Caja, por el depósito de $60,000.00 de la operación 2, cierra en $4,432.00 acreedor: un saldo contrario a su naturaleza.'},
+{t:'Ingresos y gastos mueven el capital',
+ d:'El ingreso aumenta el capital y se abona, como el capital. El gasto disminuye el capital y se carga, del lado contrario.',
+ m:'Vender manzanas por $18,000.00 aumenta lo que es de las socias. Pagar $3,000.00 de renta lo disminuye.',
+ e:'Ventas $18,000.00 + servicios $6,000.00 − gastos $8,200.00 = utilidad de $15,800.00, que entra al capital (antes del ISR).'},
+{t:'Devengo: se registra cuando ocurre, no cuando se cobra o se paga',
+ d:'Los hechos se reconocen en el momento en que suceden, aunque el dinero se mueva después. Es el postulado de devengación contable de la NIF A-1 (aquí solo se cita el nombre).',
+ m:'Si te fían una caja de manzanas hoy, hoy se registra el inventario y la deuda, no el día en que pagues.',
+ e:'Operaciones 5 y 6: el equipo y las mercancías se registran al adquirirlos, a crédito. El pago de la 7 es un hecho distinto.'},
+{t:'Entidad: la empresa es distinta de los socios',
+ d:'Los bienes, deudas e ingresos de la empresa no se mezclan con los de las personas socias. Es el postulado de entidad económica de la NIF A-1 (solo se cita el nombre).',
+ m:'Los $20,000.00 que pusieron las socias ya son de la caja y del banco del puesto, no de su bolsa personal.',
+ e:'En la operación 1, los $100,000.00 quedan en Caja y Bancos de Distribuidora del Valle, S.A. de C.V.'},
+{t:'Postulados básicos de la NIF A-1 (solo los nombres)',
+ d:'La NIF A-1, Marco Conceptual, incluye un capítulo de postulados básicos. Los ocho nombres son: sustancia económica, entidad económica, negocio en marcha, devengación contable, asociación de costos y gastos con ingresos, valuación, dualidad económica y consistencia. No se transcribe el texto de la norma.',
+ m:'En el puesto, “entidad” y “devengo” se ven en los ejemplos de arriba. “Dualidad económica” es otra forma de decir que A = P + C.',
+ e:'En este ejercicio se aplican, entre otros, entidad (operación 1), devengación (operaciones 5 y 6) y dualidad económica (la ecuación cuadra al cierre).'},
+{t:'Cada asiento lleva fecha, concepto, cuentas, importes y sumas iguales',
+ d:'Un asiento de diario se identifica, se explica y se cuantifica. El ejercicio no indica fecha: aquí se usa s/f y el número de operación. El concepto dice qué pasó. Las cuentas y los importes van al debe o al haber, y las sumas cuadran.',
+ m:'“s/f — Compra de manzanas pagada del banco. Inventarios $1,000.00 / Bancos $1,000.00. Sumas iguales $1,000.00.”',
+ e:'El asiento 5, con IVA: “Adquisición de equipo de cómputo a crédito.” Equipo $12,000.00 e IVA pendiente $1,920.00 al debe; Acreedores diversos $13,920.00 al haber. Sumas iguales $13,920.00.'}
+];
+
+const LESSONS=[
+{n:1, tit:'¿Qué es la contabilidad y la ecuación A = P + C?',
+ obj:'Que quede claro qué registra la contabilidad y por qué Activo = Pasivo + Capital siempre tiene que cuadrar.',
+ exp:[
+  'La contabilidad es el sistema con el que una entidad identifica, valúa, reconoce y presenta sus transacciones, para preparar estados financieros útiles.',
+  'La regla de oro es la ecuación contable: <span class="hl-def">Activo = Pasivo + Capital</span>. El activo es lo que la entidad tiene. El pasivo es lo que debe. El capital es lo que es de los dueños. Los dos lados siempre suman lo mismo.',
+  'Si un hecho sube el activo y no hay una deuda nueva, tiene que subir el capital (o un ingreso que lo aumenta). Si sube el activo porque se pidió un préstamo, sube el pasivo. La ecuación no se rompe.'
+ ],
+ manz:'Dos socias abren un puesto de manzanas y aportan $20,000.00: $8,000.00 en efectivo, que van a Caja, y $12,000.00 por transferencia, que van a Bancos. Todavía no hay deudas.<div class="calc"><p class="math">Caja $8,000.00 + Bancos $12,000.00 = activo $20,000.00.</p><p class="math">Pasivo $0.00 + capital $20,000.00 = $20,000.00.</p><p class="math">Por eso $20,000.00 = $0.00 + $20,000.00.</p></div>',
+ apl:'En Distribuidora del Valle, S.A. de C.V. pasa lo mismo en la operación 1, con otras cifras: Caja $50,000.00 + Bancos $50,000.00 = Capital social $100,000.00. Al terminar las 15 operaciones, en la versión de clase (con IVA 16 %), la ecuación cierra así: activo $160,520.00 = pasivo $44,720.00 + capital $115,800.00. Ese capital ya incluye la utilidad de $15,800.00, antes del ISR. Si se toma el ejercicio como viene el enunciado, sin IVA, queda $153,800.00 = $38,000.00 + $115,800.00.',
+ pregunta:{q:'Si el puesto pide un préstamo de $5,000.00 y lo deposita en el banco, ¿sigue cuadrando la ecuación? ¿Cómo quedan los tres lados?',
+  a:'Sí, cuadra. Bancos sube $5,000.00, así que el activo queda en $25,000.00. Nace un pasivo de $5,000.00. El capital no se mueve: sigue en $20,000.00. $25,000.00 = $5,000.00 + $20,000.00.'},
+ check:[
+  {q:'El activo es…',o:['Lo que la entidad debe a terceros.','Lo que la entidad tiene.','Solo el efectivo en caja.'],a:1,e:'El activo es lo que la entidad tiene: efectivo, bancos, mercancías, mobiliario, equipo, entre otros.'},
+  {q:'En la operación 1 de Distribuidora del Valle, A = P + C queda…',o:['$50,000.00 = $0.00 + $50,000.00','$100,000.00 = $0.00 + $100,000.00','$100,000.00 = $50,000.00 + $50,000.00'],a:1,e:'Caja $50,000.00 + Bancos $50,000.00 = $100,000.00 de activo. No hay pasivo. El capital social es $100,000.00.'},
+  {q:'Si entra un préstamo al banco, ¿qué lados de la ecuación suben?',o:['Solo el capital.','El activo y el pasivo, en la misma cantidad.','El pasivo y el capital.'],a:1,e:'Entra efectivo (sube el activo) y nace una deuda (sube el pasivo). El capital no cambia.'}
+ ],
+ guion:'Empieza por la ecuación, no por las cuentas. Pídele que te la diga en voz alta: “lo que tengo es igual a lo que debo más lo que es mío”. Con el puesto, anota en un papel $20,000.00 = $0.00 + $20,000.00. Luego pregúntale qué pasa si piden $5,000.00 prestados. No pases a la lección 2 hasta que eso le salga sin dudar. Al cierre de las 15, muéstrale las cifras de la versión con IVA: $160,520.00 = $44,720.00 + $115,800.00, y, en una línea, las del enunciado sin IVA: $153,800.00 = $38,000.00 + $115,800.00. Así ve que la misma regla vale con números grandes.'
+},
+{n:2, tit:'Reglas básicas de la contabilidad',
+ obj:'Dejar firmes las reglas con las que se registra cualquier asiento, cada una con un ejemplo de manzanas y uno del ejercicio.',
+ exp:[
+  'Antes de entrar a las cuentas, conviene tener a la mano un puñado de reglas. No son adornos: si una de ellas no se cumple, el asiento o el estado está mal. Abajo va cada regla, con un ejemplo del puesto de manzanas y otro de Distribuidora del Valle.',
+  'La NIF A-1, Marco Conceptual de las Normas de Información Financiera, reúne en su capítulo de postulados básicos ocho nombres (solo se citan los nombres, no el texto de la norma): sustancia económica, entidad económica, negocio en marcha, devengación contable, asociación de costos y gastos con ingresos, valuación, dualidad económica y consistencia.'
+ ],
+ manz:'Si las socias ponen $8,000.00 en la caja del puesto, no basta con anotar Caja. Alguien “entrega” el dinero (las socias, a través del capital) y alguien “recibe” (la caja de la empresa). Hay deudor y acreedor, cargo y abono, y $8,000.00 = $8,000.00.',
+ apl:'En la operación 1 del ejercicio, la misma regla se ve con $100,000.00: se cargan Caja y Bancos, se abona Capital social, y las sumas son iguales. Las reglas de esta lección se van a usar, sin excepción, del diario al cierre. Abre cada tarjeta, léela en voz alta y revisa los dos ejemplos.',
+ pregunta:{q:'Si en un asiento el debe suma $12,000.00 y el haber $10,000.00, ¿cuál regla se rompió y qué hay que hacer?',
+  a:'Se rompió la partida doble: la suma de cargos tiene que ser igual a la suma de abonos. Hay que revisar las cuentas y los importes hasta que ambos lados sumen lo mismo. No se “arregla” después en la balanza.'},
+ check:[
+  {q:'“El que recibe es deudor y el que entrega es acreedor” significa, en la operación 1…',o:['Que Caja y Bancos reciben efectivo y se cargan; el capital entrega el recurso y se abona.','Que el capital se carga porque los socios reciben acciones.','Que nadie recibe nada, porque es una aportación.'],a:0,e:'Caja y Bancos reciben $50,000.00 cada una: se cargan (deudoras en ese hecho). El capital es quien “entrega” esa aportación: se abona.'},
+  {q:'El postulado de entidad económica, en este ejercicio, se ve cuando…',o:['Los socios y la empresa se registran como si fueran la misma persona.','Los $100,000.00 de la operación 1 pasan a ser de la empresa, no del bolsillo de los socios.','El préstamo de $20,000.00 se abona a Ventas.'],a:1,e:'La empresa es un ente distinto de sus socios. Lo que entra a Caja y a Bancos ya es de Distribuidora del Valle.'},
+  {q:'Devengar quiere decir…',o:['Registrar solo cuando se cobra o se paga.','Registrar el hecho cuando ocurre, aunque aún no se cobre o se pague.','Esperar al cierre para registrar las compras a crédito.'],a:1,e:'En las operaciones 5 y 6 el equipo y las mercancías se registran al adquirirlos, aunque se paguen después.'}
+ ],
+ guion:'Esta lección es de pizarrón. No la conviertas en un dictado de los ocho postulados. Elige cuatro reglas y haz que ella te ponga el ejemplo: partida doble, A = P + C, el que recibe es deudor, y devengo (con la operación 5). Los ocho nombres de la NIF A-1 se leen una vez, sin recitar párrafos. El resto de las tarjetas queda de consulta.',
+ special:'reglas'
+},
+{n:3, tit:'Activo, pasivo, capital, ingresos y gastos',
+ obj:'Que distinga las cinco clases de cuenta y sepa en cuál cae cada cuenta del ejercicio.',
+ exp:[
+  'Hay cinco clases. El <span class="hl-def">activo</span> es un recurso que la entidad controla y del que espera un beneficio: Caja, Bancos, Inventarios, mobiliario, equipo. El <span class="hl-def">pasivo</span> es una obligación presente: Proveedores, Acreedores Diversos, Acreedores bancarios.',
+  'El <span class="hl-def">capital</span> es el residual: lo que queda para los dueños después de restar el pasivo al activo. En este ejercicio, Capital social. Los <span class="hl-def">ingresos</span> aumentan el capital (Ventas, Ingresos por servicios). Los <span class="hl-def">gastos</span> lo disminuyen (renta, sueldos, publicidad, papelería, luz).',
+  'Un préstamo no es un ingreso: entra dinero, pero nace una deuda. Una compra de escritorio no es un gasto del periodo si el bien se va a usar: es un activo.'
+ ],
+ manz:'En el puesto, las manzanas para vender son inventario (activo). La mesa del puesto es mobiliario (activo). Si el proveedor te fía una caja, esa deuda es pasivo. Lo que pusieron las socias es capital. Vender manzanas por $18,000.00 es un ingreso. Pagar $3,000.00 de renta es un gasto.',
+ apl:'Clasifica, con ella, las cuentas de Distribuidora del Valle. Abajo está el juego: toca una cuenta y luego su clase. Son las cuentas que salen en el diario. En la versión con IVA se suman IVA acreditable, IVA pendiente de acreditar e IVA trasladado.',
+ pregunta:{q:'En la operación 8, la empresa obtiene un préstamo bancario de $20,000.00. ¿Eso es un ingreso o un pasivo? ¿Por qué?',
+  a:'Es un pasivo. Entran $20,000.00 a Bancos, que es un activo, y nace una deuda con Acreedores bancarios. No se ganó ese dinero: se debe. Un ingreso sería, por ejemplo, la venta de la operación 9 o el servicio de la operación 10.'},
+ check:[
+  {q:'El equipo de cómputo de $12,000.00 (operación 5) es…',o:['Un gasto, porque se va a usar.','Un inventario, porque se compró.','Un activo de propiedades, planta y equipo.'],a:2,e:'No es mercancía para vender ni un gasto del periodo. Es un bien que se usa (NIF C-6).'},
+  {q:'Los sueldos de $2,000.00 (operación 12) son…',o:['Un activo.','Un gasto, que disminuye el capital.','Un pasivo, porque se pagan al personal.'],a:1,e:'Al pagarlos, se reconoce un gasto. El gasto reduce el capital.'},
+  {q:'Capital social, en la operación 1, queda en…',o:['$50,000.00','$100,000.00','$153,800.00'],a:1,e:'$50,000.00 en Caja + $50,000.00 en Bancos = $100,000.00 de capital social.'}
+ ],
+ guion:'Haz la lista en cinco columnas: activo, pasivo, capital, ingreso, gasto. Ve sacando cuentas del ejercicio y que ella las ponga. Detente en dos trampas: el préstamo de $20,000.00 no es ingreso, y los escritorios de $8,000.00 no son gasto ni mercancía. Cuando termine el juego de clasificar, revisen juntos las que haya fallado.',
+ game:'nat'
+},
+{n:4, tit:'La cuenta T, cargo y abono',
+ obj:'Que ubique el debe a la izquierda y el haber a la derecha, y use sin miedo las palabras cargo y abono.',
+ exp:[
+  'Cada cuenta se representa con una <span class="hl-def">cuenta T</span>: una línea vertical y un nombre arriba. El lado izquierdo es el <span class="hl-art">debe</span>. Anotar ahí es <span class="hl-def">cargar</span>. El lado derecho es el <span class="hl-art">haber</span>. Anotar ahí es <span class="hl-def">abonar</span>.',
+  'Cargo no significa “algo malo” ni “una deuda”. Solo quiere decir “se anotó en el debe”. Abono quiere decir “se anotó en el haber”. El saldo de la cuenta es la diferencia entre los dos lados.',
+  'En el diario, la columna de la izquierda es el debe y la de la derecha, el haber. En cada asiento, la suma de cargos es igual a la suma de abonos.'
+ ],
+ manz:'La caja del puesto recibe $8,000.00. En la cuenta T de Caja, esos $8,000.00 se anotan a la izquierda: un cargo. Si luego se pagan $3,000.00 de renta en efectivo, esos $3,000.00 se anotan a la derecha de Caja: un abono. El saldo de Caja queda en $8,000.00 − $3,000.00 = $5,000.00, del lado del debe.',
+ apl:'En la operación 1 del ejercicio, Caja se carga $50,000.00 y Bancos se carga $50,000.00 (los dos en el debe). Capital social se abona $100,000.00 (en el haber). $50,000.00 + $50,000.00 = $100,000.00: las sumas son iguales. Todavía no hace falta saber por qué a un lado o al otro: eso es la lección 5. Aquí solo importa ver la forma de la T y del asiento.',
+ pregunta:{q:'Si en Caja hay un cargo de $50,000.00 y un abono de $8,000.00, ¿de qué lado queda el saldo y por cuánto?',
+  a:'El saldo queda del lado del debe, por $42,000.00. $50,000.00 − $8,000.00 = $42,000.00 deudor. El saldo se queda del lado que tenga más movimiento.'},
+ check:[
+  {q:'Cargar una cuenta es anotarla…',o:['En el haber, a la derecha.','En el debe, a la izquierda.','Siempre en el capital.'],a:1,e:'El debe es la izquierda de la T. Anotar ahí es cargar.'},
+  {q:'En un asiento, la suma de cargos y la suma de abonos…',o:['Pueden ser distintas, si hay un gasto.','Tienen que ser iguales.','Solo cuadran al final del mes.'],a:1,e:'Esa es la partida doble: por lo menos dos cuentas, y debe = haber.'},
+  {q:'En la operación 1, Capital social se anota…',o:['A la izquierda, con un cargo de $100,000.00.','A la derecha, con un abono de $100,000.00.','A los dos lados, por $50,000.00.'],a:1,e:'Va en el haber: un abono de $100,000.00.'}
+ ],
+ guion:'Dibuja una T grande en una hoja o en el pizarrón. Escribe “Debe · Cargo” a la izquierda y “Haber · Abono” a la derecha. Que ella anote los $8,000.00 del puesto a la izquierda de Caja y los $3,000.00 de la renta a la derecha. Luego armen juntos el asiento 1 del ejercicio, en forma de diario, y comprueben que $100,000.00 = $100,000.00.'
+},
+{n:5, tit:'Naturaleza de las cuentas',
+ obj:'Que sepa si una cuenta es deudora o acreedora, con qué aumenta y con qué disminuye, y por qué.',
+ exp:[
+  'La naturaleza sale de la ecuación. El activo está a la izquierda de A = P + C, así que su saldo normal es <span class="hl-def">deudor</span>: aumenta con cargo y disminuye con abono. El pasivo y el capital están a la derecha, así que su saldo normal es <span class="hl-def">acreedor</span>: aumentan con abono y disminuyen con cargo.',
+  'El ingreso aumenta el capital, por eso se comporta como el capital: naturaleza acreedora, aumenta con abono. El gasto disminuye el capital, por eso se comporta al revés: naturaleza deudora, aumenta con cargo.',
+  'Una regla práctica: para aumentar una cuenta, anótala del lado de su saldo normal. Para disminuirla, del lado contrario.'
+ ],
+ manz:'En el puesto, Caja es un activo. Si entran $8,000.00, Caja aumenta: se carga. Si salen $3,000.00 para la renta, Caja disminuye: se abona. La renta es un gasto: se carga $3,000.00. El gasto va al debe, que es el lado contrario al capital, porque lo está disminuyendo.',
+ apl:'Abajo está la tabla con las cinco clases, sacada de este ejercicio, y las cuentas que le corresponden a cada una. Fíjate en la operación 1: Caja aumentó $50,000.00 y se cargó; Capital social aumentó $100,000.00 y se abonó. En la operación 5, con IVA, Acreedores Diversos aumentó $13,920.00 y se abonó (el equipo $12,000.00 más IVA pendiente $1,920.00). En la 11, la renta de $3,000.00 se cargó; el IVA de $480.00 va aparte, a IVA acreditable.',
+ pregunta:{q:'¿Por qué un gasto se carga y no se abona?',
+  a:'Porque el gasto disminuye el capital. El capital aumenta con abono, así que lo que lo disminuye se anota del otro lado: con cargo. Por eso Gastos de Admón: renta se carga $3,000.00 en la operación 11.'},
+ check:[
+  {q:'Un activo aumenta con…',o:['Un abono.','Un cargo.','Un ingreso.'],a:1,e:'Naturaleza deudora: aumenta con cargo. Así Caja en las operaciones 1 y 9.'},
+  {q:'Un pasivo disminuye con…',o:['Un cargo.','Un abono.','Un gasto.'],a:0,e:'Naturaleza acreedora: disminuye con cargo. En la operación 7, con IVA, Proveedores se carga $4,640.00 porque baja la deuda (la base más el IVA). En el enunciado, sin IVA, se carga $4,000.00.'},
+  {q:'Ventas, al reconocer $18,000.00, se…',o:['Carga, porque entra efectivo.','Abona, porque el ingreso aumenta el capital.','Carga y se abona, por la misma cantidad.'],a:1,e:'El ingreso tiene naturaleza acreedora. En la operación 9, Ventas se abona $18,000.00. El efectivo que entra se carga en Caja.'}
+ ],
+ guion:'No le pidas que memorice la tabla en abstracto. Parte de una operación que ya conozca: “En la 1, Caja subió y se cargó. ¿Qué nos dice eso de los activos?”. Luego: “Capital social subió y se abonó. ¿De qué lado está el capital en la ecuación?”. Cierra con el gasto de la renta, que es donde más se confunden. La tabla de esta lección es la que pueden tener a la vista en el resto del curso.',
+ tabla:'nat'
+},
+{n:6, tit:'Partida doble y tipos de asiento',
+ obj:'Que vea que todo hecho se anota en por lo menos dos cuentas, y reconozca los tipos de asiento que salen de A = P + C.',
+ exp:[
+  'La <span class="hl-def">partida doble</span> dice que todo hecho se registra en por lo menos dos cuentas, y que la suma de cargos es igual a la suma de abonos. Si el asiento tiene dos cuentas, es <span class="hl-art">simple</span>. Si tiene más de dos, es <span class="hl-art">compuesto</span>.',
+  'De la ecuación salen combinaciones. Las más habituales en este ejercicio: un activo sube y otro baja; sube un activo y sube un pasivo; sube un activo y sube el capital; baja un activo y baja un pasivo; entra un activo y se reconoce un ingreso; se reconoce un gasto y baja un activo.',
+  'También existen traspasos entre pasivos, entre capitales, un retiro de capital, un dividendo por pagar o una capitalización de deuda. Si no aparecen en este ejercicio, más abajo van marcados como ejemplo.'
+ ],
+ manz:'Comprar manzanas por $1,000.00 y pagarlas del banco es un asiento simple: se carga Inventarios $1,000.00 y se abona Bancos $1,000.00. Un activo sube y otro baja. El total de activo no cambia. Las sumas son iguales: $1,000.00 = $1,000.00.',
+ apl:'Abajo está el catálogo. Cada tipo trae el cómo, el porqué y una operación de este ejercicio (o un ejemplo, si aquí no aparece). En Distribuidora del Valle, la operación 1 es el asiento de apertura y, sin IVA, el único compuesto: las operaciones 2 a 15 serían simples. En la versión de clase, con IVA 16 %, varias se vuelven compuestas, porque entra la cuenta de IVA (por ejemplo la 3, la 5, la 7 y la 9).',
+ pregunta:{q:'La operación 7 paga $4,000.00 al proveedor desde Bancos. ¿Qué tipo de asiento es y por qué cuadra la ecuación?',
+  a:'Es una disminución de activo y una disminución de pasivo, y, con IVA, también un traspaso de IVA pendiente a IVA acreditable. Se carga Proveedores $4,640.00, se carga IVA acreditable $640.00, se abona Bancos $4,640.00 y se abona IVA pendiente $640.00. Los dos lados de A = P + C bajan $4,640.00, así que la igualdad se mantiene.'},
+ check:[
+  {q:'La operación 5 (equipo de cómputo a crédito) es un asiento de…',o:['Aumento de activo y disminución de activo.','Aumento de activo y aumento de pasivo.','Aumento de gasto y aumento de pasivo.'],a:1,e:'Se carga Equipo de Cómputo $12,000.00 e IVA pendiente $1,920.00, y se abona Acreedores Diversos $13,920.00. Sin IVA, sería $12,000.00 y $12,000.00.'},
+  {q:'La operación 1 es un asiento…',o:['Simple, porque es el primero.','Compuesto, porque tiene tres cuentas, y de apertura.','De cierre, porque abre el capital.'],a:1,e:'Caja, Bancos y Capital social: más de dos cuentas. Además abre los libros.'},
+  {q:'Un préstamo bancario depositado en la cuenta (operación 8)…',o:['Se abona a Ventas, porque entra dinero.','Se carga Bancos y se abona Acreedores bancarios.','Se carga Capital social y se abona Bancos.'],a:1,e:'Entra efectivo (cargo a Bancos $20,000.00) y nace un pasivo (abono a Acreedores bancarios $20,000.00). No es un ingreso.'}
+ ],
+ guion:'Primero deja firme la partida doble: “no hay asiento de una sola raya; las dos columnas suman lo mismo”. Luego no recorra los once tipos de un tirón. Elige cuatro del ejercicio: la 1 (activo y capital), la 5 (activo y pasivo), la 7 (baja activo y pasivo) y la 9 (activo e ingreso). El resto del catálogo queda para consultar. Pídele que, con la operación 7, te explique por qué la ecuación no se rompe.',
+ catalogo:'tipos'
+},
+{n:7, tit:'Qué lleva IVA y qué no',
+ obj:'Que sepa cuándo un hecho lleva IVA 16 %, a qué cuenta va, y por qué algunas operaciones de este ejercicio no lo llevan.',
+ exp:[
+  'El artículo 1 de la Ley del IVA establece la tasa general del 16 %. En términos generales, esa tasa grava la enajenación de bienes, la prestación de servicios independientes, el uso o goce temporal de bienes (la renta) y la importación de bienes o servicios. Aquí no se citan más artículos que ese.',
+  'Hay que distinguir tres cuentas. El <span class="hl-def">IVA trasladado</span> es el que la empresa cobra a sus clientes (ventas y servicios). El <span class="hl-def">IVA acreditable</span> es el que ya pagó en sus compras y gastos. El <span class="hl-def">IVA pendiente de acreditar</span> es el de una compra a crédito: todavía no se paga, y por eso aún no se acredita. Cuando se paga, se traspasa de pendiente a acreditable.',
+  'No todo lleva IVA. Las aportaciones de capital, los préstamos y los meros depósitos o traspasos de dinero no son actos gravados. Los sueldos tampoco: el trabajo subordinado no es un servicio independiente. En la ley hay, además, bienes o servicios a tasa 0 % (por ejemplo, ciertos alimentos básicos y medicinas) y otros exentos (por ejemplo, la casa habitación). Eso no se desarrolla aquí ni se inventan artículos: si un caso de esos aparece, hay que verificarlo en concreto.',
+  'Para acreditar el IVA se requiere un CFDI que reúna los requisitos fiscales. Es un requisito de acreditamiento; aquí no se cita un artículo. Premisa de esta guía: los importes del enunciado son el valor <span class="hl-art">antes de IVA</span>. Si ya lo incluyeran, se divide entre 1.16.'
+ ],
+ manz:'Si vendes manzanas por $18,000.00, cobras también $2,880.00 de IVA: a la caja entran $20,880.00, pero esos $2,880.00 no son ganancia, son IVA trasladado. Si compras manzanas por $15,000.00 y pagas al momento, pagas $2,400.00 de IVA y ese sí es acreditable. Si te las fían, el IVA queda pendiente hasta que pagues.',
+ apl:'Abajo está la tabla de las 15 operaciones: si lleva IVA, por qué, qué cuenta se usa y el importe. Fíjate sobre todo en la 1, la 2, la 8 y la 12, que no lo llevan, y en la diferencia entre la 5 (equipo a crédito, Acreedores diversos, IVA pendiente) y la 6 (mercancías a crédito, Proveedores, IVA pendiente). Luego está el juego: “¿lleva IVA?”.',
+ pregunta:{q:'¿Por qué los sueldos de la operación 12 no llevan IVA y la publicidad de la 13 sí?',
+  a:'Porque el sueldo es trabajo subordinado, de un empleado, y eso no es un servicio independiente gravado por el IVA. La publicidad sí es un servicio que presta un tercero independiente, y lleva IVA 16 %: $1,500.00 × 0.16 = $240.00, que se carga a IVA acreditable porque ya se pagó.'},
+ check:[
+  {q:'La aportación de los socios (operación 1) lleva IVA porque entra dinero.',o:['Sí, 16 % sobre $100,000.00.','No: es una aportación de capital, no una enajenación ni un servicio.','Solo la parte que entra a Bancos.'],a:1,e:'Mover capital a la empresa no es un acto gravado por el IVA.'},
+  {q:'La renta del local (operación 11) lleva IVA porque…',o:['Todo lo que se paga en efectivo lleva IVA.','Es uso o goce temporal de bienes.','Es un sueldo al dueño del local.'],a:1,e:'La renta está en el supuesto general del artículo 1 de la LIVA. Se registra IVA acreditable de $480.00, ya pagado.'},
+  {q:'La luz de esta empresa (operación 15) se registra…',o:['Sin IVA, porque la luz nunca lo lleva.','Con IVA 16 %, como gasto de la empresa. El caso de la luz doméstica es especial y hay que verificarlo.','A tasa 0 %, como un alimento básico.'],a:1,e:'En este ejercicio la luz es de la empresa y se registra con IVA 16 % ($160.00). No se afirma el tratamiento doméstico.'}
+ ],
+ guion:'La tabla es el corazón de la lección. Recórrela con ella, no de un tirón: primero las que no llevan (1, 2, 8 y 12) y que te diga el porqué; luego una de contado (la 3), una a crédito (la 5) y una venta (la 9). El juego de “¿lleva IVA?” al final confirma. Si pregunta por alimentos, medicinas o casa habitación, quédate en lo general: hay tasa 0 % y hay exenciones, y eso se verifica en el caso concreto, sin inventar artículos.',
+ special:'ivaTabla'
+},
+{n:8, tit:'El IVA en los asientos',
+ obj:'Registrar el IVA en el diario, con especial cuidado en el asiento 5, y distinguir acreditable, pendiente y trasladado.',
+ exp:[
+  'Cuando el hecho lleva IVA, el asiento tiene más cuentas. El bien, el gasto o el ingreso se registran por el valor <span class="hl-art">antes de IVA</span>. El IVA va a su propia cuenta. El efectivo o la deuda van por el total, ya con IVA.',
+  'Si se paga al momento, el IVA se carga a <span class="hl-def">IVA acreditable</span>. Si se compra a crédito, se carga a <span class="hl-def">IVA pendiente de acreditar</span>. Si se cobra una venta o un servicio, se abona a <span class="hl-def">IVA trasladado</span>. El IVA no es un ingreso ni un gasto.',
+  'El asiento 5 merece una pausa. Se compra equipo de cómputo por $12,000.00 a crédito. El equipo es un activo no circulante, no es mercancía: la deuda va a <span class="hl-art">Acreedores diversos</span>, no a Proveedores. Como no se ha pagado, el IVA de $1,920.00 queda pendiente. El abono es $13,920.00.'
+ ],
+ manz:'Compras una computadora para el puesto en $12,000.00 y la vas a pagar después. En el cuaderno: la computadora $12,000.00, el IVA pendiente $1,920.00, y le debes al vendedor $13,920.00. Todavía no puedes restar ese IVA del que cobras, porque aún no lo pagas.',
+ apl:'Abajo está el asiento 5, desglosado, y un recuento de cómo queda el IVA en las demás operaciones que sí lo llevan. En la siguiente lección se registran las 15, ya con IVA (es la versión de la clase). En cualquier momento puedes ver el ejercicio como viene el enunciado, sin IVA, con el selector de arriba.',
+ pregunta:{q:'En el asiento 5, ¿por qué el IVA va a “pendiente de acreditar” y no a “acreditable”, y por qué la deuda no va a Proveedores?',
+  a:'Va a pendiente porque la compra es a crédito: el IVA todavía no se paga, y solo al pagarse pasa a acreditable. No va a Proveedores porque esa cuenta es para mercancías. El equipo de cómputo es un bien de uso, un activo no circulante, y su deuda se registra en Acreedores diversos por $13,920.00.'},
+ check:[
+  {q:'El asiento 5, con IVA 16 %, es…',o:['Cargo a Equipo de cómputo $12,000.00 y abono a Proveedores $12,000.00.','Cargo a Equipo de cómputo $12,000.00, cargo a IVA pendiente $1,920.00 y abono a Acreedores diversos $13,920.00.','Cargo a Equipo de cómputo $13,920.00 y abono a Acreedores diversos $13,920.00.'],a:1,e:'El equipo se registra sin IVA. El IVA, como no está pagado, va a pendiente. La deuda es la suma.'},
+  {q:'En una venta cobrada en efectivo (operación 9), el IVA se…',o:['Carga a IVA acreditable.','Abona a IVA trasladado y no forma parte de Ventas.','Suma a Ventas, para que el ingreso sea $20,880.00.'],a:1,e:'Ventas se abona $18,000.00. IVA trasladado se abona $2,880.00. Caja se carga $20,880.00.'},
+  {q:'Al pagar $4,000.00 de mercancía al proveedor (base, más IVA), el IVA de $640.00…',o:['Se gasta.','Pasa de IVA pendiente a IVA acreditable, y Bancos baja $4,640.00.','Se abona a IVA trasladado.'],a:1,e:'El pago incluye IVA. Esa parte deja de estar pendiente y se vuelve acreditable.'}
+ ],
+ guion:'Dedica tiempo de verdad al asiento 5. Dibuja las tres cuentas y que ella te diga, antes de escribir, dónde va cada cifra. Pregunta dos trampas: “¿por qué no Proveedores?” y “¿por qué no IVA acreditable?”. Luego compara con la operación 6, que sí es Proveedores, y con la 3, que sí es acreditable porque ya se pagó. No pases al diario hasta que ese contraste le salga.',
+ special:'asiento5'
+},
+{n:9, tit:'El libro diario: las 15 operaciones',
+ obj:'Resolver juntas, de la operación 1 a la 15, el diario de Distribuidora del Valle, S.A. de C.V., con el mismo análisis de cuatro pasos en cada una.',
+ exp:[
+  'A partir de aquí se registra el ejercicio. El enunciado de la empresa es: Distribuidora del Valle, S.A. de C.V. inicia actividades comerciales y realiza las siguientes operaciones. Registre su libro de diario. El ejercicio no indica fecha, así que cada asiento se identifica por su número de operación.',
+  'En cada operación usamos cuatro pasos fijos: 1) qué cuentas se mueven; 2) de qué tipo es cada una (activo, pasivo, capital, ingreso o gasto); 3) si esa cuenta aumenta o disminuye; 4) por tanto, si se carga o se abona, y por cuánto. Después se arma la tabla del asiento y se comprueba que las sumas sean iguales.',
+  'La versión de la clase registra las 15 operaciones con IVA 16 %. Arriba está el selector para verlas también como viene el enunciado, sin IVA. Puedes intentarlo tú antes de ver el asiento. Al registrarlo, se actualizan Caja y Bancos. La nota de manzanas es solo un ejemplo breve, para aterrizar el hecho.'
+ ],
+ manz:'El método es el mismo del puesto. Si las socias aportan $8,000.00 en efectivo: 1) la cuenta es Caja; 2) es un activo; 3) aumenta; 4) se carga $8,000.00. Y la contrapartida es Capital social: capital, aumenta, se abona $8,000.00. En el ejercicio vas a hacer exactamente eso, quince veces, con las cifras de Distribuidora del Valle.',
+ apl:'Abajo está el recorredor de las 15 operaciones, en orden. En Practicar, primero armas el asiento. En Ver resuelto, ves los cuatro pasos y el diario. No te saltes el análisis: la tabla sale de esos cuatro pasos, no al revés.',
+ pregunta:{q:'Antes de empezar, ¿cuáles son los cuatro pasos que vamos a hacer en cada operación?',
+  a:'Uno: qué cuentas se mueven. Dos: de qué tipo es cada una. Tres: si aumenta o disminuye. Cuatro: si se carga o se abona, y por cuánto. Con eso se escribe el asiento y se comprueba que debe = haber.'},
+ check:[
+  {q:'¿En qué orden se resuelve el diario de este ejercicio?',o:['Primero los estados, luego los asientos.','De la operación 1 a la 15, con el mismo análisis de cuatro pasos.','Solo las operaciones de efectivo.'],a:1,e:'El diario se arma hecho por hecho, en el orden en que ocurren.'},
+  {q:'Si en un asiento el debe suma $12,000.00 y el haber $10,000.00…',o:['Está bien, si hay un gasto.','Está mal: las sumas tienen que ser iguales.','Se corrige en la balanza.'],a:1,e:'La partida doble exige sumas iguales en cada asiento. Hay que revisar cuentas e importes.'},
+  {q:'La nota de manzanas, en cada operación, sirve para…',o:['Sustituir al asiento del ejercicio.','Aterrizar el hecho con un ejemplo, sin cambiar las cifras del ejercicio.','Corregir el diario.'],a:1,e:'El asiento que vale es el del ejercicio, con sus importes. Las manzanas solo ayudan a verlo.'}
+ ],
+ guion:'Esta es la lección larga, la del pizarrón. No resuelvas tú las quince de un tirón. En las primeras cuatro, haz los cuatro pasos en voz alta y que ella los repita. A partir de la 5, que los intente sola y tú solo confirmes. Detente sí o sí en la 2 (el depósito deja Caja en negativo), en la 5 (equipo a crédito con IVA pendiente y Acreedores diversos, no Proveedores), en la 8 (el préstamo no es ingreso) y en la 9 (falta el costo de ventas). Las observaciones se retoman en la lección 15. Al terminar, denle una ojeada al diario completo: quince asientos, todos con sumas iguales.',
+ special:'diario'
+},
+{n:10, tit:'El mayor: las cuentas T del ejercicio',
+ obj:'Pasar el diario al mayor y leer el saldo de cada cuenta, con todos los movimientos numerados.',
+ exp:[
+  'El <span class="hl-def">libro mayor</span> agrupa, cuenta por cuenta, los movimientos que ya se anotaron en el diario. Cada cuenta tiene su T. A la izquierda se copian los cargos; a la derecha, los abonos. Cada renglón lleva el número de la operación, para poder rastrearlo.',
+  'El saldo es la diferencia entre debe y haber. Si el debe es mayor, el saldo es deudor. Si el haber es mayor, el saldo es acreedor. Ese saldo es el que después pasa a la balanza.',
+  'No se inventan cifras en el mayor: solo se traspasan las del diario. Si un asiento estuvo mal, el mayor lo va a repetir.'
+ ],
+ manz:'En el puesto, la T de Caja podría verse así: cargo de $8,000.00 por la aportación (op. 1) y abono de $3,000.00 por la renta (op. 11). Saldo: $5,000.00 deudor. La T de Bancos tendría, por ejemplo, un cargo de $12,000.00 (op. 1). Cada movimiento apunta a su operación.',
+ apl:'Abajo están todas las cuentas T de Distribuidora del Valle, ya con las 15 operaciones, en la versión con IVA 16 %. Fíjate en Caja: el saldo sale acreedor, de $4,432.00. Bancos cierra en $111,760.00 deudor. Inventarios, en $25,000.00 deudor. IVA acreditable, en $5,312.00 deudor; IVA pendiente, en $2,880.00 deudor; IVA trasladado, en $3,840.00 acreedor. Capital social, en $100,000.00 acreedor. En la lección 15 vemos por qué Caja quedó al revés de su naturaleza. Si cambias el selector a “sin IVA”, Caja queda en $5,200.00 acreedor y Bancos en $114,000.00 deudor.',
+ pregunta:{q:'¿Cómo se obtiene el saldo de Bancos a partir del mayor, y a cuánto llega en este ejercicio?',
+  a:'Se suman los cargos y se restan los abonos. En la versión con IVA, los cargos de Bancos son $50,000.00 + $60,000.00 + $20,000.00 + $6,960.00 = $136,960.00. Los abonos: $17,400.00 + $4,640.00 + $2,000.00 + $1,160.00 = $25,200.00. $136,960.00 − $25,200.00 = $111,760.00 deudor. Sin IVA, el saldo es $114,000.00 deudor.'},
+ check:[
+  {q:'El mayor se arma…',o:['Con cifras nuevas, distintas del diario.','Traspasando al T de cada cuenta los movimientos del diario, con el número de operación.','Solo con los saldos finales.'],a:1,e:'El mayor no inventa importes: copia el diario, cuenta por cuenta.'},
+  {q:'El saldo final de Bancos, con IVA 16 %, es…',o:['$104,000.00 deudor','$111,760.00 deudor','$114,000.00 deudor'],a:1,e:'$136,960.00 de cargos menos $25,200.00 de abonos = $111,760.00 deudor. Sin IVA sería $114,000.00.'},
+  {q:'Si en una cuenta el haber es mayor que el debe, el saldo es…',o:['Deudor.','Acreedor.','Siempre de un pasivo.'],a:1,e:'El saldo se queda del lado más grande. Si gana el haber, es acreedor. En este libro, Caja queda así, aunque sea un activo.'}
+ ],
+ guion:'Elige una cuenta y ármenla a mano, no todas. Bancos es perfecta: hay varios cargos y varios abonos, y el saldo de $111,760.00 (con IVA) se puede comprobar en voz alta. Luego ábranla en esta lección y comparen. Señala Caja, pero no te extiendas: “el saldo quedó acreedor, $4,432.00; en la lección 15 vemos por qué”. Que ella te diga, de una T, si el saldo es deudor o acreedor.',
+ special:'mayor'
+},
+{n:11, tit:'La balanza de comprobación',
+ obj:'Armar la balanza de movimientos y saldos a partir del mayor, y comprobar que ambos pares de columnas cuadran.',
+ exp:[
+  'La <span class="hl-def">balanza de comprobación de movimientos y saldos</span> se arma con el mayor, después de las operaciones y antes del cierre. Tiene dos pares de columnas: los movimientos (debe y haber de todo el periodo) y los saldos (deudor o acreedor de cada cuenta).',
+  'Cómo se arma: se lista cada cuenta; se copian los totales de cargo y de abono del mayor; se calcula el saldo y se coloca en la columna que le corresponde. Al final, los movimientos deben sumar lo mismo en debe y haber, y los saldos también. Si no cuadran, hay un error de traspaso o de suma.',
+  'Que la balanza cuadre no significa que todo esté bien del todo: un asiento omitido o una cuenta mal clasificada puede colarse. Sí garantiza que debe y haber, hasta aquí, van parejos.'
+ ],
+ manz:'Si en el puesto Caja tuvo movimientos de $8,000.00 al debe y $3,000.00 al haber, en la balanza se anotan esos dos importes en movimientos y un saldo deudor de $5,000.00. Bancos, con un cargo de $12,000.00 y sin abonos, aparece con movimiento deudor de $12,000.00 y el mismo saldo. Las dos parejas de columnas tienen que cerrar iguales.',
+ apl:'En la versión con IVA 16 %, después de las 15 operaciones, los movimientos suman $274,512.00 por lado y los saldos, $173,152.00 por lado. Caja aparece en la columna de saldo acreedor, por $4,432.00. Sin IVA, los movimientos suman $261,200.00 y los saldos, $167,200.00 (Caja acreedora por $5,200.00). Abajo está la balanza completa, ya armada. Hay una casilla, más adelante, para ver cómo cambia si se corrige el depósito de la operación 2.',
+ pregunta:{q:'¿Por qué, con IVA, los movimientos suman $274,512.00 y los saldos solo $173,152.00? ¿Está mal la balanza?',
+  a:'No está mal. Los movimientos acumulan todos los cargos y todos los abonos del periodo, aunque luego se compensen dentro de la misma cuenta. Los saldos ya son la diferencia. Las dos parejas cuadran por su lado: $274,512.00 = $274,512.00 y $173,152.00 = $173,152.00. Sin IVA, serían $261,200.00 y $167,200.00.'},
+ check:[
+  {q:'La balanza, con IVA 16 %, en saldos, suma…',o:['$160,520.00 por lado.','$173,152.00 por lado.','$274,512.00 por lado.'],a:1,e:'Los saldos suman $173,152.00 = $173,152.00. Los movimientos, que son otra pareja, suman $274,512.00. Sin IVA, los saldos son $167,200.00.'},
+  {q:'Caja, en la columna de saldos, con IVA, aparece…',o:['Deudora, por $4,432.00.','Acreedora, por $4,432.00.','En cero.'],a:1,e:'El mayor de Caja deja un saldo acreedor de $4,432.00. Por eso va en la columna acreedora, con un aviso. Sin IVA sería $5,200.00 acreedor.'},
+  {q:'Si la balanza cuadra, ¿se puede afirmar que no hay ningún error en el ejercicio?',o:['Sí, ya quedó perfecto.','No: cuadra el debe con el haber, pero puede faltar un asiento o estar mal una cuenta.','Solo cuadra si no hay gastos.'],a:1,e:'La balanza comprueba la partida doble, no la integridad ni la clasificación de todos los hechos.'}
+ ],
+ guion:'Haz que ella te dicte, de una cuenta del mayor (Bancos o Proveedores), los dos movimientos y el saldo, y anótenlos en una balanza en blanco. Luego abrid la de esta lección y señalen las dos sumas: “estas dos, $274,512.00, son los movimientos; estas dos, $173,152.00, son los saldos”. Pregúntale dónde se fue Caja y por qué. No corrijas aún el depósito: eso es la lección 15.',
+ special:'balanza'
+},
+{n:12, tit:'El estado de resultados',
+ obj:'Armar el estado de resultado integral a partir de la balanza y llegar a la utilidad de $15,800.00, antes del ISR.',
+ exp:[
+  'El <span class="hl-def">estado de resultado integral</span> (NIF B-3) presenta los ingresos, los costos, los gastos y el resultado del periodo. Se arma con las cuentas de ingreso y de gasto que ya están en la balanza: no se inventan importes nuevos.',
+  'El orden habitual, en este ejercicio, es: primero los ingresos (Ventas, Ingresos por servicios), luego los gastos de venta, luego los de administración. La utilidad (o la pérdida) es ingresos menos costos y gastos.',
+  'Este ejercicio no registra costo de ventas, así que ese renglón no aparece. La utilidad de $15,800.00 está, por eso, sobreestimada. Eso se retoma en la lección 15. El IVA no forma parte de este estado: no es ingreso ni gasto. El ISR didáctico se registra en la lección 14; entonces la utilidad neta queda en $11,060.00.'
+ ],
+ manz:'Si el puesto vendió manzanas por $18,000.00 y pagó $3,000.00 de renta, $2,000.00 de sueldos y $1,500.00 de un letrero, los ingresos son $18,000.00 y los gastos, $6,500.00. La utilidad sería $11,500.00. Si no se anota lo que costaron las manzanas vendidas, esa utilidad sale más alta de lo que es.',
+ apl:'En Distribuidora del Valle los ingresos son Ventas $18,000.00 + Ingresos por servicios $6,000.00 = $24,000.00. Los gastos son $1,500.00 de publicidad + $3,000.00 de renta + $2,000.00 de sueldos + $700.00 de papelería + $1,000.00 de luz = $8,200.00. $24,000.00 − $8,200.00 = utilidad de $15,800.00. Abajo está el estado ya armado, con esos renglones.',
+ pregunta:{q:'¿De dónde salen los $15,800.00 de utilidad y por qué hay que tomarlos con cuidado?',
+  a:'Salen de $18,000.00 + $6,000.00 = $24,000.00 de ingresos, menos $8,200.00 de gastos. Hay que tomarlos con cuidado porque la operación 9 no dio de baja el inventario ni registró el costo de lo vendido. La utilidad está sobreestimada en exactamente ese costo, que el ejercicio no indica.'},
+ check:[
+  {q:'La utilidad del ejercicio, tal como está en los libros, es…',o:['$24,000.00','$8,200.00','$15,800.00'],a:2,e:'$24,000.00 de ingresos menos $8,200.00 de gastos = $15,800.00.'},
+  {q:'El estado de resultados se arma…',o:['Con todas las cuentas de la balanza, incluidas Caja y Bancos.','Con las cuentas de ingreso y de gasto de la balanza.','Solo con el capital social.'],a:1,e:'Las cuentas de balance (activo, pasivo, capital) no se mezclan aquí. Van al estado de situación financiera.'},
+  {q:'La publicidad de $1,500.00 se presenta como…',o:['Gasto de administración.','Gasto de venta.','Costo de ventas.'],a:1,e:'En el diario es Gastos de Venta: publicidad. Los otros cuatro gastos del ejercicio son de administración.'}
+ ],
+ guion:'Pídele que, mirando solo la balanza, te señale qué cuentas van a este estado y cuáles no. Suma con ella los ingresos ($24,000.00) y los gastos ($8,200.00) en voz alta. Cuando aparezca la utilidad de $15,800.00, di: “este número es el del libro; no es necesariamente la ganancia real, porque falta el costo de las mercancías vendidas”. Eso prepara la lección 15. Si pregunta por el ISR, adelántale que es la lección 14 y que la utilidad neta de clase sería $11,060.00.',
+ special:'eri'
+},
+{n:13, tit:'El balance general',
+ obj:'Armar el estado de situación financiera y comprobar que, con IVA, el activo de $160,520.00 es igual al pasivo más el capital.',
+ exp:[
+  'El <span class="hl-def">estado de situación financiera</span>, o balance general (NIF B-6), presenta el activo, el pasivo y el capital en una fecha. Se arma con los saldos de la balanza que no son de ingreso ni de gasto, más la utilidad (o pérdida) del estado de resultados, que entra al capital.',
+  'El activo se parte en <span class="hl-art">corto plazo</span> (Caja, Bancos, Inventarios y, con IVA, IVA acreditable e IVA pendiente de acreditar) y <span class="hl-art">largo plazo</span> (mobiliario, equipo de cómputo). El pasivo, igual: a corto plazo, Proveedores, Acreedores Diversos y, con IVA, IVA trasladado; a largo plazo, en este ejercicio, Acreedores bancarios. El capital reúne Capital social y la utilidad del ejercicio.',
+  'Al pie, Activo = Pasivo + Capital tiene que cuadrar. Si no cuadra, se revisa el traspaso de la utilidad o algún saldo.'
+ ],
+ manz:'En el puesto, después de vender y de pagar gastos, el balance sería: lo que hay en caja y en banco, más las manzanas que queden, más la mesa (activo); las deudas con el proveedor o el banco (pasivo); y lo que pusieron las socias más la utilidad (capital). Los dos lados suman lo mismo.',
+ apl:'En la versión con IVA, el activo a corto plazo es Caja −$4,432.00 + Bancos $111,760.00 + Inventarios $25,000.00 + IVA acreditable $5,312.00 + IVA pendiente $2,880.00 = $140,520.00. El activo a largo plazo es Mobiliario $8,000.00 + Equipo de cómputo $12,000.00 = $20,000.00. Total de activo: $160,520.00. El pasivo a corto plazo es Proveedores $6,960.00 + Acreedores diversos $13,920.00 + IVA trasladado $3,840.00 = $24,720.00; el de largo plazo, $20,000.00; total $44,720.00. El capital es $100,000.00 + $15,800.00 = $115,800.00. $160,520.00 = $44,720.00 + $115,800.00. Sin IVA, queda $153,800.00 = $38,000.00 + $115,800.00. El ejercicio no indica el plazo del préstamo: se presenta en largo plazo, que es el tratamiento habitual en este tipo de ejercicios. Si venciera en menos de un año, solo cambiaría de renglón; los totales no se mueven.',
+ pregunta:{q:'¿Dónde entra la utilidad de $15,800.00 en el balance, con IVA, y por qué, si no, la ecuación no cuadraría?',
+  a:'Entra en el capital contable, debajo del capital social. El activo ya “tiene” el efecto de los ingresos, los gastos y el IVA. Si el capital se quedara solo en $100,000.00, el lado derecho sería $44,720.00 + $100,000.00 = $144,720.00 y no alcanzaría a $160,520.00. Con la utilidad, $44,720.00 + $115,800.00 = $160,520.00. (El ISR de la lección 14 baja la utilidad neta a $11,060.00 y el capital a $111,060.00.)'},
+ check:[
+  {q:'Después de las 15 operaciones, con IVA, A = P + C queda…',o:['$160,520.00 = $44,720.00 + $115,800.00','$153,800.00 = $38,000.00 + $115,800.00','$156,680.00 = $45,620.00 + $111,060.00'],a:0,e:'Activo $160,520.00 = pasivo $44,720.00 + capital $115,800.00 ($100,000.00 + utilidad $15,800.00, antes del ISR). La tercera opción es el cierre ya con impuestos, de la lección 14.'},
+  {q:'Inventarios de $25,000.00 se presenta en…',o:['Activo a largo plazo, porque es mercancía.','Activo a corto plazo.','Capital, porque se va a vender.'],a:1,e:'Las mercancías son un activo a corto plazo (NIF C-4).'},
+  {q:'La utilidad del ejercicio, en el balance, va…',o:['En el activo, porque es una ganancia.','En el capital contable, junto al capital social.','En el pasivo, hasta que se pague a las socias.'],a:1,e:'La utilidad incrementa el capital. Aquí: $100,000.00 + $15,800.00 = $115,800.00.'}
+ ],
+ guion:'Arma el esqueleto en el pizarrón: activo (corto y largo), pasivo (corto y largo), capital. Que ella vaya dictando saldos de la balanza a cada bloque. Cuando esté el activo en $160,520.00 y el pasivo en $44,720.00, pregunta: “¿cuánto tiene que medir el capital para que cuadre?”. $115,800.00. Ahí entra la utilidad de $15,800.00, antes del ISR. Menciona en una frase el plazo del préstamo, sin enredarte: si lo toman de corto plazo, solo cambia de renglón.',
+ special:'esf'
+},
+{n:14, tit:'Cierre con impuestos',
+ obj:'Determinar el IVA del mes, registrar un ISR didáctico al 30 % y cerrar ingresos y gastos hasta la utilidad neta.',
+ exp:[
+  'Primero se determina el IVA del mes. Se comparan el IVA trasladado (el cobrado) y el IVA acreditable (el ya pagado). Si el trasladado es mayor, hay IVA a cargo (IVA por pagar). Si el acreditable es mayor, hay IVA a favor. El asiento cancela trasladado y acreditable y registra el saldo. El <span class="hl-trap">IVA pendiente no entra</span>: se queda hasta que se pague.',
+  'Después va el ISR. El artículo 9 de la LISR establece la tasa del 30 % para personas morales. En esta guía se aplica como <span class="hl-art">estimado didáctico</span> sobre la utilidad contable: $15,800.00 × 0.30 = $4,740.00. La utilidad contable no es el resultado fiscal. No se inventan pagos provisionales ni coeficiente de utilidad. La PTU del 10 % no se registra; solo se menciona.',
+  'El asiento del ISR es: cargo a ISR del ejercicio (gasto) $4,740.00 y abono a ISR por pagar $4,740.00. Luego se cierran los ingresos, los gastos y ese ISR a Pérdidas y ganancias, y la utilidad neta de $11,060.00 pasa al capital.'
+ ],
+ manz:'Si en el puesto cobraste $2,880.00 de IVA y pagaste $5,312.00 de IVA en compras y gastos, el fisco te queda a deber $1,472.00: es un saldo a favor. El IVA de lo que todavía no pagas no cuenta todavía. Y si la utilidad del cuaderno fue $15,800.00, un ejercicio de clase sería apartar 30 % de ISR, $4,740.00, sabiendo que el cálculo fiscal real puede ser distinto.',
+ apl:'En este ejercicio, con IVA 16 %: IVA trasladado $3,840.00 e IVA acreditable $5,312.00, de modo que hay IVA a favor de $1,472.00. El IVA pendiente, $2,880.00, se queda en el activo. El ISR didáctico es $4,740.00. La utilidad neta es $11,060.00. Abajo están los asientos y, después del cierre, la balanza y el balance. Si ves la versión sin IVA, el cierre es solo el de ingresos y gastos, con utilidad de $15,800.00, porque el enunciado no traía impuestos.',
+ pregunta:{q:'¿Por qué el IVA a favor es $1,472.00 y no se resta también el IVA pendiente de $2,880.00?',
+  a:'Porque el pendiente todavía no se ha pagado, y solo el IVA pagado es acreditable en la determinación del mes. $5,312.00 − $3,840.00 = $1,472.00. Los $2,880.00 (el equipo de la operación 5 y el resto de la mercancía de la 6) se acreditarán cuando se paguen.'},
+ check:[
+  {q:'La determinación de IVA de este mes da…',o:['IVA por pagar de $1,472.00.','IVA a favor de $1,472.00.','IVA a favor de $5,312.00.'],a:1,e:'Acreditable $5,312.00 menos trasladado $3,840.00 = $1,472.00 a favor.'},
+  {q:'El ISR de $4,740.00 se registra…',o:['Como un estimado didáctico: cargo a ISR del ejercicio y abono a ISR por pagar.','Como resultado fiscal definitivo.','Como un abono a Ventas.'],a:0,e:'$15,800.00 × 30 % (artículo 9 de la LISR) = $4,740.00, con la advertencia de que la utilidad contable no es el resultado fiscal.'},
+  {q:'Después del cierre con impuestos, la utilidad neta y el capital quedan…',o:['Utilidad $15,800.00 y capital $115,800.00.','Utilidad neta $11,060.00 y capital $111,060.00.','Utilidad $11,060.00 y capital $115,800.00.'],a:1,e:'$15,800.00 − $4,740.00 = $11,060.00. $100,000.00 + $11,060.00 = $111,060.00.'}
+ ],
+ guion:'Haz tres bloques en el pizarrón, en este orden: determinación de IVA, ISR didáctico, cierre. En el IVA, que ella reste $5,312.00 − $3,840.00 y te diga qué pasa con el pendiente. En el ISR, di con claridad que es un ejemplo de clase, no una declaración. En el cierre, pregunta cuánto tiene que medir el último asiento: $11,060.00. La PTU se nombra en una frase y no se calcula.',
+ special:'cierre'
+},
+{n:15, tit:'Observaciones del ejercicio',
+ obj:'Mirar con calma tres puntos del libro —Caja acreedora, el costo de ventas que falta y que el enunciado venía sin IVA— y ver una corrección didáctica del depósito.',
+ exp:[
+  'El libro cuadra, y aun así hay tres observaciones que conviene enseñar, porque salen mucho en examen y en la práctica. No se trata de “corregir por corregir”: se trata de entender qué está diciendo el número.',
+  'Primera: en la operación 2 se depositan $60,000.00 y Caja solo tenía $50,000.00. El saldo se vuelve acreedor y, al cierre de las 15, Caja queda en $4,432.00 acreedor con IVA (o $5,200.00 acreedor sin IVA). Un saldo acreedor en efectivo no es razonable. Segunda: la operación 9 registra la venta de $18,000.00, pero no el costo de lo vendido ni da de baja el inventario, que se queda en $25,000.00. La utilidad de $15,800.00 (antes del ISR) está sobreestimada. Tercera: el enunciado no trae IVA. La versión de la clase sí lo registra, al 16 %, con el selector de arriba.',
+  'Abajo hay una casilla para ver el ejercicio como si en la operación 2 se depositaran $50,000.00, que es lo que había en Caja. Es una corrección didáctica, no un dato del enunciado. El total de activo no cambia.'
+ ],
+ manz:'Es como sacar $60,000.00 de la caja del puesto para llevarlos al banco, cuando en la caja solo había $50,000.00: el cuaderno deja la caja en negativo. Y como vender una caja de manzanas por $18,000.00 sin anotar lo que te costaron: el cuaderno dice que ganaste más de lo que es, y las manzanas siguen en el inventario como si no se hubieran vendido.',
+ apl:'Con el diario tal cual y con IVA, Caja cierra en $4,432.00 acreedor y Bancos en $111,760.00 deudor. Si el depósito de la operación 2 fuera de $50,000.00, Caja cerraría en $5,568.00 deudor y Bancos en $101,760.00 deudor, y el activo seguiría en $160,520.00. Sin IVA, la corrección deja Caja en $4,800.00 deudor y Bancos en $104,000.00 deudor, con activo $153,800.00. Marca la casilla y mira cómo se recalcan la balanza y los estados. El costo de ventas, en cambio, no se puede inventar: el ejercicio no indica el costo.',
+ pregunta:{q:'Si se corrige el depósito a $50,000.00, ¿por qué el total de activo no cambia y, en cambio, no podemos “corregir” igual la utilidad?',
+  a:'Porque el depósito solo mueve efectivo de Caja a Bancos: un activo baja y otro sube en la misma cantidad. Corregir $10,000.00 en Caja y $10,000.00 en Bancos deja el total igual. La utilidad, para corregirla, necesitaría el costo de las mercancías vendidas, y ese dato no está. Inventarlo sería inventar un asiento.'},
+ check:[
+  {q:'Después de la operación 2, con el asiento del ejercicio, Caja queda en…',o:['$50,000.00 deudor.','−$10,000.00, saldo acreedor.','$0.00.'],a:1,e:'Había $50,000.00 y se abonan $60,000.00: $50,000.00 − $60,000.00 = −$10,000.00.'},
+  {q:'Si el depósito se corrige a $50,000.00, con IVA, Caja y Bancos cierran en…',o:['Caja $5,568.00 deudor y Bancos $101,760.00 deudor.','Caja $4,800.00 deudor y Bancos $104,000.00 deudor.','Caja $4,432.00 acreedor y Bancos $111,760.00 deudor.'],a:0,e:'El total de activo no cambia: sigue en $160,520.00. La segunda opción es la misma corrección, pero sin IVA.'},
+  {q:'La utilidad de $15,800.00 está sobreestimada porque…',o:['Falta el IVA.','No se registró el costo de ventas ni se dio de baja el inventario.','El préstamo se contó como ingreso.'],a:1,e:'La operación 9 solo lleva Caja $18,000.00 / Ventas $18,000.00. El inventario se queda en $25,000.00.'}
+ ],
+ guion:'Toma estas tres observaciones con calma, no como un reproche al ejercicio. En la de Caja, haz la resta en voz alta: $50,000.00 − $60,000.00. Activa la casilla y enseña que el activo total no se mueve. En la de la venta, pregunta: “si vendiste mercancía, ¿qué le tiene que pasar al inventario?”. Que ella lo diga. En el IVA, recuérdale que el enunciado no lo traía y que la versión de la clase sí, al 16 % (artículo 1 de la LIVA). Si quieren ver el libro “como venía”, usan el selector. No inventen otra tasa.',
+ special:'ojo'
+},
+{n:16, tit:'NIF que aplican',
+ obj:'Relacionar cada bloque del ejercicio con el título de la NIF del CINIF que le corresponde, vigente en 2026.',
+ exp:[
+  'Las Normas de Información Financiera las emite el CINIF. En esta lección solo se citan títulos oficiales vigentes en 2026, ligados a una cuenta o a una cifra de este ejercicio. No se transcribe el texto de la norma.',
+  'La NIF A-1 da el marco: activo, pasivo, capital, ingresos y gastos, que es la base de A = P + C. La B-3 cubre el estado de resultado integral y la B-6, el de situación financiera. Las de la serie C cubren partidas concretas (efectivo, inventarios, planta y equipo, capital, deudas). Las de la serie D, ingresos, costos por contratos, sueldos y, solo como referencia, arrendamientos.',
+  'Hay un aviso de vigencia: en 2026 sigue aplicando la NIF B-3 actual. Hay una nueva NIF B-3, con el mismo nombre, vigente a partir del 1 de enero de 2028, con opción de anticiparla en 2027. Este ejercicio usa la vigente en 2026.'
+ ],
+ manz:'Así como en el puesto la mesa no se anota igual que las manzanas —una se usa, las otras se venden—, en las NIF el mobiliario va en la C-6 y el inventario, en la C-4. El efectivo de la caja y del banco va en la C-1. No hace falta aprenderse la norma de memoria: sí hace falta saber qué título le toca a cada cuenta.',
+ apl:'Abajo está cada NIF con una frase de uso, atada a una cifra de Distribuidora del Valle, y una tabla de cuenta, norma y saldo normal. Por ejemplo: Caja y Bancos, NIF C-1; Inventarios $25,000.00, NIF C-4; mobiliario $8,000.00 y equipo $12,000.00, NIF C-6; deudas, NIF C-19; ventas e ingresos por servicios, NIF D-1; sueldos $2,000.00, NIF D-3.',
+ pregunta:{q:'¿Por qué los escritorios y sillas de la operación 4 no van en la NIF C-4, de inventarios?',
+  a:'Porque no son mercancía para vender. Son bienes que se usan en la oficina, y esos los cubre la NIF C-6, Propiedades, planta y equipo. En el diario quedaron en Mobiliario y Equipo de Oficina, por $8,000.00.'},
+ check:[
+  {q:'Mobiliario y Equipo de Oficina se rige por la…',o:['NIF C-4, Inventarios.','NIF C-6, Propiedades, planta y equipo.','NIF D-1.'],a:1,e:'Escritorios y sillas no son mercancía. Van en la C-6, como en la operación 4.'},
+  {q:'La NIF que presenta el resultado del periodo es la…',o:['NIF B-6.','NIF B-3, Estado de resultado integral.','NIF C-11.'],a:1,e:'La B-3 cubre ingresos, gastos y la utilidad de $15,800.00. La B-6 es el estado de situación financiera.'},
+  {q:'En 2026, para este ejercicio, la NIF B-3 que se usa es…',o:['La nueva, que entra en 2028.','La vigente en 2026. La de 2028 no se aplica aquí.','Da igual, son el mismo texto.'],a:1,e:'La nueva B-3 rige desde el 1 de enero de 2028, con anticipación opcional en 2027. En 2026 sigue la actual.'}
+ ],
+ guion:'No conviertas esta lección en un dictado de normas. Recorre la tabla de cuentas y pregunta: “esta, ¿qué título le toca?”. Bastan seis: C-1, C-4, C-6, C-19, D-1 y B-3. Menciona en una frase lo de la B-3 de 2028, para que no se confunda si lo ve en un índice, y sigue. Si pregunta por la renta y la D-5, la respuesta es la de la ficha: aquí se registró como gasto del periodo, porque no hay datos de un contrato.',
+ special:'nif'
+},
+{n:17, tit:'Repaso y examen final',
+ obj:'Comprobar, ya sin el andamio de cada lección, si salen el cargo y el abono, los tipos de asiento y las cifras del ejercicio.',
+ exp:[
+  'Hasta aquí ya se vio la ecuación, las reglas básicas, las cinco clases, la T, la naturaleza, la partida doble, qué lleva IVA, el IVA en los asientos, el diario de las 15 operaciones, el mayor, la balanza, los dos estados, el cierre con impuestos, las observaciones y las NIF.',
+  'Este repaso tiene dos prácticas. La primera es rápida: cargo o abono, sobre hechos del ejercicio. La segunda es un mini examen de diez preguntas. En modo de estudio, cada respuesta trae la explicación. En modo examen, la calificación sale al final, sobre 10.',
+  'Si alguna pregunta se atasca, mejor volver a la lección de ese tema que memorizar la respuesta. Las cifras de la versión de clase (con IVA e ISR) son: utilidad neta $11,060.00, A = P + C de $156,680.00 = $45,620.00 + $111,060.00, Bancos $111,760.00 deudor. La utilidad antes de impuestos sigue en $15,800.00.'
+ ],
+ manz:'Es el momento de soltar el puesto y quedarse con el ejercicio. Si le preguntas “¿qué le haces a Caja cuando entra efectivo?”, la respuesta tiene que salir: se carga. Si le preguntas por la utilidad, tiene que decir $15,800.00 antes de impuestos y $11,060.00 de utilidad neta (estimado didáctico de ISR), y, si puede, agregar que está sobreestimada porque falta el costo de ventas.',
+ apl:'Abajo están las dos prácticas, todas sobre Distribuidora del Valle. Conviene hacer primero cargo o abono, y luego el examen. La mejor calificación de este teléfono se guarda aquí.',
+ pregunta:{q:'Si tuvieras que decir, en una frase, cómo quedó A = P + C al cierre de este ejercicio, ¿qué dirías?',
+  a:'En la versión de clase, después del cierre con IVA e ISR: activo $156,680.00 = pasivo $45,620.00 + capital $111,060.00. El capital es $100,000.00 de capital social más $11,060.00 de utilidad neta. Después de las 15 operaciones, antes de esos asientos, era $160,520.00 = $44,720.00 + $115,800.00.'},
+ check:[
+  {q:'El saldo final de Bancos, con IVA 16 %, es…',o:['$104,000.00 deudor','$111,760.00 deudor','$114,000.00 deudor'],a:1,e:'Cargos $136,960.00 menos abonos $25,200.00 = $111,760.00 deudor. Sin IVA sería $114,000.00.'},
+  {q:'A = P + C, al cierre con IVA e ISR, es…',o:['$156,680.00 = $45,620.00 + $111,060.00','$160,520.00 = $44,720.00 + $115,800.00','$153,800.00 = $38,000.00 + $115,800.00'],a:0,e:'Utilidad neta $11,060.00. La segunda opción es después de las 15 operaciones, antes de impuestos. La tercera es el enunciado, sin IVA.'},
+  {q:'La operación 7 (pago al proveedor), con IVA, es un asiento de…',o:['Aumento de pasivo y aumento de activo.','Disminución de activo y disminución de pasivo, más el traspaso del IVA pendiente a acreditable.','Aumento de gasto y disminución de pasivo.'],a:1,e:'Se carga Proveedores $4,640.00 e IVA acreditable $640.00, y se abona Bancos $4,640.00 e IVA pendiente $640.00.'}
+ ],
+ guion:'Úsala como cierre de la clase, no como sorpresa. Primero, tres preguntas orales: la ecuación final, qué le pasa a un activo cuando aumenta, y por qué la utilidad está sobreestimada. Luego déjala hacer el cargo o abono y el examen. Si saca menos de 8, no repitas toda la guía: vuelve con ella a la lección de las preguntas que falló, sobre todo la 5 (naturaleza), la 7 (qué lleva IVA), la 9 (diario) o la 14 (cierre con impuestos).',
+ special:'exam'
+}
 ];
 
 const $ = id => document.getElementById(id);
-const ORDEN=['Caja','Bancos','Inventarios','Mobiliario y Equipo de Oficina','Equipo de Cómputo','Proveedores','Acreedores Diversos','Acreedores bancarios','Capital social','Utilidad del periodo','Pérdidas y ganancias','Ventas','Ingresos por servicios','Gastos de Admón: renta','Gastos de Admón: sueldos','Gastos de Venta: publicidad','Gastos de Admón: papelería','Gastos de Admón: luz'];
+const ORDEN=['Caja','Bancos','Inventarios','IVA acreditable','IVA pendiente de acreditar','IVA a favor','Mobiliario y Equipo de Oficina','Equipo de Cómputo','Proveedores','Acreedores Diversos','Acreedores bancarios','IVA trasladado','IVA por pagar','ISR por pagar','Capital social','Utilidad del periodo','Pérdidas y ganancias','Ventas','Ingresos por servicios','Gastos de Admón: renta','Gastos de Admón: sueldos','Gastos de Venta: publicidad','Gastos de Admón: papelería','Gastos de Admón: luz','ISR del ejercicio'];
 
-let st={rk:[],read:{},best:null,step:1,mode:'practica',revealed:{},bookTab:'diario'};
-try{ const r=JSON.parse(localStorage.getItem(LS)||'{}'); st={...st,...r}; if(!st.revealed) st.revealed={}; if(!st.bookTab) st.bookTab='diario'; if(!st.mode) st.mode='practica'; if(!st.step) st.step=1; }catch(e){}
+let st={rk:[],read:{},best:null,lesson:0,conIva:true,opFix:false,step:1,mode:'practica',revealed:{},askOn:false,quizIva:{},clasif:{},examMode:'estudio',examAns:{},cabAns:{},cabI:0};
+try{
+  const r=JSON.parse(localStorage.getItem(LS)||'{}');
+  st={...st,...r};
+  if(!st.revealed) st.revealed={};
+  if(!st.read) st.read={};
+  if(!st.quizIva) st.quizIva={};
+  if(!st.clasif) st.clasif={};
+  if(typeof st.conIva!=='boolean') st.conIva=true;
+  if(!st.step) st.step=1;
+  if(!st.mode) st.mode='practica';
+}catch(e){}
 const sv=()=>{ try{ localStorage.setItem(LS, JSON.stringify(st)); }catch(e){} };
 
 function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
@@ -759,32 +1193,37 @@ function markDay(){
   drawStamps();
 }
 function drawStamps(){
-  const box=$('stamps'); if(!box)return;
+  const box=$('stamps'); if(!box) return;
   box.innerHTML=Array.from({length:7},(_,i)=>{
     const d=new Date(); d.setDate(d.getDate()-(6-i));
     const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
     return `<div class="stamp${st.rk.includes(k)?' on':''}">${st.rk.includes(k)?'✓':'·'}</div>`;
   }).join('');
   const n=st.rk.length;
-  if($('streakn'))$('streakn').textContent=n===0?'Aún no hay sello. Avanzar en el simulador o contestar una práctica de hoy cuenta.':(n===1?'1 día con sello.':n+' días con sello.');
+  if($('streakn')) $('streakn').textContent=n===0?'Aún no hay sello. Entrar a una lección o contestar una práctica de hoy cuenta.':(n===1?'1 día con sello.':n+' días con sello.');
 }
 function progress(){
-  const keys=['lib','nat','asi','nif','prac'];
-  let n=keys.filter(k=>st.read[k]).length;
-  if(st.best!=null) n++;
-  const posted=Object.keys(st.revealed).filter(k=>+k>=1&&+k<=15).length;
-  if(posted>=15) n++;
-  const pct=Math.round(n/7*100);
+  const nL=LESSONS.filter(l=>st.read[l.n]).length;
+  const extra=st.best!=null?1:0;
+  const tot=LESSONS.length+1;
+  const pct=Math.round((nL+extra)/tot*100);
   document.querySelectorAll('.progress i').forEach(el=>el.style.width=pct+'%');
   document.querySelectorAll('[data-pt]').forEach(el=>el.textContent=pct+' %');
+  const bar=$('barprog'); if(bar) bar.style.width=pct+'%';
+  if($('barpct')) $('barpct').textContent=pct+' %';
 }
-function markRead(k){ st.read[k]=1; sv(); progress(); markDay(); }
+function markRead(n){ st.read[n]=1; sv(); progress(); markDay(); }
 
-let opFix=false;
-function valleOps(){
+function getOps(){
   return OPS.map(op=>{
-    if(opFix && op.n===2){
-      return {...op, warn:false,
+    let o={...op};
+    if(st.conIva && IVA_ASIENTO[op.n]){
+      const iv=IVA_ASIENTO[op.n];
+      o={...o, paso:iv.paso, manz:iv.manz, e:iv.e, why:iv.why};
+      o.forma=o.e.length>2?'compuesto':'simple';
+    }
+    if(st.opFix && o.n===2){
+      o={...o, warn:false,
         paso:'Se traspasan $50,000.00 de Caja a Bancos (corrección didáctica: se deposita lo que había en Caja). Caja queda en $0.00 en este momento.',
         conc:'Depósito de efectivo en cuenta bancaria de la empresa. (Corrección didáctica: $50,000.00.)',
         e:[['Bancos',50000,'d'],['Caja',50000,'a']],
@@ -794,16 +1233,15 @@ function valleOps(){
         ]
       };
     }
-    return op;
+    return o;
   });
 }
-
 function applyEnts(bal, ents){
   const n={...bal};
   ents.forEach(([c,a,s])=>{ n[c]=(n[c]||0)+(s==='d'?a:-a); });
   return n;
 }
-function booksOf(ops, upto, withCierre){
+function booksOf(ops, upto, extras){
   const used=ops.slice(0, Math.max(0, Math.min(upto, ops.length)));
   let bal={}; const mov={};
   const add=(n,c,a,s)=>{
@@ -813,8 +1251,13 @@ function booksOf(ops, upto, withCierre){
     mov[c].lines.push({n,a,s});
   };
   used.forEach(op=>op.e.forEach(([c,a,s])=>add(op.n,c,a,s)));
-  if(withCierre) CIERRE.forEach(c=>c.e.forEach(([cta,a,s])=>add(c.n,cta,a,s)));
-  return {bal,mov,ops:used};
+  if(extras && extras.ivaDet && st.conIva) IVA_DET.e.forEach(([c,a,s])=>add(IVA_DET.n,c,a,s));
+  if(extras && extras.isr && st.conIva) ISR_AS.e.forEach(([c,a,s])=>add(ISR_AS.n,c,a,s));
+  if(extras && extras.cierre){
+    const C=st.conIva?CIERRE_CON:CIERRE_SIN;
+    C.forEach(c=>c.e.forEach(([cta,a,s])=>add(c.n,cta,a,s)));
+  }
+  return {bal, mov};
 }
 function caps(bal){
   let A=0,P=0,Cap=0,Ing=0,Gas=0;
@@ -827,13 +1270,18 @@ function caps(bal){
   });
   const utilIS=Ing-Gas;
   const C=Cap+utilIS;
-  const util= (Ing!==0||Gas!==0) ? utilIS : (C-(-(bal['Capital social']||0)));
+  const util=(Ing!==0||Gas!==0)?utilIS:(C-(-(bal['Capital social']||0)));
   return {A,P,Cap:C-util,Ing,Gas,util,C};
 }
 function trial(bal){
   let D=0,Cr=0;
-  Object.values(bal).forEach(v=>{ if(v>0)D+=v; else if(v<0)Cr+=-v; });
+  Object.values(bal).forEach(v=>{ if(v>0) D+=v; else if(v<0) Cr+=-v; });
   return {D,Cr};
+}
+function trialMov(mov){
+  let md=0,mh=0;
+  Object.values(mov).forEach(m=>{ md+=m.d||0; mh+=m.h||0; });
+  return {md,mh};
 }
 function saldoTxt(v){
   if(v===0) return money(0);
@@ -844,6 +1292,7 @@ function orderedKeys(obj){
   const keys=Object.keys(obj);
   return ORDEN.filter(k=>keys.includes(k)).concat(keys.filter(k=>!ORDEN.includes(k)));
 }
+function almost(a,b){ return Math.abs(a-b)<0.005; }
 
 function asientoHTML(ents, conc, num){
   const cargos=ents.filter(e=>e[2]==='d');
@@ -852,21 +1301,26 @@ function asientoHTML(ents, conc, num){
   cargos.forEach(([c,a])=>rows.push(`<tr><td>${c}</td><td class="num">${money(a)}</td><td class="num"></td></tr>`));
   abonos.forEach(([c,a])=>rows.push(`<tr><td class="cta">${c}</td><td class="num"></td><td class="num">${money(a)}</td></tr>`));
   const sd=cargos.reduce((s,e)=>s+e[1],0), sa=abonos.reduce((s,e)=>s+e[1],0);
-  const head=num!=null?`<p class="as-meta"><b>Asiento ${num}</b>${conc?` · ${conc}`:''}</p>`:(conc?`<p class="as-meta">${conc}</p>`:'');
+  const head=num!=null?`<p class="as-meta"><b>Asiento ${num}</b> · s/f${conc?` · ${conc}`:''}</p>`:(conc?`<p class="as-meta">${conc}</p>`:'');
   return `${head}<div class="tw sm"><table class="asiento" aria-label="Asiento de diario">
     <thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead>
     <tbody>${rows.join('')}</tbody>
     <tfoot><tr><td>Sumas iguales</td><td class="num">${money(sd)}</td><td class="num">${money(sa)}</td></tr></tfoot>
   </table></div>`;
 }
-function diarioHTML(ops, withCierre){
+function diarioHTML(ops, extras){
   let html=ops.map(op=>`<article class="card" id="d-op-${op.n}">${asientoHTML(op.e,op.conc,op.n)}</article>`).join('');
-  if(withCierre) html+=CIERRE.map(c=>`<article class="card">${asientoHTML(c.e,c.conc,c.n)}<p class="sidenote">${c.nota}</p></article>`).join('');
+  if(extras && extras.ivaDet && st.conIva) html+=`<article class="card">${asientoHTML(IVA_DET.e,IVA_DET.conc,IVA_DET.n)}<p class="sidenote">${IVA_DET.nota}</p></article>`;
+  if(extras && extras.isr && st.conIva) html+=`<article class="card">${asientoHTML(ISR_AS.e,ISR_AS.conc,ISR_AS.n)}<p class="sidenote">${ISR_AS.nota}</p></article>`;
+  if(extras && extras.cierre){
+    const C=st.conIva?CIERRE_CON:CIERRE_SIN;
+    html+=C.map(c=>`<article class="card">${asientoHTML(c.e,c.conc,c.n)}<p class="sidenote">${c.nota}</p></article>`).join('');
+  }
   return html||'<p class="sub">Aún no hay asientos registrados.</p>';
 }
 function tBox(name, lines, saldo){
-  const deb=lines.filter(m=>m.s==='d');
-  const hab=lines.filter(m=>m.s==='a');
+  const deb=(lines||[]).filter(m=>m.s==='d');
+  const hab=(lines||[]).filter(m=>m.s==='a');
   const side=arr=>arr.map(m=>`<div class="ln"><span>Op. ${m.n}</span><span class="num">${money(m.a)}</span></div>`).join('')||'<div class="ln muted">—</div>';
   const warn=name==='Caja'&&saldo<0;
   return `<div class="tacc">
@@ -900,7 +1354,7 @@ function balanzaHTML(mov, bal){
       <td class="num${warn?' warn':''}">${s<0?money(-s):''}</td>
     </tr>`;
   }).join('');
-  const okM=md===mh, okS=D===Cr;
+  const okM=almost(md,mh), okS=almost(D,Cr);
   return `<h4>Movimientos</h4>
   <div class="tw sm"><table class="grid" aria-label="Movimientos de la balanza de comprobación">
     <thead><tr><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead>
@@ -919,6 +1373,9 @@ function eriHTML(bal){
   if(!Object.keys(bal).length) return '<p class="sub">El estado de resultados se arma con los ingresos y gastos ya registrados.</p>';
   const s=caps(bal);
   const vent=-(bal['Ventas']||0), serv=-(bal['Ingresos por servicios']||0);
+  const isr=bal['ISR del ejercicio']||0;
+  const gastosOp=s.Gas-isr;
+  const uai=s.Ing-gastosOp;
   const ventaG=[['Gastos de Venta: publicidad', bal['Gastos de Venta: publicidad']||0]].filter(x=>x[1]);
   const admG=[
     ['Gastos de Admón: renta', bal['Gastos de Admón: renta']||0],
@@ -926,7 +1383,7 @@ function eriHTML(bal){
     ['Gastos de Admón: papelería', bal['Gastos de Admón: papelería']||0],
     ['Gastos de Admón: luz', bal['Gastos de Admón: luz']||0]
   ].filter(x=>x[1]);
-  const line=(lab,imp,cls='')=>`<tr><td>${lab}</td><td class="num">${money(imp)}</td></tr>`;
+  const line=(lab,imp)=>`<tr><td>${lab}</td><td class="num">${money(imp)}</td></tr>`;
   return `<div class="tw sm"><table class="grid" aria-label="Estado de resultado integral">
     <thead><tr><th>Concepto</th><th>Importe</th></tr></thead>
     <tbody>
@@ -936,27 +1393,32 @@ function eriHTML(bal){
       <tr><th>Total de ingresos</th><th class="num">${money(s.Ing)}</th></tr>
       ${ventaG.length?`<tr><td class="sec" colspan="2">Gastos de venta</td></tr>`+ventaG.map(([k,v])=>line('(−) '+k,v)).join(''):''}
       ${admG.length?`<tr><td class="sec" colspan="2">Gastos de administración</td></tr>`+admG.map(([k,v])=>line('(−) '+k,v)).join(''):''}
-      <tr><th>Total de costos y gastos</th><th class="num">${money(s.Gas)}</th></tr>
-      <tr><td class="tot">Utilidad del ejercicio</td><td class="num tot">${money(s.util)}</td></tr>
+      <tr><th>Total de costos y gastos de operación</th><th class="num">${money(gastosOp)}</th></tr>
+      <tr><td class="tot">Utilidad antes de impuestos</td><td class="num tot">${money(uai)}</td></tr>
+      ${isr?line('(−) ISR del ejercicio (estimado didáctico)', isr)+`<tr><td class="tot">Utilidad neta</td><td class="num tot">${money(s.util)}</td></tr>`:''}
     </tbody>
-  </table></div>`;
+  </table></div>
+  ${isr?`<p class="sidenote">El ISR de ${money(isr)} es un estimado de clase sobre la utilidad contable, no un resultado fiscal (artículo 9 de la LISR, tasa 30 %).</p>`:'<p class="sidenote">Este ejercicio no registra costo de ventas, así que la utilidad está sobreestimada. El IVA no aparece aquí: no es ingreso ni gasto.</p>'}`;
 }
 function esfHTML(bal){
   if(!Object.keys(bal).length) return '<p class="sub">El balance general se arma con los saldos ya registrados.</p>';
   const s=caps(bal);
   const line=(k,v,w)=>`<tr><td>${k}${w?' <span class="warn">saldo acreedor</span>':''}</td><td class="num${w?' warn':''}">${money(v)}</td></tr>`;
-  const sum=keys=>keys.reduce((t,k)=>t+(bal[k]||0),0);
-  const ac=['Caja','Bancos','Inventarios'].filter(k=>bal[k]!==undefined);
-  const anc=['Mobiliario y Equipo de Oficina','Equipo de Cómputo'].filter(k=>bal[k]);
-  const pc=['Proveedores','Acreedores Diversos'].filter(k=>bal[k]);
-  const pl=['Acreedores bancarios'].filter(k=>bal[k]);
-  const totAC=sum(ac), totANC=sum(anc), totPC=-sum(pc), totPL=-sum(pl);
+  const show=k=>bal[k]!==undefined && (k==='Caja' || Math.abs(bal[k]||0)>0.0001);
+  const ac=['Caja','Bancos','Inventarios','IVA acreditable','IVA pendiente de acreditar','IVA a favor'].filter(show);
+  const anc=['Mobiliario y Equipo de Oficina','Equipo de Cómputo'].filter(show);
+  const pc=['Proveedores','Acreedores Diversos','IVA trasladado','IVA por pagar','ISR por pagar'].filter(show);
+  const pl=['Acreedores bancarios'].filter(show);
+  const totAC=ac.reduce((t,k)=>t+(bal[k]||0),0);
+  const totANC=anc.reduce((t,k)=>t+(bal[k]||0),0);
+  const totPC=pc.reduce((t,k)=>t+(-(bal[k]||0)),0);
+  const totPL=pl.reduce((t,k)=>t+(-(bal[k]||0)),0);
   return `<div class="tw sm"><table class="grid" aria-label="Estado de situación financiera">
     <thead><tr><th>Concepto</th><th>Importe</th></tr></thead>
     <tbody>
       <tr><td class="sec" colspan="2">Activo</td></tr>
       <tr><td class="sec" colspan="2">Activo a corto plazo</td></tr>
-      ${ac.map(k=>line(k, bal[k]||0, k==='Caja'&&(bal[k]||0)<0)).join('')||'<tr><td colspan="2" class="muted">Sin cuentas aún.</td></tr>'}
+      ${ac.map(k=>line(k, bal[k]||0, k==='Caja'&&(bal[k]||0)<0)).join('')||'<tr><td colspan="2">—</td></tr>'}
       <tr><th>Total de activo a corto plazo</th><th class="num">${money(totAC)}</th></tr>
       <tr><td class="sec" colspan="2">Activo a largo plazo</td></tr>
       ${anc.map(k=>line(k, bal[k]||0, false)).join('')||'<tr><td colspan="2">—</td></tr>'}
@@ -972,7 +1434,7 @@ function esfHTML(bal){
       <tr><td class="tot">Total de pasivo</td><td class="num tot">${money(s.P)}</td></tr>
       <tr><td class="sec" colspan="2">Capital contable</td></tr>
       ${line('Capital social', s.Cap, false)}
-      ${line('Utilidad del ejercicio', s.util, false)}
+      ${line(st.conIva && (bal['ISR del ejercicio']||bal['ISR por pagar']||bal['Utilidad del periodo']) ? 'Utilidad del ejercicio' : 'Utilidad del ejercicio', s.util, false)}
       <tr><td class="tot">Total de capital</td><td class="num tot">${money(s.C)}</td></tr>
       <tr><td class="tot">Pasivo más capital</td><td class="num tot">${money(s.P+s.C)}</td></tr>
     </tbody>
@@ -982,8 +1444,8 @@ function esfHTML(bal){
     <div class="eqb p"><span>Pasivo</span><b>${money(s.P)}</b></div>
     <div class="eqb c"><span>Capital</span><b>${money(s.C)}</b></div>
   </div>
-  <p class="check">${s.A===s.P+s.C?'Cuadra: ':'No cuadra: '}<b>Activo ${money(s.A)} = Pasivo ${money(s.P)} + Capital ${money(s.C)}</b>.</p>
-  <p class="sidenote">El ejercicio no indica el plazo del préstamo bancario. Acreedores bancarios se presenta en pasivo a largo plazo, que es el tratamiento habitual en este tipo de ejercicios. Si venciera en menos de un año, iría en pasivo a corto plazo.</p>`;
+  <p class="check">${almost(s.A,s.P+s.C)?'Cuadra: ':'No cuadra: '}<b>Activo ${money(s.A)} = Pasivo ${money(s.P)} + Capital ${money(s.C)}</b>.</p>
+  <p class="sidenote">El ejercicio no indica el plazo del préstamo bancario. Acreedores bancarios se presenta en pasivo a largo plazo, que es el tratamiento habitual en este tipo de ejercicios. Si venciera en menos de un año, iría en pasivo a corto plazo; los totales no cambian.</p>`;
 }
 function cashBar(bal){
   const c=bal['Caja']||0, b=bal['Bancos']||0;
@@ -992,424 +1454,579 @@ function cashBar(bal){
     <div class="pot${b<0?' warn':''}"><span class="nm">Bancos</span><b>${saldoTxt(b)}</b></div>
   </div>`;
 }
-function booksPanel(mov, bal, opsPosted, withCierre, tab){
-  const tabs=['diario','mayor','balanza','resultados','balance'];
-  const lab={diario:'Diario',mayor:'Mayor',balanza:'Balanza',resultados:'Resultados',balance:'Balance'};
-  const body={
-    diario: diarioHTML(opsPosted, withCierre),
-    mayor: mayorHTML(mov, bal),
-    balanza: balanzaHTML(mov, bal),
-    resultados: eriHTML(bal),
-    balance: esfHTML(bal)
-  };
-  return `<div class="seg" role="tablist">${tabs.map(t=>`<button type="button" class="${t===tab?'on':''}" data-tab="${t}" role="tab" aria-selected="${t===tab}">${lab[t]}</button>`).join('')}</div>
-    <div class="bookview">${body[tab]||''}</div>`;
+function eqLine(bal){
+  const s=caps(bal);
+  return `<p class="check">${almost(s.A,s.P+s.C)?'Cuadra: ':'No cuadra: '}<b>A ${money(s.A)} = P ${money(s.P)} + C ${money(s.C)}</b>.</p>`;
 }
 
-function solBlock(op, before, after){
-  const why=op.why.map((w,i)=>`<div class="move">
-    <p class="move-h"><b>${w[0]}</b> · ${w[1]} · <span class="hl-art">${w[2]}</span></p>
-    <button type="button" class="whybtn" data-w="${op.n}-${i}" aria-expanded="false">Por qué</button>
-    <p class="why" id="why-${op.n}-${i}" hidden>${w[3]}</p>
-  </div>`).join('');
-  const tipo=(TIPOS.find(t=>t.id===op.tipo)||{}).tit||'';
-  let warn='';
-  if(op.warn==='caja'&&!opFix){
-    warn=`<div class="ojo mini"><h3>Ojo: Caja queda acreedora</h3>
-      <p>Después de la operación 1, Caja tenía $50,000.00 y se depositan $60,000.00. $50,000.00 − $60,000.00 = −$10,000.00. Un saldo acreedor en efectivo no es razonable. Con la casilla de corrección, en los libros completos puedes ver el ejercicio si el depósito fuera de $50,000.00.</p></div>`;
-  }
-  if(op.warn==='cogs'){
-    warn=`<div class="ojo mini"><h3>Ojo: falta el costo de ventas</h3>
-      <p>Se usa la cuenta Inventarios, pero solo se registra Caja $18,000.00 / Ventas $18,000.00. Al no indicarse el costo, no se puede cargar Costo de ventas ni abonar Inventarios (NIF C-4 y, en su caso, NIF D-2). La utilidad queda sobreestimada y el inventario se queda en $25,000.00.</p></div>`;
-  }
-  return `<div class="sol">
-    <h4>Qué pasó</h4>
-    <p>${op.paso}</p>
-    <p class="manz"><b>Con manzanas.</b> ${op.manz}</p>
-    ${asientoHTML(op.e, op.conc, op.n)}
-    <p class="sidenote">Tipo: ${tipo}. Forma: ${op.forma==='compuesto'?'compuesto (más de dos cuentas)':'simple (dos cuentas)'}${op.clase==='apertura'?' · Asiento de apertura.':''}.</p>
-    <h4>Qué cuenta se mueve</h4>
-    <div class="moves">${why}</div>
-    <h4>Efecto en A = P + C</h4>
-    ${eqLine('Antes:', caps(before))}
-    ${eqLine('Después:', caps(after))}
-    <h4>Efectivo después de esta operación</h4>
-    ${cashBar(after)}
-    ${warn}
-  </div>`;
-}
-function eqLine(lab,s){
-  const ok=s.A===s.P+s.C;
-  return `<p class="check">${lab} Activo ${money(s.A)} = Pasivo ${money(s.P)} + Capital ${money(s.C)}${ok?' · Cuadra.':' · No cuadra.'}</p>`;
-}
-function tryBlock(op){
-  const cts=Object.keys(CUENTAS);
-  const line=()=>`<div class="line">
-    <select aria-label="Cuenta"><option value="">Cuenta…</option>${cts.map(c=>`<option>${c}</option>`).join('')}</select>
-    <select aria-label="Debe o haber"><option value="">Debe o haber…</option><option value="d">Debe (cargo)</option><option value="a">Haber (abono)</option></select>
-    <input type="text" inputmode="decimal" placeholder="$0.00" aria-label="Importe">
-  </div>`;
-  return `<div class="try" data-op="${op.n}">
-    <p class="inst">Inténtalo tú: elige la cuenta, si va al debe o al haber, y escribe el importe (puedes poner 50000 o 50,000.00). Luego toca Calificar.</p>
-    <div class="build">${line()}${line()}${op.e.length>2?line():''}</div>
-    <div class="row2">
-      <button type="button" class="act lt" data-act="addline">Agregar línea</button>
-      <button type="button" class="act big" data-act="grade">Calificar</button>
-      <button type="button" class="act esp" data-act="reveal">Ver asiento y registrar</button>
-    </div>
-    <p class="fb" data-fb></p>
-  </div>`;
+function ctaList(){
+  const skip=new Set(['IVA a favor','IVA por pagar','ISR por pagar','ISR del ejercicio','Utilidad del periodo']);
+  return Object.keys(CUENTAS).filter(k=>!skip.has(k) || st.conIva);
 }
 
-function postedUpto(){
-  const step=st.step;
-  if(st.mode==='resuelto') return Math.min(step,15);
-  let n=0;
-  for(let i=1;i<=Math.min(step,15);i++){
-    if(st.revealed[i]) n=i; else break;
-  }
-  // include any revealed contiguous from start; also if later revealed but earlier not, include all revealed individually
-  // Use: include op i if revealed OR (resuelto and i<=step)
-  return Math.min(step,15);
-}
-function isPosted(n){
-  if(st.mode==='resuelto') return n<=st.step;
-  return !!st.revealed[n];
-}
-function opsPosted(){
-  return valleOps().filter(o=>isPosted(o.n) && o.n<=st.step);
-}
-function cierreOn(){ return st.step>=16 && (st.mode==='resuelto' || st.revealed.cierre); }
-
-function renderSim(){
-  const box=$('sim-app'); if(!box)return;
-  const ops=valleOps();
-  const step=Math.min(Math.max(+st.step||1,1),16);
-  st.step=step;
-  const isCierre=step===16;
-  const mode=st.mode;
-  const posted=opsPosted();
-  const withC=cierreOn();
-  const {bal,mov}=booksOf(valleOps(), 15, withC);
-  // rebuild from posted only
-  const live=booksOf(posted, posted.length, withC);
-  let body='';
-
-  const jumpOpts=ops.map(o=>`<option value="${o.n}" ${step===o.n?'selected':''}>Operación ${o.n} de 15</option>`).join('')+`<option value="16" ${step===16?'selected':''}>Asientos de cierre</option>`;
-
-  body+=`<div class="sim-top">
-    <div class="sim-meta">
-      <p class="stepn">${isCierre?'Cierre':'Operación '+step+' de 15'}</p>
-      <div class="modes">
-        <button type="button" data-mode="practica" class="${mode==='practica'?'on':''}">Practicar</button>
-        <button type="button" data-mode="resuelto" class="${mode==='resuelto'?'on':''}">Ver resuelto</button>
-      </div>
-    </div>
-    <div class="progress" aria-hidden="true"><i style="width:${Math.round((Math.min(step,16)/16)*100)}%"></i></div>
-    <label class="sidenote">Ir a <select class="jump" id="sim-jump">${jumpOpts}</select></label>
-    <div class="sim-nav">
-      <button type="button" class="act lt" data-nav="prev" ${step<=1?'disabled':''}>Anterior</button>
-      <button type="button" class="act big" data-nav="next" ${step>=16?'disabled':''}>${(!isCierre && mode==='practica' && !st.revealed[step])?'Registrar y seguir':'Siguiente'}</button>
-    </div>
-  </div>`;
-
-  if(!isCierre){
-    const op=ops[step-1];
-    const before=booksOf(ops, step-1, false).bal;
-    const after=applyEnts(before, op.e);
-    const showSol=mode==='resuelto'||st.revealed[op.n];
-    body+=`<p class="kicker">Distribuidora del Valle, S.A. de C.V.</p>
-      <blockquote class="enun"><p>${op.enun}</p></blockquote>`;
-    if(mode==='practica' && !showSol) body+=tryBlock(op);
-    if(showSol) body+=solBlock(op, before, after);
-    else body+=`<p class="sidenote">Los libros, abajo, muestran lo registrado hasta la operación anterior. Califica, ve el asiento o toca Registrar y seguir.</p>`;
-  }else{
-    const show=mode==='resuelto'||st.revealed.cierre;
-    body+=`<blockquote class="enun"><p>Cierre del ejercicio: se dejan en cero los ingresos y los gastos, y la utilidad de $15,800.00 pasa al capital.</p></blockquote>`;
-    if(mode==='practica' && !show){
-      body+=`<p class="inst">Cuando quieras, registra el cierre para ver cómo quedan los libros.</p>
-        <button type="button" class="act big" data-act="cierre">Registrar el cierre</button>`;
-    }
-    if(show){
-      body+=CIERRE.map(c=>`<article>${asientoHTML(c.e,c.conc,c.n)}<p class="sidenote">${c.nota}</p></article>`).join('');
-    }
-  }
-
-  const nPost=posted.length+(withC?3:0);
-  body+=`<h4>Los libros hasta aquí</h4>
-    <p class="sidenote">${posted.length} de 15 operaciones registradas${withC?' · cierre incluido':''}.</p>
-    <div id="sim-books">${booksPanel(live.mov, live.bal, posted, withC, st.bookTab)}</div>`;
-
-  box.innerHTML=body;
-  bindSim(box);
-}
-function bindSim(box){
-  box.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{
-    st.mode=b.dataset.mode; sv(); renderSim(); markDay();
-  });
-  const jump=$('sim-jump');
-  if(jump) jump.onchange=()=>{ st.step=+jump.value; sv(); renderSim(); markDay(); };
-  box.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>{
-    if(b.dataset.nav==='prev'){ st.step=Math.max(1, st.step-1); }
-    else{
-      if(st.step<=15 && !st.revealed[st.step]){ st.revealed[st.step]=1; }
-      if(st.step===15){ /* going to 16 */ }
-      if(st.step===16 && !st.revealed.cierre){ st.revealed.cierre=1; }
-      st.step=Math.min(16, st.step+1);
-      if(st.step===16) st.revealed.cierre=st.revealed.cierre||st.mode==='resuelto'?1:st.revealed.cierre;
-    }
-    sv(); progress(); renderSim(); markDay();
-  });
-  box.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{ st.bookTab=b.dataset.tab; sv(); renderSim(); });
-  box.querySelectorAll('.whybtn').forEach(b=>b.onclick=()=>{
-    const el=document.getElementById('why-'+b.dataset.w);
-    if(!el)return;
-    const on=el.hasAttribute('hidden');
-    if(on) el.removeAttribute('hidden'); else el.setAttribute('hidden','');
-    b.setAttribute('aria-expanded', on?'true':'false');
-    b.textContent=on?'Ocultar el porqué':'Por qué';
-  });
-  const add=box.querySelector('[data-act="addline"]');
-  if(add) add.onclick=()=>{
-    const build=box.querySelector('.build');
-    const proto=build.querySelector('.line').outerHTML;
-    build.insertAdjacentHTML('beforeend', proto);
-  };
-  const grade=box.querySelector('[data-act="grade"]');
-  if(grade) grade.onclick=()=>gradeTry(box.querySelector('.try'));
-  const rev=box.querySelector('[data-act="reveal"]');
-  if(rev) rev.onclick=()=>{ st.revealed[st.step]=1; sv(); progress(); renderSim(); markDay(); };
-  const cie=box.querySelector('[data-act="cierre"]');
-  if(cie) cie.onclick=()=>{ st.revealed.cierre=1; sv(); renderSim(); markDay(); };
-}
-function gradeTry(tryEl){
-  if(!tryEl)return;
-  const n=+tryEl.dataset.op;
-  const op=valleOps()[n-1];
-  const got=[...tryEl.querySelectorAll('.line')].map(l=>{
-    const els=l.querySelectorAll('select,input');
-    const c=els[0].value, s=els[1].value, raw=(els[2].value||'').replace(/[$\s]/g,'').replace(/,/g,'');
-    const amt=Number(raw);
-    return [c,amt,s];
-  }).filter(x=>x[0]&&x[2]&&x[1]>0);
-  const need=op.e.map(e=>e[0]+'|'+e[2]+'|'+e[1]).sort();
-  const have=got.map(e=>e[0]+'|'+e[2]+'|'+e[1]).sort();
-  const ok=need.length===have.length && need.every((x,i)=>x===have[i]);
-  const fb=tryEl.querySelector('[data-fb]');
-  fb.className='fb show '+(ok?'ok':'no');
-  fb.textContent=ok?'Correcto. Las cuentas, el debe y el haber y los importes coinciden. El asiento ya quedó en los libros.':'Aún no. Revisa cuenta, debe o haber, e importe. Puedes ver el asiento e intentarlo de nuevo.';
-  if(ok){ st.revealed[n]=1; sv(); progress(); renderSim(); }
-  markDay();
+function pasosHTML(op){
+  const cs=op.e.map(e=>e[0]).join(', ');
+  const tipos=op.e.map(([c])=>{
+    const t=TIPO_L[(CUENTAS[c]||{}).tipo]||'cuenta';
+    return `${c} es ${t.toLowerCase()}`;
+  }).join('; ');
+  const movs=(op.why||[]).map(w=>`${w[0]} ${w[1].toLowerCase()}`).join('; ');
+  const cas=(op.why||[]).map(w=>`${w[0]} se anota al ${w[2].toLowerCase()} (${w[1]}).`).join(' ');
+  return `<ol class="pasos">
+    <li><b>Qué cuentas se mueven.</b> ${cs}.</li>
+    <li><b>De qué tipo es cada una.</b> ${tipos}.</li>
+    <li><b>Si aumenta o disminuye.</b> ${movs}.</li>
+    <li><b>Cargo o abono, y por cuánto.</b> ${cas}</li>
+  </ol>`;
 }
 
-function renderOplist(){
-  const box=$('oplist'); if(!box)return;
-  box.innerHTML=OPS.map(op=>`<li><a href="#simulador" data-go="${op.n}"><b>Operación ${op.n}.</b> ${op.enun}</a></li>`).join('');
-  box.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=>{ st.step=+a.dataset.go; sv(); renderSim(); }));
+/* ---------- specials ---------- */
+function renderReglas(){
+  return REGLAS.map((r,i)=>`<article class="rule">
+    <h3>${i+1}. ${r.t}</h3>
+    <p>${r.d}</p>
+    <div class="ex m"><b>Con manzanas.</b> ${r.m}</div>
+    <div class="ex e"><b>En el ejercicio.</b> ${r.e}</div>
+  </article>`).join('');
 }
-
-function renderLibros(){
-  const ops=valleOps();
-  const pre=booksOf(ops,15,false);
-  const post=booksOf(ops,15,true);
-  if($('libro-diario'))$('libro-diario').innerHTML=diarioHTML(ops,false);
-  if($('libro-mayor'))$('libro-mayor').innerHTML=mayorHTML(pre.mov, pre.bal);
-  if($('libro-balanza'))$('libro-balanza').innerHTML=balanzaHTML(pre.mov, pre.bal);
-  if($('libro-eri'))$('libro-eri').innerHTML=eriHTML(pre.bal);
-  if($('libro-esf'))$('libro-esf').innerHTML=esfHTML(pre.bal);
-  if($('libro-cierre'))$('libro-cierre').innerHTML=CIERRE.map(c=>`<article class="card">${asientoHTML(c.e,c.conc,c.n)}<p class="sidenote">${c.nota}</p></article>`).join('');
-  if($('libro-post'))$('libro-post').innerHTML=balanzaHTML(post.mov, post.bal)+esfHTML(post.bal);
-}
-
-function renderNat(){
-  const box=$('natbox'); if(!box)return;
-  const byTipo={a:[],p:[],c:[],i:[],g:[]};
-  Object.keys(CUENTAS).forEach(k=>byTipo[CUENTAS[k].tipo].push(k));
-  const rules=[
-    ['Activo','Deudora','Cargo','Abono','Deudor',byTipo.a.join(', '),'Si el activo sube, un lado de A = P + C sube. Para que cuadre, ese aumento se anota en el debe. En la operación 1, Caja aumentó $50,000.00 y se cargó.'],
-    ['Pasivo','Acreedora','Abono','Cargo','Acreedor',byTipo.p.join(', '),'Si el pasivo sube, el lado derecho de la ecuación sube. Se anota en el haber. En la operación 5, Acreedores Diversos aumentó $12,000.00 y se abonó.'],
-    ['Capital','Acreedora','Abono','Cargo','Acreedor',byTipo.c.join(', '),'El capital aumenta con abono, igual que el pasivo, porque está a la derecha de A = P + C. En la operación 1, Capital social se abonó $100,000.00.'],
-    ['Ingreso','Acreedora','Abono','Cargo','Acreedor',byTipo.i.join(', '),'El ingreso aumenta el capital. Por eso se abona, como el capital. En la operación 9, Ventas se abonó $18,000.00.'],
-    ['Gasto','Deudora','Cargo','Abono','Deudor',byTipo.g.join(', '),'El gasto disminuye el capital. Se carga, del lado contrario al capital. En la operación 11, la renta de $3,000.00 se cargó.']
-  ];
-  box.innerHTML=`<div class="tw"><table class="grid">
-    <thead><tr><th>Clase</th><th>Naturaleza</th><th>Aumenta con</th><th>Disminuye con</th><th>Saldo normal</th><th>Cuentas del ejercicio</th></tr></thead>
-    <tbody>${rules.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td></tr>`).join('')}</tbody>
-  </table></div>
-  ${rules.map(r=>`<article class="nif"><h3>${r[0]}</h3><p>${r[6]}</p></article>`).join('')}`;
-}
-
-function renderNatGame(){
-  const box=$('natgame'); if(!box)return;
-  const accounts=Object.keys(CUENTAS);
-  let sel=null, placed={}, lock=false;
-  const types=[['a','Activo'],['p','Pasivo'],['c','Capital'],['i','Ingreso'],['g','Gasto']];
-  const draw=()=>{
-    const left=accounts.filter(k=>!placed[k]);
-    box.innerHTML=`<p class="inst">Toca una cuenta y luego su clase. Quedan ${left.length} de ${accounts.length}.</p>
-      <div class="pool">${left.map(k=>`<button type="button" class="chip${sel===k?' sel':''}" draggable="true" data-cta="${k}">${k}</button>`).join('')||'<span class="sidenote">Ya quedaron todas.</span>'}</div>
-      <div class="bins">${types.map(([id,lab])=>`<div class="bin ${id}" data-bin="${id}">
-        <h4>${lab}</h4>
-        <div class="drop">${accounts.filter(k=>placed[k]===id).map(k=>`<span class="chip in">${k}</span>`).join('')}</div>
-      </div>`).join('')}</div>
-      <p class="fb" id="natfb"></p>`;
-    box.querySelectorAll('.chip[data-cta]').forEach(ch=>{
-      ch.onclick=()=>{ sel = sel===ch.dataset.cta?null:ch.dataset.cta; draw(); };
-      ch.ondragstart=e=>{ sel=ch.dataset.cta; e.dataTransfer.setData('text/plain', sel); };
-    });
-    box.querySelectorAll('.bin').forEach(bin=>{
-      bin.ondragover=e=>e.preventDefault();
-      bin.ondrop=e=>{ e.preventDefault(); place(e.dataTransfer.getData('text/plain')||sel, bin.dataset.bin); };
-      bin.onclick=()=>{ if(sel) place(sel, bin.dataset.bin); };
-    });
-  };
-  function place(cta, tipo){
-    if(!cta||lock)return;
-    const ok=CUENTAS[cta].tipo===tipo;
-    const fb=()=>{};
-    if(ok){ placed[cta]=tipo; sel=null; }
-    draw();
-    const el=$('natfb');
-    el.className='fb show '+(ok?'ok':'no');
-    el.textContent=ok?`${cta} es ${TIPO_L[tipo]} de naturaleza ${CUENTAS[cta].nat}.`:`Todavía no. Piensa si ${cta} es lo que la empresa tiene, lo que debe, lo que es de las socias, lo que gana o lo que gasta.`;
-    if(Object.keys(placed).length===accounts.length){
-      el.className='fb show ok';
-      el.textContent='Listo: clasificaste las 16 cuentas del ejercicio.';
-      markRead('nat'); markDay();
-    }
-  }
-  draw();
-}
-
-function renderTipos(){
-  const box=$('tiposbox'); if(!box)return;
-  box.innerHTML=TIPOS.map(t=>{
-    const del=t.ops&&t.ops.length
-      ? `<p>En el ejercicio: operaciones ${t.ops.join(', ')}.</p>`+t.ops.map(n=>{
-          const op=OPS[n-1];
-          return `<div class="mini">${asientoHTML(op.e, 'Operación '+n+'. '+op.conc, n)}</div>`;
-        }).join('')
-      : `<p><b>Este tipo no aparece en el ejercicio.</b> El siguiente asiento es solo un ejemplo, para completar el catálogo.</p>${asientoHTML(t.ej.e, t.ej.conc, 'Ej.')}`;
-    return `<article class="tipocard" id="tipo-${t.id}">
-      <h3>${t.tit}</h3>
-      <p><b>Cómo.</b> ${t.como}</p>
-      <p><b>Por qué.</b> ${t.pq}</p>
-      ${del}
+function renderIvaTabla(){
+  const cards=IVA_TABLA.map(r=>{
+    const op=OPS.find(o=>o.n===r.n);
+    return `<article class="ivacard" id="iva-op-${r.n}">
+      <div class="top"><b>Operación ${r.n}</b><span class="${r.lleva?'si':'no'}">${r.lleva?'Sí lleva IVA':'No lleva IVA'}</span></div>
+      <p class="sidenote">${op?op.enun:''}</p>
+      <p><b>Por qué.</b> ${r.acto}</p>
+      <p><b>Cuenta.</b> ${r.cta}${r.imp?` · <span class="hl-art">${money(r.imp)}</span>`:''}</p>
+      ${r.nota?`<p class="sidenote">${r.nota}</p>`:''}
     </article>`;
   }).join('');
+  const quiz=IVA_TABLA.map(r=>{
+    const ans=st.quizIva[r.n];
+    const ok=ans===undefined?'' : (ans===r.lleva?' ok':' no');
+    return `<div class="card" data-iq="${r.n}">
+      <p class="qline">Operación ${r.n}. ¿Lleva IVA?</p>
+      <p class="sidenote">${OPS.find(o=>o.n===r.n).enun}</p>
+      <button type="button" class="opt${ans===true?ok:''}" data-iv="1">Sí</button>
+      <button type="button" class="opt${ans===false?ok:''}" data-iv="0">No</button>
+      ${ans!==undefined?`<div class="fb show ${ans===r.lleva?'ok':'no'}">${ans===r.lleva?'Bien. ':'Aún no. '}${r.acto}${r.imp?` Importe: ${money(r.imp)} en ${r.cta}.`:''}</div>`:''}
+    </div>`;
+  }).join('');
+  const done=Object.keys(st.quizIva).length;
+  const good=IVA_TABLA.filter(r=>st.quizIva[r.n]===r.lleva).length;
+  return `<h3>Las 15 operaciones, una por una</h3>
+    ${cards}
+    <h3>Juego: ¿lleva IVA?</h3>
+    <p class="inst">Toca Sí o No en cada operación. Llevas ${good} de ${done||0} bien.${done===15?` Resultado: ${good} de 15.`:''}</p>
+    ${quiz}`;
 }
-function renderClasifica(){
-  const box=$('clasbox'); if(!box)return;
-  let i=0, ok=0, lock=false;
-  const draw=()=>{
-    const op=OPS[i];
-    const tipo=TIPOS.find(t=>t.id===op.tipo);
-    box.innerHTML=`<p class="inst">Lee la operación ${op.n} y toca el tipo de asiento. Son las 15, una por una.</p>
-      <blockquote class="enun"><p>Operación ${op.n}. ${op.enun}</p></blockquote>
-      <div class="opts">${TIPOS.map(t=>`<button type="button" class="opt" data-id="${t.id}">${t.tit}</button>`).join('')}</div>
-      <p class="fb" id="clafb"></p>`;
-    box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
-      if(lock)return; lock=true;
-      const good=b.dataset.id===op.tipo;
-      if(good)ok++;
-      box.querySelectorAll('.opt').forEach(x=>{
-        if(x.dataset.id===op.tipo) x.classList.add('ok');
-        else if(x===b&&!good) x.classList.add('no');
-      });
-      const fb=$('clafb'); fb.className='fb show '+(good?'ok':'no');
-      fb.textContent=(good?'Correcto. ':'Todavía no. ')+tipo.tit+'. '+tipo.pq;
-      const n=document.createElement('button'); n.type='button'; n.className='act big'; n.textContent=i===OPS.length-1?'Ver resultado':'Siguiente operación';
-      n.onclick=()=>{ i++; lock=false; if(i>=OPS.length){ box.innerHTML=`<p class="fb show ok">Terminaste: ${ok} de ${OPS.length} tipos bien clasificados.</p><button type="button" class="act lt" id="clare">Reintentar</button>`; $('clare').onclick=()=>{i=0;ok=0;lock=false;draw()}; markRead('asi'); markDay(); } else draw(); };
-      box.appendChild(n); markDay();
-    });
-  };
-  draw();
+function renderAsiento5(){
+  const op=getOps().find(o=>o.n===5);
+  return `<div class="card yel">
+    <h3>El asiento 5, desglosado</h3>
+    <p class="enun">${OPS[4].enun}</p>
+    ${st.conIva?'': '<p class="sidenote">Estás viendo el enunciado, sin IVA. Activa “Con IVA 16 %” para ver el asiento de la clase.</p>'}
+    ${pasosHTML(op)}
+    ${asientoHTML(op.e, op.conc, 5)}
+    ${(op.why||[]).map(w=>`<div class="whyrow"><b>${w[0]} · ${w[2]} · ${w[1]}.</b> ${w[3]}</div>`).join('')}
+  </div>`;
+}
+function renderDiario(){
+  const ops=getOps();
+  if(st.step<1) st.step=1;
+  if(st.step>15) st.step=15;
+  const op=ops[st.step-1];
+  const {bal}=booksOf(ops, st.step, {});
+  const posted=!!st.revealed[op.n];
+  const opts=ops.map(o=>`<option value="${o.n}"${o.n===op.n?' selected':''}>Operación ${o.n}</option>`).join('');
+  const modeBar=`<div class="modes">
+    <button type="button" data-mode="practica" class="${st.mode==='practica'?'on':''}">Practicar</button>
+    <button type="button" data-mode="resuelto" class="${st.mode==='resuelto'?'on':''}">Ver resuelto</button>
+  </div>
+  <div class="opnav">
+    <button type="button" class="act lt" id="op-prev" ${st.step===1?'disabled':''}>Anterior</button>
+    <select class="jump" id="op-jump">${opts}</select>
+    <button type="button" class="act lt" id="op-next" ${st.step===15?'disabled':''}>Siguiente</button>
+  </div>`;
+  let body=`<div class="enun"><p><b>Operación ${op.n}.</b> ${op.enun}</p></div>`;
+  if(op.warn==='caja' && !st.opFix){
+    body+=`<div class="ojo mini"><p>Ojo: Caja solo tenía $50,000.00 y se depositan $60,000.00. El saldo de Caja queda acreedor. Se retoma en la lección 15.</p></div>`;
+  }
+  if(st.mode==='practica' && !posted){
+    const lines=op.e.length;
+    const ctas=['',...ctaList()];
+    const sel=ctas.map(c=>`<option value="${c}">${c||'Cuenta'}</option>`).join('');
+    body+=`<div class="try" id="trybox">
+      <p class="inst">Arma el asiento: cuenta, cargo o abono, e importe. Tiene ${lines} renglones.</p>
+      <div class="build">${Array.from({length:lines},(_,i)=>`<div class="line">
+        <select data-f="c">${sel}</select>
+        <select data-f="s"><option value="">Cargo o abono</option><option value="d">Cargo (debe)</option><option value="a">Abono (haber)</option></select>
+        <input data-f="a" inputmode="decimal" placeholder="Importe">
+      </div>`).join('')}</div>
+      <button type="button" class="act big" id="btn-grade">Calificar</button>
+      <button type="button" class="act lt" id="btn-sol">Ver la solución</button>
+      <div class="fb" id="tryfb"></div>
+    </div>`;
+  } else {
+    body+=pasosHTML(op);
+    body+=asientoHTML(op.e, op.conc, op.n);
+    body+=`<p class="manz"><b>Con manzanas.</b> ${op.manz}</p>`;
+    body+=`<p>${op.paso}</p>`;
+    (op.why||[]).forEach(w=>{ body+=`<div class="whyrow"><b>${w[0]} · ${w[2]} · ${w[1]}.</b> ${w[3]}</div>`; });
+  }
+  body+=cashBar(bal)+eqLine(bal);
+  const full=`<h3>Diario completo (hasta la operación ${st.step})</h3>${diarioHTML(ops.slice(0,st.step), {})}`;
+  return modeBar+body+full;
+}
+function renderMayor(){
+  const {bal,mov}=booksOf(getOps(),15,{});
+  return mayorHTML(mov,bal)+cashBar(bal);
+}
+function renderBalanza(){
+  const {bal,mov}=booksOf(getOps(),15,{});
+  return balanzaHTML(mov,bal)+eqLine(bal);
+}
+function renderEri(){
+  const {bal}=booksOf(getOps(),15,{});
+  return eriHTML(bal);
+}
+function renderEsf(){
+  const {bal}=booksOf(getOps(),15,{});
+  return esfHTML(bal);
+}
+function renderCierre(){
+  if(!st.conIva){
+    const {bal,mov}=booksOf(getOps(),15,{cierre:true});
+    const C=CIERRE_SIN;
+    return `<p class="sidenote">Estás viendo el enunciado, sin IVA. El cierre es solo el de ingresos y gastos, con utilidad de $15,800.00. Activa “Con IVA 16 %” para ver la determinación del IVA y el ISR didáctico.</p>
+      ${C.map(c=>`<article class="card">${asientoHTML(c.e,c.conc,c.n)}<p class="sidenote">${c.nota}</p></article>`).join('')}
+      <h3>Balanza después del cierre</h3>${balanzaHTML(mov,bal)}
+      <h3>Balance general después del cierre</h3>${esfHTML(bal)}`;
+  }
+  const mid=booksOf(getOps(),15,{ivaDet:true,isr:true});
+  const end=booksOf(getOps(),15,{ivaDet:true,isr:true,cierre:true});
+  return `<h3>1. Determinación mensual del IVA</h3>
+    <p>${IVA_DET.nota}</p>
+    ${asientoHTML(IVA_DET.e, IVA_DET.conc, IVA_DET.n)}
+    <h3>2. ISR del ejercicio (estimado didáctico)</h3>
+    <p>${ISR_AS.nota}</p>
+    ${asientoHTML(ISR_AS.e, ISR_AS.conc, ISR_AS.n)}
+    <h3>3. Cierre de ingresos, gastos e ISR</h3>
+    ${CIERRE_CON.map(c=>`<article class="card">${asientoHTML(c.e,c.conc,c.n)}<p class="sidenote">${c.nota}</p></article>`).join('')}
+    <h3>Estado de resultados, ya con el ISR</h3>
+    ${eriHTML(mid.bal)}
+    <h3>Balanza después del cierre</h3>
+    ${balanzaHTML(end.mov,end.bal)}
+    <h3>Balance general después del cierre</h3>
+    ${esfHTML(end.bal)}`;
+}
+function renderOjo(){
+  const a=booksOf(getOps(),15,{});
+  const prev=st.opFix;
+  st.opFix=true;
+  const b=booksOf(getOps(),15,{});
+  st.opFix=prev;
+  const sA=caps(a.bal), sB=caps(b.bal);
+  return `<label class="fixrow card">
+    <input type="checkbox" id="fix2" ${st.opFix?'checked':''}>
+    <span>Ver el ejercicio como si en la operación 2 se depositaran $50,000.00 (corrección didáctica, no es un dato del enunciado).</span>
+  </label>
+  <div class="card">
+    <h3>Como está el diario</h3>
+    ${cashBar(a.bal)}${eqLine(a.bal)}
+    <p class="sidenote">Activo ${money(sA.A)} = pasivo ${money(sA.P)} + capital ${money(sA.C)}.</p>
+  </div>
+  <div class="card green">
+    <h3>Si el depósito fuera de $50,000.00</h3>
+    ${cashBar(b.bal)}${eqLine(b.bal)}
+    <p class="sidenote">El total de activo no cambia: ${money(sB.A)}. Caja pasa a deudora y Bancos baja en la misma cantidad.</p>
+  </div>`;
 }
 function renderNif(){
-  const box=$('niflist'); if(!box)return;
-  box.innerHTML=NIFS.map(n=>`<article class="nif"><h3>${n.t}</h3><p>${n.uso}</p>${n.nota?`<p class="sidenote">${n.nota}</p>`:''}<p class="sidenote">Fuente: ${n.src}</p></article>`).join('');
-  const map=$('nifmap'); if(!map)return;
-  map.innerHTML=`<div class="tw"><table class="grid"><thead><tr><th>Cuenta del ejercicio</th><th>NIF</th><th>Saldo normal</th></tr></thead>
-    <tbody>${Object.keys(CUENTAS).map(k=>`<tr><td>${k}</td><td>${CUENTAS[k].nif}</td><td>${CUENTAS[k].nat}</td></tr>`).join('')}</tbody></table></div>`;
+  const nifs=NIFS.map(n=>`<article class="nif card">
+    <h3>${n.t}</h3>
+    <p>${n.uso}</p>
+    <p class="sidenote">${n.src}</p>
+    ${n.nota?`<p class="sidenote">${n.nota}</p>`:''}
+  </article>`).join('');
+  const rows=orderedKeys(CUENTAS).filter(k=>CUENTAS[k].nif && CUENTAS[k].nif.indexOf('NIF')===0).map(k=>{
+    const c=CUENTAS[k];
+    return `<tr><td>${k}</td><td>${c.nif}</td><td>${c.nat}</td></tr>`;
+  }).join('');
+  return nifs+`<h3>Cuenta, norma y saldo normal</h3>
+    <div class="tw sm"><table class="grid" aria-label="Cuentas y NIF">
+      <thead><tr><th>Cuenta</th><th>NIF</th><th>Saldo normal</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>
+    <p class="sidenote">Las cuentas de IVA y de ISR se rigen por la LIVA y la LISR, no por una NIF de la serie D. No se inventa una NIF D-4.</p>`;
 }
-
-let cabI=0, cabOk=0, cabLock=false;
-function cabDraw(){
-  const q=CABQ[cabI], box=$('cabbox'); if(!box)return;
-  box.innerHTML=`<p class="inst">Toca Debe (cargo) o Haber (abono). Pregunta ${cabI+1} de ${CABQ.length}.</p>
-    <p class="qline">${q.q}</p>
-    <div class="row"><button type="button" class="act big" data-v="c">Debe · Cargo</button>
-    <button type="button" class="act esp" data-v="a">Haber · Abono</button></div>
-    <p class="fb" id="cabfb"></p>
-    <button type="button" class="act lt" id="cabnext" hidden>Siguiente</button>`;
-  box.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{
-    if(cabLock)return; cabLock=true;
-    const good=b.dataset.v===q.a; if(good)cabOk++;
-    const fb=$('cabfb'); fb.className='fb show '+(good?'ok':'no');
-    fb.textContent=(good?'Correcto. ':'Todavía no. ')+q.e;
-    $('cabnext').hidden=false; markDay();
-  });
-  $('cabnext').onclick=()=>{
-    cabLock=false; cabI++;
-    if(cabI>=CABQ.length){
-      box.innerHTML=`<p class="fb show ok">Terminaste: ${cabOk} de ${CABQ.length}.</p><button type="button" class="act lt" id="cabre">Reintentar</button>`;
-      $('cabre').onclick=()=>{cabI=0;cabOk=0;cabDraw()};
-      markRead('prac'); return;
+function renderNatTable(){
+  const groups={a:[],p:[],c:[],i:[],g:[]};
+  Object.keys(CUENTAS).forEach(k=>{
+    const t=CUENTAS[k].tipo;
+    if(groups[t]){
+      if(!st.conIva && (k.indexOf('IVA')===0 || k.indexOf('ISR')===0)) return;
+      groups[t].push(k);
     }
-    cabDraw();
-  };
+  });
+  const row=(lab,nat,inc,dec,arr)=>`<tr><td>${lab}</td><td>${nat}</td><td>${inc}</td><td>${dec}</td><td>${arr.join(', ')}</td></tr>`;
+  return `<div class="tw"><table class="grid natab" aria-label="Naturaleza de las cuentas">
+    <thead><tr><th>Clase</th><th>Naturaleza</th><th>Aumenta con</th><th>Disminuye con</th><th>Cuentas de este ejercicio</th></tr></thead>
+    <tbody>
+      ${row('Activo','Deudora','Cargo','Abono',groups.a)}
+      ${row('Pasivo','Acreedora','Abono','Cargo',groups.p)}
+      ${row('Capital','Acreedora','Abono','Cargo',groups.c)}
+      ${row('Ingreso','Acreedora','Abono','Cargo',groups.i)}
+      ${row('Gasto','Deudora','Cargo','Abono',groups.g)}
+    </tbody>
+  </table></div>
+  <p class="sidenote">En una pantalla chica, desliza la tabla hacia los lados para ver las cuentas.</p>`;
 }
-let qI=0, qOk=0, qMode='estudio', qLock=false;
-function quizDraw(){
-  const box=$('qzbox'); if(!box)return;
-  if(!QUIZ[qI]){ quizResult(); return; }
-  const q=QUIZ[qI];
-  box.innerHTML=`<p class="inst">${qMode==='estudio'?'Modo de estudio: al responder verás la explicación.':'Examen: al responder solo ves si acertaste. Al final sale la calificación sobre 10.'} Pregunta ${qI+1} de ${QUIZ.length}.</p>
-    <p class="qline">${q.q}</p>
-    <div>${q.o.map((o,i)=>`<button type="button" class="opt" data-i="${i}">${o}</button>`).join('')}</div>
-    <p class="fb" id="qfb"></p>`;
-  box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
-    if(qLock)return; qLock=true;
-    const i=+b.dataset.i, good=i===q.a; if(good)qOk++;
-    box.querySelectorAll('.opt').forEach((x,j)=>{ if(j===q.a)x.classList.add('ok'); else if(j===i&&!good)x.classList.add('no'); });
-    const fb=$('qfb'); fb.className='fb show '+(good?'ok':'no');
-    fb.textContent=(good?'Correcto. ':'Todavía no. ')+(qMode==='estudio'?q.e:'');
-    const n=document.createElement('button'); n.type='button'; n.className='act big';
-    n.textContent=qI===QUIZ.length-1?'Ver calificación':'Siguiente pregunta';
-    n.onclick=()=>{ qI++; qLock=false; quizDraw(); };
-    box.appendChild(n); markDay();
+function renderNatGame(){
+  const cats=[{id:'a',n:'Activo'},{id:'p',n:'Pasivo'},{id:'c',n:'Capital'},{id:'i',n:'Ingreso'},{id:'g',n:'Gasto'}];
+  const names=Object.keys(CUENTAS).filter(k=>{
+    if(k==='Utilidad del periodo'||k==='IVA a favor'||k==='IVA por pagar'||k==='ISR por pagar'||k==='ISR del ejercicio') return false;
+    if(!st.conIva && k.indexOf('IVA')===0) return false;
+    return true;
+  });
+  if(!st.natSel) st.natSel=null;
+  if(!st.natPut) st.natPut={};
+  const pool=names.filter(k=>!st.natPut[k]);
+  const bins=cats.map(c=>{
+    const inside=names.filter(k=>st.natPut[k]===c.id);
+    return `<div class="bin ${c.id}" data-bin="${c.id}"><h4>${c.n}</h4>${inside.map(k=>`<span class="chip in" data-cta="${k}">${k}</span>`).join('')}</div>`;
+  }).join('');
+  const done=names.filter(k=>st.natPut[k]).length;
+  const good=names.filter(k=>st.natPut[k]===CUENTAS[k].tipo).length;
+  return `<p class="inst">Toca una cuenta y luego la clase donde va. ${done?`${good} de ${done} bien.`:''}</p>
+    <div class="pool">${pool.map(k=>`<span class="chip${st.natSel===k?' sel':''}" data-cta="${k}">${k}</span>`).join('')}</div>
+    <div class="bins">${bins}</div>
+    ${done===names.length?`<p class="check">${good} de ${names.length} correctas.</p>`:''}`;
+}
+function renderTipos(){
+  const ops=getOps();
+  const cards=TIPOS.map(t=>{
+    const ej=t.ops.length?ops.find(o=>o.n===t.ops[0]):null;
+    const lista=t.ops.length?`En este ejercicio: operaciones ${t.ops.join(', ')}.`:'Aquí no aparece; va un ejemplo.';
+    const as=ej?asientoHTML(ej.e, ej.conc, ej.n):(t.ej?asientoHTML(t.ej.e,t.ej.conc):'');
+    return `<article class="tipocard">
+      <h3>${t.tit}</h3>
+      <p><b>Cómo se hace.</b> ${t.como}</p>
+      <p><b>Por qué.</b> ${t.pq}</p>
+      <p class="sidenote">${lista} ${st.conIva && t.ops.some(n=>IVA_ASIENTO[n])?'Con IVA, varios de estos asientos se vuelven compuestos, pero el tipo no cambia.':''}</p>
+      ${as}
+    </article>`;
+  }).join('');
+  const clas=OPS.map(op=>{
+    const ans=st.clasif[op.n];
+    const ok=ans===undefined?'':(ans===op.tipo?' ok':' no');
+    const opts=TIPOS.filter(t=>t.ops.length || true).map(t=>`<button type="button" class="opt${ans===t.id?ok:''}" data-tipo="${t.id}">${t.tit}</button>`).join('');
+    const tip=TIPOS.find(t=>t.id===op.tipo);
+    return `<div class="card" data-cl="${op.n}">
+      <p class="qline">Operación ${op.n}. ¿Qué tipo de asiento es?</p>
+      <p class="sidenote">${op.enun}</p>
+      ${opts}
+      ${ans!==undefined?`<div class="fb show ${ans===op.tipo?'ok':'no'}">${ans===op.tipo?'Bien. ':'Aún no. '}Es: ${tip?tip.tit:op.tipo}.</div>`:''}
+    </div>`;
+  }).join('');
+  return cards+`<h3>Clasifica las 15</h3><p class="inst">Elige el tipo de cada operación.</p>`+clas;
+}
+function renderExam(){
+  const cab=CABQ[st.cabI]||CABQ[0];
+  const cabDone=st.cabAns[st.cabI];
+  const cabBox=`<div class="card" id="cabbox">
+    <p class="kicker">Cargo o abono · ${st.cabI+1} de ${CABQ.length}</p>
+    <p class="qline">${cab.q}</p>
+    <button type="button" class="opt${cabDone==='c'?(cab.a==='c'?' ok':' no'):''}" data-cab="c">Cargo</button>
+    <button type="button" class="opt${cabDone==='a'?(cab.a==='a'?' ok':' no'):''}" data-cab="a">Abono</button>
+    ${cabDone?`<div class="fb show ${cabDone===cab.a?'ok':'no'}">${cab.e}</div>
+      <button type="button" class="act lt" id="cab-next">${st.cabI<CABQ.length-1?'Siguiente pregunta':'Volver a la primera'}</button>`:''}
+  </div>`;
+  const mode=`<div class="modes">
+    <button type="button" data-exmode="estudio" class="${st.examMode==='estudio'?'on':''}">Modo estudio</button>
+    <button type="button" data-exmode="examen" class="${st.examMode==='examen'?'on':''}">Modo examen</button>
+  </div>`;
+  const qs=QUIZ.map((q,i)=>{
+    const ans=st.examAns[i];
+    const show=st.examMode==='estudio' && ans!==undefined;
+    const graded=st.examMode==='examen' && st.examDone;
+    const mark=show||graded;
+    return `<div class="card" data-qz="${i}">
+      <p class="qline">${i+1}. ${q.q}</p>
+      ${q.o.map((o,j)=>`<button type="button" class="opt${ans===j?(mark?(j===q.a?' ok':' no'):' sel'):''}${mark&&j===q.a&&ans!==j?' ok':''}" data-o="${j}">${o}</button>`).join('')}
+      ${show?`<div class="fb show ${ans===q.a?'ok':'no'}">${q.e}</div>`:''}
+    </div>`;
+  }).join('');
+  let foot='';
+  if(st.examMode==='examen' && !st.examDone){
+    foot=`<button type="button" class="act big" id="exam-end">Calificar el examen</button>`;
+  }
+  if(st.examMode==='examen' && st.examDone){
+    const good=QUIZ.filter((q,i)=>st.examAns[i]===q.a).length;
+    if(st.best==null || good>st.best){ st.best=good; sv(); progress(); }
+    foot=`<div class="card yel"><p class="grade">${good}</p><p>Sacaste ${good} de 10. Tu mejor calificación en este teléfono es ${st.best} de 10.</p>
+      <button type="button" class="act lt" id="exam-reset">Volver a intentarlo</button></div>`+QUIZ.map((q,i)=>{
+        const ans=st.examAns[i];
+        return `<div class="card"><p class="qline">${i+1}. ${q.q}</p><p class="${ans===q.a?'check':'ojo mini'}">${q.e}</p></div>`;
+      }).join('');
+  }
+  return cabBox+`<h3>Mini examen</h3>`+mode+qs+foot;
+}
+
+function specialHTML(les){
+  const k=les.special||les.game||les.catalogo||les.tabla;
+  if(k==='reglas') return renderReglas();
+  if(k==='ivaTabla') return renderIvaTabla();
+  if(k==='asiento5') return renderAsiento5();
+  if(k==='diario') return renderDiario();
+  if(k==='mayor') return renderMayor();
+  if(k==='balanza') return renderBalanza();
+  if(k==='eri') return renderEri();
+  if(k==='esf') return renderEsf();
+  if(k==='cierre') return renderCierre();
+  if(k==='ojo') return renderOjo();
+  if(k==='nif') return renderNif();
+  if(k==='exam') return renderExam();
+  if(k==='nat' && les.game==='nat') return renderNatGame();
+  if(k==='nat' && les.tabla==='nat') return renderNatTable();
+  if(k==='tipos') return renderTipos();
+  return '';
+}
+
+function renderCheck(les){
+  if(!les.check) return '';
+  if(!st.chk) st.chk={};
+  if(!st.chk[les.n]) st.chk[les.n]={};
+  const box=les.check.map((q,i)=>{
+    const ans=st.chk[les.n][i];
+    return `<div class="card" data-ck="${i}">
+      <p class="qline">${q.q}</p>
+      ${q.o.map((o,j)=>`<button type="button" class="opt${ans===j?(j===q.a?' ok':' no'):''}${ans!==undefined&&j===q.a&&ans!==j?' ok':''}" data-o="${j}">${o}</button>`).join('')}
+      ${ans!==undefined?`<div class="fb show ${ans===q.a?'ok':'no'}">${q.e}</div>`:''}
+    </div>`;
+  }).join('');
+  return `<h3>Repaso corto</h3>`+box;
+}
+
+function showIvaToggle(){
+  const on=st.lesson===0 || st.lesson>=7;
+  const box=$('ivatoggle');
+  if(!box) return;
+  box.hidden=!on;
+  box.querySelectorAll('button').forEach(b=>{
+    b.classList.toggle('on', (b.dataset.iva==='1')===st.conIva);
   });
 }
-function quizResult(){
-  const box=$('qzbox'); if(!box)return;
-  const grade=Math.round((qOk/QUIZ.length)*100)/10;
-  if(st.best==null||grade>st.best) st.best=grade;
-  sv(); markRead('prac');
-  box.innerHTML=`<p class="grade">${grade.toFixed(1)}</p>
-    <p class="sub" style="text-align:center">Acertaste ${qOk} de ${QUIZ.length}. Mejor calificación en este teléfono: ${Number(st.best).toFixed(1)}.</p>
-    <button type="button" class="act big" id="qretry">Volver a intentar</button>`;
-  $('qretry').onclick=()=>{ qI=0; qOk=0; qLock=false; quizDraw(); };
-}
 
-function tabFromHash(){
-  const h=(location.hash||'#inicio').slice(1);
-  document.querySelectorAll('.tabbar a').forEach(a=>a.classList.toggle('on', a.getAttribute('href')==='#'+h || (h==='ejercicio'&&a.getAttribute('href')==='#simulador') || ((h==='naturaleza'||h==='asientos'||h==='nif'||h==='cuentas')&&a.getAttribute('href')==='#cuentas') || (h==='libros'&&a.getAttribute('href')==='#libros')));
-}
-window.addEventListener('hashchange', tabFromHash);
-
-document.addEventListener('DOMContentLoaded',()=>{
-  drawStamps(); progress();
-  if($('fixdep')){
-    $('fixdep').onchange=()=>{ opFix=$('fixdep').checked; renderSim(); renderLibros(); };
+function renderIndex(){
+  $('vista-index').hidden=false;
+  $('vista-leccion').hidden=true;
+  $('hero').hidden=false;
+  $('creditos').hidden=false;
+  const ul=$('lindex');
+  ul.innerHTML=LESSONS.map(l=>`<li>
+    <a href="#l=${l.n}">
+      <span class="num">${String(l.n).padStart(2,'0')}</span>
+      <span class="tit">${l.tit}${st.read[l.n]?' <span class="done">✓</span>':''}</span>
+    </a>
+  </li>`).join('');
+  const first=LESSONS.find(l=>!st.read[l.n]);
+  const btn=$('resume');
+  if(btn){
+    if(!first) { btn.textContent='Volver al inicio del curso'; btn.dataset.go='1'; }
+    else if(st.read[1]){ btn.textContent='Seguir en la lección '+first.n; btn.dataset.go=String(first.n); }
+    else { btn.textContent='Empezar el curso'; btn.dataset.go='1'; }
   }
-  renderOplist(); renderSim(); renderLibros(); renderNat(); renderNatGame();
-  renderTipos(); renderClasifica(); renderNif(); cabDraw(); quizDraw();
-  if($('qestudio')) $('qestudio').onclick=()=>{ qMode='estudio'; qI=0; qOk=0; qLock=false; quizDraw(); };
-  if($('qexamen')) $('qexamen').onclick=()=>{ qMode='examen'; qI=0; qOk=0; qLock=false; quizDraw(); };
-  tabFromHash();
-  if($('resume')) $('resume').onclick=()=>{ location.hash='#simulador'; };
-  document.querySelectorAll('[data-mark]').forEach(b=>b.addEventListener('click',()=>{ markRead(b.dataset.mark); b.textContent='Lista'; b.classList.add('esp'); }));
-});
+  $('btn-prev').disabled=true;
+  $('btn-next').textContent='Empezar';
+  $('btn-ind').textContent='Índice';
+  showIvaToggle();
+  drawStamps();
+  progress();
+}
+
+function renderLesson(){
+  const les=LESSONS.find(l=>l.n===st.lesson);
+  if(!les){ st.lesson=0; renderIndex(); return; }
+  $('vista-index').hidden=true;
+  $('vista-leccion').hidden=false;
+  $('hero').hidden=true;
+  $('creditos').hidden=true;
+  $('l-kicker').textContent=`Lección ${les.n} de ${LESSONS.length}`;
+  $('l-tit').textContent=les.tit;
+  $('l-obj').innerHTML=`<p><b>Objetivo.</b> ${les.obj}</p>`;
+  $('l-exp').innerHTML=(les.exp||[]).map(p=>`<p>${p}</p>`).join('');
+  $('l-manz').innerHTML=les.manz||'';
+  $('l-apl').innerHTML=`<p>${les.apl||''}</p>`;
+  $('l-special').innerHTML=specialHTML(les);
+  const ask=les.pregunta;
+  if(ask){
+    $('l-ask').innerHTML=`<h3>Pregúntale</h3><p class="qline">${ask.q}</p>
+      <button type="button" class="whybtn" id="btn-ask">${st.askOn?'Ocultar la respuesta':'Mostrar la respuesta'}</button>
+      <div class="ans" id="ask-ans" ${st.askOn?'':'hidden'}>${ask.a}</div>`;
+  } else $('l-ask').innerHTML='';
+  $('l-check').innerHTML=renderCheck(les);
+  $('l-guion-p').innerHTML=les.guion||'';
+  $('btn-prev').disabled=false;
+  $('btn-prev').textContent=les.n===1?'Índice':'Anterior';
+  $('btn-next').textContent=les.n===LESSONS.length?'Índice':'Siguiente lección';
+  $('btn-ind').textContent=`${les.n} / ${LESSONS.length}`;
+  showIvaToggle();
+  markRead(les.n);
+  bindSpecial(les);
+  const askBtn=$('btn-ask');
+  if(askBtn) askBtn.onclick=()=>{ st.askOn=!st.askOn; sv(); renderLesson(); };
+}
+
+function bindSpecial(les){
+  const k=les.special||les.game||les.catalogo||les.tabla;
+  const root=$('l-special');
+  if(k==='ivaTabla'){
+    root.querySelectorAll('[data-iq]').forEach(card=>{
+      const n=+card.dataset.iq;
+      card.querySelectorAll('[data-iv]').forEach(b=>{
+        b.onclick=()=>{ st.quizIva[n]=b.dataset.iv==='1'; sv(); markDay(); renderLesson(); };
+      });
+    });
+  }
+  if(k==='diario'){
+    root.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{ st.mode=b.dataset.mode; sv(); renderLesson(); });
+    const jp=$('op-jump'); if(jp) jp.onchange=()=>{ st.step=+jp.value; st.askOn=false; sv(); renderLesson(); };
+    const pr=$('op-prev'); if(pr) pr.onclick=()=>{ if(st.step>1){ st.step--; sv(); renderLesson(); } };
+    const nx=$('op-next'); if(nx) nx.onclick=()=>{ if(st.step<15){ st.step++; sv(); renderLesson(); } };
+    const g=$('btn-grade'); if(g) g.onclick=gradeTry;
+    const s=$('btn-sol'); if(s) s.onclick=()=>{ st.revealed[st.step]=1; st.mode='resuelto'; sv(); renderLesson(); };
+  }
+  if(k==='ojo'){
+    const f=$('fix2'); if(f) f.onchange=()=>{ st.opFix=f.checked; sv(); renderLesson(); };
+  }
+  if(les.game==='nat'){
+    root.querySelectorAll('[data-cta]').forEach(ch=>{
+      ch.onclick=()=>{ st.natSel=ch.dataset.cta; renderLesson(); };
+    });
+    root.querySelectorAll('[data-bin]').forEach(bin=>{
+      bin.onclick=()=>{
+        if(!st.natSel) return;
+        if(!st.natPut) st.natPut={};
+        st.natPut[st.natSel]=bin.dataset.bin;
+        st.natSel=null; sv(); markDay(); renderLesson();
+      };
+    });
+  }
+  if(k==='tipos'){
+    root.querySelectorAll('[data-cl]').forEach(card=>{
+      const n=+card.dataset.cl;
+      card.querySelectorAll('[data-tipo]').forEach(b=>{
+        b.onclick=()=>{ st.clasif[n]=b.dataset.tipo; sv(); markDay(); renderLesson(); };
+      });
+    });
+  }
+  if(k==='exam'){
+    root.querySelectorAll('[data-cab]').forEach(b=>{
+      b.onclick=()=>{ st.cabAns[st.cabI]=b.dataset.cab; sv(); markDay(); renderLesson(); };
+    });
+    const cn=$('cab-next'); if(cn) cn.onclick=()=>{ st.cabI=(st.cabI+1)%CABQ.length; sv(); renderLesson(); };
+    root.querySelectorAll('[data-exmode]').forEach(b=>b.onclick=()=>{ st.examMode=b.dataset.exmode; st.examDone=false; if(b.dataset.exmode==='examen') st.examAns={}; sv(); renderLesson(); });
+    root.querySelectorAll('[data-qz]').forEach(card=>{
+      const i=+card.dataset.qz;
+      card.querySelectorAll('[data-o]').forEach(b=>{
+        b.onclick=()=>{
+          if(st.examMode==='examen' && st.examDone) return;
+          st.examAns[i]=+b.dataset.o; sv(); markDay();
+          if(st.examMode==='estudio') renderLesson();
+          else {
+            b.classList.add('sel');
+            card.querySelectorAll('[data-o]').forEach(x=>{ if(x!==b) x.classList.remove('sel'); });
+          }
+        };
+      });
+    });
+    const end=$('exam-end'); if(end) end.onclick=()=>{ st.examDone=true; sv(); markDay(); renderLesson(); };
+    const rst=$('exam-reset'); if(rst) rst.onclick=()=>{ st.examAns={}; st.examDone=false; sv(); renderLesson(); };
+  }
+  $('l-check').querySelectorAll('[data-ck]').forEach(card=>{
+    const i=+card.dataset.ck;
+    card.querySelectorAll('[data-o]').forEach(b=>{
+      b.onclick=()=>{
+        if(!st.chk) st.chk={};
+        if(!st.chk[les.n]) st.chk[les.n]={};
+        st.chk[les.n][i]=+b.dataset.o; sv(); markDay(); renderLesson();
+      };
+    });
+  });
+}
+
+function gradeTry(){
+  const op=getOps()[st.step-1];
+  const lines=[...document.querySelectorAll('#trybox .line')].map(row=>{
+    const c=row.querySelector('[data-f="c"]').value;
+    const s=row.querySelector('[data-f="s"]').value;
+    let a=row.querySelector('[data-f="a"]').value.trim().replace(/,/g,'');
+    a=parseFloat(a);
+    return {c,s,a};
+  });
+  const fb=$('tryfb');
+  if(lines.some(l=>!l.c||!l.s||!(l.a>0))){
+    fb.className='fb show no';
+    fb.textContent='Llena cuenta, cargo o abono, e importe en cada renglón.';
+    return;
+  }
+  const key=l=>l.c+'|'+l.s+'|'+Math.round(l.a*100);
+  const want=op.e.map(([c,a,s])=>key({c,s,a})).sort().join(';');
+  const got=lines.map(key).sort().join(';');
+  if(want===got){
+    st.revealed[op.n]=1; sv(); markDay();
+    fb.className='fb show ok';
+    fb.textContent='Bien. Las cuentas, los lados y los importes cuadran. Mira ahora los cuatro pasos y el porqué.';
+    setTimeout(()=>renderLesson(), 600);
+  } else {
+    const sd=lines.filter(l=>l.s==='d').reduce((n,l)=>n+l.a,0);
+    const sa=lines.filter(l=>l.s==='a').reduce((n,l)=>n+l.a,0);
+    fb.className='fb show no';
+    fb.textContent=almost(sd,sa)?'Las sumas del debe y el haber sí son iguales, pero alguna cuenta, lado o importe no es el de este asiento. Revísalo y vuelve a calificar.':'Las sumas del debe y el haber no son iguales. En cada asiento tienen que cuadrar.';
+  }
+}
+
+function go(n){
+  st.lesson=n; st.askOn=false; sv();
+  if(n===0) location.hash='#inicio';
+  else location.hash='#l='+n;
+  render();
+  window.scrollTo(0,0);
+}
+function render(){
+  if(st.lesson===0) renderIndex();
+  else renderLesson();
+}
+function fromHash(){
+  const h=location.hash||'';
+  const m=h.match(/l=(\d+)/);
+  if(m){ const n=+m[1]; st.lesson=(n>=1&&n<=LESSONS.length)?n:0; }
+  else st.lesson=0;
+  render();
+}
+
+function boot(){
+  drawStamps(); progress();
+  $('ivatoggle').addEventListener('click', ev=>{
+    const b=ev.target.closest('button[data-iva]');
+    if(!b) return;
+    st.conIva=b.dataset.iva==='1'; sv(); render();
+  });
+  $('resume').addEventListener('click', ()=>go(+( $('resume').dataset.go||1 )));
+  $('btn-prev').addEventListener('click', ()=>{
+    if(st.lesson<=1) go(0);
+    else go(st.lesson-1);
+  });
+  $('btn-next').addEventListener('click', ()=>{
+    if(st.lesson===0) go(1);
+    else if(st.lesson>=LESSONS.length) go(0);
+    else go(st.lesson+1);
+  });
+  $('btn-ind').addEventListener('click', ev=>{ ev.preventDefault(); go(0); });
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+}
+boot();
 
 </script>
 </body>
