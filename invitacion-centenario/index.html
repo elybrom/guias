@@ -233,6 +233,20 @@ section{position:relative}
 .logos .sep{width:1px;height:clamp(36px,9vw,60px);background:linear-gradient(transparent,var(--g4),transparent);flex:none}
 .foot{font-family:var(--sans);font-weight:500;font-size:clamp(9.5px,2.6vw,12px);letter-spacing:.32em;line-height:2;color:var(--g5);margin-top:clamp(34px,6vh,54px);padding:0 6vw}
 
+
+/* canto */
+.sing{padding:clamp(30px,6vh,70px) 0 clamp(60px,10vh,110px);text-align:center}
+.sing .sec-title{font-size:clamp(38px,10.6vw,100px);white-space:nowrap;margin-bottom:clamp(14px,2.5vh,22px)}
+.song-title{font-family:var(--script);font-size:clamp(50px,14vw,96px);line-height:1.1;color:var(--cream);margin:.12em 0 clamp(26px,5vh,46px);text-shadow:0 4px 24px rgba(0,0,0,.5)}
+.lyric-arch{position:relative;width:min(90vw,560px);margin:0 auto;padding:clamp(96px,26vw,150px) clamp(18px,6vw,50px) clamp(44px,8vw,64px);
+  border:1px solid rgba(235,207,136,.7);border-radius:50% 50% 22px 22px/ min(45vw,280px) min(45vw,280px) 22px 22px;
+  background:linear-gradient(180deg,rgba(29,58,122,.38),rgba(10,21,51,.45));box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 40px rgba(214,178,94,.08)}
+.lyric-arch::before{content:"";position:absolute;inset:9px;border:1px solid rgba(235,207,136,.28);border-radius:50% 50% 15px 15px/ calc(min(45vw,280px) - 9px) calc(min(45vw,280px) - 9px) 15px 15px;pointer-events:none}
+.lyric-arch .star{position:absolute;left:50%;top:-13px;transform:translateX(-50%);color:var(--g3);font-size:18px;line-height:1;text-shadow:0 0 12px var(--g2),0 0 2px #fff}
+.stanza{margin:0 0 clamp(20px,4.5vw,28px)}.stanza:last-child{margin-bottom:0}
+.ly{font-family:var(--body);font-style:italic;font-size:clamp(19px,5.2vw,24px);line-height:1.5;color:var(--cream)}
+.voice{font-family:var(--sans);font-weight:600;font-size:clamp(10px,2.7vw,11.5px);letter-spacing:.42em;text-indent:.42em;color:var(--g5);margin-bottom:6px}
+
 /* desktop */
 @media (min-width:900px){
   .ghost{font-size:min(14.5vw,300px);-webkit-text-stroke:1px rgba(214,178,94,.14)}
@@ -376,6 +390,24 @@ section{position:relative}
     </div>
   </section>
 
+  <!-- CANTO -->
+  <section class="sing" id="cantar">
+    <h2 class="sec-title foil rv">Acompáñanos a cantar</h2>
+    <p class="kicker rv">CANTO CONGREGACIONAL</p>
+    <p class="song-title rv">Abre mis ojos</p>
+    <div class="lyric-arch">
+      <span class="star" aria-hidden="true">✦</span>
+      <div class="lyrics">
+        <div class="stanza"><p class="ly">Abre mis ojos, oh, Cristo</p><p class="ly">Abre mis ojos, Te pido</p><p class="ly">Yo quiero verte</p><p class="ly">Yo quiero verte</p></div>
+        <div class="stanza"><p class="ly">Abre mis ojos, oh, Cristo</p><p class="ly">Abre mis ojos, Te pido</p><p class="ly">Yo quiero verte</p><p class="ly">Yo quiero verte</p></div>
+        <div class="stanza"><p class="ly">Y contemplar Tu majestad</p><p class="ly">Y el resplandor de Tu gloria</p><p class="ly">Derrama Tu amor y poder</p><p class="ly">Cuando cantamos: Santo, santo</p></div>
+        <div class="stanza"><p class="voice">HOMBRES</p><p class="ly">//Santo, santo, santo</p><p class="ly">Santo, santo, santo//</p></div>
+        <div class="stanza"><p class="voice">MUJERES</p><p class="ly">//Yo quiero verte</p><p class="ly">Yo quiero verte//</p></div>
+        <div class="stanza"><p class="ly">Y contemplar Tu majestad</p><p class="ly">Y el resplandor de Tu gloria</p><p class="ly">Derrama Tu amor y poder</p><p class="ly">Cuando cantamos: Santo, santo</p></div>
+      </div>
+    </div>
+  </section>
+
   <!-- CIERRE -->
   <section class="closing" id="cierre">
     <div class="band"><img src="assets/orquesta.jpg" alt="Orquesta y coro en concierto" class="px2" loading="lazy"></div>
@@ -503,6 +535,10 @@ function setupScroll(){
   });
   gsap.utils.toArray('.card').forEach(c=>{ScrollTrigger.create({trigger:c,start:'top 70%',onEnter:()=>c.classList.add('lit')});});
   gsap.utils.toArray('.item').forEach((it,i)=>{gsap.from(it,{x:-24,duration:1,ease:'power3.out',scrollTrigger:{trigger:it,start:'top 90%'}});});
+  gsap.utils.toArray('.stanza').forEach(s=>{
+    gsap.from(s.children,{y:16,opacity:0,filter:'blur(4px)',duration:.8,stagger:.12,ease:'power2.out',scrollTrigger:{trigger:s,start:'top 88%'}});
+  });
+  gsap.from('.lyric-arch',{opacity:0,y:40,scale:.97,duration:1.2,ease:'power3.out',scrollTrigger:{trigger:'.lyric-arch',start:'top 90%'}});
   // parallax
   gsap.to('#heroImg',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
   gsap.to('.ghost.top',{yPercent:-40,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
