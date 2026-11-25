@@ -247,6 +247,34 @@ section{position:relative}
 .ly{font-family:var(--body);font-style:italic;font-size:clamp(19px,5.2vw,24px);line-height:1.5;color:var(--cream)}
 .voice{font-family:var(--sans);font-weight:600;font-size:clamp(10px,2.7vw,11.5px);letter-spacing:.42em;text-indent:.42em;color:var(--g5);margin-bottom:6px}
 
+
+/* music toggle */
+.music-btn{position:fixed;z-index:80;right:max(14px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));
+  width:52px;height:52px;padding:0;border-radius:50%;border:1px solid rgba(246,230,178,.78);
+  background:radial-gradient(circle at 32% 28%,#f8edc4 0%,#e3c36a 38%,#be9145 68%,#8a6527 100%);
+  box-shadow:0 10px 28px rgba(0,0,0,.5),0 0 0 4px rgba(10,21,51,.35),0 0 0 5px rgba(214,178,94,.38),0 0 22px rgba(214,178,94,.28),inset 0 1px 0 rgba(255,255,240,.55);
+  cursor:pointer;display:grid;place-items:center;opacity:0;pointer-events:none;transform:translateY(8px) scale(.88);
+  transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.2,1);-webkit-tap-highlight-color:transparent}
+.music-btn.show{opacity:1;pointer-events:auto;transform:none}
+.music-btn:hover{filter:brightness(1.07)}
+.music-btn .eq,.music-btn .play{grid-area:1/1}
+.music-btn .play{width:0;height:0;margin-left:3px;border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent #0a1533;opacity:1;transition:opacity .2s}
+.music-btn .eq{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:16px;opacity:0;transition:opacity .2s}
+.music-btn .eq i{display:block;width:3px;border-radius:2px;background:#0a1533;height:6px;transform-origin:bottom}
+.music-btn.playing .play{opacity:0}
+.music-btn.playing .eq{opacity:1}
+.music-btn.playing .eq i{animation:eqbar .9s ease-in-out infinite}
+.music-btn.playing .eq i:nth-child(1){animation-duration:.8s}
+.music-btn.playing .eq i:nth-child(2){animation-duration:1.05s;animation-delay:.12s}
+.music-btn.playing .eq i:nth-child(3){animation-duration:.7s;animation-delay:.22s}
+.music-btn.playing .eq i:nth-child(4){animation-duration:.95s;animation-delay:.08s}
+@keyframes eqbar{0%,100%{height:5px}50%{height:16px}}
+.card h3{overflow-wrap:break-word;text-wrap:balance}
+.card.long{align-items:flex-start}
+.card.long .n{padding-top:.08em}
+.card.long h3{letter-spacing:.05em;font-size:clamp(13.5px,3.55vw,18px);line-height:1.28}
+.card .nm{white-space:nowrap}
+.card.long p{font-size:clamp(15.5px,4vw,18px)}
 /* desktop */
 @media (min-width:900px){
   .ghost{font-size:min(14.5vw,300px);-webkit-text-stroke:1px rgba(214,178,94,.14)}
@@ -289,6 +317,13 @@ section{position:relative}
     <div class="tap" aria-hidden="true">Toca para abrir</div>
   </div>
 </div>
+
+<button type="button" class="music-btn" id="musicBtn" aria-label="Reproducir música" aria-pressed="false">
+  <span class="play" aria-hidden="true"></span>
+  <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</button>
+<audio id="bgm" src="assets/musica.mp3" loop preload="none" playsinline></audio>
+
 
 <main id="top">
   <!-- HERO -->
@@ -379,12 +414,13 @@ section{position:relative}
       <div class="part">
         <div class="part-h rv"><b>PARTE 2</b><i></i></div>
         <div class="tl"><span class="tl-line"></span>
-          <div class="item rv"><div class="card"><span class="n foil">07</span><div class="t"><h3>INSTITUTOS DE MÚSICA IMMAP</h3><p>Samuel Antonio Martínez Rincón · Víctor González Corona</p></div></div></div>
-          <div class="item m rv"><div class="mini"><span class="n2">08</span><span>VIDEO / ACTIVIDAD JUVENIL</span><i></i></div></div>
-          <div class="item rv"><div class="card"><span class="n foil">09</span><div class="t"><h3>COMISIÓN GENERAL DE MÚSICA</h3><p>David Téllez Xolalpa · Nancy Moctezuma Martínez</p></div></div></div>
-          <div class="item m rv"><div class="mini"><span class="n2">10</span><span>PREDICACIÓN</span><i></i></div></div>
-          <div class="item rv"><div class="card"><span class="n foil">11</span><div class="t"><h3>ORQUESTA PRESBITERIAL SUR ORIENTE</h3><p>Tomás Noguerón Martínez · Carlos Hernández · Isaí Martínez Hernández</p></div></div></div>
-          <div class="item m rv"><div class="mini"><span class="n2">12</span><span>CIERRE</span><i></i></div></div>
+          <div class="item rv"><div class="card"><span class="n foil">07</span><div class="t"><h3>ESTUDIANTINAS DE LA ICIAR</h3><p>Benjamín Martínez Ibáñez</p></div></div></div>
+          <div class="item rv"><div class="card"><span class="n foil">08</span><div class="t"><h3>INSTITUTOS DE MÚSICA IMMAP</h3><p>Samuel Antonio Martínez Rincón · Víctor González Corona</p></div></div></div>
+          <div class="item m rv"><div class="mini"><span class="n2">09</span><span>VIDEO / ACTIVIDAD JUVENIL</span><i></i></div></div>
+          <div class="item rv"><div class="card"><span class="n foil">10</span><div class="t"><h3>COMISIÓN GENERAL DE MÚSICA</h3><p>David Téllez Xolalpa · Nancy Moctezuma Martínez</p></div></div></div>
+          <div class="item m rv"><div class="mini"><span class="n2">11</span><span>PREDICACIÓN</span><i></i></div></div>
+          <div class="item rv"><div class="card long"><span class="n foil">12</span><div class="t"><h3>ORQUESTA Y CORO DEL PRESBITERIO SUR ORIENTE DEL VALLE DE MÉXICO</h3><p><span class="nm">Tomás Noguerón Martínez</span> · <span class="nm">Isaí Martínez Hernández</span> · <span class="nm">Carlos Hernández Cervantes</span> · <span class="nm">Ángel Hernández Martínez</span></p></div></div></div>
+          <div class="item m rv"><div class="mini"><span class="n2">13</span><span>CIERRE</span><i></i></div></div>
         </div>
       </div>
     </div>
@@ -552,10 +588,54 @@ function setupScroll(){
 
 /* ---------- opening ---------- */
 const intro=document.getElementById('intro'),btn=document.getElementById('openBtn');
-let opened=false;
+const bgm=document.getElementById('bgm'),musicBtn=document.getElementById('musicBtn');
+let opened=false,wantMusic=false;
+function setMusicUI(on){
+  musicBtn.classList.toggle('playing',on);
+  musicBtn.setAttribute('aria-pressed',on?'true':'false');
+  musicBtn.setAttribute('aria-label',on?'Pausar música':'Reproducir música');
+}
+function fadeInMusic(){
+  bgm.volume=0;
+  const to=.72,dur=1600,t0=performance.now();
+  (function step(now){
+    if(bgm.paused||!wantMusic)return;
+    const k=Math.max(0,Math.min(1,(now-t0)/dur));
+    bgm.volume=Math.max(0,Math.min(1,to*k));
+    if(k<1)requestAnimationFrame(step);
+  })(t0);
+}
+function startMusic(){
+  wantMusic=true;
+  musicBtn.classList.add('show');
+  try{bgm.preload='auto'}catch(e){}
+  const p=bgm.play();
+  fadeInMusic();
+  setMusicUI(true);
+  if(p&&p.catch)p.catch(()=>{wantMusic=false;setMusicUI(false)});
+}
+function toggleMusic(){
+  if(bgm.paused){
+    wantMusic=true;
+    bgm.volume=.72;
+    const p=bgm.play();
+    setMusicUI(true);
+    if(p&&p.catch)p.catch(()=>{wantMusic=false;setMusicUI(false)});
+  }else{
+    wantMusic=false;
+    bgm.pause();
+    setMusicUI(false);
+  }
+}
+musicBtn.addEventListener('click',e=>{e.stopPropagation();toggleMusic()});
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){if(wantMusic&&!bgm.paused)bgm.pause()}
+  else if(wantMusic&&bgm.paused)bgm.play().catch(()=>{});
+});
 function finish(){intro.remove();document.body.classList.remove('locked');if(hasG&&typeof ScrollTrigger!=='undefined')ScrollTrigger.refresh();}
 function open(){
   if(opened)return;opened=true;
+  startMusic();
   const r=btn.getBoundingClientRect();
   if(!hasG||RM){intro.style.transition='opacity .6s';intro.style.opacity=0;setTimeout(finish,620);return;}
   confetti(r.left+r.width/2,r.top+r.height/2,mob?110:190);
@@ -573,7 +653,7 @@ function open(){
 btn.addEventListener('click',open);
 intro.addEventListener('click',e=>{if(e.target===intro||e.target.classList.contains('curtain'))open();});
 addEventListener('keydown',e=>{if(!opened&&(e.key==='Enter'||e.key===' '))open();});
-if(location.hash==='#abierta'||new URLSearchParams(location.search).has('abierta')){opened=true;finish();heroTL&&heroTL.progress(1);}
+if(location.hash==='#abierta'||new URLSearchParams(location.search).has('abierta')){opened=true;finish();heroTL&&heroTL.progress(1);musicBtn.classList.add('show');}
 setupScroll();
 })();
 </script>
