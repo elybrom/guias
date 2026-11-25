@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ICIAR//Concierto Conmemorativo//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:concierto-centenario-iciar-20261127@elybrom.github.io
+DTSTAMP:20261125T000000Z
+DTSTART:20261127T223000Z
+DTEND:20261128T013000Z
+SUMMARY:Concierto Conmemorativo ICIAR · 100 años de Gracia
+DESCRIPTION:Un siglo de la fidelidad de nuestro Dios.
+LOCATION:Teatro de la Ciudad Esperanza Iris\, Donceles 36\, Centro Histórico\, Ciudad de México
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Concierto Conmemorativo ICIAR · 100 años de Gracia
+END:VALARM
+END:VEVENT
+END:VCALENDAR
