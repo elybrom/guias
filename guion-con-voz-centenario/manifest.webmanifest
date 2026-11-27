@@ -1,0 +1,11 @@
+{
+  "name": "Guion con voz · 100 Años de Gratitud",
+  "short_name": "Guion con voz",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0405",
+  "theme_color": "#0a0405",
+  "lang": "es",
+  "description": "Guion de locución del Concierto del Centenario, con la voz de Eli Nogueron en cada uno de sus fragmentos."
+}
