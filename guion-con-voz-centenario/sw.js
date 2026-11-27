@@ -1,5 +1,5 @@
 /* Guion con voz · Centenario */
-const CACHE='gv-centenario-v1';
+const CACHE='gv-centenario-v2';
 self.addEventListener('install', event=>{
   event.waitUntil(self.skipWaiting());
 });
