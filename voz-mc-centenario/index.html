@@ -71,6 +71,7 @@ h1 i{font-weight:500; font-style:italic; display:block; font-size:.48em; margin-
 #tm{font:600 13px Inter,sans-serif; color:var(--soft); min-width:4.8em; text-align:right}
 @media (max-width:420px){ body{font-size:20px} .tx{font-size:1.14em} }
 @media (prefers-reduced-motion:reduce){ *{scroll-behavior:auto} }
+#eliPlayErr{display:none;position:fixed;left:12px;right:12px;bottom:88px;z-index:80;padding:10px 12px;border-radius:12px;background:#7a1d3c;color:#fff8ea;font:600 14px Inter,sans-serif}#eliPlayErr:not([hidden]){display:block}
 </style>
 </head>
 <body>
@@ -480,3 +481,122 @@ h1 i{font-weight:500; font-style:italic; display:block; font-size:.48em; margin-
   <p class="tx">Con gratitud y reverencia, cantemos al Niño que nació en Belén: «Noche de paz».</p>
   <button type="button" class="play" aria-label="Reproducir línea 79">▶ Reproducir</button>
 </article>
+</main>
+<div id="bar" role="region" aria-label="Reproductor">
+  <div class="who" id="bwho"></div>
+  <div class="ttl" id="btitle"></div>
+  <div class="ctrls">
+    <button type="button" class="play" id="prev" aria-label="Anterior">⟨</button>
+    <button type="button" class="play" id="pp" aria-label="Pausa o continuar">⏸</button>
+    <button type="button" class="play" id="next" aria-label="Siguiente">⟩</button>
+    <progress id="prog" value="0" max="100"></progress>
+    <span id="tm"></span>
+  </div>
+</div>
+<div id="eliPlayErr" hidden role="alert"></div>
+<script>
+function makeAudio(){
+  const a=new Audio();
+  a.setAttribute('playsinline','');
+  a.setAttribute('webkit-playsinline','');
+  a.playsInline=true;
+  a.preload='auto';
+  return a;
+}
+const items=[...document.querySelectorAll('.card')].map(c=>({
+  el:c, i:+c.dataset.i, src:c.dataset.src,
+  title:c.querySelector('.mom').textContent,
+  time:c.querySelector('.time').textContent
+}));
+let audio=makeAudio();
+const bar=document.getElementById('bar');
+const btitle=document.getElementById('btitle');
+const bwho=document.getElementById('bwho');
+const pp=document.getElementById('pp');
+const prog=document.getElementById('prog');
+const tm=document.getElementById('tm');
+let cur=-1, queue=false;
+function fmt(t){t=Math.max(0,t||0); const m=Math.floor(t/60), s=Math.floor(t%60); return m+':'+(s<10?'0':'')+s;}
+function showErr(msg){
+  const box=document.getElementById('eliPlayErr');
+  if(!box) return;
+  box.textContent=msg||'';
+  box.hidden=!msg;
+}
+function clearOn(){
+  document.querySelectorAll('.card.now').forEach(e=>e.classList.remove('now'));
+  document.querySelectorAll('.play.on,.playall.on').forEach(e=>{e.classList.remove('on'); if(e.classList.contains('play')&&e.id!=='pp'&&e.id!=='prev'&&e.id!=='next') e.textContent='▶ Reproducir';});
+  document.getElementById('all').classList.toggle('on', queue && !audio.paused);
+}
+function bindAudio(a){
+  a.addEventListener('timeupdate',()=>{
+    const d=a.duration||0, t=a.currentTime||0;
+    prog.max=d||100; prog.value=t; tm.textContent=fmt(t)+(d? ' / '+fmt(d):'');
+  });
+  a.addEventListener('ended',()=>{
+    if(queue && cur<items.length-1) playAt(cur+1,true);
+    else { clearOn(); pp.textContent='▶'; }
+  });
+  a.addEventListener('error',()=>{
+    const code=a.error&&a.error.message?a.error.message:('error '+(a.error&&a.error.code||''));
+    showErr('No se pudo reproducir el audio ('+code+'). Cierra esta pestaña y ábrela de nuevo.');
+  });
+}
+bindAudio(audio);
+function playAt(i, fromQueue){
+  if(i<0||i>=items.length) return;
+  showErr('');
+  cur=i; queue=!!fromQueue;
+  const it=items[i];
+  try{audio.pause();}catch(e){}
+  audio=makeAudio();
+  bindAudio(audio);
+  audio.src=it.src;
+  btitle.textContent=it.title;
+  bwho.textContent=it.time+' · línea '+String(it.i).padStart(2,'0');
+  bar.classList.add('on');
+  clearOn();
+  it.el.classList.add('now');
+  const btn=it.el.querySelector('.play');
+  btn.classList.add('on'); btn.textContent='⏸ Pausar';
+  if(queue) document.getElementById('all').classList.add('on');
+  it.el.scrollIntoView({behavior:'smooth', block:'center'});
+  const p=audio.play();
+  if(p&&p.catch) p.catch(err=>{
+    showErr('No se pudo reproducir: '+(err&&err.message?err.message:err)+'. Cierra esta pestaña y ábrela de nuevo.');
+  });
+  pp.textContent='⏸';
+  window.__eliAudio=()=>audio;
+}
+function toggleCard(i){
+  if(cur===i && audio && !audio.paused){ audio.pause(); items[i].el.querySelector('.play').textContent='▶ Reproducir'; pp.textContent='▶'; return; }
+  if(cur===i && audio && audio.paused && audio.src){
+    const p=audio.play();
+    if(p&&p.catch) p.catch(err=>{ showErr('No se pudo reproducir: '+(err&&err.message?err.message:err)); });
+    items[i].el.querySelector('.play').textContent='⏸ Pausar'; pp.textContent='⏸'; return;
+  }
+  playAt(i,false);
+}
+document.getElementById('list').addEventListener('click',e=>{
+  const b=e.target.closest('button.play'); if(!b) return;
+  const card=b.closest('.card'); if(card) toggleCard(+card.dataset.i - 1);
+});
+document.getElementById('all').onclick=()=>{
+  if(queue && audio && !audio.paused){ audio.pause(); document.getElementById('all').classList.remove('on'); pp.textContent='▶'; return; }
+  playAt(cur>=0&&queue?cur:0, true);
+};
+document.getElementById('prev').onclick=()=>{ if(cur>0) playAt(cur-1,queue); };
+document.getElementById('next').onclick=()=>{ if(cur<items.length-1) playAt(cur+1,queue); };
+pp.onclick=()=>{
+  if(!audio.src) return;
+  if(audio.paused){
+    const p=audio.play();
+    if(p&&p.catch) p.catch(err=>{ showErr('No se pudo reproducir: '+(err&&err.message?err.message:err)); });
+    pp.textContent='⏸'; if(cur>=0) items[cur].el.querySelector('.play').textContent='⏸ Pausar';
+  }
+  else { audio.pause(); pp.textContent='▶'; if(cur>=0) items[cur].el.querySelector('.play').textContent='▶ Reproducir'; }
+};
+window.__eliAudio=()=>audio;
+</script>
+</body>
+</html>
